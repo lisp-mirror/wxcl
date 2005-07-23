@@ -20,7 +20,7 @@
 #   V = old version number (pre-checkin)
 #   v = new version number (post-checkin)
 #   t = tag or branch name
-#
+# 
 # For example:
 #DEFAULT (echo ""; id; echo %s; date; cat) >> $CVSROOT/CVSROOT/commitlog
 # or
