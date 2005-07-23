@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxListbox"
+(defpackage :wxListbox
   (:use :common-lisp :ffi)
+  (:export
 	:wxListBox_Create
 	:wxListBox_Clear
 	:wxListBox_Delete
@@ -28,7 +29,7 @@
 	:wxListBox_SetFirstItem
 	:wxListBox_SetClientData
 	:wxListBox_GetClientData
-	:wxListBox_SetStringSelection)
+	:wxListBox_SetStringSelection))
 
 (in-package :wxListbox)
 

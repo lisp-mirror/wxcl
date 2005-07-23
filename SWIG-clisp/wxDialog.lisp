@@ -9,14 +9,15 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxDialog"
+(defpackage :wxDialog
   (:use :common-lisp :ffi)
+  (:export
 	:wxDialog_Create
 	:wxDialog_IsModal
 	:wxDialog_ShowModal
 	:wxDialog_EndModal
 	:wxDialog_SetReturnCode
-	:wxDialog_GetReturnCode)
+	:wxDialog_GetReturnCode))
 
 (in-package :wxDialog)
 

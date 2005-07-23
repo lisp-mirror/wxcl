@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxEvent"
+(defpackage :wxEvent
   (:use :common-lisp :ffi)
+  (:export
 	:wxCommandEvent_Create
 	:wxCommandEvent_Delete
 	:wxEvent_Skip
@@ -186,7 +187,7 @@
 	:wxCalendarEvent_GetWeekDay
 	:wxCalendarEvent_GetDate
 	:wxScrollEvent_GetOrientation
-	:wxScrollEvent_GetPosition)
+	:wxScrollEvent_GetPosition))
 
 (in-package :wxEvent)
 

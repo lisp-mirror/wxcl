@@ -6,11 +6,12 @@
 ;;;
 ;;; $Header$
 ;;;
-;;This is an automatically generated file. 
+;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxIcon"
+(defpackage :wxIcon
   (:use :common-lisp :ffi)
+  (:export
 	:wxIcon_CreateDefault
 	:wxIcon_Delete
 	:wxIcon_FromRaw
@@ -23,7 +24,7 @@
 	:wxIcon_GetWidth
 	:wxIcon_GetHeight
 	:wxIcon_Assign
-	:wxIcon_IsEqual)
+	:wxIcon_IsEqual))
 
 (in-package :wxIcon)
 

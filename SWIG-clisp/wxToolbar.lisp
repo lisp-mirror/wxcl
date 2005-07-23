@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxToolbar"
+(defpackage :wxToolbar
   (:use :common-lisp :ffi)
+  (:export
 	:wxToolBar_Create
 	:wxToolBar_Delete
 	:wxToolBar_AddControl
@@ -41,7 +42,7 @@
 	:wxToolBar_SetToolPacking
 	:wxToolBar_SetToolShortHelp
 	:wxToolBar_SetToolSeparation
-	:wxToolBar_ToggleTool)
+	:wxToolBar_ToggleTool))
 
 (in-package :wxToolbar)
 

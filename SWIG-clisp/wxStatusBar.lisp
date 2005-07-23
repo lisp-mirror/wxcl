@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxStatusBar"
+(defpackage :wxStatusBar
   (:use :common-lisp :ffi)
+  (:export
 	:wxStatusBar_Create
 	:wxStatusBar_SetFieldsCount
 	:wxStatusBar_GetFieldsCount
@@ -19,7 +20,7 @@
 	:wxStatusBar_SetStatusWidths
 	:wxStatusBar_SetMinHeight
 	:wxStatusBar_GetBorderX
-	:wxStatusBar_GetBorderY)
+	:wxStatusBar_GetBorderY))
 
 (in-package :wxStatusBar)
 

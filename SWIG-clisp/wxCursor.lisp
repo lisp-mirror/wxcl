@@ -9,9 +9,10 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxCursor"
+(defpackage :wxCursor
   (:use :common-lisp :ffi)
-	:Cursor_CreateFromStock)
+  (:export
+	:Cursor_CreateFromStock))
 
 (in-package :wxCursor)
 

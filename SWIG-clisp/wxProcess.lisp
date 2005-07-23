@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxProcess"
+(defpackage :wxProcess
   (:use :common-lisp :ffi)
+  (:export
 	:wxProcess_CreateDefault
 	:wxProcess_CreateRedirect
 	:wxProcess_Delete
@@ -42,7 +43,7 @@
 	:wxInputStream_Tell
 	:wxInputStream_LastRead
 	:wxInputStream_UngetBuffer
-	:wxInputStream_Ungetch)
+	:wxInputStream_Ungetch))
 
 (in-package :wxProcess)
 

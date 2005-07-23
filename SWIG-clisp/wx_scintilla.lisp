@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wx_scintilla"
+(defpackage :wx_scintilla
   (:use :common-lisp :ffi)
+  (:export
 	:make-CharacterRange
 	:CharacterRange-cpMin
 	:CharacterRange-cpMax
@@ -43,7 +44,7 @@
 	:SCNotification-margin
 	:SCNotification-listType
 	:SCNotification-x
-	:SCNotification-y)
+	:SCNotification-y))
 
 (in-package :wx_scintilla)
 

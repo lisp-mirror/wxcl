@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxTimer"
+(defpackage :wxTimer
   (:use :common-lisp :ffi)
+  (:export
 	:wxTimer_Create
 	:wxTimer_Delete
 	:wxTimer_Start
@@ -23,7 +24,7 @@
 	:wxStopWatch_Start
 	:wxStopWatch_Pause
 	:wxStopWatch_Resume
-	:wxStopWatch_Time)
+	:wxStopWatch_Time))
 
 (in-package :wxTimer)
 

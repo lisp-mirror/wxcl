@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxPen"
+(defpackage :wxPen
   (:use :common-lisp :ffi)
+  (:export
 	:wxPen_CreateDefault
 	:wxPen_CreateFromColour
 	:wxPen_CreateFromBitmap
@@ -33,7 +34,7 @@
 	:wxPen_GetJoin
 	:wxPen_GetCap
 	:wxPen_GetDashes
-	:wxPen_GetStipple)
+	:wxPen_GetStipple))
 
 (in-package :wxPen)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxDialup"
+(defpackage :wxDialup
   (:use :common-lisp :ffi)
+  (:export
 	:wxDialUpManager_Create
 	:wxDialUpManager_Delete
 	:wxDialUpManager_IsOk
@@ -27,7 +28,7 @@
 	:wxDialUpManager_SetWellKnownHost
 	:wxDialUpManager_SetConnectCommand
 	:wxDialUpEvent_IsConnectedEvent
-	:wxDialUpEvent_IsOwnEvent)
+	:wxDialUpEvent_IsOwnEvent))
 
 (in-package :wxDialup)
 

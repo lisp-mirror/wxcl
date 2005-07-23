@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxHelpcontroller"
+(defpackage :wxHelpcontroller
   (:use :common-lisp :ffi)
+  (:export
 	:wxHtmlHelpController_Create
 	:wxHtmlHelpController_Delete
 	:wxHtmlHelpController_SetTitleFormat
@@ -33,7 +34,7 @@
 	:wxHtmlHelpController_DisplayBlock
 	:wxHtmlHelpController_SetFrameParameters
 	:wxHtmlHelpController_GetFrameParameters
-	:wxHtmlHelpController_Quit)
+	:wxHtmlHelpController_Quit))
 
 (in-package :wxHelpcontroller)
 

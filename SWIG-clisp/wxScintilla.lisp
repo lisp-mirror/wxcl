@@ -9,11 +9,12 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxScintilla"
+(defpackage :wxScintilla
   (:use :common-lisp :ffi)
+  (:export
 	:scintilla_new
 	:scintilla_set_id
-	:scintilla_send_message)
+	:scintilla_send_message))
 
 (in-package :wxScintilla)
 

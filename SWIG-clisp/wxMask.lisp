@@ -9,10 +9,11 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxMask"
+(defpackage :wxMask
   (:use :common-lisp :ffi)
+  (:export
 	:wxMask_Create
-	:wxMask_CreateColoured)
+	:wxMask_CreateColoured))
 
 (in-package :wxMask)
 

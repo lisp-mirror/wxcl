@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxCalendarCtrl"
+(defpackage :wxCalendarCtrl
   (:use :common-lisp :ffi)
+  (:export
 	:wxCalendarCtrl_Create
 	:wxCalendarCtrl_SetDate
 	:wxCalendarCtrl_GetDate
@@ -50,7 +51,7 @@
 	:wxCalendarDateAttr_GetBackgroundColour
 	:wxCalendarDateAttr_GetBorderColour
 	:wxCalendarDateAttr_GetFont
-	:wxCalendarDateAttr_GetBorder)
+	:wxCalendarDateAttr_GetBorder))
 
 (in-package :wxCalendarCtrl)
 

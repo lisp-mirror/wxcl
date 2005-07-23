@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxClipboard"
+(defpackage :wxClipboard
   (:use :common-lisp :ffi)
+  (:export
 	:wxClipboard_Create
 	:wxClipboard_Delete
 	:wxClipboard_Open
@@ -22,7 +23,7 @@
 	:wxClipboard_GetData
 	:wxClipboard_Clear
 	:wxClipboard_Flush
-	:wxClipboard_UsePrimarySelection)
+	:wxClipboard_UsePrimarySelection))
 
 (in-package :wxClipboard)
 

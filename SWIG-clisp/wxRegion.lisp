@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxRegion"
+(defpackage :wxRegion
   (:use :common-lisp :ffi)
+  (:export
 	:wxRegion_CreateDefault
 	:wxRegion_CreateFromRect
 	:wxRegion_Delete
@@ -27,7 +28,7 @@
 	:wxRegion_GetBox
 	:wxRegion_Empty
 	:wxRegion_ContainsPoint
-	:wxRegion_ContainsRect)
+	:wxRegion_ContainsRect))
 
 (in-package :wxRegion)
 

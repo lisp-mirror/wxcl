@@ -9,9 +9,10 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxMiniframe"
+(defpackage :wxMiniframe
   (:use :common-lisp :ffi)
-	:wxMiniFrame_Create)
+  (:export
+	:wxMiniFrame_Create))
 
 (in-package :wxMiniframe)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxRadiobox"
+(defpackage :wxRadiobox
   (:use :common-lisp :ffi)
+  (:export
 	:wxRadioBox_Create
 	:wxRadioBox_FindString
 	:wxRadioBox_SetSelection
@@ -24,7 +25,7 @@
 	:wxRadioBox_SetStringSelection
 	:wxRadioBox_Number
 	:wxRadioBox_GetNumberOfRowsOrCols
-	:wxRadioBox_SetNumberOfRowsOrCols)
+	:wxRadioBox_SetNumberOfRowsOrCols))
 
 (in-package :wxRadiobox)
 

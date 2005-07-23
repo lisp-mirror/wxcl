@@ -9,11 +9,12 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxControl"
+(defpackage :wxControl
   (:use :common-lisp :ffi)
+  (:export
 	:wxControl_SetLabel
 	:wxControl_GetLabel
-	:wxControl_Command)
+	:wxControl_Command))
 
 (in-package :wxControl)
 

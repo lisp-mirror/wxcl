@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxCaret"
+(defpackage :wxCaret
   (:use :common-lisp :ffi)
+  (:export
 	:wxCaret_Create
 	:wxCaret_IsOk
 	:wxCaret_IsVisible
@@ -22,7 +23,7 @@
 	:wxCaret_Show
 	:wxCaret_Hide
 	:wxCaret_GetBlinkTime
-	:wxCaret_SetBlinkTime)
+	:wxCaret_SetBlinkTime))
 
 (in-package :wxCaret)
 

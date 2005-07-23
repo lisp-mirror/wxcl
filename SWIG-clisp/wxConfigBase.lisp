@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxConfigBase"
+(defpackage :wxConfigBase
   (:use :common-lisp :ffi)
+  (:export
 	:wxConfigBase_Create
 	:wxConfigBase_Delete
 	:wxConfigBase_SetPath
@@ -49,7 +50,7 @@
 	:wxConfigBase_SetAppName
 	:wxConfigBase_SetVendorName
 	:wxConfigBase_SetStyle
-	:wxConfigBase_GetStyle)
+	:wxConfigBase_GetStyle))
 
 (in-package :wxConfigBase)
 
@@ -168,8 +169,8 @@
 	(:name "wxConfigBase_ReadDouble")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(key (ffi:c-pointer NIL))
-		(defVal DOUBLE_FLOAT))
-	(:return-type DOUBLE_FLOAT)
+		(defVal DOUBLE-FLOAT))
+	(:return-type DOUBLE-FLOAT)
 	(:library +library-name+))
 
 (ffi:def-call-out wxConfigBase_ReadBool
@@ -200,7 +201,7 @@
 	(:name "wxConfigBase_WriteDouble")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(key (ffi:c-pointer NIL))
-		(value DOUBLE_FLOAT))
+		(value DOUBLE-FLOAT))
 	(:return-type ffi:int)
 	(:library +library-name+))
 

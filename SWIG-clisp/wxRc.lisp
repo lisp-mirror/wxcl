@@ -9,7 +9,8 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxRc"
-  (:use :common-lisp :ffi))
+(defpackage :wxRc
+  (:use :common-lisp :ffi)
+  (:export))
 
 (in-package :wxRc)

@@ -9,12 +9,13 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxPanel"
+(defpackage :wxPanel
   (:use :common-lisp :ffi)
+  (:export
 	:wxPanel_Create
 	:wxPanel_InitDialog
 	:wxPanel_GetDefaultItem
-	:wxPanel_SetDefaultItem)
+	:wxPanel_SetDefaultItem))
 
 (in-package :wxPanel)
 

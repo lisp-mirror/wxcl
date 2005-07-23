@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxWindow"
+(defpackage :wxWindow
   (:use :common-lisp :ffi)
+  (:export
 	:wxWindow_Create
 	:wxWindow_Close
 	:wxWindow_Destroy
@@ -136,7 +137,7 @@
 	:wxWindow_Reparent
 	:wxWindow_GetAdjustedBestSize
 	:wxWindow_Freeze
-	:wxWindow_Thaw)
+	:wxWindow_Thaw))
 
 (in-package :wxWindow)
 

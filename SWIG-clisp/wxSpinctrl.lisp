@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxSpinctrl"
+(defpackage :wxSpinctrl
   (:use :common-lisp :ffi)
+  (:export
 	:wxSpinCtrl_Create
 	:wxSpinCtrl_SetValue
 	:wxSpinCtrl_GetValue
@@ -22,7 +23,7 @@
 	:wxSpinButton_GetMin
 	:wxSpinButton_GetMax
 	:wxSpinButton_SetValue
-	:wxSpinButton_SetRange)
+	:wxSpinButton_SetRange))
 
 (in-package :wxSpinctrl)
 

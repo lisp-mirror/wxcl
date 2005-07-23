@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxRegioniter"
+(defpackage :wxRegioniter
   (:use :common-lisp :ffi)
+  (:export
 	:wxRegionIterator_Create
 	:wxRegionIterator_CreateFromRegion
 	:wxRegionIterator_Delete
@@ -21,7 +22,7 @@
 	:wxRegionIterator_GetX
 	:wxRegionIterator_GetY
 	:wxRegionIterator_GetWidth
-	:wxRegionIterator_GetHeight)
+	:wxRegionIterator_GetHeight))
 
 (in-package :wxRegioniter)
 

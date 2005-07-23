@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxDatetime"
+(defpackage :wxDatetime
   (:use :common-lisp :ffi)
+  (:export
 	:wxDateTime_Create
 	:wxDateTime_SetCountry
 	:wxDateTime_GetCountry
@@ -102,7 +103,7 @@
 	:wxDateTime_GetValue
 	:wxDateTime_GetTimeNow
 	:wxDateTime_AddTimeValues
-	:wxDateTime_AddDateValues)
+	:wxDateTime_AddDateValues))
 
 (in-package :wxDatetime)
 

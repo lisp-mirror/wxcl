@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxLog"
+(defpackage :wxLog
   (:use :common-lisp :ffi)
+  (:export
 	:ELJLog_Create
 	:ELJLog_Delete
 	:ELJLog_IsEnabled
@@ -44,7 +45,7 @@
 	:wxLogChain_SetLog
 	:wxLogChain_PassMessages
 	:wxLogChain_IsPassingMessages
-	:wxLogChain_GetOldLog)
+	:wxLogChain_GetOldLog))
 
 (in-package :wxLog)
 

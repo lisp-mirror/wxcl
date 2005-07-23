@@ -9,13 +9,14 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxDcsvg"
+(defpackage :wxDcsvg
   (:use :common-lisp :ffi)
+  (:export
 	:wxSVGFileDC_Create
 	:wxSVGFileDC_CreateWithSize
 	:wxSVGFileDC_CreateWithSizeAndResolution
 	:wxSVGFileDC_Delete
-	:wxSVGFileDC_ComputeScaleAndOrigin)
+	:wxSVGFileDC_ComputeScaleAndOrigin))
 
 (in-package :wxDcsvg)
 

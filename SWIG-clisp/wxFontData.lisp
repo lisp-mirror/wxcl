@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxFontData"
+(defpackage :wxFontData
   (:use :common-lisp :ffi)
+  (:export
 	:wxFontData_Create
 	:wxFontData_Delete
 	:wxFontData_SetAllowSymbols
@@ -27,7 +28,7 @@
 	:wxFontData_GetChosenFont
 	:wxFontData_SetRange
 	:wxFontData_GetEncoding
-	:wxFontData_SetEncoding)
+	:wxFontData_SetEncoding))
 
 (in-package :wxFontData)
 

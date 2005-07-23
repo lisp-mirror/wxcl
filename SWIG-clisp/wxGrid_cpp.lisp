@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxGrid_cpp"
+(defpackage :wxGrid_cpp
   (:use :common-lisp :ffi)
+  (:export
 	:wxGridCellCoordsArray_Create
 	:wxGridCellCoordsArray_Delete
 	:wxGridCellCoordsArray_GetCount
@@ -277,7 +278,7 @@
 	:wxGridEditorCreatedEvent_GetControl
 	:wxGridEditorCreatedEvent_SetRow
 	:wxGridEditorCreatedEvent_SetCol
-	:wxGridEditorCreatedEvent_SetControl)
+	:wxGridEditorCreatedEvent_SetControl))
 
 (in-package :wxGrid_cpp)
 

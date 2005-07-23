@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxPlot"
+(defpackage :wxPlot
   (:use :common-lisp :ffi)
+  (:export
 	:wxPlotWindow_Create
 	:wxPlotWindow_Add
 	:wxPlotWindow_Delete
@@ -64,7 +65,7 @@
 	:wxPlotEvent_GetZoom
 	:wxPlotEvent_SetZoom
 	:wxPlotEvent_GetPosition
-	:wxPlotEvent_SetPosition)
+	:wxPlotEvent_SetPosition))
 
 (in-package :wxPlot)
 
@@ -159,34 +160,34 @@
 	(:name "wxPlotWindow_Enlarge")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(curve (ffi:c-pointer NIL))
-		(factor DOUBLE_FLOAT))
+		(factor DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxPlotWindow_SetUnitsPerValue
 	(:name "wxPlotWindow_SetUnitsPerValue")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(upv DOUBLE_FLOAT))
+		(upv DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxPlotWindow_GetUnitsPerValue
 	(:name "wxPlotWindow_GetUnitsPerValue")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type DOUBLE_FLOAT)
+	(:return-type DOUBLE-FLOAT)
 	(:library +library-name+))
 
 (ffi:def-call-out wxPlotWindow_SetZoom
 	(:name "wxPlotWindow_SetZoom")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(zoom DOUBLE_FLOAT))
+		(zoom DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxPlotWindow_GetZoom
 	(:name "wxPlotWindow_GetZoom")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type DOUBLE_FLOAT)
+	(:return-type DOUBLE-FLOAT)
 	(:library +library-name+))
 
 (ffi:def-call-out wxPlotWindow_SetScrollOnThumbRelease
@@ -347,8 +348,8 @@
 		(_end (ffi:c-pointer NIL))
 		(_y (ffi:c-pointer NIL))
 		(offsetY ffi:int)
-		(startY DOUBLE_FLOAT)
-		(endY DOUBLE_FLOAT))
+		(startY DOUBLE-FLOAT)
+		(endY DOUBLE-FLOAT))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
@@ -361,27 +362,27 @@
 (ffi:def-call-out ELJPlotCurve_SetStartY
 	(:name "ELJPlotCurve_SetStartY")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(startY DOUBLE_FLOAT))
+		(startY DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out ELJPlotCurve_GetStartY
 	(:name "ELJPlotCurve_GetStartY")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type DOUBLE_FLOAT)
+	(:return-type DOUBLE-FLOAT)
 	(:library +library-name+))
 
 (ffi:def-call-out ELJPlotCurve_SetEndY
 	(:name "ELJPlotCurve_SetEndY")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(endY DOUBLE_FLOAT))
+		(endY DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out ELJPlotCurve_GetEndY
 	(:name "ELJPlotCurve_GetEndY")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type DOUBLE_FLOAT)
+	(:return-type DOUBLE-FLOAT)
 	(:library +library-name+))
 
 (ffi:def-call-out ELJPlotCurve_SetOffsetY
@@ -420,13 +421,13 @@
 (ffi:def-call-out wxPlotEvent_GetZoom
 	(:name "wxPlotEvent_GetZoom")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type DOUBLE_FLOAT)
+	(:return-type DOUBLE-FLOAT)
 	(:library +library-name+))
 
 (ffi:def-call-out wxPlotEvent_SetZoom
 	(:name "wxPlotEvent_SetZoom")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(zoom DOUBLE_FLOAT))
+		(zoom DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 

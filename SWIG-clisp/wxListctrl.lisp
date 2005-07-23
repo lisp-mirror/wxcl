@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxListctrl"
+(defpackage :wxListctrl
   (:use :common-lisp :ffi)
+  (:export
 	:make-EiffelSort
 	:EiffelSort-obj
 	:EiffelSort-fnc
@@ -101,7 +102,7 @@
 	:wxListCtrl_InsertColumn
 	:wxListCtrl_ScrollList
 	:wxListCtrl_SortItems
-	:wxListCtrl_UpdateStyle)
+	:wxListCtrl_UpdateStyle))
 
 (in-package :wxListctrl)
 

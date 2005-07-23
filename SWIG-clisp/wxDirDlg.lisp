@@ -9,15 +9,16 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxDirDlg"
+(defpackage :wxDirDlg
   (:use :common-lisp :ffi)
+  (:export
 	:wxDirDialog_Create
 	:wxDirDialog_SetMessage
 	:wxDirDialog_SetPath
 	:wxDirDialog_SetStyle
 	:wxDirDialog_GetMessage
 	:wxDirDialog_GetPath
-	:wxDirDialog_GetStyle)
+	:wxDirDialog_GetStyle))
 
 (in-package :wxDirDlg)
 

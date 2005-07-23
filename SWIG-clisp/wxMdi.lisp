@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxMdi"
+(defpackage :wxMdi
   (:use :common-lisp :ffi)
+  (:export
 	:wxMDIParentFrame_Create
 	:wxMDIParentFrame_GetActiveChild
 	:wxMDIParentFrame_GetClientWindow
@@ -23,7 +24,7 @@
 	:wxMDIParentFrame_ActivateNext
 	:wxMDIParentFrame_ActivatePrevious
 	:wxMDIChildFrame_Create
-	:wxMDIChildFrame_Activate)
+	:wxMDIChildFrame_Activate))
 
 (in-package :wxMdi)
 

@@ -9,11 +9,12 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxChecklistbox"
+(defpackage :wxChecklistbox
   (:use :common-lisp :ffi)
+  (:export
 	:wxCheckListBox_Create
 	:wxCheckListBox_Check
-	:wxCheckListBox_IsChecked)
+	:wxCheckListBox_IsChecked))
 
 (in-package :wxChecklistbox)
 

@@ -9,9 +9,10 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxStaticText"
+(defpackage :wxStaticText
   (:use :common-lisp :ffi)
-	:wxStaticText_Create)
+  (:export
+	:wxStaticText_Create))
 
 (in-package :wxStaticText)
 

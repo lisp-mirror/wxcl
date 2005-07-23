@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxMime"
+(defpackage :wxMime
   (:use :common-lisp :ffi)
+  (:export
 	:wxMimeTypesManager_Create
 	:wxMimeTypesManager_GetFileTypeFromExtension
 	:wxMimeTypesManager_GetFileTypeFromMimeType
@@ -29,7 +30,7 @@
 	:wxFileType_ExpandCommand
 	:wxFileType_Delete
 	:wxMessageParameters_Create
-	:wxMessageParameters_Delete)
+	:wxMessageParameters_Delete))
 
 (in-package :wxMime)
 

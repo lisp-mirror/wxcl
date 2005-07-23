@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxScrolledWindow"
+(defpackage :wxScrolledWindow
   (:use :common-lisp :ffi)
+  (:export
 	:wxScrolledWindow_Create
 	:wxScrolledWindow_SetTargetWindow
 	:wxScrolledWindow_GetTargetWindow
@@ -30,7 +31,7 @@
 	:wxScrolledWindow_CalcUnscrolledPosition
 	:wxScrolledWindow_AdjustScrollbars
 	:wxScrolledWindow_OnDraw
-	:wxScrolledWindow_PrepareDC)
+	:wxScrolledWindow_PrepareDC))
 
 (in-package :wxScrolledWindow)
 
@@ -138,21 +139,21 @@
 (ffi:def-call-out wxScrolledWindow_SetScale
 	(:name "wxScrolledWindow_SetScale")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(xs DOUBLE_FLOAT)
-		(ys DOUBLE_FLOAT))
+		(xs DOUBLE-FLOAT)
+		(ys DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxScrolledWindow_GetScaleX
 	(:name "wxScrolledWindow_GetScaleX")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type DOUBLE_FLOAT)
+	(:return-type DOUBLE-FLOAT)
 	(:library +library-name+))
 
 (ffi:def-call-out wxScrolledWindow_GetScaleY
 	(:name "wxScrolledWindow_GetScaleY")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type DOUBLE_FLOAT)
+	(:return-type DOUBLE-FLOAT)
 	(:library +library-name+))
 
 (ffi:def-call-out wxScrolledWindow_CalcScrolledPosition

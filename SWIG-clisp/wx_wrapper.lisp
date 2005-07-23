@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wx_wrapper"
+(defpackage :wx_wrapper
   (:use :common-lisp :ffi)
+  (:export
 	:ELJApp_MainLoop
 	:ELJApp_Initialized
 	:ELJApp_Pending
@@ -87,7 +88,7 @@
 	:wxClassInfo_CreateClassByName
 	:wxClassInfo_GetClassName
 	:wxClassInfo_IsKindOf
-	:wxEvent_NewEventType)
+	:wxEvent_NewEventType))
 
 (in-package :wx_wrapper)
 

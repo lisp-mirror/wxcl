@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxTextctrl"
+(defpackage :wxTextctrl
   (:use :common-lisp :ffi)
+  (:export
 	:wxTextCtrl_Create
 	:wxTextCtrl_GetValue
 	:wxTextCtrl_SetValue
@@ -46,7 +47,7 @@
 	:wxTextCtrl_GetInsertionPoint
 	:wxTextCtrl_GetLastPosition
 	:wxTextCtrl_SetSelection
-	:wxTextCtrl_SetEditable)
+	:wxTextCtrl_SetEditable))
 
 (in-package :wxTextctrl)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxMenu"
+(defpackage :wxMenu
   (:use :common-lisp :ffi)
+  (:export
 	:wxMenu_Create
 	:wxMenu_DeletePointer
 	:wxMenu_AppendSeparator
@@ -74,7 +75,7 @@
 	:wxMenuItem_Check
 	:wxMenuItem_IsChecked
 	:wxMenuItem_SetHelp
-	:wxMenuItem_GetHelp)
+	:wxMenuItem_GetHelp))
 
 (in-package :wxMenu)
 

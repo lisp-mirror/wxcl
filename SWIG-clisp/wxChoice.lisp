@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxChoice"
+(defpackage :wxChoice
   (:use :common-lisp :ffi)
+  (:export
 	:wxChoice_Create
 	:wxChoice_Append
 	:wxChoice_Delete
@@ -20,7 +21,7 @@
 	:wxChoice_SetSelection
 	:wxChoice_FindString
 	:wxChoice_GetString
-	:wxChoice_SetString)
+	:wxChoice_SetString))
 
 (in-package :wxChoice)
 

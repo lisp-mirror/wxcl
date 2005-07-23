@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxSplitterWindow"
+(defpackage :wxSplitterWindow
   (:use :common-lisp :ffi)
+  (:export
 	:wxSplitterWindow_Create
 	:wxSplitterWindow_GetWindow1
 	:wxSplitterWindow_GetWindow2
@@ -29,7 +30,7 @@
 	:wxSplitterWindow_SetSashPosition
 	:wxSplitterWindow_GetSashPosition
 	:wxSplitterWindow_SetMinimumPaneSize
-	:wxSplitterWindow_GetMinimumPaneSize)
+	:wxSplitterWindow_GetMinimumPaneSize))
 
 (in-package :wxSplitterWindow)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxFont"
+(defpackage :wxFont
   (:use :common-lisp :ffi)
+  (:export
 	:wxFont_Create
 	:wxFont_CreateDefault
 	:wxFont_Delete
@@ -46,7 +47,7 @@
 	:wxEncodingConverter_Init
 	:wxEncodingConverter_Convert
 	:wxEncodingConverter_GetPlatformEquivalents
-	:wxEncodingConverter_GetAllEquivalents)
+	:wxEncodingConverter_GetAllEquivalents))
 
 (in-package :wxFont)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxGauge"
+(defpackage :wxGauge
   (:use :common-lisp :ffi)
+  (:export
 	:wxGauge_Create
 	:wxGauge_SetShadowWidth
 	:wxGauge_SetBezelFace
@@ -19,7 +20,7 @@
 	:wxGauge_GetShadowWidth
 	:wxGauge_GetBezelFace
 	:wxGauge_GetRange
-	:wxGauge_GetValue)
+	:wxGauge_GetValue))
 
 (in-package :wxGauge)
 

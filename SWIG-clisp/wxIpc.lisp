@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxIpc"
+(defpackage :wxIpc
   (:use :common-lisp :ffi)
+  (:export
 	:ELJConnection_CreateDefault
 	:ELJConnection_Create
 	:ELJConnection_Delete
@@ -34,7 +35,7 @@
 	:ELJServer_Initialize
 	:ELJClient_Create
 	:ELJClient_Delete
-	:ELJClient_MakeConnection)
+	:ELJClient_MakeConnection))
 
 (in-package :wxIpc)
 

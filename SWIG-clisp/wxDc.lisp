@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxDc"
+(defpackage :wxDc
   (:use :common-lisp :ffi)
+  (:export
 	:wxDC_Delete
 	:wxDC_BeginDrawing
 	:wxDC_EndDrawing
@@ -118,7 +119,7 @@
 	:wxMetafile_SetClipboard
 	:wxMetafile_Play
 	:wxMetafile_Ok
-	:wxMetafile_Delete)
+	:wxMetafile_Delete))
 
 (in-package :wxDc)
 
@@ -206,8 +207,8 @@
 		(y ffi:int)
 		(w ffi:int)
 		(h ffi:int)
-		(sa DOUBLE_FLOAT)
-		(ea DOUBLE_FLOAT))
+		(sa DOUBLE-FLOAT)
+		(ea DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -259,7 +260,7 @@
 		(y ffi:int)
 		(width ffi:int)
 		(height ffi:int)
-		(radius DOUBLE_FLOAT))
+		(radius DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -316,7 +317,7 @@
 		(text (ffi:c-pointer NIL))
 		(x ffi:int)
 		(y ffi:int)
-		(angle DOUBLE_FLOAT))
+		(angle DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -655,8 +656,8 @@
 (ffi:def-call-out wxDC_SetUserScale
 	(:name "wxDC_SetUserScale")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(x DOUBLE_FLOAT)
-		(y DOUBLE_FLOAT))
+		(x DOUBLE-FLOAT)
+		(y DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -671,8 +672,8 @@
 (ffi:def-call-out wxDC_SetLogicalScale
 	(:name "wxDC_SetLogicalScale")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(x DOUBLE_FLOAT)
-		(y DOUBLE_FLOAT))
+		(x DOUBLE-FLOAT)
+		(y DOUBLE-FLOAT))
 	(:return-type NIL)
 	(:library +library-name+))
 

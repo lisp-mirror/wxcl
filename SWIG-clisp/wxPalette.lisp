@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxPalette"
+(defpackage :wxPalette
   (:use :common-lisp :ffi)
+  (:export
 	:wxPalette_CreateDefault
 	:wxPalette_CreateRGB
 	:wxPalette_Delete
@@ -18,7 +19,7 @@
 	:wxPalette_GetRGB
 	:wxPalette_Ok
 	:wxPalette_Assign
-	:wxPalette_IsEqual)
+	:wxPalette_IsEqual))
 
 (in-package :wxPalette)
 

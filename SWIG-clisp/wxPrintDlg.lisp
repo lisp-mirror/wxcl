@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxPrintDlg"
+(defpackage :wxPrintDlg
   (:use :common-lisp :ffi)
+  (:export
 	:wxPrintDialog_Create
 	:wxPrintDialog_GetPrintData
 	:wxPrintDialog_GetPrintDC
@@ -51,7 +52,7 @@
 	:wxPageSetupDialogData_Assign
 	:wxPageSetupDialogData_AssignData
 	:wxPageSetupDialogData_GetPrintData
-	:wxPageSetupDialogData_SetPrintData)
+	:wxPageSetupDialogData_SetPrintData))
 
 (in-package :wxPrintDlg)
 

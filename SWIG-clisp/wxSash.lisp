@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxSash"
+(defpackage :wxSash
   (:use :common-lisp :ffi)
+  (:export
 	:wxSashWindow_Create
 	:wxSashWindow_SetSashVisible
 	:wxSashWindow_GetSashVisible
@@ -62,7 +63,7 @@
 	:wxLayoutAlgorithm_Delete
 	:wxLayoutAlgorithm_LayoutMDIFrame
 	:wxLayoutAlgorithm_LayoutFrame
-	:wxLayoutAlgorithm_LayoutWindow)
+	:wxLayoutAlgorithm_LayoutWindow))
 
 (in-package :wxSash)
 

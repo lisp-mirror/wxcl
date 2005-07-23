@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxColdata"
+(defpackage :wxColdata
   (:use :common-lisp :ffi)
+  (:export
 	:wxColourData_Create
 	:wxColourData_Delete
 	:wxColourData_SetChooseFull
@@ -18,7 +19,7 @@
 	:wxColourData_SetColour
 	:wxColourData_GetColour
 	:wxColourData_SetCustomColour
-	:wxColourData_GetCustomColour)
+	:wxColourData_GetCustomColour))
 
 (in-package :wxColdata)
 

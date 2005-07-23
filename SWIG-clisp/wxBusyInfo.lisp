@@ -9,13 +9,14 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxBusyInfo"
+(defpackage :wxBusyInfo
   (:use :common-lisp :ffi)
+  (:export
 	:wxBusyInfo_Create
 	:wxBusyInfo_Delete
 	:wxBusyCursor_Create
 	:wxBusyCursor_CreateWithCursor
-	:wxBusyCursor_Delete)
+	:wxBusyCursor_Delete))
 
 (in-package :wxBusyInfo)
 

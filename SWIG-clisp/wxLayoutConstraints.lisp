@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxLayoutConstraints"
+(defpackage :wxLayoutConstraints
   (:use :common-lisp :ffi)
+  (:export
 	:wxLayoutConstraints_left
 	:wxLayoutConstraints_top
 	:wxLayoutConstraints_right
@@ -45,7 +46,7 @@
 	:wxIndividualLayoutConstraint_SetRelationship
 	:wxIndividualLayoutConstraint_ResetIfWin
 	:wxIndividualLayoutConstraint_SatisfyConstraint
-	:wxIndividualLayoutConstraint_GetEdge)
+	:wxIndividualLayoutConstraint_GetEdge))
 
 (in-package :wxLayoutConstraints)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxMenubar"
+(defpackage :wxMenubar
   (:use :common-lisp :ffi)
+  (:export
 	:wxMenuBar_Create
 	:wxMenuBar_DeletePointer
 	:wxMenuBar_Append
@@ -34,7 +35,7 @@
 	:wxMenuBar_SetHelpString
 	:wxMenuBar_GetHelpString
 	:wxMenuBar_Enable
-	:wxMenuBar_SetLabel)
+	:wxMenuBar_SetLabel))
 
 (in-package :wxMenubar)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxGizmos"
+(defpackage :wxGizmos
   (:use :common-lisp :ffi)
+  (:export
 	:wxDynamicSashWindow_Create
 	:wxDynamicSashWindow_Delete
 	:wxDynamicSashWindow_GetHScrollBar
@@ -79,7 +80,7 @@
 	:wxRemotelyScrolledTreeCtrl_GetScrolledWindow
 	:wxRemotelyScrolledTreeCtrl_ScrollToLine
 	:wxRemotelyScrolledTreeCtrl_SetCompanionWindow
-	:wxRemotelyScrolledTreeCtrl_GetCompanionWindow)
+	:wxRemotelyScrolledTreeCtrl_GetCompanionWindow))
 
 (in-package :wxGizmos)
 

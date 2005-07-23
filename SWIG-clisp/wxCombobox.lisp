@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxCombobox"
+(defpackage :wxCombobox
   (:use :common-lisp :ffi)
+  (:export
 	:wxComboBox_Create
 	:wxComboBox_Copy
 	:wxComboBox_Cut
@@ -36,7 +37,7 @@
 	:wxComboBox_GetString
 	:wxComboBox_SetString
 	:wxComboBox_SetClientData
-	:wxComboBox_GetClientData)
+	:wxComboBox_GetClientData))
 
 (in-package :wxCombobox)
 

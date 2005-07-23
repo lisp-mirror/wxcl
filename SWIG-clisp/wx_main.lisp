@@ -6,23 +6,33 @@
 ;;;
 ;;; $Header$
 ;;;
-;; This is an automatically generated file. 
+;;This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wx_main"
+(defpackage :wx_main
   (:use :common-lisp :ffi)
-	:ELJApp_initialize)
+  (:export
+	:ELJApp_InitializeC
+	:ELJApp_initialize))
 
 (in-package :wx_main)
 
 (def-c-var APPTerminating (:type ffi:int)
 	(:library +library-name+))
 
+(ffi:def-call-out ELJApp_InitializeC
+	(:name "ELJApp_InitializeC")
+	(:arguments (closure (ffi:c-pointer wxClosure))
+		(_argc ffi:int)
+		(_argv (ffi:c-pointer ffi:c-string)))
+	(:return-type NIL)
+	(:library +library-name+))
+
 (ffi:def-call-out ELJApp_initialize
 	(:name "ELJApp_initialize")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(_func AppInitFunc)
-		(_argc ffi:int)
-		(_argv (ffi:c-pointer NIL)))
+		(_cmd ffi:c-string)
+		(_inst (ffi:c-pointer NIL)))
 	(:return-type NIL)
 	(:library +library-name+))

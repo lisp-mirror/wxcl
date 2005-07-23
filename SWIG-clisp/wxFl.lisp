@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxFl"
+(defpackage :wxFl
   (:use :common-lisp :ffi)
+  (:export
 	:wxToolWindow_Create
 	:wxToolWindow_SetClient
 	:wxToolWindow_GetClient
@@ -288,7 +289,7 @@
 	:cbCommonPaneProperties_SetBarDragHintsOn
 	:cbCommonPaneProperties_SetMinCBarDim
 	:cbCommonPaneProperties_SetResizeHandleSize
-	:cbCommonPaneProperties_Assign)
+	:cbCommonPaneProperties_Assign))
 
 (in-package :wxFl)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxThread"
+(defpackage :wxThread
   (:use :common-lisp :ffi)
+  (:export
 	:wxCriticalSection_Create
 	:wxCriticalSection_Delete
 	:wxCriticalSection_Enter
@@ -28,7 +29,7 @@
 	:wxCondition_Signal
 	:wxCondition_Broadcast
 	:wxMutexGui_Enter
-	:wxMutexGui_Leave)
+	:wxMutexGui_Leave))
 
 (in-package :wxThread)
 

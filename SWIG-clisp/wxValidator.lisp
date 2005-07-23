@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxValidator"
+(defpackage :wxValidator
   (:use :common-lisp :ffi)
+  (:export
 	:wxValidator_Create
 	:wxValidator_Delete
 	:wxValidator_Validate
@@ -28,7 +29,7 @@
 	:wxTextValidator_SetExcludeList
 	:wxTextValidator_GetExcludeList
 	:wxTextValidator_OnChar
-	:ELJTextValidator_Create)
+	:ELJTextValidator_Create))
 
 (in-package :wxValidator)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxCommand"
+(defpackage :wxCommand
   (:use :common-lisp :ffi)
+  (:export
 	:ELJCommand_Create
 	:ELJCommand_Delete
 	:ELJCommand_GetName
@@ -28,7 +29,7 @@
 	:wxCommandProcessor_Initialize
 	:wxCommandProcessor_GetCommands
 	:wxCommandProcessor_GetMaxCommands
-	:wxCommandProcessor_ClearCommands)
+	:wxCommandProcessor_ClearCommands))
 
 (in-package :wxCommand)
 

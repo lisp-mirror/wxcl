@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxWizard"
+(defpackage :wxWizard
   (:use :common-lisp :ffi)
+  (:export
 	:wxWizard_Create
 	:wxWizard_RunWizard
 	:wxWizard_GetCurrentPage
@@ -23,7 +24,7 @@
 	:wxWizardPageSimple_GetBitmap
 	:wxWizardPageSimple_SetPrev
 	:wxWizardPageSimple_SetNext
-	:wxWizardEvent_GetDirection)
+	:wxWizardEvent_GetDirection))
 
 (in-package :wxWizard)
 

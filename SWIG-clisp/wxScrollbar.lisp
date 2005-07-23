@@ -9,15 +9,16 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxScrollbar"
+(defpackage :wxScrollbar
   (:use :common-lisp :ffi)
+  (:export
 	:wxScrollBar_Create
 	:wxScrollBar_GetThumbPosition
 	:wxScrollBar_GetThumbSize
 	:wxScrollBar_GetPageSize
 	:wxScrollBar_GetRange
 	:wxScrollBar_SetThumbPosition
-	:wxScrollBar_SetScrollbar)
+	:wxScrollBar_SetScrollbar))
 
 (in-package :wxScrollbar)
 

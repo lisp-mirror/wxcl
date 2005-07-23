@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxFileDialog"
+(defpackage :wxFileDialog
   (:use :common-lisp :ffi)
+  (:export
 	:wxFileDialog_Create
 	:wxFileDialog_SetMessage
 	:wxFileDialog_SetPath
@@ -27,7 +28,7 @@
 	:wxFileDialog_GetFilenames
 	:wxFileDialog_GetWildcard
 	:wxFileDialog_GetStyle
-	:wxFileDialog_GetFilterIndex)
+	:wxFileDialog_GetFilterIndex))
 
 (in-package :wxFileDialog)
 

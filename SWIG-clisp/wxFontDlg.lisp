@@ -9,10 +9,11 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxFontDlg"
+(defpackage :wxFontDlg
   (:use :common-lisp :ffi)
+  (:export
 	:wxFontDialog_Create
-	:wxFontDialog_GetFontData)
+	:wxFontDialog_GetFontData))
 
 (in-package :wxFontDlg)
 

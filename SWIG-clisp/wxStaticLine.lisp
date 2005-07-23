@@ -9,11 +9,12 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxStaticLine"
+(defpackage :wxStaticLine
   (:use :common-lisp :ffi)
+  (:export
 	:wxStaticLine_Create
 	:wxStaticLine_IsVertical
-	:wxStaticLine_GetDefaultSize)
+	:wxStaticLine_GetDefaultSize))
 
 (in-package :wxStaticLine)
 

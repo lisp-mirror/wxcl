@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxImageList"
+(defpackage :wxImageList
   (:use :common-lisp :ffi)
+  (:export
 	:wxImageList_Create
 	:wxImageList_Delete
 	:wxImageList_GetImageCount
@@ -22,7 +23,7 @@
 	:wxImageList_ReplaceIcon
 	:wxImageList_Remove
 	:wxImageList_RemoveAll
-	:wxImageList_Draw)
+	:wxImageList_Draw))
 
 (in-package :wxImageList)
 

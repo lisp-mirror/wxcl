@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxBitmap"
+(defpackage :wxBitmap
   (:use :common-lisp :ffi)
+  (:export
 	:wxBitmap_Create
 	:wxBitmap_CreateFromXPM
 	:wxBitmap_CreateEmpty
@@ -42,7 +43,7 @@
 	:wxStaticBitmap_SetBitmap
 	:wxStaticBitmap_GetIcon
 	:wxStaticBitmap_GetBitmap
-	:wxStaticBitmap_Delete)
+	:wxStaticBitmap_Delete))
 
 (in-package :wxBitmap)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxSlider"
+(defpackage :wxSlider
   (:use :common-lisp :ffi)
+  (:export
 	:wxSlider_Create
 	:wxSlider_GetValue
 	:wxSlider_SetValue
@@ -30,7 +31,7 @@
 	:wxSlider_SetSelection
 	:wxSlider_SetThumbLength
 	:wxSlider_GetThumbLength
-	:wxSlider_SetTick)
+	:wxSlider_SetTick))
 
 (in-package :wxSlider)
 

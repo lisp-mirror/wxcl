@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxJoystick"
+(defpackage :wxJoystick
   (:use :common-lisp :ffi)
+  (:export
 	:wxJoystick_Create
 	:wxJoystick_Delete
 	:wxJoystick_GetPosition
@@ -54,7 +55,7 @@
 	:wxJoystick_HasPOV4Dir
 	:wxJoystick_HasPOVCTS
 	:wxJoystick_SetCapture
-	:wxJoystick_ReleaseCapture)
+	:wxJoystick_ReleaseCapture))
 
 (in-package :wxJoystick)
 

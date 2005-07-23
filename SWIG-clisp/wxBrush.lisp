@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxBrush"
+(defpackage :wxBrush
   (:use :common-lisp :ffi)
+  (:export
 	:wxBrush_CreateDefault
 	:wxBrush_CreateFromBitmap
 	:wxBrush_CreateFromColour
@@ -25,7 +26,7 @@
 	:wxBrush_GetColour
 	:wxBrush_GetStyle
 	:wxBrush_GetStipple
-	:wxBrush_Ok)
+	:wxBrush_Ok))
 
 (in-package :wxBrush)
 

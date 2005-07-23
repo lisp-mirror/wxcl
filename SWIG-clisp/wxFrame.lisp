@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxFrame"
+(defpackage :wxFrame
   (:use :common-lisp :ffi)
+  (:export
 	:wxFrame_Create
 	:wxFrame_CreateStatusBar
 	:wxFrame_Maximize
@@ -30,7 +31,7 @@
 	:wxFrame_SetStatusWidths
 	:wxFrame_CreateToolBar
 	:wxFrame_GetToolBar
-	:wxFrame_SetToolBar)
+	:wxFrame_SetToolBar))
 
 (in-package :wxFrame)
 

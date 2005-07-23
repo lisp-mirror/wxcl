@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxColour"
+(defpackage :wxColour
   (:use :common-lisp :ffi)
+  (:export
 	:wxColour_CreateEmpty
 	:wxColour_CreateRGB
 	:wxColour_CreateByName
@@ -25,7 +26,7 @@
 	:wxColour_GetPixel
 	:wxColour_Copy
 	:wxColour_SetByName
-	:wxColour_ValidName)
+	:wxColour_ValidName))
 
 (in-package :wxColour)
 

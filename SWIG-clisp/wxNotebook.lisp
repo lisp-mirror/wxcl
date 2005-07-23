@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxNotebook"
+(defpackage :wxNotebook
   (:use :common-lisp :ffi)
+  (:export
 	:wxNotebook_Create
 	:wxNotebook_GetPageCount
 	:wxNotebook_SetSelection
@@ -30,7 +31,7 @@
 	:wxNotebook_DeleteAllPages
 	:wxNotebook_AddPage
 	:wxNotebook_InsertPage
-	:wxNotebook_GetPage)
+	:wxNotebook_GetPage))
 
 (in-package :wxNotebook)
 

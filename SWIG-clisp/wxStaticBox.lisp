@@ -9,9 +9,10 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxStaticBox"
+(defpackage :wxStaticBox
   (:use :common-lisp :ffi)
-	:wxStaticBox_Create)
+  (:export
+	:wxStaticBox_Create))
 
 (in-package :wxStaticBox)
 

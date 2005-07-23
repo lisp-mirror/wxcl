@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxImage"
+(defpackage :wxImage
   (:use :common-lisp :ffi)
+  (:export
 	:wxImage_CreateDefault
 	:wxImage_CreateSized
 	:wxImage_CreateFromData
@@ -47,7 +48,7 @@
 	:wxImage_GetMaskBlue
 	:wxImage_SetMask
 	:wxImage_HasMask
-	:wxImage_CountColours)
+	:wxImage_CountColours))
 
 (in-package :wxImage)
 
@@ -153,7 +154,7 @@
 (ffi:def-call-out wxImage_Rotate
 	(:name "wxImage_Rotate")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(angle DOUBLE_FLOAT)
+		(angle DOUBLE-FLOAT)
 		(c_x ffi:int)
 		(c_y ffi:int)
 		(interpolating ffi:int)

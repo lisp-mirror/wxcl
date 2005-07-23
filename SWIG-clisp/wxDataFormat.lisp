@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxDataFormat"
+(defpackage :wxDataFormat
   (:use :common-lisp :ffi)
+  (:export
 	:wxDataFormat_CreateFromId
 	:wxDataFormat_CreateFromType
 	:wxDataFormat_Delete
@@ -18,7 +19,7 @@
 	:wxDataFormat_GetId
 	:wxDataFormat_GetType
 	:wxDataFormat_SetId
-	:wxDataFormat_SetType)
+	:wxDataFormat_SetType))
 
 (in-package :wxDataFormat)
 

@@ -9,11 +9,12 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxSystemSettings"
+(defpackage :wxSystemSettings
   (:use :common-lisp :ffi)
+  (:export
 	:wxSystemSettings_GetSystemColour
 	:wxSystemSettings_GetSystemFont
-	:wxSystemSettings_GetSystemMetric)
+	:wxSystemSettings_GetSystemMetric))
 
 (in-package :wxSystemSettings)
 

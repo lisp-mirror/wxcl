@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxButton"
+(defpackage :wxButton
   (:use :common-lisp :ffi)
+  (:export
 	:wxButton_Create
 	:wxButton_SetBackgroundColour
 	:wxButton_SetDefault
@@ -25,7 +26,7 @@
 	:wxBitmapButton_SetBitmapLabel
 	:wxBitmapButton_SetMargins
 	:wxBitmapButton_GetMarginX
-	:wxBitmapButton_GetMarginY)
+	:wxBitmapButton_GetMarginY))
 
 (in-package :wxButton)
 

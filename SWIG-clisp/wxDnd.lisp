@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxDnd"
+(defpackage :wxDnd
   (:use :common-lisp :ffi)
+  (:export
 	:ELJFileDropTarget_Create
 	:ELJFileDropTarget_Delete
 	:ELJTextDropTarget_Create
@@ -52,7 +53,7 @@
 	:ELJDragDataObject_Delete
 	:wxDataObjectComposite_Create
 	:wxDataObjectComposite_Delete
-	:wxDataObjectComposite_Add)
+	:wxDataObjectComposite_Add))
 
 (in-package :wxDnd)
 

@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxLocale"
+(defpackage :wxLocale
   (:use :common-lisp :ffi)
+  (:export
 	:wxLocale_Create
 	:wxLocale_Delete
 	:wxLocale_IsOk
@@ -21,7 +22,7 @@
 	:wxLocale_GetString
 	:wxLocale_GetName
 	:wxGetELJLocale
-	:wxGetELJTranslation)
+	:wxGetELJTranslation))
 
 (in-package :wxLocale)
 

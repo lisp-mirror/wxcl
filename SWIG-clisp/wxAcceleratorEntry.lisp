@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxAcceleratorEntry"
+(defpackage :wxAcceleratorEntry
   (:use :common-lisp :ffi)
+  (:export
 	:wxAcceleratorEntry_Create
 	:wxAcceleratorEntry_Delete
 	:wxAcceleratorEntry_Set
@@ -18,7 +19,7 @@
 	:wxAcceleratorEntry_GetKeyCode
 	:wxAcceleratorEntry_GetCommand
 	:wxAcceleratorTable_Create
-	:wxAcceleratorTable_Delete)
+	:wxAcceleratorTable_Delete))
 
 (in-package :wxAcceleratorEntry)
 

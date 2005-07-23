@@ -9,10 +9,11 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxColourDlg"
+(defpackage :wxColourDlg
   (:use :common-lisp :ffi)
+  (:export
 	:wxColourDialog_Create
-	:wxColourDialog_GetColourData)
+	:wxColourDialog_GetColourData))
 
 (in-package :wxColourDlg)
 

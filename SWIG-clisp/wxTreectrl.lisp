@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxTreectrl"
+(defpackage :wxTreectrl
   (:use :common-lisp :ffi)
+  (:export
 	:wxTreeItemId_Create
 	:wxTreeItemId_Delete
 	:wxTreeItemId_IsOk
@@ -77,7 +78,7 @@
 	:wxTreeCtrl_OnCompareItems
 	:wxTreeCtrl_SortChildren
 	:wxTreeCtrl_HitTest
-	:wxTreeCtrl_GetBoundingRect)
+	:wxTreeCtrl_GetBoundingRect))
 
 (in-package :wxTreectrl)
 

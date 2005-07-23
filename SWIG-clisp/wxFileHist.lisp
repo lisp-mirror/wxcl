@@ -9,8 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxFileHist"
+(defpackage :wxFileHist
   (:use :common-lisp :ffi)
+  (:export
 	:wxFileHistory_Create
 	:wxFileHistory_Delete
 	:wxFileHistory_AddFileToHistory
@@ -24,7 +25,7 @@
 	:wxFileHistory_GetHistoryFile
 	:wxFileHistory_GetCount
 	:wxFileHistory_GetNoHistoryFiles
-	:wxFileHistory_GetMenus)
+	:wxFileHistory_GetMenus))
 
 (in-package :wxFileHist)
 

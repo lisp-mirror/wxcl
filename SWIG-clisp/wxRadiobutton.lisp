@@ -9,11 +9,12 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage "wxRadiobutton"
+(defpackage :wxRadiobutton
   (:use :common-lisp :ffi)
+  (:export
 	:wxRadioButton_Create
 	:wxRadioButton_SetValue
-	:wxRadioButton_GetValue)
+	:wxRadioButton_GetValue))
 
 (in-package :wxRadiobutton)
 
