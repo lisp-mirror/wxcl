@@ -8,17 +8,15 @@
 ;;;
 
 (defpackage :wx_main
-    (:use :common-lisp :ffi)
-  (:export
-   :ELJApp_InitializeC
-   ;:ELJApp_initialize
-   ))
+    (:use :common-lisp :ffi :wxCL)
+  (:export :ELJApp_InitializeC
+					;:ELJApp_initialize
+	   ))
 
 (in-package :wx_main)
 
 (FFI:DEF-C-TYPE wxClosure NIL)
 
-;(defconstant +library-name+ "../miscellaneous/wxc-msw2.4.2-0.9.4.dll")
 
 ; (def-c-var APPTerminating (:type ffi:int)
 ; 	(:library +library-name+))
