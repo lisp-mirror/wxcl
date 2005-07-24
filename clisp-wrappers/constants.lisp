@@ -7,6 +7,8 @@
 ;;; $Header$
 ;;;
 
+(in-package :wx_CL)
+
 (defconstant wxACCEL_ALT 1)
 (defconstant wxACCEL_CTRL 2)
 (defconstant wxACCEL_SHIFT 4)
