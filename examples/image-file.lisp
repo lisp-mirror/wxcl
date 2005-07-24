@@ -48,12 +48,12 @@
     (wxFrame_Maximize y)
     (print (wxFrame_IsMaximized y))
 ;    (wxFrame_SetTitle y "hello")
-    (print "title set")
+;    (print "title set")
 ;    (multiple-value-setq (a b) (wxFrame_GetTitle y))
 ;    (print a)
 ;    (print b)
     (print "maximized")
-;    (ELJApp_ExitMainLoop)
+    (ELJApp_ExitMainLoop)
     ))
 
 
