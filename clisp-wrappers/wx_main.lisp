@@ -15,6 +15,8 @@
 
 (in-package :wx_main)
 
+(ffi:default-foreign-language :stdc)
+
 (FFI:DEF-C-TYPE wxClosure NIL)
 
 
