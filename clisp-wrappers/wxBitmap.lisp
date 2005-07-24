@@ -8,44 +8,43 @@
 ;;;
 
 (defpackage :wxBitmap
-    (:use :common-lisp :ffi)
-  (:export
-   :wxBitmap_Create
-   :wxBitmap_CreateFromXPM
-   :wxBitmap_CreateEmpty
-   :wxBitmap_CreateLoad
-   :wxBitmap_CreateDefault
-   :wxBitmap_Delete
-   :wxBitmap_GetSubBitmap
-   :wxBitmap_LoadFile
-   :wxBitmap_SaveFile
-   :wxBitmap_GetMask
-   :wxBitmap_SetMask
-   :wxBitmap_AddHandler
-   :wxBitmap_InsertHandler
-   :wxBitmap_RemoveHandler
-   :wxBitmap_FindHandlerByName
-   :wxBitmap_FindHandlerByExtension
-   :wxBitmap_FindHandlerByType
-   :wxBitmap_InitStandardHandlers
-   :wxBitmap_CleanUpHandlers
-   :wxBitmap_Ok
-   :wxBitmap_GetWidth
-   :wxBitmap_GetHeight
-   :wxBitmap_GetDepth
-   :wxBitmap_SetWidth
-   :wxBitmap_SetHeight
-   :wxBitmap_SetDepth
-   :wxStaticBitmap_Create
-   :wxStaticBitmap_SetIcon
-   :wxStaticBitmap_SetBitmap
-   :wxStaticBitmap_GetIcon
-   :wxStaticBitmap_GetBitmap
-   :wxStaticBitmap_Delete))
+    (:use :common-lisp :ffi :wxCL)
+  (:export :wxBitmap_Create
+	   :wxBitmap_CreateFromXPM
+	   :wxBitmap_CreateEmpty
+	   :wxBitmap_CreateLoad
+	   :wxBitmap_CreateDefault
+	   :wxBitmap_Delete
+	   :wxBitmap_GetSubBitmap
+	   :wxBitmap_LoadFile
+	   :wxBitmap_SaveFile
+	   :wxBitmap_GetMask
+	   :wxBitmap_SetMask
+	   :wxBitmap_AddHandler
+	   :wxBitmap_InsertHandler
+	   :wxBitmap_RemoveHandler
+	   :wxBitmap_FindHandlerByName
+	   :wxBitmap_FindHandlerByExtension
+	   :wxBitmap_FindHandlerByType
+	   :wxBitmap_InitStandardHandlers
+	   :wxBitmap_CleanUpHandlers
+	   :wxBitmap_Ok
+	   :wxBitmap_GetWidth
+	   :wxBitmap_GetHeight
+	   :wxBitmap_GetDepth
+	   :wxBitmap_SetWidth
+	   :wxBitmap_SetHeight
+	   :wxBitmap_SetDepth
+	   :wxStaticBitmap_Create
+	   :wxStaticBitmap_SetIcon
+	   :wxStaticBitmap_SetBitmap
+	   :wxStaticBitmap_GetIcon
+	   :wxStaticBitmap_GetBitmap
+	   :wxStaticBitmap_Delete))
 
 (in-package :wxBitmap)
 
-;(defconstant +library-name+ "../miscellaneous/wxc-msw2.4.2-0.9.4.dll")
+(ffi:default-foreign-language :stdc)
 
 (ffi:def-call-out wxBitmap_Create
     (:name "wxBitmap_Create")

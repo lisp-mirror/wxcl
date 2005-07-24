@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxImage
-    (:use :common-lisp :ffi)
+    (:use :common-lisp :ffi :wxCL)
   (:export :wxImage_CreateDefault
 	   :wxImage_CreateSized
 	   :wxImage_CreateFromData
@@ -49,7 +49,7 @@
 
 (in-package :wxImage)
 
-;(defconstant +library-name+ "../miscellaneous/wxc-msw2.4.2-0.9.4.dll")
+(ffi:default-foreign-language :stdc)
 
 (ffi:def-call-out wxImage_CreateDefault
     (:name "wxImage_CreateDefault")
