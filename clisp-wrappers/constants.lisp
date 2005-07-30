@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxCL)
+;(in-package :wxCL)
 
 (defconstant wxACCEL_ALT 1)
 (defconstant wxACCEL_CTRL 2)
@@ -87,7 +87,7 @@
 (defconstant wxEXPAND 8192)
 (defconstant wxSHAPED 16384)
 (defconstant wxHSCROLL 1073741824)
-(defconstant wxCAPTION 536870912)
+
 (defconstant wxDOUBLE_BORDER 268435456)
 (defconstant wxSUNKEN_BORDER 134217728)
 (defconstant wxRAISED_BORDER 67108864)
@@ -103,7 +103,7 @@
 (defconstant wxRETAINED 131072)
 (defconstant wxNO_FULL_REPAINT_ON_RESIZE 65536)
 (defconstant wxWS_EX_VALIDATE_RECURSIVELY 1)
-(defconstant wxSTAY_ON_TOP 32768)
+
 (defconstant wxICONIZE 16384)
 (defconstant wxMAXIMIZE 8192)
 (defconstant wxSYSTEM_MENU 2048)
@@ -112,9 +112,8 @@
 (defconstant wxDEFAULT_FRAME_STYLE 536878656)
 (defconstant wxTINY_CAPTION_HORIZ 256)
 (defconstant wxTINY_CAPTION_VERT 128)
-(defconstant wxRESIZE_BORDER 64)
-(defconstant wxDIALOG_MODAL 32)
-(defconstant wxDIALOG_MODELESS 0)
+;(defconstant wxRESIZE_BORDER 64)
+
 (defconstant wxFRAME_FLOAT_ON_PARENT 8)
 (defconstant wxFRAME_NO_WINDOW_MENU 256)
 (defconstant wxED_CLIENT_MARGIN 4)
@@ -568,13 +567,11 @@
 (defconstant wxCURSOR_WAIT 24)
 (defconstant wxCURSOR_WATCH 25)
 (defconstant wxCURSOR_BLANK 26)
-(defconstant wxOPEN 1)
-(defconstant wxSAVE 2)
-(defconstant wxOVERWRITE_PROMPT 4)
-(defconstant wxHIDE_READONLY 8)
+
+
+
 (defconstant wxFILE_MUST_EXIST 16)
-(defconstant wxMULTIPLE 32)
-(defconstant wxCHANGE_DIR 64)
+
 (defconstant wxDRAG_ERROR 0)
 (defconstant wxDRAG_NONE 1)
 (defconstant wxDRAG_COPY 2)

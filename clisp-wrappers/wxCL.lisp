@@ -13,6 +13,6 @@
 
 (in-package :wxCL)
 
-(defconstant +library-name+ "../miscellaneous/wxc-msw2.4.2-0.9.4.dll")
+(defconstant +library-name+ "C:/cvs-synched/commit_access/wxcl/miscellaneous/wxc-msw2.4.2-0.9.4.dll")
 
 

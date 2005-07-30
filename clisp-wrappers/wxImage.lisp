@@ -9,7 +9,8 @@
 
 (defpackage :wxImage
     (:use :common-lisp :ffi :wxCL)
-  (:export :wxImage_CreateDefault
+  (:export :with-image-file
+	   :wxImage_CreateDefault
 	   :wxImage_CreateSized
 	   :wxImage_CreateFromData
 	   :wxImage_CreateFromFile
@@ -74,7 +75,7 @@
 (ffi:def-call-out wxImage_CreateFromFile
     (:name "wxImage_CreateFromFile")
   (:arguments (name ffi:c-string))
-  (:return-type (ffi:c-pointer NIL))
+  (:return-type (ffi:c-pointer NIL) :NONE)
   (:library +library-name+))
 
 (ffi:def-call-out wxImage_CreateFromBitmap
@@ -110,7 +111,6 @@
 (ffi:def-call-out wxImage_Destroy
     (:name "wxImage_Destroy")
   (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxImage_GetSubImage
@@ -333,3 +333,14 @@
 	      (stopafter ffi:int))
   (:return-type ffi:int)
   (:library +library-name+))
+
+
+;;;macros and other utility functions
+
+(defmacro with-image-file ((image pathname) &body body)
+  `(let (,image)
+    (unwind-protect
+	 (progn
+	   (setf ,image (wxImage_CreateFromFile ,pathname))
+	   ,@body)
+      (wximage_destroy ,image))))

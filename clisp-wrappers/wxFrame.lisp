@@ -44,7 +44,7 @@
 	      (_wdt ffi:int)
 	      (_hgt ffi:int)
 	      (_stl ffi:int))
-  (:return-type (ffi:c-pointer NIL))
+  (:return-type (ffi:c-pointer NIL) :NONE)
   (:library +library-name+))
 
 (ffi:def-call-out wxFrame_CreateStatusBar
@@ -183,7 +183,7 @@
 (ffi:def-call-out wxFrame_SetTitle
     (:name "wxFrame_SetTitle")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (title ffi:c-string :in :malloc-free))
+	      (title ffi:c-string))
   (:return-type NIL)
   (:library +library-name+))
 
