@@ -24,9 +24,9 @@
 (FFI:DEF-C-TYPE wxClosure NIL)
 
 (FFI:DEF-C-TYPE
-    ClosureFun (ffi:c-function (:arguments (_fun (ffi:c-ptr wxClosure))
-					   (_data (ffi:c-ptr NIL))
-					   (_evt (ffi:c-ptr NIL)))
+    ClosureFun (ffi:c-function (:arguments (_fun (ffi:c-pointer wxClosure))
+					   (_data (ffi:c-pointer NIL))
+					   (_evt (ffi:c-pointer NIL)))
 			       (:return-type NIL)))
 
 (ffi:def-call-out wxClosure_Create (:name "wxClosure_Create")
@@ -72,3 +72,4 @@
       (setf ,closure (wxClosure_Create #',closure-fun nil))
       (Eljapp_initializeC ,closure 0 nil)
       )))
+
