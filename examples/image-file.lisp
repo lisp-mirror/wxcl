@@ -7,28 +7,36 @@
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wx_main.lisp")
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxImage.lisp")
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxWindow.lisp")
+(load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxScrolledWindow.lisp")
 (load "../clisp-wrappers/wxFrame.lisp")
+(load "../clisp-wrappers/wxPanel.lisp")
+(load "../clisp-wrappers/wxDC.lisp")
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxMenuItem.lisp")
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxMenu.lisp")
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxMenuBar.lisp")
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxEvent.lisp")
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxEvtHandler.lisp")
-(load "../clisp-wrappers/wxFileDialog.lisp")
+(load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxFileDialog.lisp")
 (load "../clisp-wrappers/wxDialog.lisp")
 (load "../clisp-wrappers/wxIcon.lisp")
 (load "../clisp-wrappers/wxBitmap.lisp")
 (load "../clisp-wrappers/wxMessageDialog.lisp")
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxToolBar.lisp")
 (load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxStatusBar.lisp")
+(load "C:/cvs-synched/commit_access/wxcl/clisp-wrappers/wxAcceleratorEntry.lisp")
 
+(use-package :wxAcceleratorEntry)
 (use-package :wxImage)
 (use-package :wxCL)
 (use-package :wxEvent)
 (use-package :wx_main)
 ;(use-package :wximage)
 (use-package :wxFrame)
+(use-package :wxPanel)
+(use-package :wxDC)
 (use-package :wx_wrapper)
 (use-package :wxWindow)
+(use-package :wxScrolledWindow)
 (use-package :wxFileDialog)
 (use-package :wxDialog)
 (use-package :wxMessageDialog)
@@ -43,24 +51,29 @@
 
 (ffi:default-foreign-language :c)
 
-(defvar OPEN-COMMAND-ID 10001)
-(defvar CLOSE-COMMAND-ID 20001)
-(defvar QUIT-COMMAND-ID 30001)
-(defvar ABOUT-COMMAND-ID 40001)
+;(defvar OPEN-COMMAND-ID 10001)
+;(defvar CLOSE-COMMAND-ID 20001)
+;(defvar QUIT-COMMAND-ID 30001)
+;(defvar ABOUT-COMMAND-ID 40001)
 
 (defvar OPEN-TOOLBAR-ID 50001)
 (defvar CLOSE-TOOLBAR-ID 60001)
 
 (defun create-menu(frame)
   (let((file-menu (wxmenu_create ()
-				 (OPEN-COMMAND-ID "&Open      Ctrl+O" "Open an image" 0)
-				 (CLOSE-COMMAND-ID "&Close     Ctrl+C" "Close an image" 0)))
+				 (wxID_OPEN  "&Open      Ctrl+O" "Open an image" 0)
+				 (wxID_CLOSE "&Close      Ctrl+C" "Close an image" 0)))
        (help-menu (wxmenu_create ()
-				 (ABOUT-COMMAND-ID "&About" "About Image Viewer" 0))))
+				 (wxID_ABOUT "&About     Ctrl+A" "About Image Viewer" 0))))
     (wxmenu_AppendSeparator file-menu)
-    (wxmenu_Append file-menu QUIT-COMMAND-ID "&Quit      Alt+F4" "Quit the image viewer." 0)
+    (wxmenu_Append file-menu wxID_EXIT "&Quit        Alt+F4" "Quit the image viewer." 0)
     (wxframe_setmenubar frame (wxMenuBar_CreateWithMenus (vector file-menu help-menu)
-							 (vector "&File" "&Help")))))
+							 (vector "&File" "&Help")))
+    (create-accelerator-entries frame
+				(wxACCEL_CTRL (char-int #\O) wxID_OPEN)
+				(wxACCEL_CTRL (char-int #\C) wxID_CLOSE)
+				(wxACCEL_CTRL (char-int #\A) wxID_ABOUT))))
+	
 (defun create-status-bar(frame)
   (wxframe_createstatusbar frame 1 0))
 
@@ -68,26 +81,29 @@
   (let ((tb (wxframe_createtoolbar frame 0)) ic bmp)
     (print (setf bmp (wxbitmap_createload "f_open.ico" wxBITMAP_TYPE_ICO)))
     (print (setf ic (wxicon_createload "f_open.ico" wxBITMAP_TYPE_ICO -1 -1)))
-;    (wxtoolbar_addtool tb OPEN-TOOLBAR-ID  "Open file" "Opens Image files.")
+;    (wxtoolbar_addtool tb OPEN-TOOLBAR-ID bmp "Open file" "Opens Image files.")
  ;   (wxtoolbar_addtool tb CLOSE-TOOLBAR-ID "f_close.ico" "Close file" "Closes Image files.")
     ))
 
 (defun display-image (frame filename)
   (print frame)
   (print filename)
-  (let ((bmp (wxbitmap_createload filename wxBITMAP_TYPE_PNG)))
-    (
+  (let* ((bmp (wxbitmap_createload filename wxBITMAP_TYPE_ANY))
+	 (bmp-static (wxStaticbitmap_create frame -1 bmp -1 -1 -1 -1 0)))
+;     (with-client-DC (dc frame)
+;       (wxScrolledWindow_PrepareDC frame dc)
+;       (wxDC_DrawBitmap dc bmp 0 0 0))
     (print (wxbitmap_getheight bmp))
     (print (wxbitmap_getwidth bmp))))
 
 
-(defun open-image (fun frame evt)
+(defun open-image (fun sw evt)
   (let (filename)
-    (with-file-dialog (dialog frame :message "open file" :style wxfiledialog:wxOPEN)
+    (with-file-dialog (dialog sw :message "open file" :style wxOPEN)
       (wxDialog_ShowModal dialog)
       (setf filename (concatenate 'string (wxFileDialog_GetDirectory dialog) "\\"
 				  (wxFileDialog_GetFileName dialog))))
-    (display-image frame filename)
+    (display-image sw filename)
   ))
 
 
@@ -98,32 +114,41 @@
 
 (defun about-box (fun frame evt)
    (show-message-dialog frame
- 		       "This image viewer was written by Surendra Singhi to demonstrate some of the features of wxCL.  All rights reserved, this program is distributed under BSD license."
+ 		       "Image viewer demonstrates some of the features of wxCL. All rights reserved, this program is distributed under Open BSD license."
  		       "Image Viewer - wxCL"
  		       wxOK))
 
 (defun quit-viewer (fun frame evt)
-  (wxwindow_close frame 0)
-  (eljapp_ExitMainLoop))
+  (print frame)
+;  (print (wxwindow_close frame 0))
+  (wxwindow_Destroy frame 0)
+  (print "ok")
+  (eljapp_Exit))
 
-(defun register-events (frame)
-  (wxevthandler_connect frame OPEN-COMMAND-ID (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'open-image frame))
-  (wxevthandler_connect frame CLOSE-COMMAND-ID (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'close-image frame))
-  (wxevthandler_connect frame ABOUT-COMMAND-ID (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'about-box frame))
-  (wxevthandler_connect frame QUIT-COMMAND-ID (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'quit-viewer frame)))
+(defun paint-viewer (fun frame evt)
+  (with-paint-dc (dc frame)
+    ;(print "test")
+    ))
 
-  
+(defun register-events (frame sw)
+  (wxevthandler_connect frame wxID_OPEN (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'open-image frame))
+  (wxevthandler_connect frame wxID_CLOSE (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'close-image frame))
+  (wxevthandler_connect frame wxID_ABOUT (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'about-box frame))
+  (wxevthandler_connect frame wxID_EXIT (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'quit-viewer frame))
+  (wxevthandler_connect sw -1 (expEVT_PAINT) (wxClosure_Create #'paint-viewer sw))
+  (wxevthandler_connect frame -1 (expEVT_CLOSE_WINDOW) (wxClosure_Create #'quit-viewer frame)))
+
 (defun test-closure (fun data evt)
-  (let (frame ic)
-     (setf frame (wxFrame_create nil -1 "good morning" 10 10 500 500 wxDEFAULT_FRAME_STYLE))
+  (let (frame ic panel sw)
+     (setf frame (wxFrame_create nil 1000 "wxCL - Image previewer" 10 10 500 500 wxDEFAULT_FRAME_STYLE))
      (create-menu frame)
-     (register-events frame)
      (create-tool-bar frame)
      (create-status-bar frame)
+     (setf panel (wxPanel_Create frame -1 -1 -1 -1 -1 wxTAB_TRAVERSAL))
 ;      (setf ic )
-;      (print (wxBitmap_getHeight ic))
-;      (print (wxBitmap_getwidth ic))     
-     (wxFrame_SetIcon frame (wxicon_createload "ImageViewer.ico" wxBITMAP_TYPE_ICO -1 -1))
+     (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
+     (setf sw (wxScrolledWindow_Create frame -1 -1 -1 -1 -1 (boole boole-ior wxHSCROLL wxVSCROLL)))
+     (register-events frame sw)
      (wxWindow_Show frame)))
 ; ;    (wxFrame_SetTitle y "bye")
 ;     (print "title set")
@@ -136,11 +161,8 @@
  ;   (force-output )
 ;    (ELJApp_ExitMainLoop)
 
-
-
 ;;Creates the closure
 (setf x (wxClosure_Create #'test-closure nil))
-
 
 
 ;;Starts execution
