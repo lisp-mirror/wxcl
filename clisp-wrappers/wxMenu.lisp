@@ -69,10 +69,10 @@
 
 (defmacro wxMenu_Create ((&optional (title "") (style 0)) &body body)
   (let ((menu (gensym)))
-     `(progn
-       (setf ,menu (_wxMenu_Create ,title ,style))
-       ,@(mapcar (lambda (x) `(wxMenu_Append ,menu ,@x)) body)
-       ,menu)))
+  `(progn
+    (let ((,menu (_wxMenu_Create ,title ,style)))
+      ,@(mapcar (lambda (x) `(wxMenu_Append ,menu ,@x)) body)
+      ,menu))))
 
 
 (ffi:def-call-out wxMenu_DeletePointer
