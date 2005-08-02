@@ -7,8 +7,6 @@
 ;;; $Header$
 ;;;
 
-;(in-package :wxCL)
-
 (defconstant wxACCEL_ALT 1)
 (defconstant wxACCEL_CTRL 2)
 (defconstant wxACCEL_SHIFT 4)
@@ -86,8 +84,9 @@
 (defconstant wxGROW 8192)
 (defconstant wxEXPAND 8192)
 (defconstant wxSHAPED 16384)
+(defconstant wxVSCROLL -2147483648)
 (defconstant wxHSCROLL 1073741824)
-
+		
 (defconstant wxDOUBLE_BORDER 268435456)
 (defconstant wxSUNKEN_BORDER 134217728)
 (defconstant wxRAISED_BORDER 67108864)
@@ -123,8 +122,7 @@
 (defconstant wxTB_3DBUTTONS 16)
 (defconstant wxTB_FLAT 32)
 (defconstant wxTB_DOCKABLE 64)
-(defconstant wxMB_DOCKABLE 1)
-(defconstant wxMENU_TEAROFF 1)
+
 (defconstant wxCOLOURED 2048)
 (defconstant wxFIXED_LENGTH 1024)
 (defconstant wxLB_SORT 16)
@@ -198,8 +196,6 @@
 (defconstant wxNB_LEFT 32)
 (defconstant wxNB_RIGHT 64)
 (defconstant wxNB_BOTTOM 128)
-(defconstant wxST_SIZEGRIP 16)
-(defconstant wxST_NO_AUTORESIZE 1)
 (defconstant wxPD_CAN_ABORT 1)
 (defconstant wxPD_APP_MODAL 2)
 (defconstant wxPD_AUTO_HIDE 4)
@@ -213,10 +209,7 @@
 (defconstant wxCAL_SHOW_HOLIDAYS 2)
 (defconstant wxCAL_NO_YEAR_CHANGE 4)
 (defconstant wxCAL_NO_MONTH_CHANGE 12)
-(defconstant wxICON_EXCLAMATION 256)
-(defconstant wxICON_HAND 512)
-(defconstant wxICON_QUESTION 1024)
-(defconstant wxICON_INFORMATION 2048)
+
 (defconstant wxFORWARD 4096)
 (defconstant wxBACKWARD 8192)
 (defconstant wxRESET 16384)
@@ -862,10 +855,9 @@
 (defconstant wxOK 4)
 (defconstant wxYES 2)
 (defconstant wxNO 8)
-(defconstant wxYES_NO 10)
+
 (defconstant wxCANCEL 16)
-(defconstant wxNO_DEFAULT 128)
-(defconstant wxYES_DEFAULT 0)
+
 (defconstant wxFR_DOWN 1)
 (defconstant wxFR_WHOLEWORD 2)
 (defconstant wxFR_MATCHCASE 4)
