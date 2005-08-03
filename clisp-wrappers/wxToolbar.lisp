@@ -1,4 +1,4 @@
-;;;wxToolbar.lisp
+;;;wxToolBar.lisp
 ;;;License   : BSD-style
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
@@ -9,7 +9,7 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage :wxToolbar
+(defpackage :wxToolBar
     (:use :common-lisp :ffi :wxCL :wxBitmap)
   (:export :wxToolBar_Create
 	   :wxToolBar_Delete
@@ -41,9 +41,22 @@
 	   :wxToolBar_SetToolPacking
 	   :wxToolBar_SetToolShortHelp
 	   :wxToolBar_SetToolSeparation
-	   :wxToolBar_ToggleTool))
+	   :wxToolBar_ToggleTool
+	   :wxTB_HORIZONTAL
+	   :wxTB_3DBUTTONS
+	   :wxTB_DOCKABLE
+	   :wxTB_VERTICAL
+	   :wxTB_HORIZONTAL
+	   ))
 
-(in-package :wxToolbar)
+(in-package :wxToolBar)
+
+(defconstant wxTB_3DBUTTONS 16)
+(defconstant wxTB_FLAT 32)
+(defconstant wxTB_DOCKABLE 64)
+(defconstant wxTB_VERTICAL 8)
+(defconstant wxTB_HORIZONTAL 4)
+
 
 (ffi:default-foreign-language :stdc)
 
@@ -83,22 +96,9 @@
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (id ffi:int)
 	      (bmp (ffi:c-pointer NIL))
-	      (shelp (ffi:c-pointer NIL))
-	      (lhelp (ffi:c-pointer NIL)))
+	      (shelp ffi:c-string)
+	      (lhelp ffi:c-string))
   (:library +library-name+))
-
-; (defun wxToolBar_AddTool (_obj id bmp shelp lhelp)
-;   (print _obj)
-;   (print id)
-;   (print bmp)
-;   (print (wxbitmap_getHeight bmp))
-;   (print (wxbitmap_getWidth bmp))
-;   (print (wxToolBar_GetMargins _obj))
-;   (print shelp)
-;   (print lhelp)
-; ;  (print (_wxToolBar_AddTool _obj id bmp shelp lhelp))
-;   )
-
 
 (ffi:def-call-out wxToolBar_AddToolEx
     (:name "wxToolBar_AddToolEx")
