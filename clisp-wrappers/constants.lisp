@@ -119,9 +119,6 @@
 (defconstant wxED_BUTTONS_BOTTOM 0)
 (defconstant wxED_BUTTONS_RIGHT 2)
 (defconstant wxED_STATIC_LINE 1)
-(defconstant wxTB_3DBUTTONS 16)
-(defconstant wxTB_FLAT 32)
-(defconstant wxTB_DOCKABLE 64)
 
 (defconstant wxCOLOURED 2048)
 (defconstant wxFIXED_LENGTH 1024)
@@ -560,10 +557,6 @@
 (defconstant wxCURSOR_WAIT 24)
 (defconstant wxCURSOR_WATCH 25)
 (defconstant wxCURSOR_BLANK 26)
-
-
-
-(defconstant wxFILE_MUST_EXIST 16)
 
 (defconstant wxDRAG_ERROR 0)
 (defconstant wxDRAG_NONE 1)
