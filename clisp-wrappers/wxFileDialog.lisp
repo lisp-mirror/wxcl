@@ -36,6 +36,7 @@
    :wxMULTIPLE
    :wxCHANGE_DIR
    :wxOVERWRITE_PROMPT
+   :wxFILE_MUST_EXIST
    ))
 
 (in-package :wxFileDialog)
@@ -50,6 +51,9 @@
 (defconstant wxMULTIPLE 32)
 (defconstant wxCHANGE_DIR 64)
 (defconstant wxOVERWRITE_PROMPT 4)
+(defconstant wxID_OK 5100)
+(defconstant wxID_CANCEL 5101)
+(defconstant wxFILE_MUST_EXIST 16)
 
 (ffi:def-call-out wxFileDialog_Create
     (:name "wxFileDialog_Create")
@@ -137,11 +141,14 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(defun wxFileDialog_GetPath (_obj &optional (max_length 512))
+(defun wxFileDialog_GetPath (_obj &optional (max_length 1024))
   (with-c-var (path `(c-array character ,max_length))
-    (setf max_length (_wxFileDialog_GetPath _obj (c-var-address path)))
-    (unless (= max_length 0)
-      (OFFSET path 0 `(c-array character ,max_length)))))
+    (print (setf max_length (_wxFileDialog_GetPath _obj (c-var-address path))))
+    (print "ok")))
+;
+;     (unless (= max_length 0)
+;       (subseq path 0 max_length))))
+      ;(OFFSET path 0 `(c-array character ,max_length)))))
 
 
 
@@ -184,8 +191,6 @@
     (unless (= max_length 0)
       (OFFSET directory 0 `(c-array character ,max_length)))))
 
-
-
 ;;Redeclaring using variable length array,
 ;;C-code can be improved to handle such
 ;;types of declaration
@@ -201,7 +206,7 @@
   (with-c-var (filename `(c-array character ,max_length))
     (setf max_length (_wxFileDialog_GetFileName _obj (c-var-address filename)))
     (unless (= max_length 0)
-      (OFFSET filename 0 `(c-array character ,max_length)))))
+      (subseq filename 0 max_length))))
 
 
 ;;the C code for this function is severly broken,
