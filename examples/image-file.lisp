@@ -42,6 +42,7 @@
 (use-package :wxMessageDialog)
 (use-package :wxEvtHandler)
 (use-package :wxMenu)
+(use-package :wxMenuItem)
 (use-package :wxMenuBar)
 (use-package :wxDialog)
 (use-package :wxStatusBar)
@@ -55,29 +56,32 @@
 ;(defvar CLOSE-COMMAND-ID 20001)
 ;(defvar QUIT-COMMAND-ID 30001)
 ;(defvar ABOUT-COMMAND-ID 40001)
+;wxITEM_SEPARATOR
 
 (defvar OPEN-TOOLBAR-ID 50001)
 (defvar CLOSE-TOOLBAR-ID 60001)
 
-(defun create-menu(frame)
-  (let((file-menu (wxmenu_create ()
-				 (wxID_OPEN  "&Open      Ctrl+O" "Open an image" 0)
-				 (wxID_CLOSE "&Close      Ctrl+C" "Close an image" 0)))
-       (help-menu (wxmenu_create ()
-				 (wxID_ABOUT "&About     Ctrl+A" "About Image Viewer" 0))))
-    (wxmenu_AppendSeparator file-menu)
-    (wxmenu_Append file-menu wxID_EXIT "&Quit        Alt+F4" "Quit the image viewer." 0)
-    (wxframe_setmenubar frame (wxMenuBar_CreateWithMenus (vector file-menu help-menu)
-							 (vector "&File" "&Help")))
+(defun add-menu(frame)
+  (let((file-menu (create-menu ()
+			       (:id wxID_OPEN :item "&Open      Ctrl+O" :helpString "Open an image")
+			       (:id wxID_CLOSE :item "&Close      Ctrl+C" :helpstring "Close an image")
+			       (:kind wxITEM_SEPARATOR)
+			       (:id wxID_EXIT :item "&Quit        Alt+F4" :helpstring "Quit the image viewer.")))
+       (help-menu (create-menu ()
+			       (:id wxID_ABOUT :item "&About     Ctrl+A" :helpstring "About Image Viewer"))))
+    (wxframe_setmenubar frame
+			(wxMenuBar_CreateWithMenus (vector file-menu help-menu)
+						   (vector "&File" "&Help")))))
+
+(defun add-accelerator-keys (frame)
     (create-accelerator-entries frame
 				(wxACCEL_CTRL (char-int #\O) wxID_OPEN)
 				(wxACCEL_CTRL (char-int #\C) wxID_CLOSE)
-				(wxACCEL_CTRL (char-int #\A) wxID_ABOUT))))
-	
-(defun create-status-bar(frame)
-  (wxframe_createstatusbar frame 1 0))
+				(wxACCEL_CTRL (char-int #\A) wxID_ABOUT)))
+(defun add-status-bar(frame)
+  (wxframe_createstatusbar frame 2 0))
 
-(defun create-tool-bar(frame)
+(defun add-tool-bar(frame)
   (let ((tb (wxframe_createtoolbar frame (boole boole-ior wxTB_3DBUTTONS wxTB_HORIZONTAL)))
 	ic
 	(open-ico (wxbitmap_createload "f_open.ico" wxBITMAP_TYPE_ICO))
@@ -85,8 +89,7 @@
     (print (setf ic (wxicon_createload "f_open.ico" wxBITMAP_TYPE_ICO -1 -1)))
     (wxToolBar_AddTool tb wxID_OPEN open-ico "Open file" "Opens Image files.")
     (wxtoolbar_addtool tb CLOSE-TOOLBAR-ID close-ico "Close file" "Closes Image files.")
-    (wxToolBar_Realize tb)
-    ))
+    (wxToolBar_Realize tb)))
 
 (defun display-image (frame filename)
   (let* ((bmp (wxbitmap_createload filename wxBITMAP_TYPE_ANY))
@@ -98,13 +101,11 @@
     (wxWindow_Show fr)))
 
 (defun open-image (fun frame evt)
-  (let (filename)
-    (with-file-dialog (dialog frame :message "open file" :style (boole boole-ior wxOPEN wxFILE_MUST_EXIST)
-			      :wildcard "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")
-      (when (= (wxDialog_ShowModal dialog) wxID_OK)
-	(setf filename (concatenate 'string (wxFileDialog_GetDirectory dialog) "\\"
-				    (wxFileDialog_GetFileName dialog)))
-	(display-image frame filename)))))
+  (with-file-dialog (dialog frame :message "open file"
+			    :style (boole boole-ior wxOPEN wxFILE_MUST_EXIST)
+			    :wildcard "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")
+    (when (= (wxDialog_ShowModal dialog) wxID_OK)
+      (display-image frame (wxFileDialog_GetPath dialog)))))
 
 
 (defun close-image (fun data evt)
@@ -146,9 +147,10 @@
 (defun test-closure (fun data evt)
   (let (frame ic panel sw)
      (setf frame (wxFrame_create nil 1000 "wxCL - Image previewer" 10 10 500 500 wxDEFAULT_FRAME_STYLE))
-     (create-menu frame)
-     (create-status-bar frame)
-     (create-tool-bar frame)
+     (add-menu frame)
+     (add-accelerator-keys frame)
+     (add-status-bar frame)
+     (add-tool-bar frame)
      (setf panel (wxPanel_Create frame -1 -1 -1 -1 -1 wxTAB_TRAVERSAL))
      (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
      (register-events frame)
