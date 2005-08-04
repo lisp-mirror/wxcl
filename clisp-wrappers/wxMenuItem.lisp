@@ -10,8 +10,7 @@
 
 (defpackage :wxMenuItem
   (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxMenuItem_Create
+  (:export :wxMenuItem_Create
 	:wxMenuItem_Delete
 	:wxMenuItem_GetMenu
 	:wxMenuItem_SetId
@@ -31,13 +30,27 @@
 	:wxMenuItem_Check
 	:wxMenuItem_IsChecked
 	:wxMenuItem_SetHelp
-	:wxMenuItem_GetHelp))
+	:wxMenuItem_GetHelp
+	:wxITEM_SEPARATOR
+	:wxITEM_NORMAL
+	:wxITEM_CHECK
+	:wxITEM_RADIO
+	:wxITEM_SUBMENU
+	))
 
 (in-package :wxMenuItem)
 
 (ffi:default-foreign-language :stdc)
 
 (def-c-type wxMenuItem NIL)
+
+(defconstant wxITEM_SEPARATOR -1)
+(defconstant wxITEM_NORMAL 0)
+(defconstant wxITEM_CHECK 1)
+(defconstant wxITEM_RADIO 2)
+
+(defconstant wxITEM_SUBMENU 1000)
+
 
 (ffi:def-call-out wxMenuItem_Create
 	(:name "wxMenuItem_Create")
