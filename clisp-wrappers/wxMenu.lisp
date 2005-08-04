@@ -9,7 +9,7 @@
 
 (defpackage :wxMenu
   (:use :common-lisp :ffi :wxMenuItem :wxCL)
-  (:export
+  (:export 
 	:wxMenu_Create
 	:wxMenu_DeletePointer
 	:wxMenu_AppendSeparator
@@ -52,7 +52,15 @@
 	:wxMenu_UpdateUI
 	:wxMenu_IsAttached
 	:wxMenu_SetParent
-	:wxMenu_GetParent))
+	:wxMenu_GetParent
+	:wxMENU_TEAROFF
+	:wxITEM_NORMAL
+	:wxITEM_SEPARATOR
+	:wxITEM_CHECK
+	:wxITEM_RADIO
+	:create-menu
+	:append-menu-item
+	))
 
 (in-package :wxMenu)
 
@@ -60,20 +68,26 @@
 
 (defconstant wxMENU_TEAROFF 1)
 
-(ffi:def-call-out _wxMenu_Create
+(ffi:def-call-out wxMenu_Create
 	(:name "wxMenu_Create")
 	(:arguments (title ffi:c-string)
 		(style ffi:long))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
-(defmacro wxMenu_Create ((&optional (title "") (style 0)) &body body)
+(defmacro append-menu-item (menu &key (id -1) (item "") (helpString "")
+				 (kind wxITEM_NORMAL) (sub-menu nil))
+  (case kind
+    (wxITEM_SEPARATOR `(wxMenu_AppendSeparator ,menu))
+    (wxITEM_SubMenu `(wxMenu_AppendSub ,menu ,id ,item ,sub-menu ,helpstring))
+    (otherwise `(wxMenu_Append ,menu ,id ,item ,helpstring ,kind))))
+
+(defmacro create-menu ((&optional (title "") (style 0)) &body body)
   (let ((menu (gensym)))
   `(progn
-    (let ((,menu (_wxMenu_Create ,title ,style)))
-      ,@(mapcar (lambda (x) `(wxMenu_Append ,menu ,@x)) body)
+    (let ((,menu (wxMenu_Create ,title ,style)))
+      ,@(mapcar (lambda (x) `(append-menu-item ,menu ,@x)) body)
       ,menu))))
-
 
 (ffi:def-call-out wxMenu_DeletePointer
 	(:name "wxMenu_DeletePointer")
