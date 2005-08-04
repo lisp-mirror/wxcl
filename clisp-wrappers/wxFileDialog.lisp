@@ -125,37 +125,34 @@
 
 (defun wxFileDialog_GetMessage (_obj &optional (max_length 512))
   (with-c-var (message `(c-array character ,max_length))
-    (setf max_length (_wxFileDialog_GetPath _obj (c-var-address message)))
+    (setf max_length (_wxFileDialog_GetMessage _obj (c-var-address message)))
     (unless (= max_length 0)
       (OFFSET message 0 `(c-array character ,max_length)))))
-
 
 ;;Redeclaring using variable length array,
 ;;C-code can be improved to handle such
 ;;types of declaration 
+(setf FFI:*OUTPUT-C-FUNCTIONS* t)
+(setf FFI:*OUTPUT-C-VARIABLES* t)
+
 
 (ffi:def-call-out _wxFileDialog_GetPath
     (:name "wxFileDialog_GetPath")
   (:arguments (_obj (ffi:c-pointer wxFileDialog))
-	      (_buf (ffi:c-ptr character)))
+	      (_buf (ffi:c-pointer character)))
   (:return-type ffi:int)
   (:library +library-name+))
 
 (defun wxFileDialog_GetPath (_obj &optional (max_length 1024))
   (with-c-var (path `(c-array character ,max_length))
-    (print (setf max_length (_wxFileDialog_GetPath _obj (c-var-address path))))
-    (print "ok")))
-;
-;     (unless (= max_length 0)
-;       (subseq path 0 max_length))))
-      ;(OFFSET path 0 `(c-array character ,max_length)))))
-
-
+    (setf max_length (_wxFileDialog_GetPath _obj (c-var-address path)))
+    (unless (= max_length 0)
+      (OFFSET path 0 `(c-array character ,max_length)))))
 
 ;;the C code for this function is severly broken,
 ;;needs to be fixed, not very scalable
 ;;
-(ffi:def-call-out wxFileDialog_GetPaths
+(ffi:def-call-out _wxFileDialog_GetPaths
     (:name "wxFileDialog_GetPaths")
   (:arguments (_obj (ffi:c-pointer wxFileDialog))
 	      (paths (ffi:c-ptr (ffi:c-ptr character))))
@@ -165,14 +162,11 @@
 
 (defun wxFileDialog_GetPaths (_obj &optional (nos 256) (max_length 512))
   (with-c-var (path `(c-array character '(,nos ,max_length)))
-    (setf nos (_wxFileDialog_GetPath _obj (c-var-address path)))
+    (setf nos (_wxFileDialog_GetPaths _obj (c-var-address path)))
     (unless (= nos 0)
-      (values nos paths))))
+      (values nos path))))
       
 ;;      (OFFSET path 0 `(c-array character ,max_length)))))
-
-
-
 
 ;;Redeclaring using variable length array,
 ;;C-code can be improved to handle such
@@ -212,7 +206,7 @@
 ;;the C code for this function is severly broken,
 ;;needs to be fixed, not very scalable
 
-(ffi:def-call-out wxFileDialog_GetFilenames
+(ffi:def-call-out _wxFileDialog_GetFilenames
     (:name "wxFileDialog_GetFilenames")
   (:arguments (_obj (ffi:c-pointer wxFileDialog))
 	      (paths (ffi:c-ptr character)  :in-out))
