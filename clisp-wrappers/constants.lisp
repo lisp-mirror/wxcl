@@ -122,13 +122,7 @@
 
 (defconstant wxCOLOURED 2048)
 (defconstant wxFIXED_LENGTH 1024)
-(defconstant wxLB_SORT 16)
-(defconstant wxLB_SINGLE 32)
-(defconstant wxLB_MULTIPLE 64)
-(defconstant wxLB_EXTENDED 128)
-(defconstant wxLB_OWNERDRAW 256)
-(defconstant wxLB_NEEDED_SB 512)
-(defconstant wxLB_ALWAYS_SB 1024)
+
 (defconstant wxTE_READONLY 16)
 (defconstant wxTE_MULTILINE 32)
 (defconstant wxTE_PROCESS_TAB 64)
@@ -141,7 +135,7 @@
 (defconstant wxCB_SORT 8)
 (defconstant wxCB_READONLY 16)
 (defconstant wxCB_DROPDOWN 32)
-(defconstant wxRB_GROUP 4)
+
 (defconstant wxGA_PROGRESSBAR 16)
 (defconstant wxGA_SMOOTH 32)
 (defconstant wxSL_NOTIFY_DRAG 0)
@@ -155,10 +149,7 @@
 (defconstant wxSL_SELRANGE 2048)
 (defconstant wxBU_AUTODRAW 4)
 (defconstant wxBU_NOAUTODRAW 0)
-(defconstant wxBU_LEFT 64)
-(defconstant wxBU_TOP 128)
-(defconstant wxBU_RIGHT 256)
-(defconstant wxBU_BOTTOM 512)
+
 (defconstant wxLC_ICON 4)
 (defconstant wxLC_SMALL_ICON 8)
 (defconstant wxLC_LIST 16)
@@ -586,8 +577,7 @@
 (defconstant wxLIST_NEXT_BELOW 2)
 (defconstant wxLIST_NEXT_LEFT 3)
 (defconstant wxLIST_NEXT_RIGHT 4)
-(defconstant wxRA_SPECIFY_COLS 4)
-(defconstant wxRA_SPECIFY_ROWS 8)
+
 (defconstant wxTREE_HITTEST_ABOVE 1)
 (defconstant wxTREE_HITTEST_BELOW 2)
 (defconstant wxTREE_HITTEST_NOWHERE 4)
