@@ -1,21 +1,23 @@
-;;;wxTreectrl.lisp
-;;;License   : BSD-style
-;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
-;;;Copyright (C) 2005 Surendra Singhi 
-;;;See the file LICENSE for information on usage and redistribution.
-;;;
-;;; $Header$
-;;;
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage :wxTreectrl
+(defpackage :wxTreeCtrl
   (:use :common-lisp :ffi)
   (:export
+	:wxcTreeItemData_Create
+	:wxcTreeItemData_GetClientClosure
+	:wxcTreeItemData_SetClientClosure
 	:wxTreeItemId_Create
 	:wxTreeItemId_Delete
 	:wxTreeItemId_IsOk
+	:wxTreeItemId_Clone
+	:wxTreeItemId_CreateFromValue
+	:wxTreeItemId_GetValue
+	:wxTreeEvent_GetKeyEvent
+	:wxTreeEvent_IsEditCancelled
+	:wxTreeEvent_Allow
 	:wxTreeCtrl_Create
+	:wxTreeCtrl_Create2
 	:wxTreeCtrl_GetCount
 	:wxTreeCtrl_GetIndent
 	:wxTreeCtrl_SetIndent
@@ -23,14 +25,18 @@
 	:wxTreeCtrl_SetSpacing
 	:wxTreeCtrl_GetImageList
 	:wxTreeCtrl_GetStateImageList
+	:wxTreeCtrl_AssignImageList
+	:wxTreeCtrl_AssignStateImageList
 	:wxTreeCtrl_SetImageList
 	:wxTreeCtrl_SetStateImageList
 	:wxTreeCtrl_GetItemText
 	:wxTreeCtrl_GetItemImage
 	:wxTreeCtrl_GetItemData
+	:wxTreeCtrl_GetItemClientClosure
 	:wxTreeCtrl_SetItemText
 	:wxTreeCtrl_SetItemImage
 	:wxTreeCtrl_SetItemData
+	:wxTreeCtrl_SetItemClientClosure
 	:wxTreeCtrl_SetItemHasChildren
 	:wxTreeCtrl_SetItemBold
 	:wxTreeCtrl_SetItemDropHighlight
@@ -58,7 +64,9 @@
 	:wxTreeCtrl_AddRoot
 	:wxTreeCtrl_PrependItem
 	:wxTreeCtrl_InsertItem
+	:wxTreeCtrl_InsertItem2
 	:wxTreeCtrl_InsertItemByIndex
+	:wxTreeCtrl_InsertItemByIndex2
 	:wxTreeCtrl_AppendItem
 	:wxTreeCtrl_Delete
 	:wxTreeCtrl_DeleteChildren
@@ -80,7 +88,26 @@
 	:wxTreeCtrl_HitTest
 	:wxTreeCtrl_GetBoundingRect))
 
-(in-package :wxTreectrl)
+(in-package :wxTreeCtrl)
+
+(ffi:def-call-out wxcTreeItemData_Create
+	(:name "wxcTreeItemData_Create")
+	(:arguments (closure (ffi:c-pointer wxClosure)))
+	(:return-type (ffi:c-pointer wxcTreeItemData))
+	(:library +library-name+))
+
+(ffi:def-call-out wxcTreeItemData_GetClientClosure
+	(:name "wxcTreeItemData_GetClientClosure")
+	(:arguments (self (ffi:c-pointer wxcTreeItemData)))
+	(:return-type (ffi:c-pointer wxClosure))
+	(:library +library-name+))
+
+(ffi:def-call-out wxcTreeItemData_SetClientClosure
+	(:name "wxcTreeItemData_SetClientClosure")
+	(:arguments (self (ffi:c-pointer wxcTreeItemData))
+		(closure (ffi:c-pointer wxClosure)))
+	(:return-type NIL)
+	(:library +library-name+))
 
 (ffi:def-call-out wxTreeItemId_Create
 	(:name "wxTreeItemId_Create")
@@ -99,11 +126,59 @@
 	(:return-type ffi:int)
 	(:library +library-name+))
 
+(ffi:def-call-out wxTreeItemId_Clone
+	(:name "wxTreeItemId_Clone")
+	(:arguments (_obj (ffi:c-pointer wxTreeItemId)))
+	(:return-type (ffi:c-pointer wxTreeItemId))
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeItemId_CreateFromValue
+	(:name "wxTreeItemId_CreateFromValue")
+	(:arguments (value ffi:int))
+	(:return-type (ffi:c-pointer wxTreeItemId))
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeItemId_GetValue
+	(:name "wxTreeItemId_GetValue")
+	(:arguments (_obj (ffi:c-pointer wxTreeItemId)))
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeEvent_GetKeyEvent
+	(:name "wxTreeEvent_GetKeyEvent")
+	(:arguments (_obj (ffi:c-pointer wxTreeEvent)))
+	(:return-type (ffi:c-pointer wxKeyEvent const))
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeEvent_IsEditCancelled
+	(:name "wxTreeEvent_IsEditCancelled")
+	(:arguments (_obj (ffi:c-pointer wxTreeEvent)))
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeEvent_Allow
+	(:name "wxTreeEvent_Allow")
+	(:arguments (_obj (ffi:c-pointer wxTreeEvent)))
+	(:return-type NIL)
+	(:library +library-name+))
+
 (ffi:def-call-out wxTreeCtrl_Create
 	(:name "wxTreeCtrl_Create")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(_cmp (ffi:c-pointer NIL))
 		(_prt (ffi:c-pointer NIL))
+		(_id ffi:int)
+		(_lft ffi:int)
+		(_top ffi:int)
+		(_wdt ffi:int)
+		(_hgt ffi:int)
+		(_stl ffi:int))
+	(:return-type (ffi:c-pointer NIL))
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeCtrl_Create2
+	(:name "wxTreeCtrl_Create2")
+	(:arguments (_prt (ffi:c-pointer NIL))
 		(_id ffi:int)
 		(_lft ffi:int)
 		(_top ffi:int)
@@ -157,6 +232,20 @@
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
+(ffi:def-call-out wxTreeCtrl_AssignImageList
+	(:name "wxTreeCtrl_AssignImageList")
+	(:arguments (_obj (ffi:c-pointer wxTreeCtrl))
+		(imageList (ffi:c-pointer wxImageList)))
+	(:return-type NIL)
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeCtrl_AssignStateImageList
+	(:name "wxTreeCtrl_AssignStateImageList")
+	(:arguments (_obj (ffi:c-pointer wxTreeCtrl))
+		(imageList (ffi:c-pointer wxImageList)))
+	(:return-type NIL)
+	(:library +library-name+))
+
 (ffi:def-call-out wxTreeCtrl_SetImageList
 	(:name "wxTreeCtrl_SetImageList")
 	(:arguments (_obj (ffi:c-pointer NIL))
@@ -194,6 +283,13 @@
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
+(ffi:def-call-out wxTreeCtrl_GetItemClientClosure
+	(:name "wxTreeCtrl_GetItemClientClosure")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(item (ffi:c-pointer NIL)))
+	(:return-type (ffi:c-pointer NIL))
+	(:library +library-name+))
+
 (ffi:def-call-out wxTreeCtrl_SetItemText
 	(:name "wxTreeCtrl_SetItemText")
 	(:arguments (_obj (ffi:c-pointer NIL))
@@ -215,7 +311,15 @@
 	(:name "wxTreeCtrl_SetItemData")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(item (ffi:c-pointer NIL))
-		(data (ffi:c-pointer NIL)))
+		(closure (ffi:c-pointer wxClosure)))
+	(:return-type NIL)
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeCtrl_SetItemClientClosure
+	(:name "wxTreeCtrl_SetItemClientClosure")
+	(:arguments (_obj (ffi:c-pointer wxTreeCtrl))
+		(item (ffi:c-pointer NIL))
+		(closure (ffi:c-pointer wxClosure)))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -327,7 +431,7 @@
 (ffi:def-call-out wxTreeCtrl_GetSelections
 	(:name "wxTreeCtrl_GetSelections")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(selections (ffi:c-pointer NIL)))
+		(selections (ffi:c-ptr ffi:int)))
 	(:return-type ffi:int)
 	(:library +library-name+))
 
@@ -411,7 +515,7 @@
 		(text (ffi:c-pointer NIL))
 		(image ffi:int)
 		(selectedImage ffi:int)
-		(data (ffi:c-pointer NIL))
+		(data (ffi:c-pointer wxClosure))
 		(_item (ffi:c-pointer NIL)))
 	(:return-type NIL)
 	(:library +library-name+))
@@ -423,7 +527,7 @@
 		(text (ffi:c-pointer NIL))
 		(image ffi:int)
 		(selectedImage ffi:int)
-		(data (ffi:c-pointer NIL))
+		(data (ffi:c-pointer wxClosure))
 		(_item (ffi:c-pointer NIL)))
 	(:return-type NIL)
 	(:library +library-name+))
@@ -436,7 +540,20 @@
 		(text (ffi:c-pointer NIL))
 		(image ffi:int)
 		(selectedImage ffi:int)
-		(data (ffi:c-pointer NIL))
+		(data (ffi:c-pointer wxClosure))
+		(_item (ffi:c-pointer NIL)))
+	(:return-type NIL)
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeCtrl_InsertItem2
+	(:name "wxTreeCtrl_InsertItem2")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(parent (ffi:c-pointer NIL))
+		(idPrevious (ffi:c-pointer NIL))
+		(text (ffi:c-pointer NIL))
+		(image ffi:int)
+		(selectedImage ffi:int)
+		(closure (ffi:c-pointer wxClosure))
 		(_item (ffi:c-pointer NIL)))
 	(:return-type NIL)
 	(:library +library-name+))
@@ -449,7 +566,20 @@
 		(text (ffi:c-pointer NIL))
 		(image ffi:int)
 		(selectedImage ffi:int)
-		(data (ffi:c-pointer NIL))
+		(data (ffi:c-pointer wxClosure))
+		(_item (ffi:c-pointer NIL)))
+	(:return-type NIL)
+	(:library +library-name+))
+
+(ffi:def-call-out wxTreeCtrl_InsertItemByIndex2
+	(:name "wxTreeCtrl_InsertItemByIndex2")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(parent (ffi:c-pointer NIL))
+		(index ffi:int)
+		(text (ffi:c-pointer NIL))
+		(image ffi:int)
+		(selectedImage ffi:int)
+		(data (ffi:c-pointer wxClosure))
 		(_item (ffi:c-pointer NIL)))
 	(:return-type NIL)
 	(:library +library-name+))
@@ -461,7 +591,7 @@
 		(text (ffi:c-pointer NIL))
 		(image ffi:int)
 		(selectedImage ffi:int)
-		(data (ffi:c-pointer NIL))
+		(data (ffi:c-pointer wxClosure))
 		(_item (ffi:c-pointer NIL)))
 	(:return-type NIL)
 	(:library +library-name+))
