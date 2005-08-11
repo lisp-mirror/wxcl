@@ -58,8 +58,8 @@
 	:wxITEM_SEPARATOR
 	:wxITEM_CHECK
 	:wxITEM_RADIO
-	:create-menu
-	:append-menu-item
+	:wxCL-create-menu
+	:wxCL-append-menu-item
 	))
 
 (in-package :wxMenu)
@@ -71,23 +71,9 @@
 (ffi:def-call-out wxMenu_Create
 	(:name "wxMenu_Create")
 	(:arguments (title ffi:c-string)
-		(style ffi:long))
+		    (style ffi:long))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
-
-(defmacro append-menu-item (menu &key (id -1) (item "") (helpString "")
-				 (kind wxITEM_NORMAL) (sub-menu nil))
-  (case kind
-    (wxITEM_SEPARATOR `(wxMenu_AppendSeparator ,menu))
-    (wxITEM_SubMenu `(wxMenu_AppendSub ,menu ,id ,item ,sub-menu ,helpstring))
-    (otherwise `(wxMenu_Append ,menu ,id ,item ,helpstring ,kind))))
-
-(defmacro create-menu ((&optional (title "") (style 0)) &body body)
-  (let ((menu (gensym)))
-  `(progn
-    (let ((,menu (wxMenu_Create ,title ,style)))
-      ,@(mapcar (lambda (x) `(append-menu-item ,menu ,@x)) body)
-      ,menu))))
 
 (ffi:def-call-out wxMenu_DeletePointer
 	(:name "wxMenu_DeletePointer")
@@ -375,3 +361,16 @@
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
+(defmacro wxCL-append-menu-item (menu &key (id -1) (item "") (helpString "")
+				 (kind wxITEM_NORMAL) (sub-menu nil))
+  (case kind
+    (wxITEM_SEPARATOR `(wxMenu_AppendSeparator ,menu))
+    (wxITEM_SubMenu `(wxMenu_AppendSub ,menu ,id ,item ,sub-menu ,helpstring))
+    (otherwise `(wxMenu_Append ,menu ,id ,item ,helpstring ,kind))))
+
+(defmacro wxCL-create-menu ((&optional (title "") (style 0)) &body body)
+  (let ((menu (gensym)))
+  `(progn
+    (let ((,menu (wxMenu_Create ,title ,style)))
+      ,@(mapcar (lambda (x) `(wxCL-append-menu-item ,menu ,@x)) body)
+      ,menu))))

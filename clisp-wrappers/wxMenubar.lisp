@@ -11,7 +11,7 @@
   (:use :common-lisp :ffi :wxCL)
   (:export
 	:wxMenuBar_Create
-	:wxMenuBar_CreateWithMenus
+	:wxCL-create-menu-bar
 	:wxMenuBar_DeletePointer
 	:wxMenuBar_Append
 	:wxMenuBar_Insert
@@ -49,9 +49,10 @@
 	(:return-type (ffi:c-pointer wxMenuBar))
 	(:library +library-name+))
 
-(defun wxMenuBar_CreateWithMenus(menus titles &key (style 0))
-  (let ((mb (wxMenuBar_Create style)))
-    (dotimes (i (length menus))
+(defun wxCL-create-menu-bar(menus titles &key (style 0))
+  (let ((mb (wxMenuBar_Create style))
+	(len (length menus)))
+    (dotimes (i len)
       (wxMenuBar_Append mb (svref menus i) (svref titles i)))
     mb))
 
