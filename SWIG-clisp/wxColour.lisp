@@ -30,6 +30,8 @@
 
 (in-package :wxColour)
 
+(ffi:default-foreign-language :stdc)
+
 (ffi:def-call-out wxColour_CreateEmpty
 	(:name "wxColour_CreateEmpty")
 	(:return-type (ffi:c-pointer NIL))
@@ -38,8 +40,8 @@
 (ffi:def-call-out wxColour_CreateRGB
 	(:name "wxColour_CreateRGB")
 	(:arguments (_red character)
-		(_green character)
-		(_blue character))
+		    (_green character)
+		    (_blue character))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
