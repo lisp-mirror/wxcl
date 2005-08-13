@@ -27,8 +27,9 @@
 	:wxFileType_GetPrintCommand
 	:wxFileType_ExpandCommand
 	:wxFileType_Delete
-	:wxMessageParameters_Create
-	:wxMessageParameters_Delete))
+; 	:wxMessageParameters_Create
+; 	:wxMessageParameters_Delete
+	))
 
 (in-package :wxMime)
 
@@ -156,17 +157,17 @@
 	(:return-type NIL)
 	(:library +library-name+))
 
-(ffi:def-call-out wxMessageParameters_Create
-	(:name "wxMessageParameters_Create")
-	(:arguments (_file (ffi:c-pointer NIL))
-		(_type (ffi:c-pointer NIL))
-		(_object (ffi:c-pointer NIL))
-		(_func (ffi:c-pointer NIL)))
-	(:return-type (ffi:c-pointer NIL))
-	(:library +library-name+))
+; (ffi:def-call-out wxMessageParameters_Create
+; 	(:name "wxMessageParameters_Create")
+; 	(:arguments (_file (ffi:c-pointer NIL))
+; 		(_type (ffi:c-pointer NIL))
+; 		(_object (ffi:c-pointer NIL))
+; 		(_func (ffi:c-pointer NIL)))
+; 	(:return-type (ffi:c-pointer NIL))
+; 	(:library +library-name+))
 
-(ffi:def-call-out wxMessageParameters_Delete
-	(:name "wxMessageParameters_Delete")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type NIL)
-	(:library +library-name+))
+; (ffi:def-call-out wxMessageParameters_Delete
+; 	(:name "wxMessageParameters_Delete")
+; 	(:arguments (_obj (ffi:c-pointer NIL)))
+; 	(:return-type NIL)
+; 	(:library +library-name+))
