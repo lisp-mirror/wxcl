@@ -17,7 +17,7 @@
 	   :wxAcceleratorEntry_GetCommand
 	   :wxAcceleratorTable_Create
 	   :wxAcceleratorTable_Delete
-	   :create-accelerator-entries))
+	   :wxCL-create-accelerator-entries))
 
 (in-package :wxAcceleratorEntry)
 
@@ -77,7 +77,7 @@
   (:return-type NIL)
   (:library +library-name+))
 
-(defmacro create-accelerator-entries (frame &body body)
+(defmacro wxCL-create-accelerator-entries (frame &body body)
   (let ((table (gensym))
 	(size (length body)))
     `(wxWindow_SetAcceleratorTable ,frame

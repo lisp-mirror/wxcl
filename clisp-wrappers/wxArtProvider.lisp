@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxArtProvider
-  (:use :common-lisp :ffi)
+  (:use :common-lisp :ffi :wxCL)
   (:export
 	:ELJArtProv_Create
 	:ELJArtProv_Release
