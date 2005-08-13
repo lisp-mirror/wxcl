@@ -8,13 +8,12 @@
 ;;;
 
 (defpackage :wxStaticText
-  (:use :common-lisp :ffi)
-  (:export
-	:wxStaticText_Create))
+  (:use :common-lisp :ffi :wxCL)
+  (:export :wxStaticText_Create))
 
 (in-package :wxStaticText)
 
-(ffi:def-c-type wxFileDialog nil)
+(ffi:default-foreign-language :stdc)
 
 (ffi:def-call-out wxStaticText_Create
 	(:name "wxStaticText_Create")

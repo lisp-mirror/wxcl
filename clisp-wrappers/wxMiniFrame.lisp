@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxMiniFrame
-  (:use :common-lisp :ffi)
+  (:use :common-lisp :ffi :WxCL)
   (:export
 	:wxMiniFrame_Create))
 

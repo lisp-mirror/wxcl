@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxScrollBar
-  (:use :common-lisp :ffi)
+  (:use :common-lisp :ffi :wxCL)
   (:export
 	:wxScrollBar_Create
 	:wxScrollBar_GetThumbPosition

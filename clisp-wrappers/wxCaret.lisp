@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxCaret
-    (:use :common-lisp :ffi)
+    (:use :common-lisp :ffi :wxCL)
   (:export
    :wxCaret_Create
    :wxCaret_IsOk

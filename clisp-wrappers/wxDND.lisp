@@ -55,6 +55,8 @@
 
 (in-package :wxDnd)
 
+(ffi:default-foreign-language :stdc)
+
 (ffi:def-call-out ELJFileDropTarget_Create
 	(:name "ELJFileDropTarget_Create")
 	(:arguments (_obj (ffi:c-pointer NIL))

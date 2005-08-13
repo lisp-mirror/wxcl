@@ -6,11 +6,9 @@
 ;;;
 ;;; $Header$
 ;;;
-;; This is an automatically generated file. 
-;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
 (defpackage :wxSizer
-  (:use :common-lisp :ffi)
+  (:use :common-lisp :ffi :wxCL)
   (:export
 	:wxSizerItem_Create
 	:wxSizerItem_CreateInWindow
@@ -96,6 +94,8 @@
 	:wxNotebookSizer_GetNotebook))
 
 (in-package :wxSizer)
+
+(ffi:default-foreign-language :stdc)
 
 (ffi:def-call-out wxSizerItem_Create
 	(:name "wxSizerItem_Create")
@@ -626,28 +626,28 @@
 (ffi:def-call-out wxFlexGridSizer_AddGrowableRow
 	(:name "wxFlexGridSizer_AddGrowableRow")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(idx size_t))
+		    (idx ffi:uint))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxFlexGridSizer_RemoveGrowableRow
 	(:name "wxFlexGridSizer_RemoveGrowableRow")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(idx size_t))
+		    (idx ffi:uint))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxFlexGridSizer_AddGrowableCol
 	(:name "wxFlexGridSizer_AddGrowableCol")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(idx size_t))
+		(idx ffi:uint))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxFlexGridSizer_RemoveGrowableCol
 	(:name "wxFlexGridSizer_RemoveGrowableCol")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(idx size_t))
+		(idx ffi:uint))
 	(:return-type NIL)
 	(:library +library-name+))
 

@@ -54,6 +54,8 @@
 
 (ffi:default-foreign-language :stdc)
 
+(def-c-type wxConfigBase nil)
+
 (ffi:def-call-out wxConfigBase_Create
 	(:name "wxConfigBase_Create")
 	(:return-type (ffi:c-pointer NIL))
@@ -83,28 +85,28 @@
 	(:name "wxConfigBase_GetFirstGroup")
 	(:arguments (_obj (ffi:c-pointer wxConfigBase))
 		(lIndex (ffi:c-ptr ffi:long)))
-	(:return-type (ffi:c-pointer wxString))
+	(:return-type ffi:c-string)
 	(:library +library-name+))
 
 (ffi:def-call-out wxConfigBase_GetNextGroup
 	(:name "wxConfigBase_GetNextGroup")
 	(:arguments (_obj (ffi:c-pointer wxConfigBase))
 		(lIndex (ffi:c-ptr ffi:long)))
-	(:return-type (ffi:c-pointer wxString))
+	(:return-type ffi:c-string)
 	(:library +library-name+))
 
 (ffi:def-call-out wxConfigBase_GetFirstEntry
 	(:name "wxConfigBase_GetFirstEntry")
 	(:arguments (_obj (ffi:c-pointer wxConfigBase))
 		(lIndex (ffi:c-ptr ffi:long)))
-	(:return-type (ffi:c-pointer wxString))
+	(:return-type ffi:c-string)
 	(:library +library-name+))
 
 (ffi:def-call-out wxConfigBase_GetNextEntry
 	(:name "wxConfigBase_GetNextEntry")
 	(:arguments (_obj (ffi:c-pointer wxConfigBase))
 		(lIndex (ffi:c-ptr ffi:long)))
-	(:return-type (ffi:c-pointer wxString))
+	(:return-type ffi:c-string)
 	(:library +library-name+))
 
 (ffi:def-call-out wxConfigBase_GetNumberOfEntries
@@ -154,7 +156,7 @@
 	(:arguments (_obj (ffi:c-pointer wxConfigBase))
 		(key (ffi:c-pointer NIL))
 		(defVal (ffi:c-pointer NIL)))
-	(:return-type (ffi:c-pointer wxString))
+	(:return-type ffi:c-string)
 	(:library +library-name+))
 
 (ffi:def-call-out wxConfigBase_ReadInteger

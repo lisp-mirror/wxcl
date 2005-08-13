@@ -10,7 +10,7 @@
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
 (defpackage :wxLocale
-    (:use :common-lisp :ffi)
+    (:use :common-lisp :ffi :wxCL)
   (:export
    :wxLocale_Create
    :wxLocale_Delete

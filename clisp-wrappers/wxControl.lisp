@@ -10,13 +10,15 @@
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
 (defpackage :wxControl
-  (:use :common-lisp :ffi)
+  (:use :common-lisp :ffi :wxCL)
   (:export
 	:wxControl_SetLabel
 	:wxControl_GetLabel
 	:wxControl_Command))
 
 (in-package :wxControl)
+
+(ffi:default-foreign-language :stdc)
 
 (ffi:def-call-out wxControl_SetLabel
 	(:name "wxControl_SetLabel")

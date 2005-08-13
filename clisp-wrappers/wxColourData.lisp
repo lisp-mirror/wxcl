@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxColourData
-  (:use :common-lisp :ffi)
+  (:use :common-lisp :ffi :wxCL)
   (:export
 	:wxColourData_Create
 	:wxColourData_Delete

@@ -493,7 +493,7 @@
 (ffi:def-call-out wxDateTime_GetTicks
 	(:name "wxDateTime_GetTicks")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type time_t)
+	(:return-type ffi:int)
 	(:library +library-name+))
 
 (ffi:def-call-out wxDateTime_GetYear

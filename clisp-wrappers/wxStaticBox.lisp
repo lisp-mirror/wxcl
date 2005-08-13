@@ -14,7 +14,7 @@
 
 (in-package :wxStaticBox)
 
-(ffi:def-c-type wxFileDialog nil)
+(ffi:default-foreign-language :stdc)
 
 (ffi:def-call-out wxStaticBox_Create
 	(:name "wxStaticBox_Create")

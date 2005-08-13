@@ -8,9 +8,8 @@
 ;;;
 
 (defpackage :wxCursor
-  (:use :common-lisp :ffi)
-  (:export
-	:Cursor_CreateFromStock))
+  (:use :common-lisp :ffi :wxCL)
+  (:export :Cursor_CreateFromStock))
 
 (in-package :wxCursor)
 

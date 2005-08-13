@@ -32,6 +32,8 @@
 
 (in-package :wxSplitterWindow)
 
+(ffi:default-foreign-language :stdc)
+
 (ffi:def-call-out wxSplitterWindow_Create
 	(:name "wxSplitterWindow_Create")
 	(:arguments (_prt (ffi:c-pointer NIL))
