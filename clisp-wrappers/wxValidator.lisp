@@ -31,6 +31,8 @@
 
 (in-package :wxValidator)
 
+(ffi:default-foreign-language :stdc)
+
 (ffi:def-call-out wxValidator_Create
 	(:name "wxValidator_Create")
 	(:return-type (ffi:c-pointer NIL))

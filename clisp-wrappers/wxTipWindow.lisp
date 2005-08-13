@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxTipWindow
-  (:use :common-lisp :ffi)
+  (:use :common-lisp :ffi :wxCL)
   (:export
 	:wxTipWindow_Create
 	:wxTipWindow_SetTipWindowPtr

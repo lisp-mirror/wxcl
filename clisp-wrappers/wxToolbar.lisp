@@ -10,7 +10,7 @@
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
 (defpackage :wxToolBar
-    (:use :common-lisp :ffi :wxCL :wxBitmap)
+    (:use :common-lisp :ffi :wxCL)
   (:export :wxToolBar_Create
 	   :wxToolBar_Delete
 	   :wxToolBar_AddControl
