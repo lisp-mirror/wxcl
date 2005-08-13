@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 (defpackage :wxCalendarCtrl
-    (:use :common-lisp :ffi :wxCL)
+    (:use :common-lisp :ffi :wxCL :wxDateTime)
   (:export
    :wxCalendarCtrl_Create
    :wxCalendarCtrl_SetDate
@@ -49,6 +49,7 @@
    :wxCalendarDateAttr_GetBorderColour
    :wxCalendarDateAttr_GetFont
    :wxCalendarDateAttr_GetBorder
+   :wxcl-create-calendar-control
    :wxCAL_SUNDAY_FIRST
    :wxCAL_MONDAY_FIRST
    :wxCAL_SHOW_HOLIDAYS
@@ -84,6 +85,12 @@
 	      (_stl ffi:int))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
+
+(defmacro wxcl-create-calendar-control (frame &key (id -1) (date (wxDateTime_Create))
+					      (left -1) (top -1) (width -1) (height -1)
+					 (style wxCAL_SHOW_HOLIDAYS))
+  "Creates a calendar control."
+  `(wxCalendarCtrl_Create ,frame ,id ,date ,left ,top ,width ,height ,style))
 
 (ffi:def-call-out wxCalendarCtrl_SetDate
     (:name "wxCalendarCtrl_SetDate")

@@ -15,6 +15,7 @@
    :wxToggleButton_GetValue
    :wxToggleButton_SetLabel
    :wxToggleButton_Enable
+   :wxcl-create-toggle-button
    :expEVT_COMMAND_TOGGLEBUTTON_CLICKED))
 
 (in-package :wxToggleButton)
@@ -33,6 +34,11 @@
 	      (style ffi:int))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
+
+(defmacro wxcl-create-toggle-button (frame label &key (id -1) (left -1) (top -1) (width -1) (height -1)
+					 (style 0))
+  "Creates a toggle button."
+  `(wxToggleButton_Create ,frame ,id ,label ,left ,top ,width ,height ,style))
 
 (ffi:def-call-out wxToggleButton_SetValue
     (:name "wxToggleButton_SetValue")

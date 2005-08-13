@@ -9,8 +9,8 @@
 
 (defpackage :wxStaticBox
   (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxStaticBox_Create))
+  (:export :wxStaticBox_Create
+	   :wxcl-create-static-box))
 
 (in-package :wxStaticBox)
 
@@ -28,3 +28,8 @@
 		(_stl ffi:int))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
+
+(defmacro wxcl-create-static-box (frame text &key (id -1) (left -1) (top -1) (width -1) (height -1)
+					 (style 0))
+  "Creates a static box."
+  `(wxStaticBox_Create ,frame ,id ,text ,left ,top ,width ,height ,style))
