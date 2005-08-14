@@ -1,5 +1,5 @@
 ;;;wxEvent.lisp
-;;;License   : BSD-style
+;;;License  : GNU General Public License (GPL)
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
 ;;;See the file LICENSE for information on usage and redistribution.
@@ -187,7 +187,224 @@
 	:wxCalendarEvent_GetWeekDay
 	:wxCalendarEvent_GetDate
 	:wxScrollEvent_GetOrientation
-	:wxScrollEvent_GetPosition))
+	:wxScrollEvent_GetPosition
+	:wxHelpEvent_GetPosition
+	:wxHelpEvent_SetPosition
+	:wxHelpEvent_GetLink
+	:wxHelpEvent_SetLink
+	:wxHelpEvent_GetTarget
+	:wxHelpEvent_SetTarget
+	:expEVT_COMMAND_BUTTON_CLICKED
+	:expEVT_COMMAND_CHECKBOX_CLICKED
+	:expEVT_COMMAND_CHOICE_SELECTED
+	:expEVT_COMMAND_LISTBOX_SELECTED
+	:expEVT_COMMAND_LISTBOX_DOUBLECLICKED
+	:expEVT_COMMAND_CHECKLISTBOX_TOGGLED
+	:expEVT_COMMAND_TEXT_UPDATED
+	:expEVT_COMMAND_TEXT_ENTER
+	:expEVT_COMMAND_MENU_SELECTED
+	:expEVT_COMMAND_TOOL_CLICKED
+	:expEVT_COMMAND_SLIDER_UPDATED
+	:expEVT_COMMAND_RADIOBOX_SELECTED
+	:expEVT_COMMAND_RADIOBUTTON_SELECTED
+	:expEVT_COMMAND_SCROLLBAR_UPDATED
+	:expEVT_COMMAND_VLBOX_SELECTED
+	:expEVT_COMMAND_COMBOBOX_SELECTED
+	:expEVT_COMMAND_TOOL_RCLICKED
+	:expEVT_COMMAND_TOOL_ENTER
+	:expEVT_COMMAND_SPINCTRL_UPDATED
+	:expEVT_SOCKET
+	:expEVT_TIMER
+	:expEVT_LEFT_DOWN
+	:expEVT_LEFT_UP
+	:expEVT_MIDDLE_DOWN
+	:expEVT_MIDDLE_UP
+	:expEVT_RIGHT_DOWN
+	:expEVT_RIGHT_UP
+	:expEVT_MOTION
+	:expEVT_ENTER_WINDOW
+	:expEVT_LEAVE_WINDOW
+	:expEVT_LEFT_DCLICK
+	:expEVT_MIDDLE_DCLICK
+	:expEVT_RIGHT_DCLICK
+	:expEVT_SET_FOCUS
+	:expEVT_KILL_FOCUS
+	:expEVT_NC_LEFT_DOWN
+	:expEVT_NC_LEFT_UP
+	:expEVT_NC_MIDDLE_DOWN
+	:expEVT_NC_MIDDLE_UP
+	:expEVT_NC_RIGHT_DOWN
+	:expEVT_NC_RIGHT_UP
+	:expEVT_NC_MOTION
+	:expEVT_NC_ENTER_WINDOW
+	:expEVT_NC_LEAVE_WINDOW
+	:expEVT_NC_LEFT_DCLICK
+	:expEVT_NC_MIDDLE_DCLICK
+	:expEVT_NC_RIGHT_DCLICK
+	:expEVT_CHAR
+	:expEVT_CHAR_HOOK
+	:expEVT_NAVIGATION_KEY
+	:expEVT_KEY_DOWN
+	:expEVT_KEY_UP
+	:expEVT_SET_CURSOR
+	:expEVT_SCROLL_TOP
+	:expEVT_SCROLL_BOTTOM
+	:expEVT_SCROLL_LINEUP
+	:expEVT_SCROLL_LINEDOWN
+	:expEVT_SCROLL_PAGEUP
+	:expEVT_SCROLL_PAGEDOWN
+	:expEVT_SCROLL_THUMBTRACK
+	:expEVT_SCROLL_THUMBRELEASE
+	:expEVT_SCROLLWIN_TOP
+	:expEVT_SCROLLWIN_BOTTOM
+	:expEVT_SCROLLWIN_LINEUP
+	:expEVT_SCROLLWIN_LINEDOWN
+	:expEVT_SCROLLWIN_PAGEUP
+	:expEVT_SCROLLWIN_PAGEDOWN
+	:expEVT_SCROLLWIN_THUMBTRACK
+	:expEVT_SCROLLWIN_THUMBRELEASE
+	:expEVT_SIZE
+	:expEVT_MOVE
+	:expEVT_CLOSE_WINDOW
+	:expEVT_END_SESSION
+	:expEVT_QUERY_END_SESSION
+	:expEVT_ACTIVATE_APP
+	:expEVT_POWER
+	:expEVT_ACTIVATE
+	:expEVT_CREATE
+	:expEVT_DESTROY
+	:expEVT_SHOW
+	:expEVT_ICONIZE
+	:expEVT_MAXIMIZE
+	:expEVT_MOUSE_CAPTURE_CHANGED
+	:expEVT_PAINT
+	:expEVT_ERASE_BACKGROUND
+	:expEVT_NC_PAINT
+	:expEVT_PAINT_ICON
+	:expEVT_MENU_CHAR
+	:expEVT_MENU_INIT
+	:expEVT_MENU_HIGHLIGHT
+	:expEVT_POPUP_MENU_INIT
+	:expEVT_CONTEXT_MENU
+	:expEVT_SYS_COLOUR_CHANGED
+	:expEVT_SETTING_CHANGED
+	:expEVT_QUERY_NEW_PALETTE
+	:expEVT_PALETTE_CHANGED
+	:expEVT_JOY_BUTTON_DOWN
+	:expEVT_JOY_BUTTON_UP
+	:expEVT_JOY_MOVE
+	:expEVT_JOY_ZMOVE
+	:expEVT_DROP_FILES
+	:expEVT_DRAW_ITEM
+	:expEVT_MEASURE_ITEM
+	:expEVT_COMPARE_ITEM
+	:expEVT_INIT_DIALOG
+	:expEVT_IDLE
+	:expEVT_UPDATE_UI
+	:expEVT_END_PROCESS
+	:expEVT_DIALUP_CONNECTED
+	:expEVT_DIALUP_DISCONNECTED
+	:expEVT_COMMAND_LEFT_CLICK
+	:expEVT_COMMAND_LEFT_DCLICK
+	:expEVT_COMMAND_RIGHT_CLICK
+	:expEVT_COMMAND_RIGHT_DCLICK
+	:expEVT_COMMAND_SET_FOCUS
+	:expEVT_COMMAND_KILL_FOCUS
+	:expEVT_COMMAND_ENTER
+	:expEVT_COMMAND_TREE_BEGIN_DRAG
+	:expEVT_COMMAND_TREE_BEGIN_RDRAG
+	:expEVT_COMMAND_TREE_BEGIN_LABEL_EDIT
+	:expEVT_COMMAND_TREE_END_LABEL_EDIT
+	:expEVT_COMMAND_TREE_DELETE_ITEM
+	:expEVT_COMMAND_TREE_GET_INFO
+	:expEVT_COMMAND_TREE_SET_INFO
+	:expEVT_COMMAND_TREE_ITEM_EXPANDED
+	:expEVT_COMMAND_TREE_ITEM_EXPANDING
+	:expEVT_COMMAND_TREE_ITEM_COLLAPSED
+	:expEVT_COMMAND_TREE_ITEM_COLLAPSING
+	:expEVT_COMMAND_TREE_SEL_CHANGED
+	:expEVT_COMMAND_TREE_SEL_CHANGING
+	:expEVT_COMMAND_TREE_KEY_DOWN
+	:expEVT_COMMAND_TREE_ITEM_ACTIVATED
+	:expEVT_COMMAND_TREE_ITEM_RIGHT_CLICK
+	:expEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK
+	:expEVT_COMMAND_TREE_END_DRAG
+	:expEVT_COMMAND_LIST_BEGIN_DRAG
+	:expEVT_COMMAND_LIST_BEGIN_RDRAG
+	:expEVT_COMMAND_LIST_BEGIN_LABEL_EDIT
+	:expEVT_COMMAND_LIST_END_LABEL_EDIT
+	:expEVT_COMMAND_LIST_DELETE_ITEM
+	:expEVT_COMMAND_LIST_DELETE_ALL_ITEMS
+	:expEVT_COMMAND_LIST_GET_INFO
+	:expEVT_COMMAND_LIST_SET_INFO
+	:expEVT_COMMAND_LIST_ITEM_SELECTED
+	:expEVT_COMMAND_LIST_ITEM_DESELECTED
+	:expEVT_COMMAND_LIST_KEY_DOWN
+	:expEVT_COMMAND_LIST_INSERT_ITEM
+	:expEVT_COMMAND_LIST_COL_CLICK
+	:expEVT_COMMAND_LIST_ITEM_RIGHT_CLICK
+	:expEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK
+	:expEVT_COMMAND_LIST_ITEM_ACTIVATED
+	:expEVT_COMMAND_LIST_ITEM_FOCUSED
+	:expEVT_COMMAND_TAB_SEL_CHANGED
+	:expEVT_COMMAND_TAB_SEL_CHANGING
+	:expEVT_COMMAND_NOTEBOOK_PAGE_CHANGED
+	:expEVT_COMMAND_NOTEBOOK_PAGE_CHANGING
+	:expEVT_COMMAND_SPLITTER_SASH_POS_CHANGED
+	:expEVT_COMMAND_SPLITTER_SASH_POS_CHANGING
+	:expEVT_COMMAND_SPLITTER_DOUBLECLICKED
+	:expEVT_COMMAND_SPLITTER_UNSPLIT
+	:expEVT_WIZARD_PAGE_CHANGED
+	:expEVT_WIZARD_PAGE_CHANGING
+	:expEVT_WIZARD_CANCEL
+	:expEVT_CALENDAR_SEL_CHANGED
+	:expEVT_CALENDAR_DAY_CHANGED
+	:expEVT_CALENDAR_MONTH_CHANGED
+	:expEVT_CALENDAR_YEAR_CHANGED
+	:expEVT_CALENDAR_DOUBLECLICKED
+	:expEVT_CALENDAR_WEEKDAY_CLICKED
+	:expEVT_PLOT_SEL_CHANGING
+	:expEVT_PLOT_SEL_CHANGED
+	:expEVT_PLOT_CLICKED
+	:expEVT_PLOT_DOUBLECLICKED
+	:expEVT_PLOT_ZOOM_IN
+	:expEVT_PLOT_ZOOM_OUT
+	:expEVT_PLOT_VALUE_SEL_CREATING
+	:expEVT_PLOT_VALUE_SEL_CREATED
+	:expEVT_PLOT_VALUE_SEL_CHANGING
+	:expEVT_PLOT_VALUE_SEL_CHANGED
+	:expEVT_PLOT_AREA_SEL_CREATING
+	:expEVT_PLOT_AREA_SEL_CREATED
+	:expEVT_PLOT_AREA_SEL_CHANGING
+	:expEVT_PLOT_AREA_SEL_CHANGED
+	:expEVT_PLOT_BEGIN_X_LABEL_EDIT
+	:expEVT_PLOT_END_X_LABEL_EDIT
+	:expEVT_PLOT_BEGIN_Y_LABEL_EDIT
+	:expEVT_PLOT_END_Y_LABEL_EDIT
+	:expEVT_PLOT_BEGIN_TITLE_EDIT
+	:expEVT_PLOT_END_TITLE_EDIT
+	:expEVT_PLOT_AREA_CREATE
+	:expEVT_USER_FIRST
+	:expEVT_DYNAMIC_SASH_SPLIT
+	:expEVT_DYNAMIC_SASH_UNIFY
+	:expEVT_HELP
+	:expEVT_DETAILED_HELP
+	:expEVT_GRID_CELL_LEFT_CLICK
+	:expEVT_GRID_CELL_RIGHT_CLICK
+	:expEVT_GRID_CELL_LEFT_DCLICK
+	:expEVT_GRID_CELL_RIGHT_DCLICK
+	:expEVT_GRID_LABEL_LEFT_CLICK
+	:expEVT_GRID_LABEL_RIGHT_CLICK
+	:expEVT_GRID_LABEL_LEFT_DCLICK
+	:expEVT_GRID_LABEL_RIGHT_DCLICK
+	:expEVT_GRID_ROW_SIZE
+	:expEVT_GRID_COL_SIZE
+	:expEVT_GRID_RANGE_SELECT
+	:expEVT_GRID_CELL_CHANGE
+	:expEVT_GRID_SELECT_CELL
+	:expEVT_GRID_EDITOR_SHOWN
+	:expEVT_GRID_EDITOR_HIDDEN
+	:expEVT_GRID_EDITOR_CREATED))
 
 (in-package :wxEvent)
 
@@ -1330,5 +1547,1104 @@
 (ffi:def-call-out wxScrollEvent_GetPosition
 	(:name "wxScrollEvent_GetPosition")
 	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out wxHelpEvent_GetPosition
+	(:name "wxHelpEvent_GetPosition")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(x (ffi:c-pointer NIL))
+		(y (ffi:c-pointer NIL)))
+	(:return-type NIL)
+	(:library +library-name+))
+
+(ffi:def-call-out wxHelpEvent_SetPosition
+	(:name "wxHelpEvent_SetPosition")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(x ffi:int)
+		(y ffi:int))
+	(:return-type NIL)
+	(:library +library-name+))
+
+(ffi:def-call-out wxHelpEvent_GetLink
+	(:name "wxHelpEvent_GetLink")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(_ref (ffi:c-pointer NIL)))
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out wxHelpEvent_SetLink
+	(:name "wxHelpEvent_SetLink")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(link (ffi:c-pointer NIL)))
+	(:return-type NIL)
+	(:library +library-name+))
+
+(ffi:def-call-out wxHelpEvent_GetTarget
+	(:name "wxHelpEvent_GetTarget")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(_ref (ffi:c-pointer NIL)))
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out wxHelpEvent_SetTarget
+	(:name "wxHelpEvent_SetTarget")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(target (ffi:c-pointer NIL)))
+	(:return-type NIL)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_BUTTON_CLICKED
+	(:name "expEVT_COMMAND_BUTTON_CLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_CHECKBOX_CLICKED
+	(:name "expEVT_COMMAND_CHECKBOX_CLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_CHOICE_SELECTED
+	(:name "expEVT_COMMAND_CHOICE_SELECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LISTBOX_SELECTED
+	(:name "expEVT_COMMAND_LISTBOX_SELECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LISTBOX_DOUBLECLICKED
+	(:name "expEVT_COMMAND_LISTBOX_DOUBLECLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_CHECKLISTBOX_TOGGLED
+	(:name "expEVT_COMMAND_CHECKLISTBOX_TOGGLED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TEXT_UPDATED
+	(:name "expEVT_COMMAND_TEXT_UPDATED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TEXT_ENTER
+	(:name "expEVT_COMMAND_TEXT_ENTER")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_MENU_SELECTED
+	(:name "expEVT_COMMAND_MENU_SELECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TOOL_CLICKED
+	(:name "expEVT_COMMAND_TOOL_CLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_SLIDER_UPDATED
+	(:name "expEVT_COMMAND_SLIDER_UPDATED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_RADIOBOX_SELECTED
+	(:name "expEVT_COMMAND_RADIOBOX_SELECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_RADIOBUTTON_SELECTED
+	(:name "expEVT_COMMAND_RADIOBUTTON_SELECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_SCROLLBAR_UPDATED
+	(:name "expEVT_COMMAND_SCROLLBAR_UPDATED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_VLBOX_SELECTED
+	(:name "expEVT_COMMAND_VLBOX_SELECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_COMBOBOX_SELECTED
+	(:name "expEVT_COMMAND_COMBOBOX_SELECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TOOL_RCLICKED
+	(:name "expEVT_COMMAND_TOOL_RCLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TOOL_ENTER
+	(:name "expEVT_COMMAND_TOOL_ENTER")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_SPINCTRL_UPDATED
+	(:name "expEVT_COMMAND_SPINCTRL_UPDATED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SOCKET
+	(:name "expEVT_SOCKET")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_TIMER
+	(:name "expEVT_TIMER")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_LEFT_DOWN
+	(:name "expEVT_LEFT_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_LEFT_UP
+	(:name "expEVT_LEFT_UP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MIDDLE_DOWN
+	(:name "expEVT_MIDDLE_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MIDDLE_UP
+	(:name "expEVT_MIDDLE_UP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_RIGHT_DOWN
+	(:name "expEVT_RIGHT_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_RIGHT_UP
+	(:name "expEVT_RIGHT_UP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MOTION
+	(:name "expEVT_MOTION")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_ENTER_WINDOW
+	(:name "expEVT_ENTER_WINDOW")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_LEAVE_WINDOW
+	(:name "expEVT_LEAVE_WINDOW")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_LEFT_DCLICK
+	(:name "expEVT_LEFT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MIDDLE_DCLICK
+	(:name "expEVT_MIDDLE_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_RIGHT_DCLICK
+	(:name "expEVT_RIGHT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SET_FOCUS
+	(:name "expEVT_SET_FOCUS")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_KILL_FOCUS
+	(:name "expEVT_KILL_FOCUS")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_LEFT_DOWN
+	(:name "expEVT_NC_LEFT_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_LEFT_UP
+	(:name "expEVT_NC_LEFT_UP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_MIDDLE_DOWN
+	(:name "expEVT_NC_MIDDLE_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_MIDDLE_UP
+	(:name "expEVT_NC_MIDDLE_UP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_RIGHT_DOWN
+	(:name "expEVT_NC_RIGHT_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_RIGHT_UP
+	(:name "expEVT_NC_RIGHT_UP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_MOTION
+	(:name "expEVT_NC_MOTION")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_ENTER_WINDOW
+	(:name "expEVT_NC_ENTER_WINDOW")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_LEAVE_WINDOW
+	(:name "expEVT_NC_LEAVE_WINDOW")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_LEFT_DCLICK
+	(:name "expEVT_NC_LEFT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_MIDDLE_DCLICK
+	(:name "expEVT_NC_MIDDLE_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_RIGHT_DCLICK
+	(:name "expEVT_NC_RIGHT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CHAR
+	(:name "expEVT_CHAR")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CHAR_HOOK
+	(:name "expEVT_CHAR_HOOK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NAVIGATION_KEY
+	(:name "expEVT_NAVIGATION_KEY")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_KEY_DOWN
+	(:name "expEVT_KEY_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_KEY_UP
+	(:name "expEVT_KEY_UP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SET_CURSOR
+	(:name "expEVT_SET_CURSOR")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLL_TOP
+	(:name "expEVT_SCROLL_TOP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLL_BOTTOM
+	(:name "expEVT_SCROLL_BOTTOM")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLL_LINEUP
+	(:name "expEVT_SCROLL_LINEUP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLL_LINEDOWN
+	(:name "expEVT_SCROLL_LINEDOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLL_PAGEUP
+	(:name "expEVT_SCROLL_PAGEUP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLL_PAGEDOWN
+	(:name "expEVT_SCROLL_PAGEDOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLL_THUMBTRACK
+	(:name "expEVT_SCROLL_THUMBTRACK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLL_THUMBRELEASE
+	(:name "expEVT_SCROLL_THUMBRELEASE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLLWIN_TOP
+	(:name "expEVT_SCROLLWIN_TOP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLLWIN_BOTTOM
+	(:name "expEVT_SCROLLWIN_BOTTOM")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLLWIN_LINEUP
+	(:name "expEVT_SCROLLWIN_LINEUP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLLWIN_LINEDOWN
+	(:name "expEVT_SCROLLWIN_LINEDOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLLWIN_PAGEUP
+	(:name "expEVT_SCROLLWIN_PAGEUP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLLWIN_PAGEDOWN
+	(:name "expEVT_SCROLLWIN_PAGEDOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLLWIN_THUMBTRACK
+	(:name "expEVT_SCROLLWIN_THUMBTRACK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SCROLLWIN_THUMBRELEASE
+	(:name "expEVT_SCROLLWIN_THUMBRELEASE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SIZE
+	(:name "expEVT_SIZE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MOVE
+	(:name "expEVT_MOVE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CLOSE_WINDOW
+	(:name "expEVT_CLOSE_WINDOW")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_END_SESSION
+	(:name "expEVT_END_SESSION")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_QUERY_END_SESSION
+	(:name "expEVT_QUERY_END_SESSION")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_ACTIVATE_APP
+	(:name "expEVT_ACTIVATE_APP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_POWER
+	(:name "expEVT_POWER")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_ACTIVATE
+	(:name "expEVT_ACTIVATE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CREATE
+	(:name "expEVT_CREATE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_DESTROY
+	(:name "expEVT_DESTROY")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SHOW
+	(:name "expEVT_SHOW")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_ICONIZE
+	(:name "expEVT_ICONIZE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MAXIMIZE
+	(:name "expEVT_MAXIMIZE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MOUSE_CAPTURE_CHANGED
+	(:name "expEVT_MOUSE_CAPTURE_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PAINT
+	(:name "expEVT_PAINT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_ERASE_BACKGROUND
+	(:name "expEVT_ERASE_BACKGROUND")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_NC_PAINT
+	(:name "expEVT_NC_PAINT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PAINT_ICON
+	(:name "expEVT_PAINT_ICON")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MENU_CHAR
+	(:name "expEVT_MENU_CHAR")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MENU_INIT
+	(:name "expEVT_MENU_INIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MENU_HIGHLIGHT
+	(:name "expEVT_MENU_HIGHLIGHT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_POPUP_MENU_INIT
+	(:name "expEVT_POPUP_MENU_INIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CONTEXT_MENU
+	(:name "expEVT_CONTEXT_MENU")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SYS_COLOUR_CHANGED
+	(:name "expEVT_SYS_COLOUR_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_SETTING_CHANGED
+	(:name "expEVT_SETTING_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_QUERY_NEW_PALETTE
+	(:name "expEVT_QUERY_NEW_PALETTE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PALETTE_CHANGED
+	(:name "expEVT_PALETTE_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_JOY_BUTTON_DOWN
+	(:name "expEVT_JOY_BUTTON_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_JOY_BUTTON_UP
+	(:name "expEVT_JOY_BUTTON_UP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_JOY_MOVE
+	(:name "expEVT_JOY_MOVE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_JOY_ZMOVE
+	(:name "expEVT_JOY_ZMOVE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_DROP_FILES
+	(:name "expEVT_DROP_FILES")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_DRAW_ITEM
+	(:name "expEVT_DRAW_ITEM")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MEASURE_ITEM
+	(:name "expEVT_MEASURE_ITEM")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMPARE_ITEM
+	(:name "expEVT_COMPARE_ITEM")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_INIT_DIALOG
+	(:name "expEVT_INIT_DIALOG")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_IDLE
+	(:name "expEVT_IDLE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_UPDATE_UI
+	(:name "expEVT_UPDATE_UI")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_END_PROCESS
+	(:name "expEVT_END_PROCESS")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_DIALUP_CONNECTED
+	(:name "expEVT_DIALUP_CONNECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_DIALUP_DISCONNECTED
+	(:name "expEVT_DIALUP_DISCONNECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LEFT_CLICK
+	(:name "expEVT_COMMAND_LEFT_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LEFT_DCLICK
+	(:name "expEVT_COMMAND_LEFT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_RIGHT_CLICK
+	(:name "expEVT_COMMAND_RIGHT_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_RIGHT_DCLICK
+	(:name "expEVT_COMMAND_RIGHT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_SET_FOCUS
+	(:name "expEVT_COMMAND_SET_FOCUS")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_KILL_FOCUS
+	(:name "expEVT_COMMAND_KILL_FOCUS")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_ENTER
+	(:name "expEVT_COMMAND_ENTER")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_BEGIN_DRAG
+	(:name "expEVT_COMMAND_TREE_BEGIN_DRAG")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_BEGIN_RDRAG
+	(:name "expEVT_COMMAND_TREE_BEGIN_RDRAG")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_BEGIN_LABEL_EDIT
+	(:name "expEVT_COMMAND_TREE_BEGIN_LABEL_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_END_LABEL_EDIT
+	(:name "expEVT_COMMAND_TREE_END_LABEL_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_DELETE_ITEM
+	(:name "expEVT_COMMAND_TREE_DELETE_ITEM")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_GET_INFO
+	(:name "expEVT_COMMAND_TREE_GET_INFO")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_SET_INFO
+	(:name "expEVT_COMMAND_TREE_SET_INFO")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_ITEM_EXPANDED
+	(:name "expEVT_COMMAND_TREE_ITEM_EXPANDED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_ITEM_EXPANDING
+	(:name "expEVT_COMMAND_TREE_ITEM_EXPANDING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_ITEM_COLLAPSED
+	(:name "expEVT_COMMAND_TREE_ITEM_COLLAPSED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_ITEM_COLLAPSING
+	(:name "expEVT_COMMAND_TREE_ITEM_COLLAPSING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_SEL_CHANGED
+	(:name "expEVT_COMMAND_TREE_SEL_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_SEL_CHANGING
+	(:name "expEVT_COMMAND_TREE_SEL_CHANGING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_KEY_DOWN
+	(:name "expEVT_COMMAND_TREE_KEY_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_ITEM_ACTIVATED
+	(:name "expEVT_COMMAND_TREE_ITEM_ACTIVATED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_ITEM_RIGHT_CLICK
+	(:name "expEVT_COMMAND_TREE_ITEM_RIGHT_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK
+	(:name "expEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TREE_END_DRAG
+	(:name "expEVT_COMMAND_TREE_END_DRAG")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_BEGIN_DRAG
+	(:name "expEVT_COMMAND_LIST_BEGIN_DRAG")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_BEGIN_RDRAG
+	(:name "expEVT_COMMAND_LIST_BEGIN_RDRAG")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_BEGIN_LABEL_EDIT
+	(:name "expEVT_COMMAND_LIST_BEGIN_LABEL_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_END_LABEL_EDIT
+	(:name "expEVT_COMMAND_LIST_END_LABEL_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_DELETE_ITEM
+	(:name "expEVT_COMMAND_LIST_DELETE_ITEM")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_DELETE_ALL_ITEMS
+	(:name "expEVT_COMMAND_LIST_DELETE_ALL_ITEMS")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_GET_INFO
+	(:name "expEVT_COMMAND_LIST_GET_INFO")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_SET_INFO
+	(:name "expEVT_COMMAND_LIST_SET_INFO")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_ITEM_SELECTED
+	(:name "expEVT_COMMAND_LIST_ITEM_SELECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_ITEM_DESELECTED
+	(:name "expEVT_COMMAND_LIST_ITEM_DESELECTED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_KEY_DOWN
+	(:name "expEVT_COMMAND_LIST_KEY_DOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_INSERT_ITEM
+	(:name "expEVT_COMMAND_LIST_INSERT_ITEM")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_COL_CLICK
+	(:name "expEVT_COMMAND_LIST_COL_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_ITEM_RIGHT_CLICK
+	(:name "expEVT_COMMAND_LIST_ITEM_RIGHT_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK
+	(:name "expEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_ITEM_ACTIVATED
+	(:name "expEVT_COMMAND_LIST_ITEM_ACTIVATED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_LIST_ITEM_FOCUSED
+	(:name "expEVT_COMMAND_LIST_ITEM_FOCUSED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TAB_SEL_CHANGED
+	(:name "expEVT_COMMAND_TAB_SEL_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_TAB_SEL_CHANGING
+	(:name "expEVT_COMMAND_TAB_SEL_CHANGING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_NOTEBOOK_PAGE_CHANGED
+	(:name "expEVT_COMMAND_NOTEBOOK_PAGE_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_NOTEBOOK_PAGE_CHANGING
+	(:name "expEVT_COMMAND_NOTEBOOK_PAGE_CHANGING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_SPLITTER_SASH_POS_CHANGED
+	(:name "expEVT_COMMAND_SPLITTER_SASH_POS_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_SPLITTER_SASH_POS_CHANGING
+	(:name "expEVT_COMMAND_SPLITTER_SASH_POS_CHANGING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_SPLITTER_DOUBLECLICKED
+	(:name "expEVT_COMMAND_SPLITTER_DOUBLECLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_COMMAND_SPLITTER_UNSPLIT
+	(:name "expEVT_COMMAND_SPLITTER_UNSPLIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_WIZARD_PAGE_CHANGED
+	(:name "expEVT_WIZARD_PAGE_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_WIZARD_PAGE_CHANGING
+	(:name "expEVT_WIZARD_PAGE_CHANGING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_WIZARD_CANCEL
+	(:name "expEVT_WIZARD_CANCEL")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CALENDAR_SEL_CHANGED
+	(:name "expEVT_CALENDAR_SEL_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CALENDAR_DAY_CHANGED
+	(:name "expEVT_CALENDAR_DAY_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CALENDAR_MONTH_CHANGED
+	(:name "expEVT_CALENDAR_MONTH_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CALENDAR_YEAR_CHANGED
+	(:name "expEVT_CALENDAR_YEAR_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CALENDAR_DOUBLECLICKED
+	(:name "expEVT_CALENDAR_DOUBLECLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_CALENDAR_WEEKDAY_CLICKED
+	(:name "expEVT_CALENDAR_WEEKDAY_CLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_SEL_CHANGING
+	(:name "expEVT_PLOT_SEL_CHANGING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_SEL_CHANGED
+	(:name "expEVT_PLOT_SEL_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_CLICKED
+	(:name "expEVT_PLOT_CLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_DOUBLECLICKED
+	(:name "expEVT_PLOT_DOUBLECLICKED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_ZOOM_IN
+	(:name "expEVT_PLOT_ZOOM_IN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_ZOOM_OUT
+	(:name "expEVT_PLOT_ZOOM_OUT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_VALUE_SEL_CREATING
+	(:name "expEVT_PLOT_VALUE_SEL_CREATING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_VALUE_SEL_CREATED
+	(:name "expEVT_PLOT_VALUE_SEL_CREATED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_VALUE_SEL_CHANGING
+	(:name "expEVT_PLOT_VALUE_SEL_CHANGING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_VALUE_SEL_CHANGED
+	(:name "expEVT_PLOT_VALUE_SEL_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_AREA_SEL_CREATING
+	(:name "expEVT_PLOT_AREA_SEL_CREATING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_AREA_SEL_CREATED
+	(:name "expEVT_PLOT_AREA_SEL_CREATED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_AREA_SEL_CHANGING
+	(:name "expEVT_PLOT_AREA_SEL_CHANGING")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_AREA_SEL_CHANGED
+	(:name "expEVT_PLOT_AREA_SEL_CHANGED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_BEGIN_X_LABEL_EDIT
+	(:name "expEVT_PLOT_BEGIN_X_LABEL_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_END_X_LABEL_EDIT
+	(:name "expEVT_PLOT_END_X_LABEL_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_BEGIN_Y_LABEL_EDIT
+	(:name "expEVT_PLOT_BEGIN_Y_LABEL_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_END_Y_LABEL_EDIT
+	(:name "expEVT_PLOT_END_Y_LABEL_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_BEGIN_TITLE_EDIT
+	(:name "expEVT_PLOT_BEGIN_TITLE_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_END_TITLE_EDIT
+	(:name "expEVT_PLOT_END_TITLE_EDIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_PLOT_AREA_CREATE
+	(:name "expEVT_PLOT_AREA_CREATE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_USER_FIRST
+	(:name "expEVT_USER_FIRST")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_DYNAMIC_SASH_SPLIT
+	(:name "expEVT_DYNAMIC_SASH_SPLIT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_DYNAMIC_SASH_UNIFY
+	(:name "expEVT_DYNAMIC_SASH_UNIFY")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_HELP
+	(:name "expEVT_HELP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_DETAILED_HELP
+	(:name "expEVT_DETAILED_HELP")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_CELL_LEFT_CLICK
+	(:name "expEVT_GRID_CELL_LEFT_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_CELL_RIGHT_CLICK
+	(:name "expEVT_GRID_CELL_RIGHT_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_CELL_LEFT_DCLICK
+	(:name "expEVT_GRID_CELL_LEFT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_CELL_RIGHT_DCLICK
+	(:name "expEVT_GRID_CELL_RIGHT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_LABEL_LEFT_CLICK
+	(:name "expEVT_GRID_LABEL_LEFT_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_LABEL_RIGHT_CLICK
+	(:name "expEVT_GRID_LABEL_RIGHT_CLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_LABEL_LEFT_DCLICK
+	(:name "expEVT_GRID_LABEL_LEFT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_LABEL_RIGHT_DCLICK
+	(:name "expEVT_GRID_LABEL_RIGHT_DCLICK")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_ROW_SIZE
+	(:name "expEVT_GRID_ROW_SIZE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_COL_SIZE
+	(:name "expEVT_GRID_COL_SIZE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_RANGE_SELECT
+	(:name "expEVT_GRID_RANGE_SELECT")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_CELL_CHANGE
+	(:name "expEVT_GRID_CELL_CHANGE")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_SELECT_CELL
+	(:name "expEVT_GRID_SELECT_CELL")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_EDITOR_SHOWN
+	(:name "expEVT_GRID_EDITOR_SHOWN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_EDITOR_HIDDEN
+	(:name "expEVT_GRID_EDITOR_HIDDEN")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_GRID_EDITOR_CREATED
+	(:name "expEVT_GRID_EDITOR_CREATED")
 	(:return-type ffi:int)
 	(:library +library-name+))
