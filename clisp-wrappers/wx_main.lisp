@@ -24,7 +24,7 @@
 (FFI:DEF-C-TYPE wxClosure NIL)
 
 (FFI:DEF-C-TYPE
-    ClosureFun (ffi:c-function (:arguments (_fun (ffi:c-pointer wxClosure))
+    ClosureFun (ffi:c-function (:arguments (_fun (ffi:c-pointer NIL))
 					   (_data (ffi:c-pointer NIL))
 					   (_evt (ffi:c-pointer NIL)))
 			       (:return-type NIL)))
@@ -43,7 +43,7 @@
     (:name "ELJApp_InitializeC")
   (:arguments (closure (ffi:c-pointer wxClosure))
 	      (_argc ffi:int)
-	      (_argv (ffi:c-pointer ffi:c-string)))
+	      (_argv (ffi:c-array-ptr ffi:c-string)))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -61,14 +61,14 @@
 
 (defmacro with-wxcl (&body body)
   (let ((closure-fun (gensym))
-	(closure (gensym))
-	(fun (gensym))
-	(data (gensym))
-	(evt (gensym)))
+ 	(closure (gensym))
+ 	(fun (gensym))
+ 	(data (gensym))
+ 	(evt (gensym)))
     `(flet ((,closure-fun (,fun ,data ,evt)
-	     (unwind-protect
-		  (progn ,@body)
-	       (ELJApp_ExitMainLoop))))
+ 	     (unwind-protect
+ 		  (progn ,@body)
+ 	       (ELJApp_ExitMainLoop))))
       (setf ,closure (wxClosure_Create #',closure-fun nil))
       (Eljapp_initializeC ,closure 0 nil)
       )))
