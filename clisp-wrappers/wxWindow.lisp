@@ -455,8 +455,8 @@
 (ffi:def-call-out wxWindow_GetChildren
 	(:name "wxWindow_GetChildren")
 	(:arguments (_obj (ffi:c-pointer wxWindow))
-		(_res (ffi:c-pointer wxWindow))
-		(_cnt ffi:int))
+		    (_res (ffi:c-array-ptr (ffi:c-pointer wxWindow)))
+		    (_cnt ffi:int))
 	(:return-type ffi:int)
 	(:library +library-name+))
 
