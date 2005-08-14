@@ -1,5 +1,5 @@
 ;;;wxChoice.lisp
-;;;License   : BSD-style
+;;;License  : GNU General Public License (GPL)
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
 ;;;See the file LICENSE for information on usage and redistribution.
@@ -42,7 +42,7 @@
 
 (defmacro wxcl-create-choice (frame choices &key (id -1) (left -1) (top -1) (width -1)(height -1)
 				      (style 0))
-  "Creates a list box containing 'n' choices."
+  "Creates a choice box containing 'n' choices."
   (let ((len (gensym)))
     `(let ((,len (length ,choices)))
       (wxChoice_Create ,frame ,id  ,left ,top ,width ,height ,len ,choices ,style))))

@@ -1,13 +1,11 @@
 ;;;wxCheckBox.lisp
-;;;License   : BSD-style
+;;;License  : GNU General Public License (GPL)
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
 ;;; $Header$
 ;;;
-;; This is an automatically generated file. 
-;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
 (defpackage :wxCheckBox
     (:use :common-lisp :ffi :wxCL)

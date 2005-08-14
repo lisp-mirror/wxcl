@@ -1,5 +1,5 @@
 ;;;wxDialog.lisp
-;;;License   : BSD-style
+;;;License  : GNU General Public License (GPL)
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
 ;;;See the file LICENSE for information on usage and redistribution.
@@ -84,9 +84,9 @@
 
 (defmacro with-dialog ((dialog parent &key (id -1) (title "") (left -1) (top -1)
 			       (width -1) (height -1) style) &body body)
-  `(let (,dialog) 
+  `(let (,dialog)
     (unwind-protect
 	 (progn
 	   (setf ,dialog (wxDialog_Create ,parent ,id ,title ,left ,top ,width ,height ,style))
 	   ,@body)
-	 (wxWindow_destroy ,dialog))))
+      (wxWindow_destroy ,dialog))))
