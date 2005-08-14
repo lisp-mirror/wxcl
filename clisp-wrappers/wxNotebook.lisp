@@ -94,7 +94,7 @@
     (:name "wxNotebook_SetPageText")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (nPage ffi:int)
-	      (strText (ffi:c-pointer NIL)))
+	      (strText ffi:c-string))
   (:return-type ffi:int)
   (:library +library-name+))
 
