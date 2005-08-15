@@ -12,7 +12,7 @@ operating system platforms.
 wxCL builds upon wxWidgets, a comprehensive C++ library that provides
 uniform application interface to all major GUI platforms; including  
 GTK, Windows, X11, and MacOS X. wxWidgets is a mature library which
-was first released in 1992,  and since improved upon by a commited
+was first released in 1992,  and since improved upon by a committed
 developer community, it is ranked among  the top 25 most active
 projects on sourceforge. wxWidgets makes many features available to
 Common Lisp environments which have been missing in traditional
