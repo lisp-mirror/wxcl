@@ -1,3 +1,4 @@
+;;;image-file.lisp
 ;;;License   : BSD-style
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
