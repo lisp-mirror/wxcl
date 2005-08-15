@@ -17,9 +17,18 @@
 	   :wxAcceleratorEntry_GetCommand
 	   :wxAcceleratorTable_Create
 	   :wxAcceleratorTable_Delete
-	   :wxCL-create-accelerator-entries))
+	   :wxCL-create-accelerator-entries
+	   :wxACCEL_ALT
+	   :wxACCEL_CTRL
+	   :wxACCEL_SHIFT
+	   :wxACCEL_NORMAL))
 
 (in-package :wxAcceleratorEntry)
+
+(defconstant wxACCEL_ALT 1)
+(defconstant wxACCEL_CTRL 2)
+(defconstant wxACCEL_SHIFT 4)
+(defconstant wxACCEL_NORMAL 0)
 
 (ffi:default-foreign-language :stdc)
 
@@ -78,10 +87,9 @@
   (:library +library-name+))
 
 (defmacro wxCL-create-accelerator-entries (frame &body body)
-  (let ((table (gensym))
-	(size (length body)))
+  (let ((size (length body)))
     `(wxWindow_SetAcceleratorTable ,frame
-      (wxAcceleratorTable_Create ,size(make-array ,size :initial-contents
-				       (list ,@(mapcar (lambda (x) `(wxAcceleratorEntry_Create ,@x)) body)))))))
+      (wxAcceleratorTable_Create ,size (make-array ,size :initial-contents
+					(list ,@(mapcar (lambda (x) `(wxAcceleratorEntry_Create ,@x)) body)))))))
 						   
 				 
