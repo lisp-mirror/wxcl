@@ -1,3 +1,4 @@
+;;;edit.lisp
 ;;;License   : BSD-style
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
@@ -6,7 +7,24 @@
 ;;; $Header$
 ;;;
 
-(use-package "FFI")
+
+;;;This program demonstrates some of the features of wxCL library
+;;;In particular it uses the wxNotebook Sizer and shows hot to
+;;;create panes, each pane contains a text control, files can be opened, edited and saved.
+;;;It is possible to change the color and font of text, this change will
+;;;be made to the entire text in the file.
+;;;The close and save functionality does not work (though saveas works)
+;;;the reason why the above two doesn't work is because I am not able to
+;;;find a method of comparing two foreign pointers in clisp.
+;;;Check out this link for info:
+;;;http://thread.gmane.org/gmane.lisp.clisp.general/9967
+;;;
+;;;It will be possible to correctly implement save and close using
+;;;hacks, but I am looking for a more elegant solution. Someday,
+;;;when I will have time, I will get back to fixing it :)
+;;;Quitting the program is broken in all samples. Quitting should not end lisp session.
+
+
 ; (load "../clisp-wrappers/wxCL.lisp")
 ; (load "../clisp-wrappers/constants.lisp")
 ; (load "../clisp-wrappers/wx_wrapper.lisp")
@@ -19,8 +37,8 @@
 ; (load "../clisp-wrappers/wxMenuBar.lisp")
 ; (load "../clisp-wrappers/wxEvent.lisp")
 ; (load "../clisp-wrappers/wxEvtHandler.lisp")
-(load "../clisp-wrappers/wxFileDialog.lisp")
 ; (load "../clisp-wrappers/wxDialog.lisp")
+; (load "../clisp-wrappers/wxFileDialog.lisp")
 ; (load "../clisp-wrappers/wxIcon.lisp")
 ; (load "../clisp-wrappers/wxPanel.lisp")
 ; (load "../clisp-wrappers/wxBitmap.lisp")
@@ -28,18 +46,20 @@
 ; (load "../clisp-wrappers/wxToolBar.lisp")
 ; (load "../clisp-wrappers/wxStatusBar.lisp")
 ; (load "../clisp-wrappers/wxTextctrl.lisp")
- (load "../clisp-wrappers/wxNotebook.lisp")
+; (load "../clisp-wrappers/wxNotebook.lisp")
 ; (load "../clisp-wrappers/wxMenu.lisp")
 ; (load "../clisp-wrappers/wxMenuBar.lisp")
 ; (load "../clisp-wrappers/wxAcceleratorEntry.lisp")
+; (load "../clisp-wrappers/wxFont.lisp")
+; (load "../clisp-wrappers/wxFontData.lisp")
+; (load "../clisp-wrappers/wxFontDialog.lisp")
+; (load "../clisp-wrappers/wxColour.lisp")
+; (load "../clisp-wrappers/wxColourData.lisp")
+; (load "../clisp-wrappers/wxColourDialog.lisp")
 
-(load "../clisp-wrappers/wxWindow.lisp")
-(load "../clisp-wrappers/wxFontData.lisp")
-(load "../clisp-wrappers/wxFontDialog.lisp")
+(asdf:operate 'asdf:load-op 'wxcl)
 
-(load "../clisp-wrappers/wxColourData.lisp")
-(load "../clisp-wrappers/wxColourDialog.lisp")
-
+(use-package "FFI")
 (use-package :wxImage)
 (use-package :wxCL)
 (use-package :wxEvent)
@@ -71,12 +91,12 @@
   
 (defun add-menu (frame)
   (let ((file-menu (wxcl-create-menu ()
- 			        (:id wxID_NEW :item "&New     Ctrl+N" :helpString "Open a new file")
+ 			        (:id wxID_NEW :item   "&New      Ctrl+N" :helpString "Open a new file")
 				(:kind wxITEM_SEPARATOR)
-				(:id wxID_OPEN :item "&Open ...  Ctrl+O" :helpString "Open an existing file")
-				(:id wxID_SAVE :item "&Save  Ctrl+s" :helpString "Save file")
+				(:id wxID_OPEN :item  "&Open ... Ctrl+O" :helpString "Open an existing file")
+				(:id wxID_SAVE :item  "&Save     Ctrl+S" :helpString "Save file")
 				(:id wxID_SAVEAS :item "Save &As ..." :helpString "Save file with a different name")
-				(:id wxID_CLOSE :item "&Close Ctrl+C" :helpString "Open an existing file")
+				(:id wxID_CLOSE :item "&Close    Ctrl+C" :helpString "Open an existing file")
 				(:kind wxITEM_SEPARATOR)
 				(:id wxID_EXIT :item "&Quit" :helpString "Quit the text editor")))
 	(edit-menu (wxcl-create-menu ()
@@ -106,7 +126,6 @@
 	(when (wxTextCtrl_IsModified txt-control)
 	  (print (wxTextCtrl_SaveFile txt-control filename)))))))
 
-
 (defun saveas-file (fun nb evt)
   (let ((sel (wxNotebook_GetSelection nb)))
     (unless (= sel -1)
@@ -127,8 +146,9 @@
 	(wxWindow_GetFont txt-control font)
 	(wxFontData:wxFontData_SetInitialFont font-data font)
 	(setf font-data (wxFontDialog:wxcl-get-font txt-control font-data))
-	(wxFontData:wxFontData_GetChosenFont font-data font)
-	(wxWindow_SetFont txt-control font)))))
+	(when font-data
+	  (wxFontData:wxFontData_GetChosenFont font-data font)
+	  (wxWindow_SetFont txt-control font))))))
 
 (defun change-color (fun nb evt)
   (let ((sel (wxNotebook_GetSelection nb)))
@@ -139,8 +159,9 @@
 	(wxWindow_GetForegroundColour txt-control colour)
 	(wxColourData:wxColourData_SetColour colour-data colour)
 	(setf colour-data (wxColourDialog:wxcl-get-colour txt-control colour-data))
-	(wxColourData:wxColourData_GetColour colour-data colour)
-	(wxWindow_SetForegroundColour txt-control colour)))))
+	(when colour-data
+	  (wxColourData:wxColourData_GetColour colour-data colour)
+	  (wxWindow_SetForegroundColour txt-control colour))))))
 
 
 (defun add-accelerator-keys (frame)
@@ -205,7 +226,7 @@
     (add-menu frame)
     (add-accelerator-keys frame)
     (add-tool-bar frame)
-    (wxFrame_SetIcon frame (wxicon_createload "ImageViewer.ico" wxBITMAP_TYPE_ICO -1 -1))
+    (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
     (setf nb (wxCL-create-notebook frame))
     (register-events frame nb)
     (wxWindow_Show frame)
@@ -216,4 +237,4 @@
 (setf x (wxClosure_Create #'test-closure nil))
 
 ;;;Starts execution
-;(Eljapp_initializeC x 0 nil)
+(Eljapp_initializeC x 0 nil)

@@ -1,3 +1,62 @@
+;;;controls.lisp
+;;;License   : BSD-style
+;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
+;;;Copyright (C) 2005 Surendra Singhi 
+;;;See the file LICENSE for information on usage and redistribution.
+;;;
+;;; $Header$
+;;;
+
+;;;This program demonstrates some of the features of wxCL library.
+;;;It uses box sizer and creates different kind of controls lik
+;;;list boxes, combo boxes, calendar control, tree control, text
+;;;boxes, radio boxes, etc. It also creates a directory chooser when it is
+;;;started.
+;;;This program doesn't do anything useful, it is just meant for testing the
+;;;various controls and to show an instance of how to create them.
+;;;Quitting the program is _not_ broken in this samples, because 
+;;wxWidget does it automatically
+
+
+; (load "../clisp-wrappers/wxCL.lisp")
+; (load "../clisp-wrappers/constants.lisp")
+; (load "../clisp-wrappers/wx_wrapper.lisp")
+; (load "../clisp-wrappers/wx_main.lisp")
+; (load "../clisp-wrappers/wxWindow.lisp")
+; (load "../clisp-wrappers/wxFrame.lisp")
+; (load "../clisp-wrappers/wxSizer.lisp")
+; (load "../clisp-wrappers/wxPanel.lisp")
+
+; (load "../clisp-wrappers/wxIcon.lisp")
+; (load "../clisp-wrappers/wxDialog.lisp")
+; (load "../clisp-wrappers/wxDirDialog.lisp")
+
+; (load "../clisp-wrappers/wxButton.lisp")
+; (load "../clisp-wrappers/wxCheckListBox.lisp")
+; (load "../clisp-wrappers/wxRadioButton.lisp")
+; (load "../clisp-wrappers/wxspinCtrl.lisp")
+; (load "../clisp-wrappers/wxListBox.lisp")
+; (load "../clisp-wrappers/wxListCtrl.lisp")
+; (load "../clisp-wrappers/wxTreeCtrl.lisp")
+; (load "../clisp-wrappers/wxSpinCtrl.lisp")
+; (load "../clisp-wrappers/wxDateTime.lisp")
+; (load "../clisp-wrappers/wxCalendarCtrl.lisp")
+; (load "../clisp-wrappers/wxNotebook.lisp")
+; (load "../clisp-wrappers/wxChoice.lisp")
+; (load "../clisp-wrappers/wxComboBox.lisp")
+; (load "../clisp-wrappers/wxCheckBox.lisp")
+; (load "../clisp-wrappers/wxRadioBox.lisp")
+; (load "../clisp-wrappers/wxStaticText.lisp")
+; (load "../clisp-wrappers/wxStaticBox.lisp")
+; (load "../clisp-wrappers/wxCalendarCtrl.lisp")
+; (load "../clisp-wrappers/wxGauge.lisp")
+; (load "../clisp-wrappers/wxStaticLine.lisp")
+; (load "../clisp-wrappers/wxToggleButton.lisp")
+; (load "../clisp-wrappers/wxTextCtrl.lisp")
+; (load "../clisp-wrappers/wxStaticLine.lisp")
+
+(asdf:operate 'asdf:load-op 'wxcl)
+
 (use-package :wxCL)
 ;(use-package :wxEvent)
 (use-package :wxframe)
@@ -19,13 +78,6 @@
 (use-package :wxComboBox)
 (use-package :wxTreeCtrl)
 (use-package :wxListCtrl)
-
-(load "../clisp-wrappers/wxStaticText.lisp")
-(load "../clisp-wrappers/wxStaticBox.lisp")
-(load "../clisp-wrappers/wxCalendarCtrl.lisp")
-(load "../clisp-wrappers/wxGauge.lisp")
-(load "../clisp-wrappers/wxStaticLine.lisp")
-(load "../clisp-wrappers/wxToggleButton.lisp")
 
 (defun add-top-controls (sizer panel)
    (let* ((lisp-text (wxStaticText:wxcl-create-static-text panel "Choose your lisp"))
@@ -103,15 +155,12 @@
     (wxsizer_setsizehints main-sizer panel)))
 
 (defun init-func (fun data evt)
-  (let ((frame (wxframe_create nil -1 "wxCL - Lisp Interpreter" 10 10 700 600 wxDefault_Frame_Style)))
+  (let ((frame (wxframe_create nil -1 "wxCL - Controls Demo" 10 10 700 600 wxDefault_Frame_Style)))
     (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
     (add-controls frame)
     (wxwindow_show frame)
-    (print (wxDirDialog:wxcl-get-dir frame))
-;    (begin-loop)
-;    (repl)
-;    (eljapp_Exit)
-;    (ELJApp_ExitMainLoop)
-    ))
-;(Eljapp_initializeC (wxclosure_Create (function init-func) nil) 0 nil)
+    (print (wxDirDialog:wxcl-get-dir frame))))
+
+
+(Eljapp_initializeC (wxclosure_Create (function init-func) nil) 0 nil)
 
