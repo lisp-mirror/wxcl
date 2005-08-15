@@ -7,10 +7,6 @@
 ;;; $Header$
 ;;;
 
-(defconstant wxACCEL_ALT 1)
-(defconstant wxACCEL_CTRL 2)
-(defconstant wxACCEL_SHIFT 4)
-(defconstant wxACCEL_NORMAL 0)
 (defconstant wxNULL_FLAG 0)
 (defconstant wxEVT_NULL 0)
 (defconstant wxEVT_FIRST 10000)
