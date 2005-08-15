@@ -3,11 +3,11 @@ Announcement: wxCL 1.0.0
 
  <http://www.wxcl-project.org>
 
-We are pleased to announce the first release (1.0.0) of wxCL, a new
-open source GUI library for Common Lisp. The goal of the project is to
-provide an industrial strength portable GUI library for application
-developers, which runs across all lisp implementation and operating
-system platforms. 
+We are pleased to announce the first release (1.0.0 Alpha) of wxCL, a
+new open source GUI library for Common Lisp. The goal of the project
+is to provide an industrial strength portable GUI library for
+application developers, which runs across all lisp implementation and
+operating system platforms.  
 
 wxCL builds upon wxWidgets, a comprehensive C++ library that provides
 uniform application interface to all major GUI platforms; including  
