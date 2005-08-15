@@ -1,13 +1,10 @@
 ;;;wxcl.asd
-;;;License   : BSD-style
+;;;License  : GNU General Public License (GPL)
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
 ;;; $Header$
-;;;courier no. 013558022
-;EZ WORLDWIDE EXPRESS
-;toll free - 1-888-624-5464
 
 (defparameter *wxCL-directory*
   (make-pathname :name nil :type nil :version nil
@@ -17,11 +14,19 @@
   (parse-namestring (concatenate 'string (directory-namestring *wxCL-directory*) "clisp-wrappers\\")))
 
 
+(print "Copyright (c) Surendra Singhi 2005")
+(print "wxCL = wxWidgets + Common Lisp")
+
 (defsystem wxCL
     :description "wxCL - Common Lisp bindings to wxWidgets Library."
     :version "1.0"
     :pathname *wxCL-clisp-directory*
-    :licence "Open BSD"
+    :licence "GPL"
+    :properties (((#:albert #:output-dir) . "albert-docs/")
+		 ((#:albert #:formats) . ("docbook"))
+		 ((#:albert #:docbook #:template) . "book")
+		 ((#:albert #:docbook #:bgcolor) . "white")
+		 ((#:albert #:docbook #:textcolor) . "black"))	
     :components ((:file "constants" :depends-on ("wxCL"))
 		 (:file "wx_wrapper" :depends-on ("wxCL"))
 		 (:file "wx_main" :depends-on ("wxCL" "wx_wrapper"))
@@ -31,7 +36,8 @@
 		 (:file "wxBitmap" :depends-on ("wxCL"))
 		 (:file "wxBrush" :depends-on ("wxCL"))
 		 (:file "wxBusyInfo" :depends-on ("wxCL"))
-		 (:file "wxCalendarCtrl" :depends-on ("wxCL"))
+		 (:file "wxButton" :depends-on ("wxCL"))
+		 (:file "wxCalendarCtrl" :depends-on ("wxCL" "wxDateTime"))
 		 (:file "wxCaret" :depends-on ("wxCL"))
 		 (:file "wxCheckBox" :depends-on ("wxCL"))
 		 (:file "wxCheckListBox" :depends-on ("wxCL"))
@@ -40,7 +46,7 @@
 		 (:file "wxClipboard" :depends-on ("wxCL"))
 		 (:file "wxColour" :depends-on ("wxCL"))
 		 (:file "wxColourData" :depends-on ("wxCL"))
-		 (:file "wxColourDialog" :depends-on ("wxCL" "wxWindow" "wxDialog"))
+		 (:file "wxColourDialog" :depends-on ("wxCL" "wxWindow" "wxDialog" "wxColourData"))
 		 (:file "wxComboBox" :depends-on ("wxCL"))
 		 (:file "wxCommand" :depends-on ("wxCL"))
 		 (:file "wxConfigBase" :depends-on ("wxCL"))
@@ -64,7 +70,7 @@
 		 (:file "wxFL" :depends-on ("wxCL"))
 		 (:file "wxFont" :depends-on ("wxCL"))
 		 (:file "wxFontData" :depends-on ("wxCL"))
-		 (:file "wxFontDialog" :depends-on ("wxCL" "wxWindow" "wxDialog"))
+		 (:file "wxFontDialog" :depends-on ("wxCL" "wxWindow" "wxDialog" "wxFontData"))
 		 (:file "wxFrame" :depends-on ("wxCL"))
 		 (:file "wxGauge" :depends-on ("wxCL"))
 		 (:file "wxGizmos" :depends-on ("wxCL"))
@@ -108,17 +114,17 @@
 		 (:file "wxSingleInstanceChecker" :depends-on ("wxCL"))
 		 (:file "wxSizer" :depends-on ("wxCL"))
 		 (:file "wxSlider" :depends-on ("wxCL"))
-		 (:file "wxSpinCtrl" :depends-on ("wxCL"))
+		 (:file "wxSpinCtrl" :depends-on ("wxCL" "wxWindow"))
 		 (:file "wxSplitterWindow" :depends-on ("wxCL"))
 		 (:file "wxStaticBox" :depends-on ("wxCL"))
 		 (:file "wxStaticLine" :depends-on ("wxCL"))
 		 (:file "wxStaticText" :depends-on ("wxCL"))
 		 (:file "wxStatusBar" :depends-on ("wxCL"))
 		 (:file "wxSystemSettings" :depends-on ("wxCL"))
-		 (:file "wxTextCtrl" :depends-on ("wxCL"))
+		 (:file "wxTextCtrl" :depends-on ("wxCL" "wxWindow"))
 		 (:file "wxThread" :depends-on ("wxCL"))
 		 (:file "wxTimer" :depends-on ("wxCL"))
-		 (:file "wxTipWindow" :depends-on ("wxCL"))
+		 (:file "wxTipWindow" :depends-on ("wxCL" "wxWindow"))
 		 (:file "wxToggleButton" :depends-on ("wxCL"))
 		 (:file "wxToolBar" :depends-on ("wxCL"))
 		 (:file "wxTreeCtrl" :depends-on ("wxCL"))
