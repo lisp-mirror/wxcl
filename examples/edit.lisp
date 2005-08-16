@@ -1,7 +1,9 @@
 ;;;edit.lisp
 ;;;License  : GNU General Public License (GPL)
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
+;;;            Andre Vargas Abs da Cruz (andrev@ele.puc-rio.br)
 ;;;Copyright (C) 2005 Surendra Singhi 
+;;;Copyright (C) 2005 Andre Vargas Abs da Cruz
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
 ;;; $Header$
@@ -180,7 +182,7 @@
 (defun add-tool-bar(frame)
   (let ((tb (wxframe_createtoolbar frame (boole boole-ior wxTB_3DBUTTONS wxTB_HORIZONTAL)))
 	(open-ico (wxbitmap_createload "f_open.ico" wxBITMAP_TYPE_ICO))
-	(close-ico (wxbitmap_createload "f_close.ico" wxBITMAP_TYPE_ICO)))
+	(close-ico (wxbitmap_createload "f_closed.ico" wxBITMAP_TYPE_ICO)))
     (wxToolBar_AddTool tb wxID_OPEN open-ico "Open file" "Opens Image files.")
     (wxtoolbar_addtool tb wxID_CLOSE close-ico "Close file" "Closes Image files.")
     (wxToolBar_Realize tb)))
@@ -233,7 +235,7 @@
     (add-menu frame)
     (add-accelerator-keys frame)
     (add-tool-bar frame)
-    (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
+    ;(wxFrame_SetIcon frame (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
     (setf nb (wxCL-create-notebook frame))
     (register-events frame nb)
     (wxWindow_Show frame)
