@@ -7,30 +7,30 @@
 ;;; $Header$
 ;;;
 
-; (load "../clisp-wrappers/wxCL.lisp")
-; (load "../clisp-wrappers/constants.lisp")
-; (load "../clisp-wrappers/wx_wrapper.lisp")
-; (load "../clisp-wrappers/wx_main.lisp")
-; (load "../clisp-wrappers/wxImage.lisp")
-; (load "../clisp-wrappers/wxWindow.lisp")
-; (load "../clisp-wrappers/wxScrolledWindow.lisp")
-; (load "../clisp-wrappers/wxFrame.lisp")
-; (load "../clisp-wrappers/wxPanel.lisp")
-; (load "../clisp-wrappers/wxDialog.lisp")
-; (load "../clisp-wrappers/wxMenuItem.lisp")
-; (load "../clisp-wrappers/wxMenu.lisp")
-; (load "../clisp-wrappers/wxFileDialog.lisp")
-; (load "../clisp-wrappers/wxMenuBar.lisp")
-; (load "../clisp-wrappers/wxEvtHandler.lisp")
-; (load "../clisp-wrappers/wxEvent.lisp")
-; (load "../clisp-wrappers/wxIcon.lisp")
-; (load "../clisp-wrappers/wxBitmap.lisp")
-; (load "../clisp-wrappers/wxMessageDialog.lisp")
-; (load "../clisp-wrappers/wxToolBar.lisp")
-; (load "../clisp-wrappers/wxStatusBar.lisp")
-; (load "../clisp-wrappers/wxAcceleratorEntry.lisp")
+(load "../clisp-wrappers/wxCL.lisp")
+(load "../clisp-wrappers/constants.lisp")
+(load "../clisp-wrappers/wx_wrapper.lisp")
+(load "../clisp-wrappers/wx_main.lisp")
+(load "../clisp-wrappers/wxImage.lisp")
+(load "../clisp-wrappers/wxWindow.lisp")
+(load "../clisp-wrappers/wxScrolledWindow.lisp")
+(load "../clisp-wrappers/wxFrame.lisp")
+(load "../clisp-wrappers/wxPanel.lisp")
+(load "../clisp-wrappers/wxDialog.lisp")
+(load "../clisp-wrappers/wxMenuItem.lisp")
+(load "../clisp-wrappers/wxMenu.lisp")
+(load "../clisp-wrappers/wxFileDialog.lisp")
+(load "../clisp-wrappers/wxMenuBar.lisp")
+(load "../clisp-wrappers/wxEvtHandler.lisp")
+(load "../clisp-wrappers/wxEvent.lisp")
+(load "../clisp-wrappers/wxIcon.lisp")
+(load "../clisp-wrappers/wxBitmap.lisp")
+(load "../clisp-wrappers/wxMessageDialog.lisp")
+(load "../clisp-wrappers/wxToolBar.lisp")
+(load "../clisp-wrappers/wxStatusBar.lisp")
+(load "../clisp-wrappers/wxAcceleratorEntry.lisp")
 
-(asdf:operate 'asdf:load-op 'wxcl)
+;(asdf:operate 'asdf:load-op 'wxcl)
 
 (use-package "FFI")
 
@@ -58,6 +58,7 @@
 
 (defvar OPEN-TOOLBAR-ID 50001)
 (defvar CLOSE-TOOLBAR-ID 60001)
+
 
 (defun add-menu(frame)
   (let((file-menu (wxCL-create-menu ()
@@ -87,46 +88,49 @@
     (wxToolBar_Realize tb)))
 
 (defun open-image (fun frame evt)
-   (let	 ((filename
+  (when evt
+    (let ((filename
 	   (wxcl-get-filepath frame
- 			    :message "open file"
- 			    :style (boole boole-ior wxOPEN wxFILE_MUST_EXIST)
- 			    :wildcard "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")))
-     (when filename
-       (let* ((bmp (wxbitmap_createload filename wxBITMAP_TYPE_ANY))
-  	     (fr (wxFrame_create frame -1 filename 10 10 500 500 wxDEFAULT_FRAME_STYLE))
-  	     (sw (wxScrolledWindow_Create fr -1 -1 -1 -1 -1 (boole boole-ior wxHSCROLL wxVSCROLL)))
-  	     (bmp-static (wxStaticbitmap_create sw -1 bmp -1 -1 -1 -1 0)))
-  	(wxFrame_SetIcon fr (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
-  	(wxScrolledWindow_SetScrollbars sw 20 20 50 50 -1 -1 0)
-  	(wxWindow_Show fr)))))
+			      :message "open file"
+			      :style (boole boole-ior wxOPEN wxFILE_MUST_EXIST)
+			      :wildcard "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")))
+      (when filename
+	(let* ((bmp (wxbitmap_createload filename wxBITMAP_TYPE_ANY))
+	       (fr (wxFrame_create frame -1 filename 10 10 500 500 wxDEFAULT_FRAME_STYLE))
+	       (sw (wxScrolledWindow_Create fr -1 -1 -1 -1 -1 (boole boole-ior wxHSCROLL wxVSCROLL)))
+	       (bmp-static (wxStaticbitmap_create sw -1 bmp -1 -1 -1 -1 0)))
+	  (wxFrame_SetIcon fr (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
+	  (wxScrolledWindow_SetScrollbars sw 20 20 50 50 -1 -1 0)
+	  (wxWindow_Show fr))))))
 
 (defun close-image (fun data evt)
-  (print evt)
-  (print data)
-  (print "close image"))
+  (when evt
+    (print evt)
+    (print data)
+    (print "close image")))
 
 (defun about-box (fun frame evt)
-  (show-message-dialog frame
- 		       "Image viewer demonstrates some of the features of wxCL. All rights reserved, this program is distributed under GNU GPL."
- 		       "Image Viewer - wxCL"
- 		       wxOK))
+  (when evt
+    (show-message-dialog frame
+			 "Image viewer demonstrates some of the features of wxCL. All rights reserved, this program is distributed under GNU GPL."
+			 "Image Viewer - wxCL"
+			 wxOK)))
 
 (defun quit-viewer (fun frame evt)
-  (when (FFI:VALIDP frame)
-;  (print (wxwindow_close frame 0))
-    (wxwindow_Destroy frame 0)
-    (setf (FFI:VALIDP frame) nil)
-; (ELJApp_ExitMainLoop)
-;(eljapp_Exit)
-  ))
+  (when evt
+    (wxWindow_Close frame 1)))
+
+; (defun exit-viewer (fun frame evt)
+;   (when evt
+;     (wxEvent_Skip evt))) ;skip the event for default handler
 
 (defun register-events (frame)
   (wxevthandler_connect frame wxID_OPEN (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'open-image frame))
   (wxevthandler_connect frame wxID_CLOSE (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'close-image frame))
   (wxevthandler_connect frame wxID_ABOUT (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'about-box frame))
   (wxevthandler_connect frame wxID_EXIT (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'quit-viewer frame))
-  (wxevthandler_connect frame -1 (expEVT_CLOSE_WINDOW) (wxClosure_Create #'quit-viewer frame)))
+;  (wxevthandler_connect frame -1 (expEVT_CLOSE_WINDOW) (wxClosure_Create #'do-nothing frame))
+  )
 
 (defun init-func (fun data evt)
   (let* ((frame (wxFrame_create nil 1000 "wxCL - Image previewer" 10 10 500 500 wxDEFAULT_FRAME_STYLE))
