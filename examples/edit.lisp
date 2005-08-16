@@ -219,6 +219,10 @@
 	  (wxNotebook_RemovePage nb sel)
 	  )))))
 ; 	(wxWindows_destroy tc)))))
+
+(defun quit-program (fun frame evt)
+  (when evt
+    (wxWindow_Close frame 1)))
 	
 (defun register-events (frame nb)
   (wxevthandler_connect frame wxID_NEW (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'new-tab nb))
@@ -226,6 +230,7 @@
   (wxevthandler_connect frame wxID_SAVE (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'save-file nb))
   (wxevthandler_connect frame wxID_SAVEAS (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'saveas-file nb))
   (wxevthandler_connect frame wxID_CLOSE (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'close-tab nb))
+  (wxevthandler_connect frame wxID_EXIT (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'quit-program frame))
   (wxevthandler_connect frame wxID_FONT (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'change-font nb))
   (wxevthandler_connect frame wxID_COLOR (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'change-color nb)))
 
