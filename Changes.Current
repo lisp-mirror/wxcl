@@ -1,0 +1,7 @@
+Version 1.0.1 (in progress)
+============================
+
+2005-08-16: efuzzyone		
+	    Fixed the bug in samples which while closing the window/quit was causing lisp to crash. When the 
+	    application is terminated, the destructor of the wrapper in wxC calls each callback function with
+	    null event.  
