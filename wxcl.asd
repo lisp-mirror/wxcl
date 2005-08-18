@@ -13,7 +13,6 @@
 (defparameter *wxCL-clisp-directory*
   (parse-namestring (concatenate 'string (directory-namestring *wxCL-directory*) "clisp-wrappers\\")))
 
-
 (print "Copyright (c) Surendra Singhi 2005")
 (print "wxCL = wxWidgets + Common Lisp")
 
@@ -72,6 +71,7 @@
 		 (:file "wxFontData" :depends-on ("wxCL"))
 		 (:file "wxFontDialog" :depends-on ("wxCL" "wxWindow" "wxDialog" "wxFontData"))
 		 (:file "wxFrame" :depends-on ("wxCL"))
+		 (:file "wxGLCanvas" :depends-on ("wxCL"))
 		 (:file "wxGauge" :depends-on ("wxCL"))
 		 (:file "wxGizmos" :depends-on ("wxCL"))
 		 (:file "wxGrid" :depends-on ("wxCL"))
@@ -100,7 +100,9 @@
 		 (:file "wxPanel" :depends-on ("wxCL"))
 		 (:file "wxPen" :depends-on ("wxCL"))
 		 (:file "wxPlot" :depends-on ("wxCL"))
+		 (:file "wxPreviewFrame" :depends-on ("wxCL"))
 		 (:file "wxPrintDialog" :depends-on ("wxCL" "wxWindow" "wxDialog"))
+		 (:file "wxPrintout" :depends-on ("wxCL"))
 		 (:file "wxProcess" :depends-on ("wxCL"))
 		 (:file "wxRadiobox" :depends-on ("wxCL"))
 		 (:file "wxRadioButton" :depends-on ("wxCL"))
@@ -129,5 +131,6 @@
 		 (:file "wxToolBar" :depends-on ("wxCL"))
 		 (:file "wxTreeCtrl" :depends-on ("wxCL"))
 		 (:file "wxValidator" :depends-on ("wxCL"))
+		 (:file "wxWave" :depends-on ("wxCL"))
 		 (:file "wxWindow" :depends-on ("wxCL"))
 		 (:file "wxWizard" :depends-on ("wxCL"))))
