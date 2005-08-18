@@ -14,6 +14,6 @@
 (in-package :wxCL)
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (defconstant +library-name+ "../miscellaneous/wxc-msw2.4.2-0.9.4.dll"))
+  (defconstant +library-name+ "../miscellaneous/wxc-msw2.4.2.dll"))
 
 
