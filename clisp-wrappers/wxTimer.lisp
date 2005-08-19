@@ -17,6 +17,9 @@
 	:wxTimer_IsRuning
 	:wxTimer_IsOneShot
 	:wxTimer_GetInterval
+	:wxTimerEx_Create
+	:wxTimerEx_Connect
+	:wxTimerEx_GetClosure
 	:wxStopWatch_Create
 	:wxStopWatch_Delete
 	:wxStopWatch_Start
@@ -107,4 +110,22 @@
 	(:name "wxStopWatch_Time")
 	(:arguments (_obj (ffi:c-pointer NIL)))
 	(:return-type ffi:int)
+	(:library +library-name+))
+
+
+(ffi:def-call-out wxTimerEx_Create
+	(:name "wxTimerEx_Create")
+	(:return-type (ffi:c-pointer NIL))
+	(:library +library-name+))
+
+(ffi:def-call-out wxTimerEx_Connect
+	(:name "wxTimerEx_Connect")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(_closure (ffi:c-pointer NIL)))
+	(:library +library-name+))
+
+(ffi:def-call-out wxTimerEx_GetClosure
+	(:name "wxTimerEx_GetClosure")
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))

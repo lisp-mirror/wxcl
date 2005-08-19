@@ -6,8 +6,6 @@
 ;;;
 ;;; $Header$
 ;;;
-;; This is an automatically generated file. 
-;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
 (defpackage :wxTextCtrl
     (:use :common-lisp :ffi :wxCL)
@@ -47,6 +45,15 @@
 	   :wxTextCtrl_GetLastPosition
 	   :wxTextCtrl_SetSelection
 	   :wxTextCtrl_SetEditable
+	   :wxTextCtrl_EmulateKeyPress
+	   :wxTextCtrl_GetDefaultStyle
+	   :wxTextCtrl_GetRange
+	   :wxTextCtrl_GetStringSelection
+	   :wxTextCtrl_IsMultiLine
+	   :wxTextCtrl_IsSingleLine
+	   :wxTextCtrl_SetDefaultStyle
+	   :wxTextCtrl_SetMaxLength
+	   :wxTextCtrl_SetStyle
 	   :wxcl-create-text-control
 	   :wxTE_READONLY
 	   :wxTE_MULTILINE
@@ -318,4 +325,68 @@
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (editable ffi:int))
   (:return-type NIL)
+  (:library +library-name+))
+
+
+(ffi:def-call-out wxTextCtrl_EmulateKeyPress
+    (:name "wxTextCtrl_EmulateKeyPress")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (keyevent (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxTextCtrl_GetDefaultStyle
+    (:name "wxTextCtrl_GetDefaultStyle")
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
+  (:library +library-name+))
+
+(ffi:def-call-out wxTextCtrl_GetRange
+    (:name "wxTextCtrl_GetRange")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (from ffi:long)
+	      (to ffi:long)
+	      (_buf (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxTextCtrl_GetStringSelection
+    (:name "wxTextCtrl_GetStringSelection")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (_buf (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxTextCtrl_IsMultiLine
+    (:name "wxTextCtrl_IsMultiLine")
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxTextCtrl_IsSingleLine
+    (:name "wxTextCtrl_IsSingleLine")
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxTextCtrl_SetDefaultStyle
+    (:name "wxTextCtrl_SetDefaultStyle")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (style (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxTextCtrl_SetMaxLength
+    (:name "wxTextCtrl_SetMaxLength")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (len ffi:long))
+  (:library +library-name+))
+
+(ffi:def-call-out wxTextCtrl_SetStyle
+    (:name "wxTextCtrl_SetStyle")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (start ffi:long)
+	      (end ffi:long)
+	      (style (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
   (:library +library-name+))

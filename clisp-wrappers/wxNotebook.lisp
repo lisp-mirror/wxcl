@@ -13,6 +13,7 @@
 	   :wxNotebook_GetPageCount
 	   :wxNotebook_SetSelection
 	   :wxNotebook_AdvanceSelection
+	   :wxNotebook_AssignImageList
 	   :wxNotebook_GetSelection
 	   :wxNotebook_SetPageText
 	   :wxNotebook_GetPageText
@@ -41,6 +42,8 @@
 
 (ffi:default-foreign-language :stdc)
 
+(def-c-type wxNotebook NIL)
+    
 (defconstant wxNB_FIXEDWIDTH 16)
 (defconstant wxNB_LEFT 32)
 (defconstant wxNB_RIGHT 64)
@@ -203,3 +206,9 @@
 	      (nPage ffi:int))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
+
+(ffi:def-call-out wxNotebook_AssignImageList
+	(:name "wxNotebook_AssignImageList")
+	(:arguments (_obj (ffi:c-pointer wxNotebook))
+		    (imageList (ffi:c-pointer NIL)))
+	(:library +library-name+))

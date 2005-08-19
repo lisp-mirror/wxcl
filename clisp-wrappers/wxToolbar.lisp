@@ -12,6 +12,7 @@
 (defpackage :wxToolBar
     (:use :common-lisp :ffi :wxCL)
   (:export :wxToolBar_Create
+	   :wxToolBar_AddTool2
 	   :wxToolBar_Delete
 	   :wxToolBar_AddControl
 	   :wxToolBar_AddSeparator
@@ -306,4 +307,16 @@
 	      (id ffi:int)
 	      (val ffi:int))
   (:return-type NIL)
+  (:library +library-name+))
+
+(ffi:def-call-out wxToolBar_AddTool2
+    (:name "wxToolBar_AddTool2")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (toolId ffi:int)
+	      (label ffi:c-string)
+	      (bmp (ffi:c-pointer NIL))
+	      (bmpDisabled (ffi:c-pointer NIL))
+	      (itemKind ffi:int)
+	      (shortHelp ffi:c-string)
+	      (longHelp ffi:c-string))
   (:library +library-name+))

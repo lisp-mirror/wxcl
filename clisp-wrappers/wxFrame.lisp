@@ -18,6 +18,12 @@
 	   :wxFrame_IsIconized
 	   :wxFrame_GetIcon
 	   :wxFrame_SetIcon
+	   :wxFrame_GetTitle
+	   :wxFrame_SetTitle
+	   :wxFrame_SetShape
+	   :wxFrame_ShowFullScreen
+	   :wxFrame_IsFullScreen
+	   :wxFrame_Centre
 	   :wxFrame_GetClientAreaOrigin_left
 	   :wxFrame_GetClientAreaOrigin_top
 	   :wxFrame_SetMenuBar
@@ -33,6 +39,8 @@
 (in-package :wxFrame)
 
 (ffi:default-foreign-language :stdc)
+
+(ffi:def-c-type wxFrame NIL)
 
 (ffi:def-call-out wxFrame_Create
     (:name "wxFrame_Create")
@@ -175,16 +183,40 @@
 (ffi:def-call-out wxFrame_GetTitle
     (:name "wxFrame_GetTitle")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (title (ffi:c-ptr (FFI:C-ARRAY-MAX ffi:char 200)) :out :alloca))
+	      (_buf (ffi:c-pointer NIL)))
   (:return-type ffi:int)
   (:library +library-name+))
-
 
 (ffi:def-call-out wxFrame_SetTitle
     (:name "wxFrame_SetTitle")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (title ffi:c-string))
-  (:return-type NIL)
+	      (_txt ffi:c-string))
   (:library +library-name+))
 
-	
+(ffi:def-call-out wxFrame_SetShape
+    (:name "wxFrame_SetShape")
+  (:arguments (self (ffi:c-pointer wxFrame))
+	      (region (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxFrame_ShowFullScreen
+    (:name "wxFrame_ShowFullScreen")
+  (:arguments (self (ffi:c-pointer wxFrame))
+	      (show ffi:int)
+	      (style ffi:int))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxFrame_IsFullScreen
+    (:name "wxFrame_IsFullScreen")
+  (:arguments (self (ffi:c-pointer wxFrame)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxFrame_Centre
+    (:name "wxFrame_Centre")
+  (:arguments (self (ffi:c-pointer wxFrame))
+	      (orientation ffi:int))
+  (:library +library-name+))
+

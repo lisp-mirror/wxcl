@@ -9,135 +9,141 @@
 
 (defpackage :wxListctrl
     (:use :common-lisp :ffi :WxCL)
-  (:export
+  (:export :wxListItem_Create
 ;	:make-EiffelSort
 ;	:EiffelSort-obj
 ;	:EiffelSort-fnc
-   :wxListItem_Create
-   :wxListItem_Delete
-   :wxListItem_Clear
-   :wxListItem_ClearAttributes
-   :wxListItem_SetMask
-   :wxListItem_SetId
-   :wxListItem_SetColumn
-   :wxListItem_SetState
-   :wxListItem_SetStateMask
-   :wxListItem_SetText
-   :wxListItem_SetImage
-   :wxListItem_SetData
-   :wxListItem_SetDataPointer
-   :wxListItem_SetWidth
-   :wxListItem_SetAlign
-   :wxListItem_SetTextColour
-   :wxListItem_SetBackgroundColour
-   :wxListItem_SetFont
-   :wxListItem_GetMask
-   :wxListItem_GetId
-   :wxListItem_GetColumn
-   :wxListItem_GetState
-   :wxListItem_GetText
-   :wxListItem_GetImage
-   :wxListItem_GetData
-   :wxListItem_GetWidth
-   :wxListItem_GetAlign
-   :wxListItem_GetAttributes
-   :wxListItem_HasAttributes
-   :wxListItem_GetTextColour
-   :wxListItem_GetBackgroundColour
-   :wxListItem_GetFont
-   :wxListCtrl_Create
-   :wxListCtrl_SetForegroundColour
-   :wxListCtrl_SetBackgroundColour
-   :wxListCtrl_GetColumn
-   :wxListCtrl_SetColumn
-   :wxListCtrl_GetColumnWidth
-   :wxListCtrl_SetColumnWidth
-   :wxListCtrl_GetCountPerPage
-   :wxListCtrl_GetEditControl
-   :wxListCtrl_GetItem
-   :wxListCtrl_SetItemFromInfo
-   :wxListCtrl_SetItem
-   :wxListCtrl_GetItemState
-   :wxListCtrl_SetItemState
-   :wxListCtrl_SetItemImage
-   :wxListCtrl_GetItemText
-   :wxListCtrl_SetItemText
-   :wxListCtrl_GetItemData
-   :wxListCtrl_SetItemData
-   :wxListCtrl_GetItemRect
-   :wxListCtrl_GetItemPosition
-   :wxListCtrl_SetItemPosition
-   :wxListCtrl_GetItemCount
-   :wxListCtrl_GetColumnCount
-   :wxListCtrl_GetItemSpacing
-   :wxListCtrl_GetSelectedItemCount
-   :wxListCtrl_GetTextColour
-   :wxListCtrl_SetTextColour
-   :wxListCtrl_GetTopItem
-   :wxListCtrl_SetSingleStyle
-   :wxListCtrl_SetWindowStyleFlag
-   :wxListCtrl_GetNextItem
-   :wxListCtrl_GetImageList
-   :wxListCtrl_SetImageList
-   :wxListCtrl_Arrange
-   :wxListCtrl_DeleteItem
-   :wxListCtrl_DeleteAllItems
-   :wxListCtrl_DeleteColumn
-   :wxListCtrl_DeleteAllColumns
-   :wxListCtrl_ClearAll
-   :wxListCtrl_EditLabel
-   :wxListCtrl_EndEditLabel
-   :wxListCtrl_EnsureVisible
-   :wxListCtrl_FindItem
-   :wxListCtrl_FindItemByData
-   :wxListCtrl_FindItemByPosition
-   :wxListCtrl_HitTest
-   :wxListCtrl_InsertItem
-   :wxListCtrl_InsertItemWithData
-   :wxListCtrl_InsertItemWithImage
-   :wxListCtrl_InsertItemWithLabel
-   :wxListCtrl_InsertColumnFromInfo
-   :wxListCtrl_InsertColumn
-   :wxListCtrl_ScrollList
-   :wxListCtrl_SortItems
-   :wxListCtrl_UpdateStyle
-   :wxLC_ICON
-   :wxLC_SMALL_ICON
-   :wxLC_VRULES
-   :wxLC_HRULES
-   :wxLC_LIST
-   :wxLC_REPORT
-   :wxLC_ALIGN_TOP
-   :wxLC_ALIGN_LEFT
-   :wxLC_AUTOARRANGE
-   :wxLC_USER_TEXT 
-   :wxLC_EDIT_LABELS
-   :wxLC_NO_HEADER 
-   :wxLC_NO_SORT_HEADER
-   :wxLC_SINGLE_SEL
-   :wxLC_SORT_ASCENDING
-   :wxLC_SORT_DESCENDING
-   :wxLIST_FORMAT_LEFT 
-   :wxLIST_FORMAT_RIGHT
-   :wxLIST_FORMAT_CENTRE
-   :wxLIST_FORMAT_CENTER
-   :wxLIST_STATE_DONTCARE
-   :wxLIST_STATE_DROPHILITED
-   :wxLIST_STATE_FOCUSED 
-   :wxLIST_STATE_SELECTED
-   :wxLIST_STATE_CUT 
-   :wxLIST_MASK_STATE
-   :wxLIST_MASK_TEXT 
-   :wxLIST_MASK_IMAGE
-   :wxLIST_MASK_DATA
-   :wxLIST_MASK_WIDTH
-   :wxLIST_MASK_FORMAT
-   :wxLIST_NEXT_ABOVE
-   :wxLIST_NEXT_ALL
-   :wxLIST_NEXT_BELOW
-   :wxLIST_NEXT_LEFT
-   :wxLIST_NEXT_RIGHT
-   ))
+	   :wxListItem_Delete
+	   :wxListItem_Clear
+	   :wxListItem_ClearAttributes
+	   :wxListItem_SetMask
+	   :wxListItem_SetId
+	   :wxListItem_SetColumn
+	   :wxListItem_SetState
+	   :wxListItem_SetStateMask
+	   :wxListItem_SetText
+	   :wxListItem_SetImage
+	   :wxListItem_SetData
+	   :wxListItem_SetDataPointer
+	   :wxListItem_SetWidth
+	   :wxListItem_SetAlign
+	   :wxListItem_SetTextColour
+	   :wxListItem_SetBackgroundColour
+	   :wxListItem_SetFont
+	   :wxListItem_GetMask
+	   :wxListItem_GetId
+	   :wxListItem_GetColumn
+	   :wxListItem_GetState
+	   :wxListItem_GetText
+	   :wxListItem_GetImage
+	   :wxListItem_GetData
+	   :wxListItem_GetWidth
+	   :wxListItem_GetAlign
+	   :wxListItem_GetAttributes
+	   :wxListItem_HasAttributes
+	   :wxListItem_GetTextColour
+	   :wxListItem_GetBackgroundColour
+	   :wxListItem_GetFont
+	   :wxListCtrl_AssignImageList
+	   :wxListCtrl_Create
+	   :wxListCtrl_SetForegroundColour
+	   :wxListCtrl_SetBackgroundColour
+	   :wxListCtrl_GetColumn
+	   :wxListCtrl_SetColumn
+	   :wxListCtrl_GetColumn2
+	   :wxListCtrl_GetItem2
+	   :wxListCtrl_GetItemPosition2
+	   :wxListCtrl_GetColumnWidth
+	   :wxListCtrl_SetColumnWidth
+	   :wxListCtrl_GetCountPerPage
+	   :wxListCtrl_GetEditControl
+	   :wxListCtrl_GetItem
+	   :wxListCtrl_SetItemFromInfo
+	   :wxListCtrl_SetItem
+	   :wxListCtrl_GetItemState
+	   :wxListCtrl_SetItemState
+	   :wxListCtrl_SetItemImage
+	   :wxListCtrl_GetItemText
+	   :wxListCtrl_SetItemText
+	   :wxListCtrl_GetItemData
+	   :wxListCtrl_SetItemData
+	   :wxListCtrl_GetItemRect
+	   :wxListCtrl_GetItemPosition
+	   :wxListCtrl_SetItemPosition
+	   :wxListCtrl_GetItemCount
+	   :wxListCtrl_GetColumnCount
+	   :wxListCtrl_GetItemSpacing
+	   :wxListCtrl_GetSelectedItemCount
+	   :wxListCtrl_GetTextColour
+	   :wxListCtrl_SetTextColour
+	   :wxListCtrl_GetTopItem
+	   :wxListCtrl_SetSingleStyle
+	   :wxListCtrl_SetWindowStyleFlag
+	   :wxListCtrl_GetNextItem
+	   :wxListCtrl_GetImageList
+	   :wxListCtrl_SetImageList
+	   :wxListCtrl_Arrange
+	   :wxListCtrl_DeleteItem
+	   :wxListCtrl_DeleteAllItems
+	   :wxListCtrl_DeleteColumn
+	   :wxListCtrl_DeleteAllColumns
+	   :wxListCtrl_ClearAll
+	   :wxListCtrl_EditLabel
+	   :wxListCtrl_EndEditLabel
+	   :wxListCtrl_EnsureVisible
+	   :wxListCtrl_FindItem
+	   :wxListCtrl_FindItemByData
+	   :wxListCtrl_FindItemByPosition
+	   :wxListCtrl_HitTest
+	   :wxListCtrl_InsertItem
+	   :wxListCtrl_InsertItemWithData
+	   :wxListCtrl_InsertItemWithImage
+	   :wxListCtrl_InsertItemWithLabel
+	   :wxListCtrl_InsertColumnFromInfo
+	   :wxListCtrl_InsertColumn
+	   :wxListCtrl_ScrollList
+	   :wxListCtrl_SortItems
+	   :wxListCtrl_SortItems2
+	   :wxListCtrl_UpdateStyle
+	   :wxListEvent_GetCacheFrom
+	   :wxListEvent_GetCacheTo
+	   :wxLC_ICON
+	   :wxLC_SMALL_ICON
+	   :wxLC_VRULES
+	   :wxLC_HRULES
+	   :wxLC_LIST
+	   :wxLC_REPORT
+	   :wxLC_ALIGN_TOP
+	   :wxLC_ALIGN_LEFT
+	   :wxLC_AUTOARRANGE
+	   :wxLC_USER_TEXT 
+	   :wxLC_EDIT_LABELS
+	   :wxLC_NO_HEADER 
+	   :wxLC_NO_SORT_HEADER
+	   :wxLC_SINGLE_SEL
+	   :wxLC_SORT_ASCENDING
+	   :wxLC_SORT_DESCENDING
+	   :wxLIST_FORMAT_LEFT 
+	   :wxLIST_FORMAT_RIGHT
+	   :wxLIST_FORMAT_CENTRE
+	   :wxLIST_FORMAT_CENTER
+	   :wxLIST_STATE_DONTCARE
+	   :wxLIST_STATE_DROPHILITED
+	   :wxLIST_STATE_FOCUSED 
+	   :wxLIST_STATE_SELECTED
+	   :wxLIST_STATE_CUT 
+	   :wxLIST_MASK_STATE
+	   :wxLIST_MASK_TEXT 
+	   :wxLIST_MASK_IMAGE
+	   :wxLIST_MASK_DATA
+	   :wxLIST_MASK_WIDTH
+	   :wxLIST_MASK_FORMAT
+	   :wxLIST_NEXT_ABOVE
+	   :wxLIST_NEXT_ALL
+	   :wxLIST_NEXT_BELOW
+	   :wxLIST_NEXT_LEFT
+	   :wxLIST_NEXT_RIGHT
+	   ))
 
 (in-package :wxListctrl)
 
@@ -829,4 +835,56 @@
     (:name "wxListCtrl_UpdateStyle")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:return-type NIL)
+  (:library +library-name+))
+
+
+(ffi:def-call-out wxListEvent_GetCacheFrom
+    (:name "wxListEvent_GetCacheFrom")
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxListEvent_GetCacheTo
+    (:name "wxListEvent_GetCacheTo")
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
+  (:library +library-name+))
+
+(ffi:def-call-out wxListCtrl_AssignImageList
+    (:name "wxListCtrl_AssignImageList")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (images (ffi:c-pointer NIL))
+	      (which ffi:int))
+  (:library +library-name+))
+
+(ffi:def-call-out wxListCtrl_GetColumn2
+    (:name "wxListCtrl_GetColumn2")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (col ffi:int)
+	      (item (ffi:c-pointer NIL)))
+  (:library +library-name+))
+
+(ffi:def-call-out wxListCtrl_GetItem2
+    (:name "wxListCtrl_GetItem2")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (info (ffi:c-pointer NIL)))
+  (:library +library-name+))
+
+(ffi:def-call-out wxListCtrl_GetItemPosition2
+    (:name "wxListCtrl_GetItemPosition2")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (item ffi:int)
+	      (x (ffi:c-ptr ffi:int))
+	      (y (ffi:c-ptr ffi:int)))
+  (:library +library-name+))
+
+(ffi:def-c-struct SortData
+    (id ffi:long)
+  (closure (ffi:c-pointer NIL)))
+
+(ffi:def-call-out wxListCtrl_SortItems2
+    (:name "wxListCtrl_SortItems2")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (closure (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
   (:library +library-name+))

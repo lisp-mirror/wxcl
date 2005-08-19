@@ -30,6 +30,8 @@
 	:wxDC_DrawBitmap
 	:wxDC_DrawText
 	:wxDC_DrawRotatedText
+	:wxDC_GetUserScaleX
+	:wxDC_GetUserScaleY
 	:wxDC_Blit
 	:wxDC_Clear
 	:wxDC_StartDoc
@@ -63,6 +65,7 @@
 	:wxDC_CanGetTextExtent
 	:wxDC_GetDepth
 	:wxDC_GetPPI
+	:wxDC_GetPixel2
 	:wxDC_Ok
 	:wxDC_GetBackgroundMode
 	:wxDC_GetBackground
@@ -925,8 +928,28 @@
 (ffi:def-call-out wxMetafile_Delete
 	(:name "wxMetafile_Delete")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type NIL)
 	(:library +library-name+))
+
+(ffi:def-call-out wxDC_GetPixel2
+	(:name "wxDC_GetPixel2")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		(x ffi:int)
+		(y ffi:int)
+		(col (ffi:c-pointer NIL)))
+	(:library +library-name+))
+
+(ffi:def-call-out wxDC_GetUserScaleX
+	(:name "wxDC_GetUserScaleX")
+	(:arguments (dc (ffi:c-pointer NIL)))
+	(:return-type DOUBLE-FLOAT)
+	(:library +library-name+))
+
+(ffi:def-call-out wxDC_GetUserScaleY
+	(:name "wxDC_GetUserScaleY")
+	(:arguments (dc (ffi:c-pointer NIL)))
+	(:return-type DOUBLE-FLOAT)
+	(:library +library-name+))
+
 
 (defmacro with-client-DC ((dc window) &body body)
   `(let (,dc)
@@ -951,3 +974,4 @@
 	   (setf ,dc (wxScreenDC_Create ,window))
 	   ,@body)
       (wxScreenDC_Delete ,dc))))
+
