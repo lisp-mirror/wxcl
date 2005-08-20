@@ -68,7 +68,6 @@
 ;	   :wxDllLoader_LoadLibrary
 ;	   :wxDllLoader_UnloadLibrary
 ;	   :wxDllLoader_GetSymbol
-	   :wxCFree
 	   :wxClassInfo_CreateClassByName
 	   :wxClassInfo_GetClassName
 	   :wxClassInfo_IsKindOf
@@ -426,12 +425,6 @@
 ; 	      (_name (ffi:c-pointer NIL)))
 ;   (:return-type (ffi:c-pointer NIL))
 ;   (:library +library-name+))
-
-(ffi:def-call-out wxCFree
-    (:name "wxCFree")
-  (:arguments (_ptr (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
 
 (ffi:def-call-out wxClassInfo_CreateClassByName
     (:name "wxClassInfo_CreateClassByName")
