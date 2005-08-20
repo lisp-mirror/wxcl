@@ -11,7 +11,7 @@
                  :defaults (parse-namestring *load-truename*)))
 
 (defparameter *wxCL-clisp-directory*
-  (parse-namestring (concatenate 'string (directory-namestring *wxCL-directory*) "clisp-wrappers\\")))
+  (parse-namestring (concatenate 'string (directory-namestring *wxCL-directory*) "clisp-wrappers/")))
 
 (print "Copyright (c) Surendra Singhi 2005")
 (print "wxCL = wxWidgets + Common Lisp")
@@ -25,7 +25,7 @@
 		 ((#:albert #:formats) . ("docbook"))
 		 ((#:albert #:docbook #:template) . "book")
 		 ((#:albert #:docbook #:bgcolor) . "white")
-		 ((#:albert #:docbook #:textcolor) . "black"))	
+		 ((#:albert #:docbook #:textcolor) . "black"))
     :components ((:file "constants" :depends-on ("wxCL"))
 		 (:file "wx_wrapper" :depends-on ("wxCL"))
 		 (:file "wx_main" :depends-on ("wxCL" "wx_wrapper"))
@@ -105,6 +105,7 @@
 		 (:file "wxPrintDialog" :depends-on ("wxCL" "wxWindow" "wxDialog"))
 		 (:file "wxPrintout" :depends-on ("wxCL"))
 		 (:file "wxProcess" :depends-on ("wxCL"))
+		 (:file "wxProgressDialog" :depends-on ("wxCL" "wxWindow" "wxDialog"))
 		 (:file "wxRadiobox" :depends-on ("wxCL"))
 		 (:file "wxRadioButton" :depends-on ("wxCL"))
 		 (:file "wxRC" :depends-on ("wxCL"))
