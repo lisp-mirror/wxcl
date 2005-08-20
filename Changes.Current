@@ -1,5 +1,13 @@
 Version 1.0.1 (in progress)
 ============================
+2005-08-19: efuzzyone		
+	    Fixed bug 1264644. Changed "clisp-wrappers\\" to "clisp-wrappers/".
+
+2005-08-19: efuzzyone		
+	    Created file 'wxProgressDialog.lisp'. Added mouse related functions to wxEvent, and some
+	    general functions to wxCL. Also added functions in wxProcess, wxConfigBase, wxGrid, 
+	    wxScrolledwindow. Moved function wxCFree from wx_wrapper to wxCL.
+
 2005-08-18: efuzzyone		
 	    Moved cursor related constants to file 'wxCursor.lisp'
 
