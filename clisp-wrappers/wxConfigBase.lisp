@@ -48,7 +48,10 @@
 	:wxConfigBase_SetAppName
 	:wxConfigBase_SetVendorName
 	:wxConfigBase_SetStyle
-	:wxConfigBase_GetStyle))
+	:wxConfigBase_GetStyle
+	:wxConfigBase_Get
+	:wxConfigBase_Set
+	:wxFileConfig_Create))
 
 (in-package :wxConfigBase)
 
@@ -332,4 +335,20 @@
 	(:name "wxConfigBase_GetStyle")
 	(:arguments (_obj (ffi:c-pointer NIL)))
 	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out wxConfigBase_Get
+	(:name "wxConfigBase_Get")
+	(:return-type (ffi:c-pointer wxConfigBase))
+	(:library +library-name+))
+
+(ffi:def-call-out wxConfigBase_Set
+	(:name "wxConfigBase_Set")
+	(:arguments (self (ffi:c-pointer wxConfigBase)))
+	(:library +library-name+))
+
+(ffi:def-call-out wxFileConfig_Create
+	(:name "wxFileConfig_Create")
+	(:arguments (inp (ffi:c-pointer NIL)))
+	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))

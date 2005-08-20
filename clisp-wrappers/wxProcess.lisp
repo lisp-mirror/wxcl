@@ -44,7 +44,8 @@
 	   :wxInputStream_Tell
 	   :wxInputStream_LastRead
 	   :wxInputStream_UngetBuffer
-	   :wxInputStream_Ungetch))
+	   :wxInputStream_Ungetch
+	   :wxKill))
 
 (in-package :wxProcess)
 
@@ -282,3 +283,10 @@
 	      (flags ffi:int))
   (:return-type (ffi:c-pointer wxProcess))
   (:library +library-name+))
+
+(ffi:def-call-out wxKill
+	(:name "wxKill")
+	(:arguments (pid ffi:int)
+		    (signal (ffi:C-pointer NIL)))
+	(:return-type (ffi:C-pointer NIL))
+	(:library +library-name+))

@@ -12,6 +12,7 @@
   (:export
 	:wxSystemSettings_GetSystemColour
 	:wxSystemSettings_GetSystemFont
+	:wxcSystemSettingsGetColour
 	:wxSystemSettings_GetSystemMetric))
 
 (in-package :wxSystemSettings)
@@ -21,7 +22,7 @@
 (ffi:def-call-out wxSystemSettings_GetSystemColour
 	(:name "wxSystemSettings_GetSystemColour")
 	(:arguments (index ffi:int)
-		(_ref (ffi:c-pointer NIL)))
+		    (_ref (ffi:c-pointer NIL)))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -37,3 +38,9 @@
 	(:arguments (index ffi:int))
 	(:return-type ffi:int)
 	(:library +library-name+))
+
+(ffi:def-call-out wxcSystemSettingsGetColour
+    (:name "wxcSystemSettingsGetColour")
+  (:arguments (systemColour ffi:int))
+  (:return-type (ffi:c-pointer NIL))
+  (:library +library-name+))

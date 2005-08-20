@@ -10,6 +10,9 @@
 (defpackage :wxCursor
     (:use :common-lisp :ffi :wxCL)
   (:export :Cursor_CreateFromStock
+	   :wxcBeginBusyCursor
+	   :wxcEndBusyCursor
+	   :wxcIsBusy
 	   :wxCursor_Delete
 	   :wxCURSOR_NONE
 	   :wxCURSOR_ARROW
@@ -81,3 +84,16 @@
     (:name "wxCursor_Delete")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:library +library-name+))
+
+(ffi:def-call-out wxcBeginBusyCursor
+	(:name "wxcBeginBusyCursor")
+	(:library +library-name+))
+
+(ffi:def-call-out wxcEndBusyCursor
+	(:name "wxcEndBusyCursor")
+	(:library +library-name+))
+
+(ffi:def-call-out wxcIsBusy
+	(:name "wxcIsBusy")
+	(:return-type ffi:int)
+	(:library +library-name+))

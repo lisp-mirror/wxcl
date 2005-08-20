@@ -78,6 +78,10 @@
 	:wxMouseEvent_GetX
 	:wxMouseEvent_GetY
 	:wxMouseEvent_CopyObject
+	:wxMouseEvent_GetWheelDelta
+	:wxMouseEvent_GetWheelRotation
+	:wxMouseEvent_GetButton
+	:wxcGetMousePosition
 	:wxSetCursorEvent_GetX
 	:wxSetCursorEvent_GetY
 	:wxSetCursorEvent_SetCursor
@@ -401,7 +405,8 @@
 	:expEVT_GRID_SELECT_CELL
 	:expEVT_GRID_EDITOR_SHOWN
 	:expEVT_GRID_EDITOR_HIDDEN
-	:expEVT_GRID_EDITOR_CREATED))
+	:expEVT_GRID_EDITOR_CREATED
+	:expEVT_MOUSEWHEEL))
 
 (in-package :wxEvent)
 
@@ -847,6 +852,30 @@
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(object_dest (ffi:c-pointer NIL)))
 	(:return-type NIL)
+	(:library +library-name+))
+
+(ffi:def-call-out wxcGetMousePosition
+	(:name "wxcGetMousePosition")
+	(:arguments (x (ffi:c-ptr ffi:int))
+		(y (ffi:c-ptr ffi:int)))
+	(:library +library-name+))
+
+(ffi:def-call-out wxMouseEvent_GetWheelDelta
+	(:name "wxMouseEvent_GetWheelDelta")
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out wxMouseEvent_GetWheelRotation
+	(:name "wxMouseEvent_GetWheelRotation")
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out wxMouseEvent_GetButton
+	(:name "wxMouseEvent_GetButton")
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type ffi:int)
 	(:library +library-name+))
 
 (ffi:def-call-out wxSetCursorEvent_GetX
@@ -2645,5 +2674,10 @@
 
 (ffi:def-call-out expEVT_GRID_EDITOR_CREATED
 	(:name "expEVT_GRID_EDITOR_CREATED")
+	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out expEVT_MOUSEWHEEL
+	(:name "expEVT_MOUSEWHEEL")
 	(:return-type ffi:int)
 	(:library +library-name+))

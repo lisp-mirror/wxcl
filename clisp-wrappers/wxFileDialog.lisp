@@ -9,34 +9,33 @@
 
 (defpackage :wxFileDialog
     (:use :common-lisp :ffi :wxCL :wxWindow :wxDialog)
-  (:export
-   :wxFileDialog_Create
-   :wxFileDialog_SetMessage
-   :wxFileDialog_SetPath
-   :wxFileDialog_SetDirectory
-   :wxFileDialog_SetFilename
-   :wxFileDialog_SetWildcard
-   :wxFileDialog_SetStyle
-   :wxFileDialog_SetFilterIndex
-   :wxFileDialog_GetMessage
-   :wxFileDialog_GetPath
-   :wxFileDialog_GetPaths
-   :wxFileDialog_GetDirectory
-   :wxFileDialog_GetFilename
-   :wxFileDialog_GetFilenames
-   :wxFileDialog_GetWildcard
-   :wxFileDialog_GetStyle
-   :wxFileDialog_GetFilterIndex
-   :with-file-dialog
-   :wxcl-get-filepath
-   :wxOPEN
-   :wxSAVE
-   :wxHIDE_READONLY
-   :wxMULTIPLE
-   :wxCHANGE_DIR
-   :wxOVERWRITE_PROMPT
-   :wxFILE_MUST_EXIST
-   ))
+  (:export :wxFileDialog_Create
+	   :wxFileDialog_SetMessage
+	   :wxFileDialog_SetPath
+	   :wxFileDialog_SetDirectory
+	   :wxFileDialog_SetFilename
+	   :wxFileDialog_SetWildcard
+	   :wxFileDialog_SetStyle
+	   :wxFileDialog_SetFilterIndex
+	   :wxFileDialog_GetMessage
+	   :wxFileDialog_GetPath
+	   :wxFileDialog_GetPaths
+	   :wxFileDialog_GetDirectory
+	   :wxFileDialog_GetFilename
+	   :wxFileDialog_GetFilenames
+	   :wxFileDialog_GetWildcard
+	   :wxFileDialog_GetStyle
+	   :wxFileDialog_GetFilterIndex
+	   :with-file-dialog
+	   :wxcl-get-filepath
+	   :wxOPEN
+	   :wxSAVE
+	   :wxHIDE_READONLY
+	   :wxMULTIPLE
+	   :wxCHANGE_DIR
+	   :wxOVERWRITE_PROMPT
+	   :wxFILE_MUST_EXIST
+	   ))
 
 (in-package :wxFileDialog)
 
@@ -64,7 +63,7 @@
 	      (_lft ffi:int)
 	      (_top ffi:int)
 	      (_stl ffi:int))
-  (:return-type (ffi:c-pointer wxFileDialog) :NONE)
+  (:return-type (ffi:c-pointer wxFileDialog))
   (:library +library-name+))
 
 (ffi:def-call-out wxFileDialog_SetMessage
@@ -248,6 +247,7 @@
 	   ,@body)
       (wxWindow_destroy ,dialog))))
 
+
 (defun wxcl-get-filepath (parent &key (message "") (dir "") (file "") (wildcard "*.*")
 				 (left -1) (top -1) (style 0) (max_length 1024))
   (with-file-dialog (dialog parent :message message :dir dir :file file :wildcard wildcard
@@ -256,3 +256,4 @@
       (with-c-var (path `(c-array-max character ,max_length))
 	(_wxFileDialog_GetPath dialog (c-var-address path))
 	path))))
+

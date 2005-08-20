@@ -31,6 +31,7 @@
 	:wxGridCellEditor_Destroy
 	:wxGridCellEditor_SetParameters
 	:wxGridCellTextEditor_Ctor
+	:wxGridCellTextEnterEditor_Ctor
 	:wxGridCellNumberEditor_Ctor
 	:wxGridCellFloatEditor_Ctor
 	:wxGridCellBoolEditor_Ctor
@@ -431,6 +432,11 @@
 
 (ffi:def-call-out wxGridCellTextEditor_Ctor
 	(:name "wxGridCellTextEditor_Ctor")
+	(:return-type (ffi:c-pointer NIL))
+	(:library +library-name+))
+
+(ffi:def-call-out wxGridCellTextEnterEditor_Ctor
+	(:name "wxGridCellTextEnterEditor_Ctor")
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
