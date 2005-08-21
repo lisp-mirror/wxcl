@@ -1,0 +1,16 @@
+Version 1.0.0 Alpha (August 14, 2005)
+====================================
+
+This is the first release of wxCL. This release wxCL Works only on
+clisp, and is tested only for Windows XP. 
+
+This release provides 75% of the features of wxC, including more than
+125 classes and 1500 member functions and 1200 constant definitions.
+There are 3 examples which are included with this release. These
+examples show how to use the different dialog boxes, controls, menus,
+toolbars, statusbars, scrollbars, frames and panels and also do some 
+basic event handling.
+
+There is also a test case included in this release, this test case
+loads the different types of images and then verifies whether the
+library can read the image attributes correctly or not.
