@@ -60,10 +60,10 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	      
 	      <b>Preface</b>
 	    </p>
-	    <p>This document describe 
+	    <p>This document describes 
 	      <a href="http://www.wxcl-project.org/" target="_top">
 		<span><strong class="command">wxCL</strong></span>
-	      </a>= wxWidgets + Common Lisp; common lisp binding to wxwidgets library.
+	      </a>= wxWidgets + Common Lisp; common lisp binding to wxWidgets library.
 
 	    </p>
 	    <p>Bugs both in this document and in 
@@ -107,9 +107,9 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	<a href="http://www.weitz.de/asdf-install/">tutorial</a> on how
 	to use asdf-install. 
 	<br/>	<br/>
-      The alternative to using asdf, is writing a script which will 
+      The alternative to using asdf is writing a script which will 
       load all the files in the clisp-wrappers folder, loading the
-	  files in wrong order, may cause hard to debug lisp crashes,
+	  files in wrong order may cause hard to debug lisp crashes,
 	  look at the <i>wxcl.asd</i> file for dependency orderings. 
 	  
       <h2>Running Examples </h2>
@@ -123,7 +123,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 
 	  <h2>Programming with wxCL </h2>
 	  <p>      
-	    The way this library works is that, your lisp code needs to register for
+	    The way this library works is that your lisp code needs to register for
 	    events, and then when the event happens the lisp function is
 	    called. To register for the events you need to create wrappers,
 	    a wrapper consists of a <i>callback function</i> (the lisp function
@@ -136,7 +136,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 <br/><br/>
 	      </code>
 	      The first argument <i>_fun</i> which is passed is a pointer to
-	      function itself, so this allows you to write recursive event
+	      the function itself, so this allows you to write recursive event
 	      handling functions, if you need to. The second argument is the
 	      <i>_data</i> which was given while creating the closure. The
 	      third argument <i>_evt</i> is an object of the <i>wxEvent</i>
@@ -158,7 +158,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	    below. Once this function is called, control returns to you
 	    only by means of callback functions. This function after
 	    initializing the library calls the callback function in the  
-	    closure passed to it, so that GUI can be initialized.
+	    closure passed to it, so that the GUI can be initialized.
 
 	    <code>
 	  <br/><br/>
