@@ -1,5 +1,5 @@
 ;;;image-file.lisp
-;;;License  : GNU General Public License (GPL)
+;;;License  : wxWindows License 3.1
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
 ;;;See the file LICENSE for information on usage and redistribution.
@@ -7,30 +7,30 @@
 ;;; $Header$
 ;;;
 
-(load "../clisp-wrappers/wxCL.lisp")
-(load "../clisp-wrappers/constants.lisp")
-(load "../clisp-wrappers/wx_wrapper.lisp")
-(load "../clisp-wrappers/wx_main.lisp")
-(load "../clisp-wrappers/wxImage.lisp")
-(load "../clisp-wrappers/wxWindow.lisp")
-(load "../clisp-wrappers/wxScrolledWindow.lisp")
-(load "../clisp-wrappers/wxFrame.lisp")
-(load "../clisp-wrappers/wxPanel.lisp")
-(load "../clisp-wrappers/wxDialog.lisp")
-(load "../clisp-wrappers/wxMenuItem.lisp")
-(load "../clisp-wrappers/wxMenu.lisp")
-(load "../clisp-wrappers/wxFileDialog.lisp")
-(load "../clisp-wrappers/wxMenuBar.lisp")
-(load "../clisp-wrappers/wxEvtHandler.lisp")
-(load "../clisp-wrappers/wxEvent.lisp")
-(load "../clisp-wrappers/wxIcon.lisp")
-(load "../clisp-wrappers/wxBitmap.lisp")
-(load "../clisp-wrappers/wxMessageDialog.lisp")
-(load "../clisp-wrappers/wxToolBar.lisp")
-(load "../clisp-wrappers/wxStatusBar.lisp")
-(load "../clisp-wrappers/wxAcceleratorEntry.lisp")
+; (load "../clisp-wrappers/wxCL.lisp")
+; (load "../clisp-wrappers/constants.lisp")
+; (load "../clisp-wrappers/wx_wrapper.lisp")
+; (load "../clisp-wrappers/wx_main.lisp")
+; (load "../clisp-wrappers/wxImage.lisp")
+; (load "../clisp-wrappers/wxWindow.lisp")
+; (load "../clisp-wrappers/wxScrolledWindow.lisp")
+; (load "../clisp-wrappers/wxFrame.lisp")
+; (load "../clisp-wrappers/wxPanel.lisp")
+; (load "../clisp-wrappers/wxDialog.lisp")
+; (load "../clisp-wrappers/wxMenuItem.lisp")
+; (load "../clisp-wrappers/wxMenu.lisp")
+; (load "../clisp-wrappers/wxFileDialog.lisp")
+; (load "../clisp-wrappers/wxMenuBar.lisp")
+; (load "../clisp-wrappers/wxEvtHandler.lisp")
+; (load "../clisp-wrappers/wxEvent.lisp")
+; (load "../clisp-wrappers/wxIcon.lisp")
+; (load "../clisp-wrappers/wxBitmap.lisp")
+; (load "../clisp-wrappers/wxMessageDialog.lisp")
+; (load "../clisp-wrappers/wxToolBar.lisp")
+; (load "../clisp-wrappers/wxStatusBar.lisp")
+; (load "../clisp-wrappers/wxAcceleratorEntry.lisp")
 
-;(asdf:operate 'asdf:load-op 'wxcl)
+(asdf:operate 'asdf:load-op 'wxcl)
 
 (use-package "FFI")
 
@@ -76,6 +76,7 @@
 				   (wxACCEL_CTRL (char-int #\O) wxID_OPEN)
 				   (wxACCEL_CTRL (char-int #\C) wxID_CLOSE)
 				   (wxACCEL_CTRL (char-int #\A) wxID_ABOUT)))
+
 (defun add-status-bar(frame)
   (wxframe_createstatusbar frame 2 0))
 
@@ -112,7 +113,7 @@
 (defun about-box (fun frame evt)
   (when evt
     (show-message-dialog frame
-			 "Image viewer demonstrates some of the features of wxCL. All rights reserved, this program is distributed under GNU GPL."
+			 "Image viewer demonstrates some of the features of wxCL. All rights reserved, this program is distributed under wxWindows License."
 			 "Image Viewer - wxCL"
 			 wxOK)))
 
