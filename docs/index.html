@@ -29,7 +29,6 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 .default:hover { background-color: white; color: black; }
 </style>
 
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>wxCL.</title>
       <LINK  TYPE="text/css" REL="stylesheet" HREF="/lisppaste.css">
@@ -47,7 +46,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 
 	      Quick start guide on <a href="http://www.wxcl-project.org/" target="_top">
 		<span><strong class="command">wxCL</strong></span></a>
-	      version 1.0.0.</h1></div><div>
+	      version 1.1.0.</h1></div><div>
 
 	    <h3 class="corpauthor"><span class="inlinemediaobject"><img src="wxcl-logo-60.png" /></span></h3></div>
 	  <div><div class="author"><h3 class="author"><span class="firstname">Surendra</span> 
@@ -97,6 +96,10 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	<a href="http://wxhaskell.sourceforge.net/building.html">http://wxhaskell.sourceforge.net/building.html</a> 
       </p>
 
+      <p>Before compiling and loading the wxCL library, edit the
+	clisp-wrappers/wxCL.lisp, and make sure that the variable
+	+library-name+ is pointing to the correct location.
+
       To load the library you can use <i>asdf</i> or
       <i>asdf-install</i>. The <i>wxcl.asd</i> file makes sure that
       all the files are loaded in the correct order. If you want you
@@ -111,7 +114,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
       load all the files in the clisp-wrappers folder, loading the
 	  files in wrong order may cause hard to debug lisp crashes,
 	  look at the <i>wxcl.asd</i> file for dependency orderings. 
-	  
+      </p>	  
       <h2>Running Examples </h2>
 	  <p>
         To run the examples which are part of wxCL, you need to first
@@ -153,6 +156,15 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 <span class="paren1">(<span class="default"><i><span class="symbol">ffi:def-call-out</span></i> wxClosure_Create <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:name</span> <span class="string">"wxClosure_Create"</span></span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:arguments</span> <span class="paren3">(<span class="default">fun ClosureFun</span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren3">(<span class="default">data <span class="paren4">(<span class="default">ffi:c-pointer NIL</span>)</span></span>)</span></span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:return-type</span> <span class="paren3">(<span class="default">ffi:c-pointer wxClosure</span>)</span></span>)</span></span>)</span>
 <br/><br/>
 	    </code>   
+
+	      <strong>Note:</strong>When the program ends, the
+	      destructor for the wrappers calls the callback functions
+	      with a null event, so that they can do any cleaning up
+	      (if necessary). So, its always a wise thing to make
+	      sure that in your call back functions, there is an `if`
+	      condition checking whether the event is null or not.
+         </p>
+
 	    To initialize the library you need to call the
 	    <i>ELJApp_InitializeC</i> function whose signature is given
 	    below. Once this function is called, control returns to you
@@ -173,7 +185,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	      <address><a href="http://www.public.asu.edu/~sksinghi/index.html">Surendra Singhi</a></address>
 	      <!-- Created: Sat Aug 13 23:58:01 US Mountain Standard Time 2005 -->
 	      <!-- hhmts start -->
-Last modified: Sun Aug 14 02:35:46 US Mountain Standard Time 2005
+Last modified: Sun Aug 21 11:15:46 US Mountain Standard Time 2005
 <!-- hhmts end -->
   </body>
 </html>
