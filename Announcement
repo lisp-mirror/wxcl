@@ -1,38 +1,43 @@
-Announcement: wxCL 1.0.0
+Announcement: wxCL 1.1.0  (August 21, 2005) ***
  ---------------------------
 
  <http://www.wxcl-project.org>
 
-We are pleased to announce the first release (1.0.0 Alpha) of wxCL, a
-new open source GUI library for Common Lisp. The goal of the project
-is to provide an industrial strength portable GUI library for
-application developers, which runs across all lisp implementation and
-operating system platforms.  
+We are pleased to announce the release wxCL-1.1.0 (Alpha), the latest
+installment in wxCL development effort. In this release wxCL license
+is changed to `wxWindows License 3.1`. wxCL-1.1.0 also introduces a number
+of bug fixes and several new features. Please see the Release Notes for
+complete list of changes.
 
-wxCL builds upon wxWidgets, a comprehensive C++ library that provides
-uniform application interface to all major GUI platforms; including  
-GTK, Windows, X11, and MacOS X. wxWidgets is a mature library which
-was first released in 1992,  and since improved upon by a committed
-developer community, it is ranked among  the top 25 most active
-projects on sourceforge. wxWidgets makes many features available to
-Common Lisp environments which have been missing in traditional
-GUI toolkits for this programming language. 
+What is wxCL?
+-------------
 
-The current release of wxCL already supports about 75 % of the
-wxWidgets (release 2.4.2) functionality: almost 1,500 member functions
-of 125 classes with 1,200 constant definitions. It runs on CLISP, an
-open-source, ANSI-compliant implementation of Common Lisp and is
-tested on Windows XP but it should work on Linux and Mac OS X as well 
-(not tested due to lack of resources).
+wxCL aims to provide an industrial strength GUI library to application
+programmers which is portable across Common Lisp implementations and
+operating system platforms. It builds upon wxWidgets, a comprehensive
+C++ library that provides uniform application interface to all major
+GUI platforms; including  GTK, Windows, X11, and MacOS X. 
 
-Most of the Foreign Function Interface were automatically generated
-using the clisp module of SWIG from the C bindings written by wxEiffel
-and wxHaskell project groups. Due to the size of the library, not all
-of the bindings have been validated, but we expect most of them to
-work without much tweaking. 
+Availability:
+-------------
 
-We look forward to your feedback on the first release of wxCL and hope
-it serves your needs.
+The current release of wxCL 1.1.0 runs on CLISP, and is tested on
+Windows XP but it should work on Linux and Mac OS X as well (not
+tested due to lack of resources). 
+
+It can be downloaded from:
+
+http://www.wxcl-project.org/en--releases--maindl.html
+
+
+Questions/Feedbacks/Reporting Bugs
+----------------------------------
+
+The best place to ask questions, report bugs and/or give feedback
+on the library is wxCL-devel mailing list.
+
+http://www.wxcl-project.org/en--contact--main2.html
+
 
 
 All the best,
