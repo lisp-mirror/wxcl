@@ -1,0 +1,7 @@
+PLEASE NOTE:
+
+The files in this folder are *NOT* the same that are in the clisp-wrappers 
+folder. The ones you find here are for linking wxCL with CLISP and are,
+probably, not so new as the ones in the clisp-wrappers directory. This is
+due to the fact that I have not created an automatic way of generating
+these wrappers from the original ones.
