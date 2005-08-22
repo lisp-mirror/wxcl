@@ -1,0 +1,275 @@
+HOWTO - Link CLISP with the wxCL module
+
+1. Introduction
+
+This short HOWTO describes how to use clisp-link in order to link the wxc DLL
+with CLISP in Win32. This operation allows one to get better error messages
+from the interpreter when using the wxCL library (in fact, not doing this will, 
+usually, give you a crash from CLISP and no message at all). The procedure
+is quite simple but can become a bit tricky sometimes. The aim of this HOWTO 
+is to show you how to go throughout this process.
+
+
+2. Getting the stuff you need
+
+In order to be able to link the wxc DLL with CLISP you will obviously need wxCL
+and CLISP source code. I have already saw many messages in the CLISP mailing
+list recommending using Cygwin to compile CLISP but I was able to compile it 
+(but only the CVS version) using only MINGW and MSYS. Here follows the links to 
+get all these:
+
+CLISP:		   http://www.clisp.org/
+
+wxCL:		   http://www.wxcl-project.org/
+
+MINGW and MSYS:	   http://www.mingw.org/
+
+(get this one if you are not able to compile CLISP using MINGW and MSYS)
+Cygwin:		   http://www.cygwin.com/ 
+
+After downloading and installing the software, it is time to go on and make
+things work for us.
+
+
+3. Compiling CLISP
+
+Compiling CLISP should be straightforward. Or not. I tried to compile CLISP
+with MINGW but it only worked for the CVS version. If you have problems
+compiling it, try to use Cygwin. It should not be too different from what
+I'll be explaining here. You can find instructions for compilation for
+both environments in the CLISP distribution you have downloaded. I'll
+write down the sequence of commands I have used here just to make it
+short:
+
+- After decompressing the CLISP distribution, go to the folder where you
+  have decompressed it and type:
+
+       mkdir build-mingw
+       cd build-mingw
+       ../configure --with-mingw (check CLISP's documentation on how to
+				  add modules here or switches for Cygwin)
+
+- Now type:
+
+       ./makemake --with-dynamic-ffi --win32gcc --srcdir=../src > Makefile
+       make config.lisp
+
+- Edit config.lisp and adjust it to fit your computer's configuration. After
+  that you can type:
+
+       make
+
+This can take a while to run on your computer.
+
+- Now, type:
+
+       cd base
+       pwd
+
+- Take a note of that folder's name. This is CLISP's base folder, with CLISP
+  itself (the one we just compiled), some libraries (the .a files), objects
+  (the .o files) and makevars (which is a file that will be used by clisp-link
+  in order to be able to know which make switches to use).
+
+
+4. Using clisp-link
+
+Here goes the fun stuff: we are going to compile the wxCL files and generate
+a bunch of .C files which are going to be compiled and linked to CLISP. These
+.C files are simply a few declarations of the wxCL functions which are located
+in the .lisp files. Go to the folder where you installed wxCL and type:
+
+   cd wxcl-module
+   clisp compile-all.lisp
+
+This will write a lot of .fas, .lib and .c files to the disk. Please, notice 
+all these .lisp files, though similar, are not the same as the ones in the
+clisp-wrappers folder. They don't have the ':library' line after the functions'
+declarations. They must only be used to develop software if you link the .c
+files with CLISP, otherwise, they will not work. Also, if you try to use
+the .lisp files inside clisp-wrappers with the linked version of wxcl/CLISP
+you will get some error messages.
+
+Ok, so far, so good. Inside the 'build-mingw' folder we created there's a
+script called clisp-link. Without living the wxcl-module folder, run this
+script like this:
+
+   /the build-mingw complete path/clisp-link create-module-set wxclisp *.c
+
+You will see a lot of error messages like:
+
+'ln: creating symbolic link "some file name" ...: No such file or directory
+
+Don't worry about them. Now type:
+
+   cd wxclisp
+   ls -l
+
+You should see all the .c files inside this folder (in fact, they are symbolic
+links to the .c files we created before). Also, you should see two other
+files:
+
+   Makefile
+   link.sh
+
+Take a look at link.sh. You should see something like this in the first two
+lines:
+
+   file_list=''
+   mod_list=''
+
+Edit this so it looks like:
+
+   file_list='wxc-msw2.4.2-0.9.4.dll'
+   mod_list=''
+
+Go to the last line. It should read:
+
+   TO_LOAD=''
+
+Now, here goes a great change. We have to list all the wrappers files here.
+It's a lot of files so I'll just copy them here to simplify the process.
+Change the line above by all the lines I give here (if you want to use the
+.fas for performance, just change the lines
+
+TO_LOAD='../wxCL.lisp
+../wxWindow.lisp
+../wxAcceleratorEntry.lisp
+../wxArtProvider.lisp
+../wxBitmap.lisp
+../wxBrush.lisp
+../wxBusyInfo.lisp
+../wxButton.lisp
+../wxDateTime.lisp
+../wxCalendarCtrl.lisp
+../wxCaret.lisp
+../wxCheckBox.lisp
+../wxCheckListBox.lisp
+../wxChoice.lisp
+../wxClipboard.lisp
+../wxColour.lisp
+../wxColourData.lisp
+../wxDialog.lisp
+../wxColourDialog.lisp
+../wxComboBox.lisp
+../wxCommand.lisp
+../wxConfigBase.lisp
+../wxContextHelp.lisp
+../wxControl.lisp
+../wxCursor.lisp
+../wxDC.lisp
+../wxDCSVG.lisp
+../wxDND.lisp
+../wxDataFormat.lisp
+../wxDialup.lisp
+../wxDirDialog.lisp
+../wxDrawing.lisp
+../wxEvent.lisp
+../wxEvtHandler.lisp
+../wxFL.lisp
+../wxFileDialog.lisp
+../wxFileHist.lisp
+../wxFindReplaceDialog.lisp
+../wxFont.lisp
+../wxFontData.lisp
+../wxFontDialog.lisp
+../wxFrame.lisp
+../wxGauge.lisp
+../wxGizmos.lisp
+../wxGrid.lisp
+../wxHelpController.lisp
+../wxIPC.lisp
+../wxIcon.lisp
+../wxIconBundle.lisp
+../wxImage.lisp
+../wxImageList.lisp
+../wxJoystick.lisp
+../wxLayoutConstraints.lisp
+../wxListBox.lisp
+../wxListCtrl.lisp
+../wxLocale.lisp
+../wxLog.lisp
+../wxMDI.lisp
+../wxMask.lisp
+../wxMenuItem.lisp
+../wxMenu.lisp
+../wxMenubar.lisp
+../wxMessageDialog.lisp
+../wxMime.lisp
+../wxMiniFrame.lisp
+../wxNotebook.lisp
+../wxPalette.lisp
+../wxPanel.lisp
+../wxPen.lisp
+../wxPlot.lisp
+../wxPrintDialog.lisp
+../wxProcess.lisp
+../wxRadioBox.lisp
+../wxRadioButton.lisp
+../wxRegion.lisp
+../wxRegionIterator.lisp
+../wxSash.lisp
+../wxScintilla.lisp
+../wxScrollBar.lisp
+../wxScrolledWindow.lisp
+../wxSingleInstanceChecker.lisp
+../wxSizer.lisp
+../wxSlider.lisp
+../wxSpinCtrl.lisp
+../wxSplitterWindow.lisp
+../wxStaticBox.lisp
+../wxStaticLine.lisp
+../wxStaticText.lisp
+../wxStatusBar.lisp
+../wxSystemSettings.lisp
+../wxTextCtrl.lisp
+../wxThread.lisp
+../wxTimer.lisp
+../wxTipWindow.lisp
+../wxToggleButton.lisp
+../wxToolbar.lisp
+../wx_wrapper.lisp
+../wx_main.lisp
+../wxTreeCtrl.lisp
+../wxValidator.lisp
+../wxWizard.lisp'
+
+Now, back to the MSYS shell, type these lines:
+
+   ln -s ../../miscellaneous/wxc-msw2.4.2-0.9.4.dll 
+   cp -R ../../wxc/include/* .
+
+The last line is a bit tricky but I just didn't have the patience to find out
+how to reference the include files inside the wxc folder. Type this now:
+
+   cd ..
+   /build-mingw/clisp-link add-module-set wxclisp /build-mingw/base/ base+wx
+
+Where 'build-mingw' is the complete path to the CLISP mingw build previously
+done.
+
+If everything runs fine, you should now have a directory called base+wx which
+contains a lisp.exe and a lispinit.mem. Copy this folder to your CLISP 
+directory, and run it using the following command:
+
+   clisp -M /c/clisp/base+wx/lispinit.mem -K base+wx
+
+(In my case, CLISP is installed in C:\clisp. Change the path to fit your
+configuration).
+
+Now, type this in the CLISP prompt:
+
+   (wx_main:wxClosure_Create)
+
+You should see this error message:
+
+*** - FFI::FOREIGN-CALL-OUT: Too few arguments (0 instead of at least 1) given
+      to #<FOREIGN-FUNCTION "wxClosure_Create" #x004F2000>
+
+If this is the case, congratulations. You have done it !!!
+
+
+5. Comments and suggestions
+
+Please, if you have any comments or sugestions about this tutorial, send a message
+to the wxCL mailing list (wxcl-devel@lists.sourceforge.net).
