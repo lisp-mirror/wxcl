@@ -1,0 +1,195 @@
+;;; -*- Mode: LISP; Base: 10; Syntax: Common-Lisp -*-
+
+
+
+
+#|
+
+The Keyword--URI relations defined in this file can be retrieved 
+with the special attribute :href* in LHTML tags inside the ubiquitous
+'with-syntax' macro:
+
+(with-syntax 
+ (:html)
+ ((:a :href* :hp-wxcl) "The wxCL project group")
+ )
+
+is easier to maintain in a large pile of online content than this:
+
+(with-syntax
+ (:html)
+ ((:a href "http://www.wxcl-project.org") "The wxCL project group")
+ )
+
+although both produces the same (hopefully obvious) result:
+
+<a href="http://www.wxcl-project.org">The wxCL project group</a>
+
+The 'with-syntax' macro also arranges for the right target (sink) for
+the resulting HTML, so there's usually no need to worry about this
+when writing or editing nodes of the wxCL website.
+
+Additional URIs not defined by means of the file at hand
+are inherently created by other preference files, eg. by defining 
+nodes (text content) for the website (see those files for more
+information).
+
+
+( Joerg Preisendoerfer )
+
+|#
+
+
+
+;;; ------ Us ------
+:hp-wxcl "http://www.wxcl-project.org/"
+
+
+
+;;; ------ release-related pages ------
+
+:release-notes-1.1.0-alpha  "https://sourceforge.net/project/shownotes.php?release_id=350721"
+
+
+;;; ------ Licenses ------
+
+;; This section will be moved to an extra file
+;;  containing name translations for the licenses.
+
+:osi-bsd-txt "http://www.opensource.org/licenses/bsd-license.php"
+:osi-gnu-gpl-txt "http://www.opensource.org/licenses/gpl-license.php"
+:osi-wx-widgets-txt "http://www.opensource.org/licenses/wxwindows.php"
+:lic-wx-widgets-explained "http://www.wxwidgets.org/newlicen.htm"
+
+
+
+;;; ------ SourceForge pages ------
+
+:sf-hp "http://sourceforge.net/"
+:sf-donate "http://sourceforge.net/donate/index.php?group_id=143661"
+
+:sf-wxlisp "http://sourceforge.net/projects/wxlisp"
+:sf-wxcl "http://sourceforge.net/projects/wxcl"
+
+:sf-files "http://sourceforge.net/project/showfiles.php?group_id=143661"
+:sf-forums "http://sourceforge.net/forum/?group_id=143661"
+:sf-cvs "http://sourceforge.net/cvs/?group_id=143661"
+:sf-cvs-view "http://cvs.sourceforge.net/viewcvs.py/wxcl/"
+
+:sf-bugs "http://sourceforge.net/tracker/?group_id=143661&atid=756151"
+:sf-newsfeed "https://sourceforge.net/export/rss2_project.php?group_id=143661"
+:sf-alltime-most-active "http://sourceforge.net/top/mostactive.php"
+
+:sf-ml-all "https://sourceforge.net/mail/?group_id=143661"
+:sf-ml-cvs "http://lists.sourceforge.net/lists/listinfo/wxcl-cvs"
+:sf-ml-devel "http://lists.sourceforge.net/lists/listinfo/wxcl-devel"
+
+
+
+;;; ------ Network News ------
+
+:nntp-ml-devel "nntp://news.gmane.org/gmane.lisp.wxcl.devel"
+
+
+
+;;; ------ GUI frameworks ------
+
+:hp-gtk+ "http://www.gtk.org"
+:hp-x11 "http://www.x.org"
+:hp-ms-windows-family-en "http://www.microsoft.com/windows/default.mspx"
+:hp-ms-windows-family-de "http://www.microsoft.com/germany/windows/default.mspx"
+:hp-ms-windows-xp-en "http://www.microsoft.com/windowsxp/default.mspx"
+:hp-ms-windows-xp-de "http://www.microsoft.com/germany/windowsxp/default.mspx"
+:hp-apple-macosx-en "http://www.apple.com/macosx"
+:hp-apple-macosx-de "http://www.apple.de/macosx"
+
+
+
+;;; ------ Others ------
+
+:hp-swig "http://www.swig.org"
+
+:w3org-rfc977 "http://www.w3.org/protocols/rfc977/rfc977"
+:new-spin "http://article.gmane.org/gmane.lisp.clisp.general/9757"
+:swig-clisp-expl "http://www.public.asu.edu/~sksinghi/swig-clisp.html"
+:on-wxcl "http://www.olivfabric.de/content/on-wxcl.html"
+
+:hp-linux-kernel "http://www.kernel.org"
+
+:clisp-ml-devel "http://sourceforge.net/mail/?group_id=1355"
+
+:hp-cliki "http://www.cliki.net"
+:cliki-wxcl "http://www.cliki.net/wxcl"
+:hp-freshmeat "http://fresmeat.net"
+:freshmeat-wxcl "http://freshmeat.net"
+
+:hp-ansi "http://www.ansi.org"
+
+
+
+;;; ------ Project People ------
+
+;; This section will be moved to an extra file
+;;  containing additional semantic classification about people
+;;  (Surname, Lastname, Pseudonyms, Location, ...)
+
+:hp-surendra "http://www.public.asu.edu/~sksinghi/"
+;; (def-link hp-andre "")
+:hp-joerg "http://www.olivfabric.de"
+
+:hp-kaz "http://users.footprints.net/~kaz/"
+;; hp-sanjay "http://www.sanjaypande.com" ;; ---- ?
+:hp-sanjay "http://lisp.tech.coop/Sanjay%20Pande"
+
+
+
+;; ------ wxWidgets and wrappers ------
+
+:hp-wxwidgets "http://www.wxwidgets.org"
+
+:hp-wxc "http://wxc.sourceforge.net"
+:hp-wxhaskell "http://wxhaskell.sourceforge.net"
+:hp-wxeiffel "http://elj.sourceforge.net/projects/gui/ewxw/"
+:hp-wxocaml "http://wxocaml.sourceforge.net/"
+
+:hp-wxpython "http://www.wxpython.org"
+:hp-mzscheme "http://www.plt-scheme.org/software/mzscheme/"
+
+
+
+;; --- Some Common Lisp implementations ---
+
+:hp-clisp "http://clisp.cons.org"
+:hp-cmu-cl "http://www.cons.org/cmucl"
+:hp-acl "http://www.franz.com"
+:hp-lw-cl "http://www.lispworks.com"
+:hp-lcl "http://www.lispworks.com"
+:hp-corman-cl "http://www.cormanlisp.com" ;; ---- ?
+
+:alu-systems "http://www.lisp.org/table/systems.htm" ;; ---- ?
+
+
+
+;; --- Foreign Function Interfaces, Documentation ---
+
+:ffi-clisp "http://clisp.cons.org/impnotes.html#dffi"
+:ffi-cmu-cl "http://www.common-lisp.net/project/cmucl/doc/cmu-user/aliens.html"
+:ffi-acl-7.0 "http://www.franz.com/support/documentation/7.0/doc/foreign-functions.htm"
+:ffi-acl-6.2 "http://www.franz.com/support/documentation/6.2/doc/foreign-functions.htm"
+:ffi-acl-6.0 "http://www.franz.com/support/documentation/6.0/doc/foreign-functions.htm"
+:ffi-lw-cl "http://www.lispworks.com/documentation/lw445/FLI/html/fli.htm"
+:ffi-lcl "http://www.lispworks.com/documentation/lcl50/aug/aug-68.html"
+:ffi-lcl-creator "http://www.lispworks.com/documentation/lcl50/aug/aug-101.html" ;; c-ffi-creator
+:ffi-corman-cl "http://www.cormanlisp.com/cormanlisp/cormanlisp_2_5" ;; ---- ?
+
+
+
+;; --- General Lisp Documentation ---
+
+:doc-cltl2-a "http://www.supelec.fr/docs/cltl/cltl2.html"
+:doc-cltl2-b "http://www-2.cs.cmu.edu/groups/AI/html/cltl/cltl2.html"
+:doc-hyperspec-7 "http://www.lispworks.com/documentation/HyperSpec/Front/index.htm"
+:doc-ansi-cl "http://www.franz.com/support/documentation/5.0.1/ansicl/ansicl.htm"
+
+
+
