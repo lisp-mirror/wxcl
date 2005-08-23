@@ -25,7 +25,12 @@
 # can be useful for creating a module that consists of many directories
 # spread out over the entire source repository.
 
-wxcl	-a	!sharpquote-wx .
+
+
+# After exporting a snapshot of module 'wxcl', the snapshot cronjob deletes the
+# the dirs 'CVSROOT' and 'sharpquote-wx' before compressing.
+wxcl	-a	.
+
 
 sqwx	-a	sharpquote-wx
 
