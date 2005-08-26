@@ -109,6 +109,7 @@
 	:wxMemoryDC_CreateCompatible
 	:wxMemoryDC_Delete
 	:wxMemoryDC_SelectObject
+	:with-memory-DC
 	:wxScreenDC_Create
 	:wxScreenDC_Delete
 	:wxScreenDC_StartDrawingOnTopOfWin
@@ -240,8 +241,8 @@
 	(:name "wxDC_DrawPolygon")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(n ffi:int)
-		(x (ffi:c-pointer NIL))
-		(y (ffi:c-pointer NIL))
+		(x (ffi:c-array-ptr ffi:int))
+		(y (ffi:c-array-ptr ffi:int))
 		(xoffset ffi:int)
 		(yoffset ffi:int)
 		(fillStyle ffi:int))
@@ -396,7 +397,7 @@
 (ffi:def-call-out wxDC_SetBackground
 	(:name "wxDC_SetBackground")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(brush (ffi:c-pointer NIL)))
+		    (brush (ffi:c-pointer NIL)))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -974,4 +975,13 @@
 	   (setf ,dc (wxScreenDC_Create ,window))
 	   ,@body)
       (wxScreenDC_Delete ,dc))))
+
+
+(defmacro with-memory-DC ((dc) &body body)
+  `(let (,dc)
+    (unwind-protect
+	 (progn
+	   (setf ,dc (wxMemoryDC_Create))
+	   ,@body)
+      (wxMemoryDC_Delete ,dc))))
 
