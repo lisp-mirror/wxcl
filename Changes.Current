@@ -1,2 +1,8 @@
 Version 1.1.1 (in progress)
 ============================
+2005-08-25: efuzzyone		
+	    Added macro with-memory-DC to wxDc, also fixed the ffi declaration in wxDC_DrawPolygon.
+
+2005-08-25: efuzzyone		
+	    Moved pen related constants to wxPen.
+
