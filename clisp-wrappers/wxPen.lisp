@@ -32,11 +32,32 @@
 	:wxPen_GetJoin
 	:wxPen_GetCap
 	:wxPen_GetDashes
-	:wxPen_GetStipple))
+	:wxPen_GetStipple
+	:wxRED_PEN
+	:wxCYAN_PEN
+	:wxGREEN_PEN
+	:wxBLACK_PEN
+	:wxWHITE_PEN
+	:wxTRANSPARENT_PEN
+	:wxBLACK_DASHED_PEN
+	:wxGREY_PEN
+	:wxMEDIUM_GREY_PEN
+	:wxLIGHT_GREY_PEN))
 
 (in-package :wxPen)
 
 (ffi:default-foreign-language :stdc)
+
+(defconstant wxRED_PEN 0)
+(defconstant wxCYAN_PEN 1)
+(defconstant wxGREEN_PEN 2)
+(defconstant wxBLACK_PEN 3)
+(defconstant wxWHITE_PEN 4)
+(defconstant wxTRANSPARENT_PEN 5)
+(defconstant wxBLACK_DASHED_PEN 6)
+(defconstant wxGREY_PEN 7)
+(defconstant wxMEDIUM_GREY_PEN 8)
+(defconstant wxLIGHT_GREY_PEN 9)
 
 (ffi:def-call-out wxPen_CreateDefault
 	(:name "wxPen_CreateDefault")
