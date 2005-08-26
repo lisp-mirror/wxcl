@@ -1,0 +1,41 @@
+;;; -*- Mode: LISP; Base: 10; Syntax: Common-Lisp -*-
+
+
+
+
+
+;; --- Some Common Lisp implementations ---
+
+:hp-clisp "http://clisp.cons.org"
+:hp-cmu-cl "http://www.cons.org/cmucl"
+:hp-acl "http://www.franz.com"
+:hp-lw-cl "http://www.lispworks.com"
+:hp-lcl "http://www.lispworks.com"
+:hp-corman-cl "http://www.cormanlisp.com" ;; ---- ?
+
+:alu-systems "http://www.lisp.org/table/systems.htm" ;; ---- ?
+
+
+
+;; --- Foreign Function Interfaces, Documentation ---
+
+:ffi-clisp "http://clisp.cons.org/impnotes.html#dffi"
+:ffi-cmu-cl "http://www.common-lisp.net/project/cmucl/doc/cmu-user/aliens.html"
+:ffi-acl-7.0 "http://www.franz.com/support/documentation/7.0/doc/foreign-functions.htm"
+:ffi-acl-6.2 "http://www.franz.com/support/documentation/6.2/doc/foreign-functions.htm"
+:ffi-acl-6.0 "http://www.franz.com/support/documentation/6.0/doc/foreign-functions.htm"
+:ffi-lw-cl "http://www.lispworks.com/documentation/lw445/FLI/html/fli.htm"
+:ffi-lcl "http://www.lispworks.com/documentation/lcl50/aug/aug-68.html"
+:ffi-lcl-creator "http://www.lispworks.com/documentation/lcl50/aug/aug-101.html" ;; c-ffi-creator
+:ffi-corman-cl "http://www.cormanlisp.com/cormanlisp/cormanlisp_2_5" ;; ---- ?
+
+
+
+;; --- General Lisp Documentation ---
+
+:doc-cltl2-a "http://www.supelec.fr/docs/cltl/cltl2.html"
+:doc-cltl2-b "http://www-2.cs.cmu.edu/groups/AI/html/cltl/cltl2.html"
+:doc-hyperspec-7 "http://www.lispworks.com/documentation/HyperSpec/Front/index.htm"
+:doc-ansi-cl "http://www.franz.com/support/documentation/5.0.1/ansicl/ansicl.htm"
+
+

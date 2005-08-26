@@ -1,0 +1,106 @@
+;;; -*- Mode: LISP; Base: 10; Syntax: Common-Lisp -*-
+
+
+
+
+#|
+
+
+This file keeps a little database of the wxCL releases.
+
+The data is used for the eMail webforms on the contact tab and
+the listing on the release tab.
+
+The file is edited manually for the moment but could get automatic 
+updates using the release information available as RSS feed from 
+SourceForge.
+
+
+( Joerg Preisendoerfer )
+
+
+|#
+
+
+
+
+#|
+
+;; For the next release:
+;;  (edit where necessary; uncomment)
+
+:release "wxCL 1.2.0 Alpha" ;; -------------- adjust
+:structured-release-number #4(1 2 0 1) ;; --- adjust
+:date (2005 08 21) ;; ----------------------- adjust
+:manager "Surendra L. Singhi"
+:license :osi-wx-widgets-txt 
+:style :sf-frs 
+
+:id "350721" ;; ----------------------------- adjust (e.g. see SF release note URI)
+:notes-uri-key :sf-default
+:base-name "wxcl-1.2.0" ;; ------------------ adjust
+:files ((:zip :http 1514087) ;; ------------- adjust
+	(:tar-gz :http 1400228) ;; ---------- adjust
+	) 
+
+|#
+
+
+
+:release "wxCL 1.1.0 Alpha"
+;;  ^  The print name of the release, used for XHTML generation
+:structured-release-number #4(1 1 0 1) 
+;;  ^  1st three values = release number, 
+;;      4th = position of greek letter in greek alphabet.
+;;      Used for sorting and generating an entry in the URI database
+;;      pointing to the release download section of SF:
+;;      nr (1 1 0 1) with protocol :HTTP and compression :tar-gz becomes 
+;;      key :release-download-http-1-1-0-1-tar-gz with source :sqwx
+:date (2005 08 21)
+:manager "Surendra L. Singhi"
+:license :osi-wx-widgets-txt 
+;;  ^  for now use the key defined in the link files to identify license
+;;      (define a new license in the link files if necessary)
+:style :sf-frs 
+;;  ^  interpretation of following keys depends on this setting
+
+:id "350721"
+:notes-uri-key :sf-default
+;;  ^  key is replaced during load of this file with a key of the form
+;;     :release-notes-1-1-0-1 with source :sqwx (see comment on
+;;     structured release number)
+:base-name "wxcl-1.1.0"
+;;  ^  the name of the file as given to SourceForge, without archive extension
+:files ((:zip :http 1514087)
+        (:tar-gz :http 1400228)
+        )
+;;  ^  fields: compression protocol size &optional uri 
+;;      (uri = full download uri if default uri construction for SF won't do)
+
+
+
+
+:release "wxCL 1.0.0 Alpha"
+:structured-release-number #4(1 0 0 1) 
+:date (2005 08 15)
+:manager "Surendra L. Singhi"
+:license :osi-gnu-gpl-txt
+:style :sf-frs 
+
+:id "349288"
+:notes-uri-key :sf-default
+:base-name "wxcl-1.0.0"
+:files ((:zip :http 1472059)
+	(:tar-gz :http 1374965)
+	)
+
+
+
+
+
+
+
+
+
+
+

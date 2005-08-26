@@ -1,0 +1,27 @@
+;;; -*- Mode: LISP; Base: 10; Syntax: Common-Lisp -*-
+
+
+
+
+
+;;; ------ SourceForge pages ------
+
+:sf-hp "http://sourceforge.net/"
+:sf-donate "http://sourceforge.net/donate/index.php?group_id=143661"
+
+:sf-wxlisp "http://sourceforge.net/projects/wxlisp"
+:sf-wxcl "http://sourceforge.net/projects/wxcl"
+
+:sf-files "http://sourceforge.net/project/showfiles.php?group_id=143661"
+:sf-forums "http://sourceforge.net/forum/?group_id=143661"
+:sf-cvs "http://sourceforge.net/cvs/?group_id=143661"
+:sf-cvs-view "http://cvs.sourceforge.net/viewcvs.py/wxcl/"
+
+:sf-bugs "http://sourceforge.net/tracker/?group_id=143661&atid=756151"
+:sf-newsfeed "https://sourceforge.net/export/rss2_project.php?group_id=143661"
+:sf-alltime-most-active "http://sourceforge.net/top/mostactive.php"
+
+:sf-ml-all "https://sourceforge.net/mail/?group_id=143661"
+:sf-ml-cvs "http://lists.sourceforge.net/lists/listinfo/wxcl-cvs"
+:sf-ml-devel "http://lists.sourceforge.net/lists/listinfo/wxcl-devel"
+
