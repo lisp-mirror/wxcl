@@ -41,6 +41,11 @@ information).
 
 
 
+:include "./preferences/links-sourceforge"
+:include "./preferences/links-cl-and-ffi"
+
+
+
 ;;; ------ Us ------
 :hp-wxcl "http://www.wxcl-project.org/"
 
@@ -60,29 +65,6 @@ information).
 :osi-gnu-gpl-txt "http://www.opensource.org/licenses/gpl-license.php"
 :osi-wx-widgets-txt "http://www.opensource.org/licenses/wxwindows.php"
 :lic-wx-widgets-explained "http://www.wxwidgets.org/newlicen.htm"
-
-
-
-;;; ------ SourceForge pages ------
-
-:sf-hp "http://sourceforge.net/"
-:sf-donate "http://sourceforge.net/donate/index.php?group_id=143661"
-
-:sf-wxlisp "http://sourceforge.net/projects/wxlisp"
-:sf-wxcl "http://sourceforge.net/projects/wxcl"
-
-:sf-files "http://sourceforge.net/project/showfiles.php?group_id=143661"
-:sf-forums "http://sourceforge.net/forum/?group_id=143661"
-:sf-cvs "http://sourceforge.net/cvs/?group_id=143661"
-:sf-cvs-view "http://cvs.sourceforge.net/viewcvs.py/wxcl/"
-
-:sf-bugs "http://sourceforge.net/tracker/?group_id=143661&atid=756151"
-:sf-newsfeed "https://sourceforge.net/export/rss2_project.php?group_id=143661"
-:sf-alltime-most-active "http://sourceforge.net/top/mostactive.php"
-
-:sf-ml-all "https://sourceforge.net/mail/?group_id=143661"
-:sf-ml-cvs "http://lists.sourceforge.net/lists/listinfo/wxcl-cvs"
-:sf-ml-devel "http://lists.sourceforge.net/lists/listinfo/wxcl-devel"
 
 
 
@@ -120,7 +102,7 @@ information).
 
 :hp-cliki "http://www.cliki.net"
 :cliki-wxcl "http://www.cliki.net/wxcl"
-:hp-freshmeat "http://fresmeat.net"
+:hp-freshmeat "http://freshmeat.net"
 :freshmeat-wxcl "http://freshmeat.net/projects/wxcl/"
 
 :hp-ansi "http://www.ansi.org"
@@ -134,7 +116,7 @@ information).
 ;;  (Surname, Lastname, Pseudonyms, Location, ...)
 
 :hp-surendra "http://www.public.asu.edu/~sksinghi/"
-;; (def-link hp-andre "")
+;; hp-andre ""
 :hp-joerg "http://www.olivfabric.de"
 
 :hp-kaz "http://users.footprints.net/~kaz/"
@@ -154,42 +136,3 @@ information).
 
 :hp-wxpython "http://www.wxpython.org"
 :hp-mzscheme "http://www.plt-scheme.org/software/mzscheme/"
-
-
-
-;; --- Some Common Lisp implementations ---
-
-:hp-clisp "http://clisp.cons.org"
-:hp-cmu-cl "http://www.cons.org/cmucl"
-:hp-acl "http://www.franz.com"
-:hp-lw-cl "http://www.lispworks.com"
-:hp-lcl "http://www.lispworks.com"
-:hp-corman-cl "http://www.cormanlisp.com" ;; ---- ?
-
-:alu-systems "http://www.lisp.org/table/systems.htm" ;; ---- ?
-
-
-
-;; --- Foreign Function Interfaces, Documentation ---
-
-:ffi-clisp "http://clisp.cons.org/impnotes.html#dffi"
-:ffi-cmu-cl "http://www.common-lisp.net/project/cmucl/doc/cmu-user/aliens.html"
-:ffi-acl-7.0 "http://www.franz.com/support/documentation/7.0/doc/foreign-functions.htm"
-:ffi-acl-6.2 "http://www.franz.com/support/documentation/6.2/doc/foreign-functions.htm"
-:ffi-acl-6.0 "http://www.franz.com/support/documentation/6.0/doc/foreign-functions.htm"
-:ffi-lw-cl "http://www.lispworks.com/documentation/lw445/FLI/html/fli.htm"
-:ffi-lcl "http://www.lispworks.com/documentation/lcl50/aug/aug-68.html"
-:ffi-lcl-creator "http://www.lispworks.com/documentation/lcl50/aug/aug-101.html" ;; c-ffi-creator
-:ffi-corman-cl "http://www.cormanlisp.com/cormanlisp/cormanlisp_2_5" ;; ---- ?
-
-
-
-;; --- General Lisp Documentation ---
-
-:doc-cltl2-a "http://www.supelec.fr/docs/cltl/cltl2.html"
-:doc-cltl2-b "http://www-2.cs.cmu.edu/groups/AI/html/cltl/cltl2.html"
-:doc-hyperspec-7 "http://www.lispworks.com/documentation/HyperSpec/Front/index.htm"
-:doc-ansi-cl "http://www.franz.com/support/documentation/5.0.1/ansicl/ansicl.htm"
-
-
-
