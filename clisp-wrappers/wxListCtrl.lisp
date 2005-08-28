@@ -1,4 +1,4 @@
-;;;wxListctrl.lisp
+;;;wxListCtrl.lisp
 ;;;License  : wxWindows License 3.1
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxListctrl
+(defpackage :wxListCtrl
     (:use :common-lisp :ffi :WxCL)
   (:export :wxListItem_Create
 ;	:make-EiffelSort
