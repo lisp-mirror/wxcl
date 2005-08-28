@@ -156,7 +156,7 @@
     (:name "wxFrame_SetStatusWidths")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (_n ffi:int)
-	      (_widths_field (ffi:c-pointer NIL)))
+	      (_widths_field (ffi:c-array-ptr ffi:int)))
   (:return-type NIL)
   (:library +library-name+))
 

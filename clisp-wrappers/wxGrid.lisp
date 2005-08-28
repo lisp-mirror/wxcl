@@ -1339,16 +1339,16 @@
 (ffi:def-call-out wxGrid_SetRowLabelValue
 	(:name "wxGrid_SetRowLabelValue")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(row ffi:int)
-		(label (ffi:c-pointer NIL)))
+		    (row ffi:int)
+		    (label ffi:c-string))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxGrid_SetColLabelValue
 	(:name "wxGrid_SetColLabelValue")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(col ffi:int)
-		(label (ffi:c-pointer NIL)))
+		    (col ffi:int)
+		    (label ffi:c-string))
 	(:return-type NIL)
 	(:library +library-name+))
 
