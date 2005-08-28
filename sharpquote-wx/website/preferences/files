@@ -57,7 +57,7 @@ SourceForge.
 ;;      nr (1 1 0 1) with protocol :HTTP and compression :tar-gz becomes 
 ;;      key :release-download-http-1-1-0-1-tar-gz with source :sqwx
 :date (2005 08 21)
-:manager "Surendra L. Singhi"
+:manager "Surendra Singhi"
 :license :osi-wx-widgets-txt 
 ;;  ^  for now use the key defined in the link files to identify license
 ;;      (define a new license in the link files if necessary)
@@ -83,7 +83,7 @@ SourceForge.
 :release "wxCL 1.0.0 Alpha"
 :structured-release-number #4(1 0 0 1) 
 :date (2005 08 15)
-:manager "Surendra L. Singhi"
+:manager "Surendra Singhi"
 :license :osi-gnu-gpl-txt
 :style :sf-frs 
 
