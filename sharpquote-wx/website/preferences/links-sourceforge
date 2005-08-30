@@ -10,7 +10,7 @@
 :sf-donate-image "http://images.sourceforge.net/images/project-support.jpg"
 :sf-donate "http://sourceforge.net/donate/index.php?group_id=143661"
 
-:sf-logo-image "http://sourceforge.net/sflogo.php?group_id=143661&amp;type=3"
+:sf-logo-image "http://sourceforge.net/sflogo.php?group_id=143661&type=3"
 
 :sf-wxlisp "http://sourceforge.net/projects/wxlisp"
 :sf-wxcl "http://sourceforge.net/projects/wxcl"
