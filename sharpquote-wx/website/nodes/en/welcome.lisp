@@ -13,7 +13,7 @@
   ((:li class "enum")
    "industrial strength interface")
   ((:li class "enum")
-   "under the " ((:a :href* :osi-wx-widgets-txt) "wxWidgets (formerly wxWindows) Open Source License")
+   "under the " ((:a :href* :osi-wxwidgets-txt) "wxWidgets (formerly wxWindows) Open Source License")
    )
   ((:li class "enum")
    "for the " ((:a :href* :hp-wxwidgets) "wxWidgets") " windowing system")
@@ -30,9 +30,9 @@
   
   ((:li class "topics")
    "To know more about the "
-   ((:a :href* :osi-wx-widgets-txt) "wxWidgets Open Source License")
+   ((:a :href* :osi-wxwidgets-txt) "wxWidgets Open Source License")
    ", visit "
-   ((:a :href* :lic-wx-widgets-explained) "this page")
+   ((:a :href* :lic-wxwidgets-explained) "this page")
    " of the "
    ((:a :href* :hp-wxwidgets) "wxWidgets project group")
    "."

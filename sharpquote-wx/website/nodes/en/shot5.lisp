@@ -6,7 +6,7 @@
  (:html)
  
  
- ((:p :css* (:lh *lh* :m "1em 25%"))
+ ((:p class "description-screenshot")
   "A simple text editor. (" 
   ((:a href "./img/text-editor-full.png") "View full image")
   ".) "

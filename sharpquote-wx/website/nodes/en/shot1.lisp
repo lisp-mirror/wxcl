@@ -5,7 +5,7 @@
 (with-syntax
  (:html)
  
- ((:p :css* (:lh *lh* :m "1em 25%"))
+ ((:p class "description-screenshot")
   "An image viewer. ("
   ((:a href "./img/image-viewer-1-full.png") "View full image")
   ".) Pre-release version of "

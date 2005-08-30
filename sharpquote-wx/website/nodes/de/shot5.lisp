@@ -6,8 +6,8 @@
  (:html)
  
  
- ((:p :css* (:lh *lh* :m "1em 25%"))
-  "Ein einfacher Texteditor. ("
+ ((:p class "description-screenshot")
+  "Ein einfacher Texteditor. ( "
   ((:a href "./img/text-editor-full.png") "Ganzes Bild ansehen")
   ".) "
   ((:a :href* :de/app-downloads) "Release 1.0.0 Alpha")

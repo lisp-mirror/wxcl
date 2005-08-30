@@ -13,7 +13,7 @@
   ((:li class "enum")
    "industriellen Anforderungen" :br "entsprechenden Schnittstelle")
   ((:li class "enum")
-   "unter der " ((:a :href* :osi-wx-widgets-txt) "wxWidgets (fr&uuml;her wxWindows) Open-Source-Lizenz")
+   "unter der " ((:a :href* :osi-wxwidgets-txt) "wxWidgets (fr&uuml;her wxWindows) Open-Source-Lizenz")
    )
   ((:li class "enum")
    "f&uuml;r das Fenstersystem " ((:a :href* :hp-wxwidgets) "wxWidgets"))
@@ -29,11 +29,11 @@
   
   ((:li class "topics")
    "Besuchen Sie "
-   ((:a :href* :lic-wx-widgets-explained) "diese Seite")
+   ((:a :href* :lic-wxwidgets-explained) "diese Seite")
    " der "
    ((:a :href* :hp-wxwidgets) "wxWidgets Projektgruppe")
    ", um mehr &uuml;ber die "
-   ((:a :href* :osi-wx-widgets-txt) "wxWidgets Open-Source-Lizenz")
+   ((:a :href* :osi-wxwidgets-txt) "wxWidgets Open-Source-Lizenz")
    " zu erfahren."
    )
   

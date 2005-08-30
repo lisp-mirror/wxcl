@@ -6,7 +6,7 @@
  (:html)
  
  
- ((:p :css* (:lh *lh* :m "1em 25%"))
+ ((:p class "description-screenshot")
   "An image viewer. ("
   ((:a href "./img/image-viewer-3-full.jpeg") "View full image")
   ".) Pre-release version of "

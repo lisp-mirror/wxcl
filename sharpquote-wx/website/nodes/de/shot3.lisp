@@ -5,7 +5,7 @@
 (with-syntax
  (:html)
  
- ((:p :css* (:lh *lh* :m "1em 25%"))
+ ((:p class "description-screenshot")
   "Ein Bildbetrachter. ("
   ((:a href "./img/image-viewer-3-full.jpeg") "Ganzes Bild ansehen")
   ".) Pre-Release-Version von "

@@ -6,7 +6,7 @@
  (:html)
  
  
- ((:p :css* (:lh *lh* :m "1em 25%"))
+ ((:p class "description-screenshot")
   "Verschiedene Kontrollelemente. ("
   ((:a href "./img/control-elements-full.png") "Ganzes Bild ansehen")
   ".) "
