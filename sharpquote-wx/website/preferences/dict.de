@@ -1,0 +1,50 @@
+;;; -*- Mode: LISP; Base: 10; Syntax: Common-Lisp -*-
+
+
+:de ;; language key, no dictionary entry
+
+
+:date ( ( 
+	 ( 
+	  (:month :word) 
+	  (:year :number :full))
+	  "~2*~2,'0D. ~2:*~A ~2:*~4,'0D")
+	)
+
+
+
+
+
+;; names of months
+:jan    ( ;; the list of alternative entries
+	 ( ;; an entry
+	  ( ;; set of modifier sequences for this entry
+	   (:abbr) ;; a modifier sequence
+	   ) 
+	  "Jan.")
+	 ( 
+	  (
+	   (:full)
+	   ) 
+	  "Januar") )
+:feb    ( ( ((:abbr)) "Feb.")
+          ( ((:full)) "Februar") )
+:march  ( ( ((:full)) "M&auml;rz") )
+:april  ( ( ((:abbr)) "Apr.") 
+	  ( ((:full)) "April") )
+:may    ( ( ((:full)) "Mai") )
+:june   ( ( ((:full)) "Juni") )
+:july   ( ( ((:full)) "Juli") )
+:aug    ( ( ((:abbr)) "Aug.")
+	  ( ((:full)) "August") )
+:sep    ( ( ((:abbr)) "Sep.")
+	  ( ((:full)) "September") )
+:oct    ( ( ((:abbr)) "Okt.")
+          ( ((:full)) "Oktober") )
+:nov    ( ( ((:abbr)) "Nov.")
+	  ( ((:full)) "November") )
+:dec    ( ( ((:abbr)) "Dez.")
+	  ( ((:full)) "Dezember") )
+
+
+
