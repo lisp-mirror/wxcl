@@ -1,0 +1,501 @@
+;;; -*- Mode: LISP; Base: 10; Syntax: Common-Lisp -*-
+
+
+;;;;
+;;;; The table of news on wxCL
+;;;; -------------------------
+;;;;
+;;;;
+;;;; The only way to look at the entry of this table programmatically is
+;;;; to use the macro
+;;;;
+;;;;    (with-news-iterator (iterator-fn-name language-key) &body body)
+;;;; 
+;;;; (To get a feel for using this, look at the CL build-in macro 
+;;;; with-package-iterator.)
+;;;;
+;;;; Within its body, a local function is bound to iterator-fn-name,
+;;;; a call to which returns the 7 values
+;;;;
+;;;;    date utime classification teaser headline lead-in copy-text
+;;;;
+;;;; where utime is the date encoded as universal time.
+;;;;
+;;;; The iterator function is guaranteed to return the news data in order
+;;;; of increasing age, thus, to get the latest news in english:
+;;;;
+;;;;    (with-news-iterator (cnn :en)
+;;;;      (mvb (date utime classification teaser headline lead-in copy-text)
+;;;;           (cnn)
+;;;;        "do something here"  ))
+;;;;
+;;;; Pls. be aware that this file contains data, not source code, other than
+;;;; node files, which are loaded as source. Although the same LHTML conventions
+;;;; are used in both cases, the difference is that LHTML within the macro
+;;;; with-syntax expands into a giant macro expansion (which can be compiled)
+;;;; while LHTML as data (like in the file at hand) is interpreted at runtime 
+;;;; using the function syntax-prinseq to produce the desired output.
+;;;;
+;;;; :teaser data is used for the terse news on the home page
+;;;; :headline data is used for the yellow H1 box on the home page and for newsfeed
+;;;; :lead-in data is used for the narrow paragraph with bold text on the homepage
+;;;;   and for newsfeed
+;;;; :copy-text data is used for both the home page and for newsfeed.
+;;;;
+;;;; For generating newsfeed, tags and attributes are removed using 
+;;;; :plain-from-lxml as the syntax designator instead of :html.
+;;;;
+;;;; 
+;;;; ( Joerg Preisendoerfer )
+;;;;
+;;;;
+
+
+
+
+
+:item 
+:date (2005 08 21) 
+:classification (:release #4(1 1 0 1))
+:de (:teaser 
+     ((:a :href* :de/app-downloads) "wxCL 1.1.0 Alpha") " verf&uuml;gbar."
+
+     :headline
+     ("Jetzt " ((:a :href* :de/app-downloads) "herunterladen") ": "
+      :br ((:a :href* :hp-wxcl) "wxCL") " 1.1.0 Alpha")
+     
+     :lead-in
+     ((:p
+       "Wir freuen uns, "
+       ((:a :href* :de/app-downloads) "Release 1.1.0 Alpha")
+       " von "
+       ((:a :href* :hp-wxcl) "wxCL")
+       ", dem j&uuml;ngsten Schritt in der Entwicklung von "
+       ((:a :href* :hp-wxcl) "wxCL")
+       " ank&uuml;ndigen zu k&ouml;nnen, mit dem "
+       "mehrere neue Funktionen eingef&uuml;hrt und eine Reihe von Fehlern behoben werden. "
+       "Beginnend mit dieser Ausgabe von "
+       ((:a :href* :hp-wxcl) "wxCL")
+       " erscheint die Schnittstelle unter der "
+       ((:a :href* :osi-wxwidgets-txt) "wxWidgets-Open-Source-Lizenz 3.1")
+       "."))
+     
+     :copy-text
+     ((:p
+       "Das Ziel von "
+       ((:a :href* :hp-wxwidgets) "wxCL")
+       " ist es, Anwendungs-Programmierern eine GUI-Bibliothek zur Verf&uuml;gung zu stellen, die "
+       (:b "industriellen Anforderungen") 
+       " entspricht und zwischen "
+       (:b "Common-Lisp-Implementation")
+       " und "
+       (:b "Betriebssystem-Plattformen portierbar")
+       " ist. Es baut auf "
+       ((:a :href* :hp-wxwidgets) "wxWidgets") 
+       " auf, einer umfangreichen CPP-Bibliothek, die eine uniforme "
+       "Anwendungs-Schnittstelle zu "
+       (:b "allen gro&szlig;en GUI-Plattformen")
+       " zur Verf&uuml;gung stellt, darunter "
+       (:b ((:a :href* :hp-gtk+) "GTK+") ", "
+	   ((:a :href* :hp-ms-windows-family-en) "MS&nbsp;Windows") ", "
+	   ((:a :href* :hp-x11) "X&nbsp;Windows") " und "
+	   ((:a :href* :hp-apple-macosx-en) "Apple MacOS&nbsp;X"))
+       ". ")
+      
+      ((:ul class "topics")
+       ((:li class "topics")
+	
+	((:a :href* :hp-wxcl) "wxCL")
+	" Release "
+	((:a :href* :de/app-downloads) "1.1.0 Alpha")
+	" can heruntergeladen werden von "
+	:br
+	((:a :href* :de/app-downloads)
+	 "http://www.wxcl-project.org/de--releases--maindl.html")
+	
+	:br
+	
+	". Sie l&auml;uft auf " ((:a :href* :hp-clisp) "CLISP")
+	" und wurde auf "
+	((:a :href* :hp-ms-windows-xp-en) "MS&nbsp;Windows&nbsp;XP")
+	" getestet; sie d&uuml;rfte aber auch auf "
+	(:b ((:a :href* :hp-linux-kernel) "Linux") " und "
+	    ((:a :href* :hp-apple-macosx-en) "Apple&nbsp;MacOS&nbsp;X"))
+	" laufen, obwohl das wegen fehlender Resourcen nicht gepr&uuml;ft werden konnte. "
+	
+	"Diese Ausgabe "
+	(:b "behebt eine Reihe von Fehlern und f&uuml;hrt mehrere neue Funktionen ein")
+	"; eine komplette Liste der &Auml;nderungen finden Sie in den "
+	((:a :href* :release-notes-1.1.0-alpha) "Release Notes")
+	". "
+	)
+       ((:li class "topics")
+	"Der beste Platz, um Fragen zu stellen, Fehler zu melden oder &uuml;ber Erfahrungen "
+	"mit der Bibliothek zu berichten, ist die "
+	((:a :href* :sf-ml-devel) "wxCL-devel Mailing Liste")
+	"; Details dazu finden Sie unter "
+	:br
+	((:a :href* :de/contact)
+	 "http://www.wxcl-project.org/de--contact--main2.html")
+	)
+       ((:li class "topics")
+	(:b "Wir brauchen Ihre Hilfe") 
+	" -- wenn Sie ein " (:b "Common Lisp, CPP oder C-Hacker")
+	" sind: Bitte schicken Sie uns eine " (:b ((:a :href* :de/contact) "eMail")) "."
+	))))
+
+:en (:teaser
+     (((:a :href* :en/app-downloads) "wxCL 1.1.0 Alpha") " available.")
+     
+     :headline
+     ("Now available for " 
+      ((:a :href* :en/app-downloads) "download") ": "
+      :br ((:a :href* :hp-wxcl) "wxCL") " 1.1.0 Alpha")
+         
+     :lead-in
+     ((:p
+       "We are pleased to announce "
+       ((:a :href* :en/app-downloads) "Release 1.1.0 Alpha")
+       " of "
+       ((:a :href* :hp-wxcl) "wxCL")
+       ", the latest installment in "
+       ((:a :href* :hp-wxcl) "wxCL")
+       " development effort, introducing a number of bug fixes and several new features. "
+       "Starting with this release of "
+       ((:a :href* :hp-wxcl) "wxCL")
+       " the interface comes under the "
+       ((:a :href* :osi-wxwidgets-txt) "wxWidgets 3.1 Open Source License")
+       "."
+       ))
+     
+     :copy-text
+     ((:p
+       ((:a :href* :hp-wxwidgets) "wxCL")
+       " aims to provide an "
+       (:b "industrial strength GUI library") 
+       " to application programmers which is "
+       (:b "portable across Common Lisp implementations") 
+       " and "
+       (:b "operating system platforms")
+       ". It builds upon "
+       ((:a :href* :hp-wxwidgets) "wxWidgets")
+       ", a comprehensive C++ library that provides uniform "
+       "application interface to "
+       (:b "all major GUI platforms; including "
+	   ((:a :href* :hp-gtk+) "GTK+") ", "
+	   ((:a :href* :hp-ms-windows-family-en) "MS&nbsp;Windows") ", "
+	   ((:a :href* :hp-x11) "X&nbsp;Windows") ", and "
+	   ((:a :href* :hp-apple-macosx-en) "Apple MacOS&nbsp;X"))
+       ". ")
+      
+      ((:ul class "topics")
+       ((:li class "topics")
+	
+	((:a :href* :hp-wxcl) "wxCL")
+	" Release "
+	((:a :href* :en/app-downloads) "1.1.0 Alpha")
+	" can be downloaded from "
+	:br
+	((:a :href* :en/app-downloads)  ;; (:princ (lookup-uri :en/app-downloads)))
+	 "http://www.wxcl-project.org/en--releases--maindl.html")
+	:br
+	"It runs on "
+	((:a :href* :hp-clisp) "CLISP")
+	", and is tested on "
+	((:a :href* :hp-ms-windows-xp-en) "MS Windows XP")
+	" but should work on "
+	(:b ((:a :href* :hp-linux-kernel) "Linux") " and "
+	    ((:a :href* :hp-apple-macosx-en) "Apple MacOS X"))
+	" as well, although not tested due to lack of resources. "
+	
+	"This release introduces a number of "
+	(:b "bug fixes and several new features")
+	"; please see the "
+	((:a :href* :release-notes-1.1.0-alpha) "Release Notes")
+	" for a complete list of changes. "
+	)
+       
+       ((:li class "topics")
+	"The best place to ask questions, report bugs and&nbsp;/&nbsp;or give feedback "
+	"on the library is the "
+	((:a :href* :sf-ml-devel) "wxCL-devel mailing list")
+	"; see details at "
+	:br
+	((:a :href* :en/contact)
+	 "http://www.wxcl-project.org/en--contact--main2.html")
+	)
+       ((:li class "topics")
+	(:b "We need your help: ") 
+	"If you are a " (:b "Common Lisp, CPP, or C hacker")
+	", please send us an " (:b ((:a :href* :en/contact) "eMail")) "."
+	))))
+
+
+
+:item
+:date (2005 08 15)
+:classification (:release #4(1 0 0 1))
+:de (:teaser
+     (((:a :href* :de/app-downloads) "wxCL 1.0.0 Alpha") " verf&uuml;gbar.")
+     
+     :headline
+     ("Jetzt " ((:a :href* :de/app-downloads) "herunterladen") ": "
+      :br ((:a :href* :hp-wxcl) "wxCL") " 1.0.0 Alpha")
+     
+     :lead-in
+     ((:p
+       "Die " ((:a :href* :hp-wxcl) "wxCL-Projektgruppe") " freut sich, "
+       ((:a :href* :de/app-downloads) "Release 1.0.0 Alpha") " von " ((:a :href* :hp-wxcl) "wxCL")
+       ", einer neuen, quelloffenen GUI-Bibliothek f&uuml;r Common Lisp, ank&uuml;ndigen zu k&ouml;nnen."
+       ))
+     
+     :copy-text
+     ((:p
+       "Unser Ziel ist es, Anwendungs-Programmierern eine GUI-Bibliothek zur Verf&uuml;gung zu stellen, die "
+       (:b "industriellen Anforderungen") 
+       " entspricht und zwischen "
+       (:b "Common-Lisp-Implementation")
+       " und "
+       (:b "Betriebssystem-Plattformen portierbar")
+       " ist.")
+      
+      (:p
+       ((:a :href* :hp-wxcl) "wxCL")
+       " baut auf " ((:a :href* :hp-wxwidgets) "wxWidgets") 
+       " auf, einer umfangreichen CPP-Bibliothek, die eine uniforme "
+       "Anwendungs-Schnittstelle zu "
+       (:b "allen gro&szlig;en GUI-Plattformen")
+       " zur Verf&uuml;gung stellt, darunter "
+       (:b ((:a :href* :hp-gtk+) "GTK+") ", "
+	   ((:a :href* :hp-ms-windows-family-en) "MS&nbsp;Windows") ", "
+	   ((:a :href* :hp-x11) "X&nbsp;Windows") " und "
+	   ((:a :href* :hp-apple-macosx-en) "Apple MacOS&nbsp;X"))
+       ". "
+       
+       ((:a :href* :hp-wxwidgets) "wxWidgets")
+       " ist eine ausgereifte Bibliothek, die erstmals 1992 ver&ouml;ffentlicht"
+       " und seitdem von einer engagierten Entwicklergemeinde --&nbsp;"
+       (:b "platziert unter den ersten 25"
+	   " der "	
+	   ((:a :href* :sf-alltime-most-active) "Aktivsten Projekte aller Zeiten")
+	   " bei "
+	   ((:a :href* :sf-hp) "SourceForge"))
+       "&nbsp;-- weiter verbesssert wurde. Die Bibliothek unterst&uuml;tzt einen "
+       (:b "gro&szlig;en Umfang") " von Bedienelementen mit "
+       (:b "originaler Anmutung") 
+       " und macht f&uuml;r Common-Lisp-Umgebungen "
+       (:b "viele Funktionen")
+       " verf&uuml;gbar, die in "
+       (:b "traditionellen GUI-Toolkits")
+       " f&uuml;r diese Programmiersprache fehlen.")
+      
+      (:p
+       "Die "
+       ((:a :href* :de/app-downloads) "aktuelle Ausgabe")
+       " von " ((:a :href* :hp-wxcl) "wxCL")
+       " unterst&uuml;tzt bereits etwa "
+       (:b "75&nbsp;%")
+       " der Funktionen von "
+       ((:a :href* :hp-wxwidgets) "wxWidgets")
+       " (Release 2.4.2): Fast "
+       (:b "1.500&nbsp;Elementfunktionen") " von "
+       (:b "125&nbsp;Klassen") " mit "
+       (:b "1.200&nbsp;definierten Konstanten") 
+       ". Sie l&auml;uft auf " ((:a :href* :hp-clisp) "CLISP") ", einer quelloffenen"
+       " Implementation von Common Lisp nach " 
+       ((:a :href* :hp-ansi) "ANSI")
+       "-Norm und wurde auf "
+       ((:a :href* :hp-ms-windows-xp-en) "MS&nbsp;Windows&nbsp;XP")
+       " getestet; sie d&uuml;rfte aber auch auf "
+       (:b ((:a :href* :hp-linux-kernel) "Linux") " und "
+	   ((:a :href* :hp-apple-macosx-en) "Apple&nbsp;MacOS&nbsp;X"))
+       " laufen."
+       )
+      
+      (:p
+       "Der gr&ouml;&szlig;te Teil der "
+       (:b "Schnittstelle f&uuml;r Fremdfunktionen")
+       " wurde mit dem " 
+       ((:a :href* :swig-clisp-expl) "CLISP-Modul") " von " ((:a :href* :hp-swig) "SWIG")
+       " anhand der C-Umh&uuml;llungs-Bibliotheken der "
+       (:b ((:a :href* :hp-wxeiffel) "wxEiffel-") " und "
+	   ((:a :href* :hp-wxhaskell) "wxHaskell-") "Projektgruppen automatisch erzeugt.")
+       " Wegen der Gr&ouml;&szlig;e der Bibliothek wurden nicht alle "
+       " Bindungen gepr&uuml;ft, wir gehen jedoch davon aus, "
+       " dass die meisten von ihnen ohne gro&szlig;e &Uuml;berarbeitung funktionieren.")
+      
+      
+      (:p
+       "Wir freuen uns auf Ihre Erfahrungsberichte mit "
+       ((:a :href* :de/app-downloads) "Release 1.0.0 Alpha") 
+       " von " ((:a :href* :hp-wxcl) "wxCL")
+       " und hoffen, dass es Ihre Anforderungen erf&uuml;llt.")
+      
+      (:p
+       "Alles Gute w&uuml;nscht" :br "Ihre "
+       ((:a :href* :hp-wxcl) "wxCL-Projektgruppe"))
+      
+      ((:ul class "topics")
+       ((:li class "topics")
+	(:b "Wir brauchen Ihre Hilfe") 
+	" -- wenn Sie ein " (:b "Common Lisp, CPP oder C-Hacker")
+	" sind: Bitte schicken Sie uns eine " (:b ((:a :href* :de/contact) "eMail")) "."
+	))))
+
+:en (:teaser
+     (((:a :href* :en/app-downloads) "wxCL 1.0.0 Alpha") " available.")
+     
+     :headline
+     ("Now available for " 
+      ((:a :href* :en/app-downloads) "download") ": "
+      :br ((:a :href* :hp-wxcl) "wxCL") " 1.0.0 Alpha")
+         
+     :lead-in
+     ((:p
+       "The " ((:a :href* :hp-wxcl) "wxCL project group") 
+       " is pleased to announce "
+       ((:a :href* :en/app-downloads) "release 1.0.0 Alpha of wxCL")
+       ", a new open-source GUI library for Common Lisp."))
+     
+     :copy-text
+     ((:p
+       "Our goal is to provide an " (:b "industrial strength GUI library") 
+       " to application programmers which is "
+       (:b "portable across Common Lisp implementations")
+       " and "
+       (:b "operating system platforms")
+       ".")
+      
+      (:p
+       ((:a :href* :hp-wxcl) "wxCL")
+       " builds upon " ((:a :href* :hp-wxwidgets) "wxWidgets") 
+       ", a comprehensive C++ library that provides uniform "
+       "application interface to "
+       (:b "all major GUI platforms; including "
+	   ((:a :href* :hp-gtk+) "GTK+") ", "
+	   ((:a :href* :hp-ms-windows-family-en) "MS&nbsp;Windows") ", "
+	   ((:a :href* :hp-x11) "X&nbsp;Windows") ", and "
+	   ((:a :href* :hp-apple-macosx-en) "Apple MacOS&nbsp;X"))
+       ". "
+       
+       ((:a :href* :hp-wxwidgets) "wxWidgets")
+       " is a mature library which was first released in 1992 and since improved upon by a"
+       " committed developer community, ranked "
+       (:b "among the top 25 of the "
+	   ((:a :href* :sf-alltime-most-active) "All Time Most Active Projects")
+	   " at "
+	   ((:a :href* :sf-hp) "SourceForge")
+	   )
+       ". The library supports a "
+       (:b "wide range of widgets") " with "
+       (:b "native look-and-feel") 
+       " and makes "
+       (:b "many features available")
+       " to Common Lisp environments which have been "
+       (:b "missed in traditional GUI toolkits")
+       " for this programming language.")
+      
+      (:p
+       "The "
+       ((:a :href* :en/app-downloads) "current release")
+       " of " ((:a :href* :hp-wxcl) "wxCL")
+       " already supports about "
+       (:b "75&nbsp;%")
+       " of the "
+       ((:a :href* :hp-wxwidgets) "wxWidgets")
+       " (release 2.4.2) functionality: almost "
+       (:b "1,500&nbsp;member functions") " of "
+       (:b "125&nbsp;classes") " with "
+       (:b "1,200&nbsp;defined constants") 
+       ". It runs on " ((:a :href* :hp-clisp) "CLISP") ", an open-source, "
+       ((:a :href* :hp-ansi) "ANSI")
+       "-compliant implementation of Common Lisp, and is tested on "
+       ((:a :href* :hp-ms-windows-xp-en) "MS Windows XP")
+       " but should work on "
+       (:b ((:a :href* :hp-linux-kernel) "Linux") " and "
+	   ((:a :href* :hp-apple-macosx-en) "Apple MacOS X"))
+       " as well.")
+      
+      (:p
+       "Most of the "
+       (:b "Foreign Function Interface")
+       " was automatically generated using the " 
+       ((:a :href* :swig-clisp-expl) "CLISP module") " of " ((:a :href* :hp-swig) "SWIG")
+       " from the C binding libraries written by the "
+       (:b ((:a :href* :hp-wxeiffel) "wxEiffel") " and "
+	   ((:a :href* :hp-wxhaskell) "wxHaskell") " project groups.")
+       " Due to the size of the library,"
+       " not all of the bindings have been validated, but we expect"
+       " most of them to work without much tweaking.")
+      
+      (:p
+       "We look forward to your feedback on "
+       ((:a :href* :en/app-downloads) "release 1.0.0 Alpha") 
+       " of " ((:a :href* :hp-wxcl) "wxCL")
+       " and hope it serves your needs.")
+
+      (:p
+       "All the best," :br
+       ((:a :href* :hp-wxcl) "wxCL - Project Team"))
+      
+      ((:ul class "topics")
+       ((:li class "topics")
+	(:b "We need your help: ") 
+	"If you are a " (:b "Common Lisp, CPP, or C hacker")
+	", please send us an " (:b ((:a :href* :en/contact) "eMail")) "."
+	))))
+
+
+
+:item
+:date (2005 08 03)
+:classification ()
+:de (:teaser (((:a :href* :de///screenshots) "Bildschirmfotos") " verf&uuml;gbar."))
+:en (:teaser (((:a :href* :en///screenshots) "Screenshots") " available."))
+
+
+
+:item
+:date (2005 08 01)
+:classification ()
+:de (:teaser ("Seite " ((:a :href* :hp-wxcl) "wxCL-project.org") " gestartet."))
+:en (:teaser ("Site " ((:a :href* :hp-wxcl) "wxCL-project.org") " launched."))
+
+
+
+:item
+:date (2005 07 13)
+:classification ()
+:de (:teaser ("Mailing-Liste " ((:a :href* :sf-ml-devel) "wxCL-devel") " gestartet."))
+:en (:teaser ("Mailing list " ((:a :href* :sf-ml-devel) "wxCL-devel") " launched."))
+
+
+
+:item
+:date (2005 07 12)
+:classification ()
+:de (:teaser ("Neue Projektseite bei " ((:a :href* :sf-hp) "SourceForge") ": " 
+	     ((:a :href* :sf-wxcl) "wxCL")))
+:en (:teaser ("New project page at " ((:a :href* :sf-hp) "SourceForge") ": " 
+	     ((:a :href* :sf-wxcl) "wxCL")))
+
+
+
+:item
+:date (2003 02 07)
+:classification ()
+:de (:teaser ("Projektseite bei " ((:a :href* :sf-hp) "SourceForge") ": " 
+	     ((:a :href* :sf-wxlisp) "wxLisp") " (nicht mehr benutzt)"))
+:en (:teaser ("Project Page at " ((:a :href* :sf-hp) "SourceForge") ": "
+	     ((:a :href* :sf-wxlisp) "wxLisp") " (no longer in use)"))
+
+
+
+
+
+
+
+
+
+    
+     
