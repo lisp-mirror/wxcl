@@ -1,16 +1,26 @@
 ;;; -*- Mode: LISP; Base: 10; Syntax: Common-Lisp -*-
 
 
-
+;;;;
+;;;; Table of acceptable dictionary keys
+;;;;
+;;;;
+;;;; Naming conventions for keys:
+;;;;
+;;;; Start names of format strings with 'f$-'
+;;;; ( the vector of 3 chars #\f #\$ #\- )
+;;;;
+;;;;
+;;;;
 
 
 ;; format strings
-:date 
-;; ^ format strings must accept three arguments in the order: year-nr, month-nr, day-nr.
+:f$-date
+;; ^ format string must accept three arguments in the order: year-nr, month-word, day-nr.
 ;;    use ~* (the format tilde-asterix directive) to 'go-to' specific arguments.
 
-:size
-;; ^ format strings must accept a single positive integer as an argument.
+:f$-size
+;; ^ format string must accept a single positive integer as an argument.
 
 
 ;; names of months
@@ -34,7 +44,7 @@
 :forums
 :cvs-tree
 :bug-tracker
-:mailing-list
+:mailing-lists
 :more
 
 ;; language names
@@ -55,6 +65,7 @@
 
 
 ;; terse-news
+:ticker
 :the-wxcl-project-group-also-publishes-more-detailed-newsfeed
 
 
