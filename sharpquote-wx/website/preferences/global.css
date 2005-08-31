@@ -38,6 +38,8 @@ p.panel-switches { text-align: left; width: 100%; font-size: 85%; line-height: 2
 p.node-buttons { text-align: center; font-size: 85%; line-height: 200%; color: black; margin: 1em 0px; padding: 0px; }
 
 p.spacer { margin: 0px; padding: 0px }
+p.date-box { text-align: center; margin: 0.25em 0px; }
+p.terse-news { test-align: left; margin: 0.25em 0.5em; }
 
 
 
@@ -59,10 +61,12 @@ h1 { font-size: 100%; line-height: 120% ; font-family: Arial, Helvetica, sans-se
 
 table.logo { width: 100%; padding: 0px; margin: 0px; border: 0px; border-collapse: collapse; }
 table.tab { width: 100%; padding: 0px; margin: 0px 0px 0px 0px; background-color: #f0f0ea ; border-top: 1px solid gray; border-bottom: 1px solid gray; border-left: 0px; border-right: 0px; border-collapse: collapse }
+table.terse-news { margin: 0px 1em; width: 300px; }
 
 
 tbody.logo { width: 100%; padding: 0px; margin: 0px; border: 0px; }
 tbody.tab  { width: 100%; padding: 0px; margin: 0px; border: 0px; }
+
 
 
 tr.logo { padding: 0px; margin: 0px; border: 0px; width: 100% }
@@ -73,12 +77,15 @@ td.logo { padding: 0px; margin: 0px; border: 0px; width: 20% }
 td.claim { padding: 0px; margin: 0px; border: 0px; width: 30% }
 td.language-buttons { padding: 0px; margin: 0px; border: 0px; width: 50% }
 td.panel-switches { padding: 0px; margin: 0px; border-left: 1px solid gray; border-right: 1px solid gray; }
+td.date-box { vertical-align: middle; width: 35%; border: 1px solid gray; }
+td.terse-news { vertical-align: middle; width: 65%; border-top: 1px dashed gray; }
 
 td.spacer-left  { margin: 0px; padding: 0px; border: 0px; border-left: 1px solid gray; }
 td.spacer-middle { margin: 0px; padding: 0px; border: 0px }
 td.spacer-right  { margin: 0px; padding: 0px; border: 0px; border-right: 1px solid gray; }
 
 td.panel-column { vertical-align: top; padding: 0em 0em 0.5em 0em; margin: 0px; bottom: 0px; }
+
 
 
 
