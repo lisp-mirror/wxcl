@@ -4,7 +4,9 @@
 
 
 ;;;;
-;;;; This file keeps a little table of wxCL releases.
+;;;; The table of wxCL releases
+;;;; --------------------------
+;;;;
 ;;;;
 ;;;; The data is used for the eMail webforms on the contact tab, 
 ;;;; the listing on the release tab, and semantic classification of news items.
@@ -12,6 +14,37 @@
 ;;;; The file is edited manually for the moment but could get automatic 
 ;;;; updates using the release information available as RSS feed from 
 ;;;; SourceForge.
+;;;;
+;;;; The only way to look at the entry of this table programmatically is
+;;;; to use the macros
+;;;;
+;;;;    (with-sf-release-iterator (iterator-fn-name) &body body)
+;;;; 
+;;;; and
+;;;;
+;;;;    (with-sf-file-iterator (iterator-fn-name structured-number) &body body)
+;;;; 
+;;;; (To get a feel for using this, look at the CL build-in macro 
+;;;; with-package-iterator.)
+;;;;
+;;;; Within the body of with-sf-release-iterator, a local function is bound to 
+;;;; iterator-fn-name, a call to which returns the 10 values
+;;;;
+;;;;    print-name  structured-number  date  utime  manager 
+;;;;    license  style  id  notes-uri-key  base-name
+;;;;
+;;;; where utime is the date encoded as universal time.
+;;;;
+;;;; The iterator function is guaranteed to return the release data in order
+;;;; of increasing age.
+;;;;
+;;;; Within the body of with-sf-file-iterator, a local function is bound to 
+;;;; iterator-fn-name, a call to which returns the 4 values
+;;;;
+;;;;    compression-key  size  protocol-key  download-uri-key
+;;;; 
+;;;; The iterator function is guaranteed to return the file data in order
+;;;; of increasing size.
 ;;;;
 ;;;;
 ;;;; ( Joerg Preisendoerfer )
@@ -54,7 +87,7 @@
 ;;      key :release-download-http-1-1-0-1-tar-gz with source :sqwx
 :date (2005 08 21)
 :manager "Surendra Singhi"
-:license :osi-wx-widgets-txt 
+:license :osi-wxwidgets-txt 
 ;;  ^  for now use the key defined in the link files to identify license
 ;;      (define a new license in the link files if necessary)
 :style :sf-frs 
