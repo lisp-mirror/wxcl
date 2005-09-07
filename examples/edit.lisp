@@ -1,5 +1,5 @@
 ;;;edit.lisp
-;;;License  : wxWindows License 3.1
+;;;License  : Public domain
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;            Andre Vargas Abs da Cruz (andrev@ele.puc-rio.br)
 ;;;Copyright (C) 2005 Surendra Singhi, Andre Vargas Abs da Cruz

@@ -1,8 +1,7 @@
-;;;edit.lisp
-;;;License  : wxWindows License 3.1
+;;;hypercube.lisp
+;;;License  : Public Domain
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
-;;;            Andre Vargas Abs da Cruz (andrev@ele.puc-rio.br)
-;;;Copyright (C) 2005 Surendra Singhi, Andre Vargas Abs da Cruz
+;;;Copyright (C) 2005 Surendra Singhi
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
 ;;; $Header$
@@ -11,19 +10,9 @@
 ;; Code shamelessly taken from Luis G. Lopez and Pascal Bourguignon
 
 ;;;This program demonstrates some of the features of wxCL library
-;;;In particular it uses the wxNotebook Sizer and shows hot to
-;;;create panes, each pane contains a text control, files can be opened, edited and saved.
-;;;It is possible to change the color and font of text, this change will
-;;;be made to the entire text in the file.
-;;;The close and save functionality does not work (though saveas works)
-;;;the reason why the above two doesn't work is because I am not able to
-;;;find a method of comparing two foreign pointers in clisp.
-;;;Check out this link for info:
-;;;http://thread.gmane.org/gmane.lisp.clisp.general/9967
-;;;
-;;;It will be possible to correctly implement save and close using
-;;;hacks, but I am looking for a more elegant solution. Someday,
-;;;when I will have time, I will get back to fixing it :)
+;;;In particular it makes use of device contexts, pens and brushes to draw 
+;;;a rectangle. The rectangle is rotated after certain duration.
+;;;This example shows how to use, different drawing primitives.
 
 
 (asdf:operate 'asdf:load-op 'wxcl)
@@ -40,8 +29,6 @@
 (use-package :wxWindow)
 (use-package :wxTimer)
 (use-package :wxDC)
-
-
 
 (ffi:default-foreign-language :c)
 
