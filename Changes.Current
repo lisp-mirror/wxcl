@@ -1,5 +1,11 @@
 Version 1.1.1 (in progress)
 ============================
+2005-08-30: efuzzyone		
+	    Moved slider realted constants to the wxSlider.lisp file.
+
+2005-08-27: efuzzyone		
+	    Fixed ffi declarations in wxFrame, wxGrid. Changed indentation in wxRadioButton and wxListBox.
+
 2005-08-25: efuzzyone		
 	    Added macro with-memory-DC to wxDc, also fixed the ffi declaration in wxDC_DrawPolygon.
 
