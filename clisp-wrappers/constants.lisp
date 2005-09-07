@@ -122,15 +122,6 @@
 (defconstant wxPROCESS_ENTER 1024)
 (defconstant wxPASSWORD 2048)
 
-(defconstant wxSL_NOTIFY_DRAG 0)
-(defconstant wxSL_AUTOTICKS 16)
-(defconstant wxSL_LABELS 32)
-(defconstant wxSL_LEFT 64)
-(defconstant wxSL_TOP 128)
-(defconstant wxSL_RIGHT 256)
-(defconstant wxSL_BOTTOM 512)
-(defconstant wxSL_BOTH 1024)
-(defconstant wxSL_SELRANGE 2048)
 (defconstant wxBU_AUTODRAW 4)
 (defconstant wxBU_NOAUTODRAW 0)
 
