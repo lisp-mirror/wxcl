@@ -1,5 +1,14 @@
 Version 1.1.1 (in progress)
 ============================
+2005-09-09: efuzzyone		
+            Made changes to wxcl.asd so that wxMdi, wxMenubar, wxMiniframe, and wxRadiobox is correctly 
+	    named as wxMDI, wxMenuBar, wxMiniFrame, and wxRadioBox. Also renamed wxToolbar and wxMenubar
+	    to wxToolBar and wxMenuBar, this will cause these files to lose their revision history. Thanks 
+	    to "Øyvin Halfdan Thuv" for pointing out this bug.
+
+2005-09-06: efuzzyone		
+            Changed the license of the examples, so that they are in public domain.
+
 2005-08-30: efuzzyone		
 	    Moved slider realted constants to the wxSlider.lisp file.
 
