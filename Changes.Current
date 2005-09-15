@@ -1,5 +1,10 @@
 Version 1.1.1 (in progress)
 ============================
+2005-09-14: efuzzyone		
+	    Fixed the ffi declaration in function wxStatusBar_SetStatusWidths from (widths (ffi:c-ptr ffi:int)) 
+	    to (widths (ffi:c-array-ptr ffi:int)). In function wxStatusBar_SetStatusText changed the type of
+	    text to ffi:c-string.
+
 2005-09-09: efuzzyone		
             Made changes to wxcl.asd so that wxMdi, wxMenubar, wxMiniframe, and wxRadiobox is correctly 
 	    named as wxMDI, wxMenuBar, wxMiniFrame, and wxRadioBox. Also renamed wxToolbar and wxMenubar
