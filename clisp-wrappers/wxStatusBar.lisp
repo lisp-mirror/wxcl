@@ -52,7 +52,7 @@
 (ffi:def-call-out wxStatusBar_SetStatusText
     (:name "wxStatusBar_SetStatusText")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (text (ffi:c-pointer NIL))
+	      (text ffi:c-string)
 	      (number ffi:int))
   (:return-type NIL)
   (:library +library-name+))
@@ -69,7 +69,7 @@
     (:name "wxStatusBar_SetStatusWidths")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (n ffi:int)
-	      (widths (ffi:c-ptr ffi:int)))
+	      (widths (ffi:c-array-ptr ffi:int)))
   (:return-type NIL)
   (:library +library-name+))
 
