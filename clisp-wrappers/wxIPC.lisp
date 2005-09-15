@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxIpc
+(defpackage :wxIPC
   (:use :common-lisp :ffi :wxCL)
   (:export
 	:ELJConnection_CreateDefault
