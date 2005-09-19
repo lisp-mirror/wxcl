@@ -20,6 +20,7 @@
 	:wxDialog_GetReturnCode
 	:wxCAPTION
 	:wxRESIZE_BORDER
+	:wxDEFAULT_DIALOG_STYLE
 	:wxSTAY_ON_TOP
 	:wxDIALOG_MODAL
 	:wxDIALOG_MODELESS
@@ -34,8 +35,15 @@
 
 (defconstant wxCAPTION 536870912)
 (defconstant wxRESIZE_BORDER 64)
-(defconstant wxSTAY_ON_TOP 32768)
+(defconstant wxTHICK_FRAME wxRESIZE_BORDER) ;deprecated
 
+(defconstant wxSTAY_ON_TOP 32768)
+(defconstant wxMAXIMIZE 8192)
+(defconstant wxCLOSE_BOX 6)
+(defconstant wxNO_BORDER 2097152)
+
+(defconstant wxDEFAULT_DIALOG_STYLE (logior wxCAPTION wxMAXIMIZE wxCLOSE_BOX wxNO_BORDER))
+    
 (ffi:default-foreign-language :stdc)
 (ffi:def-call-out wxDialog_Create
 	(:name "wxDialog_Create")
@@ -47,7 +55,7 @@
 		(_wdt ffi:int)
 		(_hgt ffi:int)
 		(_stl ffi:int))
-	(:return-type wxDialog :NONE)
+	(:return-type (ffi:c-pointer wxDialog))
 	(:library +library-name+))
 
 (ffi:def-call-out wxDialog_IsModal
