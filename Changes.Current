@@ -1,6 +1,10 @@
 Version 1.1.1 (in progress)
 ============================
 2005-09-14: efuzzyone		
+	    Moved constant wxDEFAULT_FRAME_STYLE from constants.lisp to wxFrame.lisp Added constant 
+	    wxDEFAULT_DIALOG_STYLE and wxTHICK_FRAME to wxDialog. Fixed the return type in wxDialog_Create.
+
+2005-09-14: efuzzyone		
 	    Fixed the ffi declaration in function wxStatusBar_SetStatusWidths from (widths (ffi:c-ptr ffi:int)) 
 	    to (widths (ffi:c-array-ptr ffi:int)). In function wxStatusBar_SetStatusText changed the type of
 	    text to ffi:c-string.
