@@ -104,7 +104,7 @@
 (defconstant wxSYSTEM_MENU 2048)
 (defconstant wxMINIMIZE_BOX 1024)
 (defconstant wxMAXIMIZE_BOX 512)
-(defconstant wxDEFAULT_FRAME_STYLE 536878656)
+
 (defconstant wxTINY_CAPTION_HORIZ 256)
 (defconstant wxTINY_CAPTION_VERT 128)
 ;(defconstant wxRESIZE_BORDER 64)
