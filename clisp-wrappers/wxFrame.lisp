@@ -34,13 +34,16 @@
 	   :wxFrame_SetStatusWidths
 	   :wxFrame_CreateToolBar
 	   :wxFrame_GetToolBar
-	   :wxFrame_SetToolBar))
+	   :wxFrame_SetToolBar
+	   :wxDEFAULT_FRAME_STYLE))
 
 (in-package :wxFrame)
 
 (ffi:default-foreign-language :stdc)
 
 (ffi:def-c-type wxFrame NIL)
+
+(defconstant wxDEFAULT_FRAME_STYLE 536878656)
 
 (ffi:def-call-out wxFrame_Create
     (:name "wxFrame_Create")
