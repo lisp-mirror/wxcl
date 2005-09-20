@@ -54,9 +54,9 @@
 
 (ffi:def-call-out wxColour_CreateRGB
     (:name "wxColour_CreateRGB")
-  (:arguments (_red character)
-	      (_green character)
-	      (_blue character))
+  (:arguments (_red uint8)
+	      (_green uint8)
+	      (_blue uint8))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
@@ -81,9 +81,9 @@
 (ffi:def-call-out wxColour_Set
     (:name "wxColour_Set")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (_red character)
-	      (_green character)
-	      (_blue character))
+	      (_red uint8)
+	      (_green uint8)
+	      (_blue uint8))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -103,19 +103,19 @@
 (ffi:def-call-out wxColour_Red
     (:name "wxColour_Red")
   (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type character)
+  (:return-type ffi:uint8)
   (:library +library-name+))
 
 (ffi:def-call-out wxColour_Green
     (:name "wxColour_Green")
   (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type character)
+  (:return-type ffi:uint8)
   (:library +library-name+))
 
 (ffi:def-call-out wxColour_Blue
     (:name "wxColour_Blue")
   (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type character)
+  (:return-type ffi:uint8)
   (:library +library-name+))
 
 (ffi:def-call-out wxColour_GetPixel
