@@ -1,6 +1,10 @@
 Version 1.1.1 (in progress)
 ============================
-2005-09-14: efuzzyone		
+2005-09-19: efuzzyone		
+            Fixed ffi declarations of functions wxColour_Red, wxColour_Green, wxColour_Blue, wxColour_Set, 
+	    and wxColour_CreateRGB.
+
+2005-09-18: efuzzyone		
 	    Moved constant wxDEFAULT_FRAME_STYLE from constants.lisp to wxFrame.lisp Added constant 
 	    wxDEFAULT_DIALOG_STYLE and wxTHICK_FRAME to wxDialog. Fixed the return type in wxDialog_Create.
 
