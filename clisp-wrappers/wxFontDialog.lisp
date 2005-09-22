@@ -11,7 +11,7 @@
     (:use :common-lisp :ffi :WxCL :wxWindow :wxDialog :wxFontData)
   (:export :wxFontDialog_Create
 	   :wxFontDialog_GetFontData
-	   :wxcl-get-font
+	   :wxcl-get-font-data
 	   :wxcl-with-font-dialog))
 
 (in-package :wxFontDialog)
@@ -36,17 +36,16 @@
   (:library +library-name+))
 
 
-(defmacro with-font-dialog ((dialog parent &optional (font nil)) &body body)
+(defmacro with-font-dialog ((dialog parent &optional (font-data nil)) &body body)
   `(let (,dialog) 
     (unwind-protect
 	 (progn
-	   (setf ,dialog (wxFontDialog_Create ,parent ,font))
+	   (setf ,dialog (wxFontDialog_Create ,parent ,font-data))
 	   ,@body)
       (wxWindow_destroy ,dialog))))
 
-(defun wxcl-get-font (parent &optional (font nil))
-  (with-font-dialog (dialog parent font)
+(defun wxcl-get-font-data (parent &optional (font-data (wxFontData_Create)))
+  (with-font-dialog (dialog parent font-data)
     (when (= (wxDialog_ShowModal dialog) wxID_OK)
-      (let ((font (wxFontData_Create)))
-      	(wxFontDialog_GetFontData dialog font)
-	font))))
+      (wxFontDialog_GetFontData dialog font-data)
+      font-data)))
