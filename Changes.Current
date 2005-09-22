@@ -1,5 +1,17 @@
 Version 1.1.1 (in progress)
 ============================
+2005-09-22: efuzzyone		
+            Changed the argument name in wxFontDialog:with-font-dialog. Replaced the function 
+	    wxFontDialog:wxcl-get-font with wxFontDialog:wxcl-get-font-data. This function returns
+	    the font-data if user selected some font, else it returns nil.
+
+2005-09-22: efuzzyone		
+            Moved some of the wxGrid related constants from constants.lisp to wxGrid.lisp.
+            Changed the argument name in wxColourDialog:with-colour-dialog. Changed the function
+	    wxColourDialog:wxcl-get-colour, it now takes the colour and not colout-data as an optional
+            argument. And this function now returns the colour which the user picked, or nil if the user
+            selected cancel.
+
 2005-09-19: efuzzyone		
             Fixed ffi declarations of functions wxColour_Red, wxColour_Green, wxColour_Blue, wxColour_Set, 
 	    and wxColour_CreateRGB.
