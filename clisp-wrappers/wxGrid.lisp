@@ -277,9 +277,16 @@
 	:wxGridEditorCreatedEvent_GetControl
 	:wxGridEditorCreatedEvent_SetRow
 	:wxGridEditorCreatedEvent_SetCol
-	:wxGridEditorCreatedEvent_SetControl))
+	:wxGridEditorCreatedEvent_SetControl
+	:wxGridSelectCells
+	:wxGridSelectRows
+	:wxGridSelectColumns))
 
 (in-package :wxGrid)
+
+(defconstant wxGridSelectCells 0)
+(defconstant wxGridSelectRows 1)
+(defconstant wxGridSelectColumns 2)
 
 (ffi:default-foreign-language :stdc)
 
