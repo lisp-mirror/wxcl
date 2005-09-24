@@ -47,6 +47,7 @@
 	   :wxTextCtrl_SetEditable
 	   :wxTextCtrl_EmulateKeyPress
 	   :wxTextCtrl_GetDefaultStyle
+	   :wxTextCtrl_GetStyle
 	   :wxTextCtrl_GetRange
 	   :wxTextCtrl_GetStringSelection
 	   :wxTextCtrl_IsMultiLine
@@ -59,8 +60,10 @@
 	   :wxTE_MULTILINE
 	   :wxTE_PROCESS_TAB
 	   :wxTE_RICH
+	   :wxTE_RICH2
 	   :wxTE_NO_VSCROLL
-	   :wxTE_AUTO_SCROLL))
+	   :wxTE_AUTO_SCROLL
+	   :wxTE_WORDWRAP))
 
 (in-package :wxTextctrl)
 
@@ -71,7 +74,9 @@
 (defconstant wxTE_PROCESS_TAB 64)
 (defconstant wxTE_RICH 128)
 (defconstant wxTE_NO_VSCROLL 256)
+(defconstant wxTE_WORDWRAP 1)
 (defconstant wxTE_AUTO_SCROLL 512)
+(defconstant wxTE_RICH2 32768)
 
 (ffi:def-call-out wxTextCtrl_Create
     (:name "wxTextCtrl_Create")
@@ -339,6 +344,14 @@
     (:name "wxTextCtrl_GetDefaultStyle")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:return-type (ffi:c-pointer NIL))
+  (:library +library-name+))
+
+(ffi:def-call-out wxTextCtrl_GetStyle
+    (:name "wxTextCtrl_GetStyle")
+  (:arguments (_obj (ffi:c-pointer NIL))
+	      (_pos ffi:long)
+	      (_style (ffi:c-pointer NIL)))
+  (:return-type ffi:int)
   (:library +library-name+))
 
 (ffi:def-call-out wxTextCtrl_GetRange
