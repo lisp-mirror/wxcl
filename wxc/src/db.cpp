@@ -1029,19 +1029,19 @@ EWXWEXPORT(int,wxDbColInf_GetSqlDataType)( wxDbColInf* self )
 #endif
 }
 
-EWXWEXPORT(int,wxDbColInf_GetColumnSize)( wxDbColInf* self )
+EWXWEXPORT(int,wxDbColInf_GetColumnLength)( wxDbColInf* self )
 {
 #ifdef wxUSE_ODBC
-  return self->columnSize;
+  return self->columnLength;
 #else
   return (-1);
 #endif
 }
 
-EWXWEXPORT(int,wxDbColInf_GetBufferLength)( wxDbColInf* self )
+EWXWEXPORT(int,wxDbColInf_GetBufferSize)( wxDbColInf* self )
 {
 #ifdef wxUSE_ODBC
-  return self->bufferLength;
+  return self->bufferSize;
 #else
   return (-1);
 #endif
@@ -1155,7 +1155,7 @@ EWXWEXPORT(wxDbColInf*, wxDb_GetResultColumns)( wxDb* db, int* pnumCols )
                             &colSize,
                             &colInf[column].decimalDigits, 
                             &colInf[column].nullable );
-    colInf[column].columnSize   = colSize;
+    colInf[column].columnLength   = colSize;
     
     /* check for errors */
     if (retcode != SQL_SUCCESS) {
