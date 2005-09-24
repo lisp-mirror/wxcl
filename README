@@ -1,4 +1,4 @@
-wxCL 1.1.0
+wxCL 1.1.1
 ----------
 To see the instructions on how to use this library, look at the
 `index.html` file in the doc folder.
@@ -14,8 +14,7 @@ wxcl mailing list.
 Changes in this release
 -----------------------
 
-Please see the file Changes and "Changes in 1.1.0" in the manual
-for details.
+Please see the file Changes in the manual for details.
 
 Files
 -----
