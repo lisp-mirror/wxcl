@@ -52,7 +52,7 @@
 (in-package :wxCL)
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (defconstant +library-name+ "../miscellaneous/wxc-msw2.4.2.dll"))
+  (defconstant +library-name+ "../miscellaneous/wxc-msw2.6.2.dll"))
 
 (ffi:default-foreign-language :stdc)
 
