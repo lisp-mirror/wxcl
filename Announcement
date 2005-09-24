@@ -11,7 +11,7 @@ Please see the Release Notes for complete list of changes.
 Please read the quick start guide before using this version as using the 2.6.2 
 dll requires you to close the library every time you finish the program. Also, 
 don't forget to take a look at the cvs version of wxGlade, 
-(http://sourceforge.net/projects/wxglade) which provides a cool way of creating 
+(http://wxglade.sourceforge.net/) which provides a cool way of creating 
 wxCL GUI's.
 
 What is wxCL?
