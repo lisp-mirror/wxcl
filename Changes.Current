@@ -1,5 +1,13 @@
 Version 1.1.1 (in progress)
 ============================
+2005-09-23: efuzzyone		
+	    Added two new constants(wxTE_WORDWRAP,  wxTE_RICH2) and wxTextCtrl_GetStyle function. Fixed various
+            things in the sample and ensured that all of them close the library when they finish.
+
+2005-09-23: efuzzyone		
+	    Added the wxWidgets 2.6.2 dll, using this new dll requires that if the program is to run the
+            second time from the interpreter than the library should be closed.
+
 2005-09-22: efuzzyone		
             Changed the argument name in wxFontDialog:with-font-dialog. Replaced the function 
 	    wxFontDialog:wxcl-get-font with wxFontDialog:wxcl-get-font-data. This function returns
