@@ -3,11 +3,16 @@ Announcement: wxCL 1.1.0  (August 21, 2005) ***
 
  <http://www.wxcl-project.org>
 
-We are pleased to announce the release wxCL-1.1.0 (Alpha), the latest
-installment in wxCL development effort. In this release wxCL license
-is changed to `wxWindows License 3.1`. wxCL-1.1.0 also introduces a number
-of bug fixes and several new features. Please see the Release Notes for
-complete list of changes.
+We are pleased to announce the release wxCL-1.1.1 (Alpha), the latest
+installment in wxCL development effort. This release now includes 
+wxWidgets 2.6.2 dll. There are also a number of bug fixes, and some
+api enhancements. This version is more stable with native clisp on Windows XP. 
+Please see the Release Notes for complete list of changes. 
+Please read the quick start guide before using this version as using the 2.6.2 
+dll requires you to close the library every time you finish the program. Also, 
+don't forget to take a look at the cvs version of wxGlade, 
+(http://sourceforge.net/projects/wxglade) which provides a cool way of creating 
+wxCL GUI's.
 
 What is wxCL?
 -------------
@@ -21,7 +26,7 @@ GUI platforms; including  GTK, Windows, X11, and MacOS X.
 Availability:
 -------------
 
-The current release of wxCL 1.1.0 runs on CLISP, and is tested on
+The current release of wxCL 1.1.1 runs on CLISP, and is tested on
 Windows XP but it should work on Linux and Mac OS X as well (not
 tested due to lack of resources). 
 
