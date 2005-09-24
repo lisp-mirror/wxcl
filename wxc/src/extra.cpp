@@ -1704,6 +1704,10 @@ EWXWEXPORT(int, wxTextCtrl_EmulateKeyPress)(void * _obj, void *keyevent)
     return ((wxTextCtrl*)_obj)->EmulateKeyPress( * ((wxKeyEvent *) keyevent));
 }
 
+EWXWEXPORT(int, wxTextCtrl_GetStyle)(void * _obj,long pos,void *style)
+{
+  return (int) ((wxTextCtrl*)_obj)->GetStyle(pos,* (wxTextAttr *) style);
+}
 
 EWXWEXPORT( void *, wxTextCtrl_GetDefaultStyle)(void * _obj)
 {
