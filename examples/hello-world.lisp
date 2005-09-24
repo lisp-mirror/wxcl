@@ -1,9 +1,12 @@
-(load "../clisp-wrappers/wxCL.lisp")
-(load "../clisp-wrappers/constants.lisp")
-(load "../clisp-wrappers/wx_wrapper.lisp")
-(load "../clisp-wrappers/wx_main.lisp")
-(load "../clisp-wrappers/wxWindow.lisp")
-(load "../clisp-wrappers/wxFrame.lisp")
+;;;License  : Public domain
+; (load "../clisp-wrappers/wxCL.lisp")
+; (load "../clisp-wrappers/constants.lisp")
+; (load "../clisp-wrappers/wx_wrapper.lisp")
+; (load "../clisp-wrappers/wx_main.lisp")
+; (load "../clisp-wrappers/wxWindow.lisp")
+; (load "../clisp-wrappers/wxFrame.lisp")
+
+(asdf:operate 'asdf:load-op 'wxcl)
 
 (use-package "FFI")
 (use-package :wxCL)
@@ -24,3 +27,7 @@
 
 ;;;Starts execution
 (Eljapp_initializeC x 0 nil)
+
+;;important to close the library, otherwise the static initializers would cause problem
+;;when re-executing the program
+(ffi:close-foreign-library "../miscellaneous/wxc-msw2.6.2.dll")

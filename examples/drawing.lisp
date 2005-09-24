@@ -55,9 +55,9 @@
       (setq start (+ start 1)))))
 
 (defun test-closure (fun data evt)
-  (let (frame ic)
+  (let (frame)
     (setf frame (wxFrame_create nil -1 "Drawing simple images" 10 10 500 500 wxDEFAULT_FRAME_STYLE))
-;    (wxWindow_SetForegroundColour frame (wxColour:wxColour_CreateFromStock wxColour:wxWHITE))
+    (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo.ico" wxBITMAP_TYPE_ICO -1 -1))
     (setq timer (wxTimerEx_Create))
     (wxTimerEx_Connect timer (wxClosure_Create #'draw-image frame))
     (wxevthandler_connect frame -1 (expEVT_PAINT) (wxClosure_Create #'paint-image frame))
@@ -70,3 +70,7 @@
 
 ;;;Starts execution
 (Eljapp_initializeC x 0 nil)
+
+;;important to close the library, otherwise the static initializers would cause problem
+;;when re-executing the program
+(ffi:close-foreign-library "../miscellaneous/wxc-msw2.6.2.dll")

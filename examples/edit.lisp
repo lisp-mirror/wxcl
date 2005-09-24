@@ -10,7 +10,7 @@
 
 
 ;;;This program demonstrates some of the features of wxCL library
-;;;In particular it uses the wxNotebook Sizer and shows hot to
+;;;In particular it uses the wxNotebook Sizer and shows how to
 ;;;create panes, each pane contains a text control, files can be opened, edited and saved.
 ;;;It is possible to change the color and font of text, this change will
 ;;;be made to the entire text in the file.
@@ -80,6 +80,7 @@
 (use-package :wxIcon)
 (use-package :wxBitmap)
 (use-package :wxTextctrl)
+(use-package :wxTextAttr)
 (use-package :wxNotebook)
 (use-package :wxAcceleratorEntry)
 
@@ -115,7 +116,7 @@
 			      :style (boole boole-ior wxOPEN wxFILE_MUST_EXIST)
 			      :wildcard "Text files(*.txt;*.lisp;*.html)|*.txt;*.lisp;*.html")))
       (when filename
-	(let ((txt-control (wxCL-create-text-control nb :style wxTE_MULTILINE)))
+	(let ((txt-control (wxCL-create-text-control nb :style (logior wxTE_MULTILINE wxTE_RICH wxTE_RICH2))))
 ;    (push tb tab-list)
 	  (wxTextCtrl_LoadFile txt-control filename)
 	  (wxNotebook_AddPage nb txt-control (file-namestring (parse-namestring filename)) 1 -1))))))
@@ -144,29 +145,36 @@
   (when evt
     (let ((sel (wxNotebook_GetSelection nb)))
       (unless (= sel -1)
-	(let ((txt-control (wxNotebook_GetPage nb sel))
-	      (font (wxFont:wxFont_Create -1 -1 -1 -1 -1 "" 0))
-	      (font-data (wxFontData:wxFontData_Create)))
-	  (wxWindow_GetFont txt-control font)
+	(let* ((txt-control (wxNotebook_GetPage nb sel))
+	       (font (wxFont:wxFont_CreateDefault))
+	       (style (wxTextCtrl_GetDefaultStyle txt-control))
+	       (font-data (wxFontData:wxFontData_Create)))
+	  (wxTextAttr_GetFont style font)
 	  (wxFontData:wxFontData_SetInitialFont font-data font)
-	  (setf font-data (wxFontDialog:wxcl-get-font txt-control font-data))
-	  (when font-data
-	    (wxFontData:wxFontData_GetChosenFont font-data font)
-	    (wxWindow_SetFont txt-control font)))))))
+ 	  (setf font-data (wxFontDialog:wxcl-get-font-data txt-control font-data))
+ 	  (when font-data
+ 	    (wxFontData:wxFontData_GetChosenFont font-data font)
+ 	    (wxTextAttr_SetFont style font)
+ 	    (wxTextCtrl_SetDefaultStyle txt-control style)
+ 	    (wxTextCtrl_SetStyle txt-control 0
+ 				 (wxTextCtrl_GetLastPosition txt-control) style))
+	)))))
 
 (defun change-color (fun nb evt)
   (when evt
     (let ((sel (wxNotebook_GetSelection nb)))
       (unless (= sel -1)
-	(let ((txt-control (wxNotebook_GetPage nb sel))
-	      (colour (wxColour:wxColour_CreateEmpty))
-	      (colour-data (wxColourData:wxColourData_Create)))
-	  (wxWindow_GetForegroundColour txt-control colour)
-	  (wxColourData:wxColourData_SetColour colour-data colour)
-	  (setf colour-data (wxColourDialog:wxcl-get-colour txt-control colour-data))
-	  (when colour-data
-	    (wxColourData:wxColourData_GetColour colour-data colour)
-	    (wxWindow_SetForegroundColour txt-control colour)))))))
+	(let* ((txt-control (wxNotebook_GetPage nb sel))
+	       (style (wxTextCtrl_GetDefaultStyle txt-control))
+	       (colour (wxColour:wxColour_CreateEmpty)))
+	  (wxTextAttr_GetTextColour style colour)
+	  (setf colour (wxColourDialog:wxcl-get-colour txt-control colour))
+	  (when colour
+	    (wxTextAttr_SetTextColour style colour)
+	    (wxTextCtrl_SetDefaultStyle txt-control style)
+	    (wxTextCtrl_SetStyle txt-control 0
+				 (wxTextCtrl_GetLastPosition txt-control) style)
+	    ))))))
 
 
 (defun add-accelerator-keys (frame)
@@ -180,7 +188,7 @@
 (defun add-tool-bar(frame)
   (let ((tb (wxframe_createtoolbar frame (boole boole-ior wxTB_3DBUTTONS wxTB_HORIZONTAL)))
 	(open-ico (wxbitmap_createload "f_open.ico" wxBITMAP_TYPE_ICO))
-	(close-ico (wxbitmap_createload "f_close.ico" wxBITMAP_TYPE_ICO)))
+	(close-ico (wxbitmap_createload "f_closed.ico" wxBITMAP_TYPE_ICO)))
     (wxToolBar_AddTool tb wxID_OPEN open-ico "Open file" "Opens Image files.")
     (wxtoolbar_addtool tb wxID_CLOSE close-ico "Close file" "Closes Image files.")
     (wxToolBar_Realize tb)))
@@ -194,7 +202,7 @@
 (defun new-tab (fun nb evt)
   (when evt
     (let* (			       ;(tb (make-tabs :panel panel)))
-	   (txtcontrol (wxCL-create-text-control nb :style wxTE_MULTILINE)))
+	   (txtcontrol (wxCL-create-text-control nb :style (logior wxTE_MULTILINE wxTE_RICH wxTE_RICH2))))
 ;    (push tb tab-list)
       (wxNotebook_AddPage nb txtcontrol "Unknown" 1 -1))))
 
@@ -238,7 +246,7 @@
     (add-menu frame)
     (add-accelerator-keys frame)
     (add-tool-bar frame)
-    ;(wxFrame_SetIcon frame (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
+    (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo.ico" wxBITMAP_TYPE_ICO -1 -1))
     (setf nb (wxCL-create-notebook frame))
     (register-events frame nb)
     (wxWindow_Show frame)
@@ -250,3 +258,7 @@
 
 ;;;Starts execution
 (Eljapp_initializeC x 0 nil)
+
+;;important to close the library, otherwise the static initializers would cause problem
+;;when re-executing the program
+(ffi:close-foreign-library "../miscellaneous/wxc-msw2.6.2.dll")

@@ -140,8 +140,8 @@
 	txt nb line)
     (setf nb (wxCL-create-notebook frame))
     (setf panel (wxPanel_Create nb -1 -1 -1 -1 -1 wxTAB_TRAVERSAL))
-    (print (wxNotebook_AddPage nb panel "Unknown" 1 -1))
-    (print (wxNotebook_AddPage nb panel "Unknown" 1 -1))
+    (wxNotebook_AddPage nb panel "Unknown" 1 -1)
+    (wxNotebook_AddPage nb panel "Unknown" 1 -1)
     (wxwindow_setsizer panel main-sizer)
     (add-top-controls top-sizer panel)
     (add-bottom-controls bottom-sizer panel)
@@ -156,7 +156,7 @@
 
 (defun init-func (fun data evt)
   (let ((frame (wxframe_create nil -1 "wxCL - Controls Demo" 10 10 700 600 wxDefault_Frame_Style)))
-    (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
+    (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo.ico" wxBITMAP_TYPE_ICO -1 -1))
     (add-controls frame)
     (wxwindow_show frame)
     (print (wxDirDialog:wxcl-get-dir frame))))
@@ -164,3 +164,6 @@
 
 (Eljapp_initializeC (wxclosure_Create (function init-func) nil) 0 nil)
 
+;;important to close the library, otherwise the static initializers would cause problem
+;;when re-executing the program
+(ffi:close-foreign-library "../miscellaneous/wxc-msw2.6.2.dll")

@@ -83,7 +83,7 @@
 (defun add-tool-bar(frame)
   (let ((tb (wxframe_createtoolbar frame (boole boole-ior wxTB_3DBUTTONS wxTB_HORIZONTAL)))
 	(open-ico (wxbitmap_createload "f_open.ico" wxBITMAP_TYPE_ICO))
-	(close-ico (wxbitmap_createload "f_close.ico" wxBITMAP_TYPE_ICO)))
+	(close-ico (wxbitmap_createload "f_closed.ico" wxBITMAP_TYPE_ICO)))
     (wxToolBar_AddTool tb wxID_OPEN open-ico "Open file" "Opens Image files.")
     (wxtoolbar_addtool tb wxID_CLOSE close-ico "Close file" "Closes Image files.")
     (wxToolBar_Realize tb)))
@@ -100,7 +100,7 @@
 	       (fr (wxFrame_create frame -1 filename 10 10 500 500 wxDEFAULT_FRAME_STYLE))
 	       (sw (wxScrolledWindow_Create fr -1 -1 -1 -1 -1 (boole boole-ior wxHSCROLL wxVSCROLL)))
 	       (bmp-static (wxStaticbitmap_create sw -1 bmp -1 -1 -1 -1 0)))
-	  (wxFrame_SetIcon fr (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
+	  (wxFrame_SetIcon fr (wxicon_createload "wxcl-logo.ico" wxBITMAP_TYPE_ICO -1 -1))
 	  (wxScrolledWindow_SetScrollbars sw 20 20 50 50 -1 -1 0)
 	  (wxWindow_Show fr))))))
 
@@ -140,7 +140,7 @@
     (add-accelerator-keys frame)
     (add-status-bar frame)
     (add-tool-bar frame)
-    (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo-60.ico" wxBITMAP_TYPE_ICO -1 -1))
+    (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo.ico" wxBITMAP_TYPE_ICO -1 -1))
     (register-events frame)
     (wxWindow_Show frame)))
 
@@ -150,3 +150,7 @@
 
 ;;Starts execution
 (Eljapp_initializeC x 0 nil)
+
+;;important to close the library, otherwise the static initializers would cause problem
+;;when re-executing the program
+(ffi:close-foreign-library "../miscellaneous/wxc-msw2.6.2.dll")
