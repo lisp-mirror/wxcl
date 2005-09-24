@@ -45,11 +45,14 @@
 
 (defun wxcl-get-colour (parent &optional (colour nil))
   (let ((colour-data (wxColourData_Create)))
-    (when colour
-      (wxColourData_SetColour colour-data colour))
-    (with-colour-dialog (dialog parent colour-data)
-      (when (= (wxDialog_ShowModal dialog) wxID_OK)
-	(let ((colour (wxColour_CreateEmpty)))
-	  (wxColourDialog_GetColourData dialog colour-data)
-	  (wxColourData_GetColour colour-data colour)
-	  colour)))))
+    (unwind-protect
+	 (progn
+	   (when colour
+	     (wxColourData_SetColour colour-data colour))
+	   (with-colour-dialog (dialog parent colour-data)
+	     (when (= (wxDialog_ShowModal dialog) wxID_OK)
+	       (let ((colour (wxColour_CreateEmpty)))
+		 (wxColourDialog_GetColourData dialog colour-data)
+		 (wxColourData_GetColour colour-data colour)
+		 colour))))
+      (wxColourData_Delete colour-data))))
