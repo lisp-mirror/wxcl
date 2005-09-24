@@ -46,7 +46,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 
 	      Quick start guide on <a href="http://www.wxcl-project.org/" target="_top">
 		<span><strong class="command">wxCL</strong></span></a>
-	      version 1.1.0.</h1></div><div>
+	      version 1.1.1.</h1></div><div>
 
 	    <h3 class="corpauthor"><span class="inlinemediaobject"><img src="wxcl-logo-60.png" /></span></h3></div>
 	  <div><div class="author"><h3 class="author"><span class="firstname">Surendra</span> 
@@ -124,6 +124,16 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	  files which it needs, and comment the call to asdf.
 	  </p>
 
+	  <h2>Creating wxWidget GUI's and generating the corresponding
+	wxCL code </h2>
+<p>As of now, the cvs version of <a
+	  href="http://wxglade.sourceforge.net/">wxGlade</a> provides,
+	a nice interactive way of creating GUI's and also generates
+	the corresponding lisp code. To run wxGlade you need Python and
+	wxPython to be installed, and then run the <i>wxglade.py</i>
+	    file (<i>python wxglade.py</i>). More information on
+	    wxGlade can be found on the project web page.
+
 	  <h2>Programming with wxCL </h2>
 	  <p>      
 	    The way this library works is that your lisp code needs to register for
@@ -177,6 +187,21 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 <span class="paren1">(<span class="default"><i><span class="symbol">ffi:def-call-out</span></i> ELJApp_InitializeC<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:name</span> <span class="string">"ELJApp_InitializeC"</span></span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:arguments</span> <span class="paren3">(<span class="default">closure <span class="paren4">(<span class="default">ffi:c-pointer wxClosure</span>)</span></span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren3">(<span class="default">_argc ffi:int</span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren3">(<span class="default">_argv <span class="paren4">(<span class="default">ffi:c-array-ptr ffi:c-string</span>)</span></span>)</span></span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:return-type</span> NIL</span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:library</span> +library-name+</span>)</span></span>)</span>
 <br/><br/>
 	    </code>
+
+<p>The wxWidgets versions other than 2.4.2 suffer from the problem
+	that when the application exits all the static initializers
+	are not properly closed or uninitialized. So, if you try to
+	load the wxCL program second time lisp crashes, the way to
+	avoid this problem is that you close the library every time
+	you finish running the wxCL program this will ensure that when
+	you run the program through the interpreter once again lisp
+	will not crash.
+</p>
+<code>
+<span class="paren1">(<span class="default"><span class="keyword">ffi:close-foreign-library
+	  <span	class="string">"../miscellaneous/wxc-msw2.6.2.dll"</span></span></span>)</span>
+<code/>
+
 <p>Hope this helps, more information can be found by looking at the
 		examples, if you still have doubts then ask on the
 		mailing list.
@@ -185,7 +210,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	      <address><a href="http://www.public.asu.edu/~sksinghi/index.html">Surendra Singhi</a></address>
 	      <!-- Created: Sat Aug 13 23:58:01 US Mountain Standard Time 2005 -->
 	      <!-- hhmts start -->
-Last modified: Sun Aug 21 11:15:46 US Mountain Standard Time 2005
+Last modified: Fri Sep 23 20:19:04 US Mountain Standard Time 2005
 <!-- hhmts end -->
   </body>
 </html>
