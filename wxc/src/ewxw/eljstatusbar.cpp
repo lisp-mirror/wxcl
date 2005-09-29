@@ -3,13 +3,9 @@
 extern "C"
 {
 
-EWXWEXPORT(void*, wxStatusBar_Create) (void* _prt, int _id, int _lft, int _top, int _wdt, int _hgt, int _stl)
+EWXWEXPORT(void*, wxStatusBar_Create) (void* _prt, int _id, int _stl)
 {
-#if wxVERSION_NUMBER >= 2400
-	return (void*) new wxStatusBar ((wxWindow*)_prt, _id, _stl);
-#else
-	return (void*) new wxStatusBar ((wxWindow*)_prt, _id, wxPoint(_lft, _top), wxSize(_wdt, _hgt), _stl);
-#endif
+  return (void*) new wxStatusBar ((wxWindow*)_prt, _id, _stl);
 }
 
 EWXWEXPORT(void, wxStatusBar_SetFieldsCount)(void* _obj, int number, int* widths)
@@ -27,11 +23,13 @@ EWXWEXPORT(void, wxStatusBar_SetStatusText)(void* _obj, void* text, int number)
 	((wxStatusBar*)_obj)->SetStatusText((char*)text, number);
 }
 	
-EWXWEXPORT(int, wxStatusBar_GetStatusText)(void* _obj, int number, void* _buf)
+EWXWEXPORT(char *, wxStatusBar_GetStatusText)(void* _obj, int number)
 {
 	wxString result = ((wxStatusBar*)_obj)->GetStatusText(number);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(void, wxStatusBar_SetStatusWidths)(void* _obj, int n, int* widths)

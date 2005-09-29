@@ -23,18 +23,22 @@ EWXWEXPORT(void, wxDirDialog_SetStyle)(void* _obj, int style)
 	((wxDirDialog*)_obj)->SetStyle((long)style);
 }
 	
-EWXWEXPORT(int, wxDirDialog_GetMessage)(void* _obj, void* _buf)
+EWXWEXPORT(char *, wxDirDialog_GetMessage)(void* _obj)
 {
 	wxString result =((wxDirDialog*)_obj)->GetMessage();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 	
-EWXWEXPORT(int, wxDirDialog_GetPath)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxDirDialog_GetPath)(void* _obj)
 {
 	wxString result =((wxDirDialog*)_obj)->GetPath();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(int, wxDirDialog_GetStyle)(void* _obj)

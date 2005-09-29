@@ -43,18 +43,22 @@ EWXWEXPORT(void, wxFileDialog_SetFilterIndex)(void* _obj, int filterIndex)
 	((wxFileDialog*)_obj)->SetFilterIndex(filterIndex);
 }
 	
-EWXWEXPORT(int, wxFileDialog_GetMessage)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxFileDialog_GetMessage)(void* _obj)
 {
 	wxString result = ((wxFileDialog*)_obj)->GetMessage();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 	
-EWXWEXPORT(int, wxFileDialog_GetPath)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxFileDialog_GetPath)(void* _obj)
 {
 	wxString result = ((wxFileDialog*)_obj)->GetPath();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(int, wxFileDialog_GetPaths)(void* _obj, void* paths)
@@ -69,18 +73,22 @@ EWXWEXPORT(int, wxFileDialog_GetPaths)(void* _obj, void* paths)
 	return arr.GetCount();
 }
 	
-EWXWEXPORT(int, wxFileDialog_GetDirectory)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxFileDialog_GetDirectory)(void* _obj)
 {
 	wxString result =((wxFileDialog*)_obj)->GetDirectory();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 	
-EWXWEXPORT(int, wxFileDialog_GetFilename)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxFileDialog_GetFilename)(void* _obj)
 {
 	wxString result =((wxFileDialog*)_obj)->GetFilename();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(int, wxFileDialog_GetFilenames)(void* _obj, void* paths)
@@ -95,11 +103,13 @@ EWXWEXPORT(int, wxFileDialog_GetFilenames)(void* _obj, void* paths)
 	return arr.GetCount();
 }
 	
-EWXWEXPORT(int, wxFileDialog_GetWildcard)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxFileDialog_GetWildcard)(void* _obj)
 {
 	wxString result =((wxFileDialog*)_obj)->GetWildcard();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(int, wxFileDialog_GetStyle)(void* _obj)
