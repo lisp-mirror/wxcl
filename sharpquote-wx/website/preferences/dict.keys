@@ -19,7 +19,7 @@
 ;; ^ format string must accept three arguments in the order: year-nr, month-word, day-nr.
 ;;    use ~* (the format tilde-asterix directive) to 'go-to' specific arguments.
 
-:f$-size
+:f$-filesize
 ;; ^ format string must accept a single positive integer as an argument.
 
 
@@ -48,20 +48,25 @@
 :more
 
 ;; language names
-:english
-:german
+:en
+:de
 
 ;; topics
 :home
 :contact
 :newsfeed
 :screenshots
+:shot-1
+:shot-2
+:shot-3
+:shot-4
+:shot-5
 :documents
-:releases
+:downloads
 
 ;; node buttons
 :jump-to-top
-:show-cl-source-for-this-node
+:show-cl-source-code-for-this-node
 
 
 ;; terse-news
@@ -76,4 +81,26 @@
 ;; shoes
 :page-rendered
 :page-served
+
+;; downloads
+:release-packages
+:notes
+:license
+:release-managed-by
+
+;; site structure
+
+
+;; documents
+:by
+:available-documentation
+:how-to-s
+:change-logs
+:quick-start-guides
+
+
+;; newsfeed
+:news-archive
+
+
 

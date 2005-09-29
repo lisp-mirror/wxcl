@@ -7,9 +7,8 @@
 
 ;; format strings
 
-:f$-date ((:year/full-nr+month/word+day/nr 
-	   . "~1*~A ~:2,'0D, ~3:~4,'0D"))
-
+:f$-date ((:year/full-nr+month/word+day/nr . "~1*~A ~:2,'0D, ~3:*~4,'0D"))
+:f$-filesize ((t . "~0,' ,',:D kBytes"))
 
 
 ;; names of months
@@ -28,15 +27,58 @@
 
 
 ;; hat
-:project-page (t . "Project Page")
-:files (t . "Files")
-:forums (t . "Forums")
-:cvs-tree (t . "CVS Tree")
-:bug-tracker (t . "Bug Tracker")
-:mailing-lists (t . "Mailing Lists")
-:more (t . "more")
+:project-page ((t . "Project Page"))
+:files ((t . "Files"))
+:forums ((t . "Forums"))
+:cvs-tree ((t . "CVS Tree"))
+:bug-tracker ((t . "Bug Tracker"))
+:mailing-lists ((t . "Mailing Lists"))
+:more ((t . "more"))
 
 ;; terse-news
-:ticker (t . "News")
+:ticker ((t . "News"))
+
+;; topics
+:home ((t . "Home"))
+:contact ((t . "Contact"))
+:newsfeed ((t . "Newsfeed"))
+:screenshots ((t . "Screenshots"))
+:shot-1 ((t . "Shot 1"))
+:shot-2 ((t . "Shot 2"))
+:shot-3 ((t . "Shot 3"))
+:shot-4 ((t . "Shot 4"))
+:shot-5 ((t . "Shot 5"))
+:documents ((t . "Documents"))
+:downloads ((t . "Downloads"))
+
+;; downloads
+:release-packages ((t . "Release Packages"))
+:notes ((t . "Notes"))
+:license ((t . "License"))
+:release-managed-by ((t . "Release managed by"))
+
+;; node buttons
+:jump-to-top ((t . "jump to top"))
+:show-cl-source-code-for-this-node ((t . "show CL source code for this node"))
+
+;; language names
+:en ((t . "English"))
+:de ((t . "German"))
+
+;; shoes
+:page-rendered ((t . "page rendered"))
+:page-served ((t . "page served"))
+
+
+;; documents
+:by ((t . "by"))
+:available-documentation ((t . "Available Documentation"))
+:how-to-s ((t . "HOWTOs"))
+:change-logs ((t . "Logs"))
+:quick-start-guides ((t . "Quick Start Guides"))
+
+
+;; newsfeed
+:news-archive ((t . "News Archive"))
 
 
