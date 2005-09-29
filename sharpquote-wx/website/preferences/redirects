@@ -1,0 +1,77 @@
+;;; -*- Mode: LISP; Base: 10; Syntax: Common-Lisp -*-
+
+
+(
+ (5 ; refresh time in seconds
+  :en ; language key
+  "redirect-page-moved" ; node name
+  ("en--contact--main2.html" ("en" . "contact--contact-1.html"))
+  ("en--documents--maindocs.html" ("en" . "documents--documents-1.html"))
+  ("en--home--main.html" ("en" . "home--home-1.html"))
+  ("en--newsfeed--mainnews.html" ("en" . "newsfeed--newsfeed-1.html"))
+  ("en--releases--maindl.html" ("en" . "downloads--downloads-1.html"))
+  ("en--screenshots--shot1.html" ("en" . "screenshots--shot-1.html"))
+  ("en--screenshots--shot2.html" ("en" . "screenshots--shot-1.html"))
+  ("en--screenshots--shot3.html" ("en" . "screenshots--shot-1.html"))
+  ("en--screenshots--shot4.html" ("en" . "screenshots--shot-1.html"))
+  ("en--screenshots--shot5.html" ("en" . "screenshots--shot-1.html")) )
+ 
+ (5 :de "redirect-page-moved"
+    ("de--contact--main2.html" ("de" . "contact--contact-1.html"))
+    ("de--documents--maindocs.html" ("de" . "documents--documents-1.html"))
+    ("de--home--main.html" ("de" . "home--home-1.html"))
+    ("de--newsfeed--mainnews.html" ("de" . "newsfeed--newsfeed-1.html"))
+    ("de--releases--maindl.html" ("de" . "downloads--downloads-1.html"))
+    ("de--screenshots--shot1.html" ("de" . "screenshots--shot-1.html"))
+    ("de--screenshots--shot2.html" ("de" . "screenshots--shot-1.html"))
+    ("de--screenshots--shot3.html" ("de" . "screenshots--shot-1.html"))
+    ("de--screenshots--shot4.html" ("de" . "screenshots--shot-1.html"))
+    ("de--screenshots--shot5.html" ("de" . "screenshots--shot-1.html")) )
+
+ (0 :en "redirect-multiviews"
+    ("index.html" ("en" . "home--home-1.html"))
+    ("index.html.en" ("en" . "home--home-1.html")) )
+
+ (0 :de "redirect-multiviews"
+    ("index.html.de" ("de" . "home--home-1.html")) )
+ 
+ (5 :en "redirect-block-directory-listing"
+    ("en/index.html" ("en" . "home--home-1.html"))
+    ("en/index.html.en" ("en" . "home--home-1.html"))
+    
+    ("de/index.html" ("en" . "home--home-1.html"))
+    ("de/index.html.en" ("en" . "home--home-1.html"))
+   
+    ("docs/index.html" ("en" . "home--home-1.html"))
+    ("docs/index.html.en" ("en" . "home--home-1.html"))
+   
+    ("img/index.html" ("en" . "home--home-1.html"))
+    ("img/index.html.en" ("en" . "home--home-1.html"))
+  
+    ("nodes/index.html" ("en" . "home--home-1.html"))
+    ("nodes/index.html.en" ("en" . "home--home-1.html"))
+   
+    ("nodes/en/index.html" ("en" . "home--home-1.html"))
+    ("nodes/en/index.html.en" ("en" . "home--home-1.html"))
+   
+    ("nodes/de/index.html" ("en" . "home--home-1.html"))
+    ("nodes/de/index.html.en" ("en" . "home--home-1.html"))
+  
+    ("nodes/multi/index.html" ("en" . "home--home-1.html"))
+    ("nodes/multi/index.html.en" ("en" . "home--home-1.html")) )
+ 
+ 
+ (5 :de "redirect-block-directory-listing"
+    ("en/index.html.de" ("de" . "home--home-1.html")) 
+    ("de/index.html.de" ("de" . "home--home-1.html"))
+    ("docs/index.html.de" ("de" . "home--home-1.html"))
+    ("img/index.html.de" ("de" . "home--home-1.html"))
+    ("nodes/index.html.de" ("de" . "home--home-1.html"))
+    ("nodes/en/index.html.de" ("de" . "home--home-1.html"))
+    ("nodes/de/index.html.de" ("de" . "home--home-1.html"))
+    ("nodes/multi/index.html.de" ("de" . "home--home-1.html")) )
+ 
+ )
+
+
+

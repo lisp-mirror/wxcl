@@ -1,0 +1,78 @@
+;;; -*- Mode: LISP; Base: 10; Syntax: Common-Lisp -*-
+
+
+
+;;;; To hide source, append the key/value pair  :show-source nil  
+;;;; to node definitions.
+
+
+(
+
+ ( :home ; name-key for tab (used to lookup translations)
+   ( :home-1 ; name-key for panel (used to lookup translations)
+     ( ; 1st column
+      :welcome ; name-key | (name-key &key file (show-source t))
+      :terse-news
+      (:project-people :show-source nil)
+      ;; :resources+projects
+      )
+     ( ; 2nd column
+      :latest-news
+      :resources+projects
+      ;; :project-people
+      )))
+ 
+ 
+
+ ( :contact
+   ( :contact-1
+     ( :contact )))
+ 
+ 
+ 
+ ( :newsfeed
+   ( :newsfeed-1
+     ( :newsfeed 
+       ;; :news-archive 
+       )))
+ 
+
+
+ ( :screenshots
+   ( :shot-1
+     ( :shot1 ))
+   ( :shot-2
+     ( :shot2 ))
+   ( :shot-3
+     ( :shot3 ))
+   ( :shot-4
+     ( :shot4 ))
+   ( :shot-5
+     ( :shot5 )))
+ 
+ 
+ 
+ ( :documents
+   ( :documents-1
+     ( :doc-downloads )))
+ 
+ 
+ 
+ ( :downloads
+   ( :downloads-1
+     ;; ( :app-downloads )
+     ( :snapshots )
+     ( :app-downloads )
+     ))
+
+ )
+
+   
+
+ 
+ 
+
+ 
+ )
+
+
