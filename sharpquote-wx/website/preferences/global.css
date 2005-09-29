@@ -12,6 +12,8 @@ img.node-buttons { border: 0px; margin: 0px; }
 
 div.top { text-align: center; width: 700px; font-size: 10pt; padding: 0px; }
 div.single-column-narrow { margin: 3em 25%; }
+div.lead-in { margin: 2.5em; }
+
 
 
 
@@ -29,7 +31,7 @@ span.panel-hidden { background-color: white; border: 1px solid black; padding: 0
 
 p.description-screenshot { margin: 1em 25%; }
 
-p { font-size: 100%; color: black; padding: 0px; margin: 0em 0em 0.5em 0em; text-align: left; font-family: Arial, Helvetica, sans-serif; }
+p { font-size: 100%; color: black; padding: 0px; margin: 0em 0em 0.5em 0em; text-align: left; font-family:  Helvetica, sans-serif; }
 p.hat { background-color: #e5ff00; border: 1px solid black; margin: 0em; padding: 0.1em 0.25em; font-size: 85%; }
 p.dates { color: darkgray; margin: 0px; padding: 0px; font-size: 85%; text-align: right; letter-spacing: 0.1em; }
 p.language-buttons { text-align: right; font-size: 85%; line-height: 200%; color: black; margin: 0px; padding: 0px; }
@@ -39,8 +41,9 @@ p.node-buttons { text-align: center; font-size: 85%; line-height: 200%; color: b
 
 p.spacer { margin: 0px; padding: 0px }
 p.date-box { text-align: center; margin: 0.25em 0px; }
-p.terse-news { test-align: left; margin: 0.25em 0.5em; }
+p.terse-news { text-align: left; margin: 0.25em 0.5em; }
 
+p.shoes { margin-top: 2em; text-align: center;} 
 
 
 
@@ -48,16 +51,16 @@ p.terse-news { test-align: left; margin: 0.25em 0.5em; }
 div.box { border: 1px solid black; background-color: lightgrey; }
 div.logo { text-align: left; padding: 0px; margin: 0px; }
 
-ul { font-size: 100%; padding: 0px; font-family: Arial, Helvetica, sans-serif; text-align: left }
+ul { font-size: 100%; padding: 0px; font-family:  Helvetica, Arial, sans-serif; text-align: left }
 ul.enum { margin: 0em 1em 1em 3em; }
 ul.topics { list-style-position: inside; list-style-type: square; margin: 0em 0em 0.5em 0em; }
 
-li { font-size: 100%; font-family: Arial, Helvetica, sans-serif; text-align: left }
+li { font-size: 100%; font-family:  Helvetica, Arial, sans-serif; text-align: left }
 li.enum { color: black; }
 li.topics  { color: black; margin-bottom: 0.5em }
 
-h1 { font-size: 100%; line-height: 120% ; font-family: Arial, Helvetica, sans-serif; text-align: center;  background-color: #fffce4; color: black; padding: 0.25em 0.25em; margin: 1em 0em 0.5em 0em; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; }
-
+h1 { font-size: 100%; line-height: 120% ; font-family:  Helvetica, Arial, sans-serif; text-align: center;  background-color: #fffce4; color: black; padding: 0.25em 0.25em; margin: 1em 0em 0.5em 0em; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; }
+h2 { font-size: 100%; line-height: 120% ; font-family:  Helvetica, Arial, sans-serif; text-align: center;  color: black; margin: 1em 0em 0.5em 0em; }
 
 table.logo { width: 100%; padding: 0px; margin: 0px; border: 0px; border-collapse: collapse; }
 table.tab { width: 100%; padding: 0px; margin: 0px 0px 0px 0px; background-color: #f0f0ea ; border-top: 1px solid gray; border-bottom: 1px solid gray; border-left: 0px; border-right: 0px; border-collapse: collapse }
@@ -73,18 +76,20 @@ tr.logo { padding: 0px; margin: 0px; border: 0px; width: 100% }
 tr.panel-switches  { padding: 0px; margin: 0px; border: 0px; width: 100% }
 tr.panel-content { padding: 0px; margin: 0px; border: 0px; width: 100% }
 
-td.logo { padding: 0px; margin: 0px; border: 0px; width: 20% }
+td.logo { vertical-align: top; padding: 0px; margin: 0px; border: 0px; width: 20% }
 td.claim { padding: 0px; margin: 0px; border: 0px; width: 30% }
 td.language-buttons { padding: 0px; margin: 0px; border: 0px; width: 50% }
 td.panel-switches { padding: 0px; margin: 0px; border-left: 1px solid gray; border-right: 1px solid gray; }
-td.date-box { vertical-align: middle; width: 35%; border: 1px solid gray; }
-td.terse-news { vertical-align: middle; width: 65%; border-top: 1px dashed gray; }
+td.date-box { text-align: center; vertical-align: middle; width: 35%; border: 1px solid gray; }
+td.terse-news { text-align: left; vertical-align: middle; width: 65%; border-top: 1px dashed gray; }
 
 td.spacer-left  { margin: 0px; padding: 0px; border: 0px; border-left: 1px solid gray; }
 td.spacer-middle { margin: 0px; padding: 0px; border: 0px }
 td.spacer-right  { margin: 0px; padding: 0px; border: 0px; border-right: 1px solid gray; }
 
 td.panel-column { vertical-align: top; padding: 0em 0em 0.5em 0em; margin: 0px; bottom: 0px; }
+
+td.shoes-logo { vertical-align: top; text-align: center; width: 25%; 
 
 
 

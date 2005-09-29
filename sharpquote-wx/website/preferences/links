@@ -44,6 +44,7 @@
 ;;;; 'mailing-list' as 'ml'
 ;;;; 'microsoft' as 'ms'
 ;;;; 'sourceforge' as 'sf'
+;;;; 'freashmeat' as 'fm'
 ;;;; 'image' as 'img'
 ;;;; 'announcement' as 'ann'
 ;;;; 
@@ -67,19 +68,22 @@
 
 
 
-:include "./preferences/links-sourceforge"
-:include "./preferences/links-cl-and-ffi"
+:include ("preferences" . "links-sourceforge")
+:include ("preferences" . "links-cl-and-ffi")
 
 
 
 ;;; ------ Us ------
 :hp-wxcl "http://www.wxcl-project.org/"
+:location-wxcl-logo-60px "../img/wxcl-logo-60.png" ; moved here from website.ini
 
 
 
-;;; ------ release-related pages ------
+;;; ------ CVS snapshots ------
 
-:release-notes-1.1.0-alpha  "https://sourceforge.net/project/shownotes.php?release_id=350721"
+:wxcl-cvs-snapshot "http://wxcl.sourceforge.net/snapshots/wxcl-cvs-snapshot"
+:sqwx-cvs-snapshot "http://wxcl.sourceforge.net/snapshots/sqwx-cvs-snapshot"
+:full-cvs-snapshot "http://wxcl.sourceforge.net/snapshots/full-cvs-snapshot"
 
 
 ;;; ------ Licenses ------
@@ -128,11 +132,16 @@
 
 :hp-cliki "http://www.cliki.net"
 :cliki-wxcl "http://www.cliki.net/wxcl"
+:cliki-logo-img "../img/cliki-logo.png"
+
 :hp-freshmeat "http://freshmeat.net"
 :freshmeat-wxcl "http://freshmeat.net/projects/wxcl/"
+:freshmeat-logo-img "../img/link_button_3.gif"
 
 :hp-ansi "http://www.ansi.org"
 
+:jump-to-top-img "../img/point-to-top.gif"
+:show-cl-source-img "../img/source.gif"
 
 
 ;;; ------ Project People ------
@@ -151,7 +160,7 @@
 
 
 
-;; ------ wxWidgets and wrappers ------
+;; ------ wxWidgets, wrappers and other wxWidgets stuff ------
 
 :hp-wxwidgets "http://www.wxwidgets.org"
 
@@ -162,6 +171,9 @@
 
 :hp-wxpython "http://www.wxpython.org"
 :hp-mzscheme "http://www.plt-scheme.org/software/mzscheme/"
+
+
+:hp-wxglade "http://wxglade.sourceforge.net"
 
 
 
