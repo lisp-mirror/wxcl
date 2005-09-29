@@ -185,9 +185,8 @@
 
 (ffi:def-call-out wxFrame_GetTitle
     (:name "wxFrame_GetTitle")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxFrame_SetTitle

@@ -109,37 +109,17 @@
   (:library +library-name+))
 
 
-
-;;Redeclaring using variable length array,
-;;C-code can be improved to handle such
-;;types of declaration 
-
-(ffi:def-call-out _wxFileDialog_GetMessage
+(ffi:def-call-out wxFileDialog_GetMessage
     (:name "wxFileDialog_GetMessage")
-  (:arguments (_obj (ffi:c-pointer wxFileDialog))
-	      (_buf (ffi:c-pointer character)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxFileDialog)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
-(defun wxFileDialog_GetMessage (_obj &optional (max_length 512))
-  (with-c-var (message `(c-array-max character ,max_length))
-    (_wxFileDialog_GetMessage _obj (c-var-address message))
-    message))
-
-;;Redeclaring using variable length array,
-;;C-code can be improved to handle such
-;;types of declaration 
-(ffi:def-call-out _wxFileDialog_GetPath
+(ffi:def-call-out wxFileDialog_GetPath
     (:name "wxFileDialog_GetPath")
-  (:arguments (_obj (ffi:c-pointer wxFileDialog))
-	      (_buf (ffi:c-pointer character)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxFileDialog)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
-
-(defun wxFileDialog_GetPath (_obj &optional (max_length 1024))
-  (with-c-var (path `(c-array-max character ,max_length))
-    (_wxFileDialog_GetPath _obj (c-var-address path))
-    path))
 
 ;;the C code for this function is severly broken,
 ;;needs to be fixed, not very scalable
@@ -160,38 +140,17 @@
       
 ;;      (OFFSET path 0 `(c-array character ,max_length)))))
 
-;;Redeclaring using variable length array,
-;;C-code can be improved to handle such
-;;types of declaration 
-
-(ffi:def-call-out _wxFileDialog_GetDirectory
+(ffi:def-call-out wxFileDialog_GetDirectory
     (:name "wxFileDialog_GetDirectory")
-  (:arguments (_obj (ffi:c-pointer wxFileDialog))
-	      (_buf (ffi:c-pointer character)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxFileDialog)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
-(defun wxFileDialog_GetDirectory (_obj &optional (max_length 512))
-  (with-c-var (directory `(c-array-max character ,max_length))
-    (_wxFileDialog_GetDirectory _obj (c-var-address directory))
-    directory))
-
-;;Redeclaring using variable length array,
-;;C-code can be improved to handle such
-;;types of declaration
-
-(ffi:def-call-out _wxFileDialog_GetFileName
+(ffi:def-call-out wxFileDialog_GetFileName
     (:name "wxFileDialog_GetFilename")
-  (:arguments (_obj (ffi:c-pointer wxFileDialog))
-	      (_buf (ffi:c-pointer character)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxFileDialog)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
-
-(defun wxFileDialog_GetFilename (_obj &optional (max_length 256))
-  (with-c-var (filename `(c-array-max character ,max_length))
-    (_wxFileDialog_GetFileName _obj (c-var-address filename))
-    filename))
-
 
 ;;the C code for this function is severly broken,
 ;;needs to be fixed, not very scalable
@@ -213,17 +172,11 @@
 ;;C-code can be improved to handle such
 ;;types of declaration 
 
-(ffi:def-call-out _wxFileDialog_GetWildcard
+(ffi:def-call-out wxFileDialog_GetWildcard
     (:name "wxFileDialog_GetWildcard")
-  (:arguments (_obj (ffi:c-pointer wxFileDialog))
-	      (_buf (ffi:c-pointer character)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxFileDialog)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
-
-(defun wxFileDialog_GetWildcard (_obj &optional (max_length 256))
-  (with-c-var (wildcard `(c-array character ,max_length))
-    (_wxFileDialog_GetWildcard _obj (c-var-address wildcard))
-    wildcard))
 
 (ffi:def-call-out wxFileDialog_GetStyle
     (:name "wxFileDialog_GetStyle")
@@ -249,11 +202,9 @@
 
 
 (defun wxcl-get-filepath (parent &key (message "") (dir "") (file "") (wildcard "*.*")
-				 (left -1) (top -1) (style 0) (max_length 1024))
+				 (left -1) (top -1) (style 0))
   (with-file-dialog (dialog parent :message message :dir dir :file file :wildcard wildcard
  			    :left left :top top :style style)
     (when (= (wxDialog_ShowModal dialog) wxID_OK)
-      (with-c-var (path `(c-array-max character ,max_length))
-	(_wxFileDialog_GetPath dialog (c-var-address path))
-	path))))
+	(wxFileDialog_GetPath dialog))))
 

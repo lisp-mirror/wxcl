@@ -27,10 +27,6 @@
     (:name "wxStatusBar_Create")
   (:arguments (_prt (ffi:c-pointer NIL))
 	      (_id ffi:int)
-	      (_lft ffi:int)
-	      (_top ffi:int)
-	      (_wdt ffi:int)
-	      (_hgt ffi:int)
 	      (_stl ffi:int))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
@@ -39,7 +35,7 @@
     (:name "wxStatusBar_SetFieldsCount")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (number ffi:int)
-	      (widths (ffi:c-ptr ffi:int)))
+	      (widths (ffi:c-array-ptr ffi:int)))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -60,9 +56,8 @@
 (ffi:def-call-out wxStatusBar_GetStatusText
     (:name "wxStatusBar_GetStatusText")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (number ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+	      (number ffi:int))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxStatusBar_SetStatusWidths

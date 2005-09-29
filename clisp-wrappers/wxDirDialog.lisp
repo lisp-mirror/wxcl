@@ -59,16 +59,14 @@
 
 (ffi:def-call-out wxDirDialog_GetMessage
     (:name "wxDirDialog_GetMessage")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxDirDialog_GetPath
      (:name "wxDirDialog_GetPath")
-   (:arguments (_obj (ffi:c-pointer NIL))
- 	      (_buf (ffi:c-pointer character)))
-   (:return-type ffi:int)
+   (:arguments (_obj (ffi:c-pointer NIL)))
+   (:return-type ffi:c-string :malloc-free)
    (:library +library-name+))
 
 (ffi:def-call-out wxDirDialog_GetStyle
@@ -86,10 +84,7 @@
 	   ,@body)
       (wxWindow_destroy ,dialog))))
 
-(defun wxcl-get-dir (parent &key (message "Choose a directory") (dir "")  (left -1) (top -1) (style 0) (max_length 3024))
+(defun wxcl-get-dir (parent &key (message "Choose a directory") (dir "")  (left -1) (top -1) (style 0))
   (with-dir-dialog (dialog parent :message message :dir dir :left left :top top :style style)
     (when (= (wxDialog_ShowModal dialog) wxID_OK)
-      (with-c-var (directory `(c-array character ,max_length))
-	(setf max_length (wxDirDialog_GetPath dialog (c-var-address directory)))
-	(unless (= max_length 0)
-	  (OFFSET directory 0 `(c-array character ,max_length)))))))
+      (wxDirDialog_GetPath dialog))))
