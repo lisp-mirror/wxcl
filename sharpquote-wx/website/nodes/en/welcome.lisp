@@ -6,10 +6,10 @@
  (:h1 (:b "The " ((:a :href* :hp-wxcl) "wxCL") " Project Group") )
  
  
- ((:p :css* (:lh *lh*))
+ (:p
   "works on the development of an")
  
- ((:ul class "enum" :css* (:lh *lh* ))
+ ((:ul class "enum")
   ((:li class "enum")
    "industrial strength interface")
   ((:li class "enum")
@@ -26,7 +26,7 @@
  
  
  
- ((:ul class "topics" :css* (:lh *lh*))
+ ((:ul class "topics")
   
   ((:li class "topics")
    "To know more about the "
