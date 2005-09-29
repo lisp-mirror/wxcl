@@ -1,2 +1,23 @@
 Version 1.1.2 (in progress)
 ============================
+2005-09-28: efuzzyone
+	clisp-wrappers: Fixed the argument for wxStatusBar_SetFieldsCount from ffi:c-ptr to ffi:c-array-ptr.
+
+2005-09-28: efuzzyone
+	clisp-wrappers: The wrapper for all the functions changed in wxC modified. Also, wxcl-get-dir and
+	wxcl-get-filepath functions no longer has the max_length keyword argument.
+
+2005-09-28: efuzzyone
+	wxC related changes: In eljstatusbar.cpp wxStatusBar_Create changed so that it conforms to version
+        >= 2.4.2, code for old version removed.
+2005-09-28: efuzzyone
+	wxC related changes: In file extra.cpp: function wxFrame_GetTitle; eljdirdlg.cpp: functions 
+	wxDirDialog_GetMessage, wxDirDialog_GetPath; eljfiledialog.cpp: functions wxFileDialog_GetMessage,
+	wxFileDialog_GetPath, wxFileDialog_GetDirectory, wxFileDialog_GetFilename, wxFileDialog_GetWildcard;
+	eljstatusbar.cpp: function wxStatusBar_GetStatusText.
+        All these functions changed so that they delete the wxString object and return a malloced character
+	array containing the string. Lisp should free this character array
+
+
+2005-09-28: efuzzyone
+	An example for wxButton from Mark Carter (button.lisp).
