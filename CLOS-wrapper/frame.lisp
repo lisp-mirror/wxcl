@@ -7,13 +7,13 @@
   (:documentation "The class for creating frames."))
 
 
-(defmethod wxFrame_CreateStatusBar
-    (:name "wxFrame_CreateStatusBar")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (number ffi:int)
-	      (style ffi:int))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+(defun make-frame (parent id title &key (pos default-position) (size default-size) (style wxDEFAULT_FRAME_STYLE))
+  (let ((fr (make-instance 'status-bar)))
+    (setf (slot-value fr 'object)
+	  (wxFrame_Create (when parent (object-pointer parent))
+			  id title (point-x pos) (point-y pos)
+			  (size-width size) (size-height size) style))
+    fr))
 
 (defmethod maximize ((obj frame))
   (wxFrame_Maximize (object-pointer obj)))
@@ -30,108 +30,81 @@
 (defmethod iconized-p ((obj frame))
   (= 1 (wxFrame_IsIconized (object-pointer obj))))
 
+(defmethod icon ((obj frame))
+  (let ((ic (make-instance 'icon)))
+    (setf (slot-value ic 'object) (wxFrame_GetIcon (object-pointer obj)))
+    ic))
 
-(defmethod wxFrame_GetIcon
-    (:name "wxFrame_GetIcon")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+(defmethod (setf icon) ((ic icon) ((obj frame)))
+    (wxFrame_SetIcon (object-pointer obj) (object-pointer ic)))
 
-(defmethod wxFrame_SetIcon
-    (:name "wxFrame_SetIcon")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_icon (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+(defmethod client-area-origin ((obj frame))
+  (make-instance 'point
+		 :x (wxFrame_GetClientAreaOrigin_left (object-pointer obj))
+		 :y (wxFrame_GetClientAreaOrigin_top (object-pointer obj))))
 
-(defmethod get-client-area-origin-left ((obj frame))
-  (wxFrame_GetClientAreaOrigin_left (object-pointer obj)))
+(defmethod icon ((obj frame))
+  (let ((ic (make-instance 'icon)))
+    (setf (slot-value ic 'object) (wxFrame_GetIcon (object-pointer obj)))
+    ic))
 
-(defmethod get-client-area-origin-top ((obj frame)) 
-  (wxFrame_GetClientAreaOrigin_top (object-pointer obj)))
+(defmethod (setf menu-bar) ((mb menu-bar) ((obj frame)))
+    (wxFrame_SetMenuBar (object-pointer obj) (object-pointer mb)))
 
-(defmethod wxFrame_SetMenuBar
-    (:name "wxFrame_SetMenuBar")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (menubar (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+(defmethod menu-bar ((obj frame))
+  (let ((mb (make-instance 'menu-bar)))
+    (setf (slot-value mb 'object) (wxFrame_GetMenuBar (object-pointer obj)))
+    mb))
 
-(defmethod wxFrame_GetMenuBar
-    (:name "wxFrame_GetMenuBar")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+(defmethod (setf status-bar) ((sb status-bar) ((obj frame)))
+    (wxFrame_SetStatusBar (object-pointer obj) (object-pointer sb)))
 
-(defmethod wxFrame_GetStatusBar
-    (:name "wxFrame_GetStatusBar")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+(defmethod status-bar ((obj frame))
+  (let ((sb (make-instance 'status-bar)))
+    (setf (slot-value sb 'object) (wxFrame_GetStatusBar (object-pointer obj)))
+    sb))
 
-(defmethod wxFrame_SetStatusBar
-    (:name "wxFrame_SetStatusBar")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (statBar (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+(defmethod (setf tool-bar) ((tb tool-bar) ((obj frame)))
+    (wxFrame_SetToolBar (object-pointer obj) (object-pointer tb)))
 
-; (defmethod wxFrame_SetStatusText
-;     (:name "wxFrame_SetStatusText")
-;   (:arguments (_obj (ffi:c-pointer NIL))
-; 	      (_txt ffi:c-string)
-; 	      (_number ffi:int))
-;   (:return-type NIL)
-;   (:library +library-name+))
+(defmethod tool-bar ((obj frame))
+  (let ((tb (make-instance 'tool-bar)))
+    (setf (slot-value tb 'object) (wxFrame_GetToolBar (object-pointer obj)))
+    tb))
 
-; (defmethod wxFrame_SetStatusWidths
-;     (:name "wxFrame_SetStatusWidths")
-;   (:arguments (_obj (ffi:c-pointer NIL))
-; 	      (_n ffi:int)
-; 	      (_widths_field (ffi:c-array-ptr ffi:int)))
-;   (:return-type NIL)
-;   (:library +library-name+))
+(defmethod (setf status-text) (text (obj frame) &optional (i 0))
+  "Sets the text for one field."
+  (wxFrame_SetStatusText (object-pointer obj) text i))
 
-; (defmethod wxFrame_CreateToolBar
-;     (:name "wxFrame_CreateToolBar")
-;   (:arguments (_obj (ffi:c-pointer NIL))
-; 	      (style ffi:long))
-;   (:return-type (ffi:c-pointer NIL))
-;   (:library +library-name+))
+(defmethod set-status-Widths ((obj frame) num widths)
+    (wxStatusBar_SetStatusWidths (object-pointer obj) num widths))
 
-; (defmethod wxFrame_GetToolBar
-;     (:name "wxFrame_GetToolBar")
-;   (:arguments (_obj (ffi:c-pointer NIL)))
-;   (:return-type (ffi:c-pointer NIL))
-;   (:library +library-name+))
+(defmethod create-status-bar ((obj frame) num style)
+  (let ((st (make-instance 'status-bar)))
+    (setf (slot-value st 'object)
+	  (wxFrame_CreateStatusBar (object-pointer obj) num style))
+    st))
 
-; (defmethod wxFrame_SetToolBar
-;     (:name "wxFrame_SetToolBar")
-;   (:arguments (_obj (ffi:c-pointer NIL))
-; 	      (_toolbar (ffi:c-pointer NIL)))
-;   (:return-type NIL)
-;   (:library +library-name+))
+(defmethod create-tool-bar ((obj frame) style)
+  (let ((tb (make-instance 'tool-bar)))
+    (setf (slot-value tb 'object)
+	  (wxFrame_CreateToolBar (object-pointer obj) style))
+    tb))
 
-(defmethod GetTitle ((obj frame))
+(defmethod title ((obj frame))
   (wxFrame_GetTitle (object-pointer obj)))
 
-(defmethod SetTitle ((obj frame) title)
-  (wxFrame_SetTitle (object-pointer obj) title))
+(defmethod (setf title) (str (obj frame))
+  (wxFrame_SetTitle (object-pointer obj) str))
 
-(defmethod wxFrame_SetShape
-    (:name "wxFrame_SetShape")
-  (:arguments (self (ffi:c-pointer wxFrame))
-	      (region (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+(defmethod (setf shape)  ((reg region) (obj frame))
+  (= 1 (wxFrame_SetShape (object-pointer obj) (object-pointer reg))))
 
-(defmethod wxFrame_ShowFullScreen
-    (:name "wxFrame_ShowFullScreen")
-  (:arguments (self (ffi:c-pointer wxFrame))
-	      (show ffi:int)
-	      (style ffi:int))
-  (:return-type ffi:int)
-  (:library +library-name+))
+
+(defmethod Show-Full-Screen ((obj frame) show &optional (style wxFULLSCREEN_ALL))
+  (= 1 (wxFrame_ShowFullScreen (object-pointer obj)
+			       (if show 1 0)
+			       style)))
 
 (defmethod full-screen-p ((obj frame))
   (= 1 (wxFrame_IsFullScreen (object-pointer obj))))

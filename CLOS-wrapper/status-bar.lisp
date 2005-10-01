@@ -7,10 +7,10 @@
  one or more of which can be variable length according to the size of the window."))
 
 
-(defun make-status-bar (parent id style)
+(defun make-status-bar (parent id &key (style wxST_SIZEGRIP))
   (let ((st (make-instance 'status-bar)))
     (setf (slot-value st 'object)
-	  (wxStatusBar_Create (object-pointer obj) id style))
+	  (wxStatusBar_Create (object-pointer parent) id style))
     st))
 
 (defmethod (setf fields-count) (num (obj status-bar) &optional (width nil))
@@ -35,10 +35,9 @@
 (defmethod (setf min-height) (height (obj status-bar))
   (wxStatusBar_SetMinHeight (object-pointer obj) height))
 
-
-(defmethod GetBorderX ((obj status-bar))
+(defmethod border-x ((obj status-bar))
     (wxStatusBar_GetBorderX (object-pointer obj)))
 
-(defmethod wxStatusBar_GetBorderY ((obj status-bar))
+(defmethod border-y ((obj status-bar))
     (wxStatusBar_GetBorderY (object-pointer obj)))
 
