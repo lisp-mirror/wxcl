@@ -141,16 +141,16 @@
 (ffi:def-call-out wxToolBar_GetToolSize
     (:name "wxToolBar_GetToolSize")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (x (ffi:c-pointer NIL))
-	      (y (ffi:c-pointer NIL)))
+	      (x (ffi:c-ptr int) :out)
+	      (y (ffi:c-ptr int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxToolBar_GetToolBitmapSize
     (:name "wxToolBar_GetToolBitmapSize")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (x (ffi:c-pointer NIL))
-	      (y (ffi:c-pointer NIL)))
+	      (x (ffi:c-ptr int) :out)
+	      (y (ffi:c-ptr int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -179,9 +179,8 @@
 (ffi:def-call-out wxToolBar_GetToolLongHelp
     (:name "wxToolBar_GetToolLongHelp")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (id ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+	      (id ffi:int))
+  (:return-type  ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxToolBar_GetToolPacking
@@ -193,9 +192,8 @@
 (ffi:def-call-out wxToolBar_GetToolShortHelp
     (:name "wxToolBar_GetToolShortHelp")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (id ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+	      (id ffi:int))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxToolBar_GetToolState

@@ -29,9 +29,8 @@
 
 (ffi:def-call-out wxControl_GetLabel
 	(:name "wxControl_GetLabel")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_buf (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type ffi:c-string :malloc-free)
 	(:library +library-name+))
 
 (ffi:def-call-out wxControl_Command
