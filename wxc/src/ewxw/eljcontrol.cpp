@@ -8,11 +8,13 @@ EWXWEXPORT(void, wxControl_SetLabel)(void* _obj, char* text)
 	((wxControl*)_obj)->SetLabel(text);
 }
 	
-EWXWEXPORT(int, wxControl_GetLabel)(void* _obj, void* _buf)
+EWXWEXPORT(char *, wxControl_GetLabel)(void* _obj)
 {
 	wxString result = ((wxControl*)_obj)->GetLabel();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 
 EWXWEXPORT(void, wxControl_Command)(void* _obj, void* event)

@@ -76,11 +76,13 @@ EWXWEXPORT(int, wxToolBar_GetToolEnabled) (void* _obj, int id)
 	return (int)((wxToolBar*)_obj)->GetToolEnabled (id);
 }
 
-EWXWEXPORT(int, wxToolBar_GetToolLongHelp) (void* _obj, int id, void* _buf)
+EWXWEXPORT(char*, wxToolBar_GetToolLongHelp) (void* _obj, int id)
 {
 	wxString result =((wxToolBar*)_obj)->GetToolLongHelp (id);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 
 EWXWEXPORT(int, wxToolBar_GetToolPacking) (void* _obj)
@@ -88,11 +90,13 @@ EWXWEXPORT(int, wxToolBar_GetToolPacking) (void* _obj)
 	return ((wxToolBar*)_obj)->GetToolPacking ();
 }
 
-EWXWEXPORT(int, wxToolBar_GetToolShortHelp) (void* _obj, int id, void* _buf)
+EWXWEXPORT(char *, wxToolBar_GetToolShortHelp) (void* _obj, int id)
 {
 	wxString result =((wxToolBar*)_obj)->GetToolShortHelp (id);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 
 EWXWEXPORT(int, wxToolBar_GetToolState) (void* _obj, int id)
