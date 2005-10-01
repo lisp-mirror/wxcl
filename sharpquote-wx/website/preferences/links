@@ -76,14 +76,14 @@
 ;;; ------ Us ------
 :hp-wxcl "http://www.wxcl-project.org/"
 :location-wxcl-logo-60px "../img/wxcl-logo-60.png" ; moved here from website.ini
-
+:location-css-global "../style/global.css" ; moved here from website.ini 2005-10-01
 
 
 ;;; ------ CVS snapshots ------
 
-:wxcl-cvs-snapshot "http://wxcl.sourceforge.net/snapshots/wxcl-cvs-snapshot"
-:sqwx-cvs-snapshot "http://wxcl.sourceforge.net/snapshots/sqwx-cvs-snapshot"
-:full-cvs-snapshot "http://wxcl.sourceforge.net/snapshots/full-cvs-snapshot"
+:wxcl-cvs-snapshot "http://wxcl.sourceforge.net/cvs-snapshots/wxcl-cvs-snapshot.tar.gz"
+:sqwx-cvs-snapshot "http://wxcl.sourceforge.net/cvs-snapshots/sqwx-cvs-snapshot.tar.gz"
+:full-cvs-snapshot "http://wxcl.sourceforge.net/cvs-snapshots/full-cvs-snapshot.tar.gz"
 
 
 ;;; ------ Licenses ------
