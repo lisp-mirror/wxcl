@@ -56,18 +56,18 @@
  (:how-to-s
   (t (nil . "clisp-link-wxcl-howto.txt")
      :title "Linking CLISP with the wxCL module"
-     :author "Surendra K. Singhi"
+     :author "André Vargas abs da Cruz"
      :language :en)
   )
 
  (:change-logs
   (t (nil . "Changes")
      :title "Change Log (up to the latest release)"
-     :author "Surendra K. Singhi"
+     :author "Surendra Singhi"
      :language :en)
   (t (nil . "Changes.Current")
      :title "Log of current changes (so far unreleased from CVS)"
-     :author "Surendra K. Singhi"
+     :author "Surendra Singhi"
      :language :en)
   )
 
@@ -77,21 +77,21 @@
    ("docs" . "index.html") ; the file location of the document in the CVS tree
    ;; :cvs-version (....) ; creates a link to an older version.
    :title "Quick Start Guide on wxCL 1.1.1 Alpha"
-   :author "Surendra K. Singhi" ; :singhi/surendra-k ; later, authors must be project people; see the file project-people.
+   :author "Surendra Singhi" ; :singhi/surendra-k ; later, authors must be project people; see the file project-people.
    ;; :classification () ; specific releases or ranges of release numbers that this document covers.
    :language :en)
   
   (t ("docs" . "index.html")
      :cvs-version "1.3"
      :title "Quick Start Guide on wxCL 1.1.0 Alpha"
-     :author "Surendra K. Singhi"
+     :author "Surendra Singhi"
      ;; :classification ()
      :language :en)
     
   (t ("docs" . "index.html")
      :cvs-version "1.2"
      :title "Quick Start Guide on wxCL 1.0.0 Alpha"
-     :author "Surendra K. Singhi"
+     :author "Surendra Singhi"
      ;; :classification ()
      :language :en)
   )
