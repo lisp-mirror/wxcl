@@ -7,7 +7,7 @@
   (:documentation "The class for creating frames."))
 
 
-(defun make-frame (parent id title &key (pos default-position) (size default-size) (style wxDEFAULT_FRAME_STYLE))
+(defun make-frame (parent title &key (id -1) (pos default-position) (size default-size) (style wxDEFAULT_FRAME_STYLE))
   (let ((fr (make-instance 'status-bar)))
     (setf (slot-value fr 'object)
 	  (wxFrame_Create (when parent (object-pointer parent))
