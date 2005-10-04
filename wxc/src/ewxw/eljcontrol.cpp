@@ -38,7 +38,7 @@ EWXWEXPORT(int, wxControlWithItems_GetCount)(void* _obj)
 	return ((wxControlWithItems*)_obj)->GetCount();
 }
 	
-EWXWEXPORT(char*, wxControlWithItems_GetString)(void* _obj, int n, void* _buf)
+EWXWEXPORT(char*, wxControlWithItems_GetString)(void* _obj, int n)
 {
 	wxString result = ((wxControlWithItems*)_obj)->GetString(n);
 	char *buf = (char*)malloc(result.Length()*sizeof(char));
@@ -98,7 +98,7 @@ EWXWEXPORT(void*, wxControlWithItems_GetClientData)(void* _obj, int n)
 	return (void*)((wxControlWithItems*)_obj)->GetClientData(n);
 }
 
-EWXWEXPORT(char*, wxControlWithItems_GetStringSelection)(void* _obj, int n, void* _buf)
+EWXWEXPORT(char*, wxControlWithItems_GetStringSelection)(void* _obj)
 {
 	wxString result = ((wxControlWithItems*)_obj)->GetStringSelection();
 	char *buf = (char*)malloc(result.Length()*sizeof(char));
