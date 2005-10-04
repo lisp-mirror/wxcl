@@ -1,5 +1,46 @@
 Version 1.1.2 (in progress)
 ============================
+2005-10-03: efuzzyone
+	Modified wxChoice.lisp, wxListBox.lisp, wxComboBox.lisp and wxControl.lisp, to account for the changes 
+	made below.
+2005-10-03: efuzzyone
+	In eljcontrol.cpp, added functions wxControlWithItems_Clear, wxControlWithItems_Delete, 
+	wxControlWithItems_GetCount, wxControlWithItems_GetString, wxControlWithItems_SetString,
+	wxControlWithItems_FindString, wxControlWithItems_SetSelection, wxControlWithItems_GetSelection,
+	wxControlWithItems_Append, wxControlWithItems_AppendData, wxControlWithItems_Insert,
+	wxControlWithItems_InsertData, wxControlWithItems_SetClientData, wxControlWithItems_GetClientData,
+	wxControlWithItems_GetStringSelection, and wxControlWithItems_SetStringSelection.
+
+2005-10-03: efuzzyone
+	In eljlistbox.cpp removed functions wxListBox_Clear, wxListBox_Delete, wxListBox_GetCount, 
+	wxListBox_GetString, wxListBox_SetString, wxListBox_FindString, wxListBox_SetSelection,
+	wxListBox_GetSelection, wxListBox_Append, wxListBox_AppendData,	wxListBox_SetClientData,
+	wxListBox_GetClientData, and wxListBox_SetStringSelection. 
+	Added functions wxListBox_Deselect, and wxListBox_Set. Modified function wxListBox_GetSelections.
+
+2005-10-03: efuzzyone
+	In eljcombobox.cpp removed code dependent on version <2.4. Also, removed functions
+	wxComboBox_GetStringSelection, wxComboBox_Append, wxComboBox_AppendData, wxComboBox_Delete,
+	wxComboBox_Clear, wxComboBox_GetCount, wxComboBox_GetSelection, wxComboBox_FindString, 
+	wxComboBox_GetString, wxComboBox_SetString, wxComboBox_GetClientData, and wxComboBox_SetClientData. 
+	Added functions wxComboBox_SetValue, and wxComboBox_Undo. Modified function wxComboBox_SetSelection.
+
+2005-10-03: efuzzyone
+	From eljchoice.cpp removed functions wxChoice_Append, wxChoice_Clear, wxChoice_GetCount, 
+	wxChoice_GetSelection, wxChoice_SetSelection, wxChoice_FindString, wxChoice_GetString and
+	wxChoice_SetString. Added functions wxChoice_GetCurrentSelection, wxChoice_GetColumns and 
+	wxChoice_SetColumns.wxChoice.lisp
+
+2005-09-30: efuzzyone
+	clisp-wrappers: The wrapper for all the functions changed in wxC modified. Also, fixed the ffi
+	declarations of functions wxToolBar_GetToolSize, and wxToolBar_GetToolBitmapSize. 
+
+2005-09-30: efuzzyone
+	wxC related changes: In file elfcontrol.cpp: function wxControl_GetLabel; eljtoolbar.cpp: functions 
+	wxToolBar_GetToolLongHelp, wxToolBar_GetToolShortHelp.
+        All these functions changed so that they delete the wxString object and return a malloced character
+	array containing the string. Lisp should free this character array.
+
 2005-09-28: efuzzyone
 	clisp-wrappers: Fixed the argument for wxStatusBar_SetFieldsCount from ffi:c-ptr to ffi:c-array-ptr.
 
@@ -16,7 +57,7 @@ Version 1.1.2 (in progress)
 	wxFileDialog_GetPath, wxFileDialog_GetDirectory, wxFileDialog_GetFilename, wxFileDialog_GetWildcard;
 	eljstatusbar.cpp: function wxStatusBar_GetStatusText.
         All these functions changed so that they delete the wxString object and return a malloced character
-	array containing the string. Lisp should free this character array
+	array containing the string. Lisp should free this character array.
 
 
 2005-09-28: efuzzyone
