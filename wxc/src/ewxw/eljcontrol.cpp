@@ -107,9 +107,11 @@ EWXWEXPORT(char*, wxControlWithItems_GetStringSelection)(void* _obj)
 	return buf;
 }
 
-EWXWEXPORT(void, wxControlWithItems_SetStringSelection)(void* _obj, char* str)
+EWXWEXPORT(int, wxControlWithItems_SetStringSelection)(void* _obj, char* str)
 {
-	((wxControlWithItems*)_obj)->SetStringSelection(str);
+        if(((wxControlWithItems*)_obj)->SetStringSelection(str))
+             return 1;
+	return 0;
 }
 
 }

@@ -99,8 +99,7 @@
 (ffi:def-call-out wxControlWithItems_SetSelection
     (:name "wxControlWithItems_SetSelection")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (n ffi:int)
-	      (select ffi:int))
+	      (n ffi:int))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -126,26 +125,19 @@
   (:library +library-name+))
 
 (ffi:def-call-out wxControlWithItems_Insert
-    (:name "wxControlWithItems_InsertItems")
+    (:name "wxControlWithItems_Insert")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (items ffi:c-string)
+	      (item ffi:c-string)
 	      (pos ffi:int))
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxControlWithItems_InsertData
-    (:name "wxControlWithItems_InsertItems")
+    (:name "wxControlWithItems_InsertData")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (items ffi:c-string)
+	      (item ffi:c-string)
 	      (pos ffi:int)
 	      (data (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
-(ffi:def-call-out wxControlWithItems_SetFirstItem
-    (:name "wxControlWithItems_SetFirstItem")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (n ffi:int))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -174,5 +166,5 @@
     (:name "wxControlWithItems_SetStringSelection")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (str ffi:c-string))
-  (:return-type NIL)
+  (:return-type ffi:int)
   (:library +library-name+))
