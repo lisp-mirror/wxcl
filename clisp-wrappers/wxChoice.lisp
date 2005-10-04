@@ -11,15 +11,10 @@
   (:use :common-lisp :ffi :wxCL)
   (:export
 	:wxChoice_Create
-	:wxChoice_Append
 	:wxChoice_Delete
-	:wxChoice_Clear
-	:wxChoice_GetCount
-	:wxChoice_GetSelection
-	:wxChoice_SetSelection
-	:wxChoice_FindString
-	:wxChoice_GetString
-	:wxChoice_SetString
+	:wxChoice_GetColumns
+	:wxChoice_SetColumns
+	:wxChoice_GetCurrentSelection
 	:wxcl-create-choice))
 
 (in-package :wxChoice)
@@ -48,13 +43,6 @@
       (wxChoice_Create ,frame ,id  ,left ,top ,width ,height ,len ,choices ,style))))
 
 
-(ffi:def-call-out wxChoice_Append
-	(:name "wxChoice_Append")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(item ffi:c-string))
-	(:return-type NIL)
-	(:library +library-name+))
-
 (ffi:def-call-out wxChoice_Delete
 	(:name "wxChoice_Delete")
 	(:arguments (_obj (ffi:c-pointer NIL))
@@ -62,50 +50,21 @@
 	(:return-type NIL)
 	(:library +library-name+))
 
-(ffi:def-call-out wxChoice_Clear
-	(:name "wxChoice_Clear")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type NIL)
-	(:library +library-name+))
 
-(ffi:def-call-out wxChoice_GetCount
-	(:name "wxChoice_GetCount")
+(ffi:def-call-out wxChoice_GetColumns
+	(:name "wxChoice_GetColumns")
 	(:arguments (_obj (ffi:c-pointer NIL)))
 	(:return-type ffi:int)
 	(:library +library-name+))
 
-(ffi:def-call-out wxChoice_GetSelection
-	(:name "wxChoice_GetSelection")
+(ffi:def-call-out wxChoice_SetColumns
+	(:name "wxChoice_SetColumns")
+	(:arguments (_obj (ffi:c-pointer NIL))
+		    (n ffi:int))
+	(:library +library-name+))
+
+(ffi:def-call-out wxChoice_GetCurrentSelection
+	(:name "wxChoice_GetCurrentSelection")
 	(:arguments (_obj (ffi:c-pointer NIL)))
 	(:return-type ffi:int)
-	(:library +library-name+))
-
-(ffi:def-call-out wxChoice_SetSelection
-	(:name "wxChoice_SetSelection")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(n ffi:int))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxChoice_FindString
-	(:name "wxChoice_FindString")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(s ffi:c-string))
-	(:return-type ffi:int)
-	(:library +library-name+))
-
-(ffi:def-call-out wxChoice_GetString
-	(:name "wxChoice_GetString")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(n ffi:int)
-		(_buf (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
-	(:library +library-name+))
-
-(ffi:def-call-out wxChoice_SetString
-	(:name "wxChoice_SetString")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(n ffi:int)
-		(s ffi:c-string))
-	(:return-type NIL)
 	(:library +library-name+))

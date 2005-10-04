@@ -22,20 +22,11 @@
 	:wxComboBox_Remove
 	:wxComboBox_SetTextSelection
 	:wxComboBox_SetEditable
-	:wxComboBox_GetStringSelection
 	:wxComboBox_GetValue
-	:wxComboBox_Append
-	:wxComboBox_AppendData
-	:wxComboBox_Delete
-	:wxComboBox_Clear
-	:wxComboBox_GetCount
-	:wxComboBox_GetSelection
+	:wxComboBox_SetValue	
 	:wxComboBox_SetSelection
 	:wxComboBox_FindString
-	:wxComboBox_GetString
-	:wxComboBox_SetString
-	:wxComboBox_SetClientData
-	:wxComboBox_GetClientData
+	:wxComboBox_Undo
 	:wxcl-create-combo-box
 	:wxCB_SIMPLE
 	:wxCB_SORT
@@ -149,101 +140,27 @@
 	(:return-type NIL)
 	(:library +library-name+))
 
-(ffi:def-call-out wxComboBox_GetStringSelection
-	(:name "wxComboBox_GetStringSelection")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_buf (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
-	(:library +library-name+))
-
 (ffi:def-call-out wxComboBox_GetValue
 	(:name "wxComboBox_GetValue")
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type ffi:c-string :malloc-free)
+	(:library +library-name+))
+
+(ffi:def-call-out wxComboBox_SetValue
+	(:name "wxComboBox_SetValue")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(_buf (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_Append
-	(:name "wxComboBox_Append")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(item ffi:c-string))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_AppendData
-	(:name "wxComboBox_AppendData")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(item ffi:c-string)
-		(d (ffi:c-pointer NIL)))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_Delete
-	(:name "wxComboBox_Delete")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(n ffi:int))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_Clear
-	(:name "wxComboBox_Clear")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_GetCount
-	(:name "wxComboBox_GetCount")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_GetSelection
-	(:name "wxComboBox_GetSelection")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
 	(:library +library-name+))
 
 (ffi:def-call-out wxComboBox_SetSelection
 	(:name "wxComboBox_SetSelection")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(n ffi:int))
+		    (from ffi:long)
+		    (from ffi:to))
 	(:return-type NIL)
 	(:library +library-name+))
 
-(ffi:def-call-out wxComboBox_FindString
-	(:name "wxComboBox_FindString")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(s ffi:c-string))
-	(:return-type ffi:int)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_GetString
-	(:name "wxComboBox_GetString")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(n ffi:int)
-		(_buf (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_SetString
-	(:name "wxComboBox_SetString")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(n ffi:int)
-		(s ffi:c-string))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_SetClientData
-	(:name "wxComboBox_SetClientData")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(n ffi:int)
-		(clientData (ffi:c-pointer NIL)))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxComboBox_GetClientData
-	(:name "wxComboBox_GetClientData")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(n ffi:int))
-	(:return-type (ffi:c-pointer NIL))
+(ffi:def-call-out wxComboBox_Undo
+	(:name "wxComboBox_Undo")
+	(:arguments (_obj (ffi:c-pointer NIL)))
 	(:library +library-name+))
