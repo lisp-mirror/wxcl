@@ -13,11 +13,9 @@ EWXWEXPORT(void*, wxComboBox_Create) (void* _prt, int _id, char* _txt, int _lft,
 	wxComboBox* result = new wxComboBox ((wxWindow*)_prt, _id, _txt, wxPoint(_lft, _top), wxSize(_wdt, _hgt), _n, list, _stl, wxDefaultValidator);
 
 	delete [] list;
-#if wxVERSION_NUMBER < 2400
-	if ((result->Number()) && (result->GetSelection() == -1)) result->SetSelection(0);
-#else
-	if ((result->GetCount()) && (result->GetSelection() == -1)) result->SetSelection(0);
-#endif
+
+	if ((result->GetCount()) && (result->GetSelection() == -1))
+	  result->SetSelection(0);
 	
 	return (void*) result;
 }
@@ -65,11 +63,8 @@ EWXWEXPORT(void, wxComboBox_Replace)(void* _obj, int from, int to, char* value)
 EWXWEXPORT(void, wxComboBox_Remove)(void* _obj, int from, int to)
 {
 	((wxComboBox*)_obj)->Remove(from, to);
-#if wxVERSION_NUMBER < 2400
-	if ((((wxComboBox*)_obj)->Number()) && (((wxComboBox*)_obj)->GetSelection() == -1)) ((wxComboBox*)_obj)->SetSelection(0);
-#else
-	if ((((wxComboBox*)_obj)->GetCount()) && (((wxComboBox*)_obj)->GetSelection() == -1)) ((wxComboBox*)_obj)->SetSelection(0);
-#endif
+	if ((((wxComboBox*)_obj)->GetCount()) && (((wxComboBox*)_obj)->GetSelection() == -1))
+	  ((wxComboBox*)_obj)->SetSelection(0);
 }
 	
 EWXWEXPORT(void, wxComboBox_SetTextSelection)(void* _obj, int from, int to)
@@ -82,103 +77,26 @@ EWXWEXPORT(void, wxComboBox_SetEditable)(void* _obj, int editable)
 	((wxComboBox*)_obj)->SetEditable(editable != 0);
 }
 	
-EWXWEXPORT(int, wxComboBox_GetStringSelection)(void* _obj, void* _buf)
-{
-	wxString result = ((wxComboBox*)_obj)->GetStringSelection();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
-}
-	
 EWXWEXPORT(int, wxComboBox_GetValue)(void* _obj, void* _buf)
 {
 	wxString result = ((wxComboBox*)_obj)->GetValue();
 	if (_buf) memcpy (_buf, result.c_str(), result.Length());
 	return result.Length();
 }
-	
-EWXWEXPORT(void, wxComboBox_Append)(void* _obj, char* item)
-{
-	((wxComboBox*)_obj)->Append(item);
-#if wxVERSION_NUMBER < 2400
-	if ((((wxComboBox*)_obj)->Number()) && (((wxComboBox*)_obj)->GetSelection() == -1)) ((wxComboBox*)_obj)->SetSelection(0);
-#else
-	if ((((wxComboBox*)_obj)->GetCount()) && (((wxComboBox*)_obj)->GetSelection() == -1)) ((wxComboBox*)_obj)->SetSelection(0);
-#endif
-}
-	
-EWXWEXPORT(void, wxComboBox_AppendData)(void* _obj, char* item, void* d)
-{
-#if defined(__WXMAC__)
-    ((wxComboBox*)_obj)->Append(item);
-#else
-    ((wxComboBox*)_obj)->Append(item, d);
-#endif
 
-#if wxVERSION_NUMBER < 2400
-	if ((((wxComboBox*)_obj)->Number()) && (((wxComboBox*)_obj)->GetSelection() == -1)) ((wxComboBox*)_obj)->SetSelection(0);
-#else
-	if ((((wxComboBox*)_obj)->GetCount()) && (((wxComboBox*)_obj)->GetSelection() == -1)) ((wxComboBox*)_obj)->SetSelection(0);
-#endif
-}
-	
-EWXWEXPORT(void, wxComboBox_Delete)(void* _obj, int n)
+EWXWEXPORT(void, wxComboBox_SetValue)(void* _obj, char* _buf)
 {
-	((wxComboBox*)_obj)->Delete(n);
-#if wxVERSION_NUMBER < 2400
-	if ((((wxComboBox*)_obj)->Number()) && (((wxComboBox*)_obj)->GetSelection() == -1)) ((wxComboBox*)_obj)->SetSelection(0);
-#else
-	if ((((wxComboBox*)_obj)->GetCount()) && (((wxComboBox*)_obj)->GetSelection() == -1)) ((wxComboBox*)_obj)->SetSelection(0);
-#endif
+        ((wxComboBox*)_obj)->SetValue(_buf);
 }
-	
-EWXWEXPORT(void, wxComboBox_Clear)(void* _obj)
+
+EWXWEXPORT(void, wxComboBox_SetSelection)(void* _obj, long from,long to)
 {
-	((wxComboBox*)_obj)->Clear();
+        ((wxComboBox*)_obj)->SetSelection(from,to);
 }
-	
-EWXWEXPORT(int, wxComboBox_GetCount)(void* _obj)
+
+EWXWEXPORT(void, wxComboBox_Undo)(void* _obj)
 {
-#if wxVERSION_NUMBER < 2400
-	return ((wxComboBox*)_obj)->Number();
-#else
-	return ((wxComboBox*)_obj)->GetCount();
-#endif
-}
-	
-EWXWEXPORT(int, wxComboBox_GetSelection)(void* _obj)
-{
-	return ((wxComboBox*)_obj)->GetSelection();
-}
-	
-EWXWEXPORT(void, wxComboBox_SetSelection)(void* _obj, int n)
-{
-	((wxComboBox*)_obj)->SetSelection(n);
-}
-	
-EWXWEXPORT(int, wxComboBox_FindString)(void* _obj, char* s)
-{
-	return ((wxComboBox*)_obj)->FindString(s);
-}
-	
-EWXWEXPORT(int, wxComboBox_GetString)(void* _obj, int n, void* _buf)
-{
-	wxString result = ((wxComboBox*)_obj)->GetString(n);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
-}
-	
-EWXWEXPORT(void, wxComboBox_SetString)(void* _obj, int n, char* s)
-{
-}
-	
-EWXWEXPORT(void, wxComboBox_SetClientData)(void* _obj, int n, void* clientData)
-{
-	((wxComboBox*)_obj)->SetClientData( n, clientData );
-}
-	
-EWXWEXPORT(void*, wxComboBox_GetClientData)(void* _obj, int n)
-{
-	return ((wxComboBox*)_obj)->GetClientData(n);
+       ((wxComboBox*)_obj)->Undo();
 }
 
 }

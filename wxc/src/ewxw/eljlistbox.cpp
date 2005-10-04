@@ -3,90 +3,50 @@
 extern "C"
 {
 
-EWXWEXPORT(void*, wxListBox_Create) (void* _prt, int _id, int _lft, int _top, int _wdt, int _hgt, int _n, void* _str, int _stl)
+  EWXWEXPORT(void*, wxListBox_Create) (void* _prt, int _id, int _lft, int _top, int _wdt, int _hgt, int _n,char **_choices, int _stl)
 {
-	wxListBox* result = new wxListBox ((wxWindow*)_prt, _id, wxPoint(_lft, _top), wxSize(_wdt, _hgt), 0, NULL, _stl, wxDefaultValidator);
+  wxListBox* result = new wxListBox ((wxWindow*)_prt, _id, wxPoint(_lft, _top), wxSize(_wdt, _hgt), _n,(wxString*) _choices, _stl, wxDefaultValidator);
 
-	for (int i = 0; i < _n; i++)
-		result->Append(((char**)_str)[i]);
+// 	for (int i = 0; i < _n; i++)
+// 		result->Append(((char**)_str)[i]);
 
 	return (void*) result;
 }
 
-EWXWEXPORT(void, wxListBox_Clear)(void* _obj)
+EWXWEXPORT(void, wxListBox_Deselect)(void* _obj, int n)
 {
-	((wxListBox*)_obj)->Clear();
+	((wxListBox*)_obj)->Deselect(n);
 }
-	
-EWXWEXPORT(void, wxListBox_Delete)(void* _obj, int n)
+
+EWXWEXPORT(void, wxListBox_Set)(void* _obj, int n,char **_choices)
 {
-	((wxListBox*)_obj)->Delete(n);
+  ((wxListBox*)_obj)->Set(n,(wxString*)_choices);
 }
-	
-EWXWEXPORT(int, wxListBox_GetCount)(void* _obj)
-{
-	return ((wxListBox*)_obj)->GetCount();
-}
-	
-EWXWEXPORT(int, wxListBox_GetString)(void* _obj, int n, void* _buf)
-{
-	wxString result = ((wxListBox*)_obj)->GetString(n);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
-}
-	
-EWXWEXPORT(void, wxListBox_SetString)(void* _obj, int n, char* s)
-{
-	((wxListBox*)_obj)->SetString(n, s);
-}
-	
-EWXWEXPORT(int, wxListBox_FindString)(void* _obj, char* s)
-{
-	return ((wxListBox*)_obj)->FindString(s);
-}
-	
+  
 EWXWEXPORT(int, wxListBox_IsSelected)(void* _obj, int n)
 {
 	return (int)((wxListBox*)_obj)->IsSelected(n);
 }
 	
-EWXWEXPORT(void, wxListBox_SetSelection)(void* _obj, int n, int select)
-{
-	((wxListBox*)_obj)->SetSelection(n, select != 0);
-}
-	
-EWXWEXPORT(int, wxListBox_GetSelection)(void* _obj)
-{
-	return ((wxListBox*)_obj)->GetSelection();
-}
-	
-EWXWEXPORT(int, wxListBox_GetSelections)(void* _obj, int* aSelections, int allocated)
+EWXWEXPORT(int, wxListBox_GetSelections)(void* _obj)
 {
 	wxArrayInt sel;
 	int result = ((wxListBox*)_obj)->GetSelections(sel);
 	
-	if (allocated < result) return -result;
-	
-	for (int i = 0; i < result; i++) aSelections[i] = sel[i];
-	return result;
-}
-	
-EWXWEXPORT(void, wxListBox_Append)(void* _obj, char* item)
-{
-	((wxListBox*)_obj)->Append(item);
-}
-	
-EWXWEXPORT(void, wxListBox_AppendData)(void* _obj, char* item, void* _data)
-{
-	((wxListBox*)_obj)->Append(item, _data);
+	int *selections = (int*)malloc(result*sizeof(int));
+
+	if(selections)
+	  for (int i = 0; i < result; i++)
+	    selections[i] = sel[i];
+	return selections;
 }
 	
 EWXWEXPORT(void, wxListBox_InsertItems)(void* _obj, void* items, int pos, int count)
 {
-	wxArrayString array;
+  	wxArrayString array;
 	
-	for (int i = 0; i< count; i++)
-		array[i] = ((char**)items)[i];
+  	for (int i = 0; i< count; i++)
+  		array[i] = ((char**)items)[i];
 	
 	((wxListBox*)_obj)->InsertItems(array, pos);
 }
@@ -94,21 +54,6 @@ EWXWEXPORT(void, wxListBox_InsertItems)(void* _obj, void* items, int pos, int co
 EWXWEXPORT(void, wxListBox_SetFirstItem)(void* _obj, int n)
 {
 	((wxListBox*)_obj)->SetFirstItem(n);
-}
-	
-EWXWEXPORT(void, wxListBox_SetClientData)(void* _obj, int n, void* clientData)
-{
-	((wxListBox*)_obj)->SetClientData(n, clientData);
-}
-	
-EWXWEXPORT(void*, wxListBox_GetClientData)(void* _obj, int n)
-{
-	return (void*)((wxListBox*)_obj)->GetClientData(n);
-}
-	
-EWXWEXPORT(void, wxListBox_SetStringSelection)(void* _obj, char* str, int sel)
-{
-	((wxListBox*)_obj)->SetStringSelection(str, sel != 0);
 }
 	
 }
