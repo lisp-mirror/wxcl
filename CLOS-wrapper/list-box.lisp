@@ -25,12 +25,12 @@
 (defmethod selected-p ((obj list-box) n)
     (= 1 (wxListBox_IsSelected (object-pointer obj) n)))
 
-(defmethod get-selections ((obj list-box))
+(defmethod selections ((obj list-box))
   (wxListBox_GetSelections (object-pointer obj)))
 
 (defmethod insert-items ((obj list-box) items pos)
   (wxListBox_InsertItems (object-pointer obj)  items pos (length items)))
 
-(defmethod set-first-item ((obj list-box) n)
-    (wxListBox_SetFirstItem (object-pointer obj) n))
+(defmethod (setf first-item) (n (obj list-box))
+  (wxListBox_SetFirstItem (object-pointer obj) n))
 
