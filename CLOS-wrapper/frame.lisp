@@ -101,7 +101,7 @@
   (= 1 (wxFrame_SetShape (object-pointer obj) (object-pointer reg))))
 
 
-(defmethod Show-Full-Screen ((obj frame) show &optional (style wxFULLSCREEN_ALL))
+(defmethod show-full-screen ((obj frame) show &optional (style wxFULLSCREEN_ALL))
   (= 1 (wxFrame_ShowFullScreen (object-pointer obj)
 			       (if show 1 0)
 			       style)))

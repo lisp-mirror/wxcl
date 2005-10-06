@@ -2,7 +2,7 @@
 
 (use-package :wxWindow)
 
-(defclass window (object)
+(defclass window (object evt-handler)
   ()
   (:documentation "The base class for all wxCL widgets."))
 
