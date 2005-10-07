@@ -1,0 +1,107 @@
+[1] There will be only one package named "wxcl" and all the functions(about
+2000) and constants (about 3000) will be exported from it.
+
+Use package nick names.
+Instead of one package have the following packages:
+
+main-package-name
+
+wxcl
+wxcl-windows		
+wxcl-dialogs		
+wxcl-controls		
+wxcl-menus		
+wxcl-layout		
+wxcl-dc			
+wxcl-gdi		
+wxcl-ipc		
+wxcl-events		
+wxcl-validators
+wxcl-clipboard
+wxcl-logging
+wxcl-net
+wxcl-printing
+wxcl-html
+wxcl-stream
+wxcl-file
+wxcl-thread
+wxcl-xml
+wxcl-db
+wxcl-misc
+
+
+[2]All the constants will have a leading and trailing '+' sign with
+them. Example, wxcl:+default-size+. The constants will be defined using
+'defconstant'. 
+
+[3]The wxcl class hierarchy will very closely mirror wxwidgets class
+hierarchy. 
+
+[4] All wxcl classes will derive from the abstract class 'object' (wxWidgets
+has a similar class called wxObject). The object class contains only one slot.
+
+(defclass object ()
+  ((obj :reader object-pointer)))
+
+This slot will hold the pointer to the foreign object of the corresponding
+class. 
+
+[5]To create objects of any wxcl class, user should call the make-<class-name>
+constructor. For example 
+
+(wxcl:make-frame ....... )
+
+will return an object of the frame class.
+
+[6]The user of the library should not need to know anything about ffi.
+
+[7]The different classes in wxcl should be organized in the proper inheritance
+hierarchy. So, for example the 'show' method specializes on objects of class
+'window', and all the widget classes inherits from the class 'window'. Hence, the
+method 'show' should work on all the widget classes also.
+
+(setf fr (wxcl:make-frame ....... ))
+(show fr)
+
+this should work because class frame inherits the window class.
+
+[8]The getter methods in wxWidgets will have their 'get' prefix stripped off in
+wxcl. For example, wxWidgets function 'getSize' will be just 'size' in wxcl,
+and it will return an object of the size class.
+For most of the setter methods the writer method is specialized, so setSize
+can be called as 
+  (setf (size fr) (make-size :width 500 :height 600))
+
+[9]wxWidget setter functions which sets a particular item in a list, for
+example 
+wxControlWithItems::SetClientObject
+void SetClientObject(int n, wxClientData *data)
+
+the equivalent wxcl function will be called as
+  (let ((lb (make-list-box ....))
+        (cl (make-client-object.....))) 
+    (setf (client-object lb 3) cl))
+
+[10]There maybe some functions which are exception to the above rule. 
+
+[11]The optional arguments in wxWidgets will be provided as keyword
+arguments. 
+
+[12]The classes 'size' and 'position' defined in wxCL should provide same
+functionality as corresponding classes in wxWidgets but they are entirely
+implemented in lisp.
+
+[13]The wxWidgets predicates which return bool will map to a similar predicate
+in wxcl, except they will have a '-p' suffix, and they will return t or nil.
+
+[14]All classes and preferably functions too should have a documentation string
+describing them. 
+
+[15]Have a sexp based style of defining frames, and other widgets.
+
+Acknowledgment
+---------------
+Useful discussion and feedback from:
+Jack Unrue
+Pascal Bourguignon
+Pisin Bootvong
