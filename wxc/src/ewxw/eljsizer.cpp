@@ -18,18 +18,18 @@ EWXWEXPORT(void*, wxSizerItem_CreateInSizer)(void* sizer, int option, int flag, 
 	return (void*) new wxSizerItem((wxSizer*) sizer, option, flag, border, new ELJDataObject(userData));
 }
 	
-EWXWEXPORT(void, wxSizerItem_GetSize)(void* _obj, void* _w, void* _h)
+EWXWEXPORT(void, wxSizerItem_GetSize)(void* _obj, int* _w, int* _h)
 {
 	wxSize res = ((wxSizerItem*)_obj)->GetSize();
-	(*(int*)_h) = res.GetHeight();
-	(*(int*)_w) = res.GetWidth();
+	*_h = res.GetHeight();
+	*_w = res.GetWidth();
 }
 	
-EWXWEXPORT(void, wxSizerItem_CalcMin)(void* _obj, void* _w, void* _h)
+EWXWEXPORT(void, wxSizerItem_CalcMin)(void* _obj, int* _w, int* _h)
 {
 	wxSize res = ((wxSizerItem*)_obj)->CalcMin();
-	(*(int*)_h) = res.GetHeight();
-	(*(int*)_w) = res.GetWidth();
+	*_h = res.GetHeight();
+	*_w = res.GetWidth();
 }
 	
 EWXWEXPORT(void, wxSizerItem_SetDimension)(void* _obj,  int _x, int _y, int _w, int _h)
@@ -37,11 +37,11 @@ EWXWEXPORT(void, wxSizerItem_SetDimension)(void* _obj,  int _x, int _y, int _w, 
 	((wxSizerItem*)_obj)->SetDimension(wxPoint(_x, _y), wxSize(_w, _h));
 }
 	
-EWXWEXPORT(void, wxSizerItem_GetMinSize)(void* _obj, void* _w, void* _h)
+EWXWEXPORT(void, wxSizerItem_GetMinSize)(void* _obj, int* _w, int* _h)
 {
 	wxSize res = ((wxSizerItem*)_obj)->GetMinSize();
-	(*(int*)_h) = res.GetHeight();
-	(*(int*)_w) = res.GetWidth();
+	*_h = res.GetHeight();
+	*_w = res.GetWidth();
 }
 	
 EWXWEXPORT(void, wxSizerItem_SetRatio)(void* _obj,  int width, int height)
@@ -186,19 +186,19 @@ EWXWEXPORT(void, wxSizer_Prepend)(void* _obj, int width, int height, int option,
 	((wxSizer*)_obj)->Prepend(width, height, option, flag, border, new ELJDataObject (userData));
 }
 	
-EWXWEXPORT(int, wxSizer_RemoveWindow)(void* _obj, void* window)
+EWXWEXPORT(int, wxSizer_DetachWindow)(void* _obj, void* window)
 {
-	return (int)((wxSizer*)_obj)->Remove((wxWindow*) window);
+	return (int)((wxSizer*)_obj)->Detach((wxWindow*) window);
 }
 	
-EWXWEXPORT(int, wxSizer_RemoveSizer)(void* _obj, void* sizer)
+EWXWEXPORT(int, wxSizer_DetachSizer)(void* _obj, void* sizer)
 {
-	return (int)((wxSizer*)_obj)->Remove((wxSizer*) sizer);
+	return (int)((wxSizer*)_obj)->Detach((wxSizer*) sizer);
 }
 	
-EWXWEXPORT(int, wxSizer_Remove)(void* _obj, int pos)
+EWXWEXPORT(int, wxSizer_Detach)(void* _obj, int pos)
 {
-	return (int)((wxSizer*)_obj)->Remove(pos);
+	return (int)((wxSizer*)_obj)->Detach(pos);
 }
 	
 EWXWEXPORT(void, wxSizer_SetMinSize)(void* _obj, int width, int height)
@@ -389,18 +389,6 @@ EWXWEXPORT(void, wxFlexGridSizer_RemoveGrowableCol)(void* _obj, size_t idx)
 EWXWEXPORT(void*, wxBoxSizer_Create)(int orient )
 {
 	return (void*) new wxBoxSizer(orient);
-}
-	
-EWXWEXPORT(void, wxBoxSizer_RecalcSizes)(void* _obj)
-{
-	((wxBoxSizer*)_obj)->RecalcSizes();
-}
-	
-EWXWEXPORT(void, wxBoxSizer_CalcMin)(void* _obj, void* _w, void* _h)
-{
-	wxSize res = ((wxBoxSizer*)_obj)->CalcMin();
-	(*(int*)_w) = res.GetWidth();
-	(*(int*)_h) = res.GetHeight();
 }
 	
 EWXWEXPORT(int, wxBoxSizer_GetOrientation)(void* _obj)

@@ -28,7 +28,7 @@ EWXWEXPORT(int, wxListBox_IsSelected)(void* _obj, int n)
 	return (int)((wxListBox*)_obj)->IsSelected(n);
 }
 	
-EWXWEXPORT(int, wxListBox_GetSelections)(void* _obj)
+EWXWEXPORT(int*, wxListBox_GetSelections)(void* _obj)
 {
 	wxArrayInt sel;
 	int result = ((wxListBox*)_obj)->GetSelections(sel);
