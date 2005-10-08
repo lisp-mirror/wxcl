@@ -45,9 +45,9 @@
 	:wxSizer_PrependWindow
 	:wxSizer_PrependSizer
 	:wxSizer_Prepend
-	:wxSizer_RemoveWindow
-	:wxSizer_RemoveSizer
-	:wxSizer_Remove
+	:wxSizer_DetachWindow
+	:wxSizer_DetachSizer
+	:wxSizer_Detach
 	:wxSizer_SetMinSize
 	:wxSizer_SetItemMinSizeWindow
 	:wxSizer_SetItemMinSizeSizer
@@ -393,22 +393,22 @@
 	(:return-type NIL)
 	(:library +library-name+))
 
-(ffi:def-call-out wxSizer_RemoveWindow
-	(:name "wxSizer_RemoveWindow")
+(ffi:def-call-out wxSizer_DetachWindow
+	(:name "wxSizer_DetachWindow")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(window (ffi:c-pointer NIL)))
 	(:return-type ffi:int)
 	(:library +library-name+))
 
-(ffi:def-call-out wxSizer_RemoveSizer
-	(:name "wxSizer_RemoveSizer")
+(ffi:def-call-out wxSizer_DetachSizer
+	(:name "wxSizer_DetachSizer")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(sizer (ffi:c-pointer NIL)))
 	(:return-type ffi:int)
 	(:library +library-name+))
 
-(ffi:def-call-out wxSizer_Remove
-	(:name "wxSizer_Remove")
+(ffi:def-call-out wxSizer_Detach
+	(:name "wxSizer_Detach")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		(pos ffi:int))
 	(:return-type ffi:int)
@@ -655,20 +655,6 @@
 	(:name "wxBoxSizer_Create")
 	(:arguments (orient ffi:int))
 	(:return-type (ffi:c-pointer NIL))
-	(:library +library-name+))
-
-(ffi:def-call-out wxBoxSizer_RecalcSizes
-	(:name "wxBoxSizer_RecalcSizes")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxBoxSizer_CalcMin
-	(:name "wxBoxSizer_CalcMin")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_w (ffi:c-pointer NIL))
-		(_h (ffi:c-pointer NIL)))
-	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxBoxSizer_GetOrientation

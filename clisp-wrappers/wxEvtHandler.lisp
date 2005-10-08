@@ -46,7 +46,6 @@
 	      (last ffi:int)
 	      (type ffi:int)
 	      (data (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
   (:library +library-name+))
 
 (defun wxEvtHandler_Connect (_obj first type data)

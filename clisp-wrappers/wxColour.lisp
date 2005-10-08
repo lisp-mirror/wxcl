@@ -13,7 +13,6 @@
    :wxColour_CreateEmpty
    :wxColour_CreateRGB
    :wxColour_CreateByName
-   :wxColour_CreateFromStock
    :wxColour_Delete
    :wxColour_Set
    :wxColour_Assign
@@ -25,27 +24,59 @@
    :wxColour_Copy
    :wxColour_SetByName
    :wxColour_ValidName
-   :wxBLACK
-   :wxWHITE
-   :wxRED
-   :wxBLUE 
-   :wxGREEN
-   :wxCYAN
-   :wxLIGHT_GREY))
+   :wxBlack
+   :wxWhite
+   :wxRed
+   :wxBlue 
+   :wxGreen
+   :wxCyan
+   :wxLight_grey))
 
 (in-package :wxColour)
 
 (ffi:default-foreign-language :stdc)
 
-(defconstant wxBLACK 0)
-(defconstant wxWHITE 1)
-(defconstant wxRED 2)
-(defconstant wxBLUE 3)
-(defconstant wxGREEN 4)
-(defconstant wxCYAN 5)
-(defconstant wxLIGHT_GREY 6)
+(ffi:def-c-var wxBlack
+    (:name "wxBlack")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
 
-(ffi:def-c-type wxFileDialog nil)
+(ffi:def-c-var wxWhite
+    (:name "wxWhite")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxRed
+    (:name "wxRed")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxBlue
+    (:name "wxBlue")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxGreen
+    (:name "wxGreen")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxCyan
+    (:name "wxCyan")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxLight_Grey
+    (:name "wxLight_Grey")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
 
 (ffi:def-call-out wxColour_CreateEmpty
     (:name "wxColour_CreateEmpty")
@@ -63,12 +94,6 @@
 (ffi:def-call-out wxColour_CreateByName
     (:name "wxColour_CreateByName")
   (:arguments (_name (ffi:c-pointer NIL)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
-
-(ffi:def-call-out wxColour_CreateFromStock
-    (:name "wxColour_CreateFromStock")
-  (:arguments (_id ffi:int))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 

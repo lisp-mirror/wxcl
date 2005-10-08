@@ -66,7 +66,7 @@
   (:library +library-name+))
 
 (ffi:def-call-out wxListBox_Set
-    (:name "wxListBox_SetString")
+    (:name "wxListBox_Set")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (n ffi:int)
 	      (s (ffi:c-array-ptr ffi:c-string)))

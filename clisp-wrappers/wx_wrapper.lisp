@@ -34,7 +34,6 @@
 	   :ELJApp_EnableTooltips
 	   :ELJApp_SetTooltipDelay
 	   :ELJApp_InitAllImageHandlers
-	   :ELJApp_Bell
 	   :ELJApp_DisplaySize
 	   :ELJApp_EnableTopLevelWindows
 	   :ELJApp_Exit
@@ -99,8 +98,7 @@
 
 (ffi:def-call-out ELJApp_GetAppName
     (:name "ELJApp_GetAppName")
-  (:arguments (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out ELJApp_SetAppName
@@ -111,8 +109,7 @@
 
 (ffi:def-call-out ELJApp_GetClassName
     (:name "ELJApp_GetClassName")
-  (:arguments (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out ELJApp_SetClassName
@@ -212,11 +209,6 @@
 
 (ffi:def-call-out ELJApp_InitAllImageHandlers
     (:name "ELJApp_InitAllImageHandlers")
-  (:return-type NIL)
-  (:library +library-name+))
-
-(ffi:def-call-out ELJApp_Bell
-    (:name "ELJApp_Bell")
   (:return-type NIL)
   (:library +library-name+))
 

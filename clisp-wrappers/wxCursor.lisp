@@ -40,7 +40,10 @@
 	   :wxCURSOR_SPRAYCAN
 	   :wxCURSOR_WAIT
 	   :wxCURSOR_WATCH
-	   :wxCURSOR_BLANK))
+	   :wxCURSOR_BLANK
+	   :wxStandard_Cursor
+	   :wxHourglass_Cursor
+	   :wxCross_Cursor))
 
 (in-package :wxCursor)
 
@@ -73,6 +76,24 @@
 (defconstant wxCURSOR_WAIT 24)
 (defconstant wxCURSOR_WATCH 25)
 (defconstant wxCURSOR_BLANK 26)
+
+(ffi:def-c-var wxStandard_Cursor
+    (:name "wxStandard_Cursor")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxHourglass_Cursor
+    (:name "wxStandard_Cursor")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxCross_Cursor
+    (:name "wxStandard_Cursor")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
 
 (ffi:def-call-out Cursor_CreateFromStock
     (:name "Cursor_CreateFromStock")

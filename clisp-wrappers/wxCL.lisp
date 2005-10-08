@@ -25,11 +25,11 @@
 	   :LogDebug
 	   :LogTrace
 	   :wxcWakeUpIdle
-	   :wxGetColourFromUser
-	   :wxGetFontFromUser
-	   :wxGetPasswordFromUser
-	   :wxGetTextFromUser
-	   :wxGetNumberFromUser
+	   :wxcGetColourFromUser
+	   :wxcGetFontFromUser
+	   :wxcGetPasswordFromUser
+	   :wxcGetTextFromUser
+	   :wxcGetNumberFromUser
 	   :make-SortData
 	   :SortData-id
 	   :SortData-closure
@@ -230,45 +230,46 @@
   (:library +library-name+))
 
 
-(ffi:def-call-out wxGetColourFromUser
-    (:name "wxGetColourFromUser")
+(ffi:def-call-out wxcGetColourFromUser
+    (:name "wxcGetColourFromUser")
   (:arguments (parent (ffi:c-pointer NIL))
-	      (colInit (ffi:c-pointer NIL))
-	      (colour (ffi:c-pointer NIL)))
+	      (colInit (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
-(ffi:def-call-out wxGetFontFromUser
-    (:name "wxGetFontFromUser")
+(ffi:def-call-out wxcGetFontFromUser
+    (:name "wxcGetFontFromUser")
   (:arguments (parent (ffi:c-pointer NIL))
-	      (fontInit (ffi:c-pointer NIL))
-	      (font (ffi:c-pointer NIL)))
+	      (fontInit (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
-(ffi:def-call-out wxGetPasswordFromUser
-    (:name "wxGetPasswordFromUser")
-  (:arguments (message ffi:c-string)
-	      (caption ffi:c-string)
-	      (defaultText ffi:c-string)
-	      (parent (ffi:c-pointer NIL))
-	      (_buf ffi:c-string))
-  (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxGetTextFromUser
-    (:name "wxGetTextFromUser")
+(ffi:def-call-out wxcGetPasswordFromUser
+    (:name "wxcGetPasswordFromUser")
   (:arguments (message ffi:c-string)
 	      (caption ffi:c-string)
 	      (defaultText ffi:c-string)
 	      (parent (ffi:c-pointer NIL))
 	      (x ffi:int)
 	      (y ffi:int)
-	      (center ffi:int)
-	      (_buf ffi:c-string))
-  (:return-type ffi:int)
+	      (center ffi:int))
+  (:return-type ffi:c-string :malloc-free)
+  (:library +library-name+))
+
+(ffi:def-call-out wxGetTextFromUser
+    (:name "wxcGetTextFromUser")
+  (:arguments (message ffi:c-string)
+	      (caption ffi:c-string)
+	      (defaultText ffi:c-string)
+	      (parent (ffi:c-pointer NIL))
+	      (x ffi:int)
+	      (y ffi:int)
+	      (center ffi:int))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxGetNumberFromUser
-    (:name "wxGetNumberFromUser")
+    (:name "wxcGetNumberFromUser")
   (:arguments (message ffi:c-string)
 	      (prompt ffi:c-string)
 	      (caption ffi:c-string)

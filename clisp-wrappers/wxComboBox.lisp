@@ -156,7 +156,7 @@
 	(:name "wxComboBox_SetSelection")
 	(:arguments (_obj (ffi:c-pointer NIL))
 		    (from ffi:long)
-		    (from ffi:to))
+		    (to ffi:long))
 	(:return-type NIL)
 	(:library +library-name+))
 

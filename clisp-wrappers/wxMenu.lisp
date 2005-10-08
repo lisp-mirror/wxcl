@@ -16,6 +16,7 @@
 	   :wxMenu_AppendSub
 	   :wxMenu_AppendItem
 	   :wxMenu_AppendRadioItem
+	   :wxMenu_AppendCheckItem
 	   :wxMenu_Break
 	   :wxMenu_GetMenuBar
 	   :wxMenu_Insert
@@ -44,8 +45,6 @@
 	   :wxMenu_GetHelpString
 	   :wxMenu_SetTitle
 	   :wxMenu_GetTitle
-	   :wxMenu_SetClientData
-	   :wxMenu_GetClientData
 	   :wxMenu_SetEventHandler
 	   :wxMenu_SetInvokingWindow
 	   :wxMenu_GetInvokingWindow
@@ -91,8 +90,7 @@
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (id ffi:int)
 	      (text ffi:c-string)
-	      (help ffi:c-string)
-	      (isCheckable ffi:int))
+	      (help ffi:c-string))
   (:library +library-name+))
 
 (ffi:def-call-out wxMenu_AppendSub
@@ -121,8 +119,7 @@
 	      (pos ffi:uint)
 	      (id ffi:int)
 	      (text ffi:c-string)
-	      (help ffi:c-string)
-	      (isCheckable ffi:int))
+	      (help ffi:c-string))
   (:library +library-name+))
 
 (ffi:def-call-out wxMenu_InsertSub
@@ -138,8 +135,26 @@
 (ffi:def-call-out wxMenu_InsertItem
     (:name "wxMenu_InsertItem")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (pos ffi:int)
+	      (pos ffi:uint)
 	      (_itm (ffi:c-pointer NIL)))
+  (:library +library-name+))
+
+(ffi:def-call-out wxMenu_InsertRadioItem
+    (:name "wxMenu_InsertRadioItem")
+  (:arguments (self (ffi:c-pointer NIL))
+	      (pos ffi:uint)
+	      (id ffi:int)
+	      (text ffi:c-string)
+	      (help ffi:c-string))
+  (:library +library-name+))
+
+(ffi:def-call-out wxMenu_InsertCheckItem
+    (:name "wxMenu_InsertCheckItem")
+  (:arguments (self (ffi:c-pointer NIL))
+	      (pos ffi:uint)
+	      (id ffi:int)
+	      (text ffi:c-string)
+	      (help ffi:c-string))
   (:library +library-name+))
 
 (ffi:def-call-out wxMenu_Prepend
@@ -166,6 +181,22 @@
 	      (_itm (ffi:c-pointer NIL)))
   (:library +library-name+))
 
+(ffi:def-call-out wxMenu_PrependRadioItem
+    (:name "wxMenu_PrependRadioItem")
+  (:arguments (self (ffi:c-pointer NIL))
+	      (id ffi:int)
+	      (text ffi:c-string)
+	      (help ffi:c-string))
+  (:library +library-name+))
+
+(ffi:def-call-out wxMenu_PrependCheckItem
+    (:name "wxMenu_PrependCheckItem")
+  (:arguments (self (ffi:c-pointer NIL))
+	      (id ffi:int)
+	      (text ffi:c-string)
+	      (help ffi:c-string))
+  (:library +library-name+))
+
 (ffi:def-call-out wxMenu_RemoveByItem
     (:name "wxMenu_RemoveByItem")
   (:arguments (_obj (ffi:c-pointer NIL))
@@ -175,8 +206,8 @@
 (ffi:def-call-out wxMenu_RemoveById
     (:name "wxMenu_RemoveById")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (id ffi:int)
-	      (_itm (ffi:c-pointer NIL)))
+	      (id ffi:int))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxMenu_DeleteById
@@ -269,9 +300,8 @@
 (ffi:def-call-out wxMenu_GetLabel
     (:name "wxMenu_GetLabel")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (id ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+	      (id ffi:int))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxMenu_SetHelpString
@@ -284,9 +314,8 @@
 (ffi:def-call-out wxMenu_GetHelpString
     (:name "wxMenu_GetHelpString")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (id ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+	      (id ffi:int))
+  (:return-type  ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxMenu_SetTitle
@@ -297,21 +326,8 @@
 
 (ffi:def-call-out wxMenu_GetTitle
     (:name "wxMenu_GetTitle")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxMenu_SetClientData
-    (:name "wxMenu_SetClientData")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (clientData (ffi:c-pointer NIL)))
-  (:library +library-name+))
-
-(ffi:def-call-out wxMenu_GetClientData
-    (:name "wxMenu_GetClientData")
   (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type (ffi:c-pointer NIL))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxMenu_SetEventHandler
@@ -376,12 +392,20 @@
 	      (help ffi:c-string))
   (:library +library-name+))
 
+(ffi:def-call-out wxMenu_AppendCheckItem
+    (:name "wxMenu_AppendCheckItem")
+  (:arguments (self (ffi:c-pointer NIL))
+	      (id ffi:int)
+	      (text ffi:c-string)
+	      (help ffi:c-string))
+  (:library +library-name+))
+
 (defmacro wxCL-append-menu-item (menu &key (id -1) (item "") (helpString "")
 				      (kind wxITEM_NORMAL) (sub-menu nil))
   (case kind
     (wxITEM_SEPARATOR `(wxMenu_AppendSeparator ,menu))
     (wxITEM_SubMenu `(wxMenu_AppendSub ,menu ,id ,item ,sub-menu ,helpstring))
-    (otherwise `(wxMenu_Append ,menu ,id ,item ,helpstring ,kind))))
+    (otherwise `(wxMenu_Append ,menu ,id ,item ,helpstring))))
 
 (defmacro wxCL-create-menu ((&optional (title "") (style 0)) &body body)
   (let ((menu (gensym)))

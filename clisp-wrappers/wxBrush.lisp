@@ -27,32 +27,81 @@
    :wxBrush_GetStyle
    :wxBrush_GetStipple
    :wxBrush_Ok
-   :wxBLUE_BRUSH
-   :wxGREEN_BRUSH
-   :wxWHITE_BRUSH
-   :wxBLACK_BRUSH
-   :wxGREY_BRUSH
-   :wxMEDIUM_GREY_BRUSH
-   :wxLIGHT_GREY_BRUSH
-   :wxTRANSPARENT_BRUSH
-   :wxCYAN_BRUSH
-   :wxRED_BRUSH
+   :wxBlue_Brush
+   :wxGreen_Brush
+   :wxWhite_Brush
+   :wxBlack_Brush
+   :wxGrey_Brush
+   :wxMedium_Grey_Brush
+   :wxLight_Grey_Brush
+   :wxTransparent_Brush
+   :wxCyan_Brush
+   :wxRed_Brush
    ))
 
 (in-package :wxBrush)
 
 (ffi:default-foreign-language :stdc)
 
-(defconstant wxBLUE_BRUSH 0)
-(defconstant wxGREEN_BRUSH 1)
-(defconstant wxWHITE_BRUSH 2)
-(defconstant wxBLACK_BRUSH 3)
-(defconstant wxGREY_BRUSH 4)
-(defconstant wxMEDIUM_GREY_BRUSH 5)
-(defconstant wxLIGHT_GREY_BRUSH 6)
-(defconstant wxTRANSPARENT_BRUSH 7)
-(defconstant wxCYAN_BRUSH 8)
-(defconstant wxRED_BRUSH 9)
+(ffi:def-c-var wxBlack_Brush
+    (:name "wxBlack_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxWhite_Brush
+    (:name "wxWhite_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxRed_Brush
+    (:name "wxRed_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxBlue_Brush
+    (:name "wxBlue_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxGreen_Brush
+    (:name "wxGreen_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxCyan_Brush
+    (:name "wxCyan_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxLight_Grey_Brush
+    (:name "wxLight_Grey_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxMedium_Grey_Brush
+    (:name "wxMedium_Grey_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxTransparent_Brush
+    (:name "wxTransparent_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
+(ffi:def-c-var wxGrey_Brush
+    (:name "wxGrey_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
 
 (ffi:def-call-out wxBrush_CreateDefault
     (:name "wxBrush_CreateDefault")
@@ -69,12 +118,6 @@
     (:name "wxBrush_CreateFromColour")
   (:arguments (col (ffi:c-pointer NIL))
 	      (style ffi:int))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
-
-(ffi:def-call-out wxBrush_CreateFromStock
-    (:name "wxBrush_CreateFromStock")
-  (:arguments (id ffi:int))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
