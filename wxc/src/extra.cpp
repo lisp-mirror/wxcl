@@ -29,6 +29,11 @@ DEFINE_LOCAL_EVENT_TYPE( wxEVT_HTML_SET_TITLE )
 DEFINE_LOCAL_EVENT_TYPE( wxEVT_INPUT_SINK )
 DEFINE_LOCAL_EVENT_TYPE( wxEVT_SORT )
 
+static const char* hasDefs[] = {
+#ifdef wxHAS_RADIO_MENU_ITEMS
+  "RADIO_MENU_ITEMS",
+#endif
+};
 /*-----------------------------------------------------------------------------
   event exports
 -----------------------------------------------------------------------------*/
@@ -1192,11 +1197,6 @@ static const char* useDefs[] = {
 };
 
 
-static const char* hasDefs[] = {
-#ifdef wxHAS_RADIO_MENU_ITEMS
-  "RADIO_MENU_ITEMS",
-#endif
-};
 
 /*-----------------------------------------------------------------------------
   EXTERN C
@@ -1655,14 +1655,6 @@ EWXWEXPORT(void*, wxMenuItem_CreateEx)(int id, char* text, char* helpstr, int it
 }
 
 
-EWXWEXPORT(void, wxMenu_AppendRadioItem)(wxMenu* self, int id, char* text, char* help)
-{
-#ifdef wxHAS_RADIO_MENU_ITEMS
-  self->AppendRadioItem(id, text, help);
-#else
-  self->AppendCheckItem(id, text, help);
-#endif
-}
 
 
 /*------------------------------------------------------------------------------
@@ -1851,70 +1843,36 @@ EWXWEXPORT(void, wxProgressDialog_Resume)(wxProgressDialog* obj )
 /*------------------------------------------------------------------------------
   standard dialogs
 ------------------------------------------------------------------------------*/
-EWXWEXPORT(void, wxGetColourFromUser)(wxWindow *parent, wxColour* colInit, wxColour* colour)
+EWXWEXPORT(wxColor*, wxGetColourFromUser)(wxWindow *parent, wxColour* colInit)
 {
-  *colour = wxGetColourFromUser(parent, *colInit);
+  if(colInit)
+    return &wxGetColourFromUser(parent, *colInit);
+  return &wxGetColourFromUser(parent);
 }
 
-EWXWEXPORT(void, wxGetFontFromUser)(wxWindow *parent, wxFont* fontInit, wxFont* font )
+EWXWEXPORT(wxFont*, wxGetFontFromUser)(wxWindow *parent, wxFont* fontInit)
 {
-  *font = wxGetFontFromUser(parent, *fontInit);
+  if(fontInit)
+    return &wxGetFontFromUser(parent, *fontInit);
+  return &wxGetFontFromUser(parent);
 }
 
-EWXWEXPORT(int, wxGetPasswordFromUser)(char* message, char* caption, char* defaultText, wxWindow* parent, char* _buf )
+EWXWEXPORT(char*, wxGetPasswordFromUser)(char* message, char* caption, char* defaultText, wxWindow* parent, int x, int y, int center)
 {
-/* we use a complicated caching method as we don't want to call getpassword twice :-) */
-  static char* resultBuffer = NULL;
-  if (_buf==NULL) {
-    if (resultBuffer) { free(resultBuffer); resultBuffer = NULL; }
-    wxString result = wxGetPasswordFromUser( message, caption, defaultText, parent );
-    resultBuffer = (char*)malloc( result.Length() + 1 );
-    if (resultBuffer) {
-      strcpy( resultBuffer, result.c_str() ); /* save result */
-      return result.Length();
-    }
-    else {
-      return 0;
-    }
-  }
-  else if (resultBuffer) {
-    int len = strlen(resultBuffer);
-    memcpy(_buf, resultBuffer, len );  /* copy saved result */
-    free(resultBuffer);
-    resultBuffer = NULL;
-    return len;
-  }
-  else {
-    return 0;
-  }
+  wxString result = wxGetPasswordFromUser( message, caption, defaultText, parent, x, y, center );
+  char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+  if (buf) strcpy (buf, result.c_str());
+  delete result;
+  return buf;
 }
 
-EWXWEXPORT(int, wxGetTextFromUser)(char* message, char* caption, char* defaultText, wxWindow* parent, int x, int y, int center, char* _buf )
+EWXWEXPORT(char*, wxGetTextFromUser)(char* message, char* caption, char* defaultText, wxWindow* parent, int x, int y, int center)
 {
-/* we use a complicated caching method as we don't want to call gettext twice :-) */
-  static char* resultBuffer = NULL;
-  if (_buf==NULL) {
-    if (resultBuffer) { free(resultBuffer); resultBuffer = NULL; }
-    wxString result = wxGetTextFromUser( message, caption, defaultText, parent, x, y, center!=0 );
-    resultBuffer = (char*)malloc( result.Length() + 1 );
-    if (resultBuffer) {
-      strcpy( resultBuffer, result.c_str() ); /* save result */
-      return result.Length();
-    }
-    else {
-      return 0;
-    }
-  }
-  else if (resultBuffer) {
-    int len = strlen(resultBuffer);
-    memcpy(_buf, resultBuffer, len );  /* copy saved result */
-    free(resultBuffer);
-    resultBuffer = NULL;
-    return len;
-  }
-  else {
-    return 0;
-  }
+  wxString result = wxGetTextFromUser( message, caption, defaultText, parent, x, y, center );
+  char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+  if (buf) strcpy (buf, result.c_str());
+  delete result;
+  return buf;
 }
 
 EWXWEXPORT(long,wxGetNumberFromUser)( char* message, char* prompt, char* caption, long value, long min, long max, wxWindow* parent, int x, int y )

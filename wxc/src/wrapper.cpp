@@ -203,11 +203,10 @@ wxClosure* wxcClosureRefData::GetClosure()
 extern "C"
 {
 /* event handling */
-EWXWEXPORT(int, wxEvtHandler_Connect)(void* _obj, int first, int last, int type, wxClosure* closure)
+EWXWEXPORT(void, wxEvtHandler_Connect)(void* _obj, int first, int last, int type, wxClosure* closure)
 {
   wxCallback* callback = new wxCallback(closure);
   ((wxEvtHandler*)_obj)->Connect(first, last, type, (wxObjectEventFunction)&ELJApp::HandleEvent, callback);
-  return 0;
 }
 
 EWXWEXPORT(wxClosure*, wxEvtHandler_GetClosure)(wxEvtHandler* evtHandler, int id, int type)
@@ -320,11 +319,13 @@ EWXWEXPORT(void, ELJApp_Dispatch)()
         wxGetApp().Dispatch();
 }
 
-EWXWEXPORT(int, ELJApp_GetAppName)(void* _buf)
+EWXWEXPORT(char*, ELJApp_GetAppName)()
 {
         wxString result = wxGetApp().GetAppName();
-        if (_buf) memcpy (_buf, result.c_str(), result.Length());
-        return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 
 EWXWEXPORT(void, ELJApp_SetAppName)(char* name)
@@ -332,11 +333,13 @@ EWXWEXPORT(void, ELJApp_SetAppName)(char* name)
         wxGetApp().SetAppName(name);
 }
 
-EWXWEXPORT(int, ELJApp_GetClassName)(void* _buf)
+EWXWEXPORT(char*, ELJApp_GetClassName)()
 {
         wxString result = wxGetApp().GetClassName();
-        if (_buf) memcpy (_buf, result.c_str(), result.Length());
-        return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) memcpy (buf, result.c_str(), result.Length());
+	delete result;
+	return buf;
 }
 
 EWXWEXPORT(void, ELJApp_SetClassName)(char* name)
@@ -431,11 +434,6 @@ EWXWEXPORT(void, ELJApp_SetTooltipDelay)(int _ms)
 EWXWEXPORT(void, ELJApp_InitAllImageHandlers)()
 {
         wxInitAllImageHandlers();
-}
-
-EWXWEXPORT(void, ELJApp_Bell)()
-{
-        wxBell();
 }
 
 EWXWEXPORT(void, ELJApp_DisplaySize)(void* w, void* h)

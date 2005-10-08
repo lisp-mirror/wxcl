@@ -961,7 +961,7 @@ EWXWEXPORT(int, wxScrollEvent_GetPosition)(void* _obj)
         return ((wxScrollEvent*)_obj)->GetPosition();
 }
 
-#if wxVERSION_NUMBER >= 2400
+//#if wxVERSION_NUMBER >= 2400
 EWXWEXPORT(void,wxHelpEvent_GetPosition)(void* _obj, void* x, void* y)
 {
         wxPoint pos = ((wxHelpEvent*)_obj)->GetPosition();
@@ -1000,1081 +1000,212 @@ EWXWEXPORT(void,wxHelpEvent_SetTarget)(void* _obj, void* target)
         ((wxHelpEvent*)_obj)->SetTarget((char*)target);
 }
 
-EWXWEXPORT(int,expEVT_COMMAND_BUTTON_CLICKED)()
-{
-        return (int)wxEVT_COMMAND_BUTTON_CLICKED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_CHECKBOX_CLICKED)()
-{
-        return (int)wxEVT_COMMAND_CHECKBOX_CLICKED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_CHOICE_SELECTED)()
-{
-        return (int)wxEVT_COMMAND_CHOICE_SELECTED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LISTBOX_SELECTED)()
-{
-        return (int)wxEVT_COMMAND_LISTBOX_SELECTED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LISTBOX_DOUBLECLICKED)()
-{
-        return (int)wxEVT_COMMAND_LISTBOX_DOUBLECLICKED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_CHECKLISTBOX_TOGGLED)()
-{
-        return (int)wxEVT_COMMAND_CHECKLISTBOX_TOGGLED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TEXT_UPDATED)()
-{
-        return (int)wxEVT_COMMAND_TEXT_UPDATED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TEXT_ENTER)()
-{
-        return (int)wxEVT_COMMAND_TEXT_ENTER;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_MENU_SELECTED)()
-{
-        return (int)wxEVT_COMMAND_MENU_SELECTED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TOOL_CLICKED)()
-{
-        return (int)wxEVT_COMMAND_TOOL_CLICKED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_SLIDER_UPDATED)()
-{
-        return (int)wxEVT_COMMAND_SLIDER_UPDATED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_RADIOBOX_SELECTED)()
-{
-        return (int)wxEVT_COMMAND_RADIOBOX_SELECTED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_RADIOBUTTON_SELECTED)()
-{
-        return (int)wxEVT_COMMAND_RADIOBUTTON_SELECTED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_SCROLLBAR_UPDATED)()
-{
-        return (int)wxEVT_COMMAND_SCROLLBAR_UPDATED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_VLBOX_SELECTED)()
-{
-        return (int)wxEVT_COMMAND_VLBOX_SELECTED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_COMBOBOX_SELECTED)()
-{
-        return (int)wxEVT_COMMAND_COMBOBOX_SELECTED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TOOL_RCLICKED)()
-{
-        return (int)wxEVT_COMMAND_TOOL_RCLICKED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TOOL_ENTER)()
-{
-        return (int)wxEVT_COMMAND_TOOL_ENTER;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_SPINCTRL_UPDATED)()
-{
-        return (int)wxEVT_COMMAND_SPINCTRL_UPDATED;
-}
-
-EWXWEXPORT(int,expEVT_SOCKET)()
-{
-        return (int)wxEVT_SOCKET;
-}
-
-EWXWEXPORT(int,expEVT_TIMER )()
-{
-        return (int)wxEVT_TIMER ;
-}
-
-EWXWEXPORT(int,expEVT_LEFT_DOWN)()
-{
-        return (int)wxEVT_LEFT_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_LEFT_UP)()
-{
-        return (int)wxEVT_LEFT_UP;
-}
-
-EWXWEXPORT(int,expEVT_MIDDLE_DOWN)()
-{
-        return (int)wxEVT_MIDDLE_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_MIDDLE_UP)()
-{
-        return (int)wxEVT_MIDDLE_UP;
-}
-
-EWXWEXPORT(int,expEVT_RIGHT_DOWN)()
-{
-        return (int)wxEVT_RIGHT_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_RIGHT_UP)()
-{
-        return (int)wxEVT_RIGHT_UP;
-}
-
-EWXWEXPORT(int,expEVT_MOTION)()
-{
-        return (int)wxEVT_MOTION;
-}
-
-EWXWEXPORT(int,expEVT_ENTER_WINDOW)()
-{
-        return (int)wxEVT_ENTER_WINDOW;
-}
-
-EWXWEXPORT(int,expEVT_LEAVE_WINDOW)()
-{
-        return (int)wxEVT_LEAVE_WINDOW;
-}
-
-EWXWEXPORT(int,expEVT_LEFT_DCLICK)()
-{
-        return (int)wxEVT_LEFT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_MIDDLE_DCLICK)()
-{
-        return (int)wxEVT_MIDDLE_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_RIGHT_DCLICK)()
-{
-        return (int)wxEVT_RIGHT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_SET_FOCUS)()
-{
-        return (int)wxEVT_SET_FOCUS;
-}
-
-EWXWEXPORT(int,expEVT_KILL_FOCUS)()
-{
-        return (int)wxEVT_KILL_FOCUS;
-}
-
-EWXWEXPORT(int,expEVT_NC_LEFT_DOWN)()
-{
-        return (int)wxEVT_NC_LEFT_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_NC_LEFT_UP)()
-{
-        return (int)wxEVT_NC_LEFT_UP;
-}
-
-EWXWEXPORT(int,expEVT_NC_MIDDLE_DOWN)()
-{
-        return (int)wxEVT_NC_MIDDLE_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_NC_MIDDLE_UP)()
-{
-        return (int)wxEVT_NC_MIDDLE_UP;
-}
-
-EWXWEXPORT(int,expEVT_NC_RIGHT_DOWN)()
-{
-        return (int)wxEVT_NC_RIGHT_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_NC_RIGHT_UP)()
-{
-        return (int)wxEVT_NC_RIGHT_UP;
-}
-
-EWXWEXPORT(int,expEVT_NC_MOTION)()
-{
-        return (int)wxEVT_NC_MOTION;
-}
-
-EWXWEXPORT(int,expEVT_NC_ENTER_WINDOW)()
-{
-        return (int)wxEVT_NC_ENTER_WINDOW;
-}
-
-EWXWEXPORT(int,expEVT_NC_LEAVE_WINDOW)()
-{
-        return (int)wxEVT_NC_LEAVE_WINDOW;
-}
-
-EWXWEXPORT(int,expEVT_NC_LEFT_DCLICK)()
-{
-        return (int)wxEVT_NC_LEFT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_NC_MIDDLE_DCLICK)()
-{
-        return (int)wxEVT_NC_MIDDLE_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_NC_RIGHT_DCLICK)()
-{
-        return (int)wxEVT_NC_RIGHT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_CHAR)()
-{
-        return (int)wxEVT_CHAR;
-}
-
-EWXWEXPORT(int,expEVT_CHAR_HOOK)()
-{
-        return (int)wxEVT_CHAR_HOOK;
-}
-
-EWXWEXPORT(int,expEVT_NAVIGATION_KEY)()
-{
-        return (int)wxEVT_NAVIGATION_KEY;
-}
-
-EWXWEXPORT(int,expEVT_KEY_DOWN)()
-{
-        return (int)wxEVT_KEY_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_KEY_UP)()
-{
-        return (int)wxEVT_KEY_UP;
-}
-
-EWXWEXPORT(int,expEVT_SET_CURSOR)()
-{
-        return (int)wxEVT_SET_CURSOR;
-}
-
-EWXWEXPORT(int,expEVT_SCROLL_TOP)()
-{
-        return (int)wxEVT_SCROLL_TOP;
-}
-
-EWXWEXPORT(int,expEVT_SCROLL_BOTTOM)()
-{
-        return (int)wxEVT_SCROLL_BOTTOM;
-}
-
-EWXWEXPORT(int,expEVT_SCROLL_LINEUP)()
-{
-        return (int)wxEVT_SCROLL_LINEUP;
-}
-
-EWXWEXPORT(int,expEVT_SCROLL_LINEDOWN)()
-{
-        return (int)wxEVT_SCROLL_LINEDOWN;
-}
-
-EWXWEXPORT(int,expEVT_SCROLL_PAGEUP)()
-{
-        return (int)wxEVT_SCROLL_PAGEUP;
-}
-
-EWXWEXPORT(int,expEVT_SCROLL_PAGEDOWN)()
-{
-        return (int)wxEVT_SCROLL_PAGEDOWN;
-}
-
-EWXWEXPORT(int,expEVT_SCROLL_THUMBTRACK)()
-{
-        return (int)wxEVT_SCROLL_THUMBTRACK;
-}
-
-EWXWEXPORT(int,expEVT_SCROLL_THUMBRELEASE)()
-{
-        return (int)wxEVT_SCROLL_THUMBRELEASE;
-}
-
-EWXWEXPORT(int,expEVT_SCROLLWIN_TOP)()
-{
-        return (int)wxEVT_SCROLLWIN_TOP;
-}
-
-EWXWEXPORT(int,expEVT_SCROLLWIN_BOTTOM)()
-{
-        return (int)wxEVT_SCROLLWIN_BOTTOM;
-}
-
-EWXWEXPORT(int,expEVT_SCROLLWIN_LINEUP)()
-{
-        return (int)wxEVT_SCROLLWIN_LINEUP;
-}
-
-EWXWEXPORT(int,expEVT_SCROLLWIN_LINEDOWN)()
-{
-        return (int)wxEVT_SCROLLWIN_LINEDOWN;
-}
-
-EWXWEXPORT(int,expEVT_SCROLLWIN_PAGEUP)()
-{
-        return (int)wxEVT_SCROLLWIN_PAGEUP;
-}
-
-EWXWEXPORT(int,expEVT_SCROLLWIN_PAGEDOWN)()
-{
-        return (int)wxEVT_SCROLLWIN_PAGEDOWN;
-}
-
-EWXWEXPORT(int,expEVT_SCROLLWIN_THUMBTRACK)()
-{
-        return (int)wxEVT_SCROLLWIN_THUMBTRACK;
-}
-
-EWXWEXPORT(int,expEVT_SCROLLWIN_THUMBRELEASE)()
-{
-        return (int)wxEVT_SCROLLWIN_THUMBRELEASE;
-}
-
-EWXWEXPORT(int,expEVT_SIZE)()
-{
-        return (int)wxEVT_SIZE;
-}
-
-EWXWEXPORT(int,expEVT_MOVE)()
-{
-        return (int)wxEVT_MOVE;
-}
-
-EWXWEXPORT(int,expEVT_CLOSE_WINDOW)()
-{
-        return (int)wxEVT_CLOSE_WINDOW;
-}
-
-EWXWEXPORT(int,expEVT_END_SESSION)()
-{
-        return (int)wxEVT_END_SESSION;
-}
-
-EWXWEXPORT(int,expEVT_QUERY_END_SESSION)()
-{
-        return (int)wxEVT_QUERY_END_SESSION;
-}
-
-EWXWEXPORT(int,expEVT_ACTIVATE_APP)()
-{
-        return (int)wxEVT_ACTIVATE_APP;
-}
-
-EWXWEXPORT(int,expEVT_POWER)()
-{
-        return (int)wxEVT_POWER;
-}
-
-EWXWEXPORT(int,expEVT_ACTIVATE)()
-{
-        return (int)wxEVT_ACTIVATE;
-}
-
-EWXWEXPORT(int,expEVT_CREATE)()
-{
-        return (int)wxEVT_CREATE;
-}
-
-EWXWEXPORT(int,expEVT_DESTROY)()
-{
-        return (int)wxEVT_DESTROY;
-}
-
-EWXWEXPORT(int,expEVT_SHOW)()
-{
-        return (int)wxEVT_SHOW;
-}
-
-EWXWEXPORT(int,expEVT_ICONIZE)()
-{
-        return (int)wxEVT_ICONIZE;
-}
-
-EWXWEXPORT(int,expEVT_MAXIMIZE)()
-{
-        return (int)wxEVT_MAXIMIZE;
-}
-
-EWXWEXPORT(int,expEVT_MOUSE_CAPTURE_CHANGED)()
-{
-        return (int)wxEVT_MOUSE_CAPTURE_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_PAINT)()
-{
-        return (int)wxEVT_PAINT;
-}
-
-EWXWEXPORT(int,expEVT_ERASE_BACKGROUND)()
-{
-        return (int)wxEVT_ERASE_BACKGROUND;
-}
-
-EWXWEXPORT(int,expEVT_NC_PAINT)()
-{
-        return (int)wxEVT_NC_PAINT;
-}
-
-EWXWEXPORT(int,expEVT_PAINT_ICON)()
-{
-        return (int)wxEVT_PAINT_ICON;
-}
-
-EWXWEXPORT(int,expEVT_MENU_CHAR)()
-{
-        return -1;
-}
-
-EWXWEXPORT(int,expEVT_MENU_INIT)()
-{
-        return -1;
-}
-
-EWXWEXPORT(int,expEVT_MENU_HIGHLIGHT)()
-{
-        return (int)wxEVT_MENU_HIGHLIGHT;
-}
-
-EWXWEXPORT(int,expEVT_POPUP_MENU_INIT)()
-{
-        return -1;
-}
-
-EWXWEXPORT(int,expEVT_CONTEXT_MENU)()
-{
-        return (int)wxEVT_CONTEXT_MENU;
-}
-
-EWXWEXPORT(int,expEVT_SYS_COLOUR_CHANGED)()
-{
-        return (int)wxEVT_SYS_COLOUR_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_SETTING_CHANGED)()
-{
-        return (int)wxEVT_SETTING_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_QUERY_NEW_PALETTE)()
-{
-        return (int)wxEVT_QUERY_NEW_PALETTE;
-}
-
-EWXWEXPORT(int,expEVT_PALETTE_CHANGED)()
-{
-        return (int)wxEVT_PALETTE_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_JOY_BUTTON_DOWN)()
-{
-        return (int)wxEVT_JOY_BUTTON_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_JOY_BUTTON_UP)()
-{
-        return (int)wxEVT_JOY_BUTTON_UP;
-}
-
-EWXWEXPORT(int,expEVT_JOY_MOVE)()
-{
-        return (int)wxEVT_JOY_MOVE;
-}
-
-EWXWEXPORT(int,expEVT_JOY_ZMOVE)()
-{
-        return (int)wxEVT_JOY_ZMOVE;
-}
-
-EWXWEXPORT(int,expEVT_DROP_FILES)()
-{
-        return (int)wxEVT_DROP_FILES;
-}
-
-EWXWEXPORT(int,expEVT_DRAW_ITEM)()
-{
-        return (int)wxEVT_DRAW_ITEM;
-}
-
-EWXWEXPORT(int,expEVT_MEASURE_ITEM)()
-{
-        return (int)wxEVT_MEASURE_ITEM;
-}
-
-EWXWEXPORT(int,expEVT_COMPARE_ITEM)()
-{
-        return (int)wxEVT_COMPARE_ITEM;
-}
-
-EWXWEXPORT(int,expEVT_INIT_DIALOG)()
-{
-        return (int)wxEVT_INIT_DIALOG;
-}
-
-EWXWEXPORT(int,expEVT_IDLE)()
-{
-        return (int)wxEVT_IDLE;
-}
-
-EWXWEXPORT(int,expEVT_UPDATE_UI)()
-{
-        return (int)wxEVT_UPDATE_UI;
-}
-
-EWXWEXPORT(int,expEVT_END_PROCESS)()
-{
-        return (int)wxEVT_END_PROCESS;
-}
-
-EWXWEXPORT(int,expEVT_DIALUP_CONNECTED)()
-{
-#if defined(__WXMAC__)
-    return -1;
-#else
-        return (int)wxEVT_DIALUP_CONNECTED;
-#endif
-}
-
-EWXWEXPORT(int,expEVT_DIALUP_DISCONNECTED)()
-{
-#if defined(__WXMAC__)
-    return -1;
-#else
-        return (int)wxEVT_DIALUP_DISCONNECTED;
-#endif
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LEFT_CLICK)()
-{
-        return (int)wxEVT_COMMAND_LEFT_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LEFT_DCLICK)()
-{
-        return (int)wxEVT_COMMAND_LEFT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_RIGHT_CLICK)()
-{
-        return (int)wxEVT_COMMAND_RIGHT_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_RIGHT_DCLICK)()
-{
-        return (int)wxEVT_COMMAND_RIGHT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_SET_FOCUS)()
-{
-        return (int)wxEVT_COMMAND_SET_FOCUS;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_KILL_FOCUS)()
-{
-        return (int)wxEVT_COMMAND_KILL_FOCUS;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_ENTER)()
-{
-        return (int)wxEVT_COMMAND_ENTER;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_BEGIN_DRAG)()
-{
-        return (int)wxEVT_COMMAND_TREE_BEGIN_DRAG;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_BEGIN_RDRAG)()
-{
-        return (int)wxEVT_COMMAND_TREE_BEGIN_RDRAG;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_BEGIN_LABEL_EDIT)()
-{
-        return (int)wxEVT_COMMAND_TREE_BEGIN_LABEL_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_END_LABEL_EDIT)()
-{
-        return (int)wxEVT_COMMAND_TREE_END_LABEL_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_DELETE_ITEM)()
-{
-        return (int)wxEVT_COMMAND_TREE_DELETE_ITEM;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_GET_INFO)()
-{
-        return (int)wxEVT_COMMAND_TREE_GET_INFO;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_SET_INFO)()
-{
-        return (int)wxEVT_COMMAND_TREE_SET_INFO;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_ITEM_EXPANDED)()
-{
-        return (int)wxEVT_COMMAND_TREE_ITEM_EXPANDED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_ITEM_EXPANDING)()
-{
-        return (int)wxEVT_COMMAND_TREE_ITEM_EXPANDING;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_ITEM_COLLAPSED)()
-{
-        return (int)wxEVT_COMMAND_TREE_ITEM_COLLAPSED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_ITEM_COLLAPSING)()
-{
-        return (int)wxEVT_COMMAND_TREE_ITEM_COLLAPSING;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_SEL_CHANGED)()
-{
-        return (int)wxEVT_COMMAND_TREE_SEL_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_SEL_CHANGING)()
-{
-        return (int)wxEVT_COMMAND_TREE_SEL_CHANGING;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_KEY_DOWN)()
-{
-        return (int)wxEVT_COMMAND_TREE_KEY_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_ITEM_ACTIVATED)()
-{
-        return (int)wxEVT_COMMAND_TREE_ITEM_ACTIVATED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_ITEM_RIGHT_CLICK)()
-{
-        return (int)wxEVT_COMMAND_TREE_ITEM_RIGHT_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK)()
-{
-        return (int)wxEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TREE_END_DRAG)()
-{
-        return (int)wxEVT_COMMAND_TREE_END_DRAG;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_BEGIN_DRAG)()
-{
-        return (int)wxEVT_COMMAND_LIST_BEGIN_DRAG;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_BEGIN_RDRAG)()
-{
-        return (int)wxEVT_COMMAND_LIST_BEGIN_RDRAG;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_BEGIN_LABEL_EDIT)()
-{
-        return (int)wxEVT_COMMAND_LIST_BEGIN_LABEL_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_END_LABEL_EDIT)()
-{
-        return (int)wxEVT_COMMAND_LIST_END_LABEL_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_DELETE_ITEM)()
-{
-        return (int)wxEVT_COMMAND_LIST_DELETE_ITEM;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_DELETE_ALL_ITEMS)()
-{
-        return (int)wxEVT_COMMAND_LIST_DELETE_ALL_ITEMS;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_GET_INFO)()
-{
-        return (int)wxEVT_COMMAND_LIST_GET_INFO;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_SET_INFO)()
-{
-        return (int)wxEVT_COMMAND_LIST_SET_INFO;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_ITEM_SELECTED)()
-{
-        return (int)wxEVT_COMMAND_LIST_ITEM_SELECTED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_ITEM_DESELECTED)()
-{
-        return (int)wxEVT_COMMAND_LIST_ITEM_DESELECTED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_KEY_DOWN)()
-{
-        return (int)wxEVT_COMMAND_LIST_KEY_DOWN;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_INSERT_ITEM)()
-{
-        return (int)wxEVT_COMMAND_LIST_INSERT_ITEM;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_COL_CLICK)()
-{
-        return (int)wxEVT_COMMAND_LIST_COL_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_ITEM_RIGHT_CLICK)()
-{
-        return (int)wxEVT_COMMAND_LIST_ITEM_RIGHT_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK)()
-{
-        return (int)wxEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_ITEM_ACTIVATED)()
-{
-        return (int)wxEVT_COMMAND_LIST_ITEM_ACTIVATED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_LIST_ITEM_FOCUSED)()
-{
-        return (int)wxEVT_COMMAND_LIST_ITEM_FOCUSED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TAB_SEL_CHANGED)()
-{
-#if defined(__WXGTK__) || defined(__WXMAC__)
-        return -1;
-#else
-        return (int)wxEVT_COMMAND_TAB_SEL_CHANGED;
-#endif
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_TAB_SEL_CHANGING)()
-{
-#if defined(__WXGTK__) || defined(__WXMAC__)
-        return -1;
-#else
-        return (int)wxEVT_COMMAND_TAB_SEL_CHANGING;
-#endif
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_NOTEBOOK_PAGE_CHANGED)()
-{
-        return (int)wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_NOTEBOOK_PAGE_CHANGING)()
-{
-        return (int)wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_SPLITTER_SASH_POS_CHANGED)()
-{
-        return (int)wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_SPLITTER_SASH_POS_CHANGING)()
-{
-        return (int)wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGING;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_SPLITTER_DOUBLECLICKED)()
-{
-        return (int)wxEVT_COMMAND_SPLITTER_DOUBLECLICKED;
-}
-
-EWXWEXPORT(int,expEVT_COMMAND_SPLITTER_UNSPLIT)()
-{
-        return (int)wxEVT_COMMAND_SPLITTER_UNSPLIT;
-}
-
-EWXWEXPORT(int,expEVT_WIZARD_PAGE_CHANGED)()
-{
-        return (int)wxEVT_WIZARD_PAGE_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_WIZARD_PAGE_CHANGING)()
-{
-        return (int)wxEVT_WIZARD_PAGE_CHANGING;
-}
-
-EWXWEXPORT(int,expEVT_WIZARD_CANCEL)()
-{
-        return (int)wxEVT_WIZARD_CANCEL;
-}
-
-EWXWEXPORT(int,expEVT_CALENDAR_SEL_CHANGED)()
-{
-        return (int)wxEVT_CALENDAR_SEL_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_CALENDAR_DAY_CHANGED)()
-{
-        return (int)wxEVT_CALENDAR_DAY_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_CALENDAR_MONTH_CHANGED)()
-{
-        return (int)wxEVT_CALENDAR_MONTH_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_CALENDAR_YEAR_CHANGED)()
-{
-        return (int)wxEVT_CALENDAR_YEAR_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_CALENDAR_DOUBLECLICKED)()
-{
-        return (int)wxEVT_CALENDAR_DOUBLECLICKED;
-}
-
-EWXWEXPORT(int,expEVT_CALENDAR_WEEKDAY_CLICKED)()
-{
-        return (int)wxEVT_CALENDAR_WEEKDAY_CLICKED;
-}
-
-
-#ifdef USE_CONTRIB
-EWXWEXPORT(int,expEVT_PLOT_SEL_CHANGING)()
-{
-        return (int)wxEVT_PLOT_SEL_CHANGING;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_SEL_CHANGED)()
-{
-        return (int)wxEVT_PLOT_SEL_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_CLICKED)()
-{
-        return (int)wxEVT_PLOT_CLICKED;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_DOUBLECLICKED)()
-{
-        return (int)wxEVT_PLOT_DOUBLECLICKED;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_ZOOM_IN)()
-{
-        return (int)wxEVT_PLOT_ZOOM_IN;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_ZOOM_OUT)()
-{
-        return (int)wxEVT_PLOT_ZOOM_OUT;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_VALUE_SEL_CREATING)()
-{
-        return (int)wxEVT_PLOT_VALUE_SEL_CREATING;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_VALUE_SEL_CREATED)()
-{
-        return (int)wxEVT_PLOT_VALUE_SEL_CREATED;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_VALUE_SEL_CHANGING)()
-{
-        return (int)wxEVT_PLOT_VALUE_SEL_CHANGING;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_VALUE_SEL_CHANGED)()
-{
-        return (int)wxEVT_PLOT_VALUE_SEL_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_AREA_SEL_CREATING)()
-{
-        return (int)wxEVT_PLOT_AREA_SEL_CREATING;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_AREA_SEL_CREATED)()
-{
-        return (int)wxEVT_PLOT_AREA_SEL_CREATED;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_AREA_SEL_CHANGING)()
-{
-        return (int)wxEVT_PLOT_AREA_SEL_CHANGING;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_AREA_SEL_CHANGED)()
-{
-        return (int)wxEVT_PLOT_AREA_SEL_CHANGED;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_BEGIN_X_LABEL_EDIT)()
-{
-        return (int)wxEVT_PLOT_BEGIN_X_LABEL_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_END_X_LABEL_EDIT)()
-{
-        return (int)wxEVT_PLOT_END_X_LABEL_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_BEGIN_Y_LABEL_EDIT)()
-{
-        return (int)wxEVT_PLOT_BEGIN_Y_LABEL_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_END_Y_LABEL_EDIT)()
-{
-        return (int)wxEVT_PLOT_END_Y_LABEL_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_BEGIN_TITLE_EDIT)()
-{
-        return (int)wxEVT_PLOT_BEGIN_TITLE_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_END_TITLE_EDIT)()
-{
-        return (int)wxEVT_PLOT_END_TITLE_EDIT;
-}
-
-EWXWEXPORT(int,expEVT_PLOT_AREA_CREATE)()
-{
-        return (int)wxEVT_PLOT_AREA_CREATE;
-}
-
-EWXWEXPORT(int,expEVT_USER_FIRST)()
-{
-        return (int)wxEVT_USER_FIRST;
-}
-
-EWXWEXPORT(int,expEVT_DYNAMIC_SASH_SPLIT)()
-{
-        return (int)wxEVT_DYNAMIC_SASH_SPLIT;
-}
-
-EWXWEXPORT(int,expEVT_DYNAMIC_SASH_UNIFY)()
-{
-        return (int)wxEVT_DYNAMIC_SASH_UNIFY;
-}
-#endif /* USE_CONTRIB */
-
-EWXWEXPORT(int,expEVT_HELP)()
-{
-        return (int)wxEVT_HELP;
-}
-
-EWXWEXPORT(int,expEVT_DETAILED_HELP)()
-{
-        return (int)wxEVT_DETAILED_HELP;
-}
-
-
-EWXWEXPORT(int,expEVT_GRID_CELL_LEFT_CLICK)()
-{
-        return (int)wxEVT_GRID_CELL_LEFT_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_GRID_CELL_RIGHT_CLICK)()
-{
-        return (int)wxEVT_GRID_CELL_RIGHT_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_GRID_CELL_LEFT_DCLICK)()
-{
-        return (int)wxEVT_GRID_CELL_LEFT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_GRID_CELL_RIGHT_DCLICK)()
-{
-        return (int)wxEVT_GRID_CELL_RIGHT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_GRID_LABEL_LEFT_CLICK)()
-{
-        return (int)wxEVT_GRID_LABEL_LEFT_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_GRID_LABEL_RIGHT_CLICK)()
-{
-        return (int)wxEVT_GRID_LABEL_RIGHT_CLICK;
-}
-
-EWXWEXPORT(int,expEVT_GRID_LABEL_LEFT_DCLICK)()
-{
-        return (int)wxEVT_GRID_LABEL_LEFT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_GRID_LABEL_RIGHT_DCLICK)()
-{
-        return (int)wxEVT_GRID_LABEL_RIGHT_DCLICK;
-}
-
-EWXWEXPORT(int,expEVT_GRID_ROW_SIZE)()
-{
-        return (int)wxEVT_GRID_ROW_SIZE;
-}
-
-EWXWEXPORT(int,expEVT_GRID_COL_SIZE)()
-{
-        return (int)wxEVT_GRID_COL_SIZE;
-}
-
-EWXWEXPORT(int,expEVT_GRID_RANGE_SELECT)()
-{
-        return (int)wxEVT_GRID_RANGE_SELECT;
-}
-
-EWXWEXPORT(int,expEVT_GRID_CELL_CHANGE)()
-{
-        return (int)wxEVT_GRID_CELL_CHANGE;
-}
-
-EWXWEXPORT(int,expEVT_GRID_SELECT_CELL)()
-{
-        return (int)wxEVT_GRID_SELECT_CELL;
-}
-
-EWXWEXPORT(int,expEVT_GRID_EDITOR_SHOWN)()
-{
-        return (int)wxEVT_GRID_EDITOR_SHOWN;
-}
-
-EWXWEXPORT(int,expEVT_GRID_EDITOR_HIDDEN)()
-{
-        return (int)wxEVT_GRID_EDITOR_HIDDEN;
-}
-
-EWXWEXPORT(int,expEVT_GRID_EDITOR_CREATED)()
-{
-        return (int)wxEVT_GRID_EDITOR_CREATED;
-}
-
-#endif /* wxVERSION >= 2400 */
+__declspec(dllexport) int* wxEVENT_COMMAND_BUTTON_CLICKED = (int*) &wxEVT_COMMAND_BUTTON_CLICKED;
+__declspec(dllexport) int* wxEVENT_COMMAND_CHECKBOX_CLICKED = (int*) &wxEVT_COMMAND_CHECKBOX_CLICKED;
+__declspec(dllexport) int* wxEVENT_COMMAND_CHOICE_SELECTED = (int*) &wxEVT_COMMAND_CHOICE_SELECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_LISTBOX_SELECTED = (int*) &wxEVT_COMMAND_LISTBOX_SELECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_LISTBOX_DOUBLECLICKED = (int*) &wxEVT_COMMAND_LISTBOX_DOUBLECLICKED;
+__declspec(dllexport) int* wxEVENT_COMMAND_CHECKLISTBOX_TOGGLED = (int*) &wxEVT_COMMAND_CHECKLISTBOX_TOGGLED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TEXT_UPDATED = (int*) &wxEVT_COMMAND_TEXT_UPDATED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TEXT_ENTER = (int*) &wxEVT_COMMAND_TEXT_ENTER;
+__declspec(dllexport) int* wxEVENT_COMMAND_MENU_SELECTED = (int*) &wxEVT_COMMAND_MENU_SELECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TOOL_CLICKED = (int*) &wxEVT_COMMAND_TOOL_CLICKED;
+__declspec(dllexport) int* wxEVENT_COMMAND_SLIDER_UPDATED = (int*) &wxEVT_COMMAND_SLIDER_UPDATED;
+__declspec(dllexport) int* wxEVENT_COMMAND_RADIOBOX_SELECTED = (int*) &wxEVT_COMMAND_RADIOBOX_SELECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_RADIOBUTTON_SELECTED = (int*) &wxEVT_COMMAND_RADIOBUTTON_SELECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_SCROLLBAR_UPDATED = (int*) &wxEVT_COMMAND_SCROLLBAR_UPDATED;
+__declspec(dllexport) int* wxEVENT_COMMAND_VLBOX_SELECTED = (int*) &wxEVT_COMMAND_VLBOX_SELECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_COMBOBOX_SELECTED = (int*) &wxEVT_COMMAND_COMBOBOX_SELECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TOOL_RCLICKED = (int*) &wxEVT_COMMAND_TOOL_RCLICKED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TOOL_ENTER = (int*) &wxEVT_COMMAND_TOOL_ENTER;
+__declspec(dllexport) int* wxEVENT_COMMAND_SPINCTRL_UPDATED = (int*) &wxEVT_COMMAND_SPINCTRL_UPDATED;
+__declspec(dllexport) int* wxEVENT_SOCKET = (int*) &wxEVT_SOCKET;
+__declspec(dllexport) int* wxEVENT_LEFT_DOWN = (int*) &wxEVT_LEFT_DOWN;
+__declspec(dllexport) int* wxEVENT_LEFT_UP = (int*) &wxEVT_LEFT_UP;
+__declspec(dllexport) int* wxEVENT_MIDDLE_DOWN = (int*) &wxEVT_MIDDLE_DOWN;
+__declspec(dllexport) int* wxEVENT_MIDDLE_UP = (int*) &wxEVT_MIDDLE_UP;
+__declspec(dllexport) int* wxEVENT_RIGHT_DOWN = (int*) &wxEVT_RIGHT_DOWN;
+__declspec(dllexport) int* wxEVENT_RIGHT_UP = (int*) &wxEVT_RIGHT_UP;
+__declspec(dllexport) int* wxEVENT_MOTION = (int*) &wxEVT_MOTION;
+__declspec(dllexport) int* wxEVENT_ENTER_WINDOW = (int*) &wxEVT_ENTER_WINDOW;
+__declspec(dllexport) int* wxEVENT_LEAVE_WINDOW = (int*) &wxEVT_LEAVE_WINDOW;
+__declspec(dllexport) int* wxEVENT_LEFT_DCLICK = (int*) &wxEVT_LEFT_DCLICK;
+__declspec(dllexport) int* wxEVENT_MIDDLE_DCLICK = (int*) &wxEVT_MIDDLE_DCLICK;
+__declspec(dllexport) int* wxEVENT_RIGHT_DCLICK = (int*) &wxEVT_RIGHT_DCLICK;
+__declspec(dllexport) int* wxEVENT_SET_FOCUS = (int*) &wxEVT_SET_FOCUS;
+__declspec(dllexport) int* wxEVENT_KILL_FOCUS = (int*) &wxEVT_KILL_FOCUS;
+__declspec(dllexport) int* wxEVENT_NC_LEFT_DOWN = (int*) &wxEVT_NC_LEFT_DOWN;
+__declspec(dllexport) int* wxEVENT_NC_LEFT_UP = (int*) &wxEVT_NC_LEFT_UP;
+__declspec(dllexport) int* wxEVENT_NC_MIDDLE_DOWN = (int*) &wxEVT_NC_MIDDLE_DOWN;
+__declspec(dllexport) int* wxEVENT_NC_MIDDLE_UP = (int*) &wxEVT_NC_MIDDLE_UP;
+__declspec(dllexport) int* wxEVENT_NC_RIGHT_DOWN = (int*) &wxEVT_NC_RIGHT_DOWN;
+__declspec(dllexport) int* wxEVENT_NC_RIGHT_UP = (int*) &wxEVT_NC_RIGHT_UP;
+__declspec(dllexport) int* wxEVENT_NC_MOTION = (int*) &wxEVT_NC_MOTION;
+__declspec(dllexport) int* wxEVENT_NC_ENTER_WINDOW = (int*) &wxEVT_NC_ENTER_WINDOW;
+__declspec(dllexport) int* wxEVENT_NC_LEAVE_WINDOW = (int*) &wxEVT_NC_LEAVE_WINDOW;
+__declspec(dllexport) int* wxEVENT_NC_LEFT_DCLICK = (int*) &wxEVT_NC_LEFT_DCLICK;
+__declspec(dllexport) int* wxEVENT_NC_MIDDLE_DCLICK = (int*) &wxEVT_NC_MIDDLE_DCLICK;
+__declspec(dllexport) int* wxEVENT_NC_RIGHT_DCLICK = (int*) &wxEVT_NC_RIGHT_DCLICK;
+__declspec(dllexport) int* wxEVENT_CHAR = (int*) &wxEVT_CHAR;
+__declspec(dllexport) int* wxEVENT_CHAR_HOOK = (int*) &wxEVT_CHAR_HOOK;
+__declspec(dllexport) int* wxEVENT_NAVIGATION_KEY = (int*) &wxEVT_NAVIGATION_KEY;
+__declspec(dllexport) int* wxEVENT_KEY_DOWN = (int*) &wxEVT_KEY_DOWN;
+__declspec(dllexport) int* wxEVENT_KEY_UP = (int*) &wxEVT_KEY_UP;
+__declspec(dllexport) int* wxEVENT_SET_CURSOR = (int*) &wxEVT_SET_CURSOR;
+__declspec(dllexport) int* wxEVENT_SCROLL_TOP = (int*) &wxEVT_SCROLL_TOP;
+__declspec(dllexport) int* wxEVENT_SCROLL_BOTTOM = (int*) &wxEVT_SCROLL_BOTTOM;
+__declspec(dllexport) int* wxEVENT_SCROLL_LINEUP = (int*) &wxEVT_SCROLL_LINEUP;
+__declspec(dllexport) int* wxEVENT_SCROLL_LINEDOWN = (int*) &wxEVT_SCROLL_LINEDOWN;
+__declspec(dllexport) int* wxEVENT_SCROLL_PAGEUP = (int*) &wxEVT_SCROLL_PAGEUP;
+__declspec(dllexport) int* wxEVENT_SCROLL_PAGEDOWN = (int*) &wxEVT_SCROLL_PAGEDOWN;
+__declspec(dllexport) int* wxEVENT_SCROLL_THUMBTRACK = (int*) &wxEVT_SCROLL_THUMBTRACK;
+__declspec(dllexport) int* wxEVENT_SCROLL_THUMBRELEASE = (int*) &wxEVT_SCROLL_THUMBRELEASE;
+__declspec(dllexport) int* wxEVENT_SCROLLWIN_TOP = (int*) &wxEVT_SCROLLWIN_TOP;
+__declspec(dllexport) int* wxEVENT_SCROLLWIN_BOTTOM = (int*) &wxEVT_SCROLLWIN_BOTTOM;
+__declspec(dllexport) int* wxEVENT_SCROLLWIN_LINEUP = (int*) &wxEVT_SCROLLWIN_LINEUP;
+__declspec(dllexport) int* wxEVENT_SCROLLWIN_LINEDOWN = (int*) &wxEVT_SCROLLWIN_LINEDOWN;
+__declspec(dllexport) int* wxEVENT_SCROLLWIN_PAGEUP = (int*) &wxEVT_SCROLLWIN_PAGEUP;
+__declspec(dllexport) int* wxEVENT_SCROLLWIN_PAGEDOWN = (int*) &wxEVT_SCROLLWIN_PAGEDOWN;
+__declspec(dllexport) int* wxEVENT_SCROLLWIN_THUMBTRACK = (int*) &wxEVT_SCROLLWIN_THUMBTRACK;
+__declspec(dllexport) int* wxEVENT_SCROLLWIN_THUMBRELEASE = (int*) &wxEVT_SCROLLWIN_THUMBRELEASE;
+__declspec(dllexport) int* wxEVENT_SIZE = (int*) &wxEVT_SIZE;
+__declspec(dllexport) int* wxEVENT_MOVE = (int*) &wxEVT_MOVE;
+__declspec(dllexport) int* wxEVENT_CLOSE_WINDOW = (int*) &wxEVT_CLOSE_WINDOW;
+__declspec(dllexport) int* wxEVENT_END_SESSION = (int*) &wxEVT_END_SESSION;
+__declspec(dllexport) int* wxEVENT_QUERY_END_SESSION = (int*) &wxEVT_QUERY_END_SESSION;
+__declspec(dllexport) int* wxEVENT_ACTIVATE_APP = (int*) &wxEVT_ACTIVATE_APP;
+__declspec(dllexport) int* wxEVENT_POWER = (int*) &wxEVT_POWER;
+__declspec(dllexport) int* wxEVENT_ACTIVATE = (int*) &wxEVT_ACTIVATE;
+__declspec(dllexport) int* wxEVENT_CREATE = (int*) &wxEVT_CREATE;
+__declspec(dllexport) int* wxEVENT_DESTROY = (int*) &wxEVT_DESTROY;
+__declspec(dllexport) int* wxEVENT_SHOW = (int*) &wxEVT_SHOW;
+__declspec(dllexport) int* wxEVENT_ICONIZE = (int*) &wxEVT_ICONIZE;
+__declspec(dllexport) int* wxEVENT_MAXIMIZE = (int*) &wxEVT_MAXIMIZE;
+__declspec(dllexport) int* wxEVENT_MOUSE_CAPTURE_CHANGED = (int*) &wxEVT_MOUSE_CAPTURE_CHANGED;
+__declspec(dllexport) int* wxEVENT_PAINT = (int*) &wxEVT_PAINT;
+__declspec(dllexport) int* wxEVENT_ERASE_BACKGROUND = (int*) &wxEVT_ERASE_BACKGROUND;
+__declspec(dllexport) int* wxEVENT_NC_PAINT = (int*) &wxEVT_NC_PAINT;
+__declspec(dllexport) int* wxEVENT_PAINT_ICON = (int*) &wxEVT_PAINT_ICON;
+__declspec(dllexport) int* wxEVENT_MENU_HIGHLIGHT = (int*) &wxEVT_MENU_HIGHLIGHT;
+__declspec(dllexport) int* wxEVENT_CONTEXT_MENU = (int*) &wxEVT_CONTEXT_MENU;
+__declspec(dllexport) int* wxEVENT_SYS_COLOUR_CHANGED = (int*) &wxEVT_SYS_COLOUR_CHANGED;
+__declspec(dllexport) int* wxEVENT_SETTING_CHANGED = (int*) &wxEVT_SETTING_CHANGED;
+__declspec(dllexport) int* wxEVENT_QUERY_NEW_PALETTE = (int*) &wxEVT_QUERY_NEW_PALETTE;
+__declspec(dllexport) int* wxEVENT_PALETTE_CHANGED = (int*) &wxEVT_PALETTE_CHANGED;
+__declspec(dllexport) int* wxEVENT_JOY_BUTTON_DOWN = (int*) &wxEVT_JOY_BUTTON_DOWN;
+__declspec(dllexport) int* wxEVENT_JOY_BUTTON_UP = (int*) &wxEVT_JOY_BUTTON_UP;
+__declspec(dllexport) int* wxEVENT_JOY_MOVE = (int*) &wxEVT_JOY_MOVE;
+__declspec(dllexport) int* wxEVENT_JOY_ZMOVE = (int*) &wxEVT_JOY_ZMOVE;
+__declspec(dllexport) int* wxEVENT_DROP_FILES = (int*) &wxEVT_DROP_FILES;
+__declspec(dllexport) int* wxEVENT_DRAW_ITEM = (int*) &wxEVT_DRAW_ITEM;
+__declspec(dllexport) int* wxEVENT_MEASURE_ITEM = (int*) &wxEVT_MEASURE_ITEM;
+__declspec(dllexport) int* wxEVENT_COMPARE_ITEM = (int*) &wxEVT_COMPARE_ITEM;
+__declspec(dllexport) int* wxEVENT_INIT_DIALOG = (int*) &wxEVT_INIT_DIALOG;
+__declspec(dllexport) int* wxEVENT_IDLE = (int*) &wxEVT_IDLE;
+__declspec(dllexport) int* wxEVENT_UPDATE_UI = (int*) &wxEVT_UPDATE_UI;
+__declspec(dllexport) int* wxEVENT_END_PROCESS = (int*) &wxEVT_END_PROCESS;
+__declspec(dllexport) int* wxEVENT_DIALUP_CONNECTED = (int*) &wxEVT_DIALUP_CONNECTED;
+__declspec(dllexport) int* wxEVENT_DIALUP_DISCONNECTED = (int*) &wxEVT_DIALUP_DISCONNECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_LEFT_CLICK = (int*) &wxEVT_COMMAND_LEFT_CLICK;
+__declspec(dllexport) int* wxEVENT_COMMAND_LEFT_DCLICK = (int*) &wxEVT_COMMAND_LEFT_DCLICK;
+__declspec(dllexport) int* wxEVENT_COMMAND_RIGHT_CLICK = (int*) &wxEVT_COMMAND_RIGHT_CLICK;
+__declspec(dllexport) int* wxEVENT_COMMAND_RIGHT_DCLICK = (int*) &wxEVT_COMMAND_RIGHT_DCLICK;
+__declspec(dllexport) int* wxEVENT_COMMAND_SET_FOCUS = (int*) &wxEVT_COMMAND_SET_FOCUS;
+__declspec(dllexport) int* wxEVENT_COMMAND_KILL_FOCUS = (int*) &wxEVT_COMMAND_KILL_FOCUS;
+__declspec(dllexport) int* wxEVENT_COMMAND_ENTER = (int*) &wxEVT_COMMAND_ENTER;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_BEGIN_DRAG = (int*) &wxEVT_COMMAND_TREE_BEGIN_DRAG;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_BEGIN_RDRAG = (int*) &wxEVT_COMMAND_TREE_BEGIN_RDRAG;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_BEGIN_LABEL_EDIT = (int*) &wxEVT_COMMAND_TREE_BEGIN_LABEL_EDIT;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_END_LABEL_EDIT = (int*) &wxEVT_COMMAND_TREE_END_LABEL_EDIT;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_DELETE_ITEM = (int*) &wxEVT_COMMAND_TREE_DELETE_ITEM;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_GET_INFO = (int*) &wxEVT_COMMAND_TREE_GET_INFO;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_SET_INFO = (int*) &wxEVT_COMMAND_TREE_SET_INFO;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_ITEM_EXPANDED = (int*) &wxEVT_COMMAND_TREE_ITEM_EXPANDED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_ITEM_EXPANDING = (int*) &wxEVT_COMMAND_TREE_ITEM_EXPANDING;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_ITEM_COLLAPSED = (int*) &wxEVT_COMMAND_TREE_ITEM_COLLAPSED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_ITEM_COLLAPSING = (int*) &wxEVT_COMMAND_TREE_ITEM_COLLAPSING;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_SEL_CHANGED = (int*) &wxEVT_COMMAND_TREE_SEL_CHANGED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_SEL_CHANGING = (int*) &wxEVT_COMMAND_TREE_SEL_CHANGING;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_KEY_DOWN = (int*) &wxEVT_COMMAND_TREE_KEY_DOWN;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_ITEM_ACTIVATED = (int*) &wxEVT_COMMAND_TREE_ITEM_ACTIVATED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_ITEM_RIGHT_CLICK = (int*) &wxEVT_COMMAND_TREE_ITEM_RIGHT_CLICK;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_ITEM_MIDDLE_CLICK = (int*) &wxEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK;
+__declspec(dllexport) int* wxEVENT_COMMAND_TREE_END_DRAG = (int*) &wxEVT_COMMAND_TREE_END_DRAG;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_BEGIN_DRAG = (int*) &wxEVT_COMMAND_LIST_BEGIN_DRAG;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_BEGIN_RDRAG = (int*) &wxEVT_COMMAND_LIST_BEGIN_RDRAG;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_BEGIN_LABEL_EDIT = (int*) &wxEVT_COMMAND_LIST_BEGIN_LABEL_EDIT;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_END_LABEL_EDIT = (int*) &wxEVT_COMMAND_LIST_END_LABEL_EDIT;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_DELETE_ITEM = (int*) &wxEVT_COMMAND_LIST_DELETE_ITEM;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_DELETE_ALL_ITEMS = (int*) &wxEVT_COMMAND_LIST_DELETE_ALL_ITEMS;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_GET_INFO = (int*) &wxEVT_COMMAND_LIST_GET_INFO;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_SET_INFO = (int*) &wxEVT_COMMAND_LIST_SET_INFO;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_ITEM_SELECTED = (int*) &wxEVT_COMMAND_LIST_ITEM_SELECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_ITEM_DESELECTED = (int*) &wxEVT_COMMAND_LIST_ITEM_DESELECTED;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_KEY_DOWN = (int*) &wxEVT_COMMAND_LIST_KEY_DOWN;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_INSERT_ITEM = (int*) &wxEVT_COMMAND_LIST_INSERT_ITEM;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_COL_CLICK = (int*) &wxEVT_COMMAND_LIST_COL_CLICK;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_ITEM_RIGHT_CLICK = (int*) &wxEVT_COMMAND_LIST_ITEM_RIGHT_CLICK;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_ITEM_MIDDLE_CLICK = (int*) &wxEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_ITEM_ACTIVATED = (int*) &wxEVT_COMMAND_LIST_ITEM_ACTIVATED;
+__declspec(dllexport) int* wxEVENT_COMMAND_LIST_ITEM_FOCUSED = (int*) &wxEVT_COMMAND_LIST_ITEM_FOCUSED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TAB_SEL_CHANGED = (int*) &wxEVT_COMMAND_TAB_SEL_CHANGED;
+__declspec(dllexport) int* wxEVENT_COMMAND_TAB_SEL_CHANGING = (int*) &wxEVT_COMMAND_TAB_SEL_CHANGING;
+__declspec(dllexport) int* wxEVENT_COMMAND_NOTEBOOK_PAGE_CHANGED = (int*) &wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED;
+__declspec(dllexport) int* wxEVENT_COMMAND_NOTEBOOK_PAGE_CHANGING = (int*) &wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING;
+__declspec(dllexport) int* wxEVENT_COMMAND_SPLITTER_SASH_POS_CHANGED = (int*) &wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED;
+__declspec(dllexport) int* wxEVENT_COMMAND_SPLITTER_SASH_POS_CHANGING = (int*) &wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGING;
+__declspec(dllexport) int* wxEVENT_COMMAND_SPLITTER_DOUBLECLICKED = (int*) &wxEVT_COMMAND_SPLITTER_DOUBLECLICKED;
+__declspec(dllexport) int* wxEVENT_COMMAND_SPLITTER_UNSPLIT = (int*) &wxEVT_COMMAND_SPLITTER_UNSPLIT;
+__declspec(dllexport) int* wxEVENT_WIZARD_PAGE_CHANGED = (int*) &wxEVT_WIZARD_PAGE_CHANGED;
+__declspec(dllexport) int* wxEVENT_WIZARD_PAGE_CHANGING = (int*) &wxEVT_WIZARD_PAGE_CHANGING;
+__declspec(dllexport) int* wxEVENT_WIZARD_CANCEL = (int*) &wxEVT_WIZARD_CANCEL;
+__declspec(dllexport) int* wxEVENT_CALENDAR_SEL_CHANGED = (int*) &wxEVT_CALENDAR_SEL_CHANGED;
+__declspec(dllexport) int* wxEVENT_CALENDAR_DAY_CHANGED = (int*) &wxEVT_CALENDAR_DAY_CHANGED;
+__declspec(dllexport) int* wxEVENT_CALENDAR_MONTH_CHANGED = (int*) &wxEVT_CALENDAR_MONTH_CHANGED;
+__declspec(dllexport) int* wxEVENT_CALENDAR_YEAR_CHANGED = (int*) &wxEVT_CALENDAR_YEAR_CHANGED;
+__declspec(dllexport) int* wxEVENT_CALENDAR_DOUBLECLICKED = (int*) &wxEVT_CALENDAR_DOUBLECLICKED;
+__declspec(dllexport) int* wxEVENT_CALENDAR_WEEKDAY_CLICKED = (int*) &wxEVT_CALENDAR_WEEKDAY_CLICKED;
+// __declspec(dllexport) int* wxEVENT_PLOT_SEL_CHANGING = (int*) &wxEVT_PLOT_SEL_CHANGING;
+// __declspec(dllexport) int* wxEVENT_PLOT_SEL_CHANGED = (int*) &wxEVT_PLOT_SEL_CHANGED;
+// __declspec(dllexport) int* wxEVENT_PLOT_CLICKED = (int*) &wxEVT_PLOT_CLICKED;
+// __declspec(dllexport) int* wxEVENT_PLOT_DOUBLECLICKED = (int*) &wxEVT_PLOT_DOUBLECLICKED;
+// __declspec(dllexport) int* wxEVENT_PLOT_ZOOM_IN = (int*) &wxEVT_PLOT_ZOOM_IN;
+// __declspec(dllexport) int* wxEVENT_PLOT_ZOOM_OUT = (int*) &wxEVT_PLOT_ZOOM_OUT;
+// __declspec(dllexport) int* wxEVENT_PLOT_VALUE_SEL_CREATING = (int*) &wxEVT_PLOT_VALUE_SEL_CREATING;
+// __declspec(dllexport) int* wxEVENT_PLOT_VALUE_SEL_CREATED = (int*) &wxEVT_PLOT_VALUE_SEL_CREATED;
+// __declspec(dllexport) int* wxEVENT_PLOT_VALUE_SEL_CHANGING = (int*) &wxEVT_PLOT_VALUE_SEL_CHANGING;
+// __declspec(dllexport) int* wxEVENT_PLOT_VALUE_SEL_CHANGED = (int*) &wxEVT_PLOT_VALUE_SEL_CHANGED;
+// __declspec(dllexport) int* wxEVENT_PLOT_AREA_SEL_CREATING = (int*) &wxEVT_PLOT_AREA_SEL_CREATING;
+// __declspec(dllexport) int* wxEVENT_PLOT_AREA_SEL_CREATED = (int*) &wxEVT_PLOT_AREA_SEL_CREATED;
+// __declspec(dllexport) int* wxEVENT_PLOT_AREA_SEL_CHANGING = (int*) &wxEVT_PLOT_AREA_SEL_CHANGING;
+// __declspec(dllexport) int* wxEVENT_PLOT_AREA_SEL_CHANGED = (int*) &wxEVT_PLOT_AREA_SEL_CHANGED;
+// __declspec(dllexport) int* wxEVENT_PLOT_BEGIN_X_LABEL_EDIT = (int*) &wxEVT_PLOT_BEGIN_X_LABEL_EDIT;
+// __declspec(dllexport) int* wxEVENT_PLOT_END_X_LABEL_EDIT = (int*) &wxEVT_PLOT_END_X_LABEL_EDIT;
+// __declspec(dllexport) int* wxEVENT_PLOT_BEGIN_Y_LABEL_EDIT = (int*) &wxEVT_PLOT_BEGIN_Y_LABEL_EDIT;
+// __declspec(dllexport) int* wxEVENT_PLOT_END_Y_LABEL_EDIT = (int*) &wxEVT_PLOT_END_Y_LABEL_EDIT;
+// __declspec(dllexport) int* wxEVENT_PLOT_BEGIN_TITLE_EDIT = (int*) &wxEVT_PLOT_BEGIN_TITLE_EDIT;
+// __declspec(dllexport) int* wxEVENT_PLOT_END_TITLE_EDIT = (int*) &wxEVT_PLOT_END_TITLE_EDIT;
+// __declspec(dllexport) int* wxEVENT_PLOT_AREA_CREATE = (int*) &wxEVT_PLOT_AREA_CREATE;
+__declspec(dllexport) int* wxEVENT_USER_FIRST = (int*) &wxEVT_USER_FIRST;
+// __declspec(dllexport) int* wxEVENT_DYNAMIC_SASH_SPLIT = (int*) &wxEVT_DYNAMIC_SASH_SPLIT;
+// __declspec(dllexport) int* wxEVENT_DYNAMIC_SASH_UNIFY = (int*) &wxEVT_DYNAMIC_SASH_UNIFY;
+__declspec(dllexport) int* wxEVENT_HELP = (int*) &wxEVT_HELP;
+__declspec(dllexport) int* wxEVENT_DETAILED_HELP = (int*) &wxEVT_DETAILED_HELP;
+__declspec(dllexport) int* wxEVENT_GRID_CELL_LEFT_CLICK = (int*) &wxEVT_GRID_CELL_LEFT_CLICK;
+__declspec(dllexport) int* wxEVENT_GRID_CELL_RIGHT_CLICK = (int*) &wxEVT_GRID_CELL_RIGHT_CLICK;
+__declspec(dllexport) int* wxEVENT_GRID_CELL_LEFT_DCLICK = (int*) &wxEVT_GRID_CELL_LEFT_DCLICK;
+__declspec(dllexport) int* wxEVENT_GRID_CELL_RIGHT_DCLICK = (int*) &wxEVT_GRID_CELL_RIGHT_DCLICK;
+__declspec(dllexport) int* wxEVENT_GRID_LABEL_LEFT_CLICK = (int*) &wxEVT_GRID_LABEL_LEFT_CLICK;
+__declspec(dllexport) int* wxEVENT_GRID_LABEL_RIGHT_CLICK = (int*) &wxEVT_GRID_LABEL_RIGHT_CLICK;
+__declspec(dllexport) int* wxEVENT_GRID_LABEL_LEFT_DCLICK = (int*) &wxEVT_GRID_LABEL_LEFT_DCLICK;
+__declspec(dllexport) int* wxEVENT_GRID_LABEL_RIGHT_DCLICK = (int*) &wxEVT_GRID_LABEL_RIGHT_DCLICK;
+__declspec(dllexport) int* wxEVENT_GRID_ROW_SIZE = (int*) &wxEVT_GRID_ROW_SIZE;
+__declspec(dllexport) int* wxEVENT_GRID_COL_SIZE = (int*) &wxEVT_GRID_COL_SIZE;
+__declspec(dllexport) int* wxEVENT_GRID_RANGE_SELECT = (int*) &wxEVT_GRID_RANGE_SELECT;
+__declspec(dllexport) int* wxEVENT_GRID_CELL_CHANGE = (int*) &wxEVT_GRID_CELL_CHANGE;
+__declspec(dllexport) int* wxEVENT_GRID_SELECT_CELL = (int*) &wxEVT_GRID_SELECT_CELL;
+__declspec(dllexport) int* wxEVENT_GRID_EDITOR_SHOWN = (int*) &wxEVT_GRID_EDITOR_SHOWN;
+__declspec(dllexport) int* wxEVENT_GRID_EDITOR_HIDDEN = (int*) &wxEVT_GRID_EDITOR_HIDDEN;
+__declspec(dllexport) int* wxEVENT_GRID_EDITOR_CREATED = (int*) &wxEVT_GRID_EDITOR_CREATED;
 
 }
