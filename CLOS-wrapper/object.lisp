@@ -4,6 +4,15 @@
   ((obj :reader object-pointer))
   (:documentation "The foundation of all wxCL classes. Should not be directly instantiated."))
 
+(defun make-wx-instance (class foreign-pointer)
+  (when foreign-pointer
+    (let ((obj (make-instance class)))
+      (setf (slot-value obj 'object) foreign-pointer)
+      obj)))
+
+(defun invalidate-wx-instance (obj)
+  (setf (slot-value obj 'object) nil))
+  
 
 (defclass point ()
   ((x :initarg :x :initform -1 :type integer :accessor point-x)

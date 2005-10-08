@@ -1,6 +1,4 @@
-(in-package :wxCL)
-
-(use-package :wxFrame)
+(in-package :wxcl-menus)
 
 (defclass menu (object)
   ()
@@ -10,25 +8,12 @@
  menu bars or popup menus."))
 
 
-(defun make-menu (parent title &key (id -1) (pos default-position) (size default-size) (style wxDEFAULT_FRAME_STYLE))
-  (let ((fr (make-instance 'status-bar)))
-    (setf (slot-value fr 'object)
-	  (wxFrame_Create (when parent (object-pointer parent))
-			  id title (point-x pos) (point-y pos)
-			  (size-width size) (size-height size) style))
-    fr))
+(defun make-menu (&key (title "") (style 0))
+  (make-wx-instance 'menu (slot-value mn 'object)))
 
-; (defmethod ((obj menu)) wxMenu_Create
-;     (:name "wxMenu_Create")
-;   (:arguments (title ffi:c-string)
-; 	      (style ffi:long))
-;   (:return-type (ffi:c-pointer NIL))
-;   (:library +library-name+))
-
-; (defmethod ((obj menu)) wxMenu_DeletePointer
-;     (:name "wxMenu_DeletePointer")
-;   (:arguments (_obj (ffi:c-pointer NIL)))
-;   (:library +library-name+))
+(defmethod delete-pointer ((obj menu))
+  (wxMenu_DeletePointer (object-pointer obj))
+  (setf (slot-value obj 'object) nil))
 
 (defmethod append-separator ((obj menu))
   (wxMenu_AppendSeparator (object-pointer obj)))
@@ -114,11 +99,7 @@
   (wxMenu_FindItemByLabel (object-pointer obj) label))
 
 (defmethod find-item ((obj menu) id &optional (menu nil))
-  (let ((item (wxMenu_FindItem (object-pointer obj) id (when menu (object-pointer menu)))))
-    (when item
-      (let ((mi (make-instance 'menu-item)))
-	(setf (slot-value mi 'object) item)
-	mi))))
+  (make-wx-instance 'menu-item (wxMenu_FindItem (object-pointer obj) id (when menu (object-pointer menu)))))
 
 (defmethod enable ((obj menu) id bool)
     (wxMenu_Enable (object-pointer obj) id (if bool 1 0)))
@@ -149,18 +130,6 @@
 
 (defmethod title ((obj menu))
   (wxMenu_GetTitle (object-pointer obj)))
-
-; (defmethod ((obj menu)) wxMenu_SetClientData
-;     (:name "wxMenu_SetClientData")
-;   (:arguments (_obj (ffi:c-pointer NIL))
-; 	      (clientData (ffi:c-pointer NIL)))
-;   (:library +library-name+))
-
-; (defmethod ((obj menu)) wxMenu_GetClientData
-;     (:name "wxMenu_GetClientData")
-;   (:arguments (_obj (ffi:c-pointer NIL)))
-;   (:return-type (ffi:c-pointer NIL))
-;   (:library +library-name+))
 
 ; (defmethod ((obj menu)) wxMenu_SetEventHandler
 ;     (:name "wxMenu_SetEventHandler")

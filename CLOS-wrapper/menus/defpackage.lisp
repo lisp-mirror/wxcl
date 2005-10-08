@@ -1,5 +1,5 @@
 
-(defpackage :wxCL
+(defpackage :wxcl-menus
     (:use :common-lisp :ffi)
   (:export #:object-pointer
 	   #:maximize
