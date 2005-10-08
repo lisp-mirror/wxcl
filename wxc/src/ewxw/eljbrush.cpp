@@ -3,6 +3,17 @@
 extern "C"
 {
 
+__declspec( dllexport ) wxBrush** wxBlack_Brush=&wxBLACK_BRUSH;
+__declspec( dllexport ) wxBrush** wxWhite_Brush=&wxWHITE_BRUSH;  
+__declspec( dllexport ) wxBrush** wxRed_Brush=&wxRED_BRUSH;
+__declspec( dllexport ) wxBrush** wxBlue_Brush=&wxBLUE_BRUSH;  
+__declspec( dllexport ) wxBrush** wxGreen_Brush=&wxGREEN_BRUSH;
+__declspec( dllexport ) wxBrush** wxCyan_Brush=&wxCYAN_BRUSH;
+__declspec( dllexport ) wxBrush** wxLight_Grey_Brush=&wxLIGHT_GREY_BRUSH;
+__declspec( dllexport ) wxBrush** wxMedium_Grey_Brush=&wxMEDIUM_GREY_BRUSH;
+__declspec( dllexport ) wxBrush** wxTransparent_Brush=&wxTRANSPARENT_BRUSH;    
+__declspec( dllexport ) wxBrush** wxGrey_Brush=&wxGREY_BRUSH;
+  
 EWXWEXPORT(void*, wxBrush_CreateDefault) ()
 {
 	return (void*) new wxBrush();
@@ -16,35 +27,6 @@ EWXWEXPORT(void*, wxBrush_CreateFromBitmap) (void* bitmap)
 EWXWEXPORT(void*, wxBrush_CreateFromColour) (void* col, int style)
 {
 	return (void*) new wxBrush(*((wxColour*)col), style);
-}
-
-EWXWEXPORT(void*, wxBrush_CreateFromStock) (int id)
-{
-	switch (id)
-	{
-		case 0:
-			return (void*)wxBLUE_BRUSH;
-		case 1:
-			return (void*)wxGREEN_BRUSH;
-		case 2:
-			return (void*)wxWHITE_BRUSH;
-		case 3:
-			return (void*)wxBLACK_BRUSH;
-		case 4:
-			return (void*)wxGREY_BRUSH;
-		case 5:
-			return (void*)wxMEDIUM_GREY_BRUSH;
-		case 6:
-			return (void*)wxLIGHT_GREY_BRUSH;
-		case 7:
-			return (void*)wxTRANSPARENT_BRUSH;
-		case 8:
-			return (void*)wxCYAN_BRUSH;
-		case 9:
-			return (void*)wxRED_BRUSH;
-	}
-	
-	return NULL;
 }
 
 EWXWEXPORT(void, wxBrush_Delete) (void* _obj)

@@ -1,8 +1,17 @@
 #include "wrapper.h"
 
+
 extern "C"
 {
 
+__declspec( dllexport ) wxColour** wxBlack=&wxBLACK;
+__declspec( dllexport ) wxColour** wxWhite=&wxWHITE;  
+__declspec( dllexport ) wxColour** wxRed=&wxRED;
+__declspec( dllexport ) wxColour** wxBlue=&wxBLUE;  
+__declspec( dllexport ) wxColour** wxGreen=&wxGREEN;
+__declspec( dllexport ) wxColour** wxCyan=&wxCYAN;
+__declspec( dllexport ) wxColour** wxLight_Grey=&wxLIGHT_GREY;    
+ 
 EWXWEXPORT(void*, wxColour_CreateEmpty) ()
 {
 	return (void*) new wxColour();
@@ -16,29 +25,6 @@ EWXWEXPORT(void*, wxColour_CreateRGB) (char _red, char _green, char _blue)
 EWXWEXPORT(void*, wxColour_CreateByName) (void* _name)
 {
 	return (void*) new wxColour((char*)_name);
-}
-
-EWXWEXPORT(void*, wxColour_CreateFromStock) (int _id)
-{
-	switch (_id)
-	{
-		case 0:
-			return (void*)wxBLACK;
-		case 1:
-			return (void*)wxWHITE;
-		case 2:
-			return (void*)wxRED;
-		case 3:
-			return (void*)wxBLUE;
-		case 4:
-			return (void*)wxGREEN;
-		case 5:
-			return (void*)wxCYAN;
-		case 6:
-			return (void*)wxLIGHT_GREY;
-	}
-
-	return NULL;
 }
 
 EWXWEXPORT(void, wxColour_Delete)(void* _obj)

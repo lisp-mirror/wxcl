@@ -2,6 +2,16 @@
 
 extern "C"
 {
+__declspec( dllexport ) wxPen** wxBlack_Pen=&wxBLACK_PEN;
+__declspec( dllexport ) wxPen** wxBlack_Dashed_Pen=&wxBLACK_DASHED_PEN;
+__declspec( dllexport ) wxPen** wxWhite_Pen=&wxWHITE_PEN;  
+__declspec( dllexport ) wxPen** wxRed_Pen=&wxRED_PEN;
+__declspec( dllexport ) wxPen** wxGreen_Pen=&wxGREEN_PEN;
+__declspec( dllexport ) wxPen** wxCyan_Pen=&wxCYAN_PEN;
+__declspec( dllexport ) wxPen** wxLight_Grey_Pen=&wxLIGHT_GREY_PEN;
+__declspec( dllexport ) wxPen** wxMedium_Grey_Pen=&wxMEDIUM_GREY_PEN;
+__declspec( dllexport ) wxPen** wxTransparent_Pen=&wxTRANSPARENT_PEN;    
+__declspec( dllexport ) wxPen** wxGrey_Pen=&wxGREY_PEN;
 
 EWXWEXPORT(void*, wxPen_CreateDefault) ()
 {
@@ -20,35 +30,6 @@ EWXWEXPORT(void*, wxPen_CreateFromBitmap) (void* stipple, int width)
 #else
 	return NULL;
 #endif
-}
-
-EWXWEXPORT(void*, wxPen_CreateFromStock) (int id)
-{
-	switch (id)
-	{
-		case 0:
-			return (void*)wxRED_PEN;
-		case 1:
-			return (void*)wxCYAN_PEN;
-		case 2:
-			return (void*)wxGREEN_PEN;
-		case 3:
-			return (void*)wxBLACK_PEN;
-		case 4:
-			return (void*)wxWHITE_PEN;
-		case 5:
-			return (void*)wxTRANSPARENT_PEN;
-		case 6:
-			return (void*)wxBLACK_DASHED_PEN;
-		case 7:
-			return (void*)wxGREY_PEN;
-		case 8:
-			return (void*)wxMEDIUM_GREY_PEN;
-		case 9:
-			return (void*)wxLIGHT_GREY_PEN;
-	}
-	
-	return NULL;
 }
 
 EWXWEXPORT(void, wxPen_Delete)(void* _obj)
