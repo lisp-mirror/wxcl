@@ -78,7 +78,8 @@
 				   (wxACCEL_CTRL (char-int #\A) wxID_ABOUT)))
 
 (defun add-status-bar(frame)
-  (wxframe_createstatusbar frame 2 0))
+  (let ((st (wxframe_createstatusbar frame 2 0)))
+    (wxStatusBar_SetFieldsCount st 3 nil)))
 
 (defun add-tool-bar(frame)
   (let ((tb (wxframe_createtoolbar frame (boole boole-ior wxTB_3DBUTTONS wxTB_HORIZONTAL)))
@@ -96,11 +97,13 @@
 			      :style (boole boole-ior wxOPEN wxFILE_MUST_EXIST)
 			      :wildcard "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")))
       (when filename
+	(print filename)
 	(let* ((bmp (wxbitmap_createload filename wxBITMAP_TYPE_ANY))
 	       (fr (wxFrame_create frame -1 filename 10 10 500 500 wxDEFAULT_FRAME_STYLE))
 	       (sw (wxScrolledWindow_Create fr -1 -1 -1 -1 -1 (boole boole-ior wxHSCROLL wxVSCROLL)))
 	       (bmp-static (wxStaticbitmap_create sw -1 bmp -1 -1 -1 -1 0)))
 	  (wxFrame_SetIcon fr (wxicon_createload "wxcl-logo.ico" wxBITMAP_TYPE_ICO -1 -1))
+	  (print (wxFrame_gettitle fr))
 	  (wxScrolledWindow_SetScrollbars sw 20 20 50 50 -1 -1 0)
 	  (wxWindow_Show fr))))))
 
@@ -126,12 +129,12 @@
 ;     (wxEvent_Skip evt))) ;skip the event for default handler
 
 (defun register-events (frame)
-  (wxevthandler_connect frame wxID_OPEN (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'open-image frame))
-  (wxevthandler_connect frame wxID_CLOSE (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'close-image frame))
-  (wxevthandler_connect frame wxID_ABOUT (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'about-box frame))
-  (wxevthandler_connect frame wxID_EXIT (expEVT_COMMAND_MENU_SELECTED) (wxClosure_Create #'quit-viewer frame))
-;  (wxevthandler_connect frame -1 (expEVT_CLOSE_WINDOW) (wxClosure_Create #'do-nothing frame))
-  )
+  (wxevthandler_connect frame wxID_OPEN wxEVT_COMMAND_MENU_SELECTED (wxClosure_Create #'open-image frame))
+  (wxevthandler_connect frame wxID_CLOSE wxEVT_COMMAND_MENU_SELECTED (wxClosure_Create #'close-image frame))
+  (wxevthandler_connect frame wxID_ABOUT wxEVT_COMMAND_MENU_SELECTED (wxClosure_Create #'about-box frame))
+  (wxevthandler_connect frame wxID_EXIT wxEVT_COMMAND_MENU_SELECTED (wxClosure_Create #'quit-viewer frame)))
+; ;  (wxevthandler_connect frame -1 (expEVT_CLOSE_WINDOW) (wxClosure_Create #'do-nothing frame))
+;   )
 
 (defun init-func (fun data evt)
   (let* ((frame (wxFrame_create nil 1000 "wxCL - Image previewer" 10 10 500 500 wxDEFAULT_FRAME_STYLE))
@@ -142,15 +145,18 @@
     (add-tool-bar frame)
     (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo.ico" wxBITMAP_TYPE_ICO -1 -1))
     (register-events frame)
-    (wxWindow_Show frame)))
+    (wxWindow_Show frame)
+    ))
 
 ;;Creates the closure
 (setf x (wxClosure_Create #'init-func nil))
 
 
 ;;Starts execution
-(Eljapp_initializeC x 0 nil)
-
+(unwind-protect
+     (Eljapp_initializeC x 0 nil)
+  (ffi:close-foreign-library "../miscellaneous/wxc-msw2.6.2.dll"))
 ;;important to close the library, otherwise the static initializers would cause problem
 ;;when re-executing the program
-(ffi:close-foreign-library "../miscellaneous/wxc-msw2.6.2.dll")
+
+

@@ -18,6 +18,7 @@
 (use-package "FFI")
 (use-package :wxCL)
 (use-package :wx_main)
+(use-package :wxICon)
 (use-package :wxFrame)
 (use-package :wxEvent)
 (use-package :wxTimer)
@@ -29,7 +30,6 @@
 (use-package :wxDC)
 
 
-
 (ffi:default-foreign-language :c)
 
 (defparameter start 10)
@@ -37,22 +37,24 @@
 
 (defun paint-image (fun frame evt)
   (when evt
-    (with-paint-dc (paintdc frame)
-      (wxDC_SetBackground paintdc (wxBrush:wxBrush_CreateFromStock wxBrush:wxWHITE_BRUSH))
-      (wxDC_SetPen paintdc (wxPen:wxPen_CreateFromStock wxPen:wxRED_PEN))
-      (wxDC_SetBrush paintdc (wxBrush:wxBrush_CreateFromStock wxBrush:wxTRANSPARENT_BRUSH))
-      (wxDC_Clear paintdc)
-      (wxDC_DrawRectangle paintdc start 20 70 80))))
+     (with-paint-dc (paintdc frame)
+       (wxDC_SetBackground paintdc wxBrush:wxWHITE_BRUSH)
+       (wxDC_SetPen paintdc wxPen:wxRED_PEN)
+       (wxDC_SetBrush paintdc wxBrush:wxTRANSPARENT_BRUSH)
+       (wxDC_Clear paintdc)
+       (wxDC_DrawRectangle paintdc start 20 70 80))
+    ))
 
 (defun draw-image (fun frame evt)
   (when evt
     (with-client-dc (clientdc frame)
-      (wxDC_SetBackground clientdc (wxBrush:wxBrush_CreateFromStock wxBrush:wxWHITE_BRUSH))
-      (wxDC_SetPen clientdc (wxPen:wxPen_CreateFromStock wxPen:wxRED_PEN))
-      (wxDC_SetBrush clientdc (wxBrush:wxBrush_CreateFromStock wxBrush:wxTRANSPARENT_BRUSH))
+      (wxDC_SetBackground clientdc wxBrush:wxWHITE_BRUSH)
+      (wxDC_SetPen clientdc  wxPen:wxRED_PEN)
+      (wxDC_SetBrush clientdc wxBrush:wxTRANSPARENT_BRUSH)
       (wxDC_Clear clientdc)
       (wxDC_DrawRectangle clientdc start 20 70 80)
-      (setq start (+ start 1)))))
+      (setq start (+ start 1)))
+    ))
 
 (defun test-closure (fun data evt)
   (let (frame)
@@ -60,8 +62,8 @@
     (wxFrame_SetIcon frame (wxicon_createload "wxcl-logo.ico" wxBITMAP_TYPE_ICO -1 -1))
     (setq timer (wxTimerEx_Create))
     (wxTimerEx_Connect timer (wxClosure_Create #'draw-image frame))
-    (wxevthandler_connect frame -1 (expEVT_PAINT) (wxClosure_Create #'paint-image frame))
-    (wxTimer_Start timer 500 0)
+    (wxevthandler_connect frame -1 wxEVT_PAINT (wxClosure_Create #'paint-image frame))
+    (wxTimer_Start timer 700 0)
     (wxWindow_Show frame)
     ))
 
