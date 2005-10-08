@@ -47,7 +47,7 @@ EWXWEXPORT(char*, wxFileDialog_GetMessage)(void* _obj)
 {
 	wxString result = ((wxFileDialog*)_obj)->GetMessage();
 	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) memcpy (buf, result.c_str(), result.Length());
+	if (buf) strcpy (buf, result.c_str());
 	delete result;
 	return buf;
 }
@@ -55,8 +55,8 @@ EWXWEXPORT(char*, wxFileDialog_GetMessage)(void* _obj)
 EWXWEXPORT(char*, wxFileDialog_GetPath)(void* _obj)
 {
 	wxString result = ((wxFileDialog*)_obj)->GetPath();
-	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) memcpy (buf, result.c_str(), result.Length());
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
 	delete result;
 	return buf;
 }
@@ -77,7 +77,7 @@ EWXWEXPORT(char*, wxFileDialog_GetDirectory)(void* _obj)
 {
 	wxString result =((wxFileDialog*)_obj)->GetDirectory();
 	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) memcpy (buf, result.c_str(), result.Length());
+	if (buf) strcpy (buf, result.c_str());
 	delete result;
 	return buf;
 }
@@ -85,8 +85,8 @@ EWXWEXPORT(char*, wxFileDialog_GetDirectory)(void* _obj)
 EWXWEXPORT(char*, wxFileDialog_GetFilename)(void* _obj)
 {
 	wxString result =((wxFileDialog*)_obj)->GetFilename();
-	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) memcpy (buf, result.c_str(), result.Length());
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
 	delete result;
 	return buf;
 }
@@ -106,8 +106,8 @@ EWXWEXPORT(int, wxFileDialog_GetFilenames)(void* _obj, void* paths)
 EWXWEXPORT(char*, wxFileDialog_GetWildcard)(void* _obj)
 {
 	wxString result =((wxFileDialog*)_obj)->GetWildcard();
-	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) memcpy (buf, result.c_str(), result.Length());
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
 	delete result;
 	return buf;
 }
