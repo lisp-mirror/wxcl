@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-buttons)
+(in-package :wxcl-controls)
 
 (defclass bitmap-button (button)
     ()
