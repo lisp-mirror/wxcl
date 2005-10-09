@@ -35,7 +35,7 @@
 	   :wxFrame_CreateToolBar
 	   :wxFrame_GetToolBar
 	   :wxFrame_SetToolBar
-	   :wxDEFAULT_FRAME_STYLE))
+))
 
 (in-package :wxFrame)
 
@@ -43,7 +43,7 @@
 
 (ffi:def-c-type wxFrame NIL)
 
-(defconstant wxDEFAULT_FRAME_STYLE 536878656)
+
 
 (ffi:def-call-out wxFrame_Create
     (:name "wxFrame_Create")

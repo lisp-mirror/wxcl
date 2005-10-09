@@ -33,11 +33,6 @@
 	   :wxMenuItem_IsChecked
 	   :wxMenuItem_SetHelp
 	   :wxMenuItem_GetHelp
-	   :wxITEM_SEPARATOR
-	   :wxITEM_NORMAL
-	   :wxITEM_CHECK
-	   :wxITEM_RADIO
-	   :wxITEM_SUBMENU
 	   ))
 
 (in-package :wxMenuItem)
@@ -46,7 +41,7 @@
 
 (def-c-type wxMenuItem NIL)
 
-(defconstant wxITEM_SUBMENU 1000)
+
 
 (ffi:def-call-out wxMenuItem_Create
 	(:name "wxMenuItem_Create")

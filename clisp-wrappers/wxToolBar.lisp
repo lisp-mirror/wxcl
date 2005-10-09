@@ -43,20 +43,10 @@
 	   :wxToolBar_SetToolShortHelp
 	   :wxToolBar_SetToolSeparation
 	   :wxToolBar_ToggleTool
-	   :wxTB_HORIZONTAL
-	   :wxTB_3DBUTTONS
-	   :wxTB_DOCKABLE
-	   :wxTB_VERTICAL
-	   :wxTB_HORIZONTAL
 	   ))
 
 (in-package :wxToolBar)
 
-(defconstant wxTB_3DBUTTONS 16)
-(defconstant wxTB_FLAT 32)
-(defconstant wxTB_DOCKABLE 64)
-(defconstant wxTB_VERTICAL 8)
-(defconstant wxTB_HORIZONTAL 4)
 
 
 (ffi:default-foreign-language :stdc)

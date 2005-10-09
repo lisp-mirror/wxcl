@@ -15,7 +15,6 @@
    :wxColour_CreateByName
    :wxColour_Delete
    :wxColour_Set
-   :wxColour_Assign
    :wxColour_Ok
    :wxColour_Red
    :wxColour_Green
@@ -93,7 +92,7 @@
 
 (ffi:def-call-out wxColour_CreateByName
     (:name "wxColour_CreateByName")
-  (:arguments (_name (ffi:c-pointer NIL)))
+  (:arguments (_name ffi:c-string))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
@@ -109,13 +108,6 @@
 	      (_red uint8)
 	      (_green uint8)
 	      (_blue uint8))
-  (:return-type NIL)
-  (:library +library-name+))
-
-(ffi:def-call-out wxColour_Assign
-    (:name "wxColour_Assign")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (other (ffi:c-pointer NIL)))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -151,20 +143,19 @@
 
 (ffi:def-call-out wxColour_Copy
     (:name "wxColour_Copy")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_other (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxColour_SetByName
     (:name "wxColour_SetByName")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (_name (ffi:c-pointer NIL)))
+	      (_name ffi:c-string))
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxColour_ValidName
     (:name "wxColour_ValidName")
-  (:arguments (_name (ffi:c-pointer NIL)))
+  (:arguments (_name ffi:c-string))
   (:return-type ffi:int)
   (:library +library-name+))

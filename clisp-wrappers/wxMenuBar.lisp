@@ -41,7 +41,7 @@
 
 (def-c-type wxMenuBar NIL)
 
-(defconstant wxMB_DOCKABLE 1)
+
 
 (ffi:def-call-out wxMenuBar_Create
     (:name "wxMenuBar_Create")

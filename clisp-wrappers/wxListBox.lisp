@@ -17,25 +17,11 @@
 	   :wxListBox_InsertItems
 	   :wxListBox_SetFirstItem
 	   :wxcl-create-list-box
-	   :wxLB_SORT
-	   :wxLB_SINGLE
-	   :wxLB_MULTIPLE
-	   :wxLB_EXTENDED
-	   :wxLB_OWNERDRAW
-	   :wxLB_NEEDED_SB
-	   :wxLB_ALWAYS_SB))
+))
 
 (in-package :wxListbox)
 
 (ffi:default-foreign-language :stdc)
-
-(defconstant wxLB_SORT 16)
-(defconstant wxLB_SINGLE 32)
-(defconstant wxLB_MULTIPLE 64)
-(defconstant wxLB_EXTENDED 128)
-(defconstant wxLB_OWNERDRAW 256)
-(defconstant wxLB_NEEDED_SB 512)
-(defconstant wxLB_ALWAYS_SB 1024)
 
 (ffi:def-call-out wxListBox_Create
     (:name "wxListBox_Create")

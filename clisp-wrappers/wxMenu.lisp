@@ -53,11 +53,6 @@
 	   :wxMenu_IsAttached
 	   :wxMenu_SetParent
 	   :wxMenu_GetParent
-	   :wxMENU_TEAROFF
-	   :wxITEM_NORMAL
-	   :wxITEM_SEPARATOR
-	   :wxITEM_CHECK
-	   :wxITEM_RADIO
 	   :wxCL-create-menu
 	   :wxCL-append-menu-item
 	   ))
@@ -65,8 +60,6 @@
 (in-package :wxMenu)
 
 (ffi:default-foreign-language :stdc)
-
-(defconstant wxMENU_TEAROFF 1)
 
 (ffi:def-call-out wxMenu_Create
     (:name "wxMenu_Create")

@@ -107,85 +107,11 @@
 	   :wxListCtrl_UpdateStyle
 	   :wxListEvent_GetCacheFrom
 	   :wxListEvent_GetCacheTo
-	   :wxLC_ICON
-	   :wxLC_SMALL_ICON
-	   :wxLC_VRULES
-	   :wxLC_HRULES
-	   :wxLC_LIST
-	   :wxLC_REPORT
-	   :wxLC_ALIGN_TOP
-	   :wxLC_ALIGN_LEFT
-	   :wxLC_AUTOARRANGE
-	   :wxLC_USER_TEXT 
-	   :wxLC_EDIT_LABELS
-	   :wxLC_NO_HEADER 
-	   :wxLC_NO_SORT_HEADER
-	   :wxLC_SINGLE_SEL
-	   :wxLC_SORT_ASCENDING
-	   :wxLC_SORT_DESCENDING
-	   :wxLIST_FORMAT_LEFT 
-	   :wxLIST_FORMAT_RIGHT
-	   :wxLIST_FORMAT_CENTRE
-	   :wxLIST_FORMAT_CENTER
-	   :wxLIST_STATE_DONTCARE
-	   :wxLIST_STATE_DROPHILITED
-	   :wxLIST_STATE_FOCUSED 
-	   :wxLIST_STATE_SELECTED
-	   :wxLIST_STATE_CUT 
-	   :wxLIST_MASK_STATE
-	   :wxLIST_MASK_TEXT 
-	   :wxLIST_MASK_IMAGE
-	   :wxLIST_MASK_DATA
-	   :wxLIST_MASK_WIDTH
-	   :wxLIST_MASK_FORMAT
-	   :wxLIST_NEXT_ABOVE
-	   :wxLIST_NEXT_ALL
-	   :wxLIST_NEXT_BELOW
-	   :wxLIST_NEXT_LEFT
-	   :wxLIST_NEXT_RIGHT
 	   ))
 
 (in-package :wxListctrl)
 
 (ffi:default-foreign-language :stdc)
-
-(defconstant wxLC_VRULES 1)
-(defconstant wxLC_HRULES 2)
-(defconstant wxLC_ICON 4)
-(defconstant wxLC_SMALL_ICON 8)
-(defconstant wxLC_LIST 16)
-(defconstant wxLC_REPORT 32)
-(defconstant wxLC_ALIGN_TOP 64)
-(defconstant wxLC_ALIGN_LEFT 128)
-(defconstant wxLC_AUTOARRANGE 256)
-(defconstant wxLC_USER_TEXT 512)
-(defconstant wxLC_EDIT_LABELS 1024)
-(defconstant wxLC_NO_HEADER 2048)
-(defconstant wxLC_NO_SORT_HEADER 4096)
-(defconstant wxLC_SINGLE_SEL 8192)
-(defconstant wxLC_SORT_ASCENDING 16384)
-(defconstant wxLC_SORT_DESCENDING 32768)
-
-(defconstant wxLIST_FORMAT_LEFT 0)
-(defconstant wxLIST_FORMAT_RIGHT 1)
-(defconstant wxLIST_FORMAT_CENTRE 2)
-(defconstant wxLIST_FORMAT_CENTER 2)
-(defconstant wxLIST_STATE_DONTCARE 0)
-(defconstant wxLIST_STATE_DROPHILITED 1)
-(defconstant wxLIST_STATE_FOCUSED 2)
-(defconstant wxLIST_STATE_SELECTED 4)
-(defconstant wxLIST_STATE_CUT 8)
-(defconstant wxLIST_MASK_STATE 1)
-(defconstant wxLIST_MASK_TEXT 2)
-(defconstant wxLIST_MASK_IMAGE 4)
-(defconstant wxLIST_MASK_DATA 8)
-(defconstant wxLIST_MASK_WIDTH 16)
-(defconstant wxLIST_MASK_FORMAT 32)
-(defconstant wxLIST_NEXT_ABOVE 0)
-(defconstant wxLIST_NEXT_ALL 1)
-(defconstant wxLIST_NEXT_BELOW 2)
-(defconstant wxLIST_NEXT_LEFT 3)
-(defconstant wxLIST_NEXT_RIGHT 4)
 
 ; (ffi:def-c-struct EiffelSort
 ; 	(obj :type (ffi:c-pointer NIL))
