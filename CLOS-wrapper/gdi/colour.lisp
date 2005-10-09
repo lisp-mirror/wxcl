@@ -4,89 +4,64 @@
  and Blue (RGB) intensity values, and is used to determine drawing colours."))
 
 (defun make-colour(&key (red 0) (green 0) (blue 0))
-  (let ((cl (make-instance 'colour)))
-    (setf (slot-value cl 'object)
-	  (wxColour_CreateRGB red green blue))))
+  (make-wx-instance 'colour (wxColour_CreateRGB red green blue)))
 
 (defun make-colour-from-name (name)
-  (let ((cl (make-instance 'colour)))
-    (setf (slot-value cl 'object)
-	  (wxColour_CreateByName name))))
+  (make-wx-instance 'colour (wxColour_CreateByName name)))
 
-(defun make-colouffi:def-call-out wxColour_CreateFromStock
-    (:name "wxColour_CreateFromStock")
-  (:arguments (_id ffi:int))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+(defmethod delete ((obj colour))
+  (wxColour_Delete (object-pointer obj))
+  (invalidate-wx-instance obj))
 
-(ffi:def-call-out wxColour_Delete
-    (:name "wxColour_Delete")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+(defmethod set ((obj colour) red green blue)
+  (wxColour_Set (object-pointer obj) red green blue))
 
-(ffi:def-call-out wxColour_Set
-    (:name "wxColour_Set")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_red uint8)
-	      (_green uint8)
-	      (_blue uint8))
-  (:return-type NIL)
-  (:library +library-name+))
+(defmethod ok-p ((obj colour))
+  (= 1 (wxColour_Ok (object-pointer obj))))
 
-(ffi:def-call-out wxColour_Assign
-    (:name "wxColour_Assign")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (other (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+(defmethod red ((obj colour))
+  (wxColour_Red (object-pointer obj)))
 
-(ffi:def-call-out wxColour_Ok
-    (:name "wxColour_Ok")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+(defmethod green ((obj colour))
+  (wxColour_Green (object-pointer obj)))
 
-(ffi:def-call-out wxColour_Red
-    (:name "wxColour_Red")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type ffi:uint8)
-  (:library +library-name+))
+(defmethod blue ((obj colour))
+    (wxColour_Blue (object-pointer obj)))
 
-(ffi:def-call-out wxColour_Green
-    (:name "wxColour_Green")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type ffi:uint8)
-  (:library +library-name+))
+(defmethod pixel ((obj colour))
+  (wxColour_GetPixel (object-pointer obj)))
 
-(ffi:def-call-out wxColour_Blue
-    (:name "wxColour_Blue")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type ffi:uint8)
-  (:library +library-name+))
+(defmethod copy ((obj colour))
+  (make-wx-instance 'colour (wxColour_Copy (object-pointer obj))))
 
-(ffi:def-call-out wxColour_GetPixel
-    (:name "wxColour_GetPixel")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+(defmethod set-by-name ((obj colour) name)
+  (wxColour_SetByName (object-pointer obj) name))
 
-(ffi:def-call-out wxColour_Copy
-    (:name "wxColour_Copy")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_other (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
 
-(ffi:def-call-out wxColour_SetByName
-    (:name "wxColour_SetByName")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_name (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+(defmethod valid-name-p ((obj colour) name)
+  (= 1 (wxColour_ValidName (object-pointer obj) name)))
 
-(ffi:def-call-out wxColour_ValidName
-    (:name "wxColour_ValidName")
-  (:arguments (_name (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+(defconstant +green+
+  (make-wx-instance 'colour wxGreen))
+
+(defconstant +red+
+  (make-wx-instance 'colour wxRed))
+
+(defconstant +blue+
+  (make-wx-instance 'colour wxBlue))
+
+(defconstant +white+
+  (make-wx-instance 'colour wxWhite))
+
+(defconstant +black+
+  (make-wx-instance 'colour wxBlack))
+
+(defconstant +cyan+
+  (make-wx-instance 'colour wxCyan))
+
+(defconstant +green+
+  (make-wx-instance 'colour wxGreen))
+
+(defconstant +light-grey+
+  (make-wx-instance 'colour wxLight_Grey))
+

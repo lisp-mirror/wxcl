@@ -1,7 +1,7 @@
 (in-package :wxCL)
 
 (defclass object ()
-  ((obj :reader object-pointer))
+  ((object :reader object-pointer))
   (:documentation "The foundation of all wxCL classes. Should not be directly instantiated."))
 
 (defun make-wx-instance (class foreign-pointer)

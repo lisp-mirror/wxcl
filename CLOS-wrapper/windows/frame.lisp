@@ -8,12 +8,9 @@
 
 
 (defun make-frame (parent title &key (id -1) (pos default-position) (size default-size) (style wxDEFAULT_FRAME_STYLE))
-  (let ((fr (make-instance 'status-bar)))
-    (setf (slot-value fr 'object)
-	  (wxFrame_Create (when parent (object-pointer parent))
-			  id title (point-x pos) (point-y pos)
-			  (size-width size) (size-height size) style))
-    fr))
+  (make-wx-instance 'frame (wxFrame_Create (when parent (object-pointer parent))
+					   id title (point-x pos) (point-y pos)
+					   (size-width size) (size-height size) style)))
 
 (defmethod maximize ((obj frame))
   (wxFrame_Maximize (object-pointer obj)))
@@ -44,33 +41,25 @@
 		 :y (wxFrame_GetClientAreaOrigin_top (object-pointer obj))))
 
 (defmethod icon ((obj frame))
-  (let ((ic (make-instance 'icon)))
-    (setf (slot-value ic 'object) (wxFrame_GetIcon (object-pointer obj)))
-    ic))
+  (make-wx-instance 'icon (wxFrame_GetIcon (object-pointer obj))))
 
 (defmethod (setf menu-bar) ((mb menu-bar) ((obj frame)))
     (wxFrame_SetMenuBar (object-pointer obj) (object-pointer mb)))
 
 (defmethod menu-bar ((obj frame))
-  (let ((mb (make-instance 'menu-bar)))
-    (setf (slot-value mb 'object) (wxFrame_GetMenuBar (object-pointer obj)))
-    mb))
+  (make-wx-instance 'menu-bar (wxFrame_GetMenuBar (object-pointer obj))))
 
 (defmethod (setf status-bar) ((sb status-bar) ((obj frame)))
     (wxFrame_SetStatusBar (object-pointer obj) (object-pointer sb)))
 
 (defmethod status-bar ((obj frame))
-  (let ((sb (make-instance 'status-bar)))
-    (setf (slot-value sb 'object) (wxFrame_GetStatusBar (object-pointer obj)))
-    sb))
+  (make-wx-instance 'status-bar (wxFrame_GetStatusBar (object-pointer obj))))
 
 (defmethod (setf tool-bar) ((tb tool-bar) ((obj frame)))
-    (wxFrame_SetToolBar (object-pointer obj) (object-pointer tb)))
+  (wxFrame_SetToolBar (object-pointer obj) (object-pointer tb)))
 
 (defmethod tool-bar ((obj frame))
-  (let ((tb (make-instance 'tool-bar)))
-    (setf (slot-value tb 'object) (wxFrame_GetToolBar (object-pointer obj)))
-    tb))
+  (make-wx-instance 'tool-bar (wxFrame_GetToolBar (object-pointer obj))))
 
 (defmethod (setf status-text) (text (obj frame) &optional (i 0))
   "Sets the text for one field."
@@ -80,16 +69,10 @@
     (wxStatusBar_SetStatusWidths (object-pointer obj) num widths))
 
 (defmethod create-status-bar ((obj frame) num style)
-  (let ((st (make-instance 'status-bar)))
-    (setf (slot-value st 'object)
-	  (wxFrame_CreateStatusBar (object-pointer obj) num style))
-    st))
+  (make-wx-instance 'status-bar (wxFrame_CreateStatusBar (object-pointer obj) num style)))
 
 (defmethod create-tool-bar ((obj frame) style)
-  (let ((tb (make-instance 'tool-bar)))
-    (setf (slot-value tb 'object)
-	  (wxFrame_CreateToolBar (object-pointer obj) style))
-    tb))
+  (make-wx-instance 'tool-bar (wxFrame_CreateToolBar (object-pointer obj) style)))
 
 (defmethod title ((obj frame))
   (wxFrame_GetTitle (object-pointer obj)))

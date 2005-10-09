@@ -33,127 +33,17 @@
 	   #:status-text
 	   #:min-height
 	   #:border-x
-	   #:border-y))
+	   #:border-y
+	   #:+menu-tearoff
+	   #:+item-separator
+	   #:+item-normal
+	   #:+item-check
+	   #:+item-radio
+	   #:+item-submenu
+))
+
+(defconstant +menu-tearoff 1)
+(defconstant +mb-dockable 1)
+(defconstant +item-submenu 1000)
 
 
-
-(defpackage :wxcl-windows
-    (:use :common-lisp :ffi)
-  (:export #:frame
-	   #:make-frame
- ))
-
-(defpackage :wxcl-dialogs
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-(defpackage :wxcl-controls
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-(defpackage :wxcl-menus
-    (:use :common-lisp :ffi)
-  (:export #:menu-bar
-	   ))
-
-
-(defpackage :wxcl-layout
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-(defpackage :wxcl-dc
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-gdi
-    (:use :common-lisp :ffi)
-  (:export #:colour
-   ))
-
-
-(defpackage :wxcl-ipc
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-events
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-validators
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-(defpackage :wxcl-clipboard
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-logging
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-net
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-printing
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-html
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-stream
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-file
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-thread
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-xml
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-db
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-misc
-    (:use :common-lisp :ffi)
-  (:export
-   ))

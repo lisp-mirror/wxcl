@@ -9,7 +9,7 @@
 
 
 (defun make-menu (&key (title "") (style 0))
-  (make-wx-instance 'menu (slot-value mn 'object)))
+  (make-wx-instance 'menu (wxMenuCreate title style)))
 
 (defmethod delete-pointer ((obj menu))
   (wxMenu_DeletePointer (object-pointer obj))

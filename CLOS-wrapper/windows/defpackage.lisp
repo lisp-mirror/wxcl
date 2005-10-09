@@ -1,159 +1,66 @@
-
-(defpackage :wxCL
+(defpackage :wxcl-windows
     (:use :common-lisp :ffi)
-  (:export #:object-pointer
+  (:export #:frame
+	   #:make-frame
 	   #:maximize
 	   #:restore
 	   #:iconize
 	   #:maximized-p
 	   #:iconized-p
 	   #:icon
-	   #:client-area-origin
+	   #:menu-bar
 	   #:status-bar
-	   #:set-status-width
+	   #:tool-bar
+	   #:set-status-widths
 	   #:create-status-bar
+	   #:create-tool-bar
 	   #:title
 	   #:shape
 	   #:show-full-screen
 	   #:full-screen-p
 	   #:centre
-	   #:point
-	   #:point-x
-	   #:point-y
-	   #:default-position
-	   #:size
-	   #:size-width
-	   #:size-height
-	   #:default-size
-	   #:rect
-	   #:position
-	   #:size
 	   #:make-status-bar
 	   #:fields-count
 	   #:status-text
 	   #:min-height
 	   #:border-x
-	   #:border-y))
-
-
-
-(defpackage :wxcl-windows
-    (:use :common-lisp :ffi)
-  (:export #:frame
-	   #:make-frame
+	   #:border-y
+	   #:delete
+	   #:add-control
+	   #:add-separator
+	   #:delete-tool
+	   #:delete-tool-by-pos
+	   #:enable-tool
+	   #:tool-size
+	   #:tool-bitmap-size
+	   #:margins
+	   #:tool-client-data
+	   #:tool-enabled
+	   #:tool-long-help
+	   #:tool-packing
+	   #:tool-state
+	   #:insert-control
+	   #:insert-separator
+	   #:realize
+	   #:margins
+	   #:tool-bitmap-size
+	   #:tool-long-help
+	   #:tool-packing
+	   #:tool-short-help
+	   #:tool-separation
+	   #:toggle-tool
+	   #:+tb-horizontal+
+	   #:+tb-3d-buttons+
+	   #:+tb-dockable+
+	   #:+tb-vertical+
+	   #:+tb-horizontal+
+	   #:+default-frame-style+
  ))
 
-(defpackage :wxcl-dialogs
-    (:use :common-lisp :ffi)
-  (:export
-   ))
+(defconstant +tb-3dbuttons+ 16)
+(defconstant +tb-flat+ 32)
+(defconstant +tb-dockable+ 64)
+(defconstant +tb-vertical 8)
+(defconstant +tb-horizontal 4)
 
-(defpackage :wxcl-controls
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-(defpackage :wxcl-menus
-    (:use :common-lisp :ffi)
-  (:export #:menu-bar
-	   ))
-
-
-(defpackage :wxcl-layout
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-(defpackage :wxcl-dc
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-gdi
-    (:use :common-lisp :ffi)
-  (:export #:colour
-   ))
-
-
-(defpackage :wxcl-ipc
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-events
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-validators
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-(defpackage :wxcl-clipboard
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-logging
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-net
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-printing
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-html
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-stream
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-file
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-thread
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-xml
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-db
-    (:use :common-lisp :ffi)
-  (:export
-   ))
-
-
-(defpackage :wxcl-misc
-    (:use :common-lisp :ffi)
-  (:export
-   ))
+(defconstant +default-frame-style+ 536878656)

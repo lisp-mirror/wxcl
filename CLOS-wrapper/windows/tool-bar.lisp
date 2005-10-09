@@ -7,17 +7,13 @@
 
 
 (defun make-tool-bar (parent id &key (pos default-position) (size default-size) (style wxTB_HORIZONTAL))
-  (let ((tb (make-instance 'tool-bar)))
-    (setf (slot-value tb 'object)
-	  (wxToolBar_Create (object-pointer parent) id (point-x pos) (point-y pos)
-			    (size-width size) (size-height size) style))
-    tb))
+  (make-wx-instance 'tool-bar
+		    (wxToolBar_Create (object-pointer parent) id (point-x pos) (point-y pos)
+				      (size-width size) (size-height size) style)))
 
-(ffi:def-call-out wxToolBar_Delete
-    (:name "wxToolBar_Delete")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+(defmethod delete ((obj tool-bar))
+  (wxToolBar_Delete (object-pointer obj))
+  (invalidate-wx-instance obj))
 
 (defmethod add-control ((obj tool-bar) (ctrl control))
     (= 1 (wxToolBar_AddControl (object-pointer obj) (object-pointer ctrl))))
@@ -77,9 +73,8 @@
     (make-instance 'size :height x :width y)))
 
 (defmethod tool-client-data ((obj tool-bar) id)
-  (let ((obj (make-instance 'object)))
-    (setf (slot-value obj 'object)
-	  (wxToolBar_GetToolClientData (object-pointer obj) id))))
+ (make-wx-instance 'object
+		   (wxToolBar_GetToolClientData (object-pointer obj) id)))
 
 (defmethod tool-enabled ((obj tool-bar))
   (= 1 (wxToolBar_GetToolEnabled (object-pointer obj))))
