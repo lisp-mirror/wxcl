@@ -11,7 +11,7 @@ extern "C"
 
 EWXWEXPORT(void*, wxMenu_Create)(char* title, long style)
 {
-	return (void*) new wxMenu(title, style);
+  return (void*) new wxMenuItem(title, style);
 }
 	
 EWXWEXPORT(void, wxMenu_DeletePointer)(void* _obj)
@@ -285,11 +285,10 @@ EWXWEXPORT(void*, wxMenu_GetParent)(void* _obj)
 	return (void*)((wxMenu*)_obj)->GetParent();
 }
 	
-
-EWXWEXPORT(void*, wxMenuItem_Create)()
+EWXWEXPORT(void*, wxMenuItem_Create)(wxMenu* parentMenu,int id, char* text, char* helpstr, int itemkind, void* submenu)
 {
-	return (void*) new wxMenuItem();
-}
+  return (void*) new wxMenuItem(parentMenu, id, text, helpstr, (wxItemKind)itemkind, (wxMenu*)submenu );
+}  
 	
 EWXWEXPORT(void, wxMenuItem_Delete)(void* _obj)
 {
@@ -300,7 +299,12 @@ EWXWEXPORT(void*, wxMenuItem_GetMenu)(void* _obj)
 {
 	return (void*)((wxMenuItem*)_obj)->GetMenu();
 }
-	
+
+EWXWEXPORT(void*, wxMenuItem_SetMenu)(void* _obj, wxMenu *parent)
+{
+	return (void*)((wxMenuItem*)_obj)->GetMenu(parent);
+}
+  
 EWXWEXPORT(void, wxMenuItem_SetId)(void* _obj, int id)
 {
 	((wxMenuItem*)_obj)->SetId(id);

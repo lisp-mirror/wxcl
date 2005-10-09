@@ -20,11 +20,6 @@ EWXWEXPORT(int,wxToggleButton_GetValue)(void* _obj)
 	return (int)((wxToggleButton*)_obj)->GetValue();
 }
 	
-EWXWEXPORT(void,wxToggleButton_SetLabel)(void* _obj, void* label)
-{
-	((wxToggleButton*)_obj)->SetLabel((char*)label);
-}
-	
 EWXWEXPORT(int,wxToggleButton_Enable)(void* _obj, int enable)
 {
 	return (int)((wxToggleButton*)_obj)->Enable(enable != 0);

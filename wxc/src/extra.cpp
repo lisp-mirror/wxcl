@@ -1645,24 +1645,6 @@ EWXWEXPORT(void*, wxTimerEx_GetClosure)(void* _obj)
   return (void*)(((wxTimerEx*)_obj)->GetClosure());
 }
 
-
-/*-----------------------------------------------------------------------------
-  menu items
------------------------------------------------------------------------------*/
-EWXWEXPORT(void*, wxMenuItem_CreateSeparator)()
-{
-  return (void*) new wxMenuItem( NULL, wxID_SEPARATOR, "", "", wxITEM_SEPARATOR, NULL );
-}
-
-
-EWXWEXPORT(void*, wxMenuItem_CreateEx)(int id, char* text, char* helpstr, int itemkind, void* submenu)
-{
-  return (void*) new wxMenuItem( NULL, id, text, helpstr, (wxItemKind)itemkind, (wxMenu*)submenu );
-}
-
-
-
-
 /*------------------------------------------------------------------------------
   process
 ------------------------------------------------------------------------------*/

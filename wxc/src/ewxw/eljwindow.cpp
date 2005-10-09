@@ -48,11 +48,13 @@ EWXWEXPORT(void, wxWindow_SetLabel)(void* _obj, char* _title)
 	((wxWindow*)_obj)->SetLabel(_title);
 }
 	
-EWXWEXPORT(int, wxWindow_GetLabel)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxWindow_GetLabel)(void* _obj)
 {
 	wxString result = ((wxWindow*)_obj)->GetLabel().c_str();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(int, wxWindow_GetLabelEmpty)(void* _obj)
@@ -65,11 +67,13 @@ EWXWEXPORT(void, wxWindow_SetName)(void* _obj, char* _name)
 	((wxWindow*)_obj)->SetName(_name);
 }
 	
-EWXWEXPORT(int, wxWindow_GetName)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxWindow_GetName)(void* _obj)
 {
 	wxString result =((wxWindow*)_obj)->GetName();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(void, wxWindow_SetId)(void* _obj, int _id)
