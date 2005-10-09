@@ -29,12 +29,12 @@
 	   :wxMenuBar_Check
 	   :wxMenuBar_IsChecked
 	   :wxMenuBar_IsEnabled
-	   :wxMenuBar_SetItemLabel
+	   :wxMenuBar_SetLabel
 	   :wxMenuBar_GetLabel
 	   :wxMenuBar_SetHelpString
 	   :wxMenuBar_GetHelpString
 	   :wxMenuBar_Enable
-	   :wxMenuBar_SetLabel))
+	   :wxMenuBar_Refresh))
 
 (in-package :wxMenuBar)
 (ffi:default-foreign-language :stdc)
@@ -126,9 +126,8 @@
 (ffi:def-call-out wxMenuBar_GetLabelTop
     (:name "wxMenuBar_GetLabelTop")
   (:arguments (_obj (ffi:c-pointer wxMenuBar))
-	      (pos ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+	      (pos ffi:int))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxMenuBar_FindMenuItem
@@ -182,8 +181,8 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(ffi:def-call-out wxMenuBar_SetItemLabel
-    (:name "wxMenuBar_SetItemLabel")
+(ffi:def-call-out wxMenuBar_SetLabel
+    (:name "wxMenuBar_SetLabel")
   (:arguments (_obj (ffi:c-pointer wxMenuBar))
 	      (id ffi:int)
 	      (label ffi:c-string))
@@ -192,9 +191,8 @@
 (ffi:def-call-out wxMenuBar_GetLabel
     (:name "wxMenuBar_GetLabel")
   (:arguments (_obj (ffi:c-pointer wxMenuBar))
-	      (id ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+	      (id ffi:int))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxMenuBar_SetHelpString
@@ -207,26 +205,23 @@
 (ffi:def-call-out wxMenuBar_GetHelpString
     (:name "wxMenuBar_GetHelpString")
   (:arguments (_obj (ffi:c-pointer wxMenuBar))
-	      (id ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+	      (id ffi:int))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxMenuBar_Enable
     (:name "wxMenuBar_Enable")
   (:arguments (_obj (ffi:c-pointer wxMenuBar))
 	      (enable ffi:int))
-  (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxMenuBar_SetLabel
-    (:name "wxMenuBar_SetLabel")
-  (:arguments (_obj (ffi:c-pointer wxMenuBar))
-	      (s ffi:c-string))
   (:library +library-name+))
 
 (ffi:def-call-out wxMenuBar_GetFrame
     (:name "wxMenuBar_GetFrame")
   (:arguments (_obj (ffi:c-pointer wxMenuBar)))
   (:return-type (ffi:c-pointer NIL))
+  (:library +library-name+))
+
+(ffi:def-call-out wxMenuBar_Refresh
+    (:name "wxMenuBar_Refresh")
+  (:arguments (_obj (ffi:c-pointer wxMenuBar)))
   (:library +library-name+))

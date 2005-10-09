@@ -13,7 +13,6 @@
    :wxToggleButton_Create
    :wxToggleButton_SetValue
    :wxToggleButton_GetValue
-   :wxToggleButton_SetLabel
    :wxToggleButton_Enable
    :wxcl-create-toggle-button
    :expEVT_COMMAND_TOGGLEBUTTON_CLICKED))
@@ -51,13 +50,6 @@
     (:name "wxToggleButton_GetValue")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxToggleButton_SetLabel
-    (:name "wxToggleButton_SetLabel")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (label (ffi:c-pointer NIL)))
-  (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxToggleButton_Enable

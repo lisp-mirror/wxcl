@@ -46,31 +46,16 @@
 
 (def-c-type wxMenuItem NIL)
 
-(defconstant wxITEM_SEPARATOR -1)
-(defconstant wxITEM_NORMAL 0)
-(defconstant wxITEM_CHECK 1)
-(defconstant wxITEM_RADIO 2)
-
 (defconstant wxITEM_SUBMENU 1000)
 
-
 (ffi:def-call-out wxMenuItem_Create
-    (:name "wxMenuItem_Create")
-  (:return-type (ffi:c-pointer wxMenuItem))
-  (:library +library-name+))
-
-(ffi:def-call-out wxMenuItem_CreateSeparator
-	(:name "wxMenuItem_CreateSeparator")
-	(:return-type (ffi:c-pointer NIL))
-	(:library +library-name+))
-
-(ffi:def-call-out wxMenuItem_CreateEx
-	(:name "wxMenuItem_CreateEx")
-	(:arguments (id ffi:int)
-		(text ffi:c-string)
-		(helpstr ffi:c-string)
-		(itemkind ffi:int)
-		(submenu (ffi:c-pointer NIL)))
+	(:name "wxMenuItem_Create")
+	(:arguments (parent (ffi:c-pointer NIL))
+		    (id ffi:int)
+		    (text ffi:c-string)
+		    (helpstr ffi:c-string)
+		    (itemkind ffi:int)
+		    (submenu (ffi:c-pointer NIL)))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
@@ -84,6 +69,12 @@
     (:name "wxMenuItem_GetMenu")
   (:arguments (_obj (ffi:c-pointer wxMenuItem)))
   (:return-type (ffi:c-pointer NIL))
+  (:library +library-name+))
+
+(ffi:def-call-out wxMenuItem_SetMenu
+    (:name "wxMenuItem_SetMenu")
+  (:arguments (_obj (ffi:c-pointer wxMenuItem))
+	      (_obj (ffi:c-pointer NIL)))
   (:library +library-name+))
 
 (ffi:def-call-out wxMenuItem_SetId
@@ -114,23 +105,20 @@
 
 (ffi:def-call-out wxMenuItem_GetLabel
     (:name "wxMenuItem_GetLabel")
-  (:arguments (_obj (ffi:c-pointer wxMenuItem))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxMenuItem)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxMenuItem_GetText
     (:name "wxMenuItem_GetText")
-  (:arguments (_obj (ffi:c-pointer wxMenuItem))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxMenuItem)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxMenuItem_GetLabelFromText
     (:name "wxMenuItem_GetLabelFromText")
-  (:arguments (text (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (text (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxMenuItem_SetCheckable
@@ -200,7 +188,6 @@
 
 (ffi:def-call-out wxMenuItem_GetHelp
     (:name "wxMenuItem_GetHelp")
-  (:arguments (_obj (ffi:c-pointer wxMenuItem))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxMenuItem)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
