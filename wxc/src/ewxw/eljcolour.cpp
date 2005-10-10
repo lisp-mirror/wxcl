@@ -22,9 +22,9 @@ EWXWEXPORT(void*, wxColour_CreateRGB) (char _red, char _green, char _blue)
 	return (void*) new wxColour(_red, _green, _blue);
 }
 
-EWXWEXPORT(void*, wxColour_CreateByName) (void* _name)
+EWXWEXPORT(void*, wxColour_CreateByName) (char* _name)
 {
-	return (void*) new wxColour((char*)_name);
+	return (void*) new wxColour(_name);
 }
 
 EWXWEXPORT(void, wxColour_Delete)(void* _obj)
@@ -35,11 +35,6 @@ EWXWEXPORT(void, wxColour_Delete)(void* _obj)
 EWXWEXPORT(void, wxColour_Set)(void* _obj, char _red, char _green, char _blue)
 {
 	((wxColour*)_obj)->Set(_red, _green, _blue);
-}
-	
-EWXWEXPORT(void, wxColour_Assign)(void* _obj, void* other)
-{
-	*((wxColour*)_obj) = *((wxColour*)other);
 }
 	
 EWXWEXPORT(int, wxColour_Ok)(void* _obj)
@@ -67,19 +62,19 @@ EWXWEXPORT(int, wxColour_GetPixel)(void* _obj)
 	return ((wxColour*)_obj)->GetPixel();
 }
 
-EWXWEXPORT(void, wxColour_Copy)(void* _obj, void* _other)
+EWXWEXPORT(void*, wxColour_Copy)(void* _obj)
 {
-	(*((wxColour*)_obj)) = (*((wxColour*)_other));
+	return new wxColour(*((wxColour*)_other));
 }
 
-EWXWEXPORT(void, wxColour_SetByName)(void* _obj, void* _name)
+EWXWEXPORT(void, wxColour_SetByName)(void* _obj, char* _name)
 {
-	(*((wxColour*)_obj)) = (char*)_name;
+	(*((wxColour*)_obj)) = _name;
 }
 
-EWXWEXPORT(int, wxColour_ValidName)(void* _name)
+EWXWEXPORT(int, wxColour_ValidName)(char* _name)
 {
-	return (int) wxTheColourDatabase->FindColour ((char*)_name);
+	return (int) wxTheColourDatabase->FindColour (_name);
 }
 
 }
