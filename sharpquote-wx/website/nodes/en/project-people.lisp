@@ -12,7 +12,7 @@
   ((:li class "enum")
    ((:a :href* :hp-joerg) "J&ouml;rg Preisend&ouml;rfer") " (Germany)")
   ((:li class "enum")
-   ((:a :href* :hp-jack) "Jack Unrue") " (-)")
+   ((:a :href* :hp-jack) "Jack Unrue") " (USA)")
   ((:li class "enum")
    "and others")
   )
