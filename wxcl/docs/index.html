@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+<style type="text/css">
+body {
+  background-color: #f0f0ea;
+}
+
+.symbol { color : #770055; background-color : transparent; border: 0px; margin: 0px;}
+a.symbol:link { color : #229955; background-color : transparent; text-decoration: none; border: 0px; margin: 0px; }
+a.symbol:active { color : #229955; background-color : transparent; text-decoration: none; border: 0px; margin: 0px; }
+a.symbol:visited { color : #229955; background-color : transparent; text-decoration: none; border: 0px; margin: 0px; }
+a.symbol:hover { color : #229955; background-color : transparent; text-decoration: none; border: 0px; margin: 0px; }
+.special { color : #FF5000; background-color : inherit; }
+.keyword { color : #770000; background-color : inherit; }
+.comment { color : #007777; background-color : inherit; }
+.string { color : #777777; background-color : inherit; }
+.character { color : #0055AA; background-color : inherit; }
+.syntaxerror { color : #FF0000; background-color : inherit; }
+span.paren1 { color : inherit; background-color : #BAFFFF; }
+span.paren2:hover { color : inherit; background-color : #FFCACA; }
+span.paren3:hover { color : inherit; background-color : #FFFFBA; }
+span.paren4:hover { color : inherit; background-color : #CACAFF; }
+span.paren5:hover { color : inherit; background-color : #CAFFCA; }
+span.paren6:hover { color : inherit; background-color : #FFBAFF; }
+
+.default { background-color: white; color: black; }
+.default:hover { background-color: white; color: black; }
+</style>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>wxCL.</title>
+      <LINK  TYPE="text/css" REL="stylesheet" HREF="/lisppaste.css">
+	<link rev="made" href="mailto:wxcl-devel/at/lists.sourceforge.net" />
+	  <meta name="generator" content="DocBook XSL Stylesheets V2005-07-12_04:47_snapshot" />
+	    <meta name="description" content="These notes describe how to use the wxCL library.
+	      Bugs both in these notes and in wxCL itself should be& reported to the mailing list wxcl-devel/at/lists.sourceforge.net" />
+	      <meta name="keywords" content="wxCL, Lisp, Common Lisp, wxWidgets, CLISP" />
+  </head>
+  <body>
+    <div class="book" lang="en" xml:lang="en">
+      <div class="titlepage"><div>
+	  <div><h1 class="title">
+	      <a id="impnotes-top"></a>
+
+	      Quick start guide on <a href="http://www.wxcl-project.org/" target="_top">
+		<span><strong class="command">wxCL</strong></span></a>
+	      version 1.1.1.</h1></div><div>
+
+	    <h3 class="corpauthor"><span class="inlinemediaobject"><img src="wxcl-logo-60.png" /></span></h3></div>
+	  <div><div class="author"><h3 class="author"><span class="firstname">Surendra</span> 
+		<span class="surname">Singhi</span></h3></div></div>
+
+	  <div><p class="copyright">Copyright &copy; 2005 Surendra Singhi</p></div>
+
+	  <div class="preface">
+	    <p class="title">
+	      
+	      <b>Preface</b>
+	    </p>
+	    <p>This document describes 
+	      <a href="http://www.wxcl-project.org/" target="_top">
+		<span><strong class="command">wxCL</strong></span>
+	      </a>= wxWidgets + Common Lisp; common lisp binding to wxWidgets library.
+
+	    </p>
+	    <p>Bugs both in this document and in 
+	      <a href="http://www.wxcl-project.org/" target="_top">
+		<span><strong class="command">wxCL</strong></span>
+	      </a> itself should be reported to the mailing list 
+	      <code class="email">&lt;
+		<a href="mailto:wxcl-devel/at/lists.sourceforge.net">
+		  <a href="http://lists.sourceforge.net/lists/listinfo/wxcl-list" target="_top">
+		    wxcl-devel/at/lists.sourceforge.net</a>
+		</a>
+		&gt;</code>.
+	    </p>
+	  </div>
+	</div>
+	<hr/>
+      </div>
+      <h2>Downloading and Installing wxCL </h2>
+      <p>
+	<b>Window Users: </b> Download and unzip the
+	library. The wxCL project provides a "*.dll" file in 
+	the miscellaneous folder. The file wxcl.lisp in the folder
+	"clisp-wrappers" defines the constant variable <i>+library-name+</i>
+	which contains the relative path to the aforementioned dll file. 
+      </p>
+      <p>
+	<b>Linux/Mac Users: </b> To use the library you need to
+	compile and make a dynamically linked library for your
+	platform. The instructions for building and linking the
+	library can be found at wxHaskell project:
+	<a href="http://wxhaskell.sourceforge.net/building.html">http://wxhaskell.sourceforge.net/building.html</a> 
+      </p>
+
+      <p>Before compiling and loading the wxCL library, edit the
+	clisp-wrappers/wxCL.lisp, and make sure that the variable
+	+library-name+ is pointing to the correct location.
+
+      To load the library you can use <i>asdf</i> or
+      <i>asdf-install</i>. The <i>wxcl.asd</i> file makes sure that
+      all the files are loaded in the correct order. If you want you
+      can also create a memory image and save it for faster
+      loading.<br/>
+      <a href="http://www.weitz.de/">Dr. Edmund Weitz</a> 
+	has written a nice 
+	<a href="http://www.weitz.de/asdf-install/">tutorial</a> on how
+	to use asdf-install. 
+	<br/>	<br/>
+      The alternative to using asdf is writing a script which will 
+      load all the files in the clisp-wrappers folder, loading the
+	  files in wrong order may cause hard to debug lisp crashes,
+	  look at the <i>wxcl.asd</i> file for dependency orderings. 
+      </p>	  
+      <h2>Running Examples </h2>
+	  <p>
+        To run the examples which are part of wxCL, you need to first
+	  go to the folder containing the examples file, and then load
+	  the example file with wxCL installed using asdf. Or the
+	  alternative is edit the example file and uncomment all the
+	  files which it needs, and comment the call to asdf.
+	  </p>
+
+	  <h2>Creating wxWidget GUI's and generating the corresponding
+	wxCL code </h2>
+<p>As of now, the cvs version of <a
+	  href="http://wxglade.sourceforge.net/">wxGlade</a> provides,
+	a nice interactive way of creating GUI's and also generates
+	the corresponding lisp code. To run wxGlade you need Python and
+	wxPython to be installed, and then run the <i>wxglade.py</i>
+	    file (<i>python wxglade.py</i>). More information on
+	    wxGlade can be found on the project web page.
+
+	  <h2>Programming with wxCL </h2>
+	  <p>      
+	    The way this library works is that your lisp code needs to register for
+	    events, and then when the event happens the lisp function is
+	    called. To register for the events you need to create wrappers,
+	    a wrapper consists of a <i>callback function</i> (the lisp function
+	    which will be called by the library) and the <i>data</i> which
+	    should be passed to the function.<br />
+	      The signature of the callback function is given below:
+	      <code>
+<br/><br/>
+<span class="paren1">(<span class="default"><i><span class="symbol">FFI:DEF-C-TYPE</span></i> ClosureFun <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren2">(<span class="default">ffi:c-function <span class="paren3">(<span class="default"><span class="keyword">:arguments</span> <span class="paren4">(<span class="default">_fun <span class="paren5">(<span class="default">ffi:c-pointer NIL</span>)</span></span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren4">(<span class="default">_data <span class="paren5">(<span class="default">ffi:c-pointer NIL</span>)</span></span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren4">(<span class="default">_evt <span class="paren5">(<span class="default">ffi:c-pointer NIL</span>)</span></span>)</span></span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<span class="paren3">(<span class="default"><span class="keyword">:return-type</span> NIL</span>)</span></span>)</span></span>)</span>
+<br/><br/>
+	      </code>
+	      The first argument <i>_fun</i> which is passed is a pointer to
+	      the function itself, so this allows you to write recursive event
+	      handling functions, if you need to. The second argument is the
+	      <i>_data</i> which was given while creating the closure. The
+	      third argument <i>_evt</i> is an object of the <i>wxEvent</i>
+	      class. 
+	  </p>
+	  <p>
+	    The function <i>wxClosure_Create</i> hides the constructor of
+	    <i>wxClosure</i> class and allows you to create a closure.
+	    The definition of the function below should be self
+	    explanatory. The return value is a pointer to an object of the
+	    wxClosure class.
+	    <code>
+<br/><br/>
+<span class="paren1">(<span class="default"><i><span class="symbol">ffi:def-call-out</span></i> wxClosure_Create <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:name</span> <span class="string">"wxClosure_Create"</span></span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:arguments</span> <span class="paren3">(<span class="default">fun ClosureFun</span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren3">(<span class="default">data <span class="paren4">(<span class="default">ffi:c-pointer NIL</span>)</span></span>)</span></span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:return-type</span> <span class="paren3">(<span class="default">ffi:c-pointer wxClosure</span>)</span></span>)</span></span>)</span>
+<br/><br/>
+	    </code>   
+
+	      <strong>Note:</strong>When the program ends, the
+	      destructor for the wrappers calls the callback functions
+	      with a null event, so that they can do any cleaning up
+	      (if necessary). So, its always a wise thing to make
+	      sure that in your call back functions, there is an `if`
+	      condition checking whether the event is null or not.
+         </p>
+
+	    To initialize the library you need to call the
+	    <i>ELJApp_InitializeC</i> function whose signature is given
+	    below. Once this function is called, control returns to you
+	    only by means of callback functions. This function after
+	    initializing the library calls the callback function in the  
+	    closure passed to it, so that the GUI can be initialized.
+
+	    <code>
+	  <br/><br/>
+<span class="paren1">(<span class="default"><i><span class="symbol">ffi:def-call-out</span></i> ELJApp_InitializeC<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:name</span> <span class="string">"ELJApp_InitializeC"</span></span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:arguments</span> <span class="paren3">(<span class="default">closure <span class="paren4">(<span class="default">ffi:c-pointer wxClosure</span>)</span></span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren3">(<span class="default">_argc ffi:int</span>)</span><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="paren3">(<span class="default">_argv <span class="paren4">(<span class="default">ffi:c-array-ptr ffi:c-string</span>)</span></span>)</span></span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:return-type</span> NIL</span>)</span><br>&nbsp;&nbsp;<span class="paren2">(<span class="default"><span class="keyword">:library</span> +library-name+</span>)</span></span>)</span>
+<br/><br/>
+	    </code>
+
+<p>The wxWidgets versions other than 2.4.2 suffer from the problem
+	that when the application exits all the static initializers
+	are not properly closed or uninitialized. So, if you try to
+	load the wxCL program second time lisp crashes, the way to
+	avoid this problem is that you close the library every time
+	you finish running the wxCL program this will ensure that when
+	you run the program through the interpreter once again lisp
+	will not crash.
+</p>
+<code>
+<span class="paren1">(<span class="default"><span class="keyword">ffi:close-foreign-library
+	  <span	class="string">"../miscellaneous/wxc-msw2.6.2.dll"</span></span></span>)</span>
+<code/>
+
+<p>Hope this helps, more information can be found by looking at the
+		examples, if you still have doubts then ask on the
+		mailing list.
+</p>
+	    <hr/>
+	      <address><a href="http://www.public.asu.edu/~sksinghi/index.html">Surendra Singhi</a></address>
+	      <!-- Created: Sat Aug 13 23:58:01 US Mountain Standard Time 2005 -->
+	      <!-- hhmts start -->
+Last modified: Fri Sep 23 20:19:04 US Mountain Standard Time 2005
+<!-- hhmts end -->
+  </body>
+</html>
