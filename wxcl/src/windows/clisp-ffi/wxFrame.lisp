@@ -7,37 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxFrame
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxFrame_Create
-	   :wxFrame_CreateStatusBar
-	   :wxFrame_Maximize
-	   :wxFrame_Restore
-	   :wxFrame_Iconize
-	   :wxFrame_IsMaximized
-	   :wxFrame_IsIconized
-	   :wxFrame_GetIcon
-	   :wxFrame_SetIcon
-	   :wxFrame_GetTitle
-	   :wxFrame_SetTitle
-	   :wxFrame_SetShape
-	   :wxFrame_ShowFullScreen
-	   :wxFrame_IsFullScreen
-	   :wxFrame_Centre
-	   :wxFrame_GetClientAreaOrigin_left
-	   :wxFrame_GetClientAreaOrigin_top
-	   :wxFrame_SetMenuBar
-	   :wxFrame_GetMenuBar
-	   :wxFrame_GetStatusBar
-	   :wxFrame_SetStatusBar
-	   :wxFrame_SetStatusText
-	   :wxFrame_SetStatusWidths
-	   :wxFrame_CreateToolBar
-	   :wxFrame_GetToolBar
-	   :wxFrame_SetToolBar
-))
-
-(in-package :wxFrame)
+(in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)
 

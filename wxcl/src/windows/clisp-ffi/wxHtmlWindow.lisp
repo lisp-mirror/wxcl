@@ -7,37 +7,37 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxHtmlWindow
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxHtmlWindow_Create
-	   :wxcHtmlWindow_Create
-	   :wxHtmlWindow_AppendToPage
-	   :wxHtmlWindow_GetInternalRepresentation
-	   :wxHtmlWindow_GetOpenedAnchor
-	   :wxHtmlWindow_GetOpenedPage
-	   :wxHtmlWindow_GetOpenedPageTitle
-	   :wxHtmlWindow_GetRelatedFrame
-	   :wxHtmlWindow_HistoryBack
-	   :wxHtmlWindow_HistoryCanBack
-	   :wxHtmlWindow_HistoryCanForward
-	   :wxHtmlWindow_HistoryClear
-	   :wxHtmlWindow_HistoryForward
-	   :wxHtmlWindow_LoadPage
-	   :wxHtmlWindow_ReadCustomization
-	   :wxHtmlWindow_SetBorders
-	   :wxHtmlWindow_SetFonts
-	   :wxHtmlWindow_SetPage
-	   :wxHtmlWindow_SetRelatedFrame
-	   :wxHtmlWindow_SetRelatedStatusBar
-	   :wxHtmlWindow_WriteCustomization
-	   :wxcHtmlEvent_GetMouseEvent
-	   :wxcHtmlEvent_GetHtmlCell
-	   :wxcHtmlEvent_GetHtmlCellId
-	   :wxcHtmlEvent_GetHref
-	   :wxcHtmlEvent_GetTarget
-	   :wxcHtmlEvent_GetLogicalPosition))
+; ; (defpackage :wxHtmlWindow
+; ;     (:use :common-lisp :ffi :wxCL)
+; ;   (:export :wxHtmlWindow_Create
+; ; 	   :wxcHtmlWindow_Create
+; ; 	   :wxHtmlWindow_AppendToPage
+; ; 	   :wxHtmlWindow_GetInternalRepresentation
+; ; 	   :wxHtmlWindow_GetOpenedAnchor
+; ; 	   :wxHtmlWindow_GetOpenedPage
+; ; 	   :wxHtmlWindow_GetOpenedPageTitle
+; ; 	   :wxHtmlWindow_GetRelatedFrame
+; ; 	   :wxHtmlWindow_HistoryBack
+; ; 	   :wxHtmlWindow_HistoryCanBack
+; ; 	   :wxHtmlWindow_HistoryCanForward
+; ; 	   :wxHtmlWindow_HistoryClear
+; ; 	   :wxHtmlWindow_HistoryForward
+; ; 	   :wxHtmlWindow_LoadPage
+; ; 	   :wxHtmlWindow_ReadCustomization
+; ; 	   :wxHtmlWindow_SetBorders
+; ; 	   :wxHtmlWindow_SetFonts
+; ; 	   :wxHtmlWindow_SetPage
+; ; 	   :wxHtmlWindow_SetRelatedFrame
+; ; 	   :wxHtmlWindow_SetRelatedStatusBar
+; ; 	   :wxHtmlWindow_WriteCustomization
+; ; 	   :wxcHtmlEvent_GetMouseEvent
+; ; 	   :wxcHtmlEvent_GetHtmlCell
+; ; 	   :wxcHtmlEvent_GetHtmlCellId
+; ; 	   :wxcHtmlEvent_GetHref
+; ; 	   :wxcHtmlEvent_GetTarget
+; ; 	   :wxcHtmlEvent_GetLogicalPosition))
 
-(in-package :wxHtmlWindow)
+(in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)
 

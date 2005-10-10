@@ -1,3 +1,12 @@
+;;;object.lisp
+;;;License  : wxWindows License 3.1
+;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
+;;;Copyright (C) 2005 Surendra Singhi 
+;;;See the file LICENSE for information on usage and redistribution.
+;;;
+;;; $Header$
+;;;
+
 (in-package :wxCL)
 
 (defclass object ()
@@ -27,7 +36,7 @@
     pt)
 	  
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (defconstant default-position
+  (defconstant +default-position+
     (make-instance 'point)))
 
 
@@ -45,7 +54,7 @@
     sz)
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (defconstant default-size
+  (defconstant +default-size+
     (make-instance 'size)))
 
 

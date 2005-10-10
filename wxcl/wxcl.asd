@@ -31,11 +31,19 @@
 		 ((#:albert #:docbook #:bgcolor) . "white")
 		 ((#:albert #:docbook #:textcolor) . "black"))
     :components ((:file "defpackage")
+		 (:module "clisp-ffi"
+			  :depends-on ("defpackage")
+			  :components ((:file "wx_main")
+				       (:file "wx_wrapper") 
+				       (:file "wxAcceleratorEntry")
+				       (:file "wxCL")))
 		 (:file "object" :depends-on ("defpackage"))
-		 (:file "app" :depends-on ("object"))
+		 (:file "app" :depends-on ("object" "clisp-ffi"))
+		 (:file "closure" :depends-on ("object" "clisp-ffi"))
  		 (:module "clipboard")
- 		 (:module "controls"
- 			  :components ((:file "defpackage")
+		 #+never(:module "controls"
+				 :depends-on ("object")
+				 :components ((:file "defpackage")
 				       (:module "clisp-ffi"
 						:depends-on ("defpackage")
 						:components ((:file "wxControl")
@@ -53,27 +61,31 @@
  		 (:module "db")
  		 (:module "dc")
  		 (:module "dialogs")
- 		 (:module "events"
+ 		 #+never(:module "events"
+			  :depends-on ("object")				 
 			  :components ((:file "defpackage")
 				       (:module "clisp-ffi"
 						:depends-on ("defpackage")
 						:components ((:file "wxEvtHandler")))
  				       (:file "evt-handler" :depends-on ("clisp-ffi"))))
- 		 (:module "gdi"
+ 		 #+never(:module "gdi"
+			  :depends-on ("object")				 
 			  :components ((:file "defpackage")
 				       (:module "clisp-ffi"
 						:depends-on ("defpackage")
 						:components ((:file "wxColour")))
  				       (:file "colour" :depends-on ("clisp-ffi"))))
  		 (:module "help")
- 		 (:module "layout"
+ 		 #+never(:module "layout"
+			  :depends-on ("object")				 
 			  :components ((:file "defpackage")
 				       (:module "clisp-ffi"
 						:depends-on ("defpackage")
 						:components ((:file "wxSizer")))
  				       (:file "sizer" :depends-on ("clisp-ffi"))
  				       (:file "box-sizer" :depends-on ("sizer"))))
- 		 (:module "menus"
+ 		 #+never(:module "menus"
+			  :depends-on ("object")
 			  :components ((:file "defpackage")
 				       (:module "clisp-ffi"
 						:depends-on ("defpackage")
@@ -86,5 +98,18 @@
  		 (:module "misc")
  		 (:module "net")
  		 (:module "printing")
-		 (:module "windows")
-		 ))
+		 (:module "windows"
+			  :depends-on ("object")
+			  :components ((:file "defpackage")
+				       (:module "clisp-ffi"
+						:depends-on ("defpackage")
+						:components ((:file "wxFrame")
+							     (:file "wxWindow")
+							     (:file "wxToolBar")
+							     (:file "wxStatusBar")))
+ 				       (:file "window" :depends-on ("clisp-ffi"))
+				       (:file "frame" :depends-on ("window"))
+				       (:file "status-bar" :depends-on ("window")))
+		 )))
+
+(push :wxcl *features*)

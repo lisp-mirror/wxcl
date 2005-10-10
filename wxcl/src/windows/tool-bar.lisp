@@ -1,12 +1,26 @@
-(in-package :wxCL)
+;;;tool-bar.lisp
+;;;License  : wxWindows License 3.1
+;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
+;;;Copyright (C) 2005 Surendra Singhi 
+;;;See the file LICENSE for information on usage and redistribution.
+;;;
+;;; $Header$
+;;;
+
+(in-package :wxcl-windows)
 
 (defclass tool-bar (window)
   ()
   (:documentation "Class defining tool bar. You may also create a toolbar that is managed by\
  the frame, by calling the method create-tool-bar which specializes on a frame object."))
 
+(defconstant +tb-3dbuttons+ 16)
+(defconstant +tb-flat+ 32)
+(defconstant +tb-dockable+ 64)
+(defconstant +tb-vertical 8)
+(defconstant +tb-horizontal 4)
 
-(defun make-tool-bar (parent id &key (pos default-position) (size default-size) (style wxTB_HORIZONTAL))
+(defun make-tool-bar (parent id &key (pos default-position) (size default-size) (style +tb-horizontal+))
   (make-wx-instance 'tool-bar
 		    (wxToolBar_Create (object-pointer parent) id (point-x pos) (point-y pos)
 				      (size-width size) (size-height size) style)))
@@ -97,19 +111,19 @@
 (defmethod insert-separator ((obj tool-bar) pos)
     (wxToolBar_InsertSeparator (object-pointer obj) pos))
 
-(defmethod wxToolBar_InsertTool
-    (:name "wxToolBar_InsertTool")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (pos ffi:int)
-	      (id ffi:int)
-	      (bmp1 (ffi:c-pointer NIL))
-	      (bmp2 (ffi:c-pointer NIL))
-	      (tgl ffi:int)
-	      (dat (ffi:c-pointer NIL))
-	      (shelp (ffi:c-pointer NIL))
-	      (lhelp (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod wxToolBar_InsertTool
+;     (:name "wxToolBar_InsertTool")
+;   (:arguments (_obj (ffi:c-pointer NIL))
+; 	      (pos ffi:int)
+; 	      (id ffi:int)
+; 	      (bmp1 (ffi:c-pointer NIL))
+; 	      (bmp2 (ffi:c-pointer NIL))
+; 	      (tgl ffi:int)
+; 	      (dat (ffi:c-pointer NIL))
+; 	      (shelp (ffi:c-pointer NIL))
+; 	      (lhelp (ffi:c-pointer NIL)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
 (defmethod realize ((obj tool-bar))
     (= 1 (wxToolBar_Realize (object-pointer obj))))
@@ -141,14 +155,14 @@
 (defmethod toggle-tool ((obj tool-bar) id toggle)
     (wxToolBar_ToggleTool (object-pointer obj) id (if toggle 1 0)))
 
-(defmethod wxToolBar_AddTool2
-    (:name "wxToolBar_AddTool2")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (toolId ffi:int)
-	      (label ffi:c-string)
-	      (bmp (ffi:c-pointer NIL))
-	      (bmpDisabled (ffi:c-pointer NIL))
-	      (itemKind ffi:int)
-	      (shortHelp ffi:c-string)
-	      (longHelp ffi:c-string))
-  (:library +library-name+))
+; (defmethod wxToolBar_AddTool2
+;     (:name "wxToolBar_AddTool2")
+;   (:arguments (_obj (ffi:c-pointer NIL))
+; 	      (toolId ffi:int)
+; 	      (label ffi:c-string)
+; 	      (bmp (ffi:c-pointer NIL))
+; 	      (bmpDisabled (ffi:c-pointer NIL))
+; 	      (itemKind ffi:int)
+; 	      (shortHelp ffi:c-string)
+; 	      (longHelp ffi:c-string))
+;   (:library +library-name+))

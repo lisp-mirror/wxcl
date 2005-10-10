@@ -7,17 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wx_main
-    (:use :common-lisp :ffi :wxCL :wx_wrapper)
-  (:export :ELJApp_InitializeC
-	   :wxClosure
-	   :ClosureFun
-	   :wxClosure_Create
-	   :with-wxcl
-					;:ELJApp_initialize
-	   ))
-
-(in-package :wx_main)
+(in-package :wxCL)
 
 (ffi:default-foreign-language :stdc)
 

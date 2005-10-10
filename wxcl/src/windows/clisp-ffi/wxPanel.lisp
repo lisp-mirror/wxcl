@@ -7,14 +7,14 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxPanel
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxPanel_Create
-	   :wxPanel_InitDialog
-	   :wxPanel_GetDefaultItem
-	   :wxPanel_SetDefaultItem))
+; (defpackage :wxPanel
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export :wxPanel_Create
+; 	   :wxPanel_InitDialog
+; 	   :wxPanel_GetDefaultItem
+; 	   :wxPanel_SetDefaultItem))
 
-(in-package :wxPanel)
+(in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)
 

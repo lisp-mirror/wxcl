@@ -7,12 +7,12 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxMiniFrame
-  (:use :common-lisp :ffi :WxCL)
-  (:export
-	:wxMiniFrame_Create))
+; (defpackage :wxMiniFrame
+;   (:use :common-lisp :ffi :WxCL)
+;   (:export
+; 	:wxMiniFrame_Create))
 
-(in-package :wxMiniframe)
+(in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)
 

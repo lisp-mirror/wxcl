@@ -7,282 +7,282 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxGrid
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxGridCellCoordsArray_Create
-	:wxGridCellCoordsArray_Delete
-	:wxGridCellCoordsArray_GetCount
-	:wxGridCellCoordsArray_Item
-	:wxGridCellEditor_IsCreated
-	:wxGridCellEditor_GetControl
-	:wxGridCellEditor_SetControl
-	:wxGridCellEditor_Create
-	:wxGridCellEditor_SetSize
-	:wxGridCellEditor_Show
-	:wxGridCellEditor_PaintBackground
-	:wxGridCellEditor_BeginEdit
-	:wxGridCellEditor_EndEdit
-	:wxGridCellEditor_Reset
-	:wxGridCellEditor_IsAcceptedKey
-	:wxGridCellEditor_StartingKey
-	:wxGridCellEditor_StartingClick
-	:wxGridCellEditor_HandleReturn
-	:wxGridCellEditor_Destroy
-	:wxGridCellEditor_SetParameters
-	:wxGridCellTextEditor_Ctor
-	:wxGridCellTextEnterEditor_Ctor
-	:wxGridCellNumberEditor_Ctor
-	:wxGridCellFloatEditor_Ctor
-	:wxGridCellBoolEditor_Ctor
-	:wxGridCellChoiceEditor_Ctor
-	:wxGridCellAttr_Ctor
-	:wxGridCellAttr_IncRef
-	:wxGridCellAttr_DecRef
-	:wxGridCellAttr_SetTextColour
-	:wxGridCellAttr_SetBackgroundColour
-	:wxGridCellAttr_SetFont
-	:wxGridCellAttr_SetAlignment
-	:wxGridCellAttr_SetReadOnly
-	:wxGridCellAttr_SetRenderer
-	:wxGridCellAttr_SetEditor
-	:wxGridCellAttr_HasTextColour
-	:wxGridCellAttr_HasBackgroundColour
-	:wxGridCellAttr_HasFont
-	:wxGridCellAttr_HasAlignment
-	:wxGridCellAttr_HasRenderer
-	:wxGridCellAttr_HasEditor
-	:wxGridCellAttr_GetTextColour
-	:wxGridCellAttr_GetBackgroundColour
-	:wxGridCellAttr_GetFont
-	:wxGridCellAttr_GetAlignment
-	:wxGridCellAttr_GetRenderer
-	:wxGridCellAttr_GetEditor
-	:wxGridCellAttr_IsReadOnly
-	:wxGridCellAttr_SetDefAttr
-	:wxGrid_Create
-	:wxGrid_CreateGrid
-	:wxGrid_SetSelectionMode
-	:wxGrid_GetNumberRows
-	:wxGrid_GetNumberCols
-	:wxGrid_CalcRowLabelsExposed
-	:wxGrid_CalcColLabelsExposed
-	:wxGrid_CalcCellsExposed
-	:wxGrid_NewCalcCellsExposed
-	:wxGrid_ProcessRowLabelMouseEvent
-	:wxGrid_ProcessColLabelMouseEvent
-	:wxGrid_ProcessCornerLabelMouseEvent
-	:wxGrid_ProcessGridCellMouseEvent
-	:wxGrid_ProcessTableMessage
-	:wxGrid_DoEndDragResizeRow
-	:wxGrid_DoEndDragResizeCol
-	:wxGrid_GetTable
-	:wxGrid_SetTable
-	:wxGrid_ClearGrid
-	:wxGrid_InsertRows
-	:wxGrid_AppendRows
-	:wxGrid_DeleteRows
-	:wxGrid_InsertCols
-	:wxGrid_AppendCols
-	:wxGrid_DeleteCols
-	:wxGrid_DrawGridCellArea
-	:wxGrid_NewDrawGridCellArea
-	:wxGrid_DrawGridSpace
-	:wxGrid_DrawCellBorder
-	:wxGrid_DrawAllGridLines
-	:wxGrid_DrawCell
-	:wxGrid_DrawHighlight
-	:wxGrid_NewDrawHighlight
-	:wxGrid_DrawCellHighlight
-	:wxGrid_DrawRowLabels
-	:wxGrid_DrawRowLabel
-	:wxGrid_DrawColLabels
-	:wxGrid_DrawColLabel
-	:wxGrid_DrawTextRectangle
-	:wxGrid_StringToLines
-	:wxGrid_GetTextBoxSize
-	:wxGrid_BeginBatch
-	:wxGrid_EndBatch
-	:wxGrid_GetBatchCount
-	:wxGrid_IsEditable
-	:wxGrid_EnableEditing
-	:wxGrid_EnableCellEditControl
-	:wxGrid_DisableCellEditControl
-	:wxGrid_CanEnableCellControl
-	:wxGrid_IsCellEditControlEnabled
-	:wxGrid_IsCellEditControlShown
-	:wxGrid_IsCurrentCellReadOnly
-	:wxGrid_ShowCellEditControl
-	:wxGrid_HideCellEditControl
-	:wxGrid_SaveEditControlValue
-	:wxGrid_XYToCell
-	:wxGrid_YToRow
-	:wxGrid_XToCol
-	:wxGrid_YToEdgeOfRow
-	:wxGrid_XToEdgeOfCol
-	:wxGrid_CellToRect
-	:wxGrid_GetGridCursorRow
-	:wxGrid_GetGridCursorCol
-	:wxGrid_IsVisible
-	:wxGrid_MakeCellVisible
-	:wxGrid_SetGridCursor
-	:wxGrid_MoveCursorUp
-	:wxGrid_MoveCursorDown
-	:wxGrid_MoveCursorLeft
-	:wxGrid_MoveCursorRight
-	:wxGrid_MovePageDown
-	:wxGrid_MovePageUp
-	:wxGrid_MoveCursorUpBlock
-	:wxGrid_MoveCursorDownBlock
-	:wxGrid_MoveCursorLeftBlock
-	:wxGrid_MoveCursorRightBlock
-	:wxGrid_GetDefaultRowLabelSize
-	:wxGrid_GetRowLabelSize
-	:wxGrid_GetDefaultColLabelSize
-	:wxGrid_GetColLabelSize
-	:wxGrid_GetLabelBackgroundColour
-	:wxGrid_GetLabelTextColour
-	:wxGrid_GetLabelFont
-	:wxGrid_GetRowLabelAlignment
-	:wxGrid_GetColLabelAlignment
-	:wxGrid_GetRowLabelValue
-	:wxGrid_GetColLabelValue
-	:wxGrid_GetGridLineColour
-	:wxGrid_GetCellHighlightColour
-	:wxGrid_SetRowLabelSize
-	:wxGrid_SetColLabelSize
-	:wxGrid_SetLabelBackgroundColour
-	:wxGrid_SetLabelTextColour
-	:wxGrid_SetLabelFont
-	:wxGrid_SetRowLabelAlignment
-	:wxGrid_SetColLabelAlignment
-	:wxGrid_SetRowLabelValue
-	:wxGrid_SetColLabelValue
-	:wxGrid_SetGridLineColour
-	:wxGrid_SetCellHighlightColour
-	:wxGrid_EnableDragRowSize
-	:wxGrid_DisableDragRowSize
-	:wxGrid_CanDragRowSize
-	:wxGrid_EnableDragColSize
-	:wxGrid_DisableDragColSize
-	:wxGrid_CanDragColSize
-	:wxGrid_EnableDragGridSize
-	:wxGrid_DisableDragGridSize
-	:wxGrid_CanDragGridSize
-	:wxGrid_SetRowAttr
-	:wxGrid_SetColAttr
-	:wxGrid_SetColFormatBool
-	:wxGrid_SetColFormatNumber
-	:wxGrid_SetColFormatFloat
-	:wxGrid_SetColFormatCustom
-	:wxGrid_EnableGridLines
-	:wxGrid_GridLinesEnabled
-	:wxGrid_GetDefaultRowSize
-	:wxGrid_GetRowSize
-	:wxGrid_GetDefaultColSize
-	:wxGrid_GetColSize
-	:wxGrid_GetDefaultCellBackgroundColour
-	:wxGrid_GetCellBackgroundColour
-	:wxGrid_GetDefaultCellTextColour
-	:wxGrid_GetCellTextColour
-	:wxGrid_GetDefaultCellFont
-	:wxGrid_GetCellFont
-	:wxGrid_GetDefaultCellAlignment
-	:wxGrid_GetCellAlignment
-	:wxGrid_SetDefaultRowSize
-	:wxGrid_SetRowSize
-	:wxGrid_SetDefaultColSize
-	:wxGrid_SetColSize
-	:wxGrid_AutoSizeColumn
-	:wxGrid_AutoSizeRow
-	:wxGrid_AutoSizeColumns
-	:wxGrid_AutoSizeRows
-	:wxGrid_AutoSize
-	:wxGrid_SetColMinimalWidth
-	:wxGrid_SetRowMinimalHeight
-	:wxGrid_SetDefaultCellBackgroundColour
-	:wxGrid_SetCellBackgroundColour
-	:wxGrid_SetDefaultCellTextColour
-	:wxGrid_SetCellTextColour
-	:wxGrid_SetDefaultCellFont
-	:wxGrid_SetCellFont
-	:wxGrid_SetDefaultCellAlignment
-	:wxGrid_SetCellAlignment
-	:wxGrid_SetDefaultRenderer
-	:wxGrid_SetCellRenderer
-	:wxGrid_GetDefaultRenderer
-	:wxGrid_GetCellRenderer
-	:wxGrid_SetDefaultEditor
-	:wxGrid_SetCellEditor
-	:wxGrid_GetDefaultEditor
-	:wxGrid_GetCellEditor
-	:wxGrid_GetCellValue
-	:wxGrid_SetCellValue
-	:wxGrid_IsReadOnly
-	:wxGrid_SetReadOnly
-	:wxGrid_SelectRow
-	:wxGrid_SelectCol
-	:wxGrid_SelectBlock
-	:wxGrid_SelectAll
-	:wxGrid_IsSelection
-	:wxGrid_ClearSelection
-	:wxGrid_IsInSelection
-	:wxGrid_BlockToDeviceRect
-	:wxGrid_GetSelectionBackground
-	:wxGrid_GetSelectionForeground
-	:wxGrid_SetSelectionBackground
-	:wxGrid_SetSelectionForeground
-	:wxGrid_RegisterDataType
-	:wxGrid_GetDefaultEditorForCell
-	:wxGrid_GetDefaultRendererForCell
-	:wxGrid_GetDefaultEditorForType
-	:wxGrid_GetDefaultRendererForType
-	:wxGrid_SetMargins
-	:wxGrid_GetSelectedCells
-	:wxGrid_GetSelectionBlockTopLeft
-	:wxGrid_GetSelectionBlockBottomRight
-	:wxGrid_GetSelectedRows
-	:wxGrid_GetSelectedCols
-	:ELJGridTable_Create
-	:ELJGridTable_Delete
-	:ELJGridTable_GetView
-	:ELJGridTable_SendTableMessage
-	:wxGridEvent_GetRow
-	:wxGridEvent_GetCol
-	:wxGridEvent_GetPosition
-	:wxGridEvent_Selecting
-	:wxGridEvent_ControlDown
-	:wxGridEvent_MetaDown
-	:wxGridEvent_ShiftDown
-	:wxGridEvent_AltDown
-	:wxGridSizeEvent_GetRowOrCol
-	:wxGridSizeEvent_GetPosition
-	:wxGridSizeEvent_ControlDown
-	:wxGridSizeEvent_MetaDown
-	:wxGridSizeEvent_ShiftDown
-	:wxGridSizeEvent_AltDown
-	:wxGridRangeSelectEvent_GetTopLeftCoords
-	:wxGridRangeSelectEvent_GetBottomRightCoords
-	:wxGridRangeSelectEvent_GetTopRow
-	:wxGridRangeSelectEvent_GetBottomRow
-	:wxGridRangeSelectEvent_GetLeftCol
-	:wxGridRangeSelectEvent_GetRightCol
-	:wxGridRangeSelectEvent_Selecting
-	:wxGridRangeSelectEvent_ControlDown
-	:wxGridRangeSelectEvent_MetaDown
-	:wxGridRangeSelectEvent_ShiftDown
-	:wxGridRangeSelectEvent_AltDown
-	:wxGridEditorCreatedEvent_GetRow
-	:wxGridEditorCreatedEvent_GetCol
-	:wxGridEditorCreatedEvent_GetControl
-	:wxGridEditorCreatedEvent_SetRow
-	:wxGridEditorCreatedEvent_SetCol
-	:wxGridEditorCreatedEvent_SetControl
-	:wxGridSelectCells
-	:wxGridSelectRows
-	:wxGridSelectColumns))
+; ; (defpackage :wxGrid
+; ;   (:use :common-lisp :ffi :wxCL)
+; ;   (:export
+; ; 	:wxGridCellCoordsArray_Create
+; ; 	:wxGridCellCoordsArray_Delete
+; ; 	:wxGridCellCoordsArray_GetCount
+; ; 	:wxGridCellCoordsArray_Item
+; ; 	:wxGridCellEditor_IsCreated
+; ; 	:wxGridCellEditor_GetControl
+; ; 	:wxGridCellEditor_SetControl
+; ; 	:wxGridCellEditor_Create
+; ; 	:wxGridCellEditor_SetSize
+; ; 	:wxGridCellEditor_Show
+; ; 	:wxGridCellEditor_PaintBackground
+; ; 	:wxGridCellEditor_BeginEdit
+; ; 	:wxGridCellEditor_EndEdit
+; ; 	:wxGridCellEditor_Reset
+; ; 	:wxGridCellEditor_IsAcceptedKey
+; ; 	:wxGridCellEditor_StartingKey
+; ; 	:wxGridCellEditor_StartingClick
+; ; 	:wxGridCellEditor_HandleReturn
+; ; 	:wxGridCellEditor_Destroy
+; ; 	:wxGridCellEditor_SetParameters
+; ; 	:wxGridCellTextEditor_Ctor
+; ; 	:wxGridCellTextEnterEditor_Ctor
+; ; 	:wxGridCellNumberEditor_Ctor
+; ; 	:wxGridCellFloatEditor_Ctor
+; ; 	:wxGridCellBoolEditor_Ctor
+; ; 	:wxGridCellChoiceEditor_Ctor
+; ; 	:wxGridCellAttr_Ctor
+; ; 	:wxGridCellAttr_IncRef
+; ; 	:wxGridCellAttr_DecRef
+; ; 	:wxGridCellAttr_SetTextColour
+; ; 	:wxGridCellAttr_SetBackgroundColour
+; ; 	:wxGridCellAttr_SetFont
+; ; 	:wxGridCellAttr_SetAlignment
+; ; 	:wxGridCellAttr_SetReadOnly
+; ; 	:wxGridCellAttr_SetRenderer
+; ; 	:wxGridCellAttr_SetEditor
+; ; 	:wxGridCellAttr_HasTextColour
+; ; 	:wxGridCellAttr_HasBackgroundColour
+; ; 	:wxGridCellAttr_HasFont
+; ; 	:wxGridCellAttr_HasAlignment
+; ; 	:wxGridCellAttr_HasRenderer
+; ; 	:wxGridCellAttr_HasEditor
+; ; 	:wxGridCellAttr_GetTextColour
+; ; 	:wxGridCellAttr_GetBackgroundColour
+; ; 	:wxGridCellAttr_GetFont
+; ; 	:wxGridCellAttr_GetAlignment
+; ; 	:wxGridCellAttr_GetRenderer
+; ; 	:wxGridCellAttr_GetEditor
+; ; 	:wxGridCellAttr_IsReadOnly
+; ; 	:wxGridCellAttr_SetDefAttr
+; ; 	:wxGrid_Create
+; ; 	:wxGrid_CreateGrid
+; ; 	:wxGrid_SetSelectionMode
+; ; 	:wxGrid_GetNumberRows
+; ; 	:wxGrid_GetNumberCols
+; ; 	:wxGrid_CalcRowLabelsExposed
+; ; 	:wxGrid_CalcColLabelsExposed
+; ; 	:wxGrid_CalcCellsExposed
+; ; 	:wxGrid_NewCalcCellsExposed
+; ; 	:wxGrid_ProcessRowLabelMouseEvent
+; ; 	:wxGrid_ProcessColLabelMouseEvent
+; ; 	:wxGrid_ProcessCornerLabelMouseEvent
+; ; 	:wxGrid_ProcessGridCellMouseEvent
+; ; 	:wxGrid_ProcessTableMessage
+; ; 	:wxGrid_DoEndDragResizeRow
+; ; 	:wxGrid_DoEndDragResizeCol
+; ; 	:wxGrid_GetTable
+; ; 	:wxGrid_SetTable
+; ; 	:wxGrid_ClearGrid
+; ; 	:wxGrid_InsertRows
+; ; 	:wxGrid_AppendRows
+; ; 	:wxGrid_DeleteRows
+; ; 	:wxGrid_InsertCols
+; ; 	:wxGrid_AppendCols
+; ; 	:wxGrid_DeleteCols
+; ; 	:wxGrid_DrawGridCellArea
+; ; 	:wxGrid_NewDrawGridCellArea
+; ; 	:wxGrid_DrawGridSpace
+; ; 	:wxGrid_DrawCellBorder
+; ; 	:wxGrid_DrawAllGridLines
+; ; 	:wxGrid_DrawCell
+; ; 	:wxGrid_DrawHighlight
+; ; 	:wxGrid_NewDrawHighlight
+; ; 	:wxGrid_DrawCellHighlight
+; ; 	:wxGrid_DrawRowLabels
+; ; 	:wxGrid_DrawRowLabel
+; ; 	:wxGrid_DrawColLabels
+; ; 	:wxGrid_DrawColLabel
+; ; 	:wxGrid_DrawTextRectangle
+; ; 	:wxGrid_StringToLines
+; ; 	:wxGrid_GetTextBoxSize
+; ; 	:wxGrid_BeginBatch
+; ; 	:wxGrid_EndBatch
+; ; 	:wxGrid_GetBatchCount
+; ; 	:wxGrid_IsEditable
+; ; 	:wxGrid_EnableEditing
+; ; 	:wxGrid_EnableCellEditControl
+; ; 	:wxGrid_DisableCellEditControl
+; ; 	:wxGrid_CanEnableCellControl
+; ; 	:wxGrid_IsCellEditControlEnabled
+; ; 	:wxGrid_IsCellEditControlShown
+; ; 	:wxGrid_IsCurrentCellReadOnly
+; ; 	:wxGrid_ShowCellEditControl
+; ; 	:wxGrid_HideCellEditControl
+; ; 	:wxGrid_SaveEditControlValue
+; ; 	:wxGrid_XYToCell
+; ; 	:wxGrid_YToRow
+; ; 	:wxGrid_XToCol
+; ; 	:wxGrid_YToEdgeOfRow
+; ; 	:wxGrid_XToEdgeOfCol
+; ; 	:wxGrid_CellToRect
+; ; 	:wxGrid_GetGridCursorRow
+; ; 	:wxGrid_GetGridCursorCol
+; ; 	:wxGrid_IsVisible
+; ; 	:wxGrid_MakeCellVisible
+; ; 	:wxGrid_SetGridCursor
+; ; 	:wxGrid_MoveCursorUp
+; ; 	:wxGrid_MoveCursorDown
+; ; 	:wxGrid_MoveCursorLeft
+; ; 	:wxGrid_MoveCursorRight
+; ; 	:wxGrid_MovePageDown
+; ; 	:wxGrid_MovePageUp
+; ; 	:wxGrid_MoveCursorUpBlock
+; ; 	:wxGrid_MoveCursorDownBlock
+; ; 	:wxGrid_MoveCursorLeftBlock
+; ; 	:wxGrid_MoveCursorRightBlock
+; ; 	:wxGrid_GetDefaultRowLabelSize
+; ; 	:wxGrid_GetRowLabelSize
+; ; 	:wxGrid_GetDefaultColLabelSize
+; ; 	:wxGrid_GetColLabelSize
+; ; 	:wxGrid_GetLabelBackgroundColour
+; ; 	:wxGrid_GetLabelTextColour
+; ; 	:wxGrid_GetLabelFont
+; ; 	:wxGrid_GetRowLabelAlignment
+; ; 	:wxGrid_GetColLabelAlignment
+; ; 	:wxGrid_GetRowLabelValue
+; ; 	:wxGrid_GetColLabelValue
+; ; 	:wxGrid_GetGridLineColour
+; ; 	:wxGrid_GetCellHighlightColour
+; ; 	:wxGrid_SetRowLabelSize
+; ; 	:wxGrid_SetColLabelSize
+; ; 	:wxGrid_SetLabelBackgroundColour
+; ; 	:wxGrid_SetLabelTextColour
+; ; 	:wxGrid_SetLabelFont
+; ; 	:wxGrid_SetRowLabelAlignment
+; ; 	:wxGrid_SetColLabelAlignment
+; ; 	:wxGrid_SetRowLabelValue
+; ; 	:wxGrid_SetColLabelValue
+; ; 	:wxGrid_SetGridLineColour
+; ; 	:wxGrid_SetCellHighlightColour
+; ; 	:wxGrid_EnableDragRowSize
+; ; 	:wxGrid_DisableDragRowSize
+; ; 	:wxGrid_CanDragRowSize
+; ; 	:wxGrid_EnableDragColSize
+; ; 	:wxGrid_DisableDragColSize
+; ; 	:wxGrid_CanDragColSize
+; ; 	:wxGrid_EnableDragGridSize
+; ; 	:wxGrid_DisableDragGridSize
+; ; 	:wxGrid_CanDragGridSize
+; ; 	:wxGrid_SetRowAttr
+; ; 	:wxGrid_SetColAttr
+; ; 	:wxGrid_SetColFormatBool
+; ; 	:wxGrid_SetColFormatNumber
+; ; 	:wxGrid_SetColFormatFloat
+; ; 	:wxGrid_SetColFormatCustom
+; ; 	:wxGrid_EnableGridLines
+; ; 	:wxGrid_GridLinesEnabled
+; ; 	:wxGrid_GetDefaultRowSize
+; ; 	:wxGrid_GetRowSize
+; ; 	:wxGrid_GetDefaultColSize
+; ; 	:wxGrid_GetColSize
+; ; 	:wxGrid_GetDefaultCellBackgroundColour
+; ; 	:wxGrid_GetCellBackgroundColour
+; ; 	:wxGrid_GetDefaultCellTextColour
+; ; 	:wxGrid_GetCellTextColour
+; ; 	:wxGrid_GetDefaultCellFont
+; ; 	:wxGrid_GetCellFont
+; ; 	:wxGrid_GetDefaultCellAlignment
+; ; 	:wxGrid_GetCellAlignment
+; ; 	:wxGrid_SetDefaultRowSize
+; ; 	:wxGrid_SetRowSize
+; ; 	:wxGrid_SetDefaultColSize
+; ; 	:wxGrid_SetColSize
+; ; 	:wxGrid_AutoSizeColumn
+; ; 	:wxGrid_AutoSizeRow
+; ; 	:wxGrid_AutoSizeColumns
+; ; 	:wxGrid_AutoSizeRows
+; ; 	:wxGrid_AutoSize
+; ; 	:wxGrid_SetColMinimalWidth
+; ; 	:wxGrid_SetRowMinimalHeight
+; ; 	:wxGrid_SetDefaultCellBackgroundColour
+; ; 	:wxGrid_SetCellBackgroundColour
+; ; 	:wxGrid_SetDefaultCellTextColour
+; ; 	:wxGrid_SetCellTextColour
+; ; 	:wxGrid_SetDefaultCellFont
+; ; 	:wxGrid_SetCellFont
+; ; 	:wxGrid_SetDefaultCellAlignment
+; ; 	:wxGrid_SetCellAlignment
+; ; 	:wxGrid_SetDefaultRenderer
+; ; 	:wxGrid_SetCellRenderer
+; ; 	:wxGrid_GetDefaultRenderer
+; ; 	:wxGrid_GetCellRenderer
+; ; 	:wxGrid_SetDefaultEditor
+; ; 	:wxGrid_SetCellEditor
+; ; 	:wxGrid_GetDefaultEditor
+; ; 	:wxGrid_GetCellEditor
+; ; 	:wxGrid_GetCellValue
+; ; 	:wxGrid_SetCellValue
+; ; 	:wxGrid_IsReadOnly
+; ; 	:wxGrid_SetReadOnly
+; ; 	:wxGrid_SelectRow
+; ; 	:wxGrid_SelectCol
+; ; 	:wxGrid_SelectBlock
+; ; 	:wxGrid_SelectAll
+; ; 	:wxGrid_IsSelection
+; ; 	:wxGrid_ClearSelection
+; ; 	:wxGrid_IsInSelection
+; ; 	:wxGrid_BlockToDeviceRect
+; ; 	:wxGrid_GetSelectionBackground
+; ; 	:wxGrid_GetSelectionForeground
+; ; 	:wxGrid_SetSelectionBackground
+; ; 	:wxGrid_SetSelectionForeground
+; ; 	:wxGrid_RegisterDataType
+; ; 	:wxGrid_GetDefaultEditorForCell
+; ; 	:wxGrid_GetDefaultRendererForCell
+; ; 	:wxGrid_GetDefaultEditorForType
+; ; 	:wxGrid_GetDefaultRendererForType
+; ; 	:wxGrid_SetMargins
+; ; 	:wxGrid_GetSelectedCells
+; ; 	:wxGrid_GetSelectionBlockTopLeft
+; ; 	:wxGrid_GetSelectionBlockBottomRight
+; ; 	:wxGrid_GetSelectedRows
+; ; 	:wxGrid_GetSelectedCols
+; ; 	:ELJGridTable_Create
+; ; 	:ELJGridTable_Delete
+; ; 	:ELJGridTable_GetView
+; ; 	:ELJGridTable_SendTableMessage
+; ; 	:wxGridEvent_GetRow
+; ; 	:wxGridEvent_GetCol
+; ; 	:wxGridEvent_GetPosition
+; ; 	:wxGridEvent_Selecting
+; ; 	:wxGridEvent_ControlDown
+; ; 	:wxGridEvent_MetaDown
+; ; 	:wxGridEvent_ShiftDown
+; ; 	:wxGridEvent_AltDown
+; ; 	:wxGridSizeEvent_GetRowOrCol
+; ; 	:wxGridSizeEvent_GetPosition
+; ; 	:wxGridSizeEvent_ControlDown
+; ; 	:wxGridSizeEvent_MetaDown
+; ; 	:wxGridSizeEvent_ShiftDown
+; ; 	:wxGridSizeEvent_AltDown
+; ; 	:wxGridRangeSelectEvent_GetTopLeftCoords
+; ; 	:wxGridRangeSelectEvent_GetBottomRightCoords
+; ; 	:wxGridRangeSelectEvent_GetTopRow
+; ; 	:wxGridRangeSelectEvent_GetBottomRow
+; ; 	:wxGridRangeSelectEvent_GetLeftCol
+; ; 	:wxGridRangeSelectEvent_GetRightCol
+; ; 	:wxGridRangeSelectEvent_Selecting
+; ; 	:wxGridRangeSelectEvent_ControlDown
+; ; 	:wxGridRangeSelectEvent_MetaDown
+; ; 	:wxGridRangeSelectEvent_ShiftDown
+; ; 	:wxGridRangeSelectEvent_AltDown
+; ; 	:wxGridEditorCreatedEvent_GetRow
+; ; 	:wxGridEditorCreatedEvent_GetCol
+; ; 	:wxGridEditorCreatedEvent_GetControl
+; ; 	:wxGridEditorCreatedEvent_SetRow
+; ; 	:wxGridEditorCreatedEvent_SetCol
+; ; 	:wxGridEditorCreatedEvent_SetControl
+; ; 	:wxGridSelectCells
+; ; 	:wxGridSelectRows
+; ; 	:wxGridSelectColumns))
 
-(in-package :wxGrid)
+(in-package :wxcl-windows)
 
 (defconstant wxGridSelectCells 0)
 (defconstant wxGridSelectRows 1)

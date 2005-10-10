@@ -9,43 +9,43 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage :wxToolBar
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxToolBar_Create
-	   :wxToolBar_AddTool2
-	   :wxToolBar_Delete
-	   :wxToolBar_AddControl
-	   :wxToolBar_AddSeparator
-	   :wxToolBar_AddTool
-	   :wxToolBar_AddToolEx
-	   :wxToolBar_DeleteTool
-	   :wxToolBar_DeleteToolByPos
-	   :wxToolBar_EnableTool
-	   :wxToolBar_GetToolSize
-	   :wxToolBar_GetToolBitmapSize
-	   :wxToolBar_GetMargins
-	   :wxToolBar_GetToolClientData
-	   :wxToolBar_GetToolEnabled
-	   :wxToolBar_GetToolLongHelp
-	   :wxToolBar_GetToolPacking
-	   :wxToolBar_GetToolShortHelp
-	   :wxToolBar_GetToolState
-	   :wxToolBar_InsertControl
-	   :wxToolBar_InsertSeparator
-	   :wxToolBar_InsertTool
-	   :wxToolBar_Realize
-	   :wxToolBar_RemoveTool
-	   :wxToolBar_SetMargins
-	   :wxToolBar_SetToolBitmapSize
-	   :wxToolBar_SetToolClientData
-	   :wxToolBar_SetToolLongHelp
-	   :wxToolBar_SetToolPacking
-	   :wxToolBar_SetToolShortHelp
-	   :wxToolBar_SetToolSeparation
-	   :wxToolBar_ToggleTool
-	   ))
+; (defpackage :wxToolBar
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export :wxToolBar_Create
+; 	   :wxToolBar_AddTool2
+; 	   :wxToolBar_Delete
+; 	   :wxToolBar_AddControl
+; 	   :wxToolBar_AddSeparator
+; 	   :wxToolBar_AddTool
+; 	   :wxToolBar_AddToolEx
+; 	   :wxToolBar_DeleteTool
+; 	   :wxToolBar_DeleteToolByPos
+; 	   :wxToolBar_EnableTool
+; 	   :wxToolBar_GetToolSize
+; 	   :wxToolBar_GetToolBitmapSize
+; 	   :wxToolBar_GetMargins
+; 	   :wxToolBar_GetToolClientData
+; 	   :wxToolBar_GetToolEnabled
+; 	   :wxToolBar_GetToolLongHelp
+; 	   :wxToolBar_GetToolPacking
+; 	   :wxToolBar_GetToolShortHelp
+; 	   :wxToolBar_GetToolState
+; 	   :wxToolBar_InsertControl
+; 	   :wxToolBar_InsertSeparator
+; 	   :wxToolBar_InsertTool
+; 	   :wxToolBar_Realize
+; 	   :wxToolBar_RemoveTool
+; 	   :wxToolBar_SetMargins
+; 	   :wxToolBar_SetToolBitmapSize
+; 	   :wxToolBar_SetToolClientData
+; 	   :wxToolBar_SetToolLongHelp
+; 	   :wxToolBar_SetToolPacking
+; 	   :wxToolBar_SetToolShortHelp
+; 	   :wxToolBar_SetToolSeparation
+; 	   :wxToolBar_ToggleTool
+; 	   ))
 
-(in-package :wxToolBar)
+(in-package :wxcl-windows)
 
 
 

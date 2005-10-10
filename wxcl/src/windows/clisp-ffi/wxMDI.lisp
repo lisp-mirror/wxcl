@@ -7,24 +7,24 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxMDI
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxMDIParentFrame_Create
-	:wxMDIParentFrame_GetActiveChild
-	:wxMDIParentFrame_GetClientWindow
-	:wxMDIParentFrame_OnCreateClient
-	:wxMDIParentFrame_GetWindowMenu
-	:wxMDIParentFrame_SetWindowMenu
-	:wxMDIParentFrame_Cascade
-	:wxMDIParentFrame_Tile
-	:wxMDIParentFrame_ArrangeIcons
-	:wxMDIParentFrame_ActivateNext
-	:wxMDIParentFrame_ActivatePrevious
-	:wxMDIChildFrame_Create
-	:wxMDIChildFrame_Activate))
+; (defpackage :wxMDI
+;   (:use :common-lisp :ffi :wxCL)
+;   (:export
+; 	:wxMDIParentFrame_Create
+; 	:wxMDIParentFrame_GetActiveChild
+; 	:wxMDIParentFrame_GetClientWindow
+; 	:wxMDIParentFrame_OnCreateClient
+; 	:wxMDIParentFrame_GetWindowMenu
+; 	:wxMDIParentFrame_SetWindowMenu
+; 	:wxMDIParentFrame_Cascade
+; 	:wxMDIParentFrame_Tile
+; 	:wxMDIParentFrame_ArrangeIcons
+; 	:wxMDIParentFrame_ActivateNext
+; 	:wxMDIParentFrame_ActivatePrevious
+; 	:wxMDIChildFrame_Create
+; 	:wxMDIChildFrame_Activate))
 
-(in-package :wxMdi)
+(in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)
 

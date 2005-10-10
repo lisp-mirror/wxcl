@@ -7,49 +7,49 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxNotebook
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxNotebook_Create
-	   :wxNotebook_GetPageCount
-	   :wxNotebook_SetSelection
-	   :wxNotebook_AdvanceSelection
-	   :wxNotebook_AssignImageList
-	   :wxNotebook_GetSelection
-	   :wxNotebook_SetPageText
-	   :wxNotebook_GetPageText
-	   :wxNotebook_SetImageList
-	   :wxNotebook_GetImageList
-	   :wxNotebook_GetPageImage
-	   :wxNotebook_SetPageImage
-	   :wxNotebook_GetRowCount
-	   :wxNotebook_SetPageSize
-	   :wxNotebook_SetPadding
-	   :wxNotebook_DeletePage
-	   :wxNotebook_RemovePage
-	   :wxNotebook_DeleteAllPages
-	   :wxNotebook_AddPage
-	   :wxNotebook_InsertPage
-	   :wxNotebook_GetPage
-	   :wxCL-create-notebook
-	   :wxNB_FIXEDWIDTH
-	   :wxNB_LEFT
-	   :wxNB_RIGHT
-	   :wxNB_BOTTOM
-	   :wxNB_MULTILINE
-	   :wxNB_TOP))
+; (defpackage :wxNotebook
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export :wxNotebook_Create
+; 	   :wxNotebook_GetPageCount
+; 	   :wxNotebook_SetSelection
+; 	   :wxNotebook_AdvanceSelection
+; 	   :wxNotebook_AssignImageList
+; 	   :wxNotebook_GetSelection
+; 	   :wxNotebook_SetPageText
+; 	   :wxNotebook_GetPageText
+; 	   :wxNotebook_SetImageList
+; 	   :wxNotebook_GetImageList
+; 	   :wxNotebook_GetPageImage
+; 	   :wxNotebook_SetPageImage
+; 	   :wxNotebook_GetRowCount
+; 	   :wxNotebook_SetPageSize
+; 	   :wxNotebook_SetPadding
+; 	   :wxNotebook_DeletePage
+; 	   :wxNotebook_RemovePage
+; 	   :wxNotebook_DeleteAllPages
+; 	   :wxNotebook_AddPage
+; 	   :wxNotebook_InsertPage
+; 	   :wxNotebook_GetPage
+; 	   :wxCL-create-notebook
+; 	   :wxNB_FIXEDWIDTH
+; 	   :wxNB_LEFT
+; 	   :wxNB_RIGHT
+; 	   :wxNB_BOTTOM
+; 	   :wxNB_MULTILINE
+; 	   :wxNB_TOP))
 
-(in-package :wxNotebook)
+(in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)
 
-(def-c-type wxNotebook NIL)
+(def-c-type wxnotebook nil)
     
-(defconstant wxNB_FIXEDWIDTH 16)
-(defconstant wxNB_LEFT 32)
-(defconstant wxNB_RIGHT 64)
-(defconstant wxNB_BOTTOM 128)
-(defconstant wxNB_MULTILINE 6)
-(defconstant wxNB_TOP 0)
+(defconstant +nb-fixedwidth+ 16)
+(defconstant +nb-left+ 32)
+(defconstant +nb-right+ 64)
+(defconstant +nb-bottom+ 128)
+(defconstant +nb-multiline+ 6)
+(defconstant +nb-top+ 0)
 
 (ffi:def-call-out wxNotebook_Create
     (:name "wxNotebook_Create")

@@ -7,31 +7,31 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxScrolledWindow
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxScrolledWindow_Create
-	   :wxScrolledWindow_SetTargetWindow
-	   :wxScrolledWindow_GetTargetWindow
-	   :wxScrolledWindow_SetScrollbars
-	   :wxScrolledWindow_Scroll
-	   :wxScrolledWindow_GetScrollPageSize
-	   :wxScrolledWindow_SetScrollPageSize
-	   :wxScrolledWindow_GetScrollPixelsPerUnit
-	   :wxScrolledWindow_EnableScrolling
-	   :wxScrolledWindow_GetViewStart
-	   :wxScrolledWindow_ViewStart
-	   :wxScrolledWindow_GetVirtualSize
-	   :wxScrolledWindow_SetScale
-	   :wxScrolledWindow_GetScaleX
-	   :wxScrolledWindow_GetScaleY
-	   :wxScrolledWindow_SetScrollRate
-	   :wxScrolledWindow_CalcScrolledPosition
-	   :wxScrolledWindow_CalcUnscrolledPosition
-	   :wxScrolledWindow_AdjustScrollbars
-	   :wxScrolledWindow_OnDraw
-	   :wxScrolledWindow_PrepareDC))
+; (defpackage :wxScrolledWindow
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export :wxScrolledWindow_Create
+; 	   :wxScrolledWindow_SetTargetWindow
+; 	   :wxScrolledWindow_GetTargetWindow
+; 	   :wxScrolledWindow_SetScrollbars
+; 	   :wxScrolledWindow_Scroll
+; 	   :wxScrolledWindow_GetScrollPageSize
+; 	   :wxScrolledWindow_SetScrollPageSize
+; 	   :wxScrolledWindow_GetScrollPixelsPerUnit
+; 	   :wxScrolledWindow_EnableScrolling
+; 	   :wxScrolledWindow_GetViewStart
+; 	   :wxScrolledWindow_ViewStart
+; 	   :wxScrolledWindow_GetVirtualSize
+; 	   :wxScrolledWindow_SetScale
+; 	   :wxScrolledWindow_GetScaleX
+; 	   :wxScrolledWindow_GetScaleY
+; 	   :wxScrolledWindow_SetScrollRate
+; 	   :wxScrolledWindow_CalcScrolledPosition
+; 	   :wxScrolledWindow_CalcUnscrolledPosition
+; 	   :wxScrolledWindow_AdjustScrollbars
+; 	   :wxScrolledWindow_OnDraw
+; 	   :wxScrolledWindow_PrepareDC))
 
-(in-package :wxScrolledWindow)
+(in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)
 

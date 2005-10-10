@@ -7,72 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wx_wrapper
-    (:use :common-lisp :ffi :wxCL)
-  (:export :ELJApp_MainLoop
-	   :ELJApp_Initialized
-	   :ELJApp_Pending
-	   :ELJApp_Dispatch
-	   :ELJApp_GetAppName
-	   :ELJApp_SetAppName
-	   :ELJApp_GetClassName
-	   :ELJApp_SetClassName
-	   :ELJApp_GetVendorName
-	   :ELJApp_SetVendorName
-	   :ELJApp_GetTopWindow
-	   :ELJApp_SetExitOnFrameDelete
-	   :ELJApp_GetExitOnFrameDelete
-	   :ELJApp_CreateLogTarget
-;	   :ELJApp_GetWantDebugOutput
-	   :ELJApp_SetUseBestVisual
-	   :ELJApp_GetUseBestVisual
-	   :ELJApp_SetPrintMode
-	   :ELJApp_ExitMainLoop
-	   :ELJApp_SetTopWindow
-;	   :ELJApp_SendIdleEvents
-;	   :ELJApp_SendIdleEventsToWindow
-	   :ELJApp_EnableTooltips
-	   :ELJApp_SetTooltipDelay
-	   :ELJApp_InitAllImageHandlers
-	   :ELJApp_DisplaySize
-	   :ELJApp_EnableTopLevelWindows
-	   :ELJApp_Exit
-	   :ELJApp_MousePosition
-	   :ELJApp_FindWindowByLabel
-	   :ELJApp_FindWindowByName
-	   :ELJApp_FindWindowById
-	   :ELJApp_GetApp
-	   :ELJApp_GetUserId
-	   :ELJApp_GetUserName
-	   :ELJApp_GetUserHome
-	   :ELJApp_ExecuteProcess
-	   :ELJApp_Yield
-	   :ELJApp_SafeYield
-	   :ELJApp_GetOsVersion
-	   :ELJApp_GetOsDescription
-	   :ELJApp_Sleep
-	   :ELJApp_USleep
-	   :ELJApp_IsTerminating
-	   :QuantizePalette
-	   :Quantize
-	   :Null_AcceleratorTable
-	   :Null_Bitmap
-	   :Null_Icon
-	   :Null_Cursor
-	   :Null_Pen
-	   :Null_Brush
-	   :Null_Palette
-	   :Null_Font
-	   :Null_Colour
-;	   :wxDllLoader_LoadLibrary
-;	   :wxDllLoader_UnloadLibrary
-;	   :wxDllLoader_GetSymbol
-	   :wxClassInfo_CreateClassByName
-	   :wxClassInfo_GetClassName
-	   :wxClassInfo_IsKindOf
-	   :wxEvent_NewEventType))
-
-(in-package :wx_wrapper)
+(in-package :wxcl)
 
 (ffi:default-foreign-language :stdc)
 

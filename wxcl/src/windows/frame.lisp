@@ -1,13 +1,21 @@
-(in-package :wxCL)
+;;;frame.lisp
+;;;License  : wxWindows License 3.1
+;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
+;;;Copyright (C) 2005 Surendra Singhi 
+;;;See the file LICENSE for information on usage and redistribution.
+;;;
+;;; $Header$
+;;;
 
-(use-package :wxFrame)
+(in-package :wxcl-windows)
 
 (defclass frame (window)
   ()
   (:documentation "The class for creating frames."))
 
+(defconstant +default-frame-style+ 536878656)
 
-(defun make-frame (parent title &key (id -1) (pos default-position) (size default-size) (style wxDEFAULT_FRAME_STYLE))
+(defun make-frame (parent title &key (id -1) (pos +default-position+) (size +default-size+) (style +default-frame-style+))
   (make-wx-instance 'frame (wxFrame_Create (when parent (object-pointer parent))
 					   id title (point-x pos) (point-y pos)
 					   (size-width size) (size-height size) style)))
@@ -32,7 +40,7 @@
     (setf (slot-value ic 'object) (wxFrame_GetIcon (object-pointer obj)))
     ic))
 
-(defmethod (setf icon) ((ic icon) ((obj frame)))
+(defmethod (setf icon) (ic (obj frame))
     (wxFrame_SetIcon (object-pointer obj) (object-pointer ic)))
 
 (defmethod client-area-origin ((obj frame))
@@ -43,19 +51,19 @@
 (defmethod icon ((obj frame))
   (make-wx-instance 'icon (wxFrame_GetIcon (object-pointer obj))))
 
-(defmethod (setf menu-bar) ((mb menu-bar) ((obj frame)))
+(defmethod (setf menu-bar) (mb (obj frame))
     (wxFrame_SetMenuBar (object-pointer obj) (object-pointer mb)))
 
 (defmethod menu-bar ((obj frame))
   (make-wx-instance 'menu-bar (wxFrame_GetMenuBar (object-pointer obj))))
 
-(defmethod (setf status-bar) ((sb status-bar) ((obj frame)))
+(defmethod (setf status-bar) (sb (obj frame))
     (wxFrame_SetStatusBar (object-pointer obj) (object-pointer sb)))
 
 (defmethod status-bar ((obj frame))
   (make-wx-instance 'status-bar (wxFrame_GetStatusBar (object-pointer obj))))
 
-(defmethod (setf tool-bar) ((tb tool-bar) ((obj frame)))
+(defmethod (setf tool-bar) (tb tool-bar (obj frame))
   (wxFrame_SetToolBar (object-pointer obj) (object-pointer tb)))
 
 (defmethod tool-bar ((obj frame))
@@ -80,7 +88,7 @@
 (defmethod (setf title) (str (obj frame))
   (wxFrame_SetTitle (object-pointer obj) str))
 
-(defmethod (setf shape)  ((reg region) (obj frame))
+(defmethod (setf shape)  (reg (obj frame))
   (= 1 (wxFrame_SetShape (object-pointer obj) (object-pointer reg))))
 
 

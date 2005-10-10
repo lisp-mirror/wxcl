@@ -7,30 +7,30 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxSplitterWindow
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxSplitterWindow_Create
-	:wxSplitterWindow_GetWindow1
-	:wxSplitterWindow_GetWindow2
-	:wxSplitterWindow_SetSplitMode
-	:wxSplitterWindow_GetSplitMode
-	:wxSplitterWindow_Initialize
-	:wxSplitterWindow_SplitVertically
-	:wxSplitterWindow_SplitHorizontally
-	:wxSplitterWindow_Unsplit
-	:wxSplitterWindow_ReplaceWindow
-	:wxSplitterWindow_IsSplit
-	:wxSplitterWindow_SetSashSize
-	:wxSplitterWindow_SetBorderSize
-	:wxSplitterWindow_GetSashSize
-	:wxSplitterWindow_GetBorderSize
-	:wxSplitterWindow_SetSashPosition
-	:wxSplitterWindow_GetSashPosition
-	:wxSplitterWindow_SetMinimumPaneSize
-	:wxSplitterWindow_GetMinimumPaneSize))
+; (defpackage :wxSplitterWindow
+;   (:use :common-lisp :ffi :wxCL)
+;   (:export
+; 	:wxSplitterWindow_Create
+; 	:wxSplitterWindow_GetWindow1
+; 	:wxSplitterWindow_GetWindow2
+; 	:wxSplitterWindow_SetSplitMode
+; 	:wxSplitterWindow_GetSplitMode
+; 	:wxSplitterWindow_Initialize
+; 	:wxSplitterWindow_SplitVertically
+; 	:wxSplitterWindow_SplitHorizontally
+; 	:wxSplitterWindow_Unsplit
+; 	:wxSplitterWindow_ReplaceWindow
+; 	:wxSplitterWindow_IsSplit
+; 	:wxSplitterWindow_SetSashSize
+; 	:wxSplitterWindow_SetBorderSize
+; 	:wxSplitterWindow_GetSashSize
+; 	:wxSplitterWindow_GetBorderSize
+; 	:wxSplitterWindow_SetSashPosition
+; 	:wxSplitterWindow_GetSashPosition
+; 	:wxSplitterWindow_SetMinimumPaneSize
+; 	:wxSplitterWindow_GetMinimumPaneSize))
 
-(in-package :wxSplitterWindow)
+(in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)
 

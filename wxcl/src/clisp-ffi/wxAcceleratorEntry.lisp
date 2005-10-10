@@ -7,23 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxAcceleratorEntry
-    (:use :common-lisp :ffi :wxCL :wxWindow)
-  (:export :wxAcceleratorEntry_Create
-	   :wxAcceleratorEntry_Delete
-	   :wxAcceleratorEntry_Set
-	   :wxAcceleratorEntry_GetFlags
-	   :wxAcceleratorEntry_GetKeyCode
-	   :wxAcceleratorEntry_GetCommand
-	   :wxAcceleratorTable_Create
-	   :wxAcceleratorTable_Delete
-	   :wxCL-create-accelerator-entries
-	   :wxACCEL_ALT
-	   :wxACCEL_CTRL
-	   :wxACCEL_SHIFT
-	   :wxACCEL_NORMAL))
-
-(in-package :wxAcceleratorEntry)
+(in-package :wxcl)
 
 (defconstant wxACCEL_ALT 1)
 (defconstant wxACCEL_CTRL 2)

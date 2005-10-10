@@ -1,5 +1,14 @@
+;;;defpackage.lisp
+;;;License  : wxWindows License 3.1
+;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
+;;;Copyright (C) 2005 Surendra Singhi 
+;;;See the file LICENSE for information on usage and redistribution.
+;;;
+;;; $Header$
+;;;
+
 (defpackage :wxcl-windows
-    (:use :common-lisp :ffi)
+    (:use :common-lisp :ffi :wxcl)
   (:export #:frame
 	   #:make-frame
 	   #:maximize
@@ -49,18 +58,20 @@
 	   #:tool-short-help
 	   #:tool-separation
 	   #:toggle-tool
+	   #:show
 	   #:+tb-horizontal+
 	   #:+tb-3d-buttons+
 	   #:+tb-dockable+
 	   #:+tb-vertical+
 	   #:+tb-horizontal+
 	   #:+default-frame-style+
+	   #:+nb-fixedwidth+
+	   #:+nb-left+
+	   #:+nb-right+
+	   #:+nb-bottom+
+	   #:+nb-multiline+
+	   #:+nb-top+
  ))
 
-(defconstant +tb-3dbuttons+ 16)
-(defconstant +tb-flat+ 32)
-(defconstant +tb-dockable+ 64)
-(defconstant +tb-vertical 8)
-(defconstant +tb-horizontal 4)
 
-(defconstant +default-frame-style+ 536878656)
+

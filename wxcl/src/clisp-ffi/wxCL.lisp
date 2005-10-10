@@ -7,52 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxCL_Core
-    (:use :common-lisp :ffi)
-  (:export :+library-name+
-	   :wxVersionNumber
-	   :wxcBell
-	   :wxIsDefined
-	   :wxcMalloc
-	   :wxcFree
-	   :LogError
-	   :LogFatalError
-	   :LogWarning
-	   :LogMessage
-	   :LogVerbose
-	   :LogStatus
-	   :LogSysError
-	   :LogDebug
-	   :LogTrace
-	   :wxcWakeUpIdle
-	   :wxcGetColourFromUser
-	   :wxcGetFontFromUser
-	   :wxcGetPasswordFromUser
-	   :wxcGetTextFromUser
-	   :wxcGetNumberFromUser
-	   :make-SortData
-	   :SortData-id
-	   :SortData-closure
-	   :wxObject_IsKindOf
-	   :wxObject_GetClassInfo
-	   :wxObject_IsScrolledWindow
-	   :wxObject_Delete
-	   :wxString_Create
-	   :wxString_CreateLen
-	   :wxString_Delete
-	   :wxString_GetString
-	   :wxClassInfo_FindClass
-	   :wxClassInfo_GetClassNameEx
-	   :wxClassInfo_GetBaseClassName1
-	   :wxClassInfo_GetBaseClassName2
-	   :wxClassInfo_IsKindOfEx
-	   :wxClassInfo_GetSize
-	   :wxStreamBase_Delete))
-
-(in-package :wxCL_Core)
-
-(eval-when (:compile-toplevel :load-toplevel :execute)
-  (defconstant +library-name+ "../miscellaneous/wxc-msw2.6.2.dll"))
+(in-package :wxcl)
 
 (ffi:default-foreign-language :stdc)
 
