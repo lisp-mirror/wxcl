@@ -14,8 +14,7 @@
 (FFI:DEF-C-TYPE wxClosure NIL)
 
 (FFI:DEF-C-TYPE
-    ClosureFun (ffi:c-function (:arguments (_fun (ffi:c-pointer NIL))
-					   (_data (ffi:c-pointer NIL))
+    ClosureFun (ffi:c-function (:arguments (_data (ffi:c-pointer NIL))
 					   (_evt (ffi:c-pointer NIL)))
 			       (:return-type NIL)))
 
