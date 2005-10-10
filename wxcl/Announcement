@@ -1,0 +1,50 @@
+Announcement: wxCL 1.1.1  (September 23, 2005) ***
+ ---------------------------
+
+ <http://www.wxcl-project.org>
+
+We are pleased to announce the release wxCL-1.1.1 (Alpha), the latest
+installment in wxCL development effort. This release now includes 
+wxWidgets 2.6.2 dll. There are also a number of bug fixes, and some
+api enhancements. This version is more stable with native clisp on Windows XP. 
+Please see the Change Log for complete list of changes. 
+Please read the quick start guide before using this version as using the 2.6.2 
+dll requires you to close the library every time you finish the program. Also, 
+don't forget to take a look at the cvs version of wxGlade, 
+(http://wxglade.sourceforge.net/) which provides a cool way of creating 
+wxCL GUI's.
+
+What is wxCL?
+-------------
+
+wxCL aims to provide an industrial strength GUI library to application
+programmers which is portable across Common Lisp implementations and
+operating system platforms. It builds upon wxWidgets, a comprehensive
+C++ library that provides uniform application interface to all major
+GUI platforms; including  GTK, Windows, X11, and MacOS X. 
+
+Availability:
+-------------
+
+The current release of wxCL 1.1.1 runs on CLISP, and is tested on
+Windows XP but it should work on Linux and Mac OS X as well (not
+tested due to lack of resources). 
+
+It can be downloaded from:
+
+http://www.wxcl-project.org/en--releases--maindl.html
+
+
+Questions/Feedbacks/Reporting Bugs
+----------------------------------
+
+The best place to ask questions, report bugs and/or give feedback
+on the library is wxCL-devel mailing list.
+
+http://www.wxcl-project.org/en--contact--main2.html
+
+
+
+All the best,
+  wxCL - Project Team.
+
