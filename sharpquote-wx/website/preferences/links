@@ -151,9 +151,10 @@
 ;;  (Surname, Lastname, Pseudonyms, Location, ...)
 
 :hp-surendra "http://www.public.asu.edu/~sksinghi/"
-:hp-andre "http://www.geocities.com/andreabsbr/"
 :hp-joerg "http://www.olivfabric.de"
+:hp-jack "http://home.earthlink.net/~jdunrue/"
 
+:hp-andre "http://www.geocities.com/andreabsbr/"
 :hp-kaz "http://users.footprints.net/~kaz/"
 ;; hp-sanjay "http://www.sanjaypande.com" ;; ---- ?
 :hp-sanjay "http://lisp.tech.coop/Sanjay%20Pande"
