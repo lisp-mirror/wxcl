@@ -46,15 +46,15 @@
 	((:td class "shoes-logo")
 	 ((:a :href* :sf-donate)
 	  ((:img height "32" alt "Support This Project" 
-		 src "../img/project-support.jpg"    ; Ping SKS: remove this line entirely and ...
-		 ;; :src* :sf-dontate-img           ;  ... uncomment this line
+		  ;src "../img/project-support.jpg"    ; Ping SKS: remove this line entirely and ... - commented
+		 :src* :sf-dontate-img           ;  ... uncomment this line - uncommented
 		 width "88" border "0"))))
 	
 	((:td class "shoes-logo")		  
 	 ((:a :href* :sf-hp)
 	  ((:img height "37" alt "SourceForge.net Logo"
-		 src "../img/sflogo.png" ; Ping SKS: remove this line entirely and ...
-		 ;; :src* :sf-logo-img  ;  ... uncomment this line
+		; src "../img/sflogo.png" ; Ping SKS: remove this line entirely and ... - commented
+		 :src* :sf-logo-img  ;  ... uncomment this line - uncommented
 		 width "125" border "0"))))
 	
 	((:td class "shoes-logo")
