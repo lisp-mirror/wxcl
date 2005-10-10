@@ -56,7 +56,9 @@
  (:how-to-s
   (t (nil . "clisp-link-wxcl-howto.txt")
      :title "Linking CLISP with the wxCL module"
-     :author "André Vargas abs da Cruz"
+     :author "Andr&eacute; Vargas abs da Cruz" ; use HTML entities rather than Unicode chars, 
+					;  they don't conform to the CL standard 
+					;  and thus are not safely portable.
      :language :en)
   )
 
