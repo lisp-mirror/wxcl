@@ -9,15 +9,7 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage :wxCheckListBox
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxCheckListBox_Create
-	:wxCheckListBox_Check
-	:wxCheckListBox_IsChecked
-	:wxcl-create-check-list-box))
-
-(in-package :wxCheckListBox)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
 

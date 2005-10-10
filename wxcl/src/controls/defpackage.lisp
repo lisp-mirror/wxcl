@@ -43,7 +43,37 @@
 	   #:+list-next-all+
 	   #:+list-next-below+
 	   #:+list-next-left+
-	   #:+list-next-right+))
+	   #:+list-next-right+
+	   #:+bu-left+
+	   #:+bu-top+
+	   #:+bu-right+
+	   #:+bu-bottom+
+	   #:+cal-sunday-first+
+	   #:+cal-monday-first+
+	   #:+cal-show-holidays+
+	   #:+cal-no-year-change+
+	   #:+cal-no-month-change+
+	   #:+cal-hittest-nowhere+
+	   #:+cal-hittest-header+
+	   #:+cal-hittest-day+
+	   ))
+
+
+(defconstant +bu-left+ 64)
+(defconstant +bu-top+ 128)
+(defconstant +bu-right+ 256)
+(defconstant +bu-bottom+ 512)
+
+(defconstant +cal-sunday-first+ 0)
+(defconstant +cal-monday-first+ 1)
+(defconstant +cal-show-holidays+ 2)
+(defconstant +cal-no-year-change+ 4)
+(defconstant +cal-no-month-change+ 12)
+
+(defconstant +cal-hittest-nowhere+ 0)
+(defconstant +cal-hittest-header+ 1)
+(defconstant +cal-hittest-day+ 2)
+
 
 (defconstant +lb-sort+ 16)
 (defconstant +lb-single+ 32)

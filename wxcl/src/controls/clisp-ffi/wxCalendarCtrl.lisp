@@ -6,72 +6,10 @@
 ;;;
 ;;; $Header$
 ;;;
-(defpackage :wxCalendarCtrl
-    (:use :common-lisp :ffi :wxCL :wxDateTime)
-  (:export
-   :wxCalendarCtrl_Create
-   :wxCalendarCtrl_SetDate
-   :wxCalendarCtrl_GetDate
-   :wxCalendarCtrl_EnableYearChange
-   :wxCalendarCtrl_EnableMonthChange
-   :wxCalendarCtrl_EnableHolidayDisplay
-   :wxCalendarCtrl_SetHeaderColours
-   :wxCalendarCtrl_GetHeaderColourFg
-   :wxCalendarCtrl_GetHeaderColourBg
-   :wxCalendarCtrl_SetHighlightColours
-   :wxCalendarCtrl_GetHighlightColourFg
-   :wxCalendarCtrl_GetHighlightColourBg
-   :wxCalendarCtrl_SetHolidayColours
-   :wxCalendarCtrl_GetHolidayColourFg
-   :wxCalendarCtrl_GetHolidayColourBg
-   :wxCalendarCtrl_GetAttr
-   :wxCalendarCtrl_SetAttr
-   :wxCalendarCtrl_SetHoliday
-   :wxCalendarCtrl_ResetAttr
-   :wxCalendarCtrl_HitTest
-   :wxCalendarDateAttr_Create
-   :wxCalendarDateAttr_CreateDefault
-   :wxCalendarDateAttr_Delete
-   :wxCalendarDateAttr_SetTextColour
-   :wxCalendarDateAttr_SetBackgroundColour
-   :wxCalendarDateAttr_SetBorderColour
-   :wxCalendarDateAttr_SetFont
-   :wxCalendarDateAttr_SetBorder
-   :wxCalendarDateAttr_SetHoliday
-   :wxCalendarDateAttr_HasTextColour
-   :wxCalendarDateAttr_HasBackgroundColour
-   :wxCalendarDateAttr_HasBorderColour
-   :wxCalendarDateAttr_HasFont
-   :wxCalendarDateAttr_HasBorder
-   :wxCalendarDateAttr_IsHoliday
-   :wxCalendarDateAttr_GetTextColour
-   :wxCalendarDateAttr_GetBackgroundColour
-   :wxCalendarDateAttr_GetBorderColour
-   :wxCalendarDateAttr_GetFont
-   :wxCalendarDateAttr_GetBorder
-   :wxcl-create-calendar-control
-   :wxCAL_SUNDAY_FIRST
-   :wxCAL_MONDAY_FIRST
-   :wxCAL_SHOW_HOLIDAYS
-   :wxCAL_NO_YEAR_CHANGE
-   :wxCAL_NO_MONTH_CHANGE
-   :wxCAL_HITTEST_NOWHERE
-   :wxCAL_HITTEST_HEADER
-   :wxCAL_HITTEST_DAY))
-
-(in-package :wxCalendarCtrl)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
 
-(defconstant wxCAL_SUNDAY_FIRST 0)
-(defconstant wxCAL_MONDAY_FIRST 1)
-(defconstant wxCAL_SHOW_HOLIDAYS 2)
-(defconstant wxCAL_NO_YEAR_CHANGE 4)
-(defconstant wxCAL_NO_MONTH_CHANGE 12)
-
-(defconstant wxCAL_HITTEST_NOWHERE 0)
-(defconstant wxCAL_HITTEST_HEADER 1)
-(defconstant wxCAL_HITTEST_DAY 2)
 
 (ffi:def-call-out wxCalendarCtrl_Create
     (:name "wxCalendarCtrl_Create")

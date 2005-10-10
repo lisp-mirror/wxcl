@@ -7,17 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxChoice
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxChoice_Create
-	:wxChoice_Delete
-	:wxChoice_GetColumns
-	:wxChoice_SetColumns
-	:wxChoice_GetCurrentSelection
-	:wxcl-create-choice))
-
-(in-package :wxChoice)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
 

@@ -7,14 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxCheckBox
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxCheckBox_Create
-	   :wxCheckBox_SetValue
-	   :wxCheckBox_GetValue
-	   :wxcl-create-check-box))
-
-(in-package :wxCheckbox)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
 

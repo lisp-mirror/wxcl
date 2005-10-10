@@ -7,39 +7,9 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxButton
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxButton_Create
-	:wxButton_SetBackgroundColour
-	:wxButton_SetDefault
-	:wxBitmapButton_Create
-	:wxBitmapButton_GetBitmapLabel
-	:wxBitmapButton_GetBitmapSelected
-	:wxBitmapButton_GetBitmapFocus
-	:wxBitmapButton_GetBitmapDisabled
-	:wxBitmapButton_SetBitmapSelected
-	:wxBitmapButton_SetBitmapFocus
-	:wxBitmapButton_SetBitmapDisabled
-	:wxBitmapButton_SetBitmapLabel
-	:wxBitmapButton_SetMargins
-	:wxBitmapButton_GetMarginX
-	:wxBitmapButton_GetMarginY
-	:wxBU_LEFT
-	:wxBU_TOP
-	:wxBU_RIGHT
-	:wxBU_BOTTOM
-	:wxcl-create-button
-	))
-
-(in-package :wxButton)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
-
-(defconstant wxBU_LEFT 64)
-(defconstant wxBU_TOP 128)
-(defconstant wxBU_RIGHT 256)
-(defconstant wxBU_BOTTOM 512)
 
 (ffi:def-call-out wxButton_Create
 	(:name "wxButton_Create")

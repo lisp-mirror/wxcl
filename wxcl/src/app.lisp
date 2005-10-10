@@ -1,6 +1,5 @@
 (in-package :wxCL)
 
-(use-package :wxEvtHandler)
 
 ; (defclass app (object evt-handler)
 ;   ()
@@ -124,103 +123,103 @@
 ;   (:return-type NIL)
 ;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_MousePosition
-    (:name "ELJApp_MousePosition")
-  (:arguments (x (ffi:c-pointer NIL))
-	      (y (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_MousePosition
+;     (:name "ELJApp_MousePosition")
+;   (:arguments (x (ffi:c-pointer NIL))
+; 	      (y (ffi:c-pointer NIL)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_FindWindowByLabel
-    (:name "ELJApp_FindWindowByLabel")
-  (:arguments (_lbl (ffi:c-pointer NIL))
-	      (_prt (ffi:c-pointer NIL)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_FindWindowByLabel
+;     (:name "ELJApp_FindWindowByLabel")
+;   (:arguments (_lbl (ffi:c-pointer NIL))
+; 	      (_prt (ffi:c-pointer NIL)))
+;   (:return-type (ffi:c-pointer NIL))
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_FindWindowByName
-    (:name "ELJApp_FindWindowByName")
-  (:arguments (_lbl (ffi:c-pointer NIL))
-	      (_prt (ffi:c-pointer NIL)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_FindWindowByName
+;     (:name "ELJApp_FindWindowByName")
+;   (:arguments (_lbl (ffi:c-pointer NIL))
+; 	      (_prt (ffi:c-pointer NIL)))
+;   (:return-type (ffi:c-pointer NIL))
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_FindWindowById
-    (:name "ELJApp_FindWindowById")
-  (:arguments (_id ffi:int)
-	      (_prt (ffi:c-pointer NIL)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_FindWindowById
+;     (:name "ELJApp_FindWindowById")
+;   (:arguments (_id ffi:int)
+; 	      (_prt (ffi:c-pointer NIL)))
+;   (:return-type (ffi:c-pointer NIL))
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_GetApp
-    (:name "ELJApp_GetApp")
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_GetApp
+;     (:name "ELJApp_GetApp")
+;   (:return-type (ffi:c-pointer NIL))
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_GetUserId
-    (:name "ELJApp_GetUserId")
-  (:arguments (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_GetUserId
+;     (:name "ELJApp_GetUserId")
+;   (:arguments (_buf (ffi:c-pointer NIL)))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_GetUserName
-    (:name "ELJApp_GetUserName")
-  (:arguments (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_GetUserName
+;     (:name "ELJApp_GetUserName")
+;   (:arguments (_buf (ffi:c-pointer NIL)))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_GetUserHome
-    (:name "ELJApp_GetUserHome")
-  (:arguments (_usr (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_GetUserHome
+;     (:name "ELJApp_GetUserHome")
+;   (:arguments (_usr (ffi:c-pointer NIL))
+; 	      (_buf (ffi:c-pointer NIL)))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_ExecuteProcess
-    (:name "ELJApp_ExecuteProcess")
-  (:arguments (_cmd (ffi:c-pointer NIL))
-	      (_snc ffi:int)
-	      (_prc (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_ExecuteProcess
+;     (:name "ELJApp_ExecuteProcess")
+;   (:arguments (_cmd (ffi:c-pointer NIL))
+; 	      (_snc ffi:int)
+; 	      (_prc (ffi:c-pointer NIL)))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_Yield
-    (:name "ELJApp_Yield")
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_Yield
+;     (:name "ELJApp_Yield")
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_SafeYield
-    (:name "ELJApp_SafeYield")
-  (:arguments (_win (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_SafeYield
+;     (:name "ELJApp_SafeYield")
+;   (:arguments (_win (ffi:c-pointer NIL)))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_GetOsVersion
-    (:name "ELJApp_GetOsVersion")
-  (:arguments (_maj (ffi:c-pointer NIL))
-	      (_min (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_GetOsVersion
+;     (:name "ELJApp_GetOsVersion")
+;   (:arguments (_maj (ffi:c-pointer NIL))
+; 	      (_min (ffi:c-pointer NIL)))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_GetOsDescription
-    (:name "ELJApp_GetOsDescription")
-  (:arguments (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_GetOsDescription
+;     (:name "ELJApp_GetOsDescription")
+;   (:arguments (_buf (ffi:c-pointer NIL)))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_Sleep
-    (:name "ELJApp_Sleep")
-  (:arguments (_scs ffi:int))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_Sleep
+;     (:name "ELJApp_Sleep")
+;   (:arguments (_scs ffi:int))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_USleep
-    (:name "ELJApp_USleep")
-  (:arguments (_mscs ffi:int))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_USleep
+;     (:name "ELJApp_USleep")
+;   (:arguments (_mscs ffi:int))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defun ((obj app)) ELJApp_IsTerminating
-    (:name "ELJApp_IsTerminating")
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defun ((obj app)) ELJApp_IsTerminating
+;     (:name "ELJApp_IsTerminating")
+;   (:return-type ffi:int)
+;   (:library +library-name+))
