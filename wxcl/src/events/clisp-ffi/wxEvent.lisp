@@ -22,7 +22,7 @@
    :wxEvent_SetId
    :wxEvent_GetSkipped
    :wxEvent_IsCommandEvent
-   :wxEvent_CopyObject
+   :wxEvent_Clone
    :wxEvent_SetCallbackUserData
    :wxEvent_GetCallbackUserData
    :wxCommandEvent_SetClientData
@@ -38,11 +38,9 @@
    :wxCommandEvent_GetExtraLong
    :wxCommandEvent_SetInt
    :wxCommandEvent_GetInt
-   :wxCommandEvent_CopyObject
    :wxNotifyEvent_Veto
    :wxNotifyEvent_Allow
    :wxNotifyEvent_IsAllowed
-   :wxNotifyEvent_CopyObject
    :wxScrollWinEvent_GetOrientation
    :wxScrollWinEvent_GetPosition
    :wxScrollWinEvent_SetOrientation
@@ -77,7 +75,6 @@
    :wxMouseEvent_GetLogicalPosition
    :wxMouseEvent_GetX
    :wxMouseEvent_GetY
-   :wxMouseEvent_CopyObject
    :wxMouseEvent_GetWheelDelta
    :wxMouseEvent_GetWheelRotation
    :wxMouseEvent_GetButton
@@ -97,27 +94,21 @@
    :wxKeyEvent_GetPosition
    :wxKeyEvent_GetX
    :wxKeyEvent_GetY
-   :wxKeyEvent_CopyObject
    :wxSizeEvent_GetSize
-   :wxSizeEvent_CopyObject
    :wxMoveEvent_GetPosition
    :wxMoveEvent_CopyObject
    :wxEraseEvent_GetDC
-   :wxEraseEvent_CopyObject
    :wxActivateEvent_GetActive
    :wxActivateEvent_CopyObject
    :wxMenuEvent_GetMenuId
-   :wxMenuEvent_CopyObject
    :wxCloseEvent_SetLoggingOff
    :wxCloseEvent_GetLoggingOff
    :wxCloseEvent_Veto
    :wxCloseEvent_SetCanVeto
    :wxCloseEvent_CanVeto
    :wxCloseEvent_GetVeto
-   :wxCloseEvent_CopyObject
    :wxShowEvent_SetShow
    :wxShowEvent_GetShow
-   :wxShowEvent_CopyObject
    :wxJoystickEvent_GetPosition
    :wxJoystickEvent_GetZPosition
    :wxJoystickEvent_GetButtonState
@@ -134,7 +125,6 @@
    :wxJoystickEvent_ButtonDown
    :wxJoystickEvent_ButtonUp
    :wxJoystickEvent_ButtonIsDown
-   :wxJoystickEvent_CopyObject
    :wxUpdateUIEvent_GetChecked
    :wxUpdateUIEvent_GetEnabled
    :wxUpdateUIEvent_GetText
@@ -144,13 +134,10 @@
    :wxUpdateUIEvent_Check
    :wxUpdateUIEvent_Enable
    :wxUpdateUIEvent_SetText
-   :wxUpdateUIEvent_CopyObject
    :wxPaletteChangedEvent_SetChangedWindow
    :wxPaletteChangedEvent_GetChangedWindow
-   :wxPaletteChangedEvent_CopyObject
    :wxQueryNewPaletteEvent_SetPaletteRealized
    :wxQueryNewPaletteEvent_GetPaletteRealized
-   :wxQueryNewPaletteEvent_CopyObject
    :wxNavigationKeyEvent_GetDirection
    :wxNavigationKeyEvent_SetDirection
    :wxNavigationKeyEvent_IsWindowChange
@@ -163,7 +150,6 @@
    :wxWindowDestroyEvent_GetWindow
    :wxIdleEvent_RequestMore
    :wxIdleEvent_MoreRequested
-   :wxIdleEvent_CopyObject
    :wxListEvent_GetCode
    :wxListEvent_GetIndex
 ;	:wxListEvent_GetOldIndex
@@ -195,1459 +181,1254 @@
    :wxHelpEvent_SetLink
    :wxHelpEvent_GetTarget
    :wxHelpEvent_SetTarget
-   :wxEVT_COMMAND_BUTTON_CLICKED
-   :wxEVT_COMMAND_CHECKBOX_CLICKED
-   :wxEVT_COMMAND_CHOICE_SELECTED
-   :wxEVT_COMMAND_LISTBOX_SELECTED
-   :wxEVT_COMMAND_LISTBOX_DOUBLECLICKED
-   :wxEVT_COMMAND_CHECKLISTBOX_TOGGLED
-   :wxEVT_COMMAND_TEXT_UPDATED
-   :wxEVT_COMMAND_TEXT_ENTER
-   :wxEVT_COMMAND_MENU_SELECTED
-   :wxEVT_COMMAND_TOOL_CLICKED
-   :wxEVT_COMMAND_SLIDER_UPDATED
-   :wxEVT_COMMAND_RADIOBOX_SELECTED
-   :wxEVT_COMMAND_RADIOBUTTON_SELECTED
-   :wxEVT_COMMAND_SCROLLBAR_UPDATED
-   :wxEVT_COMMAND_VLBOX_SELECTED
-   :wxEVT_COMMAND_COMBOBOX_SELECTED
-   :wxEVT_COMMAND_TOOL_RCLICKED
-   :wxEVT_COMMAND_TOOL_ENTER
-   :wxEVT_COMMAND_SPINCTRL_UPDATED
-   :wxEVT_SOCKET
-   :wxEVT_LEFT_DOWN
-   :wxEVT_LEFT_UP
-   :wxEVT_MIDDLE_DOWN
-   :wxEVT_MIDDLE_UP
-   :wxEVT_RIGHT_DOWN
-   :wxEVT_RIGHT_UP
-   :wxEVT_MOTION
-   :wxEVT_ENTER_WINDOW
-   :wxEVT_LEAVE_WINDOW
-   :wxEVT_LEFT_DCLICK
-   :wxEVT_MIDDLE_DCLICK
-   :wxEVT_RIGHT_DCLICK
-   :wxEVT_SET_FOCUS
-   :wxEVT_KILL_FOCUS
-   :wxEVT_NC_LEFT_DOWN
-   :wxEVT_NC_LEFT_UP
-   :wxEVT_NC_MIDDLE_DOWN
-   :wxEVT_NC_MIDDLE_UP
-   :wxEVT_NC_RIGHT_DOWN
-   :wxEVT_NC_RIGHT_UP
-   :wxEVT_NC_MOTION
-   :wxEVT_NC_ENTER_WINDOW
-   :wxEVT_NC_LEAVE_WINDOW
-   :wxEVT_NC_LEFT_DCLICK
-   :wxEVT_NC_MIDDLE_DCLICK
-   :wxEVT_NC_RIGHT_DCLICK
-   :wxEVT_CHAR
-   :wxEVT_CHAR_HOOK
-   :wxEVT_NAVIGATION_KEY
-   :wxEVT_KEY_DOWN
-   :wxEVT_KEY_UP
-   :wxEVT_SET_CURSOR
-   :wxEVT_SCROLL_TOP
-   :wxEVT_SCROLL_BOTTOM
-   :wxEVT_SCROLL_LINEUP
-   :wxEVT_SCROLL_LINEDOWN
-   :wxEVT_SCROLL_PAGEUP
-   :wxEVT_SCROLL_PAGEDOWN
-   :wxEVT_SCROLL_THUMBTRACK
-   :wxEVT_SCROLL_THUMBRELEASE
-   :wxEVT_SCROLLWIN_TOP
-   :wxEVT_SCROLLWIN_BOTTOM
-   :wxEVT_SCROLLWIN_LINEUP
-   :wxEVT_SCROLLWIN_LINEDOWN
-   :wxEVT_SCROLLWIN_PAGEUP
-   :wxEVT_SCROLLWIN_PAGEDOWN
-   :wxEVT_SCROLLWIN_THUMBTRACK
-   :wxEVT_SCROLLWIN_THUMBRELEASE
-   :wxEVT_SIZE
-   :wxEVT_MOVE
-   :wxEVT_CLOSE_WINDOW
-   :wxEVT_END_SESSION
-   :wxEVT_QUERY_END_SESSION
-   :wxEVT_ACTIVATE_APP
-   :wxEVT_POWER
-   :wxEVT_ACTIVATE
-   :wxEVT_CREATE
-   :wxEVT_DESTROY
-   :wxEVT_SHOW
-   :wxEVT_ICONIZE
-   :wxEVT_MAXIMIZE
-   :wxEVT_MOUSE_CAPTURE_CHANGED
-   :wxEVT_PAINT
-   :wxEVT_ERASE_BACKGROUND
-   :wxEVT_NC_PAINT
-   :wxEVT_PAINT_ICON
-   :wxEVT_MENU_HIGHLIGHT
-   :wxEVT_CONTEXT_MENU
-   :wxEVT_SYS_COLOUR_CHANGED
-   :wxEVT_SETTING_CHANGED
-   :wxEVT_QUERY_NEW_PALETTE
-   :wxEVT_PALETTE_CHANGED
-   :wxEVT_JOY_BUTTON_DOWN
-   :wxEVT_JOY_BUTTON_UP
-   :wxEVT_JOY_MOVE
-   :wxEVT_JOY_ZMOVE
-   :wxEVT_DROP_FILES
-   :wxEVT_DRAW_ITEM
-   :wxEVT_MEASURE_ITEM
-   :wxEVT_COMPARE_ITEM
-   :wxEVT_INIT_DIALOG
-   :wxEVT_IDLE
-   :wxEVT_UPDATE_UI
-   :wxEVT_END_PROCESS
-   :wxEVT_DIALUP_CONNECTED
-   :wxEVT_DIALUP_DISCONNECTED
-   :wxEVT_COMMAND_LEFT_CLICK
-   :wxEVT_COMMAND_LEFT_DCLICK
-   :wxEVT_COMMAND_RIGHT_CLICK
-   :wxEVT_COMMAND_RIGHT_DCLICK
-   :wxEVT_COMMAND_SET_FOCUS
-   :wxEVT_COMMAND_KILL_FOCUS
-   :wxEVT_COMMAND_ENTER
-   :wxEVT_COMMAND_TREE_BEGIN_DRAG
-   :wxEVT_COMMAND_TREE_BEGIN_RDRAG
-   :wxEVT_COMMAND_TREE_BEGIN_LABEL_EDIT
-   :wxEVT_COMMAND_TREE_END_LABEL_EDIT
-   :wxEVT_COMMAND_TREE_DELETE_ITEM
-   :wxEVT_COMMAND_TREE_GET_INFO
-   :wxEVT_COMMAND_TREE_SET_INFO
-   :wxEVT_COMMAND_TREE_ITEM_EXPANDED
-   :wxEVT_COMMAND_TREE_ITEM_EXPANDING
-   :wxEVT_COMMAND_TREE_ITEM_COLLAPSED
-   :wxEVT_COMMAND_TREE_ITEM_COLLAPSING
-   :wxEVT_COMMAND_TREE_SEL_CHANGED
-   :wxEVT_COMMAND_TREE_SEL_CHANGING
-   :wxEVT_COMMAND_TREE_KEY_DOWN
-   :wxEVT_COMMAND_TREE_ITEM_ACTIVATED
-   :wxEVT_COMMAND_TREE_ITEM_RIGHT_CLICK
-   :wxEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK
-   :wxEVT_COMMAND_TREE_END_DRAG
-   :wxEVT_COMMAND_LIST_BEGIN_DRAG
-   :wxEVT_COMMAND_LIST_BEGIN_RDRAG
-   :wxEVT_COMMAND_LIST_BEGIN_LABEL_EDIT
-   :wxEVT_COMMAND_LIST_END_LABEL_EDIT
-   :wxEVT_COMMAND_LIST_DELETE_ITEM
-   :wxEVT_COMMAND_LIST_DELETE_ALL_ITEMS
-   :wxEVT_COMMAND_LIST_GET_INFO
-   :wxEVT_COMMAND_LIST_SET_INFO
-   :wxEVT_COMMAND_LIST_ITEM_SELECTED
-   :wxEVT_COMMAND_LIST_ITEM_DESELECTED
-   :wxEVT_COMMAND_LIST_KEY_DOWN
-   :wxEVT_COMMAND_LIST_INSERT_ITEM
-   :wxEVT_COMMAND_LIST_COL_CLICK
-   :wxEVT_COMMAND_LIST_ITEM_RIGHT_CLICK
-   :wxEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK
-   :wxEVT_COMMAND_LIST_ITEM_ACTIVATED
-   :wxEVT_COMMAND_LIST_ITEM_FOCUSED
-   :wxEVT_COMMAND_TAB_SEL_CHANGED
-   :wxEVT_COMMAND_TAB_SEL_CHANGING
-   :wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED
-   :wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING
-   :wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED
-   :wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGING
-   :wxEVT_COMMAND_SPLITTER_DOUBLECLICKED
-   :wxEVT_COMMAND_SPLITTER_UNSPLIT
-   :wxEVT_WIZARD_PAGE_CHANGED
-   :wxEVT_WIZARD_PAGE_CHANGING
-   :wxEVT_WIZARD_CANCEL
-   :wxEVT_CALENDAR_SEL_CHANGED
-   :wxEVT_CALENDAR_DAY_CHANGED
-   :wxEVT_CALENDAR_MONTH_CHANGED
-   :wxEVT_CALENDAR_YEAR_CHANGED
-   :wxEVT_CALENDAR_DOUBLECLICKED
-   :wxEVT_CALENDAR_WEEKDAY_CLICKED
-;    :wxEVT_PLOT_SEL_CHANGING
-;    :wxEVT_PLOT_SEL_CHANGED
-;    :wxEVT_PLOT_CLICKED
-;    :wxEVT_PLOT_DOUBLECLICKED
-;    :wxEVT_PLOT_ZOOM_IN
-;    :wxEVT_PLOT_ZOOM_OUT
-;    :wxEVT_PLOT_VALUE_SEL_CREATING
-;    :wxEVT_PLOT_VALUE_SEL_CREATED
-;    :wxEVT_PLOT_VALUE_SEL_CHANGING
-;    :wxEVT_PLOT_VALUE_SEL_CHANGED
-;    :wxEVT_PLOT_AREA_SEL_CREATING
-;    :wxEVT_PLOT_AREA_SEL_CREATED
-;    :wxEVT_PLOT_AREA_SEL_CHANGING
-;    :wxEVT_PLOT_AREA_SEL_CHANGED
-;    :wxEVT_PLOT_BEGIN_X_LABEL_EDIT
-;    :wxEVT_PLOT_END_X_LABEL_EDIT
-;    :wxEVT_PLOT_BEGIN_Y_LABEL_EDIT
-;    :wxEVT_PLOT_END_Y_LABEL_EDIT
-;    :wxEVT_PLOT_BEGIN_TITLE_EDIT
-;    :wxEVT_PLOT_END_TITLE_EDIT
-;    :wxEVT_PLOT_AREA_CREATE
-   :wxEVT_USER_FIRST
-;    :wxEVT_DYNAMIC_SASH_SPLIT
-;    :wxEVT_DYNAMIC_SASH_UNIFY
-   :wxEVT_HELP
-   :wxEVT_DETAILED_HELP
-   :wxEVT_GRID_CELL_LEFT_CLICK
-   :wxEVT_GRID_CELL_RIGHT_CLICK
-   :wxEVT_GRID_CELL_LEFT_DCLICK
-   :wxEVT_GRID_CELL_RIGHT_DCLICK
-   :wxEVT_GRID_LABEL_LEFT_CLICK
-   :wxEVT_GRID_LABEL_RIGHT_CLICK
-   :wxEVT_GRID_LABEL_LEFT_DCLICK
-   :wxEVT_GRID_LABEL_RIGHT_DCLICK
-   :wxEVT_GRID_ROW_SIZE
-   :wxEVT_GRID_COL_SIZE
-   :wxEVT_GRID_RANGE_SELECT
-   :wxEVT_GRID_CELL_CHANGE
-   :wxEVT_GRID_SELECT_CELL
-   :wxEVT_GRID_EDITOR_SHOWN
-   :wxEVT_GRID_EDITOR_HIDDEN
-   :wxEVT_GRID_EDITOR_CREATED))
+   ))
 
 (in-package :wxEvent)
 
 (ffi:default-foreign-language :stdc)
 
-(ffi:def-c-var wxEVT_COMMAND_BUTTON_CLICKED
+(ffi:def-c-var +event-command-button-clicked+
     (:name "wxEVENT_COMMAND_BUTTON_CLICKED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_CHECKBOX_CLICKED
+(ffi:def-c-var +event-command-checkbox-clicked+
     (:name "wxEVENT_COMMAND_CHECKBOX_CLICKED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_CHOICE_SELECTED
+(ffi:def-c-var +event-command-choice-selected+
     (:name "wxEVENT_COMMAND_CHOICE_SELECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LISTBOX_SELECTED
+(ffi:def-c-var +event-command-listbox-selected+
     (:name "wxEVENT_COMMAND_LISTBOX_SELECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LISTBOX_DOUBLECLICKED
+(ffi:def-c-var +event-command-listbox-doubleclicked+
     (:name "wxEVENT_COMMAND_LISTBOX_DOUBLECLICKED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_CHECKLISTBOX_TOGGLED
+(ffi:def-c-var +event-command-checklistbox-toggled+
     (:name "wxEVENT_COMMAND_CHECKLISTBOX_TOGGLED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TEXT_UPDATED
+(ffi:def-c-var +event-command-text-updated+
     (:name "wxEVENT_COMMAND_TEXT_UPDATED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TEXT_ENTER
+(ffi:def-c-var +event-command-text-enter+
     (:name "wxEVENT_COMMAND_TEXT_ENTER")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_MENU_SELECTED
+(ffi:def-c-var +event-command-menu-selected+
     (:name "wxEVENT_COMMAND_MENU_SELECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TOOL_CLICKED
+(ffi:def-c-var +event-command-tool-clicked+
     (:name "wxEVENT_COMMAND_TOOL_CLICKED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_SLIDER_UPDATED
+(ffi:def-c-var +event-command-slider-updated+
     (:name "wxEVENT_COMMAND_SLIDER_UPDATED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_RADIOBOX_SELECTED
+(ffi:def-c-var +event-command-radiobox-selected+
     (:name "wxEVENT_COMMAND_RADIOBOX_SELECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_RADIOBUTTON_SELECTED
+(ffi:def-c-var +event-command-radiobutton-selected+
     (:name "wxEVENT_COMMAND_RADIOBUTTON_SELECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_SCROLLBAR_UPDATED
+(ffi:def-c-var +event-command-scrollbar-updated+
     (:name "wxEVENT_COMMAND_SCROLLBAR_UPDATED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_VLBOX_SELECTED
+(ffi:def-c-var +event-command-vlbox-selected+
     (:name "wxEVENT_COMMAND_VLBOX_SELECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_COMBOBOX_SELECTED
+(ffi:def-c-var +event-command-combobox-selected+
     (:name "wxEVENT_COMMAND_COMBOBOX_SELECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TOOL_RCLICKED
+(ffi:def-c-var +event-command-tool-rclicked+
     (:name "wxEVENT_COMMAND_TOOL_RCLICKED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TOOL_ENTER
+(ffi:def-c-var +event-command-tool-enter+
     (:name "wxEVENT_COMMAND_TOOL_ENTER")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_SPINCTRL_UPDATED
+(ffi:def-c-var +event-command-spinctrl-updated+
     (:name "wxEVENT_COMMAND_SPINCTRL_UPDATED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SOCKET
+(ffi:def-c-var +event-socket+
     (:name "wxEVENT_SOCKET")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_LEFT_DOWN
+(ffi:def-c-var +event-left-down+
     (:name "wxEVENT_LEFT_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_LEFT_UP
+(ffi:def-c-var +event-left-up+
     (:name "wxEVENT_LEFT_UP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_MIDDLE_DOWN
+(ffi:def-c-var +event-middle-down+
     (:name "wxEVENT_MIDDLE_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_MIDDLE_UP
+(ffi:def-c-var +event-middle-up+
     (:name "wxEVENT_MIDDLE_UP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_RIGHT_DOWN
+(ffi:def-c-var +event-right-down+
     (:name "wxEVENT_RIGHT_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_RIGHT_UP
+(ffi:def-c-var +event-right-up+
     (:name "wxEVENT_RIGHT_UP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_MOTION
+(ffi:def-c-var +event-motion+
     (:name "wxEVENT_MOTION")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_ENTER_WINDOW
+(ffi:def-c-var +event-enter-window+
     (:name "wxEVENT_ENTER_WINDOW")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_LEAVE_WINDOW
+(ffi:def-c-var +event-leave-window+
     (:name "wxEVENT_LEAVE_WINDOW")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_LEFT_DCLICK
+(ffi:def-c-var +event-left-dclick+
     (:name "wxEVENT_LEFT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_MIDDLE_DCLICK
+(ffi:def-c-var +event-middle-dclick+
     (:name "wxEVENT_MIDDLE_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_RIGHT_DCLICK
+(ffi:def-c-var +event-right-dclick+
     (:name "wxEVENT_RIGHT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SET_FOCUS
+(ffi:def-c-var +event-set-focus+
     (:name "wxEVENT_SET_FOCUS")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_KILL_FOCUS
+(ffi:def-c-var +event-kill-focus+
     (:name "wxEVENT_KILL_FOCUS")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_LEFT_DOWN
+(ffi:def-c-var +event-nc-left-down+
     (:name "wxEVENT_NC_LEFT_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_LEFT_UP
+(ffi:def-c-var +event-nc-left-up+
     (:name "wxEVENT_NC_LEFT_UP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_MIDDLE_DOWN
+(ffi:def-c-var +event-nc-middle-down+
     (:name "wxEVENT_NC_MIDDLE_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_MIDDLE_UP
+(ffi:def-c-var +event-nc-middle-up+
     (:name "wxEVENT_NC_MIDDLE_UP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_RIGHT_DOWN
+(ffi:def-c-var +event-nc-right-down+
     (:name "wxEVENT_NC_RIGHT_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_RIGHT_UP
+(ffi:def-c-var +event-nc-right-up+
     (:name "wxEVENT_NC_RIGHT_UP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_MOTION
+(ffi:def-c-var +event-nc-motion+
     (:name "wxEVENT_NC_MOTION")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_ENTER_WINDOW
+(ffi:def-c-var +event-nc-enter-window+
     (:name "wxEVENT_NC_ENTER_WINDOW")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_LEAVE_WINDOW
+(ffi:def-c-var +event-nc-leave-window+
     (:name "wxEVENT_NC_LEAVE_WINDOW")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_LEFT_DCLICK
+(ffi:def-c-var +event-nc-left-dclick+
     (:name "wxEVENT_NC_LEFT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_MIDDLE_DCLICK
+(ffi:def-c-var +event-nc-middle-dclick+
     (:name "wxEVENT_NC_MIDDLE_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_RIGHT_DCLICK
+(ffi:def-c-var +event-nc-right-dclick+
     (:name "wxEVENT_NC_RIGHT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CHAR
+(ffi:def-c-var +event-char+
     (:name "wxEVENT_CHAR")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CHAR_HOOK
+(ffi:def-c-var +event-char-hook+
     (:name "wxEVENT_CHAR_HOOK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NAVIGATION_KEY
+(ffi:def-c-var +event-navigation-key+
     (:name "wxEVENT_NAVIGATION_KEY")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_KEY_DOWN
+(ffi:def-c-var +event-key-down+
     (:name "wxEVENT_KEY_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_KEY_UP
+(ffi:def-c-var +event-key-up+
     (:name "wxEVENT_KEY_UP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SET_CURSOR
+(ffi:def-c-var +event-set-cursor+
     (:name "wxEVENT_SET_CURSOR")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLL_TOP
+(ffi:def-c-var +event-scroll-top+
     (:name "wxEVENT_SCROLL_TOP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLL_BOTTOM
+(ffi:def-c-var +event-scroll-bottom+
     (:name "wxEVENT_SCROLL_BOTTOM")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLL_LINEUP
+(ffi:def-c-var +event-scroll-lineup+
     (:name "wxEVENT_SCROLL_LINEUP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLL_LINEDOWN
+(ffi:def-c-var +event-scroll-linedown+
     (:name "wxEVENT_SCROLL_LINEDOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLL_PAGEUP
+(ffi:def-c-var +event-scroll-pageup+
     (:name "wxEVENT_SCROLL_PAGEUP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLL_PAGEDOWN
+(ffi:def-c-var +event-scroll-pagedown+
     (:name "wxEVENT_SCROLL_PAGEDOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLL_THUMBTRACK
+(ffi:def-c-var +event-scroll-thumbtrack+
     (:name "wxEVENT_SCROLL_THUMBTRACK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLL_THUMBRELEASE
+(ffi:def-c-var +event-scroll-thumbrelease+
     (:name "wxEVENT_SCROLL_THUMBRELEASE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLLWIN_TOP
+(ffi:def-c-var +event-scrollwin-top+
     (:name "wxEVENT_SCROLLWIN_TOP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLLWIN_BOTTOM
+(ffi:def-c-var +event-scrollwin-bottom+
     (:name "wxEVENT_SCROLLWIN_BOTTOM")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLLWIN_LINEUP
+(ffi:def-c-var +event-scrollwin-lineup+
     (:name "wxEVENT_SCROLLWIN_LINEUP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLLWIN_LINEDOWN
+(ffi:def-c-var +event-scrollwin-linedown+
     (:name "wxEVENT_SCROLLWIN_LINEDOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLLWIN_PAGEUP
+(ffi:def-c-var +event-scrollwin-pageup+
     (:name "wxEVENT_SCROLLWIN_PAGEUP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLLWIN_PAGEDOWN
+(ffi:def-c-var +event-scrollwin-pagedown+
     (:name "wxEVENT_SCROLLWIN_PAGEDOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLLWIN_THUMBTRACK
+(ffi:def-c-var +event-scrollwin-thumbtrack+
     (:name "wxEVENT_SCROLLWIN_THUMBTRACK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SCROLLWIN_THUMBRELEASE
+(ffi:def-c-var +event-scrollwin-thumbrelease+
     (:name "wxEVENT_SCROLLWIN_THUMBRELEASE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SIZE
+(ffi:def-c-var +event-size+
     (:name "wxEVENT_SIZE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_MOVE
+(ffi:def-c-var +event-move+
     (:name "wxEVENT_MOVE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CLOSE_WINDOW
+(ffi:def-c-var +event-close-window+
     (:name "wxEVENT_CLOSE_WINDOW")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_END_SESSION
+(ffi:def-c-var +event-end-session+
     (:name "wxEVENT_END_SESSION")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_QUERY_END_SESSION
+(ffi:def-c-var +event-query-end-session+
     (:name "wxEVENT_QUERY_END_SESSION")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_ACTIVATE_APP
+(ffi:def-c-var +event-activate-app+
     (:name "wxEVENT_ACTIVATE_APP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_POWER
+(ffi:def-c-var +event-power+
     (:name "wxEVENT_POWER")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_ACTIVATE
+(ffi:def-c-var +event-activate+
     (:name "wxEVENT_ACTIVATE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CREATE
+(ffi:def-c-var +event-create+
     (:name "wxEVENT_CREATE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_DESTROY
+(ffi:def-c-var +event-destroy+
     (:name "wxEVENT_DESTROY")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SHOW
+(ffi:def-c-var +event-show+
     (:name "wxEVENT_SHOW")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_ICONIZE
+(ffi:def-c-var +event-iconize+
     (:name "wxEVENT_ICONIZE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_MAXIMIZE
+(ffi:def-c-var +event-maximize+
     (:name "wxEVENT_MAXIMIZE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_MOUSE_CAPTURE_CHANGED
+(ffi:def-c-var +event-mouse-capture-changed+
     (:name "wxEVENT_MOUSE_CAPTURE_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_PAINT
+(ffi:def-c-var +event-paint+
     (:name "wxEVENT_PAINT")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_ERASE_BACKGROUND
+(ffi:def-c-var +event-erase-background+
     (:name "wxEVENT_ERASE_BACKGROUND")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_NC_PAINT
+(ffi:def-c-var +event-nc-paint+
     (:name "wxEVENT_NC_PAINT")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_PAINT_ICON
+(ffi:def-c-var +event-paint-icon+
     (:name "wxEVENT_PAINT_ICON")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_MENU_HIGHLIGHT
+(ffi:def-c-var +event-menu-highlight+
     (:name "wxEVENT_MENU_HIGHLIGHT")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CONTEXT_MENU
+(ffi:def-c-var +event-context-menu+
     (:name "wxEVENT_CONTEXT_MENU")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SYS_COLOUR_CHANGED
+(ffi:def-c-var +event-sys-colour-changed+
     (:name "wxEVENT_SYS_COLOUR_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_SETTING_CHANGED
+(ffi:def-c-var +event-setting-changed+
     (:name "wxEVENT_SETTING_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_QUERY_NEW_PALETTE
+(ffi:def-c-var +event-query-new-palette+
     (:name "wxEVENT_QUERY_NEW_PALETTE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_PALETTE_CHANGED
+(ffi:def-c-var +event-palette-changed+
     (:name "wxEVENT_PALETTE_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_JOY_BUTTON_DOWN
+(ffi:def-c-var +event-joy-button-down+
     (:name "wxEVENT_JOY_BUTTON_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_JOY_BUTTON_UP
+(ffi:def-c-var +event-joy-button-up+
     (:name "wxEVENT_JOY_BUTTON_UP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_JOY_MOVE
+(ffi:def-c-var +event-joy-move+
     (:name "wxEVENT_JOY_MOVE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_JOY_ZMOVE
+(ffi:def-c-var +event-joy-zmove+
     (:name "wxEVENT_JOY_ZMOVE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_DROP_FILES
+(ffi:def-c-var +event-drop-files+
     (:name "wxEVENT_DROP_FILES")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_DRAW_ITEM
+(ffi:def-c-var +event-draw-item+
     (:name "wxEVENT_DRAW_ITEM")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_MEASURE_ITEM
+(ffi:def-c-var +event-measure-item+
     (:name "wxEVENT_MEASURE_ITEM")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMPARE_ITEM
+(ffi:def-c-var +event-compare-item+
     (:name "wxEVENT_COMPARE_ITEM")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_INIT_DIALOG
+(ffi:def-c-var +event-init-dialog+
     (:name "wxEVENT_INIT_DIALOG")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_IDLE
+(ffi:def-c-var +event-idle+
     (:name "wxEVENT_IDLE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_UPDATE_UI
+(ffi:def-c-var +event-update-ui+
     (:name "wxEVENT_UPDATE_UI")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_END_PROCESS
+(ffi:def-c-var +event-end-process+
     (:name "wxEVENT_END_PROCESS")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_DIALUP_CONNECTED
+(ffi:def-c-var +event-dialup-connected+
     (:name "wxEVENT_DIALUP_CONNECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_DIALUP_DISCONNECTED
+(ffi:def-c-var +event-dialup-disconnected+
     (:name "wxEVENT_DIALUP_DISCONNECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LEFT_CLICK
+(ffi:def-c-var +event-command-left-click+
     (:name "wxEVENT_COMMAND_LEFT_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LEFT_DCLICK
+(ffi:def-c-var +event-command-left-dclick+
     (:name "wxEVENT_COMMAND_LEFT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_RIGHT_CLICK
+(ffi:def-c-var +event-command-right-click+
     (:name "wxEVENT_COMMAND_RIGHT_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_RIGHT_DCLICK
+(ffi:def-c-var +event-command-right-dclick+
     (:name "wxEVENT_COMMAND_RIGHT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_SET_FOCUS
+(ffi:def-c-var +event-command-set-focus+
     (:name "wxEVENT_COMMAND_SET_FOCUS")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_KILL_FOCUS
+(ffi:def-c-var +event-command-kill-focus+
     (:name "wxEVENT_COMMAND_KILL_FOCUS")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_ENTER
+(ffi:def-c-var +event-command-enter+
     (:name "wxEVENT_COMMAND_ENTER")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_BEGIN_DRAG
+(ffi:def-c-var +event-command-tree-begin-drag+
     (:name "wxEVENT_COMMAND_TREE_BEGIN_DRAG")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_BEGIN_RDRAG
+(ffi:def-c-var +event-command-tree-begin-rdrag+
     (:name "wxEVENT_COMMAND_TREE_BEGIN_RDRAG")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_BEGIN_LABEL_EDIT
+(ffi:def-c-var +event-command-tree-begin-label-edit+
     (:name "wxEVENT_COMMAND_TREE_BEGIN_LABEL_EDIT")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_END_LABEL_EDIT
+(ffi:def-c-var +event-command-tree-end-label-edit+
     (:name "wxEVENT_COMMAND_TREE_END_LABEL_EDIT")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_DELETE_ITEM
+(ffi:def-c-var +event-command-tree-delete-item+
     (:name "wxEVENT_COMMAND_TREE_DELETE_ITEM")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_GET_INFO
+(ffi:def-c-var +event-command-tree-get-info+
     (:name "wxEVENT_COMMAND_TREE_GET_INFO")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_SET_INFO
+(ffi:def-c-var +event-command-tree-set-info+
     (:name "wxEVENT_COMMAND_TREE_SET_INFO")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_ITEM_EXPANDED
+(ffi:def-c-var +event-command-tree-item-expanded+
     (:name "wxEVENT_COMMAND_TREE_ITEM_EXPANDED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_ITEM_EXPANDING
+(ffi:def-c-var +event-command-tree-item-expanding+
     (:name "wxEVENT_COMMAND_TREE_ITEM_EXPANDING")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_ITEM_COLLAPSED
+(ffi:def-c-var +event-command-tree-item-collapsed+
     (:name "wxEVENT_COMMAND_TREE_ITEM_COLLAPSED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_ITEM_COLLAPSING
+(ffi:def-c-var +event-command-tree-item-collapsing+
     (:name "wxEVENT_COMMAND_TREE_ITEM_COLLAPSING")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_SEL_CHANGED
+(ffi:def-c-var +event-command-tree-sel-changed+
     (:name "wxEVENT_COMMAND_TREE_SEL_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_SEL_CHANGING
+(ffi:def-c-var +event-command-tree-sel-changing+
     (:name "wxEVENT_COMMAND_TREE_SEL_CHANGING")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_KEY_DOWN
+(ffi:def-c-var +event-command-tree-key-down+
     (:name "wxEVENT_COMMAND_TREE_KEY_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_ITEM_ACTIVATED
+(ffi:def-c-var +event-command-tree-item-activated+
     (:name "wxEVENT_COMMAND_TREE_ITEM_ACTIVATED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_ITEM_RIGHT_CLICK
+(ffi:def-c-var +event-command-tree-item-right-click+
     (:name "wxEVENT_COMMAND_TREE_ITEM_RIGHT_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_ITEM_MIDDLE_CLICK
+(ffi:def-c-var +event-command-tree-item-middle-click+
     (:name "wxEVENT_COMMAND_TREE_ITEM_MIDDLE_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TREE_END_DRAG
+(ffi:def-c-var +event-command-tree-end-drag+
     (:name "wxEVENT_COMMAND_TREE_END_DRAG")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_BEGIN_DRAG
+(ffi:def-c-var +event-command-list-begin-drag+
     (:name "wxEVENT_COMMAND_LIST_BEGIN_DRAG")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_BEGIN_RDRAG
+(ffi:def-c-var +event-command-list-begin-rdrag+
     (:name "wxEVENT_COMMAND_LIST_BEGIN_RDRAG")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_BEGIN_LABEL_EDIT
+(ffi:def-c-var +event-command-list-begin-label-edit+
     (:name "wxEVENT_COMMAND_LIST_BEGIN_LABEL_EDIT")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_END_LABEL_EDIT
+(ffi:def-c-var +event-command-list-end-label-edit+
     (:name "wxEVENT_COMMAND_LIST_END_LABEL_EDIT")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_DELETE_ITEM
+(ffi:def-c-var +event-command-list-delete-item+
     (:name "wxEVENT_COMMAND_LIST_DELETE_ITEM")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_DELETE_ALL_ITEMS
+(ffi:def-c-var +event-command-list-delete-all-items+
     (:name "wxEVENT_COMMAND_LIST_DELETE_ALL_ITEMS")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_GET_INFO
+(ffi:def-c-var +event-command-list-get-info+
     (:name "wxEVENT_COMMAND_LIST_GET_INFO")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_SET_INFO
+(ffi:def-c-var +event-command-list-set-info+
     (:name "wxEVENT_COMMAND_LIST_SET_INFO")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_ITEM_SELECTED
+(ffi:def-c-var +event-command-list-item-selected+
     (:name "wxEVENT_COMMAND_LIST_ITEM_SELECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_ITEM_DESELECTED
+(ffi:def-c-var +event-command-list-item-deselected+
     (:name "wxEVENT_COMMAND_LIST_ITEM_DESELECTED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_KEY_DOWN
+(ffi:def-c-var +event-command-list-key-down+
     (:name "wxEVENT_COMMAND_LIST_KEY_DOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_INSERT_ITEM
+(ffi:def-c-var +event-command-list-insert-item+
     (:name "wxEVENT_COMMAND_LIST_INSERT_ITEM")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_COL_CLICK
+(ffi:def-c-var +event-command-list-col-click+
     (:name "wxEVENT_COMMAND_LIST_COL_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_ITEM_RIGHT_CLICK
+(ffi:def-c-var +event-command-list-item-right-click+
     (:name "wxEVENT_COMMAND_LIST_ITEM_RIGHT_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_ITEM_MIDDLE_CLICK
+(ffi:def-c-var +event-command-list-item-middle-click+
     (:name "wxEVENT_COMMAND_LIST_ITEM_MIDDLE_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_ITEM_ACTIVATED
+(ffi:def-c-var +event-command-list-item-activated+
     (:name "wxEVENT_COMMAND_LIST_ITEM_ACTIVATED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_LIST_ITEM_FOCUSED
+(ffi:def-c-var +event-command-list-item-focused+
     (:name "wxEVENT_COMMAND_LIST_ITEM_FOCUSED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TAB_SEL_CHANGED
+(ffi:def-c-var +event-command-tab-sel-changed+
     (:name "wxEVENT_COMMAND_TAB_SEL_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_TAB_SEL_CHANGING
+(ffi:def-c-var +event-command-tab-sel-changing+
     (:name "wxEVENT_COMMAND_TAB_SEL_CHANGING")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED
+(ffi:def-c-var +event-command-notebook-page-changed+
     (:name "wxEVENT_COMMAND_NOTEBOOK_PAGE_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING
+(ffi:def-c-var +event-command-notebook-page-changing+
     (:name "wxEVENT_COMMAND_NOTEBOOK_PAGE_CHANGING")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGED
+(ffi:def-c-var +event-command-splitter-sash-pos-changed+
     (:name "wxEVENT_COMMAND_SPLITTER_SASH_POS_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_SPLITTER_SASH_POS_CHANGING
+(ffi:def-c-var +event-command-splitter-sash-pos-changing+
     (:name "wxEVENT_COMMAND_SPLITTER_SASH_POS_CHANGING")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_SPLITTER_DOUBLECLICKED
+(ffi:def-c-var +event-command-splitter-doubleclicked+
     (:name "wxEVENT_COMMAND_SPLITTER_DOUBLECLICKED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_COMMAND_SPLITTER_UNSPLIT
+(ffi:def-c-var +event-command-splitter-unsplit+
     (:name "wxEVENT_COMMAND_SPLITTER_UNSPLIT")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_WIZARD_PAGE_CHANGED
+(ffi:def-c-var +event-wizard-page-changed+
     (:name "wxEVENT_WIZARD_PAGE_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_WIZARD_PAGE_CHANGING
+(ffi:def-c-var +event-wizard-page-changing+
     (:name "wxEVENT_WIZARD_PAGE_CHANGING")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_WIZARD_CANCEL
+(ffi:def-c-var +event-wizard-cancel+
     (:name "wxEVENT_WIZARD_CANCEL")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CALENDAR_SEL_CHANGED
+(ffi:def-c-var +event-calendar-sel-changed+
     (:name "wxEVENT_CALENDAR_SEL_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CALENDAR_DAY_CHANGED
+(ffi:def-c-var +event-calendar-day-changed+
     (:name "wxEVENT_CALENDAR_DAY_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CALENDAR_MONTH_CHANGED
+(ffi:def-c-var +event-calendar-month-changed+
     (:name "wxEVENT_CALENDAR_MONTH_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CALENDAR_YEAR_CHANGED
+(ffi:def-c-var +event-calendar-year-changed+
     (:name "wxEVENT_CALENDAR_YEAR_CHANGED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CALENDAR_DOUBLECLICKED
+(ffi:def-c-var +event-calendar-doubleclicked+
     (:name "wxEVENT_CALENDAR_DOUBLECLICKED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_CALENDAR_WEEKDAY_CLICKED
+(ffi:def-c-var +event-calendar-weekday-clicked+
     (:name "wxEVENT_CALENDAR_WEEKDAY_CLICKED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-; (ffi:def-c-var wxEVT_PLOT_SEL_CHANGING
-;     (:name "wxEVENT_PLOT_SEL_CHANGING")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_SEL_CHANGED
-;     (:name "wxEVENT_PLOT_SEL_CHANGED")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_CLICKED
-;     (:name "wxEVENT_PLOT_CLICKED")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_DOUBLECLICKED
-;     (:name "wxEVENT_PLOT_DOUBLECLICKED")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_ZOOM_IN
-;     (:name "wxEVENT_PLOT_ZOOM_IN")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_ZOOM_OUT
-;     (:name "wxEVENT_PLOT_ZOOM_OUT")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_VALUE_SEL_CREATING
-;     (:name "wxEVENT_PLOT_VALUE_SEL_CREATING")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_VALUE_SEL_CREATED
-;     (:name "wxEVENT_PLOT_VALUE_SEL_CREATED")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_VALUE_SEL_CHANGING
-;     (:name "wxEVENT_PLOT_VALUE_SEL_CHANGING")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_VALUE_SEL_CHANGED
-;     (:name "wxEVENT_PLOT_VALUE_SEL_CHANGED")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_AREA_SEL_CREATING
-;     (:name "wxEVENT_PLOT_AREA_SEL_CREATING")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_AREA_SEL_CREATED
-;     (:name "wxEVENT_PLOT_AREA_SEL_CREATED")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_AREA_SEL_CHANGING
-;     (:name "wxEVENT_PLOT_AREA_SEL_CHANGING")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_AREA_SEL_CHANGED
-;     (:name "wxEVENT_PLOT_AREA_SEL_CHANGED")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_BEGIN_X_LABEL_EDIT
-;     (:name "wxEVENT_PLOT_BEGIN_X_LABEL_EDIT")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_END_X_LABEL_EDIT
-;     (:name "wxEVENT_PLOT_END_X_LABEL_EDIT")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_BEGIN_Y_LABEL_EDIT
-;     (:name "wxEVENT_PLOT_BEGIN_Y_LABEL_EDIT")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_END_Y_LABEL_EDIT
-;     (:name "wxEVENT_PLOT_END_Y_LABEL_EDIT")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_BEGIN_TITLE_EDIT
-;     (:name "wxEVENT_PLOT_BEGIN_TITLE_EDIT")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_END_TITLE_EDIT
-;     (:name "wxEVENT_PLOT_END_TITLE_EDIT")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_PLOT_AREA_CREATE
-;     (:name "wxEVENT_PLOT_AREA_CREATE")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-(ffi:def-c-var wxEVT_USER_FIRST
+(ffi:def-c-var +event-user-first+
     (:name "wxEVENT_USER_FIRST")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-; (ffi:def-c-var wxEVT_DYNAMIC_SASH_SPLIT
-;     (:name "wxEVENT_DYNAMIC_SASH_SPLIT")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-; (ffi:def-c-var wxEVT_DYNAMIC_SASH_UNIFY
-;     (:name "wxEVENT_DYNAMIC_SASH_UNIFY")
-;   (:type (ffi:c-ptr ffi:int))
-;   (:read-only t)
-;   (:library +library-name+))
-
-(ffi:def-c-var wxEVT_HELP
+(ffi:def-c-var +event-help+
     (:name "wxEVENT_HELP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_DETAILED_HELP
+(ffi:def-c-var +event-detailed-help+
     (:name "wxEVENT_DETAILED_HELP")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_CELL_LEFT_CLICK
+(ffi:def-c-var +event-grid-cell-left-click+
     (:name "wxEVENT_GRID_CELL_LEFT_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_CELL_RIGHT_CLICK
+(ffi:def-c-var +event-grid-cell-right-click+
     (:name "wxEVENT_GRID_CELL_RIGHT_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_CELL_LEFT_DCLICK
+(ffi:def-c-var +event-grid-cell-left-dclick+
     (:name "wxEVENT_GRID_CELL_LEFT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_CELL_RIGHT_DCLICK
+(ffi:def-c-var +event-grid-cell-right-dclick+
     (:name "wxEVENT_GRID_CELL_RIGHT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_LABEL_LEFT_CLICK
+(ffi:def-c-var +event-grid-label-left-click+
     (:name "wxEVENT_GRID_LABEL_LEFT_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_LABEL_RIGHT_CLICK
+(ffi:def-c-var +event-grid-label-right-click+
     (:name "wxEVENT_GRID_LABEL_RIGHT_CLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_LABEL_LEFT_DCLICK
+(ffi:def-c-var +event-grid-label-left-dclick+
     (:name "wxEVENT_GRID_LABEL_LEFT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_LABEL_RIGHT_DCLICK
+(ffi:def-c-var +event-grid-label-right-dclick+
     (:name "wxEVENT_GRID_LABEL_RIGHT_DCLICK")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_ROW_SIZE
+(ffi:def-c-var +event-grid-row-size+
     (:name "wxEVENT_GRID_ROW_SIZE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_COL_SIZE
+(ffi:def-c-var +event-grid-col-size+
     (:name "wxEVENT_GRID_COL_SIZE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_RANGE_SELECT
+(ffi:def-c-var +event-grid-range-select+
     (:name "wxEVENT_GRID_RANGE_SELECT")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_CELL_CHANGE
+(ffi:def-c-var +event-grid-cell-change+
     (:name "wxEVENT_GRID_CELL_CHANGE")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_SELECT_CELL
+(ffi:def-c-var +event-grid-select-cell+
     (:name "wxEVENT_GRID_SELECT_CELL")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_EDITOR_SHOWN
+(ffi:def-c-var +event-grid-editor-shown+
     (:name "wxEVENT_GRID_EDITOR_SHOWN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_EDITOR_HIDDEN
+(ffi:def-c-var +event-grid-editor-hidden+
     (:name "wxEVENT_GRID_EDITOR_HIDDEN")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
 
-(ffi:def-c-var wxEVT_GRID_EDITOR_CREATED
+(ffi:def-c-var +event-grid-editor-created+
     (:name "wxEVENT_GRID_EDITOR_CREATED")
   (:type (ffi:c-ptr ffi:int))
   (:read-only t)
   (:library +library-name+))
+
+; (ffi:def-c-var +event-dynamic-sash-split+
+;  (:name "wxEVENT_DYNAMIC_SASH_SPLIT")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-dynamic-sash-unify+
+;  (:name "wxEVENT_DYNAMIC_SASH_UNIFY")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-sel-changing+
+;  (:name "wxEVENT_PLOT_SEL_CHANGING")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-sel-changed+
+;  (:name "wxEVENT_PLOT_SEL_CHANGED")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-clicked+
+;  (:name "wxEVENT_PLOT_CLICKED")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-doubleclicked+
+;  (:name "wxEVENT_PLOT_DOUBLECLICKED")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-zoom-in+
+;  (:name "wxEVENT_PLOT_ZOOM_IN")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-zoom-out+
+;  (:name "wxEVENT_PLOT_ZOOM_OUT")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-value-sel-creating+
+;  (:name "wxEVENT_PLOT_VALUE_SEL_CREATING")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-value-sel-created+
+;  (:name "wxEVENT_PLOT_VALUE_SEL_CREATED")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-value-sel-changing+
+;  (:name "wxEVENT_PLOT_VALUE_SEL_CHANGING")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-value-sel-changed+
+;  (:name "wxEVENT_PLOT_VALUE_SEL_CHANGED")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-area-sel-creating+
+;  (:name "wxEVENT_PLOT_AREA_SEL_CREATING")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-area-sel-created+
+;  (:name "wxEVENT_PLOT_AREA_SEL_CREATED")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-area-sel-changing+
+;  (:name "wxEVENT_PLOT_AREA_SEL_CHANGING")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-area-sel-changed+
+;  (:name "wxEVENT_PLOT_AREA_SEL_CHANGED")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-begin-x-label-edit+
+;  (:name "wxEVENT_PLOT_BEGIN_X_LABEL_EDIT")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-end-x-label-edit+
+;  (:name "wxEVENT_PLOT_END_X_LABEL_EDIT")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-begin-y-label-edit+
+;  (:name "wxEVENT_PLOT_BEGIN_Y_LABEL_EDIT")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-end-y-label-edit+
+;  (:name "wxEVENT_PLOT_END_Y_LABEL_EDIT")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-begin-title-edit+
+;  (:name "wxEVENT_PLOT_BEGIN_TITLE_EDIT")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-end-title-edit+
+;  (:name "wxEVENT_PLOT_END_TITLE_EDIT")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
+; (ffi:def-c-var +event-plot-area-create+
+;  (:name "wxEVENT_PLOT_AREA_CREATE")
+; (:type (ffi:c-ptr ffi:int))
+;   (:read-only t)
+; (:library +library-name+))
+
 
 
 
@@ -1699,13 +1480,13 @@
 (ffi:def-call-out wxEvent_GetTimestamp
     (:name "wxEvent_GetTimestamp")
   (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:return-type ffi:long)
   (:library +library-name+))
 
 (ffi:def-call-out wxEvent_SetTimestamp
     (:name "wxEvent_SetTimestamp")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (ts ffi:int))
+	      (ts ffi:long))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -1734,11 +1515,10 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(ffi:def-call-out wxEvent_CopyObject
-    (:name "wxEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (object_dest (ffi:c-pointer NIL)))
-  (:return-type NIL)
+(ffi:def-call-out wxEvent_Clone
+    (:name "wxEvent_Clone")
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxEvent_SetCallbackUserData
@@ -1795,9 +1575,8 @@
 
 (ffi:def-call-out wxCommandEvent_GetString
     (:name "wxCommandEvent_GetString")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxCommandEvent_IsChecked
@@ -1835,14 +1614,7 @@
 (ffi:def-call-out wxCommandEvent_GetInt
     (:name "wxCommandEvent_GetInt")
   (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type ffi:long)
-  (:library +library-name+))
-
-(ffi:def-call-out wxCommandEvent_CopyObject
-    (:name "wxCommandEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (object_dest (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:return-type ffi:int)
   (:library +library-name+))
 
 (ffi:def-call-out wxNotifyEvent_Veto
@@ -1861,13 +1633,6 @@
     (:name "wxNotifyEvent_IsAllowed")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxNotifyEvent_CopyObject
-    (:name "wxNotifyEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (object_dest (ffi:c-pointer NIL)))
-  (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxScrollWinEvent_GetOrientation
@@ -2086,13 +1851,6 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(ffi:def-call-out wxMouseEvent_CopyObject
-    (:name "wxMouseEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (object_dest (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
 (ffi:def-call-out wxcGetMousePosition
     (:name "wxcGetMousePosition")
   (:arguments (x (ffi:c-ptr ffi:int))
@@ -2211,25 +1969,11 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(ffi:def-call-out wxKeyEvent_CopyObject
-    (:name "wxKeyEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
 (ffi:def-call-out wxSizeEvent_GetSize
     (:name "wxSizeEvent_GetSize")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (w (ffi:c-ptr ffi:int))
 	      (h (ffi:c-ptr ffi:int)))
-  (:return-type NIL)
-  (:library +library-name+))
-
-(ffi:def-call-out wxSizeEvent_CopyObject
-    (:name "wxSizeEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -2241,24 +1985,10 @@
   (:return-type NIL)
   (:library +library-name+))
 
-(ffi:def-call-out wxMoveEvent_CopyObject
-    (:name "wxMoveEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
 (ffi:def-call-out wxEraseEvent_GetDC
     (:name "wxEraseEvent_GetDC")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
-
-(ffi:def-call-out wxEraseEvent_CopyObject
-    (:name "wxEraseEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxActivateEvent_GetActive
@@ -2267,24 +1997,10 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(ffi:def-call-out wxActivateEvent_CopyObject
-    (:name "wxActivateEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
 (ffi:def-call-out wxMenuEvent_GetMenuId
     (:name "wxMenuEvent_GetMenuId")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxMenuEvent_CopyObject
-    (:name "wxMenuEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxCloseEvent_SetLoggingOff
@@ -2326,13 +2042,6 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(ffi:def-call-out wxCloseEvent_CopyObject
-    (:name "wxCloseEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
 (ffi:def-call-out wxShowEvent_SetShow
     (:name "wxShowEvent_SetShow")
   (:arguments (_obj (ffi:c-pointer NIL))
@@ -2344,13 +2053,6 @@
     (:name "wxShowEvent_GetShow")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxShowEvent_CopyObject
-    (:name "wxShowEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxJoystickEvent_GetPosition
@@ -2459,13 +2161,6 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(ffi:def-call-out wxJoystickEvent_CopyObject
-    (:name "wxJoystickEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
 (ffi:def-call-out wxUpdateUIEvent_GetChecked
     (:name "wxUpdateUIEvent_GetChecked")
   (:arguments (_obj (ffi:c-pointer NIL)))
@@ -2524,13 +2219,6 @@
   (:return-type NIL)
   (:library +library-name+))
 
-(ffi:def-call-out wxUpdateUIEvent_CopyObject
-    (:name "wxUpdateUIEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
 (ffi:def-call-out wxPaletteChangedEvent_SetChangedWindow
     (:name "wxPaletteChangedEvent_SetChangedWindow")
   (:arguments (_obj (ffi:c-pointer NIL))
@@ -2544,13 +2232,6 @@
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
-(ffi:def-call-out wxPaletteChangedEvent_CopyObject
-    (:name "wxPaletteChangedEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
 (ffi:def-call-out wxQueryNewPaletteEvent_SetPaletteRealized
     (:name "wxQueryNewPaletteEvent_SetPaletteRealized")
   (:arguments (_obj (ffi:c-pointer NIL))
@@ -2562,13 +2243,6 @@
     (:name "wxQueryNewPaletteEvent_GetPaletteRealized")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxQueryNewPaletteEvent_CopyObject
-    (:name "wxQueryNewPaletteEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxNavigationKeyEvent_GetDirection
@@ -2646,13 +2320,6 @@
     (:name "wxIdleEvent_MoreRequested")
   (:arguments (_obj (ffi:c-pointer NIL)))
   (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxIdleEvent_CopyObject
-    (:name "wxIdleEvent_CopyObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (object_dest (ffi:c-pointer NIL)))
-  (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxListEvent_GetCode

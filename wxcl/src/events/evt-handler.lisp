@@ -1,6 +1,4 @@
-(in-package :wxCL)
-
-(use-package :wxEvtHandler)
+(in-package :wxcl-events)
 
 (defclass evt-handler (object)
   ()
