@@ -21,7 +21,7 @@ EWXWEXPORT(void,wxCommandEvent_Delete)(void* _obj)
         delete (wxCommandEvent*)_obj;
 }
 
-EWXWEXPORT(int, wxEvent_GetTimestamp)(void* _obj)
+EWXWEXPORT(long, wxEvent_GetTimestamp)(void* _obj)
 {
         return ((wxEvent*)_obj)->GetTimestamp();
 }
@@ -51,9 +51,9 @@ EWXWEXPORT(void, wxEvent_SetEventObject)(void* _obj, void* obj)
         ((wxEvent*)_obj)->SetEventObject((wxObject*) obj);
 }
 
-EWXWEXPORT(void, wxEvent_SetTimestamp)(void* _obj, int ts)
+EWXWEXPORT(void, wxEvent_SetTimestamp)(void* _obj, long ts)
 {
-        ((wxEvent*)_obj)->SetTimestamp((long)ts);
+        ((wxEvent*)_obj)->SetTimestamp(ts);
 }
 
 EWXWEXPORT(int, wxEvent_GetId)(void* _obj)
@@ -76,11 +76,10 @@ EWXWEXPORT(int, wxEvent_IsCommandEvent)(void* _obj)
         return (int)((wxEvent*)_obj)->IsCommandEvent();
 }
 
-EWXWEXPORT(void, wxEvent_CopyObject)(void* _obj, void* object_dest)
+EWXWEXPORT(void*, wxEvent_Clone)(void* _obj)
 {
-#if wxVERSION_NUMBER < 2400
-        ((wxEvent*)_obj)->CopyObject(*((wxObject*) object_dest));
-#endif
+        return ((wxEvent*)_obj)->Clone();
+
 }
 
 EWXWEXPORT(void, wxEvent_SetCallbackUserData)(void* _obj, wxObject* obj)
@@ -123,11 +122,13 @@ EWXWEXPORT(void, wxCommandEvent_SetString)(void* _obj, char* s)
         ((wxCommandEvent*)_obj)->SetString(s);
 }
 
-EWXWEXPORT(int, wxCommandEvent_GetString)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxCommandEvent_GetString)(void* _obj)
 {
         wxString result = ((wxCommandEvent*)_obj)->GetString();
-        if (_buf) memcpy (_buf, result.c_str(), result.Length());
-        return result.Length();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	delete result;
+	return buf;
 }
 
 EWXWEXPORT(int, wxCommandEvent_IsChecked)(void* _obj)
@@ -155,16 +156,9 @@ EWXWEXPORT(void, wxCommandEvent_SetInt)(void* _obj, int i)
         ((wxCommandEvent*)_obj)->SetInt(i);
 }
 
-EWXWEXPORT(long, wxCommandEvent_GetInt)(void* _obj)
+EWXWEXPORT(int, wxCommandEvent_GetInt)(void* _obj)
 {
         return ((wxCommandEvent*)_obj)->GetInt();
-}
-
-EWXWEXPORT(void, wxCommandEvent_CopyObject)(void* _obj, void* object_dest)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxCommandEvent*)_obj)->CopyObject(*((wxObject*) object_dest));
-#endif
 }
 
 EWXWEXPORT(void, wxNotifyEvent_Veto)(void* _obj)
@@ -180,13 +174,6 @@ EWXWEXPORT(void, wxNotifyEvent_Allow)(void* _obj)
 EWXWEXPORT(int, wxNotifyEvent_IsAllowed)(void* _obj)
 {
         return (int)((wxNotifyEvent*)_obj)->IsAllowed();
-}
-
-EWXWEXPORT(void, wxNotifyEvent_CopyObject)(void* _obj, void* object_dest)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxNotifyEvent*)_obj)->CopyObject(*((wxObject*) object_dest));
-#endif
 }
 
 EWXWEXPORT(int, wxScrollWinEvent_GetOrientation)(void* _obj)
@@ -361,13 +348,6 @@ EWXWEXPORT(int, wxMouseEvent_GetY)(void* _obj)
         return ((wxMouseEvent*)_obj)->GetY();
 }
 
-EWXWEXPORT(void, wxMouseEvent_CopyObject)(void* _obj, void* object_dest)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxMouseEvent*)_obj)->CopyObject(*((wxObject*) object_dest));
-#endif
-}
-
 EWXWEXPORT(int, wxSetCursorEvent_GetX)(void* _obj)
 {
         return (int)((wxSetCursorEvent*)_obj)->GetX();
@@ -443,25 +423,11 @@ EWXWEXPORT(int, wxKeyEvent_GetY)(void* _obj)
         return (int)((wxKeyEvent*)_obj)->GetY();
 }
 
-EWXWEXPORT(void, wxKeyEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxKeyEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
-}
-
 EWXWEXPORT(void, wxSizeEvent_GetSize)(void* _obj, int* w, int* h)
 {
         wxSize sz = ((wxSizeEvent*)_obj)->GetSize();
         *w = sz.x;
         *h = sz.y;
-}
-
-EWXWEXPORT(void, wxSizeEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxSizeEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
 }
 
 EWXWEXPORT(void, wxMoveEvent_GetPosition)(void* _obj, int* x, int* y)
@@ -471,23 +437,9 @@ EWXWEXPORT(void, wxMoveEvent_GetPosition)(void* _obj, int* x, int* y)
         *y = pt.y;
 }
 
-EWXWEXPORT(void, wxMoveEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxMoveEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
-}
-
 EWXWEXPORT(void*, wxEraseEvent_GetDC)(void* _obj)
 {
         return (void*)((wxEraseEvent*)_obj)->GetDC();
-}
-
-EWXWEXPORT(void, wxEraseEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxEraseEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
 }
 
 EWXWEXPORT(int, wxActivateEvent_GetActive)(void* _obj)
@@ -495,23 +447,9 @@ EWXWEXPORT(int, wxActivateEvent_GetActive)(void* _obj)
         return (int)((wxActivateEvent*)_obj)->GetActive();
 }
 
-EWXWEXPORT(void, wxActivateEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxActivateEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
-}
-
 EWXWEXPORT(int, wxMenuEvent_GetMenuId)(void* _obj)
 {
         return ((wxMenuEvent*)_obj)->GetMenuId();
-}
-
-EWXWEXPORT(void, wxMenuEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxMenuEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
 }
 
 EWXWEXPORT(void, wxCloseEvent_SetLoggingOff)(void* _obj, int logOff)
@@ -544,13 +482,6 @@ EWXWEXPORT(int, wxCloseEvent_GetVeto)(void* _obj)
         return (int)((wxCloseEvent*)_obj)->GetVeto();
 }
 
-EWXWEXPORT(void, wxCloseEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxCloseEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
-}
-
 EWXWEXPORT(void, wxShowEvent_SetShow)(void* _obj, int show)
 {
         ((wxShowEvent*)_obj)->SetShow(show != 0);
@@ -559,13 +490,6 @@ EWXWEXPORT(void, wxShowEvent_SetShow)(void* _obj, int show)
 EWXWEXPORT(int, wxShowEvent_GetShow)(void* _obj)
 {
         return (int)((wxShowEvent*)_obj)->GetShow();
-}
-
-EWXWEXPORT(void, wxShowEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxShowEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
 }
 
 EWXWEXPORT(void, wxJoystickEvent_GetPosition)(void* _obj, int* x, int* y)
@@ -650,13 +574,6 @@ EWXWEXPORT(int, wxJoystickEvent_ButtonIsDown)(void* _obj, int but)
         return (int)((wxJoystickEvent*)_obj)->ButtonIsDown(but);
 }
 
-EWXWEXPORT(void, wxJoystickEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxJoystickEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
-}
-
 EWXWEXPORT(int, wxUpdateUIEvent_GetChecked)(void* _obj)
 {
         return (int)((wxUpdateUIEvent*)_obj)->GetChecked();
@@ -704,13 +621,6 @@ EWXWEXPORT(void, wxUpdateUIEvent_SetText)(void* _obj, char* text)
         ((wxUpdateUIEvent*)_obj)->SetText(text);
 }
 
-EWXWEXPORT(void, wxUpdateUIEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxUpdateUIEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
-}
-
 EWXWEXPORT(void, wxPaletteChangedEvent_SetChangedWindow)(void* _obj, void* win)
 {
         ((wxPaletteChangedEvent*)_obj)->SetChangedWindow((wxWindow*) win);
@@ -721,13 +631,6 @@ EWXWEXPORT(void*, wxPaletteChangedEvent_GetChangedWindow)(void* _obj)
         return (void*)((wxPaletteChangedEvent*)_obj)->GetChangedWindow();
 }
 
-EWXWEXPORT(void, wxPaletteChangedEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxPaletteChangedEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
-}
-
 EWXWEXPORT(void, wxQueryNewPaletteEvent_SetPaletteRealized)(void* _obj, int realized)
 {
         ((wxQueryNewPaletteEvent*)_obj)->SetPaletteRealized(realized != 0);
@@ -736,13 +639,6 @@ EWXWEXPORT(void, wxQueryNewPaletteEvent_SetPaletteRealized)(void* _obj, int real
 EWXWEXPORT(int, wxQueryNewPaletteEvent_GetPaletteRealized)(void* _obj)
 {
         return (int)((wxQueryNewPaletteEvent*)_obj)->GetPaletteRealized();
-}
-
-EWXWEXPORT(void, wxQueryNewPaletteEvent_CopyObject)(void* _obj, void* obj)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxQueryNewPaletteEvent*)_obj)->CopyObject(*((wxObject*)obj));
-#endif
 }
 
 EWXWEXPORT(int, wxNavigationKeyEvent_GetDirection)(void* _obj)
@@ -803,13 +699,6 @@ EWXWEXPORT(void, wxIdleEvent_RequestMore)(void* _obj, int needMore)
 EWXWEXPORT(int, wxIdleEvent_MoreRequested)(void* _obj)
 {
         return (int)((wxIdleEvent*)_obj)->MoreRequested();
-}
-
-EWXWEXPORT(void, wxIdleEvent_CopyObject)(void* _obj, void* object_dest)
-{
-#if wxVERSION_NUMBER < 2400
-        ((wxIdleEvent*)_obj)->CopyObject(*((wxObject*) object_dest));
-#endif
 }
 
 EWXWEXPORT(int, wxListEvent_GetCode)(void* _obj)

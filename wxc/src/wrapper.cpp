@@ -132,7 +132,7 @@ void wxClosure::DecRef()
 
 void wxClosure::Invoke( wxEvent* event )
 {
-  if (event && m_fun) { m_fun((void*)m_fun, m_data, event); }
+  if (event && m_fun) { m_fun(m_data, event); }
 };
 
 void* wxClosure::GetData()

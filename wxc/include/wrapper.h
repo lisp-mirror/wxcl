@@ -34,7 +34,7 @@
 
 extern "C"
 {
-typedef void _cdecl (*ClosureFun)( void* _fun, void* _data, void* _evt );
+typedef void _cdecl (*ClosureFun)(void* _data, void* _evt );
 
 typedef bool _cdecl (*AppInitFunc)(void);
 
