@@ -80,8 +80,6 @@
 (defconstant wxGROW 8192)
 (defconstant wxEXPAND 8192)
 (defconstant wxSHAPED 16384)
-(defconstant wxVSCROLL -2147483648)
-(defconstant wxHSCROLL 1073741824)
 		
 (defconstant wxDOUBLE_BORDER 268435456)
 (defconstant wxSUNKEN_BORDER 134217728)
@@ -93,7 +91,7 @@
 (defconstant wxUSER_COLOURS 8388608)
 (defconstant wxNO_3D 8388608)
 (defconstant wxCLIP_CHILDREN 4194304)
-(defconstant wxTAB_TRAVERSAL 524288)
+
 (defconstant wxWANTS_CHARS 262144)
 (defconstant wxRETAINED 131072)
 (defconstant wxNO_FULL_REPAINT_ON_RESIZE 65536)

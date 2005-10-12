@@ -68,7 +68,7 @@
 						:depends-on ("defpackage")
 						:components ((:file "wxEvtHandler")))
  				       (:file "evt-handler" :depends-on ("clisp-ffi"))))
- 		 #+never(:module "gdi"
+ 		 (:module "gdi"
 			  :depends-on ("object")				 
 			  :components ((:file "defpackage")
 				       (:module "clisp-ffi"

@@ -1,10 +1,10 @@
 
 (defpackage :wxcl-gdi
-    (:use :common-lisp :ffi)
+    (:use :common-lisp :ffi :Wxcl)
   (:export #:colour
 	   #:make-colour
-	   #:delete
-	   #:set
+	   #:delete-object
+	   #:set-colour
 	   #:ok-p
 	   #:red
 	   #:green

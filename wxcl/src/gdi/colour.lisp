@@ -1,3 +1,5 @@
+(in-package :wxcl-gdi)
+
 (defclass colour (object)
   ()
   (:documentation "A colour is an object representing a combination of Red, Green,\
@@ -9,11 +11,11 @@
 (defun make-colour-from-name (name)
   (make-wx-instance 'colour (wxColour_CreateByName name)))
 
-(defmethod delete ((obj colour))
+(defmethod delete-object ((obj colour))
   (wxColour_Delete (object-pointer obj))
   (invalidate-wx-instance obj))
 
-(defmethod set ((obj colour) red green blue)
+(defmethod set-colour ((obj colour) red green blue)
   (wxColour_Set (object-pointer obj) red green blue))
 
 (defmethod ok-p ((obj colour))
