@@ -61,18 +61,30 @@ EWXWEXPORT(char*, wxFileDialog_GetPath)(void* _obj)
 	return buf;
 }
 	
-EWXWEXPORT(int, wxFileDialog_GetPaths)(void* _obj, void* paths)
+// EWXWEXPORT(int, wxFileDialog_GetPaths)(void* _obj, void* paths)
+// {
+// 	wxArrayString arr;
+// 	((wxFileDialog*)_obj)->GetPaths(arr);
+// 	if (paths)
+// 	{
+// 		for (unsigned int i = 0; i < arr.GetCount(); i++)
+// 			((const char**)paths)[i] = strdup (arr.Item(i).c_str());
+// 	}
+// 	return arr.GetCount();
+// }
+
+EWXWEXPORT(char**, wxFileDialog_GetPaths)(void* _obj)
 {
 	wxArrayString arr;
 	((wxFileDialog*)_obj)->GetPaths(arr);
-	if (paths)
-	{
-		for (unsigned int i = 0; i < arr.GetCount(); i++)
-			((const char**)paths)[i] = strdup (arr.Item(i).c_str());
+	char **buf = (char**) malloc(arr.GetCount()*sizeof(char*));
+	for (unsigned int i = 0; i < arr.GetCount(); i++) {
+	  buf[i] = (char*) malloc((1+arr.Item(i).Length())*sizeof(char));
+	  if (buf[i]) strcpy (buf[i], arr.Item(i).c_str());
 	}
-	return arr.GetCount();
+	return buf;
 }
-	
+
 EWXWEXPORT(char*, wxFileDialog_GetDirectory)(void* _obj)
 {
 	wxString result =((wxFileDialog*)_obj)->GetDirectory();
@@ -91,18 +103,30 @@ EWXWEXPORT(char*, wxFileDialog_GetFilename)(void* _obj)
 	return buf;
 }
 	
-EWXWEXPORT(int, wxFileDialog_GetFilenames)(void* _obj, void* paths)
+// EWXWEXPORT(int, wxFileDialog_GetFilenames)(void* _obj, void* paths)
+// {
+// 	wxArrayString arr;
+// 	((wxFileDialog*)_obj)->GetFilenames(arr);
+// 	if (paths)
+// 	{
+// 		for (unsigned int i = 0; i < arr.GetCount(); i++)
+// 			((const char**)paths)[i] = strdup (arr.Item(i).c_str());
+// 	}
+// 	return arr.GetCount();
+// }
+
+EWXWEXPORT(char**, wxFileDialog_GetFilenames)(void* _obj)
 {
 	wxArrayString arr;
 	((wxFileDialog*)_obj)->GetFilenames(arr);
-	if (paths)
-	{
-		for (unsigned int i = 0; i < arr.GetCount(); i++)
-			((const char**)paths)[i] = strdup (arr.Item(i).c_str());
+	char **buf = (char**) malloc(arr.GetCount()*sizeof(char*));
+	for (unsigned int i = 0; i < arr.GetCount(); i++) {
+	  buf[i] = (char*) malloc((1+arr.Item(i).Length())*sizeof(char));
+	  if (buf[i]) strcpy (buf[i], arr.Item(i).c_str());
 	}
-	return arr.GetCount();
+	return buf;
 }
-	
+
 EWXWEXPORT(char*, wxFileDialog_GetWildcard)(void* _obj)
 {
 	wxString result =((wxFileDialog*)_obj)->GetWildcard();

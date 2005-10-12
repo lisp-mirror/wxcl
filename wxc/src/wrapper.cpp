@@ -114,7 +114,7 @@ wxClosure::wxClosure( ClosureFun fun, void* data )
 wxClosure::~wxClosure()
 {
   /* call for the last time with a NULL event. Give opportunity to clean up resources */
-  if (m_fun) { m_fun((void*)m_fun, m_data, NULL); }
+  if (m_fun) { m_fun(m_data, NULL); }
 }
 
 void wxClosure::IncRef()
