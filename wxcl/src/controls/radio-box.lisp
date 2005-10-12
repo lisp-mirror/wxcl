@@ -94,5 +94,5 @@ cause a wxEVT_COMMAND_RADIOBOX_SELECTED event to get emitted."
 
 (defmethod (setf string-selection) (str (obj radio-box))
     "Selects the button whose label is the specified string. This does not \
-cause a wxEVT_COMMAND_RADIOBOX_SELECTED event go get emitted."
+cause a wxEVT_COMMAND_RADIOBOX_SELECTED event to get emitted."
     (wxRadioBox_SetStringSelection (object-pointer obj) str))
