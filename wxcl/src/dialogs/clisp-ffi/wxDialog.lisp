@@ -9,42 +9,12 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage :wxDialog
-  (:use :common-lisp :ffi :wxCL :wxwindow)
-  (:export
-	:wxDialog_Create
-	:wxDialog_IsModal
-	:wxDialog_ShowModal
-	:wxDialog_EndModal
-	:wxDialog_SetReturnCode
-	:wxDialog_GetReturnCode
-	:wxCAPTION
-	:wxRESIZE_BORDER
-	:wxDEFAULT_DIALOG_STYLE
-	:wxSTAY_ON_TOP
-	:wxDIALOG_MODAL
-	:wxDIALOG_MODELESS
-	))
-
-(in-package :wxDialog)
+(in-package :wxcl-dialogs)
 
 (ffi:def-c-type wxDialog nil)
-
-(defconstant wxDIALOG_MODAL 32)
-(defconstant wxDIALOG_MODELESS 0)
-
-(defconstant wxCAPTION 536870912)
-(defconstant wxRESIZE_BORDER 64)
-(defconstant wxTHICK_FRAME wxRESIZE_BORDER) ;deprecated
-
-(defconstant wxSTAY_ON_TOP 32768)
-(defconstant wxMAXIMIZE 8192)
-(defconstant wxCLOSE_BOX 6)
-(defconstant wxNO_BORDER 2097152)
-
-(defconstant wxDEFAULT_DIALOG_STYLE (logior wxCAPTION wxMAXIMIZE wxCLOSE_BOX wxNO_BORDER))
     
 (ffi:default-foreign-language :stdc)
+
 (ffi:def-call-out wxDialog_Create
 	(:name "wxDialog_Create")
 	(:arguments (_prt (ffi:c-pointer NIL))
@@ -90,11 +60,3 @@
 	(:return-type ffi:int)
 	(:library +library-name+))
 
-(defmacro with-dialog ((dialog parent &key (id -1) (title "") (left -1) (top -1)
-			       (width -1) (height -1) style) &body body)
-  `(let (,dialog)
-    (unwind-protect
-	 (progn
-	   (setf ,dialog (wxDialog_Create ,parent ,id ,title ,left ,top ,width ,height ,style))
-	   ,@body)
-      (wxWindow_destroy ,dialog))))

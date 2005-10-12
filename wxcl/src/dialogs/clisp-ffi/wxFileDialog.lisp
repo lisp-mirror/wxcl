@@ -37,21 +37,11 @@
 	   :wxFILE_MUST_EXIST
 	   ))
 
-(in-package :wxFileDialog)
+(in-package :wxcl-dialogs)
 
 (ffi:default-foreign-language :stdc)
 
 (ffi:def-c-type wxFileDialog nil)
-
-(defconstant wxOPEN 1)
-(defconstant wxSAVE 2)
-(defconstant wxHIDE_READONLY 8)
-(defconstant wxMULTIPLE 32)
-(defconstant wxCHANGE_DIR 64)
-(defconstant wxOVERWRITE_PROMPT 4)
-(defconstant wxFILE_MUST_EXIST 16)
-(defconstant wxID_OK 5100)
-(defconstant wxID_CANCEL 5101)
 
 (ffi:def-call-out wxFileDialog_Create
     (:name "wxFileDialog_Create")
