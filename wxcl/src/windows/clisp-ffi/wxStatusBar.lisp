@@ -7,18 +7,6 @@
 ;;; $Header$
 ;;;
 
-; (defpackage :wxStatusBar
-;     (:use :common-lisp :ffi :wxCL)
-;   (:export :wxStatusBar_Create
-; 	   :wxStatusBar_SetFieldsCount
-; 	   :wxStatusBar_GetFieldsCount
-; 	   :wxStatusBar_SetStatusText
-; 	   :wxStatusBar_GetStatusText
-; 	   :wxStatusBar_SetStatusWidths
-; 	   :wxStatusBar_SetMinHeight
-; 	   :wxStatusBar_GetBorderX
-; 	   :wxStatusBar_GetBorderY))
-
 (in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)

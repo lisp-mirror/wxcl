@@ -99,8 +99,8 @@
 (ffi:def-call-out wxScrolledWindow_GetScrollPixelsPerUnit
     (:name "wxScrolledWindow_GetScrollPixelsPerUnit")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (x_unit (ffi:c-pointer NIL))
-	      (y_unit (ffi:c-pointer NIL)))
+	      (x_unit (ffi:c-ptr ffi:int) :out)
+	      (y_unit (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -115,24 +115,16 @@
 (ffi:def-call-out wxScrolledWindow_GetViewStart
     (:name "wxScrolledWindow_GetViewStart")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (x (ffi:c-pointer NIL))
-	      (y (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
-(ffi:def-call-out wxScrolledWindow_ViewStart
-    (:name "wxScrolledWindow_ViewStart")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (x (ffi:c-pointer NIL))
-	      (y (ffi:c-pointer NIL)))
+	      (x (ffi:c-ptr ffi:int) :out)
+	      (y (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxScrolledWindow_GetVirtualSize
     (:name "wxScrolledWindow_GetVirtualSize")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (x (ffi:c-pointer NIL))
-	      (y (ffi:c-pointer NIL)))
+	      (x (ffi:c-ptr ffi:int) :out)
+	      (y (ffi:c-ptr ffi:int)) :out)
   (:return-type NIL)
   (:library +library-name+))
 
@@ -161,8 +153,8 @@
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (x ffi:int)
 	      (y ffi:int)
-	      (xx (ffi:c-pointer NIL))
-	      (yy (ffi:c-pointer NIL)))
+	      (xx (ffi:c-ptr ffi:int) :out)
+	      (yy (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -171,8 +163,8 @@
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (x ffi:int)
 	      (y ffi:int)
-	      (xx (ffi:c-pointer NIL))
-	      (yy (ffi:c-pointer NIL)))
+	      (xx (ffi:c-ptr ffi:int) :out)
+	      (yy (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -184,13 +176,6 @@
 
 (ffi:def-call-out wxScrolledWindow_OnDraw
     (:name "wxScrolledWindow_OnDraw")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (dc (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
-
-(ffi:def-call-out wxScrolledWindow_PrepareDC
-    (:name "wxScrolledWindow_PrepareDC")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (dc (ffi:c-pointer NIL)))
   (:return-type NIL)

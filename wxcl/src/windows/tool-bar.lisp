@@ -17,8 +17,8 @@
 (defconstant +tb-3dbuttons+ 16)
 (defconstant +tb-flat+ 32)
 (defconstant +tb-dockable+ 64)
-(defconstant +tb-vertical 8)
-(defconstant +tb-horizontal 4)
+(defconstant +tb-vertical+ 8)
+(defconstant +tb-horizontal+ 4)
 
 (defun make-tool-bar (parent id &key (pos default-position) (size default-size) (style +tb-horizontal+))
   (make-wx-instance 'tool-bar

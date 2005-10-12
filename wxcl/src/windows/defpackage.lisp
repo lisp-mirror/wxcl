@@ -71,7 +71,26 @@
 	   #:+nb-bottom+
 	   #:+nb-multiline+
 	   #:+nb-top+
- ))
+	   #:panel
+ 	   #:make-panel
+ 	   #:default-item
+	   #:+tab-traversal+
+	   #:scrolled-window
+	   #:+vscroll+
+	   #:+hscroll+
+	   #:+target-window+
+	   #:scroll
+	   #:scroll-page-size
+	   #:set-scroll-page-size
+	   #:scroll-pixel-per-unit
+	   #:enable-scrolling
+	   #:view-start
+	   #:virtual-size
+	   #:calc-scrolled-position
+	   #:calc-unscrolled-position
+	   #:adjust-scrollbars
+	   #:set-scroll-rate
+	   ))
 
 
 

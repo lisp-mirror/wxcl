@@ -7,31 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxColour
-    (:use :common-lisp :ffi :wxCL)
-  (:export
-   :wxColour_CreateEmpty
-   :wxColour_CreateRGB
-   :wxColour_CreateByName
-   :wxColour_Delete
-   :wxColour_Set
-   :wxColour_Ok
-   :wxColour_Red
-   :wxColour_Green
-   :wxColour_Blue
-   :wxColour_GetPixel
-   :wxColour_Copy
-   :wxColour_SetByName
-   :wxColour_ValidName
-   :wxBlack
-   :wxWhite
-   :wxRed
-   :wxBlue 
-   :wxGreen
-   :wxCyan
-   :wxLight_grey))
-
-(in-package :wxColour)
+(in-package :wxcl-gdi)
 
 (ffi:default-foreign-language :stdc)
 
