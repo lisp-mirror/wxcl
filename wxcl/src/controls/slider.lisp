@@ -68,7 +68,7 @@ forth to change the value."))
     "Returns the selection start point. wxWindows API doc says this is Win95 only."
     (wxSlider_GetSelStart (object-pointer obj)))
 
-(defmethod set-selection (start end (obj slider))
+(defmethod (setf selection) (start end (obj slider))
     "Sets the selection. wxWindows API doc says this is Win95 only."
     (wxSlider_SetSelection (object-pointer obj) start end))
 
