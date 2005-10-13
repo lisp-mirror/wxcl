@@ -15,8 +15,10 @@
 is one of the most common elements of a GUI. It may be placed on a dialog \
 box or panel, or indeed almost any other window."))
 
+(defconstant +bu-autodraw+ #x0004)
+
 (defun make-bitmap-button (parent bmp &key (id -1) (pos default-position)
-                           (size default-size) (style cl-user::wxBU_AUTODRAW))
+                           (size default-size) (style +bu-autodraw+))
     "Create a bitmap button control."
     (make-wx-instance 'bitmap-button
 		      (wxBitmapButton_Create (when parent (object-pointer parent))

@@ -1,46 +1,15 @@
 ;;;wxCombobox.lisp
 ;;;License  : wxWindows License 3.1
-;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
-;;;Copyright (C) 2005 Surendra Singhi 
+;;;Author(s) : Surendra Singhi (surendra@asu.edu), Jack Unrue (jdunrue@gmail.com)
+;;;Copyright (C) 2005 Surendra Singhi, Jack D. Unrue
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
 ;;; $Header$
 ;;;
 
-(defpackage :wxComboBox
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxComboBox_Create
-	:wxComboBox_Copy
-	:wxComboBox_Cut
-	:wxComboBox_Paste
-	:wxComboBox_SetInsertionPoint
-	:wxComboBox_SetInsertionPointEnd
-	:wxComboBox_GetInsertionPoint
-	:wxComboBox_GetLastPosition
-	:wxComboBox_Replace
-	:wxComboBox_Remove
-	:wxComboBox_SetTextSelection
-	:wxComboBox_SetEditable
-	:wxComboBox_GetValue
-	:wxComboBox_SetValue	
-	:wxComboBox_SetSelection
-	:wxComboBox_FindString
-	:wxComboBox_Undo
-	:wxcl-create-combo-box
-	:wxCB_SIMPLE
-	:wxCB_SORT
-	:wxCB_READONLY
-	:wxCB_DROPDOWN))
-
-(in-package :wxComboBox)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
-
-(defconstant wxCB_SIMPLE 4)
-(defconstant wxCB_SORT 8)
-(defconstant wxCB_READONLY 16)
-(defconstant wxCB_DROPDOWN 32)
 
 (ffi:def-call-out wxComboBox_Create
 	(:name "wxComboBox_Create")
@@ -56,14 +25,6 @@
 		(_stl ffi:int))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
-
-(defmacro wxcl-create-combo-box (frame choices &key (id -1) (left -1) (top -1) (width -1)(height -1)
-				      (value "") (style 0))
-  "Creates a combo box containing 'n' choices."
-  (let ((len (gensym)))
-    `(let ((,len (length ,choices)))
-      (wxComboBox_Create ,frame ,id ,value ,left ,top ,width ,height ,len ,choices ,style))))
-
 
 (ffi:def-call-out wxComboBox_Copy
 	(:name "wxComboBox_Copy")

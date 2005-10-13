@@ -16,6 +16,11 @@ and a listbox. It can be displayed as a static list with an editable or \
 read-only text field; or a drop-down list with a text field; or a \
 drop-down list without a text field."))
 
+(defconstant +cb-simple+   #x0004)
+(defconstant +cb-sort+     #x0008)
+(defconstant +cb-readonly+ #x0010)
+(defconstant +cb-dropdown+ #x0020)
+
 (defun make-combo-box (parent choices &key (id -1) (text "") (pos default-position)
                        (size default-size) (style 0))
     "Create a combobox control."
@@ -32,9 +37,9 @@ drop-down list without a text field."))
     "Copies the selected text to the clipboard and removes the selection."
     (wxComboBox_Cut (object-pointer obj)))
 
-(defmethod paste ((obj combo-box))
-    "Pastes text from the clipboard to the text field."
-    (wxComboBox_Paste (object-pointer obj)))
+(defmethod (setf editable) (editable (obj combo-box))
+    "FIXME: undocumented method"
+    (wxComboBox_SetEditable (object-pointer obj) editable))
 
 (defmethod insertion-point ((obj combo-box))
     "Returns the insertion point for the combobox's text field."
@@ -44,35 +49,35 @@ drop-down list without a text field."))
     "Sets the insertion point in the combobox text field."
     (wxComboBox_SetInsertionPoint (object-pointer obj) pos))
 
-(defmethod set-insertion-point-end ((obj combo-box))
-    "Sets the insertion point at the end of the combobox text field."
-    (wxComboBox_SetInsertionPointEnd (object-pointer obj)))
-
 (defmethod last-position ((obj combo-box))
     "Returns the last position in the combobox text field."
     (wxComboBox_GetLastPosition (object-pointer obj)))
 
-(defmethod replace ((obj combo-box) from to text)
-    "Replaces the text between two positions with the given text in \
-the combobox text field."
-    (wxComboBox_Replace (object-pointer obj) from to text))
+(defmethod paste ((obj combo-box))
+    "Pastes text from the clipboard to the text field."
+    (wxComboBox_Paste (object-pointer obj)))
 
 (defmethod remove ((obj combo-box) from to)
     "Removes the text between the two positions in the combobox \
 text field."
     (wxComboBox_Remove (object-pointer obj) from to))
 
-(defmethod set-selection ((obj combo-box) from to)
+(defmethod replace ((obj combo-box) from to text)
+    "Replaces the text between two positions with the given text in \
+the combobox text field."
+    (wxComboBox_Replace (object-pointer obj) from to text))
+
+(defmethod (setf selection) (to from (obj combo-box))
     "Selects the text between the two positions in the combobox text field."
     (wxComboBox_SetSelection (object-pointer obj) from to))
 
-(defmethod set-text-selection ((obj combo-box) from to)
+(defmethod set-insertion-point-end ((obj combo-box))
+    "Sets the insertion point at the end of the combobox text field."
+    (wxComboBox_SetInsertionPointEnd (object-pointer obj)))
+
+(defmethod (setf text-selection) (to from (obj combo-box))
     "FIXME: undocumented method; could be synonym for wxComboBox_SetSelection"
     (wxComboBox_SetTextSelection (object-pointer obj) from to))
-
-(defmethod set-editable ((obj combo-box) editable)
-    "FIXME: undocumented method"
-    (wxComboBox_SetEditable (object-pointer obj) editable))
 
 (defmethod value ((obj combo-box))
     "Returns the current value in the combobox text field."

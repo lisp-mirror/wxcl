@@ -9,7 +9,28 @@
 
 (defpackage :wxcl-controls
     (:use :common-lisp :ffi :wxcl :wxcl-structures)
-  (:export
+    (:export
+
+     ;; symbols for multiple classes
+     ;;
+     #:value
+
+     ;; bitmap-button class
+     ;;
+     #:bitmap-button
+     #:+bu-autodraw+
+
+     ;; bitmap-button methods, functions, and macros
+     ;;
+     #:bitmap-disabled
+     #:bitmap-focus
+     #:bitmap-label
+     #:bitmap-selected
+     #:make-bitmap-button
+     #:margin-x
+     #:margin-y
+     #:set-margins
+
      ;; button class and constants
      ;;
      #:button
@@ -25,6 +46,63 @@
      #:default-size
      #:make-button
      #:set-default
+
+     ;; check-box class and constants
+     ;;
+     #:check-box
+     #:+chk-2state+
+     #:+chk-3state+
+     #:+chk-allow-3rd-state-for-user+
+
+     ;; check-box methods, functions, and macros
+     ;;
+     ; #:3-state-value
+     ; #:3rd-state-allowed
+     ; #:is-3-state
+     #:make-check-box
+
+     ;; check-list-box class and constants
+     ;;
+     #:check-list-box
+
+     ;; check-list-box methods, functions, and macros
+     ;;
+     #:check
+     #:checked
+     #:make-check-list-box
+
+     ;; choice class and constants
+     ;;
+     #:choice
+
+     ;; choice methods, functions, and macros
+     ;;
+     #:columns
+     #:current-selection
+     #:make-choice
+
+     ;; combo-box class and constants
+     ;;
+     #:combo-box
+     #:+cb-simple+
+     #:+cb-sort+
+     #:+cb-readonly+
+     #:+cb-dropdown+
+
+     ;; combo-box methods, functions, and macros
+     ;;
+     #:copy
+     #:cut
+     #:insertion-point
+     #:last-position
+     #:make-combo-box
+     #:paste
+     #:remove
+     #:replace
+     #:selection
+     #:set-insertion-point-end
+     #:text-selection
+     #:undo
 
      #:+lb-sort+
 	   #:+lb-single+

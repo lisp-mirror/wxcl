@@ -16,6 +16,10 @@ either on (checkmark is visible) or off (no checkmark). Optionally, \
 it can have a third state, called the mixed or undetermined state. \
 Often this is used as a 'Does Not Apply' state."))
 
+(defconstant +chk-2state                    #x0000)
+(defconstant +chk-3state                    #x1000)
+(defconstant +chk-allow-3rd-state-for-user+ #x2000)
+
 (defun make-check-box (parent &key (id -1) (label "") (pos default-position)
                        (size default-size) (style 0))
     "Create a checkbox control."

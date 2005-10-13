@@ -1,7 +1,7 @@
 ;;;wxChoice.lisp
 ;;;License  : wxWindows License 3.1
-;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
-;;;Copyright (C) 2005 Surendra Singhi 
+;;;Author(s) : Surendra Singhi (surendra@asu.edu), Jack Unrue (jdunrue@gmail.com)
+;;;Copyright (C) 2005 Surendra Singhi, Jack D. Unrue
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
 ;;; $Header$
@@ -24,14 +24,6 @@
 		(_stl ffi:int))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
-
-(defmacro wxcl-create-choice (frame choices &key (id -1) (left -1) (top -1) (width -1)(height -1)
-				      (style 0))
-  "Creates a choice box containing 'n' choices."
-  (let ((len (gensym)))
-    `(let ((,len (length ,choices)))
-      (wxChoice_Create ,frame ,id  ,left ,top ,width ,height ,len ,choices ,style))))
-
 
 (ffi:def-call-out wxChoice_Delete
 	(:name "wxChoice_Delete")
