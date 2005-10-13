@@ -15,6 +15,12 @@
 is one of the most common elements of a GUI. It may be placed on a dialog \
 box or panel, or indeed almost any other window."))
 
+(defconstant +bu-exactfit+ #x0001)
+(defconstant +bu-left+     #x0040)
+(defconstant +bu-top+      #x0080)
+(defconstant +bu-right+    #x0100)
+(defconstant +bu-bottom+   #x0200)
+
 (defun make-button (parent &key (id -1) (label "") (pos default-position) (size default-size) (style 0))
     "Create a button control."
     (make-wx-instance 'button

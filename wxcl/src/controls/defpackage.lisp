@@ -9,7 +9,24 @@
 
 (defpackage :wxcl-controls
     (:use :common-lisp :ffi :wxcl :wxcl-structures)
-  (:export #:+lb-sort+
+  (:export
+     ;; button class and constants
+     ;;
+     #:button
+     #:+bu-exactfit+
+	   #:+bu-left+
+	   #:+bu-top+
+	   #:+bu-right+
+	   #:+bu-bottom+
+
+     ;; button methods, functions, and macros
+     ;;
+     #:background-colour
+     #:default-size
+     #:make-button
+     #:set-default
+
+     #:+lb-sort+
 	   #:+lb-single+
 	   #:+lb-multiple+
 	   #:+lb-extended+
@@ -41,11 +58,6 @@
 	   #:+list-next-below+
 	   #:+list-next-left+
 	   #:+list-next-right+
-     #:+bu-exactfit+
-	   #:+bu-left+
-	   #:+bu-top+
-	   #:+bu-right+
-	   #:+bu-bottom+
 	   #:+cal-sunday-first+
 	   #:+cal-monday-first+
 	   #:+cal-show-holidays+
