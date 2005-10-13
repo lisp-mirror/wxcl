@@ -11,12 +11,9 @@
     (:use :common-lisp :ffi)
     (:export
 
-     ;; list-item class
+     ;; list-item class and constants
      ;;
-     #:+list-item
-
-     ;; list-item constants
-     ;;
+     #:list-item
 	   #:+list-state-dontcare+
 	   #:+list-state-drophilited+
 	   #:+list-state-focused+ 
