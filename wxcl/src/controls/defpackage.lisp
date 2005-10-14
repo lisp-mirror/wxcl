@@ -11,9 +11,21 @@
     (:use :common-lisp :ffi :wxcl :wxcl-structures :wxcl-windows)
     (:export
 
-     ;; symbols for multiple classes
+     ;; symbols common to multiple classes
      ;;
+     #:+align-bottom+
+     #:+align-center-horizontal+
+     #:+align-center-vertical+
+     #:+align-centre-horizontal+
+     #:+align-centre-vertical+
+     #:+align-left+
+     #:+align-not+
+     #:+align-right+
+     #:+align-top+
+     #:find-string
+     #:range
      #:selection
+     #:string-selection
      #:value
 
      ;; bitmap-button class
@@ -124,11 +136,9 @@
      #:client-data
      #:count
      #:delete
-     #:find-string
      #:insert
      #:insert-data
      #:string
-     #:string-selection
 
      ;; gauge class and constants
      ;;
@@ -142,16 +152,109 @@
      ;;
      #:bezel-face
      #:make-gauge
-     #:range
      #:shadow-width
 
-     #:+lb-sort+
-	   #:+lb-single+
-	   #:+lb-multiple+
-	   #:+lb-extended+
-	   #:+lb-ownerdraw+
-	   #:+lb-needed-sb+
+     ;; list-box class and constants
+     ;;
+     #:list-box
 	   #:+lb-always-sb+
+	   #:+lb-extended+
+	   #:+lb-multiple+
+	   #:+lb-needed-sb+
+	   #:+lb-ownerdraw+
+	   #:+lb-single+
+     #:+lb-sort+
+
+     ;; list-box methods, functions, and macros
+     ;;
+     #:deselect
+     #:first-item
+     #:insert-items
+     #:make-list-box
+     #:selected-p
+     #:selections
+     #:set
+
+     ;; radio-box class and constants
+     ;;
+     #:radio-box
+     #:+ra-specify-cols+
+     #:+ra-specify-rows+
+     #:+ra-use-checkbox+
+
+     ;; radio-box methods, functions, and macros
+     ;;
+     #:count
+     #:enable-item
+     #:item-bitmap
+     #:item-label
+     #:make-radio-box
+     #:number-of-rows-or-cols
+     #:show-item
+
+     ;; radio-button class and constants
+     ;;
+     #:radio-button
+     #:+rb-group+
+     #:+rb-single+
+     #:+rb-use-checkbox+
+
+     ;; radio-button methods, functions, and macros
+     ;;
+     #:make-radio-button
+
+     ;; slider class and constants
+     ;;
+     #:slider
+     #:+sl-horizontal+
+     #:+sl-vertical+
+     #:+sl-ticks+
+     #:+sl-autoticks+
+     #:+sl-labels+
+     #:+sl-left+
+     #:+sl-top+
+     #:+sl-right+
+     #:+sl-bottom+
+     #:+sl-both+
+     #:+sl-selrange+
+     #:+sl-inverse+
+
+     ;; slider methods, functions, and macros
+     ;;
+     #:clear-sel
+     #:line-size
+     #:make-slider
+     #:max
+     #:min
+     #:page-size
+
+     ;; static-box class and constants
+     ;;
+     #:static-box
+
+     ;; static-box methods, functions, and macros
+     ;;
+     #:make-static-box
+
+     ;; static-text class and constants
+     ;;
+     #:static-text
+     #:+st-no-autoresize+
+
+     ;; static-text methods, functions, and macros
+     ;;
+     #:make-static-text
+
+     ;; toggle-button class and constants
+     ;;
+     #:toggle-button
+
+     ;; toggle-button methods, functions, and macros
+     ;;
+     #:enable
+     #:make-toggle-button
+
+
 	   #:+lc-icon+
 	   #:+lc-small-icon+
 	   #:+lc-vrules+
@@ -198,15 +301,6 @@
 (defconstant +cal-hittest-header+ 1)
 (defconstant +cal-hittest-day+ 2)
 
-
-(defconstant +lb-sort+ 16)
-(defconstant +lb-single+ 32)
-(defconstant +lb-multiple+ 64)
-(defconstant +lb-extended+ 128)
-(defconstant +lb-ownerdraw+ 256)
-(defconstant +lb-needed-sb+ 512)
-(defconstant +lb-always-sb+ 1024)
-
 (defconstant +list-format-left+ 0)
 (defconstant +list-format-right+ 1)
 (defconstant +list-format-centre+ 2)
@@ -216,4 +310,3 @@
 (defconstant +list-next-below+ 2)
 (defconstant +list-next-left+ 3)
 (defconstant +list-next-right+ 4)
-

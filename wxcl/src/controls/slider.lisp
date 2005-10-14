@@ -14,9 +14,20 @@
     (:documentation "A slider is a control which can be pulled back and \
 forth to change the value."))
 
-(defun make-slider (parent init-value min-value max-value &key (id -1) (pos default-position) (size default-size) (style 0))
-    ;; FIXME: wxC wrapper needs to define wxSL_HORIZONTAL and wxSL_VERTICAL
-    ;; then we can set wxSL_HORIZONTAL as the default style
+(defconstant +sl-horizontal+ #x0004) ; #define'd to wxHORIZONTAL in slider.h
+(defconstant +sl-vertical+   #x0008) ; #define'd to wxVERTICAL in slider.h
+(defconstant +sl-ticks+      #x0010)
+(defconstant +sl-autoticks+  +sl-ticks+)
+(defconstant +sl-labels+     #x0020)
+(defconstant +sl-left+       #x0040)
+(defconstant +sl-top+        #x0080)
+(defconstant +sl-right+      #x0100)
+(defconstant +sl-bottom+     #x0200)
+(defconstant +sl-both+       #x0400)
+(defconstant +sl-selrange+   #x0800)
+(defconstant +sl-inverse+    #x1000)
+
+(defun make-slider (parent init-value min-value max-value &key (id -1) (pos default-position) (size default-size) (style +sl-horizontal+))
     "Create a slider control."
     (make-wx-instance 'slider
 		      (wxSlider_Create (when parent (object-pointer parent))
@@ -24,7 +35,7 @@ forth to change the value."))
 				       (size-height size) style)))
 
 (defmethod clear-sel ((obj slider))
-    "Clears the selection (only for sliders created with the wxSL_SELRANGE style)."
+    "Clears the selection (only for sliders created with the +sl-selrange+ style)."
     (wxSlider_ClearSel (object-pointer obj)))
 
 (defmethod line-size ((obj slider))

@@ -14,6 +14,10 @@
     (:documentation "A radio box item is used to select one of a number of \
 mutually exclusive choices, displayed as a column or row of labelled buttons."))
 
+(defconstant +ra-specify-rows+ #x0004) ; #define'd to wxHORIZONTAL in defs.h
+(defconstant +ra-specify-cols+ #x0008) ; #define'd to wxVERTICAL in defs.h
+(defconstant +ra-use-checkbox+ #x0010) ; PalmOS only
+
 (defun make-radio-box (parent &key choices (id -1) (label "") (dimension 0) (pos default-position) (size default-size) (style 0))
     "Create a radio box control."
     (make-wx-instance 'radio-box
@@ -61,6 +65,10 @@ if found, or -1 if not found."
     ;; then fix the following call.
     (wxRadioBox_GetItemLabel (object-pointer obj) index))
 
+(defmethod (setf item-label) (label index (obj radio-box))
+    "Sets the label of the button at the specified index."
+    (wxRadioBox_SetItemLabel (object-pointer obj) index label))
+
 (defmethod number-of-rows-or-cols ((obj radio-box))
     "FIXME: undocumented method"
     (wxRadioBox_GetNumberOfRowsOrCols (object-pointer obj)))
@@ -68,10 +76,6 @@ if found, or -1 if not found."
 (defmethod (setf number-of-rows-or-cols) (count (obj radio-box))
     "FIXME: undocumented method"
     (wxRadioBox_SetNumberOfRowsOrCols (object-pointer obj) count))
-
-(defmethod (setf item-label) (label index (obj radio-box))
-    "Sets the label of the button at the specified index."
-    (wxRadioBox_SetItemLabel (object-pointer obj) index label))
 
 (defmethod selection ((obj radio-box))
     "Returns the zero-based position of the selected button."

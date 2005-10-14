@@ -14,6 +14,10 @@
     (:documentation "A radio button is a control which usually denotes one \
 of several mutually exclusive options."))
 
+(defconstant +rb-group+        #x0004)
+(defconstant +rb-single+       #x0008)
+(defconstant +rb-use-checkbox+ #x0010) ; PalmOS only
+
 (defun make-radio-button (parent &key (id -1) (label "") (pos default-position) (size default-size) (style 0))
     "Create a radio button control."
     (make-wx-instance 'radio-button

@@ -14,6 +14,8 @@
     (:documentation "A static text control displays one or more lines of \
 read-only text."))
 
+(defconstant +st-no-autoresize+ #x0001)
+
 (defun make-static-text (parent text &key (id -1) (pos default-position) (size default-size) (style 0))
     "Create a static text control."
     (make-wx-instance 'static-text
