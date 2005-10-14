@@ -9,7 +9,7 @@
 
 (in-package :wxcl-controls)
 
-(defclass control-with-items (window)
+(defclass control-with-items (control)
   ()
   (:documentation "This class is an abstract base class for some wxWidgets controls which contain several items, such as wxListBox and wxCheckListBox derived from it, wxChoice and wxComboBox."))
 
