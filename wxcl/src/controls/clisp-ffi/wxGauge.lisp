@@ -1,40 +1,15 @@
 ;;;wxGauge.lisp
 ;;;License  : wxWindows License 3.1
-;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
-;;;Copyright (C) 2005 Surendra Singhi 
+;;;Author(s) : Surendra Singhi (surendra@asu.edu), Jack Unrue (jdunrue@gmail.com)
+;;;Copyright (C) 2005 Surendra Singhi, Jack D. Unrue
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
 ;;; $Header$
 ;;;
 
-(defpackage :wxGauge
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxGauge_Create
-	   :wxGauge_SetShadowWidth
-	   :wxGauge_SetBezelFace
-	   :wxGauge_SetRange
-	   :wxGauge_SetValue
-	   :wxGauge_GetShadowWidth
-	   :wxGauge_GetBezelFace
-	   :wxGauge_GetRange
-	   :wxGauge_GetValue
-	   :wxcl-create-gauge
-	   :wxGA_HORIZONTAL
-	   :wxGA_VERTICAL
-	   :wxGA_PROGRESSBAR
-	   :wxGA_SMOOTH
-	   ))
-
-(in-package :wxGauge)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
-
-
-(defconstant wxGA_HORIZONTAL 4)
-(defconstant wxGA_VERTICAL 8)
-(defconstant wxGA_PROGRESSBAR 16)
-(defconstant wxGA_SMOOTH 32)
-
 
 (ffi:def-call-out wxGauge_Create
     (:name "wxGauge_Create")
@@ -48,11 +23,6 @@
 	      (_stl ffi:int))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
-
-(defmacro wxcl-create-gauge (frame range &key (id -1) (left -1) (top -1) (width -1) (height -1)
-				   (style wxGA_HORIZONTAL))
-  "Creates a gauge."
-  `(wxGauge_Create ,frame ,id ,range ,left ,top ,width ,height ,style))
 
 (ffi:def-call-out wxGauge_SetShadowWidth
     (:name "wxGauge_SetShadowWidth")

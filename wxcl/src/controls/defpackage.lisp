@@ -8,11 +8,12 @@
 ;;;
 
 (defpackage :wxcl-controls
-    (:use :common-lisp :ffi :wxcl :wxcl-structures)
+    (:use :common-lisp :ffi :wxcl :wxcl-structures :wxcl-windows)
     (:export
 
      ;; symbols for multiple classes
      ;;
+     #:selection
      #:value
 
      ;; bitmap-button class
@@ -99,10 +100,50 @@
      #:paste
      #:remove
      #:replace
-     #:selection
      #:set-insertion-point-end
      #:text-selection
      #:undo
+
+     ;; control class and constants
+     ;;
+     #:control
+
+     ;; control methods, functions, and macros
+     ;;
+     #:label
+
+     ;; control-with-item class and constants
+     ;;
+     #:control-with-items
+
+     ;; control-with-items methods, functions, and macros
+     ;;
+     #:append
+     #:append-data
+     #:clear
+     #:client-data
+     #:count
+     #:delete
+     #:find-string
+     #:insert
+     #:insert-data
+     #:string
+     #:string-selection
+
+     ;; gauge class and constants
+     ;;
+     #:gauge
+     #:+ga-horizontal+
+     #:+ga-progressbar+
+     #:+ga-smooth+
+     #:+ga-vertical+
+
+     ;; gauge methods, functions, and macros
+     ;;
+     #:bezel-face
+     #:make-gauge
+     #:range
+     #:shadow-width
 
      #:+lb-sort+
 	   #:+lb-single+
