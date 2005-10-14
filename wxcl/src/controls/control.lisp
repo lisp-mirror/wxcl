@@ -1,4 +1,4 @@
-;;;defpackage.lisp
+;;;control.lisp
 ;;;License  : wxWindows License 3.1
 ;;;Author(s): Surendra Singhi (surendra@asu.edu), Jack Unrue (jdunrue@gmail.com)
 ;;;Copyright (c) 2005 Surendra Singhi, Jack D. Unrue
