@@ -72,7 +72,17 @@ EWXWEXPORT(int, wxSplitterWindow_GetSashSize)(void* _obj)
 {
 	return ((wxSplitterWindow*)_obj)->GetSashSize();
 }
-	
+
+EWXWEXPORT(double, wxSplitterWindow_GetSashGravity)(void* _obj)
+{
+	return ((wxSplitterWindow*)_obj)->GetSashGravity();
+}
+
+EWXWEXPORT(void, wxSplitterWindow_SetSashGravity)(void* _obj,double gravity)
+{
+   ((wxSplitterWindow*)_obj)->SetSashGravity(gravity);
+}
+
 EWXWEXPORT(int, wxSplitterWindow_GetBorderSize)(void* _obj)
 {
 	return ((wxSplitterWindow*)_obj)->GetBorderSize();

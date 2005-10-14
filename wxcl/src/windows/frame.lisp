@@ -17,8 +17,8 @@
 
 (defun make-frame (parent id title &key (position +default-position+) (size +default-size+) (style +default-frame-style+))
   (make-wx-instance 'frame (wxFrame_Create (when parent (object-pointer parent))
-					   id title (point-x position) (point-y position)
-					   (size-width size) (size-height size) style)))
+                                           id title (point-x position) (point-y position)
+                                           (size-width size) (size-height size) style)))
 
 (defmethod maximize ((obj frame))
   (wxFrame_Maximize (object-pointer obj)))

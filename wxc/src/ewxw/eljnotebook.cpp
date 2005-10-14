@@ -33,11 +33,13 @@ EWXWEXPORT(int, wxNotebook_SetPageText)(void* _obj, int nPage, void* strText)
 	return (int)((wxNotebook*)_obj)->SetPageText(nPage, (char*) strText);
 }
 	
-EWXWEXPORT(int, wxNotebook_GetPageText)(void* _obj, int nPage, void* _buf)
+EWXWEXPORT(char*, wxNotebook_GetPageText)(void* _obj, int nPage)
 {
 	wxString result = ((wxNotebook*)_obj)->GetPageText(nPage);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(void, wxNotebook_SetImageList)(void* _obj, void* imageList)

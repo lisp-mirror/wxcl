@@ -167,5 +167,11 @@
 (ffi:def-call-out wxSplitterWindow_GetMinimumPaneSize
 	(:name "wxSplitterWindow_GetMinimumPaneSize")
 	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
+	(:return-type DOUBLE-FLOAT)
+	(:library +library-name+))
+
+(ffi:def-call-out wxSplitterWindow_SetSashGravity
+	(:name "wxSplitterWindow_GetSashGravity")
+	(:arguments (_obj (ffi:c-pointer NIL))
+               (_grav DOUBLE-FLOAT))
 	(:library +library-name+))

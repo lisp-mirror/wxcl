@@ -44,12 +44,6 @@
 
 (def-c-type wxnotebook nil)
     
-(defconstant +nb-fixedwidth+ 16)
-(defconstant +nb-left+ 32)
-(defconstant +nb-right+ 64)
-(defconstant +nb-bottom+ 128)
-(defconstant +nb-multiline+ 6)
-(defconstant +nb-top+ 0)
 
 (ffi:def-call-out wxNotebook_Create
     (:name "wxNotebook_Create")
@@ -104,9 +98,8 @@
 (ffi:def-call-out wxNotebook_GetPageText
     (:name "wxNotebook_GetPageText")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (nPage ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+              (nPage ffi:int))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxNotebook_SetImageList

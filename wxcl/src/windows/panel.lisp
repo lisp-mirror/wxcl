@@ -1,6 +1,6 @@
 (in-package :wxcl-windows)
 
-(defclass panel (object) ; evt-handler)
+(defclass panel (object)
   ()
   (:documentation "A panel is a window on which controls are placed. It\
  is usually placed within a frame. It contains minimal extra functionality\

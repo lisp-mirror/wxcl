@@ -53,11 +53,6 @@ EWXWEXPORT(void, wxScrolledWindow_GetViewStart)(void* _obj, void* x, void* y)
 	((wxScrolledWindow*)_obj)->GetViewStart((int*)x, (int*)y);
 }
 	
-EWXWEXPORT(void, wxScrolledWindow_ViewStart)(void* _obj, void* x, void* y)
-{
-	((wxScrolledWindow*)_obj)->GetViewStart((int*)x, (int*)y);
-}
-	
 EWXWEXPORT(void, wxScrolledWindow_GetVirtualSize)(void* _obj, void* x, void* y)
 {
 	((wxScrolledWindow*)_obj)->GetVirtualSize((int*)x, (int*)y);
@@ -98,9 +93,4 @@ EWXWEXPORT(void, wxScrolledWindow_OnDraw)(void* _obj, void* dc)
 	((wxScrolledWindow*)_obj)->OnDraw(*((wxDC*)dc));
 }
 	
-EWXWEXPORT(void, wxScrolledWindow_PrepareDC)(void* _obj, void* dc)
-{
-	((wxScrolledWindow*)_obj)->PrepareDC(*((wxDC*)dc));
-}
-
 }
