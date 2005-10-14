@@ -1,4 +1,13 @@
-(in-package :wxCL)
+;;;control-with-items.lisp
+;;;License  : wxWindows License 3.1
+;;;Author(s): Surendra Singhi (surendra@asu.edu), Jack Unrue (jdunrue@gmail.com)
+;;;Copyright (c) 2005 Surendra Singhi, Jack D. Unrue
+;;;See the file LICENSE for information on usage and redistribution.
+;;;
+;;; $Header$
+;;;
+
+(in-package :wxcl-controls)
 
 (defclass control-with-items (window)
   ()
