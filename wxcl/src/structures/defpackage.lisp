@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxcl-structures
-    (:use :common-lisp :ffi)
+    (:use :common-lisp :ffi :wxcl :wxcl-gdi)
     (:export
 
      ;; list-item class and constants
