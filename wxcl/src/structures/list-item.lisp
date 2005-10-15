@@ -42,10 +42,9 @@
 
 (defmethod background-colour ((obj list-item))
     "Returns the background colour for this item."
-    ;; FIXME: convert the pointer returned by wxListItem_GetBackgroundColour
-    ;; back into a color object.
-    ;;
-    (wxListItem_GetBackgroundColour (object-pointer obj)))
+    (let ((colour (make-colour)))
+        (wxListItem_GetBackgroundColour (object-pointer obj) (object-pointer colour))
+        colour))
 
 (defmethod (setf background-colour) (colour (obj list-item))
     "Sets the background colour for this item."
@@ -103,10 +102,9 @@
 
 (defmethod font ((obj list-item))
     "Returns the font for the item."
-    ;; FIXME: convert the pointer returned by wxListItem_GetFont back
-    ;; into a font object.
-    ;;
-    (wxListItem_GetFont (object-pointer obj)))
+    (let ((font (make-font 10 +font-family-default+ +font-style-normal+ +font-weight-normal+)))
+        (wxListItem_GetFont (object-pointer obj) (object-pointer font))
+        font))
 
 (defmethod (setf font) (font (obj list-item))
     "Sets the font for the item."
@@ -171,11 +169,10 @@ flags are to be set."
     (wxListItem_SetText (object-pointer obj) text)) ;FIXME: need to create wxString?
 
 (defmethod text-colour ((obj list-item))
-    "Returns the text colour set for the item."
-    ;; FIXME: convert the pointer returned by wxListItem_GetTextColour
-    ;; back into a color object.
-    ;;
-    (wxListItem_GetTextColour (object-pointer obj)))
+    "Returns the text colour for this item."
+    (let ((colour (make-colour)))
+        (wxListItem_GetTextColour (object-pointer obj) (object-pointer colour))
+        colour))
 
 (defmethod (setf text-colour) (colour (obj list-item))
     "Sets the text colour for the item."
