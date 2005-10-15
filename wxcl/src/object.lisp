@@ -33,7 +33,7 @@
 	    (class-name (class-of pt))
 	    (point-x pt)
 	    (point-y pt)))
-    pt)
+  pt)
 	  
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defconstant +default-position+
@@ -63,5 +63,9 @@
    (size :initarg :size :accessor rect-size)))
 
   
-
+(defun make-rect (x y w h)
+  (make-instance 'rect
+                 :position (make-point x y)
+                 :size (make-size w h)))
+                 
 
