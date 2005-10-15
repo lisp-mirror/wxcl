@@ -57,11 +57,6 @@ EWXWEXPORT(char*, wxWindow_GetLabel)(void* _obj)
 	return buf;
 }
 	
-EWXWEXPORT(int, wxWindow_GetLabelEmpty)(void* _obj)
-{
-	return (int)((wxWindow*)_obj)->GetLabel().IsEmpty();
-}
-	
 EWXWEXPORT(void, wxWindow_SetName)(void* _obj, char* _name)
 {
 	((wxWindow*)_obj)->SetName(_name);
@@ -111,14 +106,14 @@ EWXWEXPORT(void, wxWindow_SetClientSize)(void* _obj, int width, int height )
 	((wxWindow*)_obj)->SetClientSize( width, height );
 }
 	
-EWXWEXPORT(void, wxWindow_GetPosition)(void* _obj, void* _x, void* _y)
+EWXWEXPORT(void, wxWindow_GetPosition)(void* _obj, int* _x, int* _y)
 {
-	((wxWindow*)_obj)->GetPosition((int*)_x, (int*)_y);
+	((wxWindow*)_obj)->GetPosition(_x, _y);
 }
 	
-EWXWEXPORT(void, wxWindow_GetSize)(void* _obj, void* _w, void* _h)
+EWXWEXPORT(void, wxWindow_GetSize)(void* _obj, int* _w, int* _h)
 {
-	((wxWindow*)_obj)->GetSize((int*)_w, (int*)_h);
+	((wxWindow*)_obj)->GetSize(_w, _h);
 }
 	
 EWXWEXPORT(void, wxWindow_GetRect)(void* _obj, int* x, int* y, int* w, int* h)
@@ -130,14 +125,14 @@ EWXWEXPORT(void, wxWindow_GetRect)(void* _obj, int* x, int* y, int* w, int* h)
 	*h = rc.height;
 }
 	
-EWXWEXPORT(void, wxWindow_GetClientSize)(void* _obj, void* _w, void* _h)
+EWXWEXPORT(void, wxWindow_GetClientSize)(void* _obj, int* _w, int* _h)
 {
-	((wxWindow*)_obj)->GetClientSize((int*)_w, (int*)_h);
+	((wxWindow*)_obj)->GetClientSize(_w, _h);
 }
 	
-EWXWEXPORT(void, wxWindow_GetBestSize)(void* _obj, void* _w, void* _h)
+EWXWEXPORT(void, wxWindow_GetBestSize)(void* _obj, int* _w, int* _h)
 {
-	((wxWindow*)_obj)->GetBestSize((int*)_w, (int*)_h);
+	((wxWindow*)_obj)->GetBestSize(_w, _h);
 }
 	
 EWXWEXPORT(void, wxWindow_Center)(void* _obj, int direction)
@@ -409,14 +404,18 @@ EWXWEXPORT(int, wxWindow_SetForegroundColour)(void* _obj, void* colour)
 	return (int)((wxWindow*)_obj)->SetForegroundColour(*((wxColour*) colour));
 }
 	
-EWXWEXPORT(void, wxWindow_GetBackgroundColour)(void* _obj, void* colour)
+EWXWEXPORT(wxColour*, wxWindow_GetBackgroundColour)(void* _obj)
 {
-	*((wxColour*)colour) = ((wxWindow*)_obj)->GetBackgroundColour();
+   wxColour *col=new wxColour();
+	*col = ((wxWindow*)_obj)->GetBackgroundColour();
+   return col;
 }
 	
-EWXWEXPORT(void, wxWindow_GetForegroundColour)(void* _obj, void* colour)
+EWXWEXPORT(wxColour*, wxWindow_GetForegroundColour)(void* _obj)
 {
-	*((wxColour*)colour) = ((wxWindow*)_obj)->GetForegroundColour();
+   wxColour *col=new wxColour();
+	*col = ((wxWindow*)_obj)->GetForegroundColour();
+   return col;
 }
 	
 EWXWEXPORT(int, wxWindow_SetCursor)(void* _obj, void* cursor)
@@ -515,15 +514,17 @@ EWXWEXPORT(void, wxWindow_SetToolTip)(void* _obj, char* tip )
 	((wxWindow*)_obj)->SetToolTip( tip );
 }
 	
-EWXWEXPORT(int, wxWindow_GetToolTip)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxWindow_GetToolTip)(void* _obj)
 {
 	wxToolTip* tip = ((wxWindow*)_obj)->GetToolTip();
 
 	if (tip)
 	{
-		if (_buf)
-			strcpy ((char*)_buf, tip->GetTip().c_str());
-		return tip->GetTip().Length();
+      wxString result = tip->GetTip();
+      char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+      if (buf) strcpy (buf, result.c_str());
+      delete result;
+      return buf;
 	}
 	return 0;
 }
@@ -558,9 +559,9 @@ EWXWEXPORT(int, wxWindow_GetAutoLayout)(void* _obj)
 	return (int)((wxWindow*)_obj)->GetAutoLayout();
 }
 	
-EWXWEXPORT(int, wxWindow_Layout)(void* _obj)
+EWXWEXPORT(void, wxWindow_Layout)(void* _obj)
 {
-	return (int)((wxWindow*)_obj)->Layout();
+   ((wxWindow*)_obj)->Layout();
 }
 	
 EWXWEXPORT(void, wxWindow_UnsetConstraints)(void* _obj, void* c)

@@ -7,12 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl)
-
-(defconstant wxACCEL_ALT 1)
-(defconstant wxACCEL_CTRL 2)
-(defconstant wxACCEL_SHIFT 4)
-(defconstant wxACCEL_NORMAL 0)
+(in-package :wxcl-misc)
 
 (ffi:default-foreign-language :stdc)
 
@@ -57,18 +52,6 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(ffi:def-call-out wxAcceleratorTable_Create
-    (:name "wxAcceleratorTable_Create")
-  (:arguments (n ffi:int)
-	      (entries (c-array-ptr (ffi:c-pointer NIL))))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
-
-(ffi:def-call-out wxAcceleratorTable_Delete
-    (:name "wxAcceleratorTable_Delete")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
 
 (defmacro wxCL-create-accelerator-entries (frame &body body)
   (let ((size (length body)))

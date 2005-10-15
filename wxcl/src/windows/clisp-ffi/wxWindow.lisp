@@ -208,15 +208,8 @@
 
 (ffi:def-call-out wxWindow_GetLabel
     (:name "wxWindow_GetLabel")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
-  (:library +library-name+))
-
-(ffi:def-call-out wxWindow_GetLabelEmpty
-    (:name "wxWindow_GetLabelEmpty")
   (:arguments (_obj (ffi:c-pointer wxWindow)))
-  (:return-type ffi:int)
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_SetName
@@ -228,9 +221,8 @@
 
 (ffi:def-call-out wxWindow_GetName
     (:name "wxWindow_GetName")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxWindow)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_SetId
@@ -288,49 +280,49 @@
 (ffi:def-call-out wxWindow_GetPosition
     (:name "wxWindow_GetPosition")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_x (ffi:c-pointer NIL))
-	      (_y (ffi:c-pointer NIL)))
+	      (_x (ffi:c-ptr ff:int) :out)
+	      (_y (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_GetSize
     (:name "wxWindow_GetSize")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_w (ffi:c-pointer NIL))
-	      (_h (ffi:c-pointer NIL)))
+	      (_w (ffi:c-ptr ff:int) :out)
+	      (_h (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_GetRect
     (:name "wxWindow_GetRect")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (x (ffi:c-ptr ffi:int))
-	      (y (ffi:c-ptr ffi:int))
-	      (w (ffi:c-ptr ffi:int))
-	      (h (ffi:c-ptr ffi:int)))
+	      (x (ffi:c-ptr ffi:int) :out)
+	      (y (ffi:c-ptr ffi:int) :out)
+	      (w (ffi:c-ptr ffi:int) :out)
+	      (h (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_GetClientSize
     (:name "wxWindow_GetClientSize")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_w (ffi:c-pointer NIL))
-	      (_h (ffi:c-pointer NIL)))
+	      (_w (ffi:c-ptr ff:int) :out)
+	      (_h (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_GetBestSize
     (:name "wxWindow_GetBestSize")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_w (ffi:c-pointer NIL))
-	      (_h (ffi:c-pointer NIL)))
+	      (_w (ffi:c-ptr ff:int) :out)
+	      (_h (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_Center
     (:name "wxWindow_Center")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (direction ffi:int))
+              (direction ffi:int))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -580,16 +572,16 @@
 (ffi:def-call-out wxWindow_ConvertPixelsToDialog
     (:name "wxWindow_ConvertPixelsToDialog")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (x (ffi:c-ptr ffi:int))
-	      (y (ffi:c-ptr ffi:int)))
+	      (x (ffi:c-ptr ffi:int) :out)
+	      (y (ffi:c-ptr ffi:int)) :out)
   (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_ConvertDialogToPixels
     (:name "wxWindow_ConvertDialogToPixels")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (x (ffi:c-ptr ffi:int))
-	      (y (ffi:c-ptr ffi:int)))
+	      (x (ffi:c-ptr ffi:int) :out)
+	      (y (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -828,9 +820,8 @@
 
 (ffi:def-call-out wxWindow_GetToolTip
     (:name "wxWindow_GetToolTip")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer wxWindow)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_SetDropTarget
