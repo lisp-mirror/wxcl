@@ -73,6 +73,11 @@ the appearance of a window's text."))
 (defconstant +font-weight-light+         91)
 (defconstant +font-weight-bold+          92)
 
+(defun make-default-font ()
+    "Create a default font (attributes not set to meaningful values)."
+    (make-wx-instance 'font
+        (wxFont_CreateDefault)))
+
 (defun make-font (ptsize family style weight &key (underlined nil) (facename "") (encoding +font-encoding-default+))
     "Create a font object."
     (make-wx-instance 'font
