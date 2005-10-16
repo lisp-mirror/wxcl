@@ -35,11 +35,9 @@
 			  :depends-on ("defpackage")
 			  :components ((:file "wx_main")
 				       (:file "wx_wrapper") 
-				       (:file "wxAcceleratorEntry")
 				       (:file "wxCL")))
 		 (:file "object" :depends-on ("defpackage"))
 		 (:file "app" :depends-on ("object" "clisp-ffi"))
-		 (:file "closure" :depends-on ("object" "clisp-ffi"))
  		 (:module "clipboard")
 		 #+never(:module "controls"
 				 :depends-on ("object")
@@ -61,6 +59,14 @@
  		 (:module "db")
  		 (:module "dc")
  		 (:module "dialogs")
+ 		 (:module "structures"
+				 :depends-on ("object")
+				 :components ((:file "defpackage")
+				       (:module "clisp-ffi"
+						:depends-on ("defpackage")
+						:components ((:file "wxAcceleratorEntry")))
+				       (:file "accelerator-table" :depends-on ("accelerator-entry" "clisp-ffi"))
+				       (:file "accelerator-entry" :depends-on ("clisp-ffi"))))
  		 #+never(:module "events"
 			  :depends-on ("object")				 
 			  :components ((:file "defpackage")
@@ -84,17 +90,17 @@
 						:components ((:file "wxSizer")))
  				       (:file "sizer" :depends-on ("clisp-ffi"))
  				       (:file "box-sizer" :depends-on ("sizer"))))
- 		 #+never(:module "menus"
-			  :depends-on ("object")
+ 		 (:module "menus"
+			  :depends-on ("object" "windows")
 			  :components ((:file "defpackage")
 				       (:module "clisp-ffi"
 						:depends-on ("defpackage")
 						:components ((:file "wxMenu")
 							     (:file "wxMenuBar")
 							     (:file "wxMenuItem")))
- 				       (:file "menu" :depends-on ("clisp-ffi"))
- 				       (:file "menu-bar" :depends-on ("clisp-ffi"))
- 				       (:file "menu-item" :depends-on ("clisp-ffi"))))
+ 				       (:file "menu" :depends-on ("clisp-ffi" "menu-item"))
+                   (:file "menu-item" :depends-on ("clisp-ffi"))   
+ 				       (:file "menu-bar" :depends-on ("clisp-ffi"))))
  		 (:module "misc")
  		 (:module "net")
  		 (:module "printing")
@@ -106,10 +112,12 @@
 						:components ((:file "wxFrame")
 							     (:file "wxWindow")
 							     (:file "wxToolBar")
+							     (:file "wxPanel")
 							     (:file "wxStatusBar")))
  				       (:file "window" :depends-on ("clisp-ffi"))
 				       (:file "frame" :depends-on ("window"))
+                   (:file "panel" :depends-on ("window")) 
 				       (:file "status-bar" :depends-on ("window")))
 		 )))
 
-(push :wxcl *features*)
+;(push :wxcl *features*)

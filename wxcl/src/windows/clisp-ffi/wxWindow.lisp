@@ -280,7 +280,7 @@
 (ffi:def-call-out wxWindow_GetPosition
     (:name "wxWindow_GetPosition")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_x (ffi:c-ptr ff:int) :out)
+	      (_x (ffi:c-ptr ffi:int) :out)
 	      (_y (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
@@ -288,7 +288,7 @@
 (ffi:def-call-out wxWindow_GetSize
     (:name "wxWindow_GetSize")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_w (ffi:c-ptr ff:int) :out)
+	      (_w (ffi:c-ptr ffi:int) :out)
 	      (_h (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
@@ -306,7 +306,7 @@
 (ffi:def-call-out wxWindow_GetClientSize
     (:name "wxWindow_GetClientSize")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_w (ffi:c-ptr ff:int) :out)
+	      (_w (ffi:c-ptr ffi:int) :out)
 	      (_h (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
@@ -314,7 +314,7 @@
 (ffi:def-call-out wxWindow_GetBestSize
     (:name "wxWindow_GetBestSize")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_w (ffi:c-ptr ff:int) :out)
+	      (_w (ffi:c-ptr ffi:int) :out)
 	      (_h (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
@@ -572,8 +572,8 @@
 (ffi:def-call-out wxWindow_ConvertPixelsToDialog
     (:name "wxWindow_ConvertPixelsToDialog")
   (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (x (ffi:c-ptr ffi:int) :out)
-	      (y (ffi:c-ptr ffi:int)) :out)
+              (x (ffi:c-ptr ffi:int) :out)
+              (y (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -662,16 +662,14 @@
 
 (ffi:def-call-out wxWindow_GetBackgroundColour
     (:name "wxWindow_GetBackgroundColour")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (colour (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer wxWindow)))
+  (:return-type  (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_GetForegroundColour
     (:name "wxWindow_GetForegroundColour")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (colour (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer wxWindow)))
+  (:return-type  (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_SetCursor
@@ -696,9 +694,8 @@
 
 (ffi:def-call-out wxWindow_GetFont
     (:name "wxWindow_GetFont")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_font (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer wxWindow)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxWindow_SetCaret

@@ -34,7 +34,7 @@
 
 extern "C"
 {
-typedef void _cdecl (*ClosureFun)(void* _data, void* _evt );
+typedef void _cdecl (*ClosureFun)(void* _evt );
 
 typedef bool _cdecl (*AppInitFunc)(void);
 
@@ -85,16 +85,14 @@ class wxClosure : public wxClientData
   protected:
     int         m_refcount;     /* callbacks reference count the closures */
     ClosureFun  m_fun;          /* the foreign function to call */
-    void*       m_data;         /* the associated data, passed along with the function call */
   public:
-    wxClosure( ClosureFun fun, void* data );
+    wxClosure( ClosureFun fun);
     ~wxClosure();
 
     virtual void IncRef();
     virtual void DecRef();
 
     virtual void Invoke( wxEvent* event );
-    virtual void* GetData();
 };
 
 class wxCallback: public wxObject

@@ -104,17 +104,16 @@ void ELJApp::HandleEvent(wxEvent& _evt)
 /*-----------------------------------------------------------------------------
     Closures
 -----------------------------------------------------------------------------*/
-wxClosure::wxClosure( ClosureFun fun, void* data )
+wxClosure::wxClosure( ClosureFun fun )
 {
   m_refcount = 0;
   m_fun  = fun;
-  m_data = data;
 }
 
 wxClosure::~wxClosure()
 {
   /* call for the last time with a NULL event. Give opportunity to clean up resources */
-  if (m_fun) { m_fun(m_data, NULL); }
+  if (m_fun) { m_fun(NULL); }
 }
 
 void wxClosure::IncRef()
@@ -132,13 +131,8 @@ void wxClosure::DecRef()
 
 void wxClosure::Invoke( wxEvent* event )
 {
-  if (event && m_fun) { m_fun(m_data, event); }
+  if (event && m_fun) { m_fun(event); }
 };
-
-void* wxClosure::GetData()
-{
-  return m_data;
-}
 
 /*-----------------------------------------------------------------------------
     callback: a reference counting wrapper for a closure
@@ -231,12 +225,7 @@ EWXWEXPORT(wxClosure*, wxEvtHandler_GetClosure)(wxEvtHandler* evtHandler, int id
 /* closures */
 EWXWEXPORT(wxClosure*, wxClosure_Create)(ClosureFun fun, void* data)
 {
-  return new wxClosure(fun,data);
-}
-
-EWXWEXPORT(void*, wxClosure_GetData)(wxClosure* closure)
-{
-  return closure->GetData();
+  return new wxClosure(fun);
 }
 
 /* client data */

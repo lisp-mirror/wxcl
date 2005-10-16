@@ -28,7 +28,7 @@
 		    -1
 		    (size-height sz)
 		    (size-width sz)
-		    wxSIZE_USE_EXISTING))
+		    +size-use-existing+))
 
 (defmethod set-size ((obj window) (rc rect))
   "Sets the size and position of the window."
@@ -37,7 +37,7 @@
 		    (point-y (rect-position rc))
 		    (size-height (rect-size rc))
 		    (size-width (rect-size rc))
-		    wxSIZE_USE_EXISTING))
+		    +size-use-existing+))
 
 (defmethod set-position ((obj Window) (pos point))
   "Sets the position of the window."
@@ -46,7 +46,7 @@
 		    (point-y pos)
 		    -1
 		    -1
-		    wxSIZE_USE_EXISTING))
+		    +size-use-existing+))
 
 
 ; (defmethod ((obj window)) wxWindow_Create
@@ -61,7 +61,7 @@
 ;   (:return-type (ffi:c-pointer wxWindow))
 ;   (:library +library-name+))
 
-(defmethod close ((obj window) force)
+(defmethod close-window ((obj window) force)
   (= 1 (wxWindow_Close (object-pointer obj) (if force 1 0))))
 
 (defmethod destroy ((obj window))
@@ -91,7 +91,7 @@
 (defmethod name ((obj window))
   (wxWindow_GetName (object-pointer obj)))
 
-(defmethod (setf id) ((obj window))
+(defmethod (setf id) (id (obj window))
   (wxWindow_SetId (object-pointer obj) id))
 
 (defmethod id ((obj window))
@@ -99,7 +99,7 @@
 
 
 (defmethod move ((obj window) (pos point))
-  (wxWindow_Move (object-pointer obj) (point-x pos) (point-y pox)))
+  (wxWindow_Move (object-pointer obj) (point-x pos) (point-y pos)))
 
 (defmethod raise ((obj window))
   (wxWindow_Raise (object-pointer obj)))
@@ -177,12 +177,8 @@
 (defmethod enabled-p ((obj window))
   (= 1 (wxWindow_IsEnabled (object-pointer obj))))
 
-(defmethod ((obj window)) wxWindow_SetWindowStyleFlag
-    (:name "wxWindow_SetWindowStyleFlag")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (style ffi:long))
-  (:return-type NIL)
-  (:library +library-name+))
+(defmethod (setf style-flag) (flag (obj window))
+  (wxWindow_SetWindowStyleFlag (object-pointer obj) flag))
 
 (defmethod style-flag ((obj window))
   (wxWindow_GetWindowStyleFlag (object-pointer obj)))
@@ -219,10 +215,10 @@
 (defmethod find-window ((obj window) name)
   (make-wx-instance 'window (wxWindow_FindWindow (object-pointer obj) name)))
 
-(defmethod add-child ((obj window))
+(defmethod add-child ((obj window) child)
   (wxWindow_AddChild (object-pointer obj) (object-pointer child)))
 
-(defmethod remove-child ((obj window))
+(defmethod remove-child ((obj window) child)
   (wxWindow_RemoveChild (object-pointer obj) (object-pointer child)))
 
 (defmethod event-handler ((obj window))
@@ -465,223 +461,223 @@
 (defmethod layout ((obj window))
   (wxWindow_Layout (object-pointer obj)))
 
-(defmethod ((obj window)) wxWindow_UnsetConstraints
-    (:name "wxWindow_UnsetConstraints")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (c (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_UnsetConstraints
+;     (:name "wxWindow_UnsetConstraints")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (c (ffi:c-pointer NIL)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_GetConstraintsInvolvedIn
-    (:name "wxWindow_GetConstraintsInvolvedIn")
-  (:arguments (_obj (ffi:c-pointer wxWindow)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_GetConstraintsInvolvedIn
+;     (:name "wxWindow_GetConstraintsInvolvedIn")
+;   (:arguments (_obj (ffi:c-pointer wxWindow)))
+;   (:return-type (ffi:c-pointer NIL))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_AddConstraintReference
-    (:name "wxWindow_AddConstraintReference")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (otherWin (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_AddConstraintReference
+;     (:name "wxWindow_AddConstraintReference")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (otherWin (ffi:c-pointer NIL)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_RemoveConstraintReference
-    (:name "wxWindow_RemoveConstraintReference")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (otherWin (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_RemoveConstraintReference
+;     (:name "wxWindow_RemoveConstraintReference")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (otherWin (ffi:c-pointer NIL)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_DeleteRelatedConstraints
-    (:name "wxWindow_DeleteRelatedConstraints")
-  (:arguments (_obj (ffi:c-pointer wxWindow)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_DeleteRelatedConstraints
+;     (:name "wxWindow_DeleteRelatedConstraints")
+;   (:arguments (_obj (ffi:c-pointer wxWindow)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_ResetConstraints
-    (:name "wxWindow_ResetConstraints")
-  (:arguments (_obj (ffi:c-pointer wxWindow)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_ResetConstraints
+;     (:name "wxWindow_ResetConstraints")
+;   (:arguments (_obj (ffi:c-pointer wxWindow)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_SetConstraintSizes
-    (:name "wxWindow_SetConstraintSizes")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (recurse ffi:int))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_SetConstraintSizes
+;     (:name "wxWindow_SetConstraintSizes")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (recurse ffi:int))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_LayoutPhase1
-    (:name "wxWindow_LayoutPhase1")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (noChanges (ffi:c-ptr ffi:int)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_LayoutPhase1
+;     (:name "wxWindow_LayoutPhase1")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (noChanges (ffi:c-ptr ffi:int)))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_LayoutPhase2
-    (:name "wxWindow_LayoutPhase2")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (noChanges (ffi:c-ptr ffi:int)))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_LayoutPhase2
+;     (:name "wxWindow_LayoutPhase2")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (noChanges (ffi:c-ptr ffi:int)))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_DoPhase
-    (:name "wxWindow_DoPhase")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (phase ffi:int))
-  (:return-type ffi:int)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_DoPhase
+;     (:name "wxWindow_DoPhase")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (phase ffi:int))
+;   (:return-type ffi:int)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_SetSizeConstraint
-    (:name "wxWindow_SetSizeConstraint")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (x ffi:int)
-	      (y ffi:int)
-	      (w ffi:int)
-	      (h ffi:int))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_SetSizeConstraint
+;     (:name "wxWindow_SetSizeConstraint")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (x ffi:int)
+; 	      (y ffi:int)
+; 	      (w ffi:int)
+; 	      (h ffi:int))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_MoveConstraint
-    (:name "wxWindow_MoveConstraint")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (x ffi:int)
-	      (y ffi:int))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_MoveConstraint
+;     (:name "wxWindow_MoveConstraint")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (x ffi:int)
+; 	      (y ffi:int))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_GetSizeConstraint
-    (:name "wxWindow_GetSizeConstraint")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (w (ffi:c-ptr ffi:int))
-	      (h (ffi:c-ptr ffi:int)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_GetSizeConstraint
+;     (:name "wxWindow_GetSizeConstraint")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (w (ffi:c-ptr ffi:int))
+; 	      (h (ffi:c-ptr ffi:int)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_GetClientSizeConstraint
-    (:name "wxWindow_GetClientSizeConstraint")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (w (ffi:c-ptr ffi:int))
-	      (h (ffi:c-ptr ffi:int)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_GetClientSizeConstraint
+;     (:name "wxWindow_GetClientSizeConstraint")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (w (ffi:c-ptr ffi:int))
+; 	      (h (ffi:c-ptr ffi:int)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_GetPositionConstraint
-    (:name "wxWindow_GetPositionConstraint")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (x (ffi:c-ptr ffi:int))
-	      (y (ffi:c-ptr ffi:int)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_GetPositionConstraint
+;     (:name "wxWindow_GetPositionConstraint")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (x (ffi:c-ptr ffi:int))
+; 	      (y (ffi:c-ptr ffi:int)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_SetSizer
-    (:name "wxWindow_SetSizer")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (sizer (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_SetSizer
+;     (:name "wxWindow_SetSizer")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (sizer (ffi:c-pointer NIL)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_GetSizer
-    (:name "wxWindow_GetSizer")
-  (:arguments (_obj (ffi:c-pointer wxWindow)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_GetSizer
+;     (:name "wxWindow_GetSizer")
+;   (:arguments (_obj (ffi:c-pointer wxWindow)))
+;   (:return-type (ffi:c-pointer NIL))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_GetHandle
-    (:name "wxWindow_GetHandle")
-  (:arguments (_obj (ffi:c-pointer wxWindow)))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_GetHandle
+;     (:name "wxWindow_GetHandle")
+;   (:arguments (_obj (ffi:c-pointer wxWindow)))
+;   (:return-type (ffi:c-pointer NIL))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_SetScrollbar
-    (:name "wxWindow_SetScrollbar")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (orient ffi:int)
-	      (pos ffi:int)
-	      (thumbVisible ffi:int)
-	      (range ffi:int)
-	      (refresh ffi:int))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_SetScrollbar
+;     (:name "wxWindow_SetScrollbar")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (orient ffi:int)
+; 	      (pos ffi:int)
+; 	      (thumbVisible ffi:int)
+; 	      (range ffi:int)
+; 	      (refresh ffi:int))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod reparent ((obj window) par)
-  "Reparents the window, i.e the window will be removed from its current parent\
- window (e.g. a non-standard toolbar in a wxFrame) and then re-inserted into another.\
- Available on Windows and GTK."
-  (= 1 (wxWindow_Reparent (object-pointer obj) (object-pointer par))))
+; (defmethod reparent ((obj window) par)
+;   "Reparents the window, i.e the window will be removed from its current parent\
+;  window (e.g. a non-standard toolbar in a wxFrame) and then re-inserted into another.\
+;  Available on Windows and GTK."
+;   (= 1 (wxWindow_Reparent (object-pointer obj) (object-pointer par))))
 
-(defmethod ((obj window)) wxWindow_GetAdjustedBestSize
-    (:name "wxWindow_GetAdjustedBestSize")
-  (:arguments (_obj (ffi:c-pointer wxWindow))
-	      (_w (ffi:c-pointer NIL))
-	      (_h (ffi:c-pointer NIL)))
-  (:return-type NIL)
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_GetAdjustedBestSize
+;     (:name "wxWindow_GetAdjustedBestSize")
+;   (:arguments (_obj (ffi:c-pointer wxWindow))
+; 	      (_w (ffi:c-pointer NIL))
+; 	      (_h (ffi:c-pointer NIL)))
+;   (:return-type NIL)
+;   (:library +library-name+))
 
-(defmethod freeze ((obj window))
-  (wxWindow_Freeze (object-pointer obj)))
+; (defmethod freeze ((obj window))
+;   (wxWindow_Freeze (object-pointer obj)))
 
-(defmethod thaw ((obj window))
-  (wxWindow_Thaw (object-pointer obj)))
+; (defmethod thaw ((obj window))
+;   (wxWindow_Thaw (object-pointer obj)))
 
 
-(defmethod ((obj window)) wxWindow_ConvertPixelsToDialogEx
-    (:name "wxWindow_ConvertPixelsToDialogEx")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (x ffi:int)
-	      (y ffi:int)
-	      (_x (ffi:c-ptr ffi:int))
-	      (_y (ffi:c-ptr ffi:int)))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_ConvertPixelsToDialogEx
+;     (:name "wxWindow_ConvertPixelsToDialogEx")
+;   (:arguments (_obj (ffi:c-pointer NIL))
+; 	      (x ffi:int)
+; 	      (y ffi:int)
+; 	      (_x (ffi:c-ptr ffi:int))
+; 	      (_y (ffi:c-ptr ffi:int)))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_ConvertDialogToPixelsEx
-    (:name "wxWindow_ConvertDialogToPixelsEx")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (x ffi:int)
-	      (y ffi:int)
-	      (_x (ffi:c-ptr ffi:int))
-	      (_y (ffi:c-ptr ffi:int)))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_ConvertDialogToPixelsEx
+;     (:name "wxWindow_ConvertDialogToPixelsEx")
+;   (:arguments (_obj (ffi:c-pointer NIL))
+; 	      (x ffi:int)
+; 	      (y ffi:int)
+; 	      (_x (ffi:c-ptr ffi:int))
+; 	      (_y (ffi:c-ptr ffi:int)))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_SetClientObject
-    (:name "wxWindow_SetClientObject")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (obj (ffi:c-pointer NIL)))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_SetClientObject
+;     (:name "wxWindow_SetClientObject")
+;   (:arguments (_obj (ffi:c-pointer NIL))
+; 	      (obj (ffi:c-pointer NIL)))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_SetVirtualSize
-    (:name "wxWindow_SetVirtualSize")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (w ffi:int)
-	      (h ffi:int))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_SetVirtualSize
+;     (:name "wxWindow_SetVirtualSize")
+;   (:arguments (_obj (ffi:c-pointer NIL))
+; 	      (w ffi:int)
+; 	      (h ffi:int))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_GetVirtualSize
-    (:name "wxWindow_GetVirtualSize")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (w (ffi:c-ptr ffi:int))
-	      (h (ffi:c-ptr ffi:int)))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_GetVirtualSize
+;     (:name "wxWindow_GetVirtualSize")
+;   (:arguments (_obj (ffi:c-pointer NIL))
+; 	      (w (ffi:c-ptr ffi:int))
+; 	      (h (ffi:c-ptr ffi:int)))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_FitInside
-    (:name "wxWindow_FitInside")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_FitInside
+;     (:name "wxWindow_FitInside")
+;   (:arguments (_obj (ffi:c-pointer NIL)))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_ClientToScreen
-    (:name "wxWindow_ClientToScreen")
-  (:arguments (self (ffi:c-pointer wxWindow))
-	      (x ffi:int)
-	      (y ffi:int)
-	      (sx (ffi:c-ptr ffi:int))
-	      (sy (ffi:c-ptr ffi:int)))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_ClientToScreen
+;     (:name "wxWindow_ClientToScreen")
+;   (:arguments (self (ffi:c-pointer wxWindow))
+; 	      (x ffi:int)
+; 	      (y ffi:int)
+; 	      (sx (ffi:c-ptr ffi:int))
+; 	      (sy (ffi:c-ptr ffi:int)))
+;   (:library +library-name+))
 
-(defmethod ((obj window)) wxWindow_ScreenToClient2
-    (:name "wxWindow_ScreenToClient2")
-  (:arguments (self (ffi:c-pointer wxWindow))
-	      (x ffi:int)
-	      (y ffi:int)
-	      (cx (ffi:c-ptr ffi:int))
-	      (cy (ffi:c-ptr ffi:int)))
-  (:library +library-name+))
+; (defmethod ((obj window)) wxWindow_ScreenToClient2
+;     (:name "wxWindow_ScreenToClient2")
+;   (:arguments (self (ffi:c-pointer wxWindow))
+; 	      (x ffi:int)
+; 	      (y ffi:int)
+; 	      (cx (ffi:c-ptr ffi:int))
+; 	      (cy (ffi:c-ptr ffi:int)))
+;   (:library +library-name+))

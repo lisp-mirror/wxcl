@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-misc)
+(in-package :wxcl-structures)
 
 (ffi:default-foreign-language :stdc)
 
