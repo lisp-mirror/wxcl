@@ -79,11 +79,6 @@ EWXWEXPORT(void, wxSizerItem_SetInitSize)(void* _obj, int x, int y)
 	((wxSizerItem*)_obj)->SetInitSize(x, y);
 }
 	
-EWXWEXPORT(void, wxSizerItem_SetOption)(void* _obj, int option)
-{
-	((wxSizerItem*)_obj)->SetOption(option);
-}
-	
 EWXWEXPORT(void, wxSizerItem_SetFlag)(void* _obj, int flag)
 {
 	((wxSizerItem*)_obj)->SetFlag(flag);
@@ -112,11 +107,6 @@ EWXWEXPORT(void*, wxSizerItem_GetSizer)(void* _obj)
 EWXWEXPORT(void, wxSizerItem_SetSizer)(void* _obj, void* sizer)
 {
 	((wxSizerItem*)_obj)->SetSizer((wxSizer*) sizer);
-}
-	
-EWXWEXPORT(int, wxSizerItem_GetOption)(void* _obj)
-{
-	return ((wxSizerItem*)_obj)->GetOption();
 }
 	
 EWXWEXPORT(int, wxSizerItem_GetFlag)(void* _obj)
@@ -417,27 +407,5 @@ EWXWEXPORT(void*, wxStaticBoxSizer_GetStaticBox)(void* _obj)
 {
 	return (void*)((wxStaticBoxSizer*)_obj)->GetStaticBox();
 }
-	
-EWXWEXPORT(void*, wxNotebookSizer_Create)(void* nb)
-{
-	return (void*) new wxNotebookSizer((wxNotebook*)nb);
-}
-	
-EWXWEXPORT(void, wxNotebookSizer_RecalcSizes)(void* _obj)
-{
-	((wxNotebookSizer*)_obj)->RecalcSizes();
-}
-	
-EWXWEXPORT(void, wxNotebookSizer_CalcMin)(void* _obj, void* _w, void* _h)
-{
-	wxSize res = ((wxNotebookSizer*)_obj)->CalcMin();
-	(*(int*)_w) = res.GetWidth();
-	(*(int*)_h) = res.GetHeight();
-}
-	
-EWXWEXPORT(void*, wxNotebookSizer_GetNotebook)(void* _obj)
-{
-	return (void*)((wxNotebookSizer*)_obj)->GetNotebook();
-}
-	
+
 }

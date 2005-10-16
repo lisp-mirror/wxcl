@@ -5,11 +5,30 @@
   (:documentation "A colour is an object representing a combination of Red, Green,\
  and Blue (RGB) intensity values, and is used to determine drawing colours."))
 
+(define-symbol-macro +null-colour+ (make-wx-instance 'colour wxNull_Colour))
+
+(define-symbol-macro +black+ (make-wx-instance 'colour wxBlack))
+
+(define-symbol-macro +white+ (make-wx-instance 'colour wxWhite))
+
+(define-symbol-macro +red+ (make-wx-instance 'colour wxRed))
+
+(define-symbol-macro +blue+ (make-wx-instance 'colour wxBlue))
+
+(define-symbol-macro +green+ (make-wx-instance 'colour wxGreen))
+
+(define-symbol-macro +cyan+ (make-wx-instance 'colour wxCyan))
+
+(define-symbol-macro +light-grey+ (make-wx-instance 'colour wxLight_Grey))
+
 (defun make-colour(&key (red 0) (green 0) (blue 0))
   (make-wx-instance 'colour (wxColour_CreateRGB red green blue)))
 
 (defun make-colour-from-name (name)
   (make-wx-instance 'colour (wxColour_CreateByName name)))
+
+(defun make-colour-from-rgb (r g b)
+  (make-wx-instance 'colour (wxColour_CreateRGB r g b)))
 
 (defmethod delete-object ((obj colour))
   (wxColour_Delete (object-pointer obj))
@@ -39,31 +58,7 @@
 (defmethod set-by-name ((obj colour) name)
   (wxColour_SetByName (object-pointer obj) name))
 
-
 (defmethod valid-name-p ((obj colour) name)
   (= 1 (wxColour_ValidName (object-pointer obj) name)))
 
-(defconstant +green+
-  (make-wx-instance 'colour wxGreen))
-
-(defconstant +red+
-  (make-wx-instance 'colour wxRed))
-
-(defconstant +blue+
-  (make-wx-instance 'colour wxBlue))
-
-(defconstant +white+
-  (make-wx-instance 'colour wxWhite))
-
-(defconstant +black+
-  (make-wx-instance 'colour wxBlack))
-
-(defconstant +cyan+
-  (make-wx-instance 'colour wxCyan))
-
-(defconstant +green+
-  (make-wx-instance 'colour wxGreen))
-
-(defconstant +light-grey+
-  (make-wx-instance 'colour wxLight_Grey))
 

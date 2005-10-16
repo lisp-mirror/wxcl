@@ -63,37 +63,37 @@ EWXWEXPORT(void, wxTextValidator_SetStyle)(void* _obj, int style)
 	((wxTextValidator*)_obj)->SetStyle((long) style);
 }
 	
-EWXWEXPORT(void, wxTextValidator_SetIncludeList)(void* _obj, void* list, int count)
+EWXWEXPORT(void, wxTextValidator_SetIncludes)(void* _obj, char* list[], int count)
 {
-	wxStringList str;
+	wxArrayString str;
 	
 	for (int i = 0; i < count; i++)
-		str.Add(((char**)list)[i]);
+		str.Add(list[i]);
 		
-	((wxTextValidator*)_obj)->SetIncludeList(str);
+	((wxTextValidator*)_obj)->SetIncludes(str);
 }
 	
-EWXWEXPORT(int, wxTextValidator_GetIncludeList)(void* _obj, void* _ref)
+EWXWEXPORT(int, wxTextValidator_GetIncludes)(void* _obj, void* _ref)
 {
 /*
 	if (_ref)
 	{
 		for (unsigned int i = 0; i < ((wxTextValidator*)_obj)->GetIncludeList().GetCount(); i++)
-			((const char**)_ref)[i] = strdup(((wxTextValidator*)_obj)->GetIncludeList().Item(i)->GetData());
+			((const char**)_ref)[i] = strdup(((wxTextValidator*)_obj)->GetIncludes().Item(i)->GetData());
 	}
-	return ((wxTextValidator*)_obj)->GetIncludeList().GetCount();
+	return ((wxTextValidator*)_obj)->GetIncludes().GetCount();
 */
         return 0;
 }
 	
-EWXWEXPORT(void, wxTextValidator_SetExcludeList)(void* _obj, void* list, int count)
+EWXWEXPORT(void, wxTextValidator_SetExcludes)(void* _obj, char* list[], int count)
 {
-	wxStringList str;
+	wxArrayString str;
 	
 	for (int i = 0; i < count; i++)
-		str.Add(((char**)list)[i]);
+		str.Add(list[i]);
 		
-	((wxTextValidator*)_obj)->SetExcludeList(str);
+	((wxTextValidator*)_obj)->SetExcludes(str);
 }
 	
 EWXWEXPORT(int, wxTextValidator_GetExcludeList)(void* _obj, void* _ref)
@@ -101,10 +101,10 @@ EWXWEXPORT(int, wxTextValidator_GetExcludeList)(void* _obj, void* _ref)
 /*
 	if (_ref)
 	{
-		for (unsigned int i = 0; i < ((wxTextValidator*)_obj)->GetExcludeList().GetCount(); i++)
-			((const char**)_ref)[i] = ((wxTextValidator*)_obj)->GetExcludeList().Item(i)->GetData();
+		for (unsigned int i = 0; i < ((wxTextValidator*)_obj)->GetExcludes().GetCount(); i++)
+			((const char**)_ref)[i] = ((wxTextValidator*)_obj)->GetExcludes().Item(i)->GetData();
 	}
-	return ((wxTextValidator*)_obj)->GetExcludeList().GetCount();
+	return ((wxTextValidator*)_obj)->GetExcludes().GetCount();
 */
 	return 0;
 }

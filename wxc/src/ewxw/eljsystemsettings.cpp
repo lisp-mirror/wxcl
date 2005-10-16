@@ -3,19 +3,19 @@
 extern "C"
 {
 
-EWXWEXPORT(void, wxSystemSettings_GetSystemColour)(int index, void* _ref)
+EWXWEXPORT(wxColour*, wxSystemSettings_GetColour)(int index)
 {
-	*((wxColour*)_ref) = wxSystemSettings::GetSystemColour(index);
+   return new wxColour(wxSystemSettings::GetColour((wxSystemColour)index));
 }
 
-EWXWEXPORT(void, wxSystemSettings_GetSystemFont)(int index, void* _ref)
+EWXWEXPORT(wxFont*, wxSystemSettings_GetFont)(int index, void* _ref)
 {
-	*((wxFont*)_ref) = wxSystemSettings::GetSystemFont(index);
+   return new wxFont(wxSystemSettings::GetFont((wxSystemFont)index));
 }
 
-EWXWEXPORT(int, wxSystemSettings_GetSystemMetric)(int index)
+EWXWEXPORT(int, wxSystemSettings_GetMetric)(int index)
 {
-	return wxSystemSettings::GetSystemMetric(index);
+   return wxSystemSettings::GetMetric((wxSystemMetric)index);
 }
 
 }

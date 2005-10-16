@@ -9,39 +9,15 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage :wxBrush
-    (:use :common-lisp :ffi :wxCL)
-  (:export
-   :wxBrush_CreateDefault
-   :wxBrush_CreateFromBitmap
-   :wxBrush_CreateFromColour
-   :wxBrush_CreateFromStock
-   :wxBrush_Delete
-   :wxBrush_SetColour
-   :wxBrush_SetColourSingle
-   :wxBrush_SetStyle
-   :wxBrush_SetStipple
-   :wxBrush_Assign
-   :wxBrush_IsEqual
-   :wxBrush_GetColour
-   :wxBrush_GetStyle
-   :wxBrush_GetStipple
-   :wxBrush_Ok
-   :wxBlue_Brush
-   :wxGreen_Brush
-   :wxWhite_Brush
-   :wxBlack_Brush
-   :wxGrey_Brush
-   :wxMedium_Grey_Brush
-   :wxLight_Grey_Brush
-   :wxTransparent_Brush
-   :wxCyan_Brush
-   :wxRed_Brush
-   ))
-
-(in-package :wxBrush)
+(in-package :wxcl-gdi)
 
 (ffi:default-foreign-language :stdc)
+
+(ffi:def-c-var wxNull_Brush
+    (:name "wxNull_Brush")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
 
 (ffi:def-c-var wxBlack_Brush
     (:name "wxBlack_Brush")
@@ -134,12 +110,19 @@
   (:return-type NIL)
   (:library +library-name+))
 
-(ffi:def-call-out wxBrush_SetColourSingle
+(ffi:def-call-out wxBrush_SetColourName
+    (:name "wxBrush_SetColourName")
+  (:arguments (_obj (ffi:c-pointer NIL))
+              (col ffi:c-string)))
+  (:return-type NIL)
+  (:library +library-name+))
+
+(ffi:def-call-out wxBrush_SetColourRGB
     (:name "wxBrush_SetColourSingle")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (r character)
-	      (g character)
-	      (b character))
+	      (r uint8)
+	      (g uint8)
+	      (b uint8))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -173,9 +156,8 @@
 
 (ffi:def-call-out wxBrush_GetColour
     (:name "wxBrush_GetColour")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxBrush_GetStyle
@@ -186,9 +168,8 @@
 
 (ffi:def-call-out wxBrush_GetStipple
     (:name "wxBrush_GetStipple")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxBrush_Ok

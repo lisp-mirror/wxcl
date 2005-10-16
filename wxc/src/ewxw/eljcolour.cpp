@@ -3,14 +3,14 @@
 
 extern "C"
 {
-
-__declspec( dllexport ) wxColour** wxBlack=&wxBLACK;
-__declspec( dllexport ) wxColour** wxWhite=&wxWHITE;  
-__declspec( dllexport ) wxColour** wxRed=&wxRED;
-__declspec( dllexport ) wxColour** wxBlue=&wxBLUE;  
-__declspec( dllexport ) wxColour** wxGreen=&wxGREEN;
-__declspec( dllexport ) wxColour** wxCyan=&wxCYAN;
-__declspec( dllexport ) wxColour** wxLight_Grey=&wxLIGHT_GREY;    
+EWXWEXPORT_VAR wxColour* wxNull_Colour=&wxNull_Colour;  
+EWXWEXPORT_VAR wxColour** wxBlack=&wxBLACK;
+EWXWEXPORT_VAR wxColour** wxWhite=&wxWHITE;  
+EWXWEXPORT_VAR wxColour** wxRed=&wxRED;
+EWXWEXPORT_VAR wxColour** wxBlue=&wxBLUE;  
+EWXWEXPORT_VAR wxColour** wxGreen=&wxGREEN;
+EWXWEXPORT_VAR wxColour** wxCyan=&wxCYAN;
+EWXWEXPORT_VAR wxColour** wxLight_Grey=&wxLIGHT_GREY;    
  
 EWXWEXPORT(void*, wxColour_CreateEmpty) ()
 {

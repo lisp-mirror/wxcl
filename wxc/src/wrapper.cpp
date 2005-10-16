@@ -645,11 +645,6 @@ EWXWEXPORT(void*, Null_Pen)()
         return (void*)&wxNullPen;
 }
 
-EWXWEXPORT(void*, Null_Brush)()
-{
-        return (void*)&wxNullBrush;
-}
-
 EWXWEXPORT(void*, Null_Palette)()
 {
         return (void*)&wxNullPalette;
@@ -658,11 +653,6 @@ EWXWEXPORT(void*, Null_Palette)()
 EWXWEXPORT(void*, Null_Font)()
 {
         return (void*)&wxNullFont;
-}
-
-EWXWEXPORT(void*, Null_Colour)()
-{
-        return (void*)&wxNullColour;
 }
 /*
 EWXWEXPORT(int, wxDllLoader_LoadLibrary)(void* _name, void* _success)

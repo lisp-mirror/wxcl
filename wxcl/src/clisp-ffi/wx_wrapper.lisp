@@ -313,11 +313,6 @@
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
-(ffi:def-call-out Null_Brush
-    (:name "Null_Brush")
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
-
 (ffi:def-call-out Null_Palette
     (:name "Null_Palette")
   (:return-type (ffi:c-pointer NIL))

@@ -11,6 +11,12 @@
 
 (ffi:default-foreign-language :stdc)
 
+(ffi:def-c-var wxNull_Colour
+    (:name "wxNull_Colour")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
+
 (ffi:def-c-var wxBlack
     (:name "wxBlack")
   (:type (ffi:c-ptr (ffi:c-pointer nil)))

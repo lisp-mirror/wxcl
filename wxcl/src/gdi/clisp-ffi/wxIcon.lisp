@@ -7,24 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxIcon
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxIcon_CreateDefault
-	:wxIcon_Delete
-	:wxIcon_FromRaw
-	:wxIcon_FromXPM
-	:wxIcon_CreateLoad
-	:wxIcon_Load
-	:wxIcon_CopyFromBitmap
-	:wxIcon_Ok
-	:wxIcon_GetDepth
-	:wxIcon_GetWidth
-	:wxIcon_GetHeight
-	:wxIcon_Assign
-	:wxIcon_IsEqual))
-
-(in-package :wxIcon)
+(in-package :wxcl-gdi)
 
 (ffi:default-foreign-language :stdc)
 
@@ -40,16 +23,16 @@
 	(:library +library-name+))
 
 (ffi:def-call-out wxIcon_FromRaw
-	(:name "wxIcon_FromRaw")
-	(:arguments (data (ffi:c-pointer NIL))
-		(width ffi:int)
-		(height ffi:int))
-	(:return-type (ffi:c-pointer NIL))
-	(:library +library-name+))
+    (:name "wxIcon_FromRaw")
+  (:arguments (data (ffi:c-array-ptr uint8))
+              (width ffi:int)
+              (height ffi:int))
+  (:return-type (ffi:c-pointer NIL))
+  (:library +library-name+))
 
 (ffi:def-call-out wxIcon_FromXPM
 	(:name "wxIcon_FromXPM")
-	(:arguments (data (ffi:c-pointer NIL)))
+	(:arguments (data (ffi:c-array-ptr (ffi:c-array-ptr uint8))))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 

@@ -2,17 +2,18 @@
 
 extern "C"
 {
-
-__declspec( dllexport ) wxBrush** wxBlack_Brush=&wxBLACK_BRUSH;
-__declspec( dllexport ) wxBrush** wxWhite_Brush=&wxWHITE_BRUSH;  
-__declspec( dllexport ) wxBrush** wxRed_Brush=&wxRED_BRUSH;
-__declspec( dllexport ) wxBrush** wxBlue_Brush=&wxBLUE_BRUSH;  
-__declspec( dllexport ) wxBrush** wxGreen_Brush=&wxGREEN_BRUSH;
-__declspec( dllexport ) wxBrush** wxCyan_Brush=&wxCYAN_BRUSH;
-__declspec( dllexport ) wxBrush** wxLight_Grey_Brush=&wxLIGHT_GREY_BRUSH;
-__declspec( dllexport ) wxBrush** wxMedium_Grey_Brush=&wxMEDIUM_GREY_BRUSH;
-__declspec( dllexport ) wxBrush** wxTransparent_Brush=&wxTRANSPARENT_BRUSH;    
-__declspec( dllexport ) wxBrush** wxGrey_Brush=&wxGREY_BRUSH;
+EWXWEXPORT_VAR wxBrush* wxNull_Brush=&wxNullBrush;
+  
+EWXWEXPORT_VAR wxBrush** wxBlack_Brush=&wxBLACK_BRUSH;
+EWXWEXPORT_VAR wxBrush** wxWhite_Brush=&wxWHITE_BRUSH;  
+EWXWEXPORT_VAR wxBrush** wxRed_Brush=&wxRED_BRUSH;
+EWXWEXPORT_VAR wxBrush** wxBlue_Brush=&wxBLUE_BRUSH;  
+EWXWEXPORT_VAR wxBrush** wxGreen_Brush=&wxGREEN_BRUSH;
+EWXWEXPORT_VAR wxBrush** wxCyan_Brush=&wxCYAN_BRUSH;
+EWXWEXPORT_VAR wxBrush** wxLight_Grey_Brush=&wxLIGHT_GREY_BRUSH;
+EWXWEXPORT_VAR wxBrush** wxMedium_Grey_Brush=&wxMEDIUM_GREY_BRUSH;
+EWXWEXPORT_VAR wxBrush** wxTransparent_Brush=&wxTRANSPARENT_BRUSH;    
+EWXWEXPORT_VAR wxBrush** wxGrey_Brush=&wxGREY_BRUSH;
   
 EWXWEXPORT(void*, wxBrush_CreateDefault) ()
 {
@@ -37,6 +38,11 @@ EWXWEXPORT(void, wxBrush_Delete) (void* _obj)
 EWXWEXPORT(void, wxBrush_SetColour)(void* _obj, void* col)
 {
 	((wxBrush*)_obj)->SetColour(*((wxColour*)col));
+}
+
+EWXWEXPORT(void, wxBrush_SetColourName)(void* _obj, char* col)
+{
+	((wxBrush*)_obj)->SetColour(col);
 }
 	
 EWXWEXPORT(void, wxBrush_SetColourSingle)(void* _obj, char r, char g, char b)
@@ -64,9 +70,9 @@ EWXWEXPORT(int, wxBrush_IsEqual)(void* _obj, void* brush)
 	return (int)(*((wxBrush*)_obj) == *((wxBrush*)brush));
 }
 	
-EWXWEXPORT(void, wxBrush_GetColour)(void* _obj, void* _ref)
+EWXWEXPORT(wxColour*, wxBrush_GetColour)(void* _obj)
 {
-	*((wxColour*)_ref) = ((wxBrush*)_obj)->GetColour();
+   return new wxColour(((wxBrush*)_obj)->GetColour());
 }
 	
 EWXWEXPORT(int, wxBrush_GetStyle)(void* _obj)
@@ -74,9 +80,9 @@ EWXWEXPORT(int, wxBrush_GetStyle)(void* _obj)
 	return ((wxBrush*)_obj)->GetStyle();
 }
 	
-EWXWEXPORT(void, wxBrush_GetStipple)(void* _obj, void* _ref)
+EWXWEXPORT(wxBitmap*, wxBrush_GetStipple)(void* _obj)
 {
-	*((wxBitmap*)_ref) = (*((wxBrush*)_obj)->GetStipple());
+	return ((wxBrush*)_obj)->GetStipple();
 }
 	
 EWXWEXPORT(int, wxBrush_Ok)(void* _obj)
