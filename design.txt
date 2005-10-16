@@ -1,10 +1,6 @@
-[1] There will be only one package named "wxcl" and all the functions(about
-2000) and constants (about 3000) will be exported from it.
+[1] There will be the following packages
 
-Use package nick names.
-Instead of one package have the following packages:
-
-main-package-name
+We may use package nick names, still not decided.
 
 wxcl
 wxcl-windows		
@@ -12,6 +8,7 @@ wxcl-dialogs
 wxcl-controls		
 wxcl-menus		
 wxcl-layout		
+wxcl-structures
 wxcl-dc			
 wxcl-gdi		
 wxcl-ipc		
@@ -22,8 +19,8 @@ wxcl-logging
 wxcl-net
 wxcl-printing
 wxcl-html
-wxcl-stream
-wxcl-file
+wxcl-stream - not sure should be there, use lisp streams
+wxcl-file - not sure should be there, use lisp files
 wxcl-thread
 wxcl-xml
 wxcl-db
@@ -33,6 +30,19 @@ wxcl-misc
 [2]All the constants will have a leading and trailing '+' sign with
 them. Example, wxcl:+default-size+. The constants will be defined using
 'defconstant'. 
+
+The constants should be defined in lisp files (not in ffi files)
+and should be close to the corresponding wxWidgets classes where there
+were defined.
+
+Constants that are used by multiple non-related classes could just
+as well continue to be defined in the defpackage.lisp, or else a
+constants.lisp
+
+To make it easier to transcribe constant values (and visually check
+for correctness), we adopt the convention that if a constant is
+defined in hex notation in the wxWidgets header, that we use hex
+notation in the corresponding Lisp defconstant
 
 [3]The wxcl class hierarchy will very closely mirror wxwidgets class
 hierarchy. 
@@ -98,6 +108,11 @@ in wxcl, except they will have a '-p' suffix, and they will return t or nil.
 describing them. 
 
 [15]Have a sexp based style of defining frames, and other widgets.
+
+[16]Everything should be named in 'British' English, i.e, we should have
+colour, centre, etc. and not 'colour', 'center'. This is so that we can be
+consistent with wxWidgets, and it will also help international users. For
+documentation it does not matter.
 
 Acknowledgment
 ---------------
