@@ -3,7 +3,7 @@
 
 extern "C"
 {
-EWXWEXPORT_VAR wxColour* wxNull_Colour=&wxNull_Colour;  
+EWXWEXPORT_VAR wxColour* wxNull_Colour=&wxNullColour;  
 EWXWEXPORT_VAR wxColour** wxBlack=&wxBLACK;
 EWXWEXPORT_VAR wxColour** wxWhite=&wxWHITE;  
 EWXWEXPORT_VAR wxColour** wxRed=&wxRED;

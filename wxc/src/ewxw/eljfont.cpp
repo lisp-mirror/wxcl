@@ -81,11 +81,13 @@ EWXWEXPORT(int, wxFont_GetUnderlined)(void* _obj)
 	return (int)((wxFont*)_obj)->GetUnderlined();
 }
 	
-EWXWEXPORT(int, wxFont_GetFaceName)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxFont_GetFaceName)(void* _obj)
 {
 	wxString result = ((wxFont*)_obj)->GetFaceName();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(int, wxFont_GetEncoding)(void* _obj)
@@ -128,25 +130,31 @@ EWXWEXPORT(void, wxFont_SetEncoding)(void* _obj, int encoding)
 	((wxFont*)_obj)->SetEncoding((wxFontEncoding)encoding);
 }
 	
-EWXWEXPORT(int, wxFont_GetFamilyString)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxFont_GetFamilyString)(void* _obj)
 {
 	wxString result = ((wxFont*)_obj)->GetFamilyString();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	delete result;
+	return buf;
 }
 	
-EWXWEXPORT(int, wxFont_GetStyleString)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxFont_GetStyleString)(void* _obj)
 {
 	wxString result = ((wxFont*)_obj)->GetStyleString();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	delete result;
+	return buf;
 }
 	
-EWXWEXPORT(int, wxFont_GetWeightString)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxFont_GetWeightString)(void* _obj)
 {
 	wxString result = ((wxFont*)_obj)->GetWeightString();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	delete result;
+	return buf;
 }
 	
 EWXWEXPORT(int, wxFont_GetDefaultEncoding)(void* _obj)
@@ -191,9 +199,9 @@ EWXWEXPORT(int,wxFontMapper_GetAltForEncoding)(void* _obj, int encoding, void* a
 	return (int)((wxFontMapper*)_obj)->GetAltForEncoding((wxFontEncoding)encoding, (wxFontEncoding*)alt_encoding, (const char*)_buf, false);
 }
 	
-EWXWEXPORT(int,wxFontMapper_IsEncodingAvailable)(void* _obj, int encoding, void* _buf)
+EWXWEXPORT(int,wxFontMapper_IsEncodingAvailable)(void* _obj, int encoding, const char* _buf)
 {
-	return (int)((wxFontMapper*)_obj)->IsEncodingAvailable((wxFontEncoding)encoding, (const char*)_buf);
+	return (int)((wxFontMapper*)_obj)->IsEncodingAvailable((wxFontEncoding)encoding, _buf);
 }
 	
 
@@ -212,9 +220,9 @@ EWXWEXPORT(int,wxEncodingConverter_Init)(void* _obj, int input_enc, int output_e
 	return (int)((wxEncodingConverter*)_obj)->Init((wxFontEncoding)input_enc, (wxFontEncoding)output_enc, method);
 }
 	
-EWXWEXPORT(void,wxEncodingConverter_Convert)(void* _obj, void* input, void* output)
+EWXWEXPORT(void,wxEncodingConverter_Convert)(void* _obj, const char* input, char* output)
 {
-	((wxEncodingConverter*)_obj)->Convert((const char*)input, (char*)output);
+	((wxEncodingConverter*)_obj)->Convert(input, output);
 }
 
 EWXWEXPORT(int,wxEncodingConverter_GetPlatformEquivalents)(void* _obj, int enc, int platform, void* _lst)

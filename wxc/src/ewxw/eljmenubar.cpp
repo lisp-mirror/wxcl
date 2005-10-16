@@ -102,6 +102,14 @@ EWXWEXPORT(void, wxMenuBar_SetLabel)(void* _obj, int id, char* label)
 	((wxMenuBar*)_obj)->SetLabel(id, label);
 }
 	
+EWXWEXPORT(char*, wxMenuBar_GetLabel)(void* _obj, int id)
+{
+	wxString result = ((wxMenuBar*)_obj)->GetLabel(id);
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	delete result;
+	return buf;
+}	
 EWXWEXPORT(void, wxMenuBar_SetHelpString)(void* _obj, int id, char* helpString)
 {
 	((wxMenuBar*)_obj)->SetHelpString(id, helpString);

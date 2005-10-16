@@ -406,16 +406,12 @@ EWXWEXPORT(int, wxWindow_SetForegroundColour)(void* _obj, void* colour)
 	
 EWXWEXPORT(wxColour*, wxWindow_GetBackgroundColour)(void* _obj)
 {
-   wxColour *col=new wxColour();
-	*col = ((wxWindow*)_obj)->GetBackgroundColour();
-   return col;
+   return new wxColour(((wxWindow*)_obj)->GetBackgroundColour());
 }
 	
 EWXWEXPORT(wxColour*, wxWindow_GetForegroundColour)(void* _obj)
 {
-   wxColour *col=new wxColour();
-	*col = ((wxWindow*)_obj)->GetForegroundColour();
-   return col;
+   return new wxColour(((wxWindow*)_obj)->GetForegroundColour());
 }
 	
 EWXWEXPORT(int, wxWindow_SetCursor)(void* _obj, void* cursor)
@@ -433,9 +429,9 @@ EWXWEXPORT(int, wxWindow_SetFont)(void* _obj,  void* font)
 	return (int)((wxWindow*)_obj)->SetFont( *((wxFont*)font) );
 }
 	
-EWXWEXPORT(void, wxWindow_GetFont)(void* _obj, void* _font)
+EWXWEXPORT(wxFont*, wxWindow_GetFont)(wxWindow* _obj)
 {
-	(*(wxFont*)_font) = ((wxWindow*)_obj)->GetFont();
+	return new wxFont(_obj->GetFont());
 }
 	
 EWXWEXPORT(void, wxWindow_SetCaret)(void* _obj, void* caret)
