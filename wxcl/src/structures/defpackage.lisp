@@ -10,9 +10,21 @@
 (defpackage :wxcl-structures
     (:use :common-lisp :ffi :wxcl :wxcl-gdi)
     (:export
-
-     ;; list-item class and constants
-     ;;
+;; symbols common to multiple classes
+     #:background-colour
+     #:delete
+     #:font
+     #:text-colour
+;; calendar-date-attr class and constants
+     #:calendar-date-attr
+     #:+cal-border-none+
+     #:+cal-border-square+
+     #:+cal-border-round+
+;; calendar-date-attr methods and functions
+     #:border
+     #:border-colour
+     #:make-calendar-date-attr
+;; list-item class and constants
      #:list-item
 	   #:+list-state-dontcare+
 	   #:+list-state-drophilited+
@@ -25,25 +37,19 @@
 	   #:+list-mask-data+
 	   #:+list-mask-width+
 	   #:+list-mask-format+
-
-     ;; list-item methods, functions, and macros
-     ;;
+;; list-item methods, functions, and macros
      #:align
-     #:background-colour
      #:clear
      #:clear-attributes
      #:column
      #:data
      #:data-pointer
-     #:delete
-     #:font
      #:id
      #:image
      #:mask
      #:state
      #:state-mask
      #:text
-     #:text-colour
      #:width
      #:make-list-item
 	   ))
