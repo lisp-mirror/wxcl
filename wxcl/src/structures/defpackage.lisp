@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxcl-structures
-    (:use :common-lisp :ffi :wxcl :wxcl-gdi)
+    (:use :common-lisp :ffi :wxcl)
     (:export
 ;; symbols common to multiple classes
      #:background-colour

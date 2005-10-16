@@ -72,9 +72,8 @@
 
 (ffi:def-call-out wxFont_GetFaceName
     (:name "wxFont_GetFaceName")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxFont_GetEncoding
@@ -134,23 +133,20 @@
 
 (ffi:def-call-out wxFont_GetFamilyString
     (:name "wxFont_GetFamilyString")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxFont_GetStyleString
     (:name "wxFont_GetStyleString")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxFont_GetWeightString
     (:name "wxFont_GetWeightString")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxFont_GetDefaultEncoding
@@ -212,7 +208,7 @@
     (:name "wxFontMapper_IsEncodingAvailable")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (encoding ffi:int)
-	      (_buf (ffi:c-pointer NIL)))
+	      (_buf ffi:c-string))
   (:return-type ffi:int)
   (:library +library-name+))
 
@@ -239,8 +235,8 @@
 (ffi:def-call-out wxEncodingConverter_Convert
     (:name "wxEncodingConverter_Convert")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (input (ffi:c-pointer NIL))
-	      (output (ffi:c-pointer NIL)))
+              (input ffi:c-string)
+              (output ffi:c-string))
   (:return-type NIL)
   (:library +library-name+))
 
