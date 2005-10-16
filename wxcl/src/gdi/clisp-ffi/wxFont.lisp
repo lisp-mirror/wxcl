@@ -1,130 +1,15 @@
 ;;;wxFont.lisp
 ;;;License  : wxWindows License 3.1
-;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
-;;;Copyright (C) 2005 Surendra Singhi 
+;;;Author(s) : Surendra Singhi (surendra@asu.edu), Jack Unrue (jdunrue@gmail.com)
+;;;Copyright (C) 2005 Surendra Singhi, Jack D. Unrue
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
 ;;; $Header$
 ;;;
 
-(defpackage :wxFont
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxFont_Create
-	   :wxFont_CreateDefault
-	   :wxFont_Delete
-	   :wxFont_Ok
-	   :wxFont_GetPointSize
-	   :wxFont_GetFamily
-	   :wxFont_GetStyle
-	   :wxFont_GetWeight
-	   :wxFont_GetUnderlined
-	   :wxFont_GetFaceName
-	   :wxFont_GetEncoding
-	   :wxFont_SetPointSize
-	   :wxFont_SetFamily
-	   :wxFont_SetStyle
-	   :wxFont_SetWeight
-	   :wxFont_SetFaceName
-	   :wxFont_SetUnderlined
-	   :wxFont_SetEncoding
-	   :wxFont_GetFamilyString
-	   :wxFont_GetStyleString
-	   :wxFont_GetWeightString
-	   :wxFont_GetDefaultEncoding
-	   :wxFont_SetDefaultEncoding
-	   :wxFontEnumerator_Create
-	   :wxFontEnumerator_Delete
-	   :wxFontEnumerator_EnumerateFacenames
-	   :wxFontEnumerator_EnumerateEncodings
-	   :wxFontMapper_Create
-	   :wxFontMapper_GetAltForEncoding
-	   :wxFontMapper_IsEncodingAvailable
-	   :wxEncodingConverter_Create
-	   :wxEncodingConverter_Delete
-	   :wxEncodingConverter_Init
-	   :wxEncodingConverter_Convert
-	   :wxEncodingConverter_GetPlatformEquivalents
-	   :wxEncodingConverter_GetAllEquivalents
-	   :wxFONTENCODING_DEFAULT
-	   :wxFONTENCODING_ISO8859_1
-	   :wxFONTENCODING_ISO8859_2
-	   :wxFONTENCODING_ISO8859_3
-	   :wxFONTENCODING_ISO8859_4
-	   :wxFONTENCODING_ISO8859_5
-	   :wxFONTENCODING_ISO8859_6
-	   :wxFONTENCODING_ISO8859_7
-	   :wxFONTENCODING_ISO8859_8
-	   :wxFONTENCODING_ISO8859_9
-	   :wxFONTENCODING_ISO8859_10
-	   :wxFONTENCODING_ISO8859_11
-	   :wxFONTENCODING_ISO8859_12
-	   :wxFONTENCODING_ISO8859_13
-	   :wxFONTENCODING_ISO8859_14
-	   :wxFONTENCODING_ISO8859_15
-	   :wxFONTENCODING_ISO8859_MAX
-	   :wxFONTENCODING_KOI8
-	   :wxFONTENCODING_ALTERNATIVE
-	   :wxFONTENCODING_BULGARIAN
-	   :wxFONTENCODING_CP437
-	   :wxFONTENCODING_CP850
-	   :wxFONTENCODING_CP852
-	   :wxFONTENCODING_CP855
-	   :wxFONTENCODING_CP866
-	   :wxFONTENCODING_CP874
-	   :wxFONTENCODING_CP1250
-	   :wxFONTENCODING_CP1251
-	   :wxFONTENCODING_CP1252
-	   :wxFONTENCODING_CP1253
-	   :wxFONTENCODING_CP1254
-	   :wxFONTENCODING_CP1255
-	   :wxFONTENCODING_CP1256
-	   :wxFONTENCODING_CP1257
-	   :wxFONTENCODING_CP12_MAX
-	   :wxFONTENCODING_UNICODE
-	   :wxFONTENCODING_MAX	
-	   ))
-
-(in-package :wxFont)
+(in-package :wxcl-gdi)
 
 (ffi:default-foreign-language :stdc)
-
-(defconstant wxFONTENCODING_DEFAULT 0)
-(defconstant wxFONTENCODING_ISO8859_1 1)
-(defconstant wxFONTENCODING_ISO8859_2 2)
-(defconstant wxFONTENCODING_ISO8859_3 3)
-(defconstant wxFONTENCODING_ISO8859_4 4)
-(defconstant wxFONTENCODING_ISO8859_5 5)
-(defconstant wxFONTENCODING_ISO8859_6 6)
-(defconstant wxFONTENCODING_ISO8859_7 7)
-(defconstant wxFONTENCODING_ISO8859_8 8)
-(defconstant wxFONTENCODING_ISO8859_9 9)
-(defconstant wxFONTENCODING_ISO8859_10 10)
-(defconstant wxFONTENCODING_ISO8859_11 11)
-(defconstant wxFONTENCODING_ISO8859_12 12)
-(defconstant wxFONTENCODING_ISO8859_13 13)
-(defconstant wxFONTENCODING_ISO8859_14 14)
-(defconstant wxFONTENCODING_ISO8859_15 15)
-(defconstant wxFONTENCODING_ISO8859_MAX 16)
-(defconstant wxFONTENCODING_KOI8 17)
-(defconstant wxFONTENCODING_ALTERNATIVE 18)
-(defconstant wxFONTENCODING_BULGARIAN 19)
-(defconstant wxFONTENCODING_CP437 20)
-(defconstant wxFONTENCODING_CP850 21)
-(defconstant wxFONTENCODING_CP852 22)
-(defconstant wxFONTENCODING_CP855 23)
-(defconstant wxFONTENCODING_CP866 24)
-(defconstant wxFONTENCODING_CP874 25)
-(defconstant wxFONTENCODING_CP1250 26)
-(defconstant wxFONTENCODING_CP1251 27)
-(defconstant wxFONTENCODING_CP1252 28)
-(defconstant wxFONTENCODING_CP1253 29)
-(defconstant wxFONTENCODING_CP1254 30)
-(defconstant wxFONTENCODING_CP1255 31)
-(defconstant wxFONTENCODING_CP1256 32)
-(defconstant wxFONTENCODING_CP1257 33)
-(defconstant wxFONTENCODING_CP12_MAX 34)
-(defconstant wxFONTENCODING_UNICODE 35)
-(defconstant wxFONTENCODING_MAX 36)
 
 (ffi:def-call-out wxFont_Create
     (:name "wxFont_Create")
