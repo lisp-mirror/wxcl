@@ -1,24 +1,16 @@
 (in-package :wxcl-menus)
 
-(defclass menu (object)
-  ()
-  (:documentation "A menu is a popup (or pull down) list of items,\
- one of which may be selected before the menu goes away (clicking\
- elsewhere dismisses the menu). Menus may be used to construct either\
- menu bars or popup menus."))
-
-
 (defun make-menu (&key (title "") (style 0))
   (make-wx-instance 'menu (wxMenuCreate title style)))
 
-(defmethod delete-pointer ((obj menu))
+(defmethod delete-menu ((obj menu))
   (wxMenu_DeletePointer (object-pointer obj))
   (setf (slot-value obj 'object) nil))
 
 (defmethod append-separator ((obj menu))
   (wxMenu_AppendSeparator (object-pointer obj)))
 
-(defmethod append ((obj menu) id item &key (help-string "")) 
+(defmethod append-string ((obj menu) id item &key (help-string "")) 
   (wxMenu_Append (object-pointer obj) id item help-string))
 
 (defmethod append-check-item ((obj menu) id item &key (help-string "")) 
@@ -30,13 +22,13 @@
 (defmethod append-sub-menu ((obj menu) id item (sub-menu menu) &key (help-string "")) 
     (wxMenu_AppendSub (object-pointer obj) id item (object-pointer sub-menu) help-string))
 
-(defmethod append-item ((obj menu) (item menu-item))
+(defmethod append-menu-item ((obj menu) (item menu-item))
   (wxMenu_AppendItem (object-pointer obj) (object-pointer item)))
 
-(defmethod break ((obj menu))
+(defmethod menu-break ((obj menu))
   (wxMenu_Break (object-pointer obj)))
 
-(defmethod insert ((obj menu) pos id item &key (help-string "")) 
+(defmethod insert-string ((obj menu) pos id item &key (help-string "")) 
   (wxMenu_Insert (object-pointer obj) pos id item help-string))
 
 (defmethod insert-check-item ((obj menu) pos id item &key (help-string "")) 
@@ -48,10 +40,10 @@
 (defmethod insert-sub-menu ((obj menu) pos id item (sub-menu menu) &key (help-string "")) 
     (wxMenu_InsertSub (object-pointer obj) pos id item (object-pointer sub-menu) help-string))
 
-(defmethod insert-item ((obj menu) pos (item menu-item))
+(defmethod insert-menu-item ((obj menu) pos (item menu-item))
   (wxMenu_InsertItem (object-pointer obj) pos (object-pointer item)))
 
-(defmethod prepend ((obj menu) pos id item &key (help-string "")) 
+(defmethod prepend-string ((obj menu) pos id item &key (help-string "")) 
   (wxMenu_Prepend (object-pointer obj) pos id item help-string))
 
 (defmethod prepend-check-item ((obj menu) id item &key (help-string "")) 
@@ -63,20 +55,20 @@
 (defmethod prepend-sub-menu ((obj menu) id item (sub-menu menu) &key (help-string "")) 
     (wxMenu_PrependSub (object-pointer obj) id item (object-pointer sub-menu) help-string))
 
-(defmethod prepend-item ((obj menu) (item menu-item))
+(defmethod prepend-menu-item ((obj menu) (item menu-item))
   (wxMenu_PrependItem (object-pointer obj) (object-pointer item)))
 
-(defmethod remove ((obj menu) (item menu-item)) 
+(defmethod menu-remove ((obj menu) (item menu-item)) 
   (wxMenu_RemoveByItem (object-pointer obj) (object-pointer item)))
 
-(defmethod remove ((obj menu) (id integer))
+(defmethod menu-remove ((obj menu) (id integer))
   (wxMenu_RemoveById (object-pointer obj) id)) ;;this function and all
 ;;;the other function returns wxMenuItem* we are currently ignoring it
 
-(defmethod delete ((obj menu) (item menu-item)) 
+(defmethod menu-delete ((obj menu) (item menu-item)) 
   (wxMenu_DeleteByItem (object-pointer obj) (object-pointer item)))
 
-(defmethod delete ((obj menu) (id integer))
+(defmethod menu-delete ((obj menu) (id integer))
   (wxMenu_DeleteById (object-pointer obj) id))
 
 (defmethod destroy ((obj menu) (item menu-item)) 

@@ -14,13 +14,11 @@
 (FFI:DEF-C-TYPE wxClosure NIL)
 
 (FFI:DEF-C-TYPE
-    ClosureFun (ffi:c-function (:arguments (_data (ffi:c-pointer NIL))
-					   (_evt (ffi:c-pointer NIL)))
+    ClosureFun (ffi:c-function (:arguments (_evt (ffi:c-pointer NIL)))
 			       (:return-type NIL)))
 
 (ffi:def-call-out wxClosure_Create (:name "wxClosure_Create")
-  (:arguments (fun ClosureFun)
-	      (data (ffi:c-pointer NIL)))
+  (:arguments (fun ClosureFun))
   (:return-type (ffi:c-pointer wxClosure))
   (:library +library-name+))
 
@@ -44,7 +42,6 @@
 ; 		(_inst (ffi:c-pointer NIL)))
 ; 	(:return-type NIL)
 ; 	(:library +library-name+))
-
 
 ;;;macros and other utility functions
 

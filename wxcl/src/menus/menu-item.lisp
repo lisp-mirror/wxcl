@@ -5,13 +5,6 @@
 (defconstant wxITEM_CHECK 1)
 (defconstant wxITEM_RADIO 2)
 
-(defclass menu (object)
-  ()
-  (:documentation "A menu is a popup (or pull down) list of items,\
- one of which may be selected before the menu goes away (clicking\
- elsewhere dismisses the menu). Menus may be used to construct either\
- menu bars or popup menus."))
-
 (defun make-menu-item (&key (parent nil) (id wxITEM_SEPARATOR) (text "") (help-string "") (kind wxITEM_SEPARATOR)
 		       (sub nil))
   (make-wx-instance 'menu-item (wxMenuItem_Create (when parent (object-pointer parent))
@@ -21,7 +14,7 @@
 						  kind
 						  (when sub (object-pointer parent)))))
 
-(defmethod delete ((obj menu-item))
+(defmethod menu-item-delete ((obj menu-item))
   (wxMenuItem_Delete (object-pointer obj))
   (invakidate-wx-instance obj))
 
@@ -29,7 +22,7 @@
   (make-wx-instance 'menu  (wxMenuItem_GetMenu (object-pointer obj))))
 
 (defmethod (setf menu) ((obj menu-item)(parent menu))
-  (wxMenuItem_SetMenu (object-pointer obj)(object-pointer parent))))
+  (wxMenuItem_SetMenu (object-pointer obj)(object-pointer parent)))
 
 (defmethod id ((obj menu-item))
   (wxMenuItem_GetId (object-pointer obj)))

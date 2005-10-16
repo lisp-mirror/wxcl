@@ -7,57 +7,57 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxMenu
-    (:use :common-lisp :ffi :wxMenuItem :wxCL)
-  (:export :wxMenu_Create
-	   :wxMenu_DeletePointer
-	   :wxMenu_AppendSeparator
-	   :wxMenu_Append
-	   :wxMenu_AppendSub
-	   :wxMenu_AppendItem
-	   :wxMenu_AppendRadioItem
-	   :wxMenu_AppendCheckItem
-	   :wxMenu_Break
-	   :wxMenu_GetMenuBar
-	   :wxMenu_Insert
-	   :wxMenu_InsertSub
-	   :wxMenu_InsertItem
-	   :wxMenu_Prepend
-	   :wxMenu_PrependSub
-	   :wxMenu_PrependItem
-	   :wxMenu_RemoveByItem
-	   :wxMenu_RemoveById
-	   :wxMenu_DeleteById
-	   :wxMenu_DeleteByItem
-	   :wxMenu_DestroyById
-	   :wxMenu_DestroyByItem
-	   :wxMenu_GetMenuItemCount
-	   :wxMenu_GetMenuItems
-	   :wxMenu_FindItemByLabel
-	   :wxMenu_FindItem
-	   :wxMenu_Enable
-	   :wxMenu_IsEnabled
-	   :wxMenu_Check
-	   :wxMenu_IsChecked
-	   :wxMenu_SetLabel
-	   :wxMenu_GetLabel
-	   :wxMenu_SetHelpString
-	   :wxMenu_GetHelpString
-	   :wxMenu_SetTitle
-	   :wxMenu_GetTitle
-	   :wxMenu_SetEventHandler
-	   :wxMenu_SetInvokingWindow
-	   :wxMenu_GetInvokingWindow
-	   :wxMenu_GetStyle
-	   :wxMenu_UpdateUI
-	   :wxMenu_IsAttached
-	   :wxMenu_SetParent
-	   :wxMenu_GetParent
-	   :wxCL-create-menu
-	   :wxCL-append-menu-item
-	   ))
+; (defpackage :wxMenu
+;     (:use :common-lisp :ffi :wxMenuItem :wxCL)
+;   (:export :wxMenu_Create
+; 	   :wxMenu_DeletePointer
+; 	   :wxMenu_AppendSeparator
+; 	   :wxMenu_Append
+; 	   :wxMenu_AppendSub
+; 	   :wxMenu_AppendItem
+; 	   :wxMenu_AppendRadioItem
+; 	   :wxMenu_AppendCheckItem
+; 	   :wxMenu_Break
+; 	   :wxMenu_GetMenuBar
+; 	   :wxMenu_Insert
+; 	   :wxMenu_InsertSub
+; 	   :wxMenu_InsertItem
+; 	   :wxMenu_Prepend
+; 	   :wxMenu_PrependSub
+; 	   :wxMenu_PrependItem
+; 	   :wxMenu_RemoveByItem
+; 	   :wxMenu_RemoveById
+; 	   :wxMenu_DeleteById
+; 	   :wxMenu_DeleteByItem
+; 	   :wxMenu_DestroyById
+; 	   :wxMenu_DestroyByItem
+; 	   :wxMenu_GetMenuItemCount
+; 	   :wxMenu_GetMenuItems
+; 	   :wxMenu_FindItemByLabel
+; 	   :wxMenu_FindItem
+; 	   :wxMenu_Enable
+; 	   :wxMenu_IsEnabled
+; 	   :wxMenu_Check
+; 	   :wxMenu_IsChecked
+; 	   :wxMenu_SetLabel
+; 	   :wxMenu_GetLabel
+; 	   :wxMenu_SetHelpString
+; 	   :wxMenu_GetHelpString
+; 	   :wxMenu_SetTitle
+; 	   :wxMenu_GetTitle
+; 	   :wxMenu_SetEventHandler
+; 	   :wxMenu_SetInvokingWindow
+; 	   :wxMenu_GetInvokingWindow
+; 	   :wxMenu_GetStyle
+; 	   :wxMenu_UpdateUI
+; 	   :wxMenu_IsAttached
+; 	   :wxMenu_SetParent
+; 	   :wxMenu_GetParent
+; 	   :wxCL-create-menu
+; 	   :wxCL-append-menu-item
+; 	   ))
 
-(in-package :wxMenu)
+(in-package :wxcl-menus)
 
 (ffi:default-foreign-language :stdc)
 

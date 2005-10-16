@@ -8,34 +8,34 @@
 ;;;
 
 
-(defpackage :wxMenuItem
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxMenuItem_Create
-	   :wxMenuItem_CreateSeparator
-	   :wxMenuItem_CreateEx
-	   :wxMenuItem_Delete
-	   :wxMenuItem_GetMenu
-	   :wxMenuItem_SetId
-	   :wxMenuItem_GetId
-	   :wxMenuItem_IsSeparator
-	   :wxMenuItem_SetText
-	   :wxMenuItem_GetLabel
-	   :wxMenuItem_GetText
-	   :wxMenuItem_GetLabelFromText
-	   :wxMenuItem_SetCheckable
-	   :wxMenuItem_IsCheckable
-	   :wxMenuItem_IsSubMenu
-	   :wxMenuItem_SetSubMenu
-	   :wxMenuItem_GetSubMenu
-	   :wxMenuItem_Enable
-	   :wxMenuItem_IsEnabled
-	   :wxMenuItem_Check
-	   :wxMenuItem_IsChecked
-	   :wxMenuItem_SetHelp
-	   :wxMenuItem_GetHelp
-	   ))
+; (defpackage :wxMenuItem
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export :wxMenuItem_Create
+; 	   :wxMenuItem_CreateSeparator
+; 	   :wxMenuItem_CreateEx
+; 	   :wxMenuItem_Delete
+; 	   :wxMenuItem_GetMenu
+; 	   :wxMenuItem_SetId
+; 	   :wxMenuItem_GetId
+; 	   :wxMenuItem_IsSeparator
+; 	   :wxMenuItem_SetText
+; 	   :wxMenuItem_GetLabel
+; 	   :wxMenuItem_GetText
+; 	   :wxMenuItem_GetLabelFromText
+; 	   :wxMenuItem_SetCheckable
+; 	   :wxMenuItem_IsCheckable
+; 	   :wxMenuItem_IsSubMenu
+; 	   :wxMenuItem_SetSubMenu
+; 	   :wxMenuItem_GetSubMenu
+; 	   :wxMenuItem_Enable
+; 	   :wxMenuItem_IsEnabled
+; 	   :wxMenuItem_Check
+; 	   :wxMenuItem_IsChecked
+; 	   :wxMenuItem_SetHelp
+; 	   :wxMenuItem_GetHelp
+; 	   ))
 
-(in-package :wxMenuItem)
+(in-package :wxcl-menus)
 
 (ffi:default-foreign-language :stdc)
 

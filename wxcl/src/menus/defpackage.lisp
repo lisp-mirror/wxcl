@@ -1,39 +1,41 @@
 
 (defpackage :wxcl-menus
-    (:use :common-lisp :ffi)
-  (:export #:object-pointer
-	   #:maximize
-	   #:restore
-	   #:iconize
-	   #:maximized-p
-	   #:iconized-p
-	   #:icon
-	   #:client-area-origin
-	   #:status-bar
-	   #:set-status-width
-	   #:create-status-bar
-	   #:title
-	   #:shape
-	   #:show-full-screen
-	   #:full-screen-p
-	   #:centre
-	   #:point
-	   #:point-x
-	   #:point-y
-	   #:default-position
-	   #:size
-	   #:size-width
-	   #:size-height
-	   #:default-size
-	   #:rect
-	   #:position
-	   #:size
-	   #:make-status-bar
-	   #:fields-count
-	   #:status-text
-	   #:min-height
-	   #:border-x
-	   #:border-y
+    (:use :common-lisp :ffi :wxcl :wxcl-windows)
+  (:export
+   ;;menu class, methods and functions
+   #:menu
+   #:make-menu
+   #:delete-menu
+   #:append-separator
+   #:append-string
+   #:append-check-item
+   #:append-radio-item
+   #:append-sub-menu
+   #:append-menu-item
+   #:break
+   #:insert-string
+   #:insert-check-item
+   #:insert-radio-item
+   #:insert-sub-menu
+   #:insert-menu-item
+   #:prepend-string
+   #:prepend-check-item
+   #:prepend-radio-item
+   #:prepend-sub-menu
+   #:prepend-menu-item
+   #:remove
+   #:delete
+   #:destroy
+   #:menu-item-count
+   #:find-items-by-label
+   #:find-item
+   #:enable
+   #:enable-p
+   #:label
+   #:help-string
+   #:title
+   #:update-ui
+   
 	   #:+menu-tearoff
 	   #:+item-separator
 	   #:+item-normal
@@ -42,8 +44,30 @@
 	   #:+item-submenu
 ))
 
+(in-package :wxcl-menus)
+
 (defconstant +menu-tearoff 1)
 (defconstant +mb-dockable 1)
 (defconstant +item-submenu 1000)
 
 
+(defclass menu-item (object)
+  ()
+  (:documentation "A menu is a popup (or pull down) list of items,\
+ one of which may be selected before the menu goes away (clicking\
+ elsewhere dismisses the menu). Menus may be used to construct either\
+ menu bars or popup menus."))
+
+(defclass menu (object)
+  ()
+  (:documentation "A menu is a popup (or pull down) list of items,\
+ one of which may be selected before the menu goes away (clicking\
+ elsewhere dismisses the menu). Menus may be used to construct either\
+ menu bars or popup menus."))
+
+(defclass menu-bar (window)
+  ()
+  (:documentation "A menu is a popup (or pull down) list of items,\
+ one of which may be selected before the menu goes away (clicking\
+ elsewhere dismisses the menu). Menus may be used to construct either\
+ menu bars or popup menus."))

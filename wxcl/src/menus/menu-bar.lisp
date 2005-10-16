@@ -1,29 +1,20 @@
 (in-package :wxcl-menus)
 
-(use-package :wxFrame)
-
-(defclass menu-bar (object)
-  ()
-  (:documentation "A menu is a popup (or pull down) list of items,\
- one of which may be selected before the menu goes away (clicking\
- elsewhere dismisses the menu). Menus may be used to construct either\
- menu bars or popup menus."))
-
-(defun make-menu-bar (:key (style 0) (menus nil) (title nil))
+(defun make-menu-bar (&key (style 0) (menus nil) (title nil))
   
   (let ((mb (make-wx-instance 'menu-bar (wxMenuBar_Create style))))
     (loop for mn in menus and str in title do
 	  (wxMenuBar_Append (object-pointer mb) (object-pointer mn) (if str str "")))
     mb))
 
-(defmethod delete-pointer ((obj menu-bar))
+(defmethod delete-menu-bar ((obj menu-bar))
   (wxMenuBar_DeletePointer (object-pointer obj))
   (setf (slot-value obj 'object) nil))
 
-(defmethod append ((obj menu-bar) (mn menu) title)
+(defmethod menu-bar-append ((obj menu-bar) (mn menu) title)
   (= 1 (wxMenuBar_Append (object-pointer obj) (object-pointer mn) title)))
 
-(defmethod insert ((obj menu-bar) pos (mn menu) title)
+(defmethod menu-bar-insert ((obj menu-bar) pos (mn menu) title)
   (= 1 (wxMenuBar_Insert (object-pointer obj) pos (object-pointer mn) title)))
 
 (defmethod menu-count ((obj menu-bar))
@@ -32,11 +23,11 @@
 (defmethod menu ((obj menu-bar) pos)
   (make-wx-instance 'menu (wxMenuBar_GetMenu (object-pointer obj) pos)))
 
-(defmethod replace ((obj menu-bar) pos (mn menu) title)
+(defmethod menu-bar-replace ((obj menu-bar) pos (mn menu) title)
   (make-wx-instance 'menu (wxMenuBar_Replace  (object-pointer obj) pos (object-pointer mn) title)))
 
-(defmethod remove ((obj menu-bar) pos)
-  (make-wx-instance 'menu (wxMenuBar_Replace (object-pointer obj) pos)))
+(defmethod menu-bar-remove ((obj menu-bar) pos)
+  (make-wx-instance 'menu (wxMenuBar_Remove (object-pointer obj) pos)))
 
 (defmethod enable-top ((obj menu-bar) pos flag)
   (wxMenuBar_EnableTop (object-pointer obj) pos (if flag 1 0)))
@@ -45,7 +36,7 @@
   (wxMenuBar_SetLabelTop (object-pointer obj) pos str))
 
 (defmethod label-top ((obj menu-bar) pos)
-  (wxMenuBar_GetLabelTop pos))
+  (wxMenuBar_GetLabelTop (object-pointer obj) pos))
 
 (defmethod find-menu-item ((obj menu-bar) menu-string item-string)
   (wxMenuBar_FindMenuItem (object-pointer obj) menu-string item-string))
@@ -65,11 +56,11 @@
 (defmethod check ((obj menu-bar) id flag)
   (wxMenuBar_Check (object-pointer obj) id (if flag 1 0)))
 
-(defmethod checked-p ((obj menu-bar))
+(defmethod checked-p ((obj menu-bar) id)
   (= 1 (wxMenuBar_IsChecked (object-pointer obj) id)))
 
 (defmethod enabled-p ((obj menu-bar) id)
-  (= 1 (wxMenuBar_IsEnabled (object-pointer obj))))
+  (= 1 (wxMenuBar_IsEnabled (object-pointer obj) id)))
 
 (defmethod (setf label) (str (obj menu-bar) id)
   (wxMenuBar_SetItemLabel (object-pointer obj) id str))
@@ -90,4 +81,5 @@
   (wxMenuBar_Refresh (object-pointer obj)))
 
 (defmethod frame ((obj menu-bar))
-  (make-wx-instance 'wxcl-windows:frame (wxMenuBar_GetFrame (object-pointer obj))))
+  (make-wx-instance 'frame (wxMenuBar_GetFrame (object-pointer obj))))
+

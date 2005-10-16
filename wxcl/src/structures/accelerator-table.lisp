@@ -1,8 +1,8 @@
 
-(in-package :wxcl-misc)
+(in-package :wxcl-structures)
 
 (defclass accelerator-table (object)
-  (accelerator-entries :reader accelerator-entries)
+  ((accelerator-entries :reader accelerator-entries))
   (:documentation "An accelerator table allows the application to specify a table\
  of keyboard shortcuts for menus or other commands. On Windows, menu or button\
  commands are supported; on GTK, only menu commands are supported."))

@@ -10,8 +10,6 @@
 (defpackage :wxCL
     (:use :common-lisp :ffi)
   (:export #:+library-name+
-	   #:closure
-	   #:make-closure
 	   #:start-app
 	   #:object
 	   #:size

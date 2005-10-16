@@ -7,36 +7,36 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxMenuBar
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxMenuBar_Create
-	   :wxCL-create-menu-bar
-	   :wxMenuBar_DeletePointer
-	   :wxMenuBar_Append
-	   :wxMenuBar_Insert
-	   :wxMenuBar_GetMenuCount
-	   :wxMenuBar_GetMenu
-	   :wxMenuBar_Replace
-	   :wxMenuBar_Remove
-	   :wxMenuBar_EnableTop
-	   :wxMenuBar_SetLabelTop
-	   :wxMenuBar_GetLabelTop
-	   :wxMenuBar_GetFrame
-	   :wxMenuBar_FindMenuItem
-	   :wxMenuBar_FindItem
-	   :wxMenuBar_FindMenu
-	   :wxMenuBar_EnableItem
-	   :wxMenuBar_Check
-	   :wxMenuBar_IsChecked
-	   :wxMenuBar_IsEnabled
-	   :wxMenuBar_SetLabel
-	   :wxMenuBar_GetLabel
-	   :wxMenuBar_SetHelpString
-	   :wxMenuBar_GetHelpString
-	   :wxMenuBar_Enable
-	   :wxMenuBar_Refresh))
+; (defpackage :wxMenuBar
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export :wxMenuBar_Create
+; 	   :wxCL-create-menu-bar
+; 	   :wxMenuBar_DeletePointer
+; 	   :wxMenuBar_Append
+; 	   :wxMenuBar_Insert
+; 	   :wxMenuBar_GetMenuCount
+; 	   :wxMenuBar_GetMenu
+; 	   :wxMenuBar_Replace
+; 	   :wxMenuBar_Remove
+; 	   :wxMenuBar_EnableTop
+; 	   :wxMenuBar_SetLabelTop
+; 	   :wxMenuBar_GetLabelTop
+; 	   :wxMenuBar_GetFrame
+; 	   :wxMenuBar_FindMenuItem
+; 	   :wxMenuBar_FindItem
+; 	   :wxMenuBar_FindMenu
+; 	   :wxMenuBar_EnableItem
+; 	   :wxMenuBar_Check
+; 	   :wxMenuBar_IsChecked
+; 	   :wxMenuBar_IsEnabled
+; 	   :wxMenuBar_SetLabel
+; 	   :wxMenuBar_GetLabel
+; 	   :wxMenuBar_SetHelpString
+; 	   :wxMenuBar_GetHelpString
+; 	   :wxMenuBar_Enable
+; 	   :wxMenuBar_Refresh))
 
-(in-package :wxMenuBar)
+(in-package :wxcl-menus)
 (ffi:default-foreign-language :stdc)
 
 (def-c-type wxMenuBar NIL)

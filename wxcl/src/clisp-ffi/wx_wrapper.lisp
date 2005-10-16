@@ -323,11 +323,6 @@
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
-(ffi:def-call-out Null_Colour
-    (:name "Null_Colour")
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
-
 ; (ffi:def-call-out wxDllLoader_LoadLibrary
 ;     (:name "wxDllLoader_LoadLibrary")
 ;   (:arguments (_name (ffi:c-pointer NIL))

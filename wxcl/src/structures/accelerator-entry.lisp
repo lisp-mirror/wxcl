@@ -1,4 +1,4 @@
-(in-package :wxcl-misc)
+(in-package :wxcl-structures)
 
 (defconstant +accel-alt+ 1)
 (defconstant +accel-ctrl+ 2)
