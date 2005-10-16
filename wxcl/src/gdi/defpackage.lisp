@@ -119,6 +119,7 @@
    #:encoding
    #:face-name
    #:font-family
+   #:make-default-font
    #:make-font
    #:ok
    #:point-size
