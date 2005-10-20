@@ -9,9 +9,6 @@
 
 (in-package :wxcl-windows)
 
-(defclass window (object) ; evt-handler)
-  ()
-  (:documentation "The base class for all wxCL widgets."))
 
 (defmethod show ((obj Window))
   "Makes the window visible."
@@ -21,7 +18,7 @@
   "Hides the window."
   (wxWindow_Hide (object-pointer obj)))
 
-(defmethod set-size ((obj Window) (sz size))
+(defmethod (setf window-size) ((sz size) (obj Window))
   "Sets the size of the window."
   (wxWindow_SetSize (object-pointer obj)
 		    -1
@@ -30,7 +27,7 @@
 		    (size-width sz)
 		    +size-use-existing+))
 
-(defmethod set-size ((obj window) (rc rect))
+(defmethod (setf window-size) ((rc rect) (obj window))
   "Sets the size and position of the window."
   (wxWindow_SetSize (object-pointer obj)
 		    (point-x (rect-position rc))
@@ -39,7 +36,7 @@
 		    (size-width (rect-size rc))
 		    +size-use-existing+))
 
-(defmethod set-position ((obj Window) (pos point))
+(defmethod (setf window-position) ((pos point) (obj Window))
   "Sets the position of the window."
   (wxWindow_SetSize (object-pointer obj)
 		    (point-x pos)
@@ -110,17 +107,17 @@
 (defmethod (setf client-size) ((sz size) (obj window))
   (wxWindow_SetClientSize (object-pointer obj) (size-width sz) (size-height sz)))
 
-(defmethod position ((obj window))
+(defmethod window-position ((obj window))
   (let (x y)
     (multiple-value-setq (x y) (wxWindow_GetPosition (object-pointer obj)))
     (make-point x y)))
 
-(defmethod size ((obj window))
+(defmethod window-size ((obj window))
   (let (h w)
     (multiple-value-setq (w h) (wxWindow_GetSize (object-pointer obj)))
     (make-size w h)))
 
-(defmethod rect ((obj window))
+(defmethod window-rect ((obj window))
   (let (h w x y)
     (multiple-value-setq (x y w h) (wxWindow_GetRect (object-pointer obj)))
     (make-rect x y w h)))

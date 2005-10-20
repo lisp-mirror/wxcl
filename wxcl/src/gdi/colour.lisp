@@ -1,10 +1,5 @@
 (in-package :wxcl-gdi)
 
-(defclass colour (object)
-  ()
-  (:documentation "A colour is an object representing a combination of Red, Green,\
- and Blue (RGB) intensity values, and is used to determine drawing colours."))
-
 (define-symbol-macro +null-colour+ (make-wx-instance 'colour wxNull_Colour))
 
 (define-symbol-macro +black+ (make-wx-instance 'colour wxBlack))

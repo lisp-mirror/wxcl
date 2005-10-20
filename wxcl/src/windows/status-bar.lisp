@@ -9,12 +9,6 @@
 
 (in-package :wxcl-windows)
 
-(defclass status-bar (window)
-  ()
-  (:documentation "Status bar is a narrow window that can be placed along the bottom of\
- a frame to give small amounts of status information. It can contain one or more fields,\
- one or more of which can be variable length according to the size of the window."))
-
 
 (defun make-status-bar (parent id &key (style wxST_SIZEGRIP))
   (let ((st (make-instance 'status-bar)))

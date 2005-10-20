@@ -10,11 +10,16 @@
 (defpackage :wxCL
     (:use :common-lisp :ffi)
   (:export #:+library-name+
-	   #:start-app
 	   #:object
 	   #:size
 	   #:point
-	   #:rect
+	   #:rect)
+  (:export 
+      #:make-rect
+      #:make-point
+      #:make-size
+	   #:object-pointer
+	   #:start-app
 	   #:size-height
 	   #:size-width
 	   #:rect-position
@@ -24,7 +29,7 @@
 	   #:+default-size+
 	   #:+default-position+
 	   #:make-wx-instance
-	   #:object-pointer
+      #:invalidate-wx-instance
 	   ))
 
 (in-package :wxCL)

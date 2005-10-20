@@ -1,12 +1,6 @@
 
 (in-package :wxcl-windows)
 
-(defclass splitter-window (window)
-  ()
-  (:documentation "This class manages up to two subwindows. The current view\
- can be split into two programmatically (perhaps from a menu command), and\
- unsplit either programmatically or via the wxSplitterWindow user interface."))
-
 (defconstant +sp-noborder+ 0)
 (defconstant +sp-nosash+ 16)
 (defconstant +sp-border+ 32)

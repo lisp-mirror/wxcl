@@ -1,11 +1,5 @@
 (in-package :wxcl-gdi)
 
-(defclass icon (bitmap)
-  ()
-  (:documentation "An icon is a small rectangular bitmap usually used for\
- denoting a minimized application. It differs from a wxBitmap in always\
- having a mask associated with it for transparent drawing."))
-
 (defun make-icon ()
   (make-wx-instance 'icon (wxIcon_CreateDefault)))
 

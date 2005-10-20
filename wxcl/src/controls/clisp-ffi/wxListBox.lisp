@@ -7,19 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxListBox
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxListBox_Create
-	   :wxListBox_Deselect
-	   :wxListBox_Set
-	   :wxListBox_IsSelected
-	   :wxListBox_GetSelections
-	   :wxListBox_InsertItems
-	   :wxListBox_SetFirstItem
-	   :wxcl-create-list-box
-))
-
-(in-package :wxListbox)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
 

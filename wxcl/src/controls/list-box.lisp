@@ -9,13 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass list-box (control-with-items)
-  ()
-  (:documentation "A listbox is used to select one or more of a list of strings.The strings\
- are displayed in a scrolling box, with the selected string(s) marked in reverse video. A\
- listbox can be single selection (if an item is selected, the previous selection is removed)\
- or multiple selection (clicking an item toggles the item on or off independently of other selections)."))
-
 (defconstant +lb-sort+       #x0010)
 (defconstant +lb-single+     #x0020)
 (defconstant +lb-multiple+   #x0040)
@@ -38,7 +31,7 @@
 (defmethod deselect ((obj list-box) n)
     (wxListBox_Deselect (object-pointer obj) n))
 
-(defmethod set ((obj list-box) n choices)
+(defmethod set-choices ((obj list-box) n choices)
     (wxListBox_SetString (object-pointer obj) n choices))
 
 (defmethod selected-p ((obj list-box) n)

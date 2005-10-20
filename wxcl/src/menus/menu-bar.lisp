@@ -50,22 +50,22 @@
 (defmethod find-menu ((obj menu-bar) title) 
   (wxMenuBar_FindMenu (object-pointer obj) title))
 
-(defmethod enable ((obj menu-bar) id flag)
+(defmethod enable-item ((obj menu-bar) id flag)
   (wxMenuBar_EnableItem (object-pointer obj) id (if flag 1 0)))
 
-(defmethod check ((obj menu-bar) id flag)
+(defmethod check-item ((obj menu-bar) id flag)
   (wxMenuBar_Check (object-pointer obj) id (if flag 1 0)))
 
-(defmethod checked-p ((obj menu-bar) id)
+(defmethod item-checked-p ((obj menu-bar) id)
   (= 1 (wxMenuBar_IsChecked (object-pointer obj) id)))
 
-(defmethod enabled-p ((obj menu-bar) id)
+(defmethod item-enabled-p ((obj menu-bar) id)
   (= 1 (wxMenuBar_IsEnabled (object-pointer obj) id)))
 
 (defmethod (setf label) (str (obj menu-bar) id)
   (wxMenuBar_SetItemLabel (object-pointer obj) id str))
 
-(defmethod label ((obj menu-bar) id)
+(defmethod item-label ((obj menu-bar) id)
   (wxMenuBar_GetLabel (object-pointer obj) id))
 
 (defmethod (setf help-string) (help-str (obj menu-bar) id)

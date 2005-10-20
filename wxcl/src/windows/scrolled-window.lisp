@@ -1,10 +1,5 @@
 (in-package :wxcl-windows)
 
-(defclass scrolled-window (panel)
-  ()
-  (:documentation "The wxScrolledWindow class manages scrolling for its client\
- area, transforming the coordinates according to the scrollbar positions, and\
- setting the scroll positions, thumb sizes and ranges according to the area in view."))
 
 (defconstant +vscroll+ -2147483648)
 (defconstant +hscroll+ 1073741824)

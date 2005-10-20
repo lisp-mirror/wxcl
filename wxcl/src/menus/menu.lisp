@@ -1,7 +1,7 @@
 (in-package :wxcl-menus)
 
 (defun make-menu (&key (title "") (style 0))
-  (make-wx-instance 'menu (wxMenuCreate title style)))
+  (make-wx-instance 'menu (wxMenu_Create title style)))
 
 (defmethod delete-menu ((obj menu))
   (wxMenu_DeletePointer (object-pointer obj))
@@ -93,28 +93,28 @@
 (defmethod find-item ((obj menu) id &optional (menu nil))
   (make-wx-instance 'menu-item (wxMenu_FindItem (object-pointer obj) id (when menu (object-pointer menu)))))
 
-(defmethod enable ((obj menu) id bool)
+(defmethod enable-item ((obj menu) id bool)
     (wxMenu_Enable (object-pointer obj) id (if bool 1 0)))
 
-(defmethod enabled-p ((obj menu) id)
+(defmethod item-enabled-p ((obj menu) id)
   (= 1 (wxMenu_IsEnabled (object-pointer obj) id)))
 
-(defmethod check ((obj menu) id check)
+(defmethod check-item ((obj menu) id check)
   (wxMenu_Check (object-pointer obj) id (if check 1 0)))
 
-(defmethod checked-p ((obj menu))
+(defmethod item-checked-p ((obj menu))
   (= 1 (wxMenu_IsChecked  (object-pointer obj) id)))
 
-(defmethod (setf label) (label (obj menu) id)
+(defmethod (setf item-label) (label (obj menu) id)
   (wxMenu_SetLabel (object-pointer obj) id label))
 
-(defmethod label ((obj menu))
+(defmethod item-label ((obj menu) id)
   (wxMenu_GetLabel (object-pointer obj) id))
 
-(defmethod (setf help-string) (str (obj menu) id)
+(defmethod (setf item-help-string) (str (obj menu) id)
     (wxMenu_SetHelpString (object-pointer obj) id str))
 
-(defmethod help-string ((obj menu) id)
+(defmethod item-help-string ((obj menu) id)
     (wxMenu_GetHelpString (object-pointer obj) id))
 
 (defmethod (setf title) (str (obj menu))

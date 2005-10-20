@@ -7,91 +7,87 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxSizer
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxSizerItem_Create
-	:wxSizerItem_CreateInWindow
-	:wxSizerItem_CreateInSizer
-	:wxSizerItem_GetSize
-	:wxSizerItem_CalcMin
-	:wxSizerItem_SetDimension
-	:wxSizerItem_GetMinSize
-	:wxSizerItem_SetRatio
-	:wxSizerItem_SetFloatRatio
-	:wxSizerItem_GetRatio
-	:wxSizerItem_IsWindow
-	:wxSizerItem_IsSizer
-	:wxSizerItem_IsSpacer
-	:wxSizerItem_SetInitSize
-	:wxSizerItem_SetOption
-	:wxSizerItem_SetFlag
-	:wxSizerItem_SetBorder
-	:wxSizerItem_GetWindow
-	:wxSizerItem_SetWindow
-	:wxSizerItem_GetSizer
-	:wxSizerItem_SetSizer
-	:wxSizerItem_GetOption
-	:wxSizerItem_GetFlag
-	:wxSizerItem_GetBorder
-	:wxSizerItem_GetUserData
-	:wxSizerItem_GetPosition
-	:wxSizer_AddWindow
-	:wxSizer_AddSizer
-	:wxSizer_Add
-	:wxSizer_InsertWindow
-	:wxSizer_InsertSizer
-	:wxSizer_Insert
-	:wxSizer_PrependWindow
-	:wxSizer_PrependSizer
-	:wxSizer_Prepend
-	:wxSizer_DetachWindow
-	:wxSizer_DetachSizer
-	:wxSizer_Detach
-	:wxSizer_SetMinSize
-	:wxSizer_SetItemMinSizeWindow
-	:wxSizer_SetItemMinSizeSizer
-	:wxSizer_SetItemMinSize
-	:wxSizer_GetSize
-	:wxSizer_GetPosition
-	:wxSizer_GetMinSize
-	:wxSizer_RecalcSizes
-	:wxSizer_CalcMin
-	:wxSizer_Layout
-	:wxSizer_Fit
-	:wxSizer_SetSizeHints
-	:wxSizer_GetChildren
-	:wxSizer_SetDimension
-	:wxGridSizer_Create
-	:wxGridSizer_RecalcSizes
-	:wxGridSizer_CalcMin
-	:wxGridSizer_SetCols
-	:wxGridSizer_SetRows
-	:wxGridSizer_SetVGap
-	:wxGridSizer_SetHGap
-	:wxGridSizer_GetCols
-	:wxGridSizer_GetRows
-	:wxGridSizer_GetVGap
-	:wxGridSizer_GetHGap
-	:wxFlexGridSizer_Create
-	:wxFlexGridSizer_RecalcSizes
-	:wxFlexGridSizer_CalcMin
-	:wxFlexGridSizer_AddGrowableRow
-	:wxFlexGridSizer_RemoveGrowableRow
-	:wxFlexGridSizer_AddGrowableCol
-	:wxFlexGridSizer_RemoveGrowableCol
-	:wxBoxSizer_Create
-	:wxBoxSizer_RecalcSizes
-	:wxBoxSizer_CalcMin
-	:wxBoxSizer_GetOrientation
-	:wxStaticBoxSizer_Create
-	:wxStaticBoxSizer_RecalcSizes
-	:wxStaticBoxSizer_CalcMin
-	:wxStaticBoxSizer_GetStaticBox
-	:wxNotebookSizer_Create
-	:wxNotebookSizer_RecalcSizes
-	:wxNotebookSizer_CalcMin
-	:wxNotebookSizer_GetNotebook))
+; (defpackage :wxSizer
+;   (:use :common-lisp :ffi :wxCL)
+;   (:export
+; 	:wxSizerItem_Create
+; 	:wxSizerItem_CreateInWindow
+; 	:wxSizerItem_CreateInSizer
+; 	:wxSizerItem_GetSize
+; 	:wxSizerItem_CalcMin
+; 	:wxSizerItem_SetDimension
+; 	:wxSizerItem_GetMinSize
+; 	:wxSizerItem_SetRatio
+; 	:wxSizerItem_SetFloatRatio
+; 	:wxSizerItem_GetRatio
+; 	:wxSizerItem_IsWindow
+; 	:wxSizerItem_IsSizer
+; 	:wxSizerItem_IsSpacer
+; 	:wxSizerItem_SetInitSize
+; 	:wxSizerItem_SetOption
+; 	:wxSizerItem_SetFlag
+; 	:wxSizerItem_SetBorder
+; 	:wxSizerItem_GetWindow
+; 	:wxSizerItem_SetWindow
+; 	:wxSizerItem_GetSizer
+; 	:wxSizerItem_SetSizer
+; 	:wxSizerItem_GetOption
+; 	:wxSizerItem_GetFlag
+; 	:wxSizerItem_GetBorder
+; 	:wxSizerItem_GetUserData
+; 	:wxSizerItem_GetPosition
+; 	:wxSizer_AddWindow
+; 	:wxSizer_AddSizer
+; 	:wxSizer_Add
+; 	:wxSizer_InsertWindow
+; 	:wxSizer_InsertSizer
+; 	:wxSizer_Insert
+; 	:wxSizer_PrependWindow
+; 	:wxSizer_PrependSizer
+; 	:wxSizer_Prepend
+; 	:wxSizer_DetachWindow
+; 	:wxSizer_DetachSizer
+; 	:wxSizer_Detach
+; 	:wxSizer_SetMinSize
+; 	:wxSizer_SetItemMinSizeWindow
+; 	:wxSizer_SetItemMinSizeSizer
+; 	:wxSizer_SetItemMinSize
+; 	:wxSizer_GetSize
+; 	:wxSizer_GetPosition
+; 	:wxSizer_GetMinSize
+; 	:wxSizer_RecalcSizes
+; 	:wxSizer_CalcMin
+; 	:wxSizer_Layout
+; 	:wxSizer_Fit
+; 	:wxSizer_SetSizeHints
+; 	:wxSizer_GetChildren
+; 	:wxSizer_SetDimension
+; 	:wxGridSizer_Create
+; 	:wxGridSizer_RecalcSizes
+; 	:wxGridSizer_CalcMin
+; 	:wxGridSizer_SetCols
+; 	:wxGridSizer_SetRows
+; 	:wxGridSizer_SetVGap
+; 	:wxGridSizer_SetHGap
+; 	:wxGridSizer_GetCols
+; 	:wxGridSizer_GetRows
+; 	:wxGridSizer_GetVGap
+; 	:wxGridSizer_GetHGap
+; 	:wxFlexGridSizer_Create
+; 	:wxFlexGridSizer_RecalcSizes
+; 	:wxFlexGridSizer_CalcMin
+; 	:wxFlexGridSizer_AddGrowableRow
+; 	:wxFlexGridSizer_RemoveGrowableRow
+; 	:wxFlexGridSizer_AddGrowableCol
+; 	:wxFlexGridSizer_RemoveGrowableCol
+; 	:wxBoxSizer_Create
+; 	:wxBoxSizer_RecalcSizes
+; 	:wxBoxSizer_CalcMin
+; 	:wxBoxSizer_GetOrientation
+; 	:wxStaticBoxSizer_Create
+; 	:wxStaticBoxSizer_RecalcSizes
+; 	:wxStaticBoxSizer_CalcMin
+; 	:wxStaticBoxSizer_GetStaticBox))
 
 (in-package :wxSizer)
 
@@ -686,32 +682,6 @@
 
 (ffi:def-call-out wxStaticBoxSizer_GetStaticBox
 	(:name "wxStaticBoxSizer_GetStaticBox")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type (ffi:c-pointer NIL))
-	(:library +library-name+))
-
-(ffi:def-call-out wxNotebookSizer_Create
-	(:name "wxNotebookSizer_Create")
-	(:arguments (nb (ffi:c-pointer NIL)))
-	(:return-type (ffi:c-pointer NIL))
-	(:library +library-name+))
-
-(ffi:def-call-out wxNotebookSizer_RecalcSizes
-	(:name "wxNotebookSizer_RecalcSizes")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxNotebookSizer_CalcMin
-	(:name "wxNotebookSizer_CalcMin")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_w (ffi:c-pointer NIL))
-		(_h (ffi:c-pointer NIL)))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxNotebookSizer_GetNotebook
-	(:name "wxNotebookSizer_GetNotebook")
 	(:arguments (_obj (ffi:c-pointer NIL)))
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))

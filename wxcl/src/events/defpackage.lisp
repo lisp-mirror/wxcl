@@ -209,3 +209,20 @@
 ; #:+event-plot-area-create+
            ))
 
+(in-package :wxcl-events)
+
+
+(defclass event (object)
+  ()
+  (:documentation "An event is a structure holding information about an event passed\
+ to a callback or member function.")) 
+
+(defclass evt-handler (object)
+  ()
+  (:documentation "A class that can handle events from the windowing system.\
+ window (and therefore all window classes) are derived from this class."))
+
+(defclass mouse-event (event)
+  ()
+  (:documentation "An event is a structure holding information about an event passed\
+ to a callback or member function.")) 

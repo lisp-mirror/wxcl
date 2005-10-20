@@ -8,8 +8,13 @@
 ;;;
 
 (defpackage :wxcl-windows
-    (:use :common-lisp :ffi :wxcl)
-  (:export #:frame
+    (:use #:common-lisp #:ffi :wxcl)
+  ;;classes 
+  (:export #:window
+           #:frame)
+  (:export #:window-size
+           #:window-rect
+           #:window-position
 	   #:make-frame
 	   #:maximize
 	   #:restore
@@ -92,5 +97,49 @@
 	   #:set-scroll-rate
 	   ))
 
+(in-package :wxcl-windows)
 
+(defclass window (object evt-handler)
+  ()
+  (:documentation "The base class for all wxCL widgets."))
+
+(defclass frame (window)
+  ()
+  (:documentation "The class for creating frames."))
+
+(defclass mini-frame (frame)
+  ()
+  (:documentation "A miniframe is a frame with a small title bar. It is\
+ suitable for floating toolbars that must not take up too much screen area."))
+
+(defclass panel (window)
+  ()
+  (:documentation "A panel is a window on which controls are placed. It\
+ is usually placed within a frame. It contains minimal extra functionality\
+ over and above its parent class wxWindow; its main purpose is to be similar\
+ in appearance and functionality to a dialog, but with the flexibility of\
+ having any window as a parent."))
+
+(defclass scrolled-window (panel)
+  ()
+  (:documentation "The wxScrolledWindow class manages scrolling for its client\
+ area, transforming the coordinates according to the scrollbar positions, and\
+ setting the scroll positions, thumb sizes and ranges according to the area in view."))
+
+(defclass splitter-window (window)
+  ()
+  (:documentation "This class manages up to two subwindows. The current view\
+ can be split into two programmatically (perhaps from a menu command), and\
+ unsplit either programmatically or via the wxSplitterWindow user interface."))
+
+(defclass status-bar (window)
+  ()
+  (:documentation "Status bar is a narrow window that can be placed along the bottom of\
+ a frame to give small amounts of status information. It can contain one or more fields,\
+ one or more of which can be variable length according to the size of the window."))
+
+(defclass tool-bar (window)
+  ()
+  (:documentation "Class defining tool bar. You may also create a toolbar that is managed by\
+ the frame, by calling the method create-tool-bar which specializes on a frame object."))
 

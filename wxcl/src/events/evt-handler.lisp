@@ -1,10 +1,5 @@
 (in-package :wxcl-events)
 
-(defclass evt-handler (object)
-  ()
-  (:documentation "A class that can handle events from the windowing system.\
- window (and therefore all window classes) are derived from this class."))
-
 ; (defmethod ((obj evt-handler)) wxEvtHandler_Create
 ;     (:name "wxEvtHandler_Create")
 ;   (:return-type (ffi:c-pointer NIL))

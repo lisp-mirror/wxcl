@@ -1,10 +1,5 @@
 (in-package :wxcl-gdi)
 
-(defclass brush (object)
-  ()
-  (:documentation "A colour is an object representing a combination of Red, Green,\
- and Blue (RGB) intensity values, and is used to determine drawing colours."))
-
 (define-symbol-macro +null-brush+ (make-wx-instance 'brush wxNull_Brush))
 
 (define-symbol-macro +black-brush+ (make-wx-instance 'brush wxBlack_Brush))

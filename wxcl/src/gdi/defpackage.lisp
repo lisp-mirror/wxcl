@@ -127,3 +127,28 @@
    #:underlined
    #:weight
    ))
+
+(in-package :wxcl-gdi)
+
+(defclass colour (object)
+  ()
+  (:documentation "A colour is an object representing a combination of Red, Green,\
+ and Blue (RGB) intensity values, and is used to determine drawing colours."))
+
+(defclass font (object)
+    ()
+    (:documentation "A font is an object which determines the appearance \
+of text. Fonts are used for drawing text to a device context, and setting \
+the appearance of a window's text."))
+
+(defclass icon (bitmap)
+  ()
+  (:documentation "An icon is a small rectangular bitmap usually used for\
+ denoting a minimized application. It differs from a wxBitmap in always\
+ having a mask associated with it for transparent drawing."))
+
+(defclass brush (object)
+  ()
+  (:documentation "A colour is an object representing a combination of Red, Green,\
+ and Blue (RGB) intensity values, and is used to determine drawing colours."))
+

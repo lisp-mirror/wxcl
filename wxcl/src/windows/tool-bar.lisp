@@ -9,11 +9,6 @@
 
 (in-package :wxcl-windows)
 
-(defclass tool-bar (window)
-  ()
-  (:documentation "Class defining tool bar. You may also create a toolbar that is managed by\
- the frame, by calling the method create-tool-bar which specializes on a frame object."))
-
 (defconstant +tb-3dbuttons+ 16)
 (defconstant +tb-flat+ 32)
 (defconstant +tb-dockable+ 64)

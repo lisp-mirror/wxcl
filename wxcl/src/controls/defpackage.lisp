@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxcl-controls
-    (:use :common-lisp :ffi :wxcl :wxcl-structures :wxcl-windows)
+    (:use #:common-lisp #:ffi #:wxcl #:wxcl-structures #:wxcl-windows #:wxcl-gdi)
     (:export
 
      ;; symbols common to multiple classes
@@ -290,6 +290,27 @@
 	   #:+cal-hittest-day+
 	   ))
 
+(in-package :wxcl-controls)
+
+(defclass control (window)
+  ()
+  (:documentation "This is the base class for a control or 'widget'.\
+ A control is generally a small window which processes user input and/or displays one or more item of data."))
+
+(defclass control-with-items (control)
+  ()
+  (:documentation "This class is an abstract base class for some wxWidgets controls which contain several items, such as wxListBox and wxCheckListBox derived from it, wxChoice and wxComboBox."))
+
+(defclass list-box (control-with-items)
+  ()
+  (:documentation "A listbox is used to select one or more of a list of strings.The strings\
+ are displayed in a scrolling box, with the selected string(s) marked in reverse video. A\
+ listbox can be single selection (if an item is selected, the previous selection is removed)\
+ or multiple selection (clicking an item toggles the item on or off independently of other selections)."))
+
+(defclass notebook (control)
+  ()
+  (:documentation "This class represents a notebook control, which manages multiple windows with associated tabs."))
 
 (defconstant +cal-sunday-first+ 0)
 (defconstant +cal-monday-first+ 1)

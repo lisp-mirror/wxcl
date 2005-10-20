@@ -1,10 +1,5 @@
 (in-package :wxcl-events)
 
-(defclass mouse-event (event)
-  ()
-  (:documentation "An event is a structure holding information about an event passed\
- to a callback or member function.")) 
-
 (defmethod button-p ((obj mouse-event))
   (= 1 (wxMouseEvent_IsButton (object-pointer obj))))
 

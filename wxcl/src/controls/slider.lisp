@@ -46,11 +46,11 @@ forth to change the value."))
     "Sets the slider's line size."
     (wxSlider_SetLineSize (object-pointer obj) size))
 
-(defmethod max ((obj slider))
+(defmethod max-value ((obj slider))
     "Returns the maximum slider value."
     (wxSlider_GetMax (object-pointer obj)))
 
-(defmethod min ((obj slider))
+(defmethod min-value ((obj slider))
     "Returns the minimum slider value."
     (wxSlider_GetMin (object-pointer obj)))
 

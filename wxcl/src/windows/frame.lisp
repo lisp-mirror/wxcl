@@ -9,10 +9,6 @@
 
 (in-package :wxcl-windows)
 
-(defclass frame (window)
-  ()
-  (:documentation "The class for creating frames."))
-
 (defconstant +default-frame-style+ 536878656)
 
 (defun make-frame (parent id title &key (position +default-position+) (size +default-size+) (style +default-frame-style+))

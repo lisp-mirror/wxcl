@@ -9,14 +9,6 @@
 
 (in-package :wxcl-gdi)
 
-(ffi:default-foreign-language :stdc)
-
-(defclass font (object)
-    ()
-    (:documentation "A font is an object which determines the appearance \
-of text. Fonts are used for drawing text to a device context, and setting \
-the appearance of a window's text."))
-
 (defconstant +font-encoding-default+      0)
 (defconstant +font-encoding-iso8859_1+    1)
 (defconstant +font-encoding-iso8859_2+    2)

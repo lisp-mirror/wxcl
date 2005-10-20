@@ -31,7 +31,7 @@ box or panel, or indeed almost any other window."))
 
 (defmethod (setf bitmap-disabled) (bmp (obj bitmap-button))
     "Sets the bitmap for the disabled button appearance."
-    (wxBitmapButton_SetBitmapDisabled (object-pointer-obj) bmp))
+    (wxBitmapButton_SetBitmapDisabled (object-pointer obj) bmp))
 
 (defmethod bitmap-focus ((obj bitmap-button))
     "Returns the bitmap for the focused state."

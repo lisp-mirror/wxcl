@@ -7,17 +7,17 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxToggleButton
-    (:use :common-lisp :ffi :wxCL)
-  (:export
-   :wxToggleButton_Create
-   :wxToggleButton_SetValue
-   :wxToggleButton_GetValue
-   :wxToggleButton_Enable
-   :wxcl-create-toggle-button
-   :expEVT_COMMAND_TOGGLEBUTTON_CLICKED))
+; (defpackage :wxToggleButton
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export
+;    :wxToggleButton_Create
+;    :wxToggleButton_SetValue
+;    :wxToggleButton_GetValue
+;    :wxToggleButton_Enable
+;    :wxcl-create-toggle-button
+;    :expEVT_COMMAND_TOGGLEBUTTON_CLICKED))
 
-(in-package :wxToggleButton)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
 

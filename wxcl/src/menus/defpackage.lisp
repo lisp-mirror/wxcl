@@ -29,8 +29,8 @@
    #:menu-item-count
    #:find-items-by-label
    #:find-item
-   #:enable
-   #:enable-p
+   #:enable-menu
+   #:menu-enabled-p
    #:label
    #:help-string
    #:title

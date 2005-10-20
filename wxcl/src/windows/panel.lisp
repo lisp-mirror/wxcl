@@ -1,14 +1,5 @@
 (in-package :wxcl-windows)
 
-(defclass panel (window)
-  ()
-  (:documentation "A panel is a window on which controls are placed. It\
- is usually placed within a frame. It contains minimal extra functionality\
- over and above its parent class wxWindow; its main purpose is to be similar\
- in appearance and functionality to a dialog, but with the flexibility of\
- having any window as a parent."))
-
-
 (defconstant +tab-traversal+ 524288)
 
 (defun make-panel (parent &key (id -1) (position +default-position+) (size +default-size+) (style +tab-traversal+))

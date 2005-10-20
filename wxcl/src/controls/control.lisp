@@ -9,11 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass control (window)
-  ()
-  (:documentation "This is the base class for a control or 'widget'.\
- A control is generally a small window which processes user input and/or displays one or more item of data."))
-
 (defmethod (setf label) (str (obj control))
   (wxControl_SetLabel (object-pointer obj) str))
 

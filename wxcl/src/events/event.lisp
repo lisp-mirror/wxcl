@@ -1,10 +1,5 @@
 (in-package :wxcl-events)
 
-(defclass event (object)
-  ()
-  (:documentation "An event is a structure holding information about an event passed\
- to a callback or member function.")) 
-
 (defun make-event-object (pointer)
   (make-wx-instance 'event pointer))
     
