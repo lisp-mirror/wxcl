@@ -102,7 +102,7 @@
 (defmethod check-item ((obj menu) id check)
   (wxMenu_Check (object-pointer obj) id (if check 1 0)))
 
-(defmethod item-checked-p ((obj menu))
+(defmethod item-checked-p ((obj menu) id)
   (= 1 (wxMenu_IsChecked  (object-pointer obj) id)))
 
 (defmethod (setf item-label) (label (obj menu) id)

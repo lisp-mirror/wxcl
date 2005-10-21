@@ -95,6 +95,18 @@
 	   #:calc-unscrolled-position
 	   #:adjust-scrollbars
 	   #:set-scroll-rate
+;;frame related constants
+      #:+default-frame-style+
+      #:+frame-ex-contexthelp+
+      #:+frame-shaped+
+      #:+frame-float-on-parent+
+      #:+frame-tool-window+
+      #:+fullscreen-nomenubar+
+      #:+fullscreen-notoolbar+
+      #:+fullscreen-nostatusbar+
+      #:+fullscreen-noborder+
+      #:+fullscreen-nocaption+
+      #:+fullscreen-all+
 	   ))
 
 (in-package :wxcl-windows)

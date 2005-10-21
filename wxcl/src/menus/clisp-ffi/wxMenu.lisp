@@ -393,19 +393,19 @@
 	      (help ffi:c-string))
   (:library +library-name+))
 
-(defmacro wxCL-append-menu-item (menu &key (id -1) (item "") (helpString "")
-				      (kind wxITEM_NORMAL) (sub-menu nil))
-  (case kind
-    (wxITEM_SEPARATOR `(wxMenu_AppendSeparator ,menu))
-    (wxITEM_SubMenu `(wxMenu_AppendSub ,menu ,id ,item ,sub-menu ,helpstring))
-    (otherwise `(wxMenu_Append ,menu ,id ,item ,helpstring))))
+; (defmacro wxCL-append-menu-item (menu &key (id -1) (item "") (helpString "")
+; 				      (kind wxITEM_NORMAL) (sub-menu nil))
+;   (case kind
+;     (wxITEM_SEPARATOR `(wxMenu_AppendSeparator ,menu))
+;     (wxITEM_SubMenu `(wxMenu_AppendSub ,menu ,id ,item ,sub-menu ,helpstring))
+;     (otherwise `(wxMenu_Append ,menu ,id ,item ,helpstring))))
 
-(defmacro wxCL-create-menu ((&optional (title "") (style 0)) &body body)
-  (let ((menu (gensym)))
-    `(progn
-      (let ((,menu (wxMenu_Create ,title ,style)))
-	,@(mapcar (lambda (x) `(wxCL-append-menu-item ,menu ,@x)) body)
-	,menu))))
+; (defmacro wxCL-create-menu ((&optional (title "") (style 0)) &body body)
+;   (let ((menu (gensym)))
+;     `(progn
+;       (let ((,menu (wxMenu_Create ,title ,style)))
+; 	,@(mapcar (lambda (x) `(wxCL-append-menu-item ,menu ,@x)) body)
+; 	,menu))))
 
 
 

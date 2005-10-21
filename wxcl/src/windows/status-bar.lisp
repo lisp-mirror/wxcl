@@ -9,8 +9,11 @@
 
 (in-package :wxcl-windows)
 
+(defconstant +sb-normal+ #x0000)
+(defconstant +sb-flat+ #x0001)
+(defconstant +sb-raised+ #x0002)
 
-(defun make-status-bar (parent id &key (style wxST_SIZEGRIP))
+(defun make-status-bar (parent id &key (style +st-sizegrip+))
   (let ((st (make-instance 'status-bar)))
     (setf (slot-value st 'object)
 	  (wxStatusBar_Create (object-pointer parent) id style))

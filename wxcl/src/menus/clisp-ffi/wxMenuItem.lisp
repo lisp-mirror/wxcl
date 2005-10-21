@@ -41,8 +41,6 @@
 
 (def-c-type wxMenuItem NIL)
 
-
-
 (ffi:def-call-out wxMenuItem_Create
 	(:name "wxMenuItem_Create")
 	(:arguments (parent (ffi:c-pointer NIL))

@@ -7,6 +7,7 @@
 ;;; $Header$
 ;;;
 
+
 (defconstant wxNULL_FLAG 0)
 (defconstant wxEVT_NULL 0)
 (defconstant wxEVT_FIRST 10000)
@@ -107,7 +108,7 @@
 (defconstant wxTINY_CAPTION_VERT 128)
 ;(defconstant wxRESIZE_BORDER 64)
 
-(defconstant wxFRAME_FLOAT_ON_PARENT 8)
+
 (defconstant wxFRAME_NO_WINDOW_MENU 256)
 (defconstant wxED_CLIENT_MARGIN 4)
 (defconstant wxED_BUTTONS_BOTTOM 0)
@@ -123,7 +124,7 @@
 (defconstant wxBU_AUTODRAW 4)
 (defconstant wxBU_NOAUTODRAW 0)
 
-(defconstant wxFRAME_TOOL_WINDOW 4)
+
 (defconstant wxTC_MULTILINE 0)
 (defconstant wxTC_RIGHTJUSTIFY 16)
 (defconstant wxTC_FIXEDWIDTH 32)
@@ -193,11 +194,7 @@
 (defconstant wxID_RESET 5111)
 (defconstant wxID_FILEDLGG 5900)
 (defconstant wxID_HIGHEST 5999)
-(defconstant wxSIZE_AUTO_WIDTH 1)
-(defconstant wxSIZE_AUTO_HEIGHT 2)
-(defconstant wxSIZE_USE_EXISTING 0)
-(defconstant wxSIZE_ALLOW_MINUS_ONE 4)
-(defconstant wxSIZE_NO_ADJUSTMENTS 8)
+
 (defconstant wxSOLID 100)
 (defconstant wxDOT 101)
 (defconstant wxLONG_DASH 102)
@@ -349,11 +346,6 @@
 (defconstant wxPRINT_MODE_PREVIEW 1)
 (defconstant wxPRINT_MODE_FILE 2)
 (defconstant wxPRINT_MODE_PRINTER 3)
-(defconstant wxFULLSCREEN_NOMENUBAR 1)
-(defconstant wxFULLSCREEN_NOTOOLBAR 2)
-(defconstant wxFULLSCREEN_NOSTATUSBAR 4)
-(defconstant wxFULLSCREEN_NOBORDER 8)
-(defconstant wxFULLSCREEN_NOCAPTION 16)
 (defconstant wxLAYOUT_DEFAULT_MARGIN 0)
 (defconstant wxEDGE_LEFT 0)
 (defconstant wxEDGE_TOP 1)
@@ -672,10 +664,10 @@
 
 (defconstant wxITEM_MAX 3)
 (defconstant wxCLOSE_BOX 6)
-(defconstant wxFRAME_EX_CONTEXTHELP 4)
+
 (defconstant wxDIALOG_EX_CONTEXTHELP 4)
-(defconstant wxFRAME_SHAPED 6)
-(defconstant wxFULLSCREEN_ALL 1)
+
+
 (defconstant wxTreeItemIcon_Normal 0)
 (defconstant wxTreeItemIcon_Selected 1)
 (defconstant wxTreeItemIcon_Expanded 2)
@@ -783,3 +775,7 @@
 (defconstant wxSQL_FETCH_ABSOLUTE 5)
 (defconstant wxSQL_FETCH_RELATIVE 6)
 (defconstant wxSQL_FETCH_BOOKMARK 8)
+
+(in-package :wxcl)
+
+(defconstant +st-sizegrip+ #x0010)

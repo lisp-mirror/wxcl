@@ -20,7 +20,7 @@
 (defmethod menu-count ((obj menu-bar))
   (wxMenuBar_GetMenuCount (object-pointer obj)))
 
-(defmethod menu ((obj menu-bar) pos)
+(defmethod menu-at-index ((obj menu-bar) pos)
   (make-wx-instance 'menu (wxMenuBar_GetMenu (object-pointer obj) pos)))
 
 (defmethod menu-bar-replace ((obj menu-bar) pos (mn menu) title)
@@ -44,7 +44,7 @@
 
 ;fix me
 ;;menu should be a pointer to pointer
-(defmethod find-item ((obj menu-bar) id &key (menu nil))
+(defmethod find-item ((obj menu-bar) id &optional (menu nil))
   (make-wx-instance 'menu-item (wxMenuBar_FindItem (object-pointer obj) id (when menu (object-pointer menu)))))
 
 (defmethod find-menu ((obj menu-bar) title) 
@@ -62,8 +62,8 @@
 (defmethod item-enabled-p ((obj menu-bar) id)
   (= 1 (wxMenuBar_IsEnabled (object-pointer obj) id)))
 
-(defmethod (setf label) (str (obj menu-bar) id)
-  (wxMenuBar_SetItemLabel (object-pointer obj) id str))
+(defmethod (setf item-label) (str (obj menu-bar) id)
+  (wxMenuBar_SetLabel (object-pointer obj) id str))
 
 (defmethod item-label ((obj menu-bar) id)
   (wxMenuBar_GetLabel (object-pointer obj) id))

@@ -34,7 +34,10 @@
 	    (point-x pt)
 	    (point-y pt)))
   pt)
-	  
+
+(defun make-point (x y)
+  (make-instance 'point :x x :y y))
+   
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defconstant +default-position+
     (make-instance 'point)))
@@ -53,9 +56,19 @@
 	    (size-width sz)))
     sz)
 
+(defun make-size (width height)
+  (make-instance 'size :width width :height height))
+
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defconstant +default-size+
     (make-instance 'size)))
+
+
+(defconstant +size-auto-width+ 1)
+(defconstant +size-auto-height+ 2)
+(defconstant +size-use-existing+ 0)
+(defconstant +size-allow-minus-one+ 4)
+(defconstant +size-no-adjustments+ 8)
 
 
 (defclass rect ()

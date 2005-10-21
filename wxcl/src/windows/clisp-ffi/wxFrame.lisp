@@ -13,8 +13,6 @@
 
 (ffi:def-c-type wxFrame NIL)
 
-
-
 (ffi:def-call-out wxFrame_Create
     (:name "wxFrame_Create")
   (:arguments (_prt (ffi:c-pointer NIL))

@@ -42,20 +42,18 @@
 (def-c-type wxMenuBar NIL)
 
 
-
 (ffi:def-call-out wxMenuBar_Create
     (:name "wxMenuBar_Create")
   (:arguments (_style ffi:int))
   (:return-type (ffi:c-pointer wxMenuBar))
   (:library +library-name+))
 
-(defun wxCL-create-menu-bar(menus titles &key (style 0))
-  (let ((mb (wxMenuBar_Create style))
-	(len (length menus)))
-    (dotimes (i len)
-      (wxMenuBar_Append mb (svref menus i) (svref titles i)))
-    mb))
-
+; (defun wxCL-create-menu-bar(menus titles &key (style 0))
+;   (let ((mb (wxMenuBar_Create style))
+; 	(len (length menus)))
+;     (dotimes (i len)
+;       (wxMenuBar_Append mb (svref menus i) (svref titles i)))
+;     mb))
 
 (ffi:def-call-out wxMenuBar_DeletePointer
     (:name "wxMenuBar_DeletePointer")

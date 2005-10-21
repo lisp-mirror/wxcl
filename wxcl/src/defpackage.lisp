@@ -30,7 +30,16 @@
 	   #:+default-position+
 	   #:make-wx-instance
       #:invalidate-wx-instance
-	   ))
+	   )
+  ;;some constants
+  (:export
+      #:+st-sizegrip+
+      #:+size-auto-width+
+      #:+size-auto-height+
+      #:+size-use-existing+
+      #:+size-allow-minus-one+
+      #:+size-no-adjustments+
+      ))
 
 (in-package :wxCL)
 (eval-when (:compile-toplevel :load-toplevel :execute)

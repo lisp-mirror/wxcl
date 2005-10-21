@@ -10,6 +10,21 @@
 (in-package :wxcl-windows)
 
 (defconstant +default-frame-style+ 536878656)
+(defconstant +frame-ex-contexthelp+ 4)
+(defconstant +frame-shaped+ 6)
+(defconstant +frame-float-on-parent+ 8)
+(defconstant +frame-tool-window+ 4)
+
+
+;;fix me
+;;a new class called wxtopwindow should be created and all these constants
+;;should be there, both frame and dialog class should inherit from that class
+(defconstant +fullscreen-nomenubar+ 1)
+(defconstant +fullscreen-notoolbar+ 2)
+(defconstant +fullscreen-nostatusbar+ 4)
+(defconstant +fullscreen-noborder+ 8)
+(defconstant +fullscreen-nocaption+ 16)
+(defconstant +fullscreen-all+ 1)
 
 (defun make-frame (parent id title &key (position +default-position+) (size +default-size+) (style +default-frame-style+))
   (make-wx-instance 'frame (wxFrame_Create (when parent (object-pointer parent))
@@ -88,7 +103,7 @@
   (= 1 (wxFrame_SetShape (object-pointer obj) (object-pointer reg))))
 
 
-(defmethod show-full-screen ((obj frame) show &optional (style wxFULLSCREEN_ALL))
+(defmethod show-full-screen ((obj frame) show &optional (style +fullscreen-all+))
   (= 1 (wxFrame_ShowFullScreen (object-pointer obj)
 			       (if show 1 0)
 			       style)))

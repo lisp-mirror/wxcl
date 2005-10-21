@@ -16,7 +16,7 @@
 
 (defmethod menu-item-delete ((obj menu-item))
   (wxMenuItem_Delete (object-pointer obj))
-  (invakidate-wx-instance obj))
+  (invalidate-wx-instance obj))
 
 (defmethod menu ((obj menu-item))
   (make-wx-instance 'menu  (wxMenuItem_GetMenu (object-pointer obj))))
@@ -75,5 +75,5 @@
 (defmethod (setf help) (str (obj menu-item))
   (wxMenuItem_SetHelp (object-pointer obj) str))
 
-(defmethod help ((obj menu-item)) wxMenuItem_GetHelp
+(defmethod help ((obj menu-item))
     (wxMenuItem_GetHelp (object-pointer obj)))
