@@ -14,8 +14,8 @@
 (defconstant +cb-readonly+ #x0010)
 (defconstant +cb-dropdown+ #x0020)
 
-(defun make-combo-box (parent choices &key (id -1) (text "") (pos default-position)
-                       (size default-size) (style 0))
+(defun make-combo-box (parent choices &key (id -1) (text "") (pos +default-position+)
+                              (size +default-size+) (style 0))
     "Create a combobox control."
     (make-wx-instance 'combo-box
         (wxComboBox_Create (when parent (object-pointer parent))

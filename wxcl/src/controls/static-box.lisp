@@ -9,7 +9,7 @@
 
 (in-package :wxcl-controls)
 
-(defun make-static-box (parent text &key (id -1) (pos default-position) (size default-size) (style 0))
+(defun make-static-box (parent text &key (id -1) (pos +default-position+) (size +default-size+) (style 0))
     "Create a static box control."
     (make-wx-instance 'static-box
 		      (wxStaticBox_Create (when parent (object-pointer parent))

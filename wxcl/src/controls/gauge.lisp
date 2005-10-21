@@ -14,7 +14,7 @@
 (defconstant +ga-vertical+    #x0008)
 (defconstant +ga-smooth+      #x0020)
 
-(defun make-gauge (parent range &key (id -1) (pos default-position) (size default-size) (style 0))
+(defun make-gauge (parent range &key (id -1) (pos +default-position+) (size +default-size+) (style 0))
     "Create a gauge control."
     (make-wx-instance 'gauge
 		      (wxGauge_Create (when parent (object-pointer parent))

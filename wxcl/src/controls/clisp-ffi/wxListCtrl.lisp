@@ -27,11 +27,6 @@
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
-(defmacro wxcl-create-list-control (frame &key (id -1) (left -1) (top -1) (width -1)(height -1)
-					  (style wxLC_ICON))
-  "Creates a list box control."
-  `(wxListCtrl_Create ,frame ,id  ,left ,top ,width ,height ,style))
-
 (ffi:def-call-out wxListCtrl_SetForegroundColour
     (:name "wxListCtrl_SetForegroundColour")
   (:arguments (_obj (ffi:c-pointer NIL))

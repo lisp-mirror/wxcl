@@ -42,8 +42,8 @@
 (defmethod insert-item ((obj control-with-items) item pos)
     (wxControlWithItems_Insert (object-pointer obj) item pos))
 
-(defmethod insert-data ((obj control-with-items))
-  (wxControlWithItems_InsertItems (object-pointer obj) item pos data))
+(defmethod insert-data ((obj control-with-items) item pos data)
+  (wxControlWithItems_InsertData (object-pointer obj) item pos data))
 
 (defmethod (setf client-data) (data (obj control-with-items) n)
   (wxControlWithItems_SetClientData (object-pointer obj) n data))

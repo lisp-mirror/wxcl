@@ -15,14 +15,14 @@
 (defconstant +bu-right+    #x0100)
 (defconstant +bu-bottom+   #x0200)
 
-(defun make-button (parent &key (id -1) (label "") (pos default-position) (size default-size) (style 0))
+(defun make-button (parent &key (id -1) (label "") (pos +default-position+) (size +default-size+) (style 0))
     "Create a button control."
     (make-wx-instance 'button
 		      (wxButton_Create (when parent (object-pointer parent))
 				       id label (point-x pos) (point-y pos) (size-width size)
 				       (size-height size) style)))
 
-(defmethod (setf background-colour) ((c colour) (obj button))
+(defmethod (setf background-colour) ((c wxcl-gdi:colour) (obj button))
     "FIXME: undocumented method"
     (wxButton_SetBackgroundColour (object-pointer obj) (object-pointer c)))
 

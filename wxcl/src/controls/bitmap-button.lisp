@@ -11,8 +11,8 @@
 
 (defconstant +bu-autodraw+ #x0004)
 
-(defun make-bitmap-button (parent bmp &key (id -1) (pos default-position)
-                           (size default-size) (style +bu-autodraw+))
+(defun make-bitmap-button (parent bmp &key (id -1) (pos +default-position+)
+                           (size +default-size+) (style +bu-autodraw+))
     "Create a bitmap button control."
     (make-wx-instance 'bitmap-button
 		      (wxBitmapButton_Create (when parent (object-pointer parent))

@@ -9,6 +9,10 @@
 
 (in-package :wxcl-controls)
 
+;;fix me don't know if it is stll supported by wxWidgets
+(defconstant wxSL_NOTIFY_DRAG 0) ;;added by SKS from wxC not exported yet
+
+
 (defconstant +sl-horizontal+ #x0004) ; #define'd to wxHORIZONTAL in slider.h
 (defconstant +sl-vertical+   #x0008) ; #define'd to wxVERTICAL in slider.h
 (defconstant +sl-ticks+      #x0010)
@@ -22,7 +26,7 @@
 (defconstant +sl-selrange+   #x0800)
 (defconstant +sl-inverse+    #x1000)
 
-(defun make-slider (parent init-value min-value max-value &key (id -1) (pos default-position) (size default-size) (style +sl-horizontal+))
+(defun make-slider (parent init-value min-value max-value &key (id -1) (pos +default-position+) (size +default-size+) (style +sl-horizontal+))
     "Create a slider control."
     (make-wx-instance 'slider
 		      (wxSlider_Create (when parent (object-pointer parent))

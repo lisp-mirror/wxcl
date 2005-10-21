@@ -13,12 +13,13 @@
 (defconstant +ra-specify-cols+ #x0008) ; #define'd to wxVERTICAL in defs.h
 (defconstant +ra-use-checkbox+ #x0010) ; PalmOS only
 
-(defun make-radio-box (parent &key choices (id -1) (label "") (dimension 0) (pos default-position) (size default-size) (style 0))
+(defun make-radio-box (parent &key choices (id -1) (label "") (dimensions 0) (pos +default-position+)
+                              (size +default-size+) (style 0))
     "Create a radio box control."
     (make-wx-instance 'radio-box
 		      (wxRadioBox_Create (when parent (object-pointer parent))
 				       id label (point-x pos) (point-y pos) (size-width size)
-				       (size-height size) (length choices) choices dim style)))
+				       (size-height size) (length choices) choices dimensions style)))
 
 #|
 ;; NOTE: the wxWidgets API docs state that wxRadioBox.Number() is

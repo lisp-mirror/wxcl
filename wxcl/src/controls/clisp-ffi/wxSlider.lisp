@@ -7,52 +7,9 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxSlider
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxSlider_Create
-	   :wxSlider_GetValue
-	   :wxSlider_SetValue
-	   :wxSlider_SetRange
-	   :wxSlider_GetMin
-	   :wxSlider_GetMax
-	   :wxSlider_SetTickFreq
-	   :wxSlider_GetTickFreq
-	   :wxSlider_SetPageSize
-	   :wxSlider_GetPageSize
-	   :wxSlider_ClearSel
-	   :wxSlider_ClearTicks
-	   :wxSlider_SetLineSize
-	   :wxSlider_GetLineSize
-	   :wxSlider_GetSelEnd
-	   :wxSlider_GetSelStart
-	   :wxSlider_SetSelection
-	   :wxSlider_SetThumbLength
-	   :wxSlider_GetThumbLength
-	   :wxSlider_SetTick
-	   :wxSL_NOTIFY_DRAG
-	   :wxSL_AUTOTICKS
-	   :wxSL_LABELS
-	   :wxSL_LEFT
-	   :wxSL_TOP
-	   :wxSL_RIGHT
-	   :wxSL_BOTTOM
-	   :wxSL_BOTH
-	   :wxSL_SELRANGE))
-
-(in-package :wxSlider)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
-
-
-(defconstant wxSL_NOTIFY_DRAG 0)
-(defconstant wxSL_AUTOTICKS 16)
-(defconstant wxSL_LABELS 32)
-(defconstant wxSL_LEFT 64)
-(defconstant wxSL_TOP 128)
-(defconstant wxSL_RIGHT 256)
-(defconstant wxSL_BOTTOM 512)
-(defconstant wxSL_BOTH 1024)
-(defconstant wxSL_SELRANGE 2048)
 
 (ffi:def-call-out wxSlider_Create
     (:name "wxSlider_Create")

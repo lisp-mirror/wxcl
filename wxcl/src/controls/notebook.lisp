@@ -10,7 +10,7 @@
 (defmethod page-count ((obj notebook)) 
   (wxNotebook_GetPageCount (object-pointer obj)))
 
-(defmethod (Setf selection)(page (obj notebook))
+(defmethod (setf selection)(page (obj notebook))
   (wxNotebook_SetSelection (object-pointer obj) page))
 
 (defmethod advance-selection ((obj notebook) forward)

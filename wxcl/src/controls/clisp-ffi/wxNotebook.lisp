@@ -7,43 +7,11 @@
 ;;; $Header$
 ;;;
 
-; (defpackage :wxNotebook
-;     (:use :common-lisp :ffi :wxCL)
-;   (:export :wxNotebook_Create
-; 	   :wxNotebook_GetPageCount
-; 	   :wxNotebook_SetSelection
-; 	   :wxNotebook_AdvanceSelection
-; 	   :wxNotebook_AssignImageList
-; 	   :wxNotebook_GetSelection
-; 	   :wxNotebook_SetPageText
-; 	   :wxNotebook_GetPageText
-; 	   :wxNotebook_SetImageList
-; 	   :wxNotebook_GetImageList
-; 	   :wxNotebook_GetPageImage
-; 	   :wxNotebook_SetPageImage
-; 	   :wxNotebook_GetRowCount
-; 	   :wxNotebook_SetPageSize
-; 	   :wxNotebook_SetPadding
-; 	   :wxNotebook_DeletePage
-; 	   :wxNotebook_RemovePage
-; 	   :wxNotebook_DeleteAllPages
-; 	   :wxNotebook_AddPage
-; 	   :wxNotebook_InsertPage
-; 	   :wxNotebook_GetPage
-; 	   :wxCL-create-notebook
-; 	   :wxNB_FIXEDWIDTH
-; 	   :wxNB_LEFT
-; 	   :wxNB_RIGHT
-; 	   :wxNB_BOTTOM
-; 	   :wxNB_MULTILINE
-; 	   :wxNB_TOP))
-
 (in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
 
 (def-c-type wxnotebook nil)
-    
 
 (ffi:def-call-out wxNotebook_Create
     (:name "wxNotebook_Create")
@@ -57,10 +25,6 @@
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
-(defmacro wxCL-create-notebook (frame &key (id -1) (left -1) (top -1) (width -1) (height -1)
-				      (style wxNB_TOP))
-  `(wxNotebook_Create ,frame ,id ,left ,top ,width ,height ,style))
-				
 (ffi:def-call-out wxNotebook_GetPageCount
     (:name "wxNotebook_GetPageCount")
   (:arguments (_obj (ffi:c-pointer NIL)))

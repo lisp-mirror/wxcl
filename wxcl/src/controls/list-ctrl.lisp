@@ -26,7 +26,7 @@
 (defconstant +lc-sort-ascending+  #x4000)
 (defconstant +lc-sort-descending+ #x8000)
 
-(defun make-list-ctrl (parent &key (id -1) (pos default-position) (size default-size) (style +lc-icon+))
+(defun make-list-ctrl (parent &key (id -1) (pos +default-position+) (size +default-size+) (style +lc-icon+))
     "Create a list control."
     (make-wx-instance 'list-ctrl
 		      (wxListCtrl_Create (when parent (object-pointer parent))

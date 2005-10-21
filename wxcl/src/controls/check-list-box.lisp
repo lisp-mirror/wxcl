@@ -9,8 +9,8 @@
 
 (in-package :wxcl-controls)
 
-(defun make-check-list-box (parent choices &key (id -1) (pos default-position)
-                            (size default-size) (style 0))
+(defun make-check-list-box (parent choices &key (id -1) (pos +default-position+)
+                            (size +default-size+) (style 0))
     "Create a checklistbox control."
     (make-wx-instance 'check-list-box
         (wxCheckListBox_Create (when parent (object-pointer parent))

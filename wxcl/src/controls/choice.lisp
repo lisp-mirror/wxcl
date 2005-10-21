@@ -9,8 +9,8 @@
 
 (in-package :wxcl-controls)
 
-(defun make-choice (parent choices &key (id -1) (pos default-position)
-                    (size default-size) (style 0))
+(defun make-choice (parent choices &key (id -1) (pos +default-position+)
+                    (size +default-size+) (style 0))
     "Create a choice control."
     (make-wx-instance 'choice
         (wxChoice_Create (when parent (object-pointer parent))

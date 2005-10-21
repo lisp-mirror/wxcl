@@ -9,33 +9,9 @@
 ;; This is an automatically generated file. 
 ;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
 
-(defpackage :wxRadioBox
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxRadioBox_Create
-	:wxRadioBox_FindString
-	:wxRadioBox_SetSelection
-	:wxRadioBox_GetSelection
-	:wxRadioBox_SetItemLabel
-	:wxRadioBox_SetItemBitmap
-	:wxRadioBox_GetItemLabel
-	:wxRadioBox_EnableItem
-	:wxRadioBox_ShowItem
-	:wxRadioBox_GetStringSelection
-	:wxRadioBox_SetStringSelection
-	:wxRadioBox_Number
-	:wxRadioBox_GetNumberOfRowsOrCols
-	:wxRadioBox_SetNumberOfRowsOrCols
-	:wxcl-create-radio-box
-	:wxRA_SPECIFY_COLS
-	:wxRA_SPECIFY_ROWS))
-
-(in-package :wxRadiobox)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
-
-(defconstant wxRA_SPECIFY_COLS 4)
-(defconstant wxRA_SPECIFY_ROWS 8)
 
 (ffi:def-call-out wxRadioBox_Create
 	(:name "wxRadioBox_Create")
@@ -53,13 +29,6 @@
 	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
-(defmacro wxcl-create-radio-box (frame label choices &key (id -1) (left -1) (top -1) (width -1) (height -1)
-				       (majorDimension 0) (style wxRA_SPECIFY_COLS))
-  "Creates a radio box containing radio buttons."
-  (let ((len (gensym)))
-    `(let ((,len (length ,choices)))
-      (wxRadioBox_Create ,frame ,id ,label ,left ,top ,width ,height ,len ,choices ,majorDimension ,style))))
-				 
 (ffi:def-call-out wxRadioBox_FindString
 	(:name "wxRadioBox_FindString")
 	(:arguments (_obj (ffi:c-pointer NIL))

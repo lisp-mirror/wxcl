@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxcl-controls
-    (:use #:common-lisp #:ffi #:wxcl #:wxcl-structures #:wxcl-windows #:wxcl-gdi)
+    (:use #:common-lisp #:ffi #:wxcl #:wxcl-structures #:wxcl-windows)
     (:export
 
 ;; symbols common to multiple classes

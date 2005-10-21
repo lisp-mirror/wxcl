@@ -9,7 +9,7 @@
 
 (in-package :wxcl-controls)
 
-(defun make-toggle-button (parent &key (id -1) (label "") (pos default-position) (size default-size) (style 0))
+(defun make-toggle-button (parent &key (id -1) (label "") (pos +default-position+) (size +default-size+) (style 0))
     "Create a toggle button control."
     (make-wx-instance 'toggle-button 
 		      (wxToggleButton_Create (when parent (object-pointer parent))
