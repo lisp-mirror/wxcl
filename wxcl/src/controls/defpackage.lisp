@@ -11,8 +11,8 @@
     (:use #:common-lisp #:ffi #:wxcl #:wxcl-structures #:wxcl-windows #:wxcl-gdi)
     (:export
 
-     ;; symbols common to multiple classes
-     ;;
+;; symbols common to multiple classes
+;;
      #:+align-bottom+
      #:+align-center-horizontal+
      #:+align-center-vertical+
@@ -28,13 +28,13 @@
      #:string-selection
      #:value
 
-     ;; bitmap-button class
-     ;;
+;; bitmap-button class
+;;
      #:bitmap-button
      #:+bu-autodraw+
 
-     ;; bitmap-button methods, functions, and macros
-     ;;
+;; bitmap-button methods, functions, and macros
+;;
      #:bitmap-disabled
      #:bitmap-focus
      #:bitmap-label
@@ -44,8 +44,8 @@
      #:margin-y
      #:set-margins
 
-     ;; button class and constants
-     ;;
+;; button class and constants
+;;
      #:button
      #:+bu-exactfit+
 	   #:+bu-left+
@@ -53,57 +53,57 @@
 	   #:+bu-right+
 	   #:+bu-bottom+
 
-     ;; button methods, functions, and macros
-     ;;
+;; button methods, functions, and macros
+;;
      #:background-colour
      #:default-size
      #:make-button
      #:set-default
 
-     ;; check-box class and constants
-     ;;
+;; check-box class and constants
+;;
      #:check-box
      #:+chk-2state+
      #:+chk-3state+
      #:+chk-allow-3rd-state-for-user+
 
-     ;; check-box methods, functions, and macros
-     ;;
+;; check-box methods, functions, and macros
+;;
      ; #:3-state-value
      ; #:3rd-state-allowed
      ; #:is-3-state
      #:make-check-box
 
-     ;; check-list-box class and constants
-     ;;
+;; check-list-box class and constants
+;;
      #:check-list-box
 
-     ;; check-list-box methods, functions, and macros
-     ;;
+;; check-list-box methods, functions, and macros
+;;
      #:check
      #:checked
      #:make-check-list-box
 
-     ;; choice class and constants
-     ;;
+;; choice class and constants
+;;
      #:choice
 
-     ;; choice methods, functions, and macros
-     ;;
+;; choice methods, functions, and macros
+;;
      #:columns
      #:current-selection
      #:make-choice
 
-     ;; combo-box class and constants
-     ;;
+;; combo-box class and constants
+;;
      #:combo-box
      #:+cb-simple+
      #:+cb-sort+
      #:+cb-readonly+
      #:+cb-dropdown+
 
-     ;; combo-box methods, functions, and macros
-     ;;
+;; combo-box methods, functions, and macros
+;;
      #:copy
      #:cut
      #:insertion-point
@@ -116,20 +116,20 @@
      #:text-selection
      #:undo
 
-     ;; control class and constants
-     ;;
+;; control class and constants
+;;
      #:control
 
-     ;; control methods, functions, and macros
-     ;;
+;; control methods, functions, and macros
+;;
      #:label
 
-     ;; control-with-item class and constants
-     ;;
+;; control-with-item class and constants
+;;
      #:control-with-items
 
-     ;; control-with-items methods, functions, and macros
-     ;;
+;; control-with-items methods, functions, and macros
+;;
      #:append
      #:append-data
      #:clear
@@ -140,22 +140,22 @@
      #:insert-data
      #:string
 
-     ;; gauge class and constants
-     ;;
+;; gauge class and constants
+;;
      #:gauge
      #:+ga-horizontal+
      #:+ga-progressbar+
      #:+ga-smooth+
      #:+ga-vertical+
 
-     ;; gauge methods, functions, and macros
-     ;;
+;; gauge methods, functions, and macros
+;;
      #:bezel-face
      #:make-gauge
      #:shadow-width
 
-     ;; list-box class and constants
-     ;;
+;; list-box class and constants
+;;
      #:list-box
 	   #:+lb-always-sb+
 	   #:+lb-extended+
@@ -165,8 +165,8 @@
 	   #:+lb-single+
      #:+lb-sort+
 
-     ;; list-box methods, functions, and macros
-     ;;
+;; list-box methods, functions, and macros
+;;
      #:deselect
      #:first-item
      #:insert-items
@@ -175,86 +175,9 @@
      #:selections
      #:set
 
-     ;; radio-box class and constants
-     ;;
-     #:radio-box
-     #:+ra-specify-cols+
-     #:+ra-specify-rows+
-     #:+ra-use-checkbox+
-
-     ;; radio-box methods, functions, and macros
-     ;;
-     #:count
-     #:enable-item
-     #:item-bitmap
-     #:item-label
-     #:make-radio-box
-     #:number-of-rows-or-cols
-     #:show-item
-
-     ;; radio-button class and constants
-     ;;
-     #:radio-button
-     #:+rb-group+
-     #:+rb-single+
-     #:+rb-use-checkbox+
-
-     ;; radio-button methods, functions, and macros
-     ;;
-     #:make-radio-button
-
-     ;; slider class and constants
-     ;;
-     #:slider
-     #:+sl-horizontal+
-     #:+sl-vertical+
-     #:+sl-ticks+
-     #:+sl-autoticks+
-     #:+sl-labels+
-     #:+sl-left+
-     #:+sl-top+
-     #:+sl-right+
-     #:+sl-bottom+
-     #:+sl-both+
-     #:+sl-selrange+
-     #:+sl-inverse+
-
-     ;; slider methods, functions, and macros
-     ;;
-     #:clear-sel
-     #:line-size
-     #:make-slider
-     #:max
-     #:min
-     #:page-size
-
-     ;; static-box class and constants
-     ;;
-     #:static-box
-
-     ;; static-box methods, functions, and macros
-     ;;
-     #:make-static-box
-
-     ;; static-text class and constants
-     ;;
-     #:static-text
-     #:+st-no-autoresize+
-
-     ;; static-text methods, functions, and macros
-     ;;
-     #:make-static-text
-
-     ;; toggle-button class and constants
-     ;;
-     #:toggle-button
-
-     ;; toggle-button methods, functions, and macros
-     ;;
-     #:enable
-     #:make-toggle-button
-
-
+;; list-ctrl class and constants
+;;
+     #:list-ctrl
 	   #:+lc-icon+
 	   #:+lc-small-icon+
 	   #:+lc-vrules+
@@ -271,6 +194,87 @@
 	   #:+lc-single-sel+
 	   #:+lc-sort-ascending+
 	   #:+lc-sort-descending+
+
+;; radio-box class and constants
+;;
+     #:radio-box
+     #:+ra-specify-cols+
+     #:+ra-specify-rows+
+     #:+ra-use-checkbox+
+
+;; radio-box methods, functions, and macros
+;;
+     #:count
+     #:enable-item
+     #:item-bitmap
+     #:item-label
+     #:make-radio-box
+     #:number-of-rows-or-cols
+     #:show-item
+
+;; radio-button class and constants
+;;
+     #:radio-button
+     #:+rb-group+
+     #:+rb-single+
+     #:+rb-use-checkbox+
+
+;; radio-button methods, functions, and macros
+;;
+     #:make-radio-button
+
+;; slider class and constants
+;;
+     #:slider
+     #:+sl-horizontal+
+     #:+sl-vertical+
+     #:+sl-ticks+
+     #:+sl-autoticks+
+     #:+sl-labels+
+     #:+sl-left+
+     #:+sl-top+
+     #:+sl-right+
+     #:+sl-bottom+
+     #:+sl-both+
+     #:+sl-selrange+
+     #:+sl-inverse+
+
+;; slider methods, functions, and macros
+;;
+     #:clear-sel
+     #:line-size
+     #:make-slider
+     #:max
+     #:min
+     #:page-size
+
+;; static-box class and constants
+;;
+     #:static-box
+
+;; static-box methods, functions, and macros
+;;
+     #:make-static-box
+
+;; static-text class and constants
+;;
+     #:static-text
+     #:+st-no-autoresize+
+
+;; static-text methods, functions, and macros
+;;
+     #:make-static-text
+
+;; toggle-button class and constants
+;;
+     #:toggle-button
+
+;; toggle-button methods, functions, and macros
+;;
+     #:enable
+     #:make-toggle-button
+
+
 	   #:+list-format-left+ 
 	   #:+list-format-right+
 	   #:+list-format-centre+
@@ -297,9 +301,41 @@
   (:documentation "This is the base class for a control or 'widget'.\
  A control is generally a small window which processes user input and/or displays one or more item of data."))
 
+(defclass button (control)
+  ()
+  (:documentation "A button is a control that contains a text string, and \
+is one of the most common elements of a GUI. It may be placed on a dialog \
+box or panel, or indeed almost any other window."))
+
+(defclass bitmap-button (button)
+  ()
+  (:documentation "A button is a control that contains a text string, and \
+is one of the most common elements of a GUI. It may be placed on a dialog \
+box or panel, or indeed almost any other window."))
+
+(defclass check-box (control)
+  ()
+  (:documentation "A checkbox is a labelled box which by default is \
+either on (checkmark is visible) or off (no checkmark). Optionally, \
+it can have a third state, called the mixed or undetermined state. \
+Often this is used as a 'Does Not Apply' state."))
+
 (defclass control-with-items (control)
   ()
   (:documentation "This class is an abstract base class for some wxWidgets controls which contain several items, such as wxListBox and wxCheckListBox derived from it, wxChoice and wxComboBox."))
+
+(defclass choice (control-with-items)
+  ()
+  (:documentation "A choice item is used to selected one of a list of \
+strings. Unlike a listbox, only the selection is visible until the user \
+pulls down the menu of choices."))
+
+(defclass combo-box (control-with-items)
+  ()
+  (:documentation "A combobox is like a combination of an edit control \
+and a listbox. It can be displayed as a static list with an editable or \
+read-only text field; or a drop-down list with a text field; or a \
+drop-down list without a text field."))
 
 (defclass list-box (control-with-items)
   ()
@@ -308,9 +344,58 @@
  listbox can be single selection (if an item is selected, the previous selection is removed)\
  or multiple selection (clicking an item toggles the item on or off independently of other selections)."))
 
+(defclass check-list-box (list-box)
+  ()
+  (:documentation "A checklistbox is like a listbox, but allows items \
+to be checked or unchecked. NOTE: when using this class under Microsoft \
+Windows(tm), the underlying wxWidgets library must be compiled with \
+USE_OWNER_DRAWN set to 1."))
+
+(defclass gauge (control)
+  ()
+  (:documentation "A gauge is a horizontal or vertical bar which shows \
+a quantity (often time)."))
+
+(defclass list-ctrl (control)
+  ()
+  (:documentation "A list control presents lists in a number of formats: \
+list view, report view, icon view, and small icon view."))
+
 (defclass notebook (control)
   ()
   (:documentation "This class represents a notebook control, which manages multiple windows with associated tabs."))
+
+(defclass radio-box (control)
+  ()
+  (:documentation "A radio box item is used to select one of a number of \
+mutually exclusive choices, displayed as a column or row of labelled buttons."))
+
+(defclass radio-button (control)
+  ()
+  (:documentation "A radio button is a control which usually denotes one \
+of several mutually exclusive options."))
+
+(defclass slider (control)
+  ()
+  (:documentation "A slider is a control which can be pulled back and \
+forth to change the value."))
+
+(defclass static-box (control)
+  ()
+  (:documentation "A static box is a rectangle drawn around other panel \
+items to denote a logical grouping of items.  A static box should NOT be \
+used as the parent for the controls it contains."))
+
+(defclass static-text (control)
+  ()
+  (:documentation "A static text control displays one or more lines of \
+read-only text."))
+
+(defclass toggle-button (control)
+  ()
+  (:documentation "A toggle button is a button that stays pressed when \
+clicked by the user. In other words, it is similar to check-box in \
+functionality but looks like a button."))
 
 (defconstant +cal-sunday-first+ 0)
 (defconstant +cal-monday-first+ 1)

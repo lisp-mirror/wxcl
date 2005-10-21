@@ -9,13 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass check-list-box (list-box)
-    ()
-    (:documentation "A checklistbox is like a listbox, but allows items \
-to be checked or unchecked. NOTE: when using this class under Microsoft \
-Windows(tm), the underlying wxWidgets library must be compiled with \
-USE_OWNER_DRAWN set to 1."))
-
 (defun make-check-list-box (parent choices &key (id -1) (pos default-position)
                             (size default-size) (style 0))
     "Create a checklistbox control."

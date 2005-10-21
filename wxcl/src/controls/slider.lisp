@@ -9,11 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass slider (control)
-    ()
-    (:documentation "A slider is a control which can be pulled back and \
-forth to change the value."))
-
 (defconstant +sl-horizontal+ #x0004) ; #define'd to wxHORIZONTAL in slider.h
 (defconstant +sl-vertical+   #x0008) ; #define'd to wxVERTICAL in slider.h
 (defconstant +sl-ticks+      #x0010)

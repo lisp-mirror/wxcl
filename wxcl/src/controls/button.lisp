@@ -9,12 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass button (control)
-    ()
-    (:documentation "A button is a control that contains a text string, and \
-is one of the most common elements of a GUI. It may be placed on a dialog \
-box or panel, or indeed almost any other window."))
-
 (defconstant +bu-exactfit+ #x0001)
 (defconstant +bu-left+     #x0040)
 (defconstant +bu-top+      #x0080)

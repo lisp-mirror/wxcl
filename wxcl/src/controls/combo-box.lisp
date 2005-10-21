@@ -9,13 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass combo-box (control-with-items)
-    ()
-    (:documentation "A combobox is like a combination of an edit control \
-and a listbox. It can be displayed as a static list with an editable or \
-read-only text field; or a drop-down list with a text field; or a \
-drop-down list without a text field."))
-
 (defconstant +cb-simple+   #x0004)
 (defconstant +cb-sort+     #x0008)
 (defconstant +cb-readonly+ #x0010)

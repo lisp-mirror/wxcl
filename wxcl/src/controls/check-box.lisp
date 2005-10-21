@@ -9,13 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass check-box (control)
-    ()
-    (:documentation "A checkbox is a labelled box which by default is \
-either on (checkmark is visible) or off (no checkmark). Optionally, \
-it can have a third state, called the mixed or undetermined state. \
-Often this is used as a 'Does Not Apply' state."))
-
 (defconstant +chk-2state                    #x0000)
 (defconstant +chk-3state                    #x1000)
 (defconstant +chk-allow-3rd-state-for-user+ #x2000)

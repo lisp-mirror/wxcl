@@ -9,9 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass calendar-date-attr (object)
-    (:documentation "This class represents attributes of a calendar control."))
-
 (defconstant +cal-border-none+   0)
 (defconstant +cal-border-square+ 1)
 (defconstant +cal-border-round+  2)

@@ -9,11 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass radio-button (control)
-    ()
-    (:documentation "A radio button is a control which usually denotes one \
-of several mutually exclusive options."))
-
 (defconstant +rb-group+        #x0004)
 (defconstant +rb-single+       #x0008)
 (defconstant +rb-use-checkbox+ #x0010) ; PalmOS only

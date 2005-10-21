@@ -9,11 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass radio-box (control)
-    ()
-    (:documentation "A radio box item is used to select one of a number of \
-mutually exclusive choices, displayed as a column or row of labelled buttons."))
-
 (defconstant +ra-specify-rows+ #x0004) ; #define'd to wxHORIZONTAL in defs.h
 (defconstant +ra-specify-cols+ #x0008) ; #define'd to wxVERTICAL in defs.h
 (defconstant +ra-use-checkbox+ #x0010) ; PalmOS only

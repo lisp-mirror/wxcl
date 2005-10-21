@@ -9,12 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass toggle-button (control)
-    ()
-    (:documentation "A toggle button is a button that stays pressed when \
-clicked by the user. In other words, it is similar to check-box in \
-functionality but looks like a button."))
-
 (defun make-toggle-button (parent &key (id -1) (label "") (pos default-position) (size default-size) (style 0))
     "Create a toggle button control."
     (make-wx-instance 'toggle-button 

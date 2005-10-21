@@ -9,10 +9,6 @@
 
 (in-package :wxcl-structures)
 
-(defclass list-item (object)
-    ()
-    (:documentation "Stores information about a list-ctrl item or column."))
-
 (defconstant +list-mask-state+        #x0001)
 (defconstant +list-mask-text+         #x0002)
 (defconstant +list-mask-image+        #x0004)

@@ -9,11 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass gauge (control)
-    ()
-    (:documentation "A gauge is a horizontal or vertical bar which shows \
-a quantity (often time)."))
-
 (defconstant +ga-progressbar+ #x0000)
 (defconstant +ga-horizontal+  #x0004)
 (defconstant +ga-vertical+    #x0008)

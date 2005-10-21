@@ -55,3 +55,11 @@
 	   ))
 
 (in-package :wxcl-structures)
+
+(defclass calendar-date-attr (object)
+  ()
+  (:documentation "This class represents attributes of a calendar control."))
+
+(defclass list-item (object)
+  ()
+  (:documentation "Stores information about a list-ctrl item or column."))

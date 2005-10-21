@@ -9,12 +9,6 @@
 
 (in-package :wxcl-controls)
 
-(defclass choice (control-with-items)
-    ()
-    (:documentation "A choice item is used to selected one of a list of \
-strings. Unlike a listbox, only the selection is visible until the user \
-pulls down the menu of choices."))
-
 (defun make-choice (parent choices &key (id -1) (pos default-position)
                     (size default-size) (style 0))
     "Create a choice control."
