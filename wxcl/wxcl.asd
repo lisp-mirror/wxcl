@@ -60,10 +60,12 @@
                                                         (:file "wxControlWithItems")
                                                         (:file "wxListCtrl")
                                                         (:file "wxRadioBox")
+                                                        (:file "wxStaticBox")
                                                         (:file "wxStaticLine")
                                                         (:file "wxStaticText")
                                                         (:file "wxSlider")
                                                         (:file "wxButton") 
+                                                        (:file "wxRadioButton")
                                                         (:file "wxToggleButton")
                                                         (:file "wxListBox")
                                                         (:file "wxComboBox")
@@ -95,7 +97,8 @@
      (:module "structures"
               :depends-on ("wxcl" "defpackage")
               :components ((:module "clisp-ffi"
-                                    :components ((:file "wxAcceleratorEntry")))
+                                    :components ((:file "wxAcceleratorEntry")
+                                                 (:file "wxAcceleratorTable")))
                            (:file "accelerator-table" :depends-on ("accelerator-entry" "clisp-ffi"))
                            (:file "accelerator-entry" :depends-on ("clisp-ffi"))))
      #+never(:module "events"
