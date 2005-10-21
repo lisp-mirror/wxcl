@@ -75,6 +75,7 @@
                                   (:file "toggle-button" :depends-on ("clisp-ffi"))
                                   (:file "check-box" :depends-on ("clisp-ffi"))
                                   (:file "list-box" :depends-on ("clisp-ffi"))
+                                  (:file "list-ctrl" :depends-on ("clisp-ffi"))
                                   (:file "radio-box" :depends-on ("clisp-ffi"))
                                   (:file "radio-button" :depends-on ("clisp-ffi"))
                                   (:file "slider" :depends-on ("clisp-ffi"))
