@@ -1,5 +1,5 @@
 #include "wrapper.h"
-#include "wx/docview.h"
+#include "wx/cmdproc.h"
 
 extern "C"
 {
