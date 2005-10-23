@@ -94,7 +94,6 @@
 (defmethod face-name ((obj font))
     "Returns the typeface name associated with the font, or the empty \
 string if there is no typeface information."
-    ;; FIXME: wxFont_GetFaceName needs to be fixed to return the char*
     (wxFont_GetFaceName (object-pointer obj)))
 
 (defmethod (setf face-name) (name (obj font))
