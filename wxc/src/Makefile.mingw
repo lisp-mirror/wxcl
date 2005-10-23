@@ -1,0 +1,86 @@
+#
+# Makefile.mingw
+# License  : wxWindows License 3.1
+# Author(s): Jack Unrue (jdunrue@gmail.com)
+# Copyright (c) 2005 Jack D. Unrue
+# See the file LICENSE for information on usage and redistribution.
+#
+#  $Header$
+#
+# This is a temporary solution for people who want to compile wxC using
+# MingW (g++) instead of VC++.
+#
+# Change the values of the BUILD_ROOT and WX_ROOT variables to something
+# suitable for your local environment.  Then run:
+#
+#  make init; make
+#
+# Note that this makefile does not understand header dependencies.
+#
+
+ifdef DEBUG
+BTYPE = Debug
+else
+BTYPE = Release
+endif
+
+BUILD_ROOT  = /c/projects/third_party/build
+WX_ROOT     = /c/projects/third_party/wxWidgets-2.6.2
+
+BUILD_DIR   = $(BUILD_ROOT)/wxc
+BIN_DIR     = $(BUILD_DIR)/win32/$(BTYPE)/bin
+OBJ_DIR     = $(BUILD_DIR)/win32/$(BTYPE)/obj
+
+DLL         = $(BIN_DIR)/wxc-msw2.6.2.dll
+
+LIBS        = -lwx_msw-2.6 -lwxtiff-2.6 -lwxjpeg-2.6 -lwxpng-2.6 -lwxzlib-2.6 -lwxregex-2.6 -lwxexpat-2.6 -lrpcrt4 -loleaut32 -lole32 -luuid -lwinspool -lwinmm -lshell32 -lcomctl32 -lcomdlg32 -lctl3d32 -ladvapi32 -lwsock32 -lgdi32
+
+TOP_OBJS    = $(OBJ_DIR)/apppath.o $(OBJ_DIR)/db.o $(OBJ_DIR)/eljevent.o $(OBJ_DIR)/eljmime.o $(OBJ_DIR)/ewxw_main.o $(OBJ_DIR)/extra.o $(OBJ_DIR)/glcanvas.o $(OBJ_DIR)/image.o $(OBJ_DIR)/managed.o $(OBJ_DIR)/previewframe.o $(OBJ_DIR)/printout.o $(OBJ_DIR)/textstream.o $(OBJ_DIR)/treectrl.o $(OBJ_DIR)/wave.o $(OBJ_DIR)/wrapper.o $(OBJ_DIR)/wxc_rc.o
+
+EWXW_OBJS_1 = $(OBJ_DIR)/ewxw/eljaccelerator.o $(OBJ_DIR)/ewxw/eljartprov.o $(OBJ_DIR)/ewxw/eljbitmap.o $(OBJ_DIR)/ewxw/eljbrush.o $(OBJ_DIR)/ewxw/eljbusyinfo.o $(OBJ_DIR)/ewxw/eljbutton.o $(OBJ_DIR)/ewxw/eljcalendarctrl.o $(OBJ_DIR)/ewxw/eljcaret.o $(OBJ_DIR)/ewxw/eljcheckbox.o $(OBJ_DIR)/ewxw/eljchecklistbox.o $(OBJ_DIR)/ewxw/eljchoice.o $(OBJ_DIR)/ewxw/eljclipboard.o $(OBJ_DIR)/ewxw/eljcoldata.o $(OBJ_DIR)/ewxw/eljcolour.o $(OBJ_DIR)/ewxw/eljcolourdlg.o $(OBJ_DIR)/ewxw/eljcombobox.o $(OBJ_DIR)/ewxw/eljcommand.o $(OBJ_DIR)/ewxw/eljconfigbase.o $(OBJ_DIR)/ewxw/eljcontrol.o $(OBJ_DIR)/ewxw/eljctxhelp.o $(OBJ_DIR)/ewxw/eljcursor.o $(OBJ_DIR)/ewxw/eljdataformat.o $(OBJ_DIR)/ewxw/eljdatetime.o $(OBJ_DIR)/ewxw/eljdc.o $(OBJ_DIR)/ewxw/eljdialog.o $(OBJ_DIR)/ewxw/eljdialup.o $(OBJ_DIR)/ewxw/eljdirdlg.o $(OBJ_DIR)/ewxw/eljdnd.o
+
+EWXW_OBJS_2 = $(OBJ_DIR)/ewxw/eljdrawing.o $(OBJ_DIR)/ewxw/eljfiledialog.o $(OBJ_DIR)/ewxw/eljfilehist.o $(OBJ_DIR)/ewxw/eljfindrepldlg.o $(OBJ_DIR)/ewxw/eljfont.o $(OBJ_DIR)/ewxw/eljfontdata.o $(OBJ_DIR)/ewxw/eljfontdlg.o $(OBJ_DIR)/ewxw/eljframe.o $(OBJ_DIR)/ewxw/eljgauge.o $(OBJ_DIR)/ewxw/eljgrid.o $(OBJ_DIR)/ewxw/eljhelpcontroller.o $(OBJ_DIR)/ewxw/eljicnbndl.o $(OBJ_DIR)/ewxw/eljicon.o $(OBJ_DIR)/ewxw/eljimage.o $(OBJ_DIR)/ewxw/eljimagelist.o $(OBJ_DIR)/ewxw/eljipc.o $(OBJ_DIR)/ewxw/eljjoystick.o $(OBJ_DIR)/ewxw/eljlayoutconstraints.o $(OBJ_DIR)/ewxw/eljlistbox.o $(OBJ_DIR)/ewxw/eljlistctrl.o $(OBJ_DIR)/ewxw/eljlocale.o $(OBJ_DIR)/ewxw/eljlog.o $(OBJ_DIR)/ewxw/eljmask.o $(OBJ_DIR)/ewxw/eljmdi.o $(OBJ_DIR)/ewxw/eljmenu.o $(OBJ_DIR)/ewxw/eljmenubar.o
+
+EWXW_OBJS_3 = $(OBJ_DIR)/ewxw/eljmessagedialog.o $(OBJ_DIR)/ewxw/eljminiframe.o $(OBJ_DIR)/ewxw/eljnotebook.o $(OBJ_DIR)/ewxw/eljpalette.o $(OBJ_DIR)/ewxw/eljpanel.o $(OBJ_DIR)/ewxw/eljpen.o $(OBJ_DIR)/ewxw/eljprintdlg.o $(OBJ_DIR)/ewxw/eljprinting.o $(OBJ_DIR)/ewxw/eljprocess.o $(OBJ_DIR)/ewxw/eljradiobox.o $(OBJ_DIR)/ewxw/eljradiobutton.o $(OBJ_DIR)/ewxw/eljregion.o $(OBJ_DIR)/ewxw/eljregioniter.o $(OBJ_DIR)/ewxw/eljsash.o $(OBJ_DIR)/ewxw/eljscintilla.o $(OBJ_DIR)/ewxw/eljscrollbar.o $(OBJ_DIR)/ewxw/eljscrolledwindow.o $(OBJ_DIR)/ewxw/eljsingleinst.o $(OBJ_DIR)/ewxw/eljsizer.o $(OBJ_DIR)/ewxw/eljspinctrl.o $(OBJ_DIR)/ewxw/eljsplitterwindow.o $(OBJ_DIR)/ewxw/eljstaticbox.o $(OBJ_DIR)/ewxw/eljstaticline.o $(OBJ_DIR)/ewxw/eljstatictext.o $(OBJ_DIR)/ewxw/eljstatusbar.o
+
+EWXW_OBJS_4 = $(OBJ_DIR)/ewxw/eljsystemsettings.o $(OBJ_DIR)/ewxw/eljtextctrl.o $(OBJ_DIR)/ewxw/eljtglbtn.o $(OBJ_DIR)/ewxw/eljthread.o $(OBJ_DIR)/ewxw/eljtimer.o $(OBJ_DIR)/ewxw/eljtipwnd.o $(OBJ_DIR)/ewxw/eljtoolbar.o $(OBJ_DIR)/ewxw/eljvalidator.o $(OBJ_DIR)/ewxw/eljwindow.o $(OBJ_DIR)/ewxw/eljwizard.o
+
+OBJS        = $(TOP_OBJS) $(EWXW_OBJS_1) $(EWXW_OBJS_2) $(EWXW_OBJS_3) $(EWXW_OBJS_4)
+
+ifdef DEBUG
+OPTFLAGS    = -g -mthreads -Wall -Wundef
+else
+OPTFLAGS    = -O2 -mthreads -Wall -Wundef
+endif
+CPPFLAGS    = -D__WXMSW__ -DWXUSINGDLL -DNO_GCC_PRAGMA -I. -I../include -I$(WX_ROOT)/lib/wx/include/msw-ansi-release-2.6 -I$(WX_ROOT)/include
+CFLAGS      = $(CPPFLAGS) $(OPTFLAGS)
+
+CXXFLAGS    = -Wno-ctor-dtor-privacy
+
+
+LDFLAGS     = -mwindows -mthreads -L$(WX_ROOT)/lib $(LIBS)
+
+$(DLL): $(OBJS)
+	g++ -shared -o $(DLL) $(OBJS) $(LDFLAGS)
+
+$(OBJ_DIR)/wxc_rc.o: wxc.rc
+	windres --input $< -o $@ --define __WXMSW__ --define WXUSINGDLL --include-dir . --include-dir include --include-dir $(WX_ROOT)/include
+
+$(OBJ_DIR)/%.o: %.cpp
+	g++ $(CFLAGS) $(CXXFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/ewxw/%.o: ewxw/%.cpp
+	g++ $(CFLAGS) $(CXXFLAGS) -c $< -o $@
+
+init:
+	@@-mkdir -p $(BUILD_DIR)/win32/Debug/bin
+	@@-mkdir -p $(BUILD_DIR)/win32/Debug/obj/ewxw
+	@@-mkdir -p $(BUILD_DIR)/win32/Release/bin
+	@@-mkdir -p $(BUILD_DIR)/win32/Release/obj/ewxw
+
+clean:
+	@@-rm -f $(BIN_DIR)/* $(OBJ_DIR)/*.o $(OBJ_DIR)/ewxw/*.o
+
+scrub: clean
+	@@-rm -fr $(BUILD_DIR)
+	@@-rm -fr *~
