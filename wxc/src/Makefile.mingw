@@ -13,7 +13,7 @@
 # Change the values of the BUILD_ROOT and WX_ROOT variables to something
 # suitable for your local environment.  Then run:
 #
-#  make init; make
+#  make -f Makefile.mingw
 #
 # Note that this makefile does not understand header dependencies.
 #
@@ -60,7 +60,7 @@ CXXFLAGS    = -Wno-ctor-dtor-privacy
 
 LDFLAGS     = -mwindows -mthreads -L$(WX_ROOT)/lib $(LIBS)
 
-$(DLL): $(OBJS)
+$(DLL): init $(OBJS)
 	g++ -shared -o $(DLL) $(OBJS) $(LDFLAGS)
 
 $(OBJ_DIR)/wxc_rc.o: wxc.rc
