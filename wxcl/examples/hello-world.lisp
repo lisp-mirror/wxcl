@@ -5,7 +5,7 @@
 
 (defun init-func (evt)
   (let ((fr (make-frame nil -1 "hello world")))
-    (print wxcl-gdi::wxblack)
+;    (print wxcl-gdi::wxblack)
     (print wxcl-gdi:+black+)
     (show fr)))
 

@@ -111,7 +111,7 @@
 
 (in-package :wxcl-windows)
 
-(defclass window (object evt-handler)
+(defclass window (wxcl-events:evt-handler)
   ()
   (:documentation "The base class for all wxCL widgets."))
 

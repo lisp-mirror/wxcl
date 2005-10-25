@@ -42,6 +42,7 @@
 	   #:+item-check
 	   #:+item-radio
 	   #:+item-submenu
+      #:make-menu-bar
 ))
 
 (in-package :wxcl-menus)

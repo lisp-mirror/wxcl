@@ -1,6 +1,9 @@
 (defpackage :wxcl-events
-    (:use :common-lisp :ffi)
-  (:export #:+event-command-left-click+
+    (:use :common-lisp :ffi :wxcl)
+  (:export #:event
+           #:evt-handler
+           #:mouse-event
+   #:+event-command-left-click+
            #:+event-command-left-dclick+
            #:+event-command-right-click+
            #:+event-command-right-dclick+

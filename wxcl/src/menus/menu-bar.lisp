@@ -1,7 +1,6 @@
 (in-package :wxcl-menus)
 
-(defun make-menu-bar (&key (style 0) (menus nil) (title nil))
-  
+(defun make-menu-bar (&optional (menus nil) (title nil) (style 0))
   (let ((mb (make-wx-instance 'menu-bar (wxMenuBar_Create style))))
     (loop for mn in menus and str in title do
 	  (wxMenuBar_Append (object-pointer mb) (object-pointer mn) (if str str "")))
