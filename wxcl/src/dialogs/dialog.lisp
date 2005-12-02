@@ -1,11 +1,5 @@
 (in-package :wxcl-dialogs)
 
-(defclass dialog (window)
-  (:documentation "A dialog box is a window with a title bar and sometimes a system menu,\
- which can be moved around the screen. It can contain controls and other windows and is\
- usually used to allow the user to make some choice or to answer a question."))
-
-
 (defconstant +dialog-modal+ 32)
 (defconstant +dialog-modeless+ 0)
 

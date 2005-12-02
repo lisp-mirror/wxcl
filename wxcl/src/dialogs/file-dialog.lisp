@@ -1,17 +1,14 @@
 (in-package :wxcl-dialogs)
 
-(defclass file-dialog (dialog)
-  (:documentation "Pops up a file selector box."))
-
-(defconstant wxOPEN 1)
-(defconstant wxSAVE 2)
-(defconstant wxHIDE_READONLY 8)
-(defconstant wxMULTIPLE 32)
-(defconstant wxCHANGE_DIR 64)
-(defconstant wxOVERWRITE_PROMPT 4)
-(defconstant wxFILE_MUST_EXIST 16)
-(defconstant wxID_OK 5100)
-(defconstant wxID_CANCEL 5101)
+(defconstant +open+ 1)
+(defconstant +save+ 2)
+(defconstant +hide-readonly+ 8)
+(defconstant +multiple+ 32)
+(defconstant +change-dir+ 64)
+(defconstant +overwrite-prompt+ 4)
+(defconstant +file-must-exist+ 16)
+(defconstant +id-ok+ 5100)
+(defconstant +id-cancel+ 5101)
 
 
 (defun make-file-dialog (parent &key (message "") (dir "") (file "")

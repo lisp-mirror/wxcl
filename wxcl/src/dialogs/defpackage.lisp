@@ -11,7 +11,9 @@
     (:use #:common-lisp #:ffi :wxcl)
   ;;classes 
   (:export #:dialog
-           #:file-dialog)
+           #:file-dialog
+           #:colour-dialog)
+  ;;file-dialog class
   (:export #:+open+
            #:+save+
            #:+hide-readonly+
@@ -37,6 +39,7 @@
            #:with-file-dialog
            #:directory
            #:filename
+;;dialog class           
            #:+dialog-modal+
            #:+dialog-modeless+
            #:+caption+
@@ -53,4 +56,46 @@
            #:end-modal
            #:return-code
            #:return-code
-           #:with-dialog))
+           #:with-dialog
+;;colour-dialog class           
+           #:make-colour-dialog
+           #:with-colour-dialog
+;;message-dialog
+           #:+yes-no+
+           #:+no-default+
+           #:+yes-default+
+           #:+icon-exclamation+
+           #:+icon-hand+
+           #:+icon-question+
+           #:+icon-information+
+           ))
+
+(in-package :wxcl-dialogs)
+
+(defclass dialog (window)
+  (:documentation "A dialog box is a window with a title bar and sometimes a system menu,\
+ which can be moved around the screen. It can contain controls and other windows and is\
+ usually used to allow the user to make some choice or to answer a question."))
+
+(defclass file-dialog (dialog)
+  (:documentation "Pops up a file selector box."))
+
+(defclass colour-dialog (dialog)
+  (:documentation "This class represents the colour chooser dialog."))
+
+(defclass dir-dialog (dialog)
+  (:documentation "This class represents the directory chooser dialog."))
+
+(defclass font-dialog (dialog)
+  (:documentation "This class represents the font chooser dialog."))
+
+(defclass wizard (dialog)
+  (:documentation "This class implements 'wizard-like' dialogs. These\
+ dialogs are mostly familiar to Windows users and are nothing other than\
+ a sequence of 'pages', each displayed inside a dialog which has the buttons\
+ to navigate to the next (and previous) pages.")) 
+
+(defclass wizard-page-simple (dialog)
+  (:documentation "This is one of the screens in wxWizard: it must know what\
+ are the following and preceding pages (which may be NULL for the first/last page)."))
+

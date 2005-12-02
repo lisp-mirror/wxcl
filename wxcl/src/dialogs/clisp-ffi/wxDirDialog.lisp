@@ -7,23 +7,20 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxDirDialog
-    (:use :common-lisp :ffi :wxCL :wxWindow :wxDialog)
-  (:export :wxDirDialog_Create
-	   :wxDirDialog_SetMessage
-	   :wxDirDialog_SetPath
-	   :wxDirDialog_SetStyle
-	   :wxDirDialog_GetMessage
-	   :wxDirDialog_GetPath
-	   :wxDirDialog_GetStyle
-	   :wxcl-get-dir))
+; (defpackage :wxDirDialog
+;     (:use :common-lisp :ffi :wxCL :wxWindow :wxDialog)
+;   (:export :wxDirDialog_Create
+; 	   :wxDirDialog_SetMessage
+; 	   :wxDirDialog_SetPath
+; 	   :wxDirDialog_SetStyle
+; 	   :wxDirDialog_GetMessage
+; 	   :wxDirDialog_GetPath
+; 	   :wxDirDialog_GetStyle
+; 	   :wxcl-get-dir))
 
-(in-package :wxDirDialog)
+(in-package :wxcl-dialogs)
 
 (ffi:default-foreign-language :stdc)
-
-(defconstant wxID_OK 5100)
-(defconstant wxID_CANCEL 5101)
 
 (ffi:def-call-out wxDirDialog_Create
     (:name "wxDirDialog_Create")

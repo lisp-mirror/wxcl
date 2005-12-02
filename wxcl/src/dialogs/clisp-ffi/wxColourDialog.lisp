@@ -7,17 +7,14 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxColourDialog
-    (:use :common-lisp :ffi :wxCL :wxWindow :wxDialog :wxColourData :wxColour)
-  (:export :wxColourDialog_Create
-	   :wxColourDialog_GetColourData
-	   :wxcl-get-colour
-	   :wxcl-with-colout-dialog))
+; (defpackage :wxColourDialog
+;     (:use :common-lisp :ffi :wxCL :wxWindow :wxDialog :wxColourData :wxColour)
+;   (:export :wxColourDialog_Create
+; 	   :wxColourDialog_GetColourData
+; 	   :wxcl-get-colour
+; 	   :wxcl-with-colout-dialog))
 
-(in-package :wxColourDialog)
-
-(defconstant wxID_OK 5100)
-(defconstant wxID_CANCEL 5101)
+(in-package :wxcl-dialogs)
 
 (ffi:default-foreign-language :stdc)
 
@@ -42,17 +39,3 @@
 	   (setf ,dialog (wxColourDialog_Create ,parent ,colour-data))
 	   ,@body)
       (wxWindow_destroy ,dialog))))
-
-(defun wxcl-get-colour (parent &optional (colour nil))
-  (let ((colour-data (wxColourData_Create)))
-    (unwind-protect
-	 (progn
-	   (when colour
-	     (wxColourData_SetColour colour-data colour))
-	   (with-colour-dialog (dialog parent colour-data)
-	     (when (= (wxDialog_ShowModal dialog) wxID_OK)
-	       (let ((colour (wxColour_CreateEmpty)))
-		 (wxColourDialog_GetColourData dialog colour-data)
-		 (wxColourData_GetColour colour-data colour)
-		 colour))))
-      (wxColourData_Delete colour-data))))

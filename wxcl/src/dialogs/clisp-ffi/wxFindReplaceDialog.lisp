@@ -7,38 +7,33 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxFindReplaceDialog
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxFindReplaceData_CreateDefault
-	:wxFindReplaceData_Create
-	:wxFindReplaceData_Delete
-	:wxFindReplaceData_GetFindString
-	:wxFindReplaceData_GetReplaceString
-	:wxFindReplaceData_GetFlags
-	:wxFindReplaceData_SetFlags
-	:wxFindReplaceData_SetFindString
-	:wxFindReplaceData_SetReplaceString
-	:wxFindDialogEvent_GetFlags
-	:wxFindDialogEvent_GetFindString
-	:wxFindDialogEvent_GetReplaceString
-	:wxFindReplaceDialog_Create
-	:wxFindReplaceDialog_GetData
-	:wxFindReplaceDialog_SetData
-	:expEVT_COMMAND_FIND
-	:expEVT_COMMAND_FIND_NEXT
-	:expEVT_COMMAND_FIND_REPLACE
-	:expEVT_COMMAND_FIND_REPLACE_ALL
-	:expEVT_COMMAND_FIND_CLOSE))
+; (defpackage :wxFindReplaceDialog
+;   (:use :common-lisp :ffi :wxCL)
+;   (:export
+; 	:wxFindReplaceData_CreateDefault
+; 	:wxFindReplaceData_Create
+; 	:wxFindReplaceData_Delete
+; 	:wxFindReplaceData_GetFindString
+; 	:wxFindReplaceData_GetReplaceString
+; 	:wxFindReplaceData_GetFlags
+; 	:wxFindReplaceData_SetFlags
+; 	:wxFindReplaceData_SetFindString
+; 	:wxFindReplaceData_SetReplaceString
+; 	:wxFindDialogEvent_GetFlags
+; 	:wxFindDialogEvent_GetFindString
+; 	:wxFindDialogEvent_GetReplaceString
+; 	:wxFindReplaceDialog_Create
+; 	:wxFindReplaceDialog_GetData
+; 	:wxFindReplaceDialog_SetData
+; 	:expEVT_COMMAND_FIND
+; 	:expEVT_COMMAND_FIND_NEXT
+; 	:expEVT_COMMAND_FIND_REPLACE
+; 	:expEVT_COMMAND_FIND_REPLACE_ALL
+; 	:expEVT_COMMAND_FIND_CLOSE))
 
-(in-package :wxFindReplaceDialog)
+(in-package :wxcl-dialogs)
 
 (default-foreign-language :stdc)
-
-(def-call-out wxFindReplaceData_CreateDefault
-	(:name "wxFindReplaceData_CreateDefault")
-	(:return-type (c-pointer NIL))
-	(:library +library-name+))
 
 (def-call-out wxFindReplaceData_Create
 	(:name "wxFindReplaceData_Create")

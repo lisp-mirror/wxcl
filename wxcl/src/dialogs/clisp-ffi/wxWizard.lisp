@@ -7,24 +7,24 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxWizard
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxWizard_Create
-	:wxWizard_RunWizard
-	:wxWizard_GetCurrentPage
-	:wxWizard_Chain
-	:wxWizard_SetPageSize
-	:wxWizard_GetPageSize
-	:wxWizardPageSimple_Create
-	:wxWizardPageSimple_GetPrev
-	:wxWizardPageSimple_GetNext
-	:wxWizardPageSimple_GetBitmap
-	:wxWizardPageSimple_SetPrev
-	:wxWizardPageSimple_SetNext
-	:wxWizardEvent_GetDirection))
+; (defpackage :wxWizard
+;   (:use :common-lisp :ffi :wxCL)
+;   (:export
+; 	:wxWizard_Create
+; 	:wxWizard_RunWizard
+; 	:wxWizard_GetCurrentPage
+; 	:wxWizard_Chain
+; 	:wxWizard_SetPageSize
+; 	:wxWizard_GetPageSize
+; 	:wxWizardPageSimple_Create
+; 	:wxWizardPageSimple_GetPrev
+; 	:wxWizardPageSimple_GetNext
+; 	:wxWizardPageSimple_GetBitmap
+; 	:wxWizardPageSimple_SetPrev
+; 	:wxWizardPageSimple_SetNext
+; 	:wxWizardEvent_GetDirection))
 
-(in-package :wxWizard)
+(in-package :wxcl-dialogs)
 
 (ffi:default-foreign-language :stdc)
 
@@ -64,8 +64,8 @@
 (ffi:def-call-out wxWizard_SetPageSize
 	(:name "wxWizard_SetPageSize")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(w ffi:int)
-		(h ffi:int))
+               (w ffi:int :out)
+               (h ffi:int :out))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -120,4 +120,10 @@
 	(:name "wxWizardEvent_GetDirection")
 	(:arguments (_obj (ffi:c-pointer NIL)))
 	(:return-type ffi:int)
+	(:library +library-name+))
+
+(ffi:def-call-out wxWizardEvent_GetPage
+	(:name "wxWizardEvent_GetPage")
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))

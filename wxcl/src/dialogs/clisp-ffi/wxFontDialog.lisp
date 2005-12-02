@@ -7,17 +7,14 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxFontDialog
-    (:use :common-lisp :ffi :WxCL :wxWindow :wxDialog :wxFontData)
-  (:export :wxFontDialog_Create
-	   :wxFontDialog_GetFontData
-	   :wxcl-get-font-data
-	   :wxcl-with-font-dialog))
+; (defpackage :wxFontDialog
+;     (:use :common-lisp :ffi :WxCL :wxWindow :wxDialog :wxFontData)
+;   (:export :wxFontDialog_Create
+; 	   :wxFontDialog_GetFontData
+; 	   :wxcl-get-font-data
+; 	   :wxcl-with-font-dialog))
 
-(in-package :wxFontDialog)
-
-(defconstant wxID_OK 5100)
-(defconstant wxID_CANCEL 5101)
+(in-package :wxcl-dialogs)
 
 (ffi:default-foreign-language :stdc)
 

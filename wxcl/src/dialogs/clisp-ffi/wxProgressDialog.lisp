@@ -7,14 +7,14 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxProgressDialog
-    (:use :common-lisp :ffi :wxCL :wxWindow :wxDialog)
-    (:export :wxProgressDialog_Create
-	:wxProgressDialog_Update
-	:wxProgressDialog_UpdateWithMessage
-	:wxProgressDialog_Resume))
+; (defpackage :wxProgressDialog
+;     (:use :common-lisp :ffi :wxCL :wxWindow :wxDialog)
+;     (:export :wxProgressDialog_Create
+; 	:wxProgressDialog_Update
+; 	:wxProgressDialog_UpdateWithMessage
+; 	:wxProgressDialog_Resume))
 
-(in-package :wxProgressDialog)
+(in-package :wxcl-dialogs)
 
 (ffi:default-foreign-language :stdc)
 
