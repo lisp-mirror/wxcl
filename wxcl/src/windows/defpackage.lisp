@@ -155,3 +155,14 @@
   (:documentation "Class defining tool bar. You may also create a toolbar that is managed by\
  the frame, by calling the method create-tool-bar which specializes on a frame object."))
 
+(defclass tool-bar (window)
+  ()
+  (:documentation "Class defining tool bar. You may also create a toolbar that is managed by\
+ the frame, by calling the method create-tool-bar which specializes on a frame object."))
+
+(defclass tool-bar (window)
+  ()
+  (:documentation "Shows simple text in a popup tip window on creation. This is used by\
+ wxSimpleHelpProvider to show popup help. The window automatically destroys itself when\
+ the user clicks on it or it loses the focus."))   
+
