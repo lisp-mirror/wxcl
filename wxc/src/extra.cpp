@@ -1816,12 +1816,7 @@ EWXWEXPORT(wxProgressDialog*, wxProgressDialog_Create)( char* title, char* messa
   return new wxProgressDialog( title, message, max, parent, style );
 }
 
-EWXWEXPORT(int, wxProgressDialog_Update)(wxProgressDialog* obj, int value )
-{
-  return (obj->Update(value) ? 1 : 0);
-}
-
-EWXWEXPORT(int, wxProgressDialog_UpdateWithMessage)(wxProgressDialog* obj, int value, char* message )
+EWXWEXPORT(int, wxProgressDialog_Update)(wxProgressDialog* obj, int value,char *message )
 {
   return (obj->Update(value,message) ? 1 : 0);
 }
