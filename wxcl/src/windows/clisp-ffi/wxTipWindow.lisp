@@ -7,14 +7,6 @@
 ;;; $Header$
 ;;;
 
-; (defpackage :wxTipWindow
-;   (:use :common-lisp :ffi :wxCL)
-;   (:export
-; 	:wxTipWindow_Create
-; 	:wxTipWindow_SetTipWindowPtr
-; 	:wxTipWindow_SetBoundingRect
-; 	:wxTipWindow_Close))
-
 (in-package :wxcl-windows)
 
 (ffi:default-foreign-language :stdc)

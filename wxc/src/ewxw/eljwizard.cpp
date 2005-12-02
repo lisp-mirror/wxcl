@@ -3,15 +3,11 @@
 extern "C"
 {
 
-EWXWEXPORT(void*, wxWizard_Create) (void* _prt, int _id, void* _txt, void* _bmp, int _lft, int _top, int _wdt, int _hgt)
+EWXWEXPORT(void*, wxWizard_Create) (void* _prt, int _id, void* _txt, void* _bmp, int _lft, int _top)
 {
 	wxBitmap bmp = wxNullBitmap;
 	if (_bmp) bmp = *((wxBitmap*)_bmp);
-#if wxVERSION_NUMBER >= 2400
 	return (void*) new wxWizard ((wxWindow*)_prt, _id, (char*)_txt, bmp, wxPoint(_lft, _top));
-#else
-	return (void*) wxWizard::Create ((wxWindow*)_prt, _id, (char*)_txt, bmp, wxPoint(_lft, _top), wxSize(_wdt, _hgt));
-#endif
 }
 
 EWXWEXPORT(int, wxWizard_RunWizard)(void* _obj, void* firstPage)
@@ -34,11 +30,11 @@ EWXWEXPORT(void, wxWizard_SetPageSize)(void* _obj, int w, int h)
 	((wxWizard*)_obj)->SetPageSize(wxSize(w, h));
 }
 	
-EWXWEXPORT(void, wxWizard_GetPageSize)(void* _obj, void* w, void* h)
+EWXWEXPORT(void, wxWizard_GetPageSize)(void* _obj, int* w, int* h)
 {
 	wxSize tmp = ((wxWizard*)_obj)->GetPageSize();
-	*((int*)w) = tmp.x;
-	*((int*)h) = tmp.y;
+	*w = tmp.x;
+	*h = tmp.y;
 }
 	
 EWXWEXPORT(void*, wxWizardPageSimple_Create) (void* _prt)
@@ -74,6 +70,11 @@ EWXWEXPORT(void, wxWizardPageSimple_SetNext)(void* _obj, void* next)
 EWXWEXPORT(int, wxWizardEvent_GetDirection)(void* _obj)
 {
 	return (int)((wxWizardEvent*)_obj)->GetDirection();
+}
+
+EWXWEXPORT(wxWizardPageSimple*, wxWizardEvent_GetPage)(wxWizardEvent* _obj)
+{
+	return _obj->GetPage();
 }
 	
 }
