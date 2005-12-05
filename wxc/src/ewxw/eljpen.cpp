@@ -56,6 +56,11 @@ EWXWEXPORT(void, wxPen_SetColour)(void* _obj, void* col)
 {
 	((wxPen*)_obj)->SetColour(*((wxColour*)col));
 }
+
+EWXWEXPORT(void, wxPen_SetColourName)(wxPen* _obj, char* col)
+{
+	_obj->SetColour(col);
+}
 	
 EWXWEXPORT(void, wxPen_SetColourSingle)(void* _obj, char r, char g, char b)
 {
@@ -94,9 +99,10 @@ EWXWEXPORT(void, wxPen_SetCap)(void* _obj, int cap)
 	((wxPen*)_obj)->SetCap(cap);
 }
 	
-EWXWEXPORT(void, wxPen_GetColour)(void* _obj, void* _ref)
+EWXWEXPORT(wxColour*, wxPen_GetColour)(wxPen* _obj)
 {
-	*((wxColour*)_ref) = ((wxPen*)_obj)->GetColour();
+   wxColour* _ref= new wxColour(_obj->GetColour());
+   return _ref;
 }
 	
 EWXWEXPORT(int, wxPen_GetWidth)(void* _obj)
@@ -124,10 +130,10 @@ EWXWEXPORT(int, wxPen_GetDashes)(void* _obj, void* ptr)
 	return ((wxPen*)_obj)->GetDashes((wxDash**)ptr);
 }
 	
-EWXWEXPORT(void, wxPen_GetStipple)(void* _obj, void* _ref)
+EWXWEXPORT(wxBitmap*, wxPen_GetStipple)(wxPen* _obj)
 {
 #ifdef __WIN32__
-	*((wxBitmap*)_ref) = *(((wxPen*)_obj)->GetStipple());
+   return _obj->GetStipple();
 #endif
 }
 	

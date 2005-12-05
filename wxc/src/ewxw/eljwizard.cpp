@@ -52,9 +52,10 @@ EWXWEXPORT(void*, wxWizardPageSimple_GetNext)(void* _obj)
 	return (void*)((wxWizardPageSimple*)_obj)->GetNext();
 }
 	
-EWXWEXPORT(void, wxWizardPageSimple_GetBitmap)(void* _obj, void* _ref)
+EWXWEXPORT(wxBitmap*, wxWizardPageSimple_GetBitmap)(wxWizardPageSimple* _obj)
 {
-	*((wxBitmap*)_ref) = ((wxWizardPageSimple*)_obj)->GetBitmap();
+   wxBitmap* ref = new wxBitmap(_obj->GetBitmap());
+   return ref;
 }
 	
 EWXWEXPORT(void, wxWizardPageSimple_SetPrev)(void* _obj, void* prev)
@@ -72,7 +73,7 @@ EWXWEXPORT(int, wxWizardEvent_GetDirection)(void* _obj)
 	return (int)((wxWizardEvent*)_obj)->GetDirection();
 }
 
-EWXWEXPORT(wxWizardPageSimple*, wxWizardEvent_GetPage)(wxWizardEvent* _obj)
+EWXWEXPORT(wxWizardPage*, wxWizardEvent_GetPage)(wxWizardEvent* _obj)
 {
 	return _obj->GetPage();
 }

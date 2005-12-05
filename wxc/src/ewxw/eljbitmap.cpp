@@ -2,6 +2,7 @@
 
 extern "C"
 {
+EWXWEXPORT_VAR wxBitmap* wxNull_Bitmap=&wxNullBitmap;
 
 EWXWEXPORT(void*, wxBitmap_Create)(void* _data, int _type, int _width, int _height, int _depth)
 {
@@ -41,9 +42,10 @@ EWXWEXPORT(void, wxBitmap_Delete)(void* _obj)
 	delete (wxBitmap*)_obj;
 }
 
-EWXWEXPORT(void, wxBitmap_GetSubBitmap)(void* _obj, int x, int y, int w, int h, void* bitmap)
+EWXWEXPORT(wxBitmap*, wxBitmap_GetSubBitmap)(wxBitmap* _obj, int x, int y, int w, int h)
 {
-	(*(wxBitmap*)bitmap) = ((wxBitmap*)_obj)->GetSubBitmap(wxRect(x, y, w, h));
+   wxBitmap *bmp = new wxBitmap(_obj->GetSubBitmap(wxRect(x,y,w,h)));
+   return bmp;
 }
 	
 EWXWEXPORT(int, wxBitmap_LoadFile)(void* _obj, void* name, int type)
@@ -190,14 +192,16 @@ EWXWEXPORT(void, wxStaticBitmap_SetBitmap)(void* _obj, void* bitmap)
 	((wxStaticBitmap*)_obj)->SetBitmap(*((wxBitmap*)bitmap));
 }
 	
-EWXWEXPORT(void, wxStaticBitmap_GetIcon)(void* _obj, void* _ref)
+EWXWEXPORT(wxIcon*, wxStaticBitmap_GetIcon)(wxStaticBitmap* _obj)
 {
-	*((wxIcon*)_ref) = ((wxStaticBitmap*)_obj)->GetIcon();
+   wxIcon *ic = new wxIcon(_obj->GetIcon());
+   return  ic;
 }
 	
-EWXWEXPORT(void, wxStaticBitmap_GetBitmap)(void* _obj, void* _ref)
+EWXWEXPORT(wxBitmap*, wxStaticBitmap_GetBitmap)(wxStaticBitmap* _obj)
 {
-	*((wxBitmap*)_ref) = ((wxStaticBitmap*)_obj)->GetBitmap();
+   wxBitmap *bmp = new wxBitmap(_obj->GetBitmap());
+	return bmp;
 }
 	
 EWXWEXPORT(void, wxStaticBitmap_Delete)(void* _obj)
