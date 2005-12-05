@@ -113,7 +113,7 @@
 (ffi:def-call-out wxBrush_SetColourName
     (:name "wxBrush_SetColourName")
   (:arguments (_obj (ffi:c-pointer NIL))
-              (col ffi:c-string)))
+              (col ffi:c-string))
   (:return-type NIL)
   (:library +library-name+))
 

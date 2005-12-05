@@ -3,7 +3,7 @@
 (defun make-dir-dialog (parent &key (message "") (dir "") (position +default-position+) (style 0))
   (make-wx-instance 'dir-dialog
                     (wxDirDialog_Create (object-pointer parent)
-                                        _msg _dir (point-x position) (point-y position) style)))
+                                        message dir (point-x position) (point-y position) style)))
 
 (defmethod (setf message) (str (obj dir-dialog))
   (wxDirDialog_SetMessage (object-pointer obj) str))
@@ -32,3 +32,7 @@
 	   ,@body)
       (wxWindow_destroy ,dialog))))
 
+(defun wxcl-get-dir (parent &key (message "Choose a directory") (dir "")  (left -1) (top -1) (style 0))
+  (with-dir-dialog (dialog parent :message message :dir dir :left left :top top :style style)
+    (when (= (wxDialog_ShowModal dialog) wxID_OK)
+      (wxDirDialog_GetPath dialog))))

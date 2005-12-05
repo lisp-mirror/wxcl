@@ -7,13 +7,13 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxMask
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxMask_Create
-	:wxMask_CreateColoured))
+; (defpackage :wxMask
+;   (:use :common-lisp :ffi :wxCL)
+;   (:export
+; 	:wxMask_Create
+; 	:wxMask_CreateColoured))
 
-(in-package :wxMask)
+(in-package :wxcl-gdi)
 
 (ffi:default-foreign-language :stdc)
 

@@ -53,7 +53,7 @@
 (defmethod set-by-name ((obj colour) name)
   (wxColour_SetByName (object-pointer obj) name))
 
-(defmethod valid-name-p ((obj colour) name)
-  (= 1 (wxColour_ValidName (object-pointer obj) name)))
+(defun valid-colour-name-p (name)
+  (= 1 (wxColour_ValidName name)))
 
 

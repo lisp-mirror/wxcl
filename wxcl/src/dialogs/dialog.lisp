@@ -5,7 +5,7 @@
 
 (defconstant +caption+ 536870912)
 (defconstant +resize-border+ 64)
-(defconstant +thick-frame+ +resize-border) ;deprecated
+(defconstant +thick-frame+ +resize-border+) ;deprecated
 
 (defconstant +stay-on-top+ 32768)
 (defconstant +maximize+ 8192)

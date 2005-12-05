@@ -7,36 +7,6 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxFileDialog
-    (:use :common-lisp :ffi :wxCL :wxWindow :wxDialog)
-  (:export :wxFileDialog_Create
-	   :wxFileDialog_SetMessage
-	   :wxFileDialog_SetPath
-	   :wxFileDialog_SetDirectory
-	   :wxFileDialog_SetFilename
-	   :wxFileDialog_SetWildcard
-	   :wxFileDialog_SetStyle
-	   :wxFileDialog_SetFilterIndex
-	   :wxFileDialog_GetMessage
-	   :wxFileDialog_GetPath
-	   :wxFileDialog_GetPaths
-	   :wxFileDialog_GetDirectory
-	   :wxFileDialog_GetFilename
-	   :wxFileDialog_GetFilenames
-	   :wxFileDialog_GetWildcard
-	   :wxFileDialog_GetStyle
-	   :wxFileDialog_GetFilterIndex
-	   :with-file-dialog
-	   :wxcl-get-filepath
-	   :wxOPEN
-	   :wxSAVE
-	   :wxHIDE_READONLY
-	   :wxMULTIPLE
-	   :wxCHANGE_DIR
-	   :wxOVERWRITE_PROMPT
-	   :wxFILE_MUST_EXIST
-	   ))
-
 (in-package :wxcl-dialogs)
 
 (ffi:default-foreign-language :stdc)
@@ -181,20 +151,20 @@
   (:library +library-name+))
 
 
-(defmacro with-file-dialog ((dialog parent &key (message "") (dir "") (file "")
-				    (wildcard "*.*") (left -1) (top -1) (style 0)) &body body)
-  `(let (,dialog) 
-    (unwind-protect
-	 (progn
-	   (setf ,dialog (wxFileDialog_Create ,parent ,message ,dir ,file ,wildcard ,left ,top ,style))
-	   ,@body)
-      (wxWindow_destroy ,dialog))))
+; (defmacro with-file-dialog ((dialog parent &key (message "") (dir "") (file "")
+; 				    (wildcard "*.*") (left -1) (top -1) (style 0)) &body body)
+;   `(let (,dialog) 
+;     (unwind-protect
+; 	 (progn
+; 	   (setf ,dialog (wxFileDialog_Create ,parent ,message ,dir ,file ,wildcard ,left ,top ,style))
+; 	   ,@body)
+;       (wxWindow_destroy ,dialog))))
 
 
-(defun wxcl-get-filepath (parent &key (message "") (dir "") (file "") (wildcard "*.*")
-				 (left -1) (top -1) (style 0))
-  (with-file-dialog (dialog parent :message message :dir dir :file file :wildcard wildcard
- 			    :left left :top top :style style)
-    (when (= (wxDialog_ShowModal dialog) wxID_OK)
-	(wxFileDialog_GetPath dialog))))
+; (defun wxcl-get-filepath (parent &key (message "") (dir "") (file "") (wildcard "*.*")
+; 				 (left -1) (top -1) (style 0))
+;   (with-file-dialog (dialog parent :message message :dir dir :file file :wildcard wildcard
+;  			    :left left :top top :style style)
+;     (when (= (wxDialog_ShowModal dialog) wxID_OK)
+; 	(wxFileDialog_GetPath dialog))))
 

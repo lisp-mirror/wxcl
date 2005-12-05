@@ -52,6 +52,17 @@
      #:text
      #:width
      #:make-list-item
+;;accelerator symbols, constants
+     #:+accel-alt+
+     #:+accel-ctrl+
+     #:+accel-shift+
+     #:+accel-normal+
+     #:accelerator-entry
+     #:make-accelerator-entry
+     #:accelerator-table
+     #:make-accelerator-table
+     #:define-accelerator-table
+     #:delete-pointer
 	   ))
 
 (in-package :wxcl-structures)

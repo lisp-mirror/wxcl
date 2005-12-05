@@ -7,44 +7,50 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxBitmap
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxBitmap_Create
-	   :wxBitmap_CreateFromXPM
-	   :wxBitmap_CreateEmpty
-	   :wxBitmap_CreateLoad
-	   :wxBitmap_CreateDefault
-	   :wxBitmap_Delete
-	   :wxBitmap_GetSubBitmap
-	   :wxBitmap_LoadFile
-	   :wxBitmap_SaveFile
-	   :wxBitmap_GetMask
-	   :wxBitmap_SetMask
-	   :wxBitmap_AddHandler
-	   :wxBitmap_InsertHandler
-	   :wxBitmap_RemoveHandler
-	   :wxBitmap_FindHandlerByName
-	   :wxBitmap_FindHandlerByExtension
-	   :wxBitmap_FindHandlerByType
-	   :wxBitmap_InitStandardHandlers
-	   :wxBitmap_CleanUpHandlers
-	   :wxBitmap_Ok
-	   :wxBitmap_GetWidth
-	   :wxBitmap_GetHeight
-	   :wxBitmap_GetDepth
-	   :wxBitmap_SetWidth
-	   :wxBitmap_SetHeight
-	   :wxBitmap_SetDepth
-	   :wxStaticBitmap_Create
-	   :wxStaticBitmap_SetIcon
-	   :wxStaticBitmap_SetBitmap
-	   :wxStaticBitmap_GetIcon
-	   :wxStaticBitmap_GetBitmap
-	   :wxStaticBitmap_Delete))
+; (defpackage :wxBitmap
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export :wxBitmap_Create
+; 	   :wxBitmap_CreateFromXPM
+; 	   :wxBitmap_CreateEmpty
+; 	   :wxBitmap_CreateLoad
+; 	   :wxBitmap_CreateDefault
+; 	   :wxBitmap_Delete
+; 	   :wxBitmap_GetSubBitmap
+; 	   :wxBitmap_LoadFile
+; 	   :wxBitmap_SaveFile
+; 	   :wxBitmap_GetMask
+; 	   :wxBitmap_SetMask
+; 	   :wxBitmap_AddHandler
+; 	   :wxBitmap_InsertHandler
+; 	   :wxBitmap_RemoveHandler
+; 	   :wxBitmap_FindHandlerByName
+; 	   :wxBitmap_FindHandlerByExtension
+; 	   :wxBitmap_FindHandlerByType
+; 	   :wxBitmap_InitStandardHandlers
+; 	   :wxBitmap_CleanUpHandlers
+; 	   :wxBitmap_Ok
+; 	   :wxBitmap_GetWidth
+; 	   :wxBitmap_GetHeight
+; 	   :wxBitmap_GetDepth
+; 	   :wxBitmap_SetWidth
+; 	   :wxBitmap_SetHeight
+; 	   :wxBitmap_SetDepth
+; 	   :wxStaticBitmap_Create
+; 	   :wxStaticBitmap_SetIcon
+; 	   :wxStaticBitmap_SetBitmap
+; 	   :wxStaticBitmap_GetIcon
+; 	   :wxStaticBitmap_GetBitmap
+; 	   :wxStaticBitmap_Delete))
 
-(in-package :wxBitmap)
+(in-package :wxcl-gdi)
 
 (ffi:default-foreign-language :stdc)
+
+(ffi:def-c-var wxNull_Bitmap
+    (:name "wxNull_Bitmap")
+  (:type (ffi:c-ptr (ffi:c-pointer nil)))
+  (:read-only t)
+  (:library +library-name+))
 
 (ffi:def-call-out wxBitmap_Create
     (:name "wxBitmap_Create")
@@ -58,7 +64,7 @@
 
 (ffi:def-call-out wxBitmap_CreateFromXPM
     (:name "wxBitmap_CreateFromXPM")
-  (:arguments (_data (ffi:c-pointer NIL)))
+  (:arguments (_data (ffi:c-array-ptr (c-array-ptr uint8))))
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
@@ -94,9 +100,8 @@
 	      (x ffi:int)
 	      (y ffi:int)
 	      (w ffi:int)
-	      (h ffi:int)
-	      (bitmap (ffi:c-pointer NIL)))
-  (:return-type NIL)
+	      (h ffi:int))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxBitmap_LoadFile
@@ -250,16 +255,14 @@
 
 (ffi:def-call-out wxStaticBitmap_GetIcon
     (:name "wxStaticBitmap_GetIcon")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL) :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxStaticBitmap_GetBitmap
     (:name "wxStaticBitmap_GetBitmap")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL) :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxStaticBitmap_Delete

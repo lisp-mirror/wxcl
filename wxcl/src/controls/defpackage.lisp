@@ -9,6 +9,7 @@
 
 (defpackage :wxcl-controls
     (:use #:common-lisp #:ffi #:wxcl #:wxcl-structures #:wxcl-windows)
+    (:shadow #:directory)
     (:export
 
 ;; symbols common to multiple classes

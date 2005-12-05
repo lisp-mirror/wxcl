@@ -72,16 +72,3 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
-(defmacro with-dir-dialog ((dialog parent &key (message "Choose a directory") (dir "")
-				   (left -1) (top -1) (style 0)) &body body)
-  `(let (,dialog) 
-    (unwind-protect
-	 (progn
-	   (setf ,dialog (wxDirDialog_Create ,parent ,message ,dir ,left ,top ,style))
-	   ,@body)
-      (wxWindow_destroy ,dialog))))
-
-(defun wxcl-get-dir (parent &key (message "Choose a directory") (dir "")  (left -1) (top -1) (style 0))
-  (with-dir-dialog (dialog parent :message message :dir dir :left left :top top :style style)
-    (when (= (wxDialog_ShowModal dialog) wxID_OK)
-      (wxDirDialog_GetPath dialog))))

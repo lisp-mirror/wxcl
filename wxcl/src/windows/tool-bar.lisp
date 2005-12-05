@@ -9,7 +9,7 @@
 
 (in-package :wxcl-windows)
 
-(defconstant +tb-3dbuttons+ 16)
+(defconstant +tb-3d-buttons+ 16)
 (defconstant +tb-flat+ 32)
 (defconstant +tb-dockable+ 64)
 (defconstant +tb-vertical+ 8)
@@ -20,39 +20,23 @@
 		    (wxToolBar_Create (object-pointer parent) id (point-x pos) (point-y pos)
 				      (size-width size) (size-height size) style)))
 
-(defmethod delete ((obj tool-bar))
+(defmethod delete-object ((obj tool-bar))
   (wxToolBar_Delete (object-pointer obj))
   (invalidate-wx-instance obj))
 
-(defmethod add-control ((obj tool-bar) (ctrl control))
+(defmethod add-control ((obj tool-bar) (ctrl wxcl-controls:control))
     (= 1 (wxToolBar_AddControl (object-pointer obj) (object-pointer ctrl))))
 
 (defmethod add-separator ((obj tool-bar))
   (wxToolBar_AddSeparator (object-pointer obj)))
 
-; (defmethod wxToolBar_AddTool
-;     (:name "wxToolBar_AddTool")
-;   (:arguments (_obj (ffi:c-pointer NIL))
-; 	      (id ffi:int)
-; 	      (bmp (ffi:c-pointer NIL))
-; 	      (shelp ffi:c-string)
-; 	      (lhelp ffi:c-string))
-;   (:library +library-name+))
+(defmethod add-tool ((obj tool-bar) id (bmp wxcl-gdi:bitmap) &key (short-help "") (long-help ""))
+  (wxToolBar_AddTool (object-pointer obj) id (object-pointer bmp) short-help long-help))
 
-; (defmethod wxToolBar_AddToolEx
-;     (:name "wxToolBar_AddToolEx")
-;   (:arguments (_obj (ffi:c-pointer NIL))
-; 	      (id ffi:int)
-; 	      (bmp1 (ffi:c-pointer NIL))
-; 	      (bmp2 (ffi:c-pointer NIL))
-; 	      (tgl ffi:int)
-; 	      (x ffi:int)
-; 	      (y ffi:int)
-; 	      (dat (ffi:c-pointer NIL))
-; 	      (shelp (ffi:c-pointer NIL))
-; 	      (lhelp (ffi:c-pointer NIL)))
-;   (:return-type NIL)
-;   (:library +library-name+))
+(defmethod add-tool-ex ((obj tool-bar) id (bmp wxcl-gdi:bitmap) &key (bmp2 wxcl-gdi:+null-bitmap+)
+                        (toggle 0) (x -1)(y -1)(data nil) (short-help "") (long-help ""))
+  (wxToolBar_AddToolEx (object-pointer obj) id (object-pointer bmp) (object-pointer bmp2) toggle
+                       x y data short-help long-help))
 
 (defmethod delete-tool ((obj tool-bar) id)
   "Removes the specified tool from the toolbar and deletes it. If you don't want\
@@ -100,7 +84,7 @@
 (defmethod tool-state ((obj tool-bar) id)
   (= 1 (wxToolBar_GetToolState (object-pointer obj) id)))
 
-(defmethod insert-control ((obj tool-bar) pos (ctrl control))
+(defmethod insert-control ((obj tool-bar) pos (ctrl wxcl-controls:control))
   (wxToolBar_InsertControl (object-pointer obj) pos (object-pointer ctrl)))
 
 (defmethod insert-separator ((obj tool-bar) pos)

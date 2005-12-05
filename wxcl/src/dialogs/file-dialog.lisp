@@ -93,7 +93,7 @@
   (wxFileDialog_GetWildcard (object-pointer obj)))
 
 (defmethod style ((obj file-dialog))
-  (wxFileDialog_GetStyle (object-pointer obj))
+  (wxFileDialog_GetStyle (object-pointer obj)))
 
 (defmethod filter-index ((obj file-dialog))
   (wxFileDialog_GetFilterIndex (object-pointer obj)))

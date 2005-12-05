@@ -6,15 +6,6 @@
 ;;;
 ;;; $Header$
 ;;;
-;; This is an automatically generated file. 
-;;Make changes as you feel are necessary (but remember if you try to regenerate this file, your changes will be lost). 
-
-; (defpackage :wxMessageDialog
-;   (:use :common-lisp :ffi :wxCL)
-;   (:export :wxMessageDialog_Create
-; 	   :wxMessageDialog_Delete
-; 	   :wxMessageDialog_ShowModal
-; 	   :show-message-dialog))
 
 (in-package :wxcl-dialogs)
 

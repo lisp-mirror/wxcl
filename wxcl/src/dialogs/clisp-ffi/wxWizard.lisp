@@ -64,16 +64,16 @@
 (ffi:def-call-out wxWizard_SetPageSize
 	(:name "wxWizard_SetPageSize")
 	(:arguments (_obj (ffi:c-pointer NIL))
-               (w ffi:int :out)
-               (h ffi:int :out))
+               (w ffi:int)
+               (h ffi:int))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxWizard_GetPageSize
 	(:name "wxWizard_GetPageSize")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(w (ffi:c-pointer NIL))
-		(h (ffi:c-pointer NIL)))
+               (w (c-ptr int) :out)
+               (h (c-ptr int) :out))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -97,9 +97,8 @@
 
 (ffi:def-call-out wxWizardPageSimple_GetBitmap
 	(:name "wxWizardPageSimple_GetBitmap")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_ref (ffi:c-pointer NIL)))
-	(:return-type NIL)
+   (:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
 (ffi:def-call-out wxWizardPageSimple_SetPrev
@@ -122,8 +121,8 @@
 	(:return-type ffi:int)
 	(:library +library-name+))
 
-(ffi:def-call-out wxWizardEvent_GetPage
-	(:name "wxWizardEvent_GetPage")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type (ffi:c-pointer NIL))
-	(:library +library-name+))
+; (ffi:def-call-out wxWizardEvent_GetPage
+; 	(:name "wxWizardEvent_GetPage")
+; 	(:arguments (_obj (ffi:c-pointer NIL)))
+; 	(:return-type (ffi:c-pointer NIL))
+; 	(:library +library-name+))

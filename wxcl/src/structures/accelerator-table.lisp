@@ -21,7 +21,7 @@
 
 (defmacro define-accelerator-table (name &body body)
   (let ((size (length body)))
-    `(defvar name (make-wx-instance 'accelerator-table
+    `(defparameter name (make-wx-instance 'accelerator-table
                    (wxAcceleratorTable_Create size
                     (make-array ,size :initial-contents
                                 (list ,@(mapcar (lambda (x) `(wxAcceleratorEntry_Create ,@x)) body))))))))

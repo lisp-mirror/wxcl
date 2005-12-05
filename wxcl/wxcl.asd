@@ -18,7 +18,6 @@
 
 
 
-
 (defsystem wxCL
     :description "wxCL - Common Lisp bindings to wxWidgets Library."
     :version "1.1.2"
@@ -43,14 +42,19 @@
               :depends-on ("wxcl")
               :pathname ""
               :components ((:file "windows-defpackage" :depends-on ("events-defpackage") :pathname "windows/defpackage")
-                           (:file "gdi-defpackage" :pathname "gdi/defpackage")
+                           (:file "gdi-defpackage" :depends-on ("controls-defpackage")
+                                  :pathname "gdi/defpackage")
                            (:file "menus-defpackage" :depends-on ("windows-defpackage")
                                      :pathname "menus/defpackage")
                            (:file "controls-defpackage" 
-                                     :depends-on ("structures-defpackage" "windows-defpackage" "gdi-defpackage")
+                                     :depends-on ("structures-defpackage" "windows-defpackage")
                                      :pathname "controls/defpackage")
                            (:file "structures-defpackage" :pathname "structures/defpackage")
-                           (:file "events-defpackage" :pathname "events/defpackage")))
+                           (:file "events-defpackage" :pathname "events/defpackage")
+                           (:file "dialogs-defpackage"
+                                  :depends-on ("windows-defpackage")
+                                  :pathname "dialogs/defpackage"
+                                  )))
      (:module "clipboard"
                       :depends-on ("wxcl" "defpackage"))
      (:module "controls"
@@ -93,7 +97,25 @@
               :components ((:module "clisp-ffi")))
      (:module "dialogs"
               :depends-on ("wxcl" "defpackage")
-              :components ((:module "clisp-ffi")))
+              :components ((:module "clisp-ffi"
+                                    :components ((:file "wxDialog")
+                                                 (:file "wxColourDialog")
+                                                 (:file "wxDirDialog")
+                                                 (:file "wxFileDialog")
+                                                 (:file "wxFindReplaceDialog")
+                                                 (:file "wxFontDialog")
+                                                 (:file "wxMessageDialog")
+                                                 (:file "wxProgressDialog")
+                                                 (:file "wxWizard")))
+                           (:file "dialog" :depends-on ("clisp-ffi"))
+                           (:file "dir-dialog" :depends-on ("dialog"))
+                           (:file "file-dialog" :depends-on ("dialog"))
+                           (:file "colour-dialog" :depends-on ("dialog"))
+                           (:file "font-dialog" :depends-on ("dialog"))
+                           (:file "message-dialog" :depends-on ("dialog"))
+                           (:file "progress-dialog" :depends-on ("dialog"))
+                           (:file "find-replace-dialog" :depends-on ("dialog"))
+                           (:file "wizard" :depends-on ("dialog"))))
      (:module "structures"
               :depends-on ("wxcl" "defpackage")
               :components ((:module "clisp-ffi"
@@ -109,8 +131,22 @@
      (:module "gdi"
               :depends-on ("wxcl" "defpackage")
               :components ((:module "clisp-ffi"
-                                    :components ((:file "wxColour")))
-                           (:file "colour" :depends-on ("clisp-ffi"))))
+                                    :components ((:file "wxColour")
+                                                 (:file "wxBrush")
+                                                 (:file "wxPen")
+                                                 (:file "wxFont")
+                                                 (:file "wxIcon")
+                                                 (:file "wxBitmap")
+                                                 (:file "wxMask")
+                                                 (:file "wxImage")))
+                           (:file "colour" :depends-on ("clisp-ffi"))
+                           (:file "bitmap" :depends-on ("clisp-ffi"))
+                           (:file "font" :depends-on ("clisp-ffi"))
+                           (:file "icon" :depends-on ("bitmap"))
+                           (:file "pen" :depends-on ("clisp-ffi"))
+                           (:file "static-bitmap" :depends-on ("clisp-ffi"))
+                           (:file "brush" :depends-on ("clisp-ffi"))
+                           (:file "mask" :depends-on ("clisp-ffi"))))
      (:module "help")
      #+never(:module "layout"
                      :depends-on ("wxcl" "defpackage")
@@ -147,7 +183,8 @@
                            (:file "window" :depends-on ("clisp-ffi"))
                            (:file "frame" :depends-on ("window"))
                            (:file "panel" :depends-on ("window")) 
-                           (:file "status-bar" :depends-on ("window")))
+                           (:file "status-bar" :depends-on ("window"))
+                           (:file "tool-bar" :depends-on ("window")))
               )))
 
 ;(push :wxcl *features*)

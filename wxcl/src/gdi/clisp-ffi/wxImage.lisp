@@ -7,48 +7,48 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxImage
-    (:use :common-lisp :ffi :wxCL)
-  (:export :with-image-file
-	   :wxImage_CreateDefault
-	   :wxImage_CreateSized
-	   :wxImage_CreateFromData
-	   :wxImage_CreateFromFile
-	   :wxImage_CreateFromBitmap
-	   :wxImage_ConvertToBitmap
-	   :wxImage_Initialize
-	   :wxImage_InitializeFromData
-	   :wxImage_Destroy
-	   :wxImage_GetSubImage
-	   :wxImage_Paste
-	   :wxImage_Scale
-	   :wxImage_Rescale
-	   :wxImage_Rotate
-	   :wxImage_Rotate90
-	   :wxImage_Mirror
-	   :wxImage_Replace
-	   :wxImage_SetRGB
-	   :wxImage_GetRed
-	   :wxImage_GetGreen
-	   :wxImage_GetBlue
-	   :wxImage_CanRead
-	   :wxImage_LoadFile
-	   :wxImage_SaveFile
-	   :wxImage_Ok
-	   :wxImage_GetWidth
-	   :wxImage_GetHeight
-	   :wxImage_GetData
-	   :wxImage_SetData
-	   :wxImage_SetDataAndSize
-	   :wxImage_SetMaskColour
-	   :wxImage_GetMaskRed
-	   :wxImage_GetMaskGreen
-	   :wxImage_GetMaskBlue
-	   :wxImage_SetMask
-	   :wxImage_HasMask
-	   :wxImage_CountColours))
+; (defpackage :wxImage
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export :with-image-file
+; 	   :wxImage_CreateDefault
+; 	   :wxImage_CreateSized
+; 	   :wxImage_CreateFromData
+; 	   :wxImage_CreateFromFile
+; 	   :wxImage_CreateFromBitmap
+; 	   :wxImage_ConvertToBitmap
+; 	   :wxImage_Initialize
+; 	   :wxImage_InitializeFromData
+; 	   :wxImage_Destroy
+; 	   :wxImage_GetSubImage
+; 	   :wxImage_Paste
+; 	   :wxImage_Scale
+; 	   :wxImage_Rescale
+; 	   :wxImage_Rotate
+; 	   :wxImage_Rotate90
+; 	   :wxImage_Mirror
+; 	   :wxImage_Replace
+; 	   :wxImage_SetRGB
+; 	   :wxImage_GetRed
+; 	   :wxImage_GetGreen
+; 	   :wxImage_GetBlue
+; 	   :wxImage_CanRead
+; 	   :wxImage_LoadFile
+; 	   :wxImage_SaveFile
+; 	   :wxImage_Ok
+; 	   :wxImage_GetWidth
+; 	   :wxImage_GetHeight
+; 	   :wxImage_GetData
+; 	   :wxImage_SetData
+; 	   :wxImage_SetDataAndSize
+; 	   :wxImage_SetMaskColour
+; 	   :wxImage_GetMaskRed
+; 	   :wxImage_GetMaskGreen
+; 	   :wxImage_GetMaskBlue
+; 	   :wxImage_SetMask
+; 	   :wxImage_HasMask
+; 	   :wxImage_CountColours))
 
-(in-package :wxImage)
+(in-package :wxcl-gdi)
 
 (ffi:default-foreign-language :stdc)
 

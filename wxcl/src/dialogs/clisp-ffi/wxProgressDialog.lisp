@@ -7,13 +7,6 @@
 ;;; $Header$
 ;;;
 
-; (defpackage :wxProgressDialog
-;     (:use :common-lisp :ffi :wxCL :wxWindow :wxDialog)
-;     (:export :wxProgressDialog_Create
-; 	:wxProgressDialog_Update
-; 	:wxProgressDialog_UpdateWithMessage
-; 	:wxProgressDialog_Resume))
-
 (in-package :wxcl-dialogs)
 
 (ffi:default-foreign-language :stdc)
@@ -32,13 +25,6 @@
 
 (ffi:def-call-out wxProgressDialog_Update
 	(:name "wxProgressDialog_Update")
-	(:arguments (obj (ffi:c-pointer wxProgressDialog))
-		(value ffi:int))
-	(:return-type ffi:int)
-	(:library +library-name+))
-
-(ffi:def-call-out wxProgressDialog_UpdateWithMessage
-	(:name "wxProgressDialog_UpdateWithMessage")
 	(:arguments (obj (ffi:c-pointer wxProgressDialog))
 		(value ffi:int)
 		(message ffi:c-string))

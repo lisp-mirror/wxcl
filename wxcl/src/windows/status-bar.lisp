@@ -20,7 +20,7 @@
     st))
 
 (defmethod (setf fields-count) (num (obj status-bar) &optional (width nil))
-  "Sets the number of fields, and optionally the field widths which is a vector or arrya."
+  "Sets the number of fields, and optionally the field widths which is a vector or array."
   (wxStatusBar_SetFieldsCount (object-pointer obj) num width))
 
 (defmethod fields-count ((obj status-bar))

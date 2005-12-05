@@ -18,7 +18,7 @@
 ;                              (wxAcceleratorEntry_Create flags key-code cmd))))
 ;     inst))
 
- (defmethod print-object ((ae accelerator-entry) stream)
+(defmethod print-object ((ae accelerator-entry) stream)
    (print-unreadable-object (ae stream :identity t)
      (format stream "~S :flags ~A :key-code ~A :command ~A"
  	    (class-name (class-of pt))

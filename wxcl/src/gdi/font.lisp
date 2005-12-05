@@ -102,11 +102,11 @@ string if there is no typeface information."
 
 (defmethod font-family ((obj font))
     "Returns the font's family."
-    (wxFont_GetFontFamily (object-pointer obj)))
+    (wxFont_GetFamily (object-pointer obj)))
 
 (defmethod (setf font-family) (family (obj font))
     "Sets the font's family."
-    (wxFont_SetFontFamily (object-pointer obj) family))
+    (wxFont_SetFamily (object-pointer obj) family))
 
 #|
 (defmethod native-font-info ((obj font))
@@ -148,11 +148,11 @@ it is a proportional one or the font is invalid."
 
 (defmethod underlined ((obj font))
     "Returns T if the font has the underlining attribute set, nil otherwise."
-    (not (= wxFont_GetUnderlined (object-pointer obj) 0)))
+    (= (wxFont_GetUnderlined (object-pointer obj)) 0))
 
 (defmethod (setf underlined) (flag (obj font))
     "Pass T if the font should be underlined, or pass nil if it should not."
-    (wxFont_SetUnderlined (object-pointer obj) (flag 1 0)))
+    (wxFont_SetUnderlined (object-pointer obj) (if flag 1 0)))
 
 (defmethod weight ((obj font))
     "Returns the font's weight."
@@ -160,4 +160,4 @@ it is a proportional one or the font is invalid."
 
 (defmethod (setf weight) (weight (obj font))
     "Sets the font's weight."
-    (wxFont_SetWeight (object-pointer obj) wt))
+    (wxFont_SetWeight (object-pointer obj) weight))

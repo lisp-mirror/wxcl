@@ -7,45 +7,45 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxPen
-    (:use :common-lisp :ffi :wxCL)
-  (:export
-   :wxPen_CreateDefault
-   :wxPen_CreateFromColour
-   :wxPen_CreateFromBitmap
-   :wxPen_CreateFromStock
-   :wxPen_Delete
-   :wxPen_Assign
-   :wxPen_IsEqual
-   :wxPen_Ok
-   :wxPen_SetColour
-   :wxPen_SetColourSingle
-   :wxPen_SetWidth
-   :wxPen_SetStyle
-   :wxPen_SetStipple
-   :wxPen_SetDashes
-   :wxPen_SetJoin
-   :wxPen_SetCap
-   :wxPen_GetColour
-   :wxPen_GetWidth
-   :wxPen_GetStyle
-   :wxPen_GetJoin
-   :wxPen_GetCap
-   :wxPen_GetDashes
-   :wxPen_GetStipple
-   :wxRed_Pen
-   :wxBlack_Pen
-   :wxBlack_Dashed_Pen
-   :wxWhite_Pen
-   :wxRed_Pen
-   :wxGreen_Pen
-   :wxCyan_Pen
-   :wxLight_Grey_Pen
-   :wxMedium_Grey_Pen
-   :wxTransparent_Pen
-   :wxGrey_Pen))
+; (defpackage :wxPen
+;     (:use :common-lisp :ffi :wxCL)
+;   (:export
+;    :wxPen_CreateDefault
+;    :wxPen_CreateFromColour
+;    :wxPen_CreateFromBitmap
+;    :wxPen_CreateFromStock
+;    :wxPen_Delete
+;    :wxPen_Assign
+;    :wxPen_IsEqual
+;    :wxPen_Ok
+;    :wxPen_SetColour
+;    :wxPen_SetColourSingle
+;    :wxPen_SetWidth
+;    :wxPen_SetStyle
+;    :wxPen_SetStipple
+;    :wxPen_SetDashes
+;    :wxPen_SetJoin
+;    :wxPen_SetCap
+;    :wxPen_GetColour
+;    :wxPen_GetWidth
+;    :wxPen_GetStyle
+;    :wxPen_GetJoin
+;    :wxPen_GetCap
+;    :wxPen_GetDashes
+;    :wxPen_GetStipple
+;    :wxRed_Pen
+;    :wxBlack_Pen
+;    :wxBlack_Dashed_Pen
+;    :wxWhite_Pen
+;    :wxRed_Pen
+;    :wxGreen_Pen
+;    :wxCyan_Pen
+;    :wxLight_Grey_Pen
+;    :wxMedium_Grey_Pen
+;    :wxTransparent_Pen
+;    :wxGrey_Pen))
 
-(in-package :wxPen)
+(in-package :wxcl-gdi)
 
 (ffi:default-foreign-language :stdc)
 
@@ -155,20 +155,24 @@
   (:return-type ffi:int)
   (:library +library-name+))
 
+(ffi:def-call-out wxPen_SetColourName
+    (:name "wxPen_SetColourName")
+  (:arguments (_obj (ffi:c-pointer NIL))
+              (name c-string))
+  (:library +library-name+))
+
 (ffi:def-call-out wxPen_SetColour
     (:name "wxPen_SetColour")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (col (ffi:c-pointer NIL)))
-  (:return-type NIL)
   (:library +library-name+))
 
-(ffi:def-call-out wxPen_SetColourSingle
+(ffi:def-call-out wxPen_SetColourRGB
     (:name "wxPen_SetColourSingle")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (r character)
-	      (g character)
-	      (b character))
-  (:return-type NIL)
+	      (r uint8)
+	      (g uint8)
+	      (b uint8))
   (:library +library-name+))
 
 (ffi:def-call-out wxPen_SetWidth
@@ -216,9 +220,8 @@
 
 (ffi:def-call-out wxPen_GetColour
     (:name "wxPen_GetColour")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxPen_GetWidth
@@ -254,7 +257,6 @@
 
 (ffi:def-call-out wxPen_GetStipple
     (:name "wxPen_GetStipple")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))

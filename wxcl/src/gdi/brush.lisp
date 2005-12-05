@@ -39,31 +39,31 @@
   (wxBrush_SetColour (object-pointer obj) (object-pointer col)))
 
 (defmethod (setf colour) (name (obj brush))
-  (wxBrush_SetColourString (object-pointer obj) colour))
+  (wxBrush_SetColourName (object-pointer obj) name))
               
 (defmethod set-colour-rgb ((obj brush) r g b)
-  (wxBrush_SetColourSingle (object-pointer obj) r g b))
+  (wxBrush_SetColourRGB (object-pointer obj) r g b))
 
 (defmethod (setf style) (sty (obj brush))
   (wxBrush_SetStyle (object-pointer obj) sty))
 
-(defmethod (setf stipple) (bmp (obj brush))
+(defmethod (setf stipple) ((bmp bitmap) (obj brush))
   (wxBrush_SetStipple (object-pointer obj) (object-pointer bmp)))
 
-(defmethod assign ((obj brush) brush)
+(defmethod assign ((obj brush) (brush brush))
   (wxBrush_Assign (object-pointer obj) (object-pointer brush)))
 
-(defmethod equal-p ((obj brush) brush)
+(defmethod equal-p ((obj brush) (brush brush))
   (= 1 (wxBrush_IsEqual (object-pointer obj) (object-pointer brush))))
 
 (defmethod colour ((obj brush))
-  (make-wx-instance 'brush (wxBrush_GetColour (object-pointer obj))))
+  (make-wx-instance 'colour (wxBrush_GetColour (object-pointer obj))))
 
 (defmethod style ((obj brush))
   (wxBrush_GetStyle (object-pointer obj)))
 
 (defmethod stipple ((obj brush))
-  (make-wx-instance 'stipple (wxBrush_GetStipple (object-pointer obj))))
+  (make-wx-instance 'bitmap (wxBrush_GetStipple (object-pointer obj))))
 
 (defmethod ok-p ((obj brush))
   (= 1 (wxBrush_Ok (object-pointer obj))))
