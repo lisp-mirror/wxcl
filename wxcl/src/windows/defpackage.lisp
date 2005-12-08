@@ -49,10 +49,12 @@
 	   #:tool-bitmap-size
 	   #:margins
 	   #:tool-client-data
-	   #:tool-enabled
+	   #:tool-enabled-p
 	   #:tool-long-help
 	   #:tool-packing
 	   #:tool-state
+      #:add-tool
+      #:add-tool-ex
 	   #:insert-control
 	   #:insert-separator
 	   #:realize
@@ -107,6 +109,8 @@
       #:+fullscreen-noborder+
       #:+fullscreen-nocaption+
       #:+fullscreen-all+
+;;window related methods, functions, etc
+      #:close-window
 	   ))
 
 (in-package :wxcl-windows)

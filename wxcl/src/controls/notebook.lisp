@@ -26,13 +26,13 @@
   (wxNotebook_GetPageText (object-pointer obj) page))
 
 (defmethod (setf image-list) (lst (obj notebook))
-  (wxNotebook_SetImageList lst))
+  (wxNotebook_SetImageList (object-pointer obj) lst))
 
 (defmethod image-list ((obj notebook))
   (wxNotebook_GetImageList (object-pointer obj)))
 
 (defmethod page-image ((obj notebook) page)
-  (wxNotebook_GetPageImage page))
+  (wxNotebook_GetPageImage (object-pointer obj) page))
 
 (defmethod (setf page-image) (image (obj notebook) page)
   (= 1 (wxNotebook_SetPageImage (object-pointer obj) page image)))

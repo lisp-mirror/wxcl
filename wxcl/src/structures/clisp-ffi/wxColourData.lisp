@@ -6,20 +6,7 @@
 ;;;
 ;;; $Header$
 ;;;
-
-(defpackage :wxColourData
-  (:use :common-lisp :ffi :wxCL)
-  (:export
-	:wxColourData_Create
-	:wxColourData_Delete
-	:wxColourData_SetChooseFull
-	:wxColourData_GetChooseFull
-	:wxColourData_SetColour
-	:wxColourData_GetColour
-	:wxColourData_SetCustomColour
-	:wxColourData_GetCustomColour))
-
-(in-package :wxColourData)
+(in-package :wxcl-structures)
 
 (ffi:default-foreign-language :stdc)
 

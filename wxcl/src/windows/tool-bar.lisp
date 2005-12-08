@@ -15,7 +15,7 @@
 (defconstant +tb-vertical+ 8)
 (defconstant +tb-horizontal+ 4)
 
-(defun make-tool-bar (parent id &key (pos default-position) (size default-size) (style +tb-horizontal+))
+(defun make-tool-bar (parent id &key (pos +default-position+) (size +default-size+) (style +tb-horizontal+))
   (make-wx-instance 'tool-bar
 		    (wxToolBar_Create (object-pointer parent) id (point-x pos) (point-y pos)
 				      (size-width size) (size-height size) style)))
@@ -42,7 +42,7 @@
   "Removes the specified tool from the toolbar and deletes it. If you don't want\
  to delete the tool, but just to remove it from the toolbar (to possibly add it\
  back later), you may use RemoveTool instead." 
-    (= 1 (wxToolBar_DeleteTool (object-pointer id))))
+    (= 1 (wxToolBar_DeleteTool (object-pointer obj) id)))
 
 (defmethod delete-tool-by-pos ((obj tool-bar) pos)
   (= 1 (wxToolBar_DeleteToolByPos (object-pointer obj) pos)))
@@ -69,8 +69,8 @@
  (make-wx-instance 'object
 		   (wxToolBar_GetToolClientData (object-pointer obj) id)))
 
-(defmethod tool-enabled ((obj tool-bar))
-  (= 1 (wxToolBar_GetToolEnabled (object-pointer obj))))
+(defmethod tool-enabled-p ((obj tool-bar) id)
+  (= 1 (wxToolBar_GetToolEnabled (object-pointer obj) id)))
 
 (defmethod tool-long-help ((obj tool-bar) id)
   (wxToolBar_GetToolLongHelp  (object-pointer obj) id))
@@ -111,7 +111,7 @@
   (wxToolBar_RemoveTool (object-pointer obj) id))
 
 (defmethod (setf margins) (sz (obj tool-bar))
-  (wxToolBar_SetMargins (object-pointer obj) (size-width x) (size-height y)))
+  (wxToolBar_SetMargins (object-pointer obj) (size-width sz) (size-height sz)))
 
 (defmethod (setf tool-bitmap-size) (sz (obj tool-bar))
   (wxToolBar_SetToolBitmapSize (object-pointer obj) (size-width sz) (size-height sz)))

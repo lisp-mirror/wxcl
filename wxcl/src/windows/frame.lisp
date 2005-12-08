@@ -46,11 +46,6 @@
 (defmethod iconized-p ((obj frame))
   (= 1 (wxFrame_IsIconized (object-pointer obj))))
 
-(defmethod icon ((obj frame))
-  (let ((ic (make-instance 'icon)))
-    (setf (slot-value ic 'object) (wxFrame_GetIcon (object-pointer obj)))
-    ic))
-
 (defmethod (setf icon) (ic (obj frame))
     (wxFrame_SetIcon (object-pointer obj) (object-pointer ic)))
 
@@ -74,7 +69,7 @@
 (defmethod status-bar ((obj frame))
   (make-wx-instance 'status-bar (wxFrame_GetStatusBar (object-pointer obj))))
 
-(defmethod (setf tool-bar) (tb tool-bar (obj frame))
+(defmethod (setf tool-bar) (tb (obj frame))
   (wxFrame_SetToolBar (object-pointer obj) (object-pointer tb)))
 
 (defmethod tool-bar ((obj frame))

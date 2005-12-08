@@ -21,7 +21,7 @@
 (defmethod print-object ((ae accelerator-entry) stream)
    (print-unreadable-object (ae stream :identity t)
      (format stream "~S :flags ~A :key-code ~A :command ~A"
- 	    (class-name (class-of pt))
+ 	    (class-name (class-of ae))
  	    (flags ae)
         (key-code ae)
         (command ae)))

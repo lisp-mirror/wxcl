@@ -32,10 +32,3 @@
   (:return-type NIL)
   (:library +library-name+))
 
-(defmacro with-colour-dialog ((dialog parent &optional (colour-data nil)) &body body)
-  `(let (,dialog) 
-    (unwind-protect
-	 (progn
-	   (setf ,dialog (wxColourDialog_Create ,parent ,colour-data))
-	   ,@body)
-      (wxWindow_destroy ,dialog))))

@@ -125,11 +125,12 @@ EWXWEXPORT(int, wxListItem_GetState)(void* _obj)
 	return (int)((wxListItem*)_obj)->GetState();
 }
 	
-EWXWEXPORT(int, wxListItem_GetText)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxListItem_GetText)(void* _obj)
 {
 	wxString result = ((wxListItem*)_obj)->GetText();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	return buf;
 }
 	
 EWXWEXPORT(int, wxListItem_GetImage)(void* _obj)
@@ -162,19 +163,22 @@ EWXWEXPORT(int, wxListItem_HasAttributes)(void* _obj)
 	return (int)((wxListItem*)_obj)->HasAttributes();
 }
 	
-EWXWEXPORT(void, wxListItem_GetTextColour)(void* _obj, void* _ref)
+EWXWEXPORT(wxColour*, wxListItem_GetTextColour)(void* _obj)
 {
-	*((wxColour*)_ref) = ((wxListItem*)_obj)->GetTextColour();
+   wxColour* _ref = new wxColour(((wxListItem*)_obj)->GetTextColour());
+   return _ref;
 }
 	
-EWXWEXPORT(void, wxListItem_GetBackgroundColour)(void* _obj, void* _ref)
+EWXWEXPORT(wxColour*, wxListItem_GetBackgroundColour)(void* _obj)
 {
-	*((wxColour*)_ref) = ((wxListItem*)_obj)->GetBackgroundColour();
+   wxColour* _ref = new wxColour(((wxListItem*)_obj)->GetBackgroundColour());
+   return _ref;
 }
 	
-EWXWEXPORT(void, wxListItem_GetFont)(void* _obj, void* _ref)
+EWXWEXPORT(wxFont*, wxListItem_GetFont)(void* _obj)
 {
-	*((wxFont*)_ref) = ((wxListItem*)_obj)->GetFont();
+   wxFont* _ref = new wxFont(((wxListItem*)_obj)->GetFont());
+   return _ref;
 }
 	
 EWXWEXPORT(void*, wxListCtrl_Create) (void* _prt, int _id, int _lft, int _top, int _wdt, int _hgt, int _stl)
@@ -256,14 +260,12 @@ EWXWEXPORT(int, wxListCtrl_SetItemImage)(void* _obj, int item, int image, int se
 	return (int)((wxListCtrl*)_obj)->SetItemImage((long)item, image, selImage);
 }
 	
-EWXWEXPORT(int, wxListCtrl_GetItemText)(void* _obj, int item, void* buf)
+EWXWEXPORT(char*, wxListCtrl_GetItemText)(void* _obj, int item)
 {
 	wxString res = ((wxListCtrl*)_obj)->GetItemText((long)item);
-
-	if (buf)
-		memcpy(buf, res.c_str(), res.Length());
-
-	return res.Length();
+	char *buf = (char*)malloc(res.Length()*sizeof(char));
+	if (buf) strcpy (buf, res.c_str());
+	return buf;
 }
 	
 EWXWEXPORT(void, wxListCtrl_SetItemText)(void* _obj, int item, void* str)

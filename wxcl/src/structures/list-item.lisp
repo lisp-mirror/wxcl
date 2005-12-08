@@ -38,9 +38,7 @@
 
 (defmethod background-colour ((obj list-item))
     "Returns the background colour for this item."
-    (let ((colour (make-colour)))
-        (wxListItem_GetBackgroundColour (object-pointer obj) (object-pointer colour))
-        colour))
+    (make-wx-instance 'wxcl-gdi:colour (wxListItem_GetBackgroundColour (object-pointer obj) (object-pointer colour))))
 
 (defmethod (setf background-colour) (colour (obj list-item))
     "Sets the background colour for this item."
@@ -92,15 +90,13 @@
     ;;
     (wxListItem_SetDataPointer (object-pointer obj) value))
 
-(defmethod delete ((obj list-item))
+(defmethod delete-object ((obj list-item))
     "FIXME: undocumented method"
     (wxListItem_Delete (object-pointer obj)))
 
 (defmethod font ((obj list-item))
     "Returns the font for the item."
-    (let ((font (make-font 10 +font-family-default+ +font-style-normal+ +font-weight-normal+)))
-        (wxListItem_GetFont (object-pointer obj) (object-pointer font))
-        font))
+    (make-wx-instance 'wxcl-gdi:font (wxListItem_GetFont (object-pointer obj))))
 
 (defmethod (setf font) (font (obj list-item))
     "Sets the font for the item."
@@ -142,11 +138,6 @@ valid."
 influenced by the value of the state mask."
     (wxListItem_SetState (object-pointer obj) bits))
 
-(defmethod state-mask ((obj list-item))
-    "Returns the bitmask that is used to determine which of the state \
-flags are to be set."
-    (wxListItem_GetStateMask (object-pointer obj)))
-
 (defmethod (setf state-mask) (mask (obj list-item))
     "Sets the bitmask that is used to determine which of the state \
 flags are to be set."
@@ -154,21 +145,16 @@ flags are to be set."
 
 (defmethod text ((obj list-item))
     "Returns the label/header text."
-    ;; FIXME: work through an example to see how these GetText sorts of
-    ;; methods are really supposed to work, then go back and fix the
-    ;; wrappers I have written.
-    ;;
     (wxListItem_GetText (object-pointer obj)))
 
 (defmethod (setf text) (text (obj list-item))
     "Sets the label/header text."
-    (wxListItem_SetText (object-pointer obj) text)) ;FIXME: need to create wxString?
+     ;FIXME: need to create wxString?
+    (wxListItem_SetText (object-pointer obj) text))
 
 (defmethod text-colour ((obj list-item))
     "Returns the text colour for this item."
-    (let ((colour (make-colour)))
-        (wxListItem_GetTextColour (object-pointer obj) (object-pointer colour))
-        colour))
+    (make-wx-instance 'wxcl-gdi:colour (wxListItem_GetTextColour (object-pointer obj))))
 
 (defmethod (setf text-colour) (colour (obj list-item))
     "Sets the text colour for the item."

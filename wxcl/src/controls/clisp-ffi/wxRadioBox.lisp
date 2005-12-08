@@ -68,9 +68,8 @@
 (ffi:def-call-out wxRadioBox_GetItemLabel
 	(:name "wxRadioBox_GetItemLabel")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(item ffi:int)
-		(_buf (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
+               (item ffi:int))
+	(:return-type c-string :malloc-free)
 	(:library +library-name+))
 
 (ffi:def-call-out wxRadioBox_EnableItem
@@ -91,9 +90,8 @@
 
 (ffi:def-call-out wxRadioBox_GetStringSelection
 	(:name "wxRadioBox_GetStringSelection")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_buf (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type c-string :malloc-free)
 	(:library +library-name+))
 
 (ffi:def-call-out wxRadioBox_SetStringSelection

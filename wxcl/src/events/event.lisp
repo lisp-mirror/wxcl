@@ -31,7 +31,7 @@
   (wxEvent_SetId (object-pointer obj) new-id))
 
 
-(defmethod skipped-p ((obj event)) wxEvent_GetSkipped
+(defmethod skipped-p ((obj event))
     (= 1 (wxEvent_GetSkipped (object-pointer obj))))
 
 (defmethod command-event-p ((obj event))

@@ -120,10 +120,16 @@
               :depends-on ("wxcl" "defpackage")
               :components ((:module "clisp-ffi"
                                     :components ((:file "wxAcceleratorEntry")
-                                                 (:file "wxAcceleratorTable")))
+                                                 (:file "wxAcceleratorTable")
+                                                 (:file "wxListItem")
+                                                 (:file "wxColourData")
+                                                 (:file "wxFontData")))
                            (:file "accelerator-table" :depends-on ("accelerator-entry" "clisp-ffi"))
-                           (:file "accelerator-entry" :depends-on ("clisp-ffi"))))
-     #+never(:module "events"
+                           (:file "accelerator-entry" :depends-on ("clisp-ffi"))
+                           (:file "font-data" :depends-on ("clisp-ffi"))
+                           (:file "list-item" :depends-on ("clisp-ffi"))
+                           (:file "colour-data" :depends-on ("clisp-ffi"))))
+     (:module "events"
                      :depends-on ("wxcl" "defpackage")
                      :components ((:module "clisp-ffi"
                                            :components ((:file "wxEvtHandler")))

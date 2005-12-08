@@ -28,9 +28,10 @@ EWXWEXPORT(void, wxFontData_SetColour)(void* _obj, void* colour)
 	((wxFontData*)_obj)->SetColour(*((wxColour*)colour));
 }
 	
-EWXWEXPORT(void, wxFontData_GetColour)(void* _obj, void* _ref)
+EWXWEXPORT(wxColour*, wxFontData_GetColour)(wxFontData* _obj)
 {
-	*((wxColour*)_ref) = ((wxFontData*)_obj)->GetColour();
+	wxColour* ref = new wxColour(_obj->GetColour());
+    return ref;
 }
 	
 EWXWEXPORT(void, wxFontData_SetShowHelp)(void* _obj, int flag)
@@ -58,9 +59,10 @@ EWXWEXPORT(void, wxFontData_SetInitialFont)(void* _obj, void* font)
 	((wxFontData*)_obj)->SetInitialFont(*((wxFont*)font));
 }
 	
-EWXWEXPORT(void, wxFontData_GetInitialFont)(void* _obj, void* ref)
+EWXWEXPORT(wxFont*, wxFontData_GetInitialFont)(wxFontData* _obj)
 {
-	*((wxFont*)ref) = ((wxFontData*)_obj)->GetInitialFont();
+	wxFont* ref = new wxFont(_obj->GetInitialFont());
+    return ref;
 }
 	
 EWXWEXPORT(void, wxFontData_SetChosenFont)(void* _obj, void* font)
@@ -68,9 +70,10 @@ EWXWEXPORT(void, wxFontData_SetChosenFont)(void* _obj, void* font)
 	((wxFontData*)_obj)->SetChosenFont(*((wxFont*)font));
 }
 	
-EWXWEXPORT(void, wxFontData_GetChosenFont)(void* _obj, void* ref)
+EWXWEXPORT(wxFont*, wxFontData_GetChosenFont)(wxFontData* _obj)
 {
-	*((wxFont*)ref) = ((wxFontData*)_obj)->GetChosenFont();
+    wxFont* ref = new wxFont(_obj->GetChosenFont());
+    return ref;   
 }
 	
 EWXWEXPORT(void, wxFontData_SetRange)(void* _obj, int minRange, int maxRange)

@@ -7,27 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxFontData
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxFontData_Create
-	   :wxFontData_Delete
-	   :wxFontData_SetAllowSymbols
-	   :wxFontData_GetAllowSymbols
-	   :wxFontData_SetColour
-	   :wxFontData_GetColour
-	   :wxFontData_SetShowHelp
-	   :wxFontData_GetShowHelp
-	   :wxFontData_EnableEffects
-	   :wxFontData_GetEnableEffects
-	   :wxFontData_SetInitialFont
-	   :wxFontData_GetInitialFont
-	   :wxFontData_SetChosenFont
-	   :wxFontData_GetChosenFont
-	   :wxFontData_SetRange
-	   :wxFontData_GetEncoding
-	   :wxFontData_SetEncoding))
-
-(in-package :wxFontData)
+(in-package :wxcl-structures)
 
 (ffi:default-foreign-language :stdc)
 

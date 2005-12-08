@@ -51,9 +51,8 @@ EWXWEXPORT(char*, wxRadioBox_GetItemLabel)(void* _obj, int item)
 #else
 	wxString result = ((wxRadioBox*)_obj)->GetLabel(item);
 #endif
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	char *buf = (char*)malloc(result.Length()*sizeof(char));
 	if (buf) strcpy (buf, result.c_str());
-	delete result;
 	return buf;
 }
 	
@@ -72,7 +71,6 @@ EWXWEXPORT(char*, wxRadioBox_GetStringSelection)(void* _obj)
 	wxString result = ((wxRadioBox*)_obj)->GetStringSelection();
 	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
 	if (buf) strcpy (buf, result.c_str());
-	delete result;
 	return buf;
 }
 	

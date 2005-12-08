@@ -30,9 +30,9 @@
 	 (progn
 	   (setf ,dialog (wxDirDialog_Create ,parent ,message ,dir (point-x ,pos) (point-y ,pos) ,style))
 	   ,@body)
-      (wxWindow_destroy ,dialog))))
+      (wxcl-windows::wxWindow_destroy ,dialog))))
 
-(defun wxcl-get-dir (parent &key (message "Choose a directory") (dir "")  (left -1) (top -1) (style 0))
-  (with-dir-dialog (dialog parent :message message :dir dir :left left :top top :style style)
-    (when (= (wxDialog_ShowModal dialog) wxID_OK)
+(defun wxcl-get-dir (parent &key (message "Choose a directory") (dir "") (pos +default-position+) (style 0))
+  (with-dir-dialog (dialog parent :message message :dir dir :pos pos :style style)
+    (when (= (wxDialog_ShowModal dialog) +id-ok+)
       (wxDirDialog_GetPath dialog))))

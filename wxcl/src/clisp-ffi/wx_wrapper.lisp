@@ -55,8 +55,7 @@
 
 (ffi:def-call-out ELJApp_GetVendorName
     (:name "ELJApp_GetVendorName")
-  (:arguments (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out ELJApp_SetVendorName

@@ -12,9 +12,11 @@
     (:export
 ;; symbols common to multiple classes
      #:background-colour
-     #:delete
+     #:delete-object
      #:font
+     #:colour
      #:text-colour
+     #:delete-object
 ;; calendar-date-attr class and constants
      #:calendar-date-attr
      #:+cal-border-none+
@@ -63,7 +65,23 @@
      #:make-accelerator-table
      #:define-accelerator-table
      #:delete-pointer
-	   ))
+;;colour data symbols and functions
+     #:colour-data
+     #:make-colour-data
+     #:choose-full
+     #:custom-colour
+;;font data symbols and functions
+     #:font-data
+     #:make-font-data
+     #:allow-symbols
+     #:show-help
+     #:enable-effects
+     #:initial-font
+     #:chosen-font
+     #:set-range
+     #:encoding
+     ))
+
 
 (in-package :wxcl-structures)
 
@@ -74,3 +92,12 @@
 (defclass list-item (object)
   ()
   (:documentation "Stores information about a list-ctrl item or column."))
+
+(defclass colour-data (object)
+  ()
+  (:documentation "This class holds a variety of information related to colour dialogs."))
+
+(defclass font-data (object)
+  ()
+  (:documentation "This class holds a variety of information related to font dialogs."))
+

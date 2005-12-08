@@ -8,14 +8,14 @@
 (defconstant +icon-question+ 1024)
 (defconstant +icon-information+ 2048)
 
-(defun make-message-dialog (parent &key (message "") (caption "") (style 0))
+(defun make-message-dialog (parent &key (message "") (caption "Message Box") (style 0))
   (make-wx-instance 'message-dialog
                     (wxMessageDialog_Create (object-pointer parent) message caption style)))
 
 (defmethod delete-dialog ((obj message-dialog))
   (wxMessageDialog_Delete (object-pointer obj)))
 
-(defmacro show-message-dialog (parent message caption &optional (style wxYES_DEFAULT))
+(defmacro show-message-dialog (parent message caption &optional (style +yes-default+))
   (let ((dialog (gensym)))
     `(unwind-protect
       (progn

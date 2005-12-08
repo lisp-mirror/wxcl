@@ -7,23 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxEvtHandler
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxEvtHandler_Create
-	   :wxEvtHandler_Delete
-	   :wxEvtHandler_Connect
-	   :wxEvtHandler_Disconnect
-	   :wxEvtHandler_GetNextHandler
-	   :wxEvtHandler_GetPreviousHandler
-	   :wxEvtHandler_SetNextHandler
-	   :wxEvtHandler_SetPreviousHandler
-	   :wxEvtHandler_SetEvtHandlerEnabled
-	   :wxEvtHandler_GetEvtHandlerEnabled
-	   :wxEvtHandler_ProcessEvent
-	   :wxEvtHandler_AddPendingEvent
-	   :wxEvtHandler_ProcessPendingEvents))
-
-(in-package :wxEvtHandler)
+(in-package :wxcl-events)
 
 (ffi:default-foreign-language :stdc)
 

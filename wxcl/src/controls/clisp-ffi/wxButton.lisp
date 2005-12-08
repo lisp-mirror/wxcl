@@ -52,30 +52,26 @@
 
 (ffi:def-call-out wxBitmapButton_GetBitmapLabel
 	(:name "wxBitmapButton_GetBitmapLabel")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_ref (ffi:c-pointer NIL)))
-	(:return-type NIL)
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type (c-pointer NIL))
 	(:library +library-name+))
 
 (ffi:def-call-out wxBitmapButton_GetBitmapSelected
 	(:name "wxBitmapButton_GetBitmapSelected")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_ref (ffi:c-pointer NIL)))
-	(:return-type NIL)
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type (c-pointer NIL))
 	(:library +library-name+))
 
 (ffi:def-call-out wxBitmapButton_GetBitmapFocus
 	(:name "wxBitmapButton_GetBitmapFocus")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_ref (ffi:c-pointer NIL)))
-	(:return-type NIL)
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type (c-pointer NIL))
 	(:library +library-name+))
 
 (ffi:def-call-out wxBitmapButton_GetBitmapDisabled
 	(:name "wxBitmapButton_GetBitmapDisabled")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_ref (ffi:c-pointer NIL)))
-	(:return-type NIL)
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type (c-pointer NIL))
 	(:library +library-name+))
 
 (ffi:def-call-out wxBitmapButton_SetBitmapSelected

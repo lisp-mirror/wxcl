@@ -158,9 +158,8 @@
 
 (ffi:def-call-out wxListItem_GetText
     (:name "wxListItem_GetText")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxListItem_GetImage
@@ -201,21 +200,18 @@
 
 (ffi:def-call-out wxListItem_GetTextColour
     (:name "wxListItem_GetTextColour")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxListItem_GetBackgroundColour
     (:name "wxListItem_GetBackgroundColour")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxListItem_GetFont
     (:name "wxListItem_GetFont")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (c-pointer NIL))
   (:library +library-name+))

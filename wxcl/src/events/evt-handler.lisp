@@ -12,10 +12,10 @@
 ;   (:library +library-name+))
 
 (defmethod connect ((obj evt-handler) id type func &key last-id)
-    (wxEvtHandler_Connect (object-pointer obj) first (if last-id last-id id) type (wxClosure_Create func)))
+    (wxEvtHandler_Connect (object-pointer obj) id (if last-id last-id id) type (wxClosure_Create func)))
 
 (defmethod disconnect ((obj evt-handler) id type data &key last-id)
-  (= 1 (wxEvtHandler_Disconnect (object-pointer obj) first (if last-id last-id id) type data)))
+  (= 1 (wxEvtHandler_Disconnect (object-pointer obj) id (if last-id last-id id) type data)))
 
 (defmethod next-handler ((obj evt-handler))
   (let ((handler (wxEvtHandler_GetNextHandler (object-pointer obj))))

@@ -28,9 +28,10 @@ EWXWEXPORT(void, wxColourData_SetColour)(void* _obj, void* colour)
 	((wxColourData*)_obj)->SetColour(*((wxColour*)colour));
 }
 	
-EWXWEXPORT(void, wxColourData_GetColour)(void* _obj, void* _ref)
+EWXWEXPORT(wxColour*, wxColourData_GetColour)(wxColourData* _obj)
 {
-	*((wxColour*)_ref) = ((wxColourData*)_obj)->GetColour();
+   wxColour* ref = new wxColour(_obj->GetColour());
+   return ref;
 }
 	
 EWXWEXPORT(void, wxColourData_SetCustomColour)(void* _obj, int i, void* colour)
@@ -38,9 +39,10 @@ EWXWEXPORT(void, wxColourData_SetCustomColour)(void* _obj, int i, void* colour)
 	((wxColourData*)_obj)->SetCustomColour(i, *((wxColour*)colour));
 }
 	
-EWXWEXPORT(void, wxColourData_GetCustomColour)(void* _obj, int i, void* _ref)
+EWXWEXPORT(wxColour*, wxColourData_GetCustomColour)(wxColourData* _obj, int i)
 {
-	*((wxColour*)_ref) = ((wxColourData*)_obj)->GetCustomColour(i);
+   wxColour* ref = new wxColour(_obj->GetCustomColour(i));
+   return ref;
 }
 	
 } 

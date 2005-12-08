@@ -48,7 +48,6 @@ EWXWEXPORT(char*, wxFileDialog_GetMessage)(void* _obj)
 	wxString result = ((wxFileDialog*)_obj)->GetMessage();
 	char *buf = (char*)malloc(result.Length()*sizeof(char));
 	if (buf) strcpy (buf, result.c_str());
-	delete result;
 	return buf;
 }
 	
@@ -57,7 +56,6 @@ EWXWEXPORT(char*, wxFileDialog_GetPath)(void* _obj)
 	wxString result = ((wxFileDialog*)_obj)->GetPath();
 	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
 	if (buf) strcpy (buf, result.c_str());
-	delete result;
 	return buf;
 }
 	

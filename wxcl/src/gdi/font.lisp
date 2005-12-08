@@ -126,7 +126,7 @@ it is a proportional one or the font is invalid."
     (not (= (wxFont_IsFixedWidth (object-pointer obj)) 0)))
 |#
 
-(defmethod ok ((obj font))
+(defmethod ok-p ((obj font))
     "Returns T if this object is a valid font, nil otherwise."
     (not (= (wxFont_Ok (object-pointer obj)) 0)))
 

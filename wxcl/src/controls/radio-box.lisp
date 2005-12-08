@@ -57,8 +57,6 @@ if found, or -1 if not found."
 
 (defmethod item-label ((obj radio-box) index)
     "Returns the label of the button at the specified index."
-    ;; FIXME: confirm that wxRadioBox_GetItemLabel is correct wrt _buf being a parameter,
-    ;; then fix the following call.
     (wxRadioBox_GetItemLabel (object-pointer obj) index))
 
 (defmethod (setf item-label) (label index (obj radio-box))
@@ -88,8 +86,6 @@ cause a wxEVT_COMMAND_RADIOBOX_SELECTED event to get emitted."
 
 (defmethod string-selection ((obj radio-box))
     "Returns the selected string."
-    ;; FIXME: confirm that wxRadioBox_GetStringSelection is correct wrt _buf being a parameter,
-    ;; then fix the following call.
     (wxRadioBox_GetStringSelection (object-pointer obj)))
 
 (defmethod (setf string-selection) (str (obj radio-box))

@@ -12,9 +12,15 @@
   (:export
    ;;common methods, functions
    #:delete-object
+   #:ok-p
+   #:width
+   #:height
+   #:depth
+   #:assign
+   #:equal-p
+   #:colour
    ;; colour
 ;;colour methods, functions                
-   #:colour
    #:make-colour
    #:delete-object
    #:set-colour
@@ -35,7 +41,6 @@
    #:+black+
    #:+cyan+
    #:+light-grey+
-      
 ;;brush constants and symbols
    #:brush
    #:+null-brush+
@@ -53,13 +58,9 @@
    #:make-brush-from-bitmap
    #:make-brush-from-colour
    #:delete-object
-   #:colour
    #:set-colour-rgb
    #:style
    #:stipple
-   #:assign
-   #:equal-p
-   #:ok-p
    ;; font class and constants
    ;;
    #:font
@@ -123,7 +124,6 @@
    #:font-family
    #:make-default-font
    #:make-font
-   #:ok
    #:point-size
    #:style
    #:underlined
@@ -185,10 +185,6 @@
    #:find-handler-by-type
    #:init-standard-handlers
    #:clean-up-handlers
-   #:ok-p
-   #:width
-   #:height
-   #:depth
    #:make-static-bitmap
    ;;mask functions
    #:make-mask
@@ -196,24 +192,32 @@
    ;;pen class, functions, constants, methods
    #:pen
    #:make-pen
-    #:make-pen-from-colour
-    #:make-pen-from-bitmap
-    #:set-colour-rgb
-    #:dashes
-    #:cap
-    #:join
-    #:getdashes
-    #:+red-pen+
-    #:+black-pen+
-    #:+black-dashed-pen+
-    #:+white-pen+
-    #:+red-pen+
-    #:+green-pen+
-    #:+cyan-pen+
-    #:+light-grey-pen+
-    #:+medium-grey-pen+
-    #:+transparent-pen+
-    #:+grey-pen+))
+   #:make-pen-from-colour
+   #:make-pen-from-bitmap
+   #:set-colour-rgb
+   #:dashes
+   #:cap
+   #:join
+   #:getdashes
+   #:+red-pen+
+   #:+black-pen+
+   #:+black-dashed-pen+
+   #:+white-pen+
+   #:+red-pen+
+   #:+green-pen+
+   #:+cyan-pen+
+   #:+light-grey-pen+
+   #:+medium-grey-pen+
+   #:+transparent-pen+
+   #:+grey-pen+
+   ;;icon class, functions, constants, methods
+   #:make-icon
+   #:make-icon-raw
+   #:make-icon-from-xpm
+   #:make-icon-from-file
+   #:load-file
+   #:copy-from-bitmap
+    ))
 
 (in-package :wxcl-gdi)
 

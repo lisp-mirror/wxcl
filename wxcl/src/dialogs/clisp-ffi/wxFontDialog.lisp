@@ -33,16 +33,3 @@
   (:library +library-name+))
 
 
-(defmacro with-font-dialog ((dialog parent &optional (font-data nil)) &body body)
-  `(let (,dialog) 
-    (unwind-protect
-	 (progn
-	   (setf ,dialog (wxFontDialog_Create ,parent ,font-data))
-	   ,@body)
-      (wxWindow_destroy ,dialog))))
-
-(defun wxcl-get-font-data (parent &optional (font-data (wxFontData_Create)))
-  (with-font-dialog (dialog parent font-data)
-    (when (= (wxDialog_ShowModal dialog) wxID_OK)
-      (wxFontDialog_GetFontData dialog font-data)
-      font-data)))
