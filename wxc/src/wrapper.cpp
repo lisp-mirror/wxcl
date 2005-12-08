@@ -325,10 +325,10 @@ EWXWEXPORT(void, ELJApp_SetAppName)(char* name)
 EWXWEXPORT(char*, ELJApp_GetClassName)()
 {
         wxString result = wxGetApp().GetClassName();
-	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) memcpy (buf, result.c_str(), result.Length());
-	delete result;
-	return buf;
+        char *buf = (char*)malloc(result.Length()*sizeof(char));
+        if (buf) memcpy (buf, result.c_str(), result.Length());
+        delete result;
+        return buf;
 }
 
 EWXWEXPORT(void, ELJApp_SetClassName)(char* name)
@@ -336,11 +336,12 @@ EWXWEXPORT(void, ELJApp_SetClassName)(char* name)
         wxGetApp().SetClassName(name);
 }
 
-EWXWEXPORT(int, ELJApp_GetVendorName)(void* _buf)
+EWXWEXPORT(char*, ELJApp_GetVendorName)()
 {
         wxString result = wxGetApp().GetVendorName();
-        if (_buf) memcpy (_buf, result.c_str(), result.Length());
-        return result.Length();
+        char *buf = (char*)malloc(result.Length()*sizeof(char));
+        if (buf) memcpy (buf, result.c_str(), result.Length());
+        return buf;
 }
 
 EWXWEXPORT(void, ELJApp_SetVendorName)(char* name)
