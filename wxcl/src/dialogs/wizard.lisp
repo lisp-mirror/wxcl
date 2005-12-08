@@ -47,8 +47,8 @@
 (defmethod direction ((obj wizard))
   (= 1 (wxWizardEvent_GetDirection (object-pointer obj))))
 
-(defmethod page ((obj wizard))
-  (make-wx-instance 'wizard-page-simple (wxWizardEvent_GetPage (object-pointer obj))))
+; (defmethod page ((obj wizard))
+;   (make-wx-instance 'wizard-page-simple (wxWizardEvent_GetPage (object-pointer obj))))
 
 (defun chain (first second)
   (wxWizard_Chain (object-pointer first)(object-pointer second)))

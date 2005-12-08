@@ -33,7 +33,6 @@
 	   #:show-full-screen
 	   #:full-screen-p
 	   #:centre
-	   #:make-status-bar
 	   #:fields-count
 	   #:status-text
 	   #:min-height
@@ -82,11 +81,14 @@
  	   #:make-panel
  	   #:default-item
 	   #:+tab-traversal+
+;;scroll-bar related constants, methods, functions
+      #:make-scrolled-window
 	   #:scrolled-window
 	   #:+vscroll+
 	   #:+hscroll+
-	   #:+target-window+
+	   #:target-window
 	   #:scroll
+      #:set-scroll-bars
 	   #:scroll-page-size
 	   #:set-scroll-page-size
 	   #:scroll-pixel-per-unit
@@ -97,6 +99,7 @@
 	   #:calc-unscrolled-position
 	   #:adjust-scrollbars
 	   #:set-scroll-rate
+      #:destroy
 ;;frame related constants
       #:+default-frame-style+
       #:+frame-ex-contexthelp+
@@ -111,6 +114,12 @@
       #:+fullscreen-all+
 ;;window related methods, functions, etc
       #:close-window
+;;status-bar related constants, methods, functions, etc
+	   #:make-status-bar
+      #:+sb-normal+
+      #:+sb-flat+
+      #:+sb-raised+
+      #:+st-sizegrip+
 	   ))
 
 (in-package :wxcl-windows)
@@ -159,14 +168,8 @@
   (:documentation "Class defining tool bar. You may also create a toolbar that is managed by\
  the frame, by calling the method create-tool-bar which specializes on a frame object."))
 
-(defclass tool-bar (window)
+(defclass tip-window (window)
   ()
-  (:documentation "Class defining tool bar. You may also create a toolbar that is managed by\
- the frame, by calling the method create-tool-bar which specializes on a frame object."))
-
-(defclass tool-bar (window)
-  ()
-  (:documentation "Shows simple text in a popup tip window on creation. This is used by\
- wxSimpleHelpProvider to show popup help. The window automatically destroys itself when\
- the user clicks on it or it loses the focus."))   
+  (:documentation "Shows simple text in a popup tip window on creation.\
+ The window automatically destroys itself when the user clicks on it or it loses the focus."))
 

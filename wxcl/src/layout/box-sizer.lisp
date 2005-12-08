@@ -1,11 +1,4 @@
-(in-package :wxCL)
-
-(use-package :wxSizer)
-
-(defclass box-sizer (sizer)
-  ()
-  (:documentation "The basic idea behind a box sizer is that windows will most often\
- be laid out in rather simple basic geometry, typically in a row or a column or several hierarchies of either."))
+(in-package :wxcl-layout)
 
 (defun make-box-size (orientation)
   (let ((bs (make-instance 'box-sizer)))

@@ -52,7 +52,7 @@
 (defun make-bitmap-empty (width height depth)
   (make-wx-instance 'bitmap (wxBitmap_CreateEmpty width height depth)))
 
-(defun make-bitmap-load (file-name type)
+(defun make-bitmap-from-file (file-name type)
   (make-wx-instance 'bitmap (wxBitmap_CreateLoad file-name type)))
 
 (defun make-bitmap-default ()

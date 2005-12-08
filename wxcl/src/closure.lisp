@@ -9,15 +9,5 @@
 
 (in-package :wxCL)
 
-(defclass closure (object)
-  ()
-  (:documentation ""))
-
-(defun make-closure (fun &key (data nil))
-  (make-wx-instance 'closure (wxClosure_Create fun data)))
-
-(defun start-app (closure &key (arguments nil))
-  (ELJApp_InitializeC (object-pointer closure) (length arguments) arguments))
-
 
 

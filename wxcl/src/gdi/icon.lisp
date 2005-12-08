@@ -25,8 +25,8 @@
 (defun make-icon-from-file (name type &key (size +default-size+))
   (make-wx-instance 'icon (wxIcon_CreateLoad name type (size-width size) (size-height size))))
 
-(defmethod load-file ((obj icon) name type)
-  (= 1 (wxIcon_Load (object-pointer obj) name type)))
+(defmethod load--from-file ((obj icon) name type &key (size +default-size+))
+  (= 1 (wxIcon_Load (object-pointer obj) name type (size-width size) (size-height size))))
 
 (defmethod copy-from-bitmap ((obj icon) (bmp bitmap))
   (wxIcon_CopyFromBitmap (object-pointer obj) (object-pointer bmp)))

@@ -8,9 +8,6 @@
 (defconstant +thick-frame+ +resize-border+) ;deprecated
 
 (defconstant +stay-on-top+ 32768)
-(defconstant +maximize+ 8192)
-(defconstant +close-box+ 6)
-(defconstant +no-border+ 2097152)
 
 (defconstant +default-dialog-style+ (logior +caption+ +maximize+ +close-box+ +no-border+))
 

@@ -89,7 +89,7 @@
 ; 	:wxStaticBoxSizer_CalcMin
 ; 	:wxStaticBoxSizer_GetStaticBox))
 
-(in-package :wxSizer)
+(in-package :wxcl-layout)
 
 (ffi:default-foreign-language :stdc)
 

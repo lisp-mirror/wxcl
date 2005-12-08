@@ -12,6 +12,7 @@
 (defconstant +sb-normal+ #x0000)
 (defconstant +sb-flat+ #x0001)
 (defconstant +sb-raised+ #x0002)
+(defconstant +st-sizegrip+ #x0010)
 
 (defun make-status-bar (parent id &key (style +st-sizegrip+))
   (let ((st (make-instance 'status-bar)))

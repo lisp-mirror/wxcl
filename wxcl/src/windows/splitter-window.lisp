@@ -11,7 +11,7 @@
 (defconstant +sp-3d+ 768)
 (defconstant +sp-fullsash+ 1024)
 
-(defun make-splitter-window (parent &key (id -1) (pos +default-position+) (size +default-size+) (style +sp-3d+))
+(defun make-splitter-window (parent &key (id -1) (position +default-position+) (size +default-size+) (style +sp-3d+))
   (make-wx-instance 'splitter-window (wxSplitterWindow_Create (when parent (object-pointer parent))
                                                               id (point-x position) (point-y position)
                                                               (size-width size) (size-height size) style)))
@@ -72,8 +72,8 @@
 (defmethod minimum-pane-size ((obj splitter-window))
   (wxSplitterWindow_GetMinimumPaneSize (object-pointer obj)))
 
-(defmethod sash-gravity ((obj splitter-window))
-  (wxSplitterWindow_GetSashGravity (object-pointer obj)))
+; (defmethod sash-gravity ((obj splitter-window))
+;   (wxSplitterWindow_GetSashGravity (object-pointer obj)))
 
 (defmethod (setf sash-gravity) (gravity (obj splitter-window))
   (wxSplitterWindow_SetSashGravity (object-pointer obj) gravity))

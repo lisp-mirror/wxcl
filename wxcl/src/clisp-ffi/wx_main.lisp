@@ -45,17 +45,3 @@
 
 ;;;macros and other utility functions
 
-(defmacro with-wxcl (&body body)
-  (let ((closure-fun (gensym))
- 	(closure (gensym))
- 	(fun (gensym))
- 	(data (gensym))
- 	(evt (gensym)))
-    `(flet ((,closure-fun (,fun ,data ,evt)
- 	     (unwind-protect
- 		  (progn ,@body)
- 	       (ELJApp_ExitMainLoop))))
-      (setf ,closure (wxClosure_Create #',closure-fun nil))
-      (Eljapp_initializeC ,closure 0 nil)
-      )))
-

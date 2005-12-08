@@ -123,8 +123,8 @@
 (ffi:def-call-out wxScrolledWindow_GetVirtualSize
     (:name "wxScrolledWindow_GetVirtualSize")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (x (ffi:c-ptr ffi:int) :out)
-	      (y (ffi:c-ptr ffi:int)) :out)
+              (x (ffi:c-ptr ffi:int) :out)
+              (y (ffi:c-ptr ffi:int) :out))
   (:return-type NIL)
   (:library +library-name+))
 

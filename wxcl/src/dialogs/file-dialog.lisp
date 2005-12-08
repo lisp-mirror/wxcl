@@ -100,13 +100,14 @@
 
 
 (defmacro with-file-dialog ((dialog parent &key (message "") (dir "") (file "")
-				    (wildcard "*.*") (left -1) (top -1) (style 0)) &body body)
+				    (wildcard "*.*") (position +default-position+) (style 0)) &body body)
   `(let (,dialog) 
     (unwind-protect
-	 (progn
-	   (setf ,dialog (make-file-dialog ,parent ,message ,dir ,file ,wildcard ,left ,top ,style))
-	   ,@body)
-      (destroy ,dialog))))
+         (progn
+           (setf ,dialog (make-file-dialog ,parent :message ,message :dir ,dir :file ,file
+                                           :wildcard ,wildcard :position ,position :style ,style))
+           ,@body)
+      (wxcl-windows:destroy ,dialog))))
 
 
 

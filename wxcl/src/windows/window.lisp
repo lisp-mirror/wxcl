@@ -567,12 +567,8 @@
 ;   (:return-type NIL)
 ;   (:library +library-name+))
 
-; (defmethod ((obj window)) wxWindow_SetSizer
-;     (:name "wxWindow_SetSizer")
-;   (:arguments (_obj (ffi:c-pointer wxWindow))
-; 	      (sizer (ffi:c-pointer NIL)))
-;   (:return-type NIL)
-;   (:library +library-name+))
+(defmethod (setf sizer) (sz (obj window))
+  (wxWindow_SetSizer (object-pointer obj) (object-pointer sz)))
 
 ; (defmethod ((obj window)) wxWindow_GetSizer
 ;     (:name "wxWindow_GetSizer")

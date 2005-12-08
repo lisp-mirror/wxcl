@@ -44,9 +44,8 @@
 
 (ffi:def-call-out wxFontData_GetColour
     (:name "wxFontData_GetColour")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxFontData_SetShowHelp
@@ -84,9 +83,8 @@
 
 (ffi:def-call-out wxFontData_GetInitialFont
     (:name "wxFontData_GetInitialFont")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxFontData_SetChosenFont
@@ -98,9 +96,8 @@
 
 (ffi:def-call-out wxFontData_GetChosenFont
     (:name "wxFontData_GetChosenFont")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxFontData_SetRange

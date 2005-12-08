@@ -23,7 +23,7 @@
   (:return-type NIL)
   (:library +library-name+))
 
-(ffi:def-call-out _wxEvtHandler_Connect
+(ffi:def-call-out wxEvtHandler_Connect
     (:name "wxEvtHandler_Connect")
   (:arguments (_obj (ffi:c-pointer NIL))
 	      (first ffi:int)
@@ -31,10 +31,6 @@
 	      (type ffi:int)
 	      (data (ffi:c-pointer NIL)))
   (:library +library-name+))
-
-(defun wxEvtHandler_Connect (_obj first type data)
-    (_wxEvtHandler_Connect _obj first first type data))
-
 
 (ffi:def-call-out wxEvtHandler_Disconnect
     (:name "wxEvtHandler_Disconnect")

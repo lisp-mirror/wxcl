@@ -13,12 +13,13 @@
                     (wxMessageDialog_Create (object-pointer parent) message caption style)))
 
 (defmethod delete-dialog ((obj message-dialog))
-  (wxMessageDialog_Delete (object-pointer obj)))
+  (wxMessageDialog_Delete (object-pointer obj))
+  (invalidate-wx-instance obj))
 
 (defmacro show-message-dialog (parent message caption &optional (style +yes-default+))
   (let ((dialog (gensym)))
     `(unwind-protect
       (progn
-        (setf ,dialog (wxMessageDialog_Create ,parent ,message ,caption ,style))
-        (wxMessageDialog_ShowModal ,dialog))
-      (wxMessageDialog_Delete ,dialog))))
+        (setf ,dialog (make-message-dialog ,parent :message ,message :caption ,caption :style ,style))
+        (show-modal ,dialog))
+      (delete-dialog ,dialog))))

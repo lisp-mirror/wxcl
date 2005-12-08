@@ -71,10 +71,10 @@
 (defmethod menu-delete ((obj menu) (id integer))
   (wxMenu_DeleteById (object-pointer obj) id))
 
-(defmethod destroy ((obj menu) (item menu-item)) 
+(defmethod destroy-item ((obj menu) (item menu-item)) 
   (wxMenu_DestroyByItem (object-pointer obj) (object-pointer item)))
 
-(defmethod destroy ((obj menu) (id integer))
+(defmethod destroy-item ((obj menu) (id integer))
   (wxMenu_DestroyById (object-pointer obj) id))
 
 (defmethod menu-item-count ((obj menu))

@@ -24,7 +24,7 @@
                                (size-width (rect-size rc))
                                (size-height (rect-size rc))))
 
-(defmethod close ((obj tip-window))
+(defmethod close-tip-window ((obj tip-window))
   (wxTipWindow_Close (object-pointer obj)))
 
 

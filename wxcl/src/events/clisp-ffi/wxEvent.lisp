@@ -185,6 +185,7 @@
 
 (in-package :wxcl-events)
 
+(print "ok at least in this file")
 (ffi:default-foreign-language :stdc)
 
 (ffi:def-c-var +event-command-button-clicked+

@@ -22,8 +22,6 @@
            #:+change-dir+
            #:+overwrite-prompt+
            #:+file-must-exist+
-           #:+id-ok+
-           #:+id-cancel+
            #:make-file-dialog
            #:message
            #:path
@@ -47,9 +45,6 @@
            #:+resize-border+
            #:+thick-frame+
            #:+stay-on-top+
-           #:+maximize+ 
-           #:+close-box+
-           #:+no-border+
            #:+default-dialog-style+
            #:make-dialog
            #:modal-p
@@ -62,6 +57,7 @@
            #:make-colour-dialog
            #:with-colour-dialog
 ;;message-dialog
+           #:show-message-dialog
            #:message-dialog
            #:+yes-no+
            #:+no-default+

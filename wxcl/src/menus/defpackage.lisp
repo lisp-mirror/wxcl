@@ -25,7 +25,7 @@
    #:prepend-menu-item
    #:remove
    #:delete
-   #:destroy
+   #:destroy-item
    #:menu-item-count
    #:find-items-by-label
    #:find-item

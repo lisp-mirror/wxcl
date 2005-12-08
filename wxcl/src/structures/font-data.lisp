@@ -37,7 +37,7 @@
 (defmethod show-help ((obj font-data))
   (= 1 (wxFontData_GetShowHelp (object-pointer obj))))
 
-(defmethod (seyf enable-effects) (enable (obj font-data))
+(defmethod (setf enable-effects) (enable (obj font-data))
   (wxFontData_EnableEffects (object-pointer obj) (if enable 1 0)))
 
 (defmethod enable-effects ((obj font-data))

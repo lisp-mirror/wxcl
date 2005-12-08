@@ -171,10 +171,10 @@
    #:make-bitmap
    #:make-bitmap-from-xpm
    #:make-bitmap-empty
-   #:make-bitmap-load
+   #:make-bitmap-from-file
    #:make-bitmap-default
    #:sub-bitmap
-   #:load-file
+   #:load-from-file
    #:wxBitmap_SaveFile
    #:mask
    #:add-handler
