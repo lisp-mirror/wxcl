@@ -223,7 +223,7 @@ EWXWEXPORT(wxClosure*, wxEvtHandler_GetClosure)(wxEvtHandler* evtHandler, int id
 }
 
 /* closures */
-EWXWEXPORT(wxClosure*, wxClosure_Create)(ClosureFun fun, void* data)
+EWXWEXPORT(wxClosure*, wxClosure_Create)(ClosureFun fun)
 {
   return new wxClosure(fun);
 }

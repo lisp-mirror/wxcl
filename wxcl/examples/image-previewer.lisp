@@ -48,8 +48,8 @@
   (let ((tb (wxcl-windows:create-tool-bar frame
                                           (boole boole-ior wxcl-windows:+tb-3d-buttons+
                                                  wxcl-windows:+tb-horizontal+)))
-        (open-ico (wxcl-gdi:make-bitmap-load "f_open.ico" wxcl-gdi:+bitmap-type-ico+))
-        (close-ico (wxcl-gdi:make-bitmap-load "f_closed.ico" wxcl-gdi:+bitmap-type-ico+)))
+        (open-ico (wxcl-gdi:make-bitmap-from-file "f_open.ico" wxcl-gdi:+bitmap-type-ico+))
+        (close-ico (wxcl-gdi:make-bitmap-from-file "f_closed.ico" wxcl-gdi:+bitmap-type-ico+)))
     (wxcl-windows:add-tool tb +id-open+ open-ico :short-help "Open file" :long-help "Opens Image files.")
     (wxcl-windows:add-tool tb +id-close+ close-ico :short-help "Close file" :long-help "Closes Image files.")
     (wxcl-windows:realize tb)))
@@ -59,20 +59,22 @@
 (defun open-image (frame evt)
   (when evt
     (let ((filename
-	   (wxcl-get-filepath frame
-			      :message "open file"
-			      :style (boole boole-ior wxOPEN wxFILE_MUST_EXIST)
-			      :wildcard "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")))
+           (wxcl-dialogs:with-file-dialog
+               (dialog frame
+                       :message "open file"
+                       :style (boole boole-ior wxcl-dialogs:+open+ wxcl-dialogs:+file-must-exist+)
+                       :wildcard
+                       "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")
+             (wxcl-dialogs:show-modal dialog)
+             (wxcl-dialogs:path dialog))))
       (when filename
-	(print filename)
-	(let* ((bmp (wxbitmap_createload filename wxBITMAP_TYPE_ANY))
-	       (fr (wxFrame_create frame -1 filename 10 10 500 500 wxDEFAULT_FRAME_STYLE))
-	       (sw (wxScrolledWindow_Create fr -1 -1 -1 -1 -1 (boole boole-ior wxHSCROLL wxVSCROLL)))
-	       (bmp-static (wxStaticbitmap_create sw -1 bmp -1 -1 -1 -1 0)))
-	  (wxFrame_SetIcon fr (wxicon_createload "wxcl-logo.ico" wxBITMAP_TYPE_ICO -1 -1))
-	  (print (wxFrame_gettitle fr))
-	  (wxScrolledWindow_SetScrollbars sw 20 20 50 50 -1 -1 0)
-	  (wxWindow_Show fr))))))
+        (let* ((bmp (wxcl-gdi:make-bitmap-from-file filename wxcl-gdi:+bitmap-type-any+))
+               (fr (make-frame frame -1 filename))
+               (sw (make-scrolled-window fr))
+               (bmp-static (wxcl-gdi:make-static-bitmap sw -1 bmp)))
+          (setf (icon fr) (wxcl-gdi:make-icon-from-file "wxcl-logo.ico" wxcl-gdi:+bitmap-type-ico+))
+          (set-scroll-bars sw 20 20 50 50)
+          (show fr))))))
 
 (defun close-image (data evt)
   (when evt
@@ -82,10 +84,11 @@
 
 (defun about-box (frame evt)
   (when evt
-    (show-message-dialog frame
-			 "Image viewer demonstrates some of the features of wxCL. All rights reserved, this program is distributed under wxWindows License."
+    (wxcl-dialogs:show-message-dialog frame
+                "Image viewer demonstrates some of the features of wxCL.\
+ This program is in public domain."
 			 "Image Viewer - wxCL"
-			 wxOK)))
+			 +ok+)))
 
 (defun quit-viewer (frame evt)
   (when evt
@@ -104,15 +107,14 @@
 ;   )
 
 (defun init-func (evt)
-  (let ((fr (wxcl-windows:make-frame nil -1 "wxCL - Image previewer")))
-    (let ((panel (wxcl-windows:make-panel fr)))
-      (setf (wxcl-windows:menu-bar fr) (create-menu))
+  (let* ((fr (make-frame nil -1 "wxCL - Image previewer"))
+         (panel (make-panel fr)))
+    (setf (menu-bar fr) (create-menu))
 ;   (add-accelerator-keys frame)
-      (add-status-bar fr)
-      (add-tool-bar fr)
-      (setf (wxcl-windows:icon fr) (wxcl-gdi:make-icon-from-file "wxcl-logo.ico" +bitmap-type-ico+))
-;   (register-events frame)
-      (wxcl-windows:show fr)
-      )))
+    (add-status-bar fr)
+    (add-tool-bar fr)
+    (setf (wxcl-windows:icon fr) (wxcl-gdi:make-icon-from-file "wxcl-logo.ico" wxcl-gdi:+bitmap-type-ico+))
+    (register-events fr)
+    (show fr)))
 
 (wxcl:start-app #'init-func)

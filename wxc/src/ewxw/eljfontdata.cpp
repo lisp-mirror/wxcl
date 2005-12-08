@@ -61,7 +61,7 @@ EWXWEXPORT(void, wxFontData_SetInitialFont)(void* _obj, void* font)
 	
 EWXWEXPORT(wxFont*, wxFontData_GetInitialFont)(wxFontData* _obj)
 {
-	wxFont* ref = new wxFont(_obj->GetInitialFont());
+    wxFont* ref = new wxFont(_obj->GetInitialFont());
     return ref;
 }
 	
