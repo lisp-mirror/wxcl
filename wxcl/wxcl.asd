@@ -51,6 +51,7 @@
                                      :pathname "controls/defpackage")
                            (:file "structures-defpackage" :pathname "structures/defpackage")
                            (:file "events-defpackage" :pathname "events/defpackage")
+                           (:file "layout-defpackage" :pathname "layout/defpackage")
                            (:file "dialogs-defpackage"
                                   :depends-on ("windows-defpackage")
                                   :pathname "dialogs/defpackage"
@@ -132,8 +133,10 @@
      (:module "events"
                      :depends-on ("wxcl" "defpackage")
                      :components ((:module "clisp-ffi"
-                                           :components ((:file "wxEvtHandler")))
-                                  (:file "evt-handler" :depends-on ("clisp-ffi"))))
+                                           :components ((:file "wxEvtHandler")
+                                                        (:file "wxEvent")))
+                                  (:file "evt-handler" :depends-on ("clisp-ffi"))
+                                  (:file "event" :depends-on ("clisp-ffi"))))
      (:module "gdi"
               :depends-on ("wxcl" "defpackage")
               :components ((:module "clisp-ffi"
@@ -154,7 +157,7 @@
                            (:file "brush" :depends-on ("clisp-ffi"))
                            (:file "mask" :depends-on ("clisp-ffi"))))
      (:module "help")
-     #+never(:module "layout"
+     (:module "layout"
                      :depends-on ("wxcl" "defpackage")
                      :components ((:module "clisp-ffi"
                                            :components ((:file "wxSizer")))
@@ -185,12 +188,18 @@
                                                  (:file "wxWindow")
                                                  (:file "wxToolBar")
                                                  (:file "wxPanel")
+                                                 (:file "wxScrolledWindow")
+                                                 (:file "wxSplitterWindow")
+                                                 (:file "wxTipWindow")
                                                  (:file "wxStatusBar")))
                            (:file "window" :depends-on ("clisp-ffi"))
                            (:file "frame" :depends-on ("window"))
                            (:file "panel" :depends-on ("window")) 
                            (:file "status-bar" :depends-on ("window"))
-                           (:file "tool-bar" :depends-on ("window")))
+                           (:file "tool-bar" :depends-on ("window"))
+                           (:file "scrolled-window" :depends-on ("window"))
+                           (:file "tip-window" :depends-on ("window"))
+                           (:file "splitter-window" :depends-on ("window")))
               )))
 
 ;(push :wxcl *features*)
