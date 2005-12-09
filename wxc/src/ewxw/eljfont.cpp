@@ -35,6 +35,12 @@ class ELJFontEnumerator : public wxFontEnumerator
 
 extern "C"
 {
+EWXWEXPORT_VAR wxFont* wxNull_Font=&wxNullFont;
+EWXWEXPORT_VAR wxFont** wxNormal_Font=&wxNORMAL_FONT;
+EWXWEXPORT_VAR wxFont** wxSmall_Font=&wxSMALL_FONT;  
+EWXWEXPORT_VAR wxFont** wxSwiss_Font=&wxSWISS_FONT;
+EWXWEXPORT_VAR wxFont** wxItalic_Font=&wxITALIC_FONT;  
+
 
 EWXWEXPORT(void*, wxFont_Create) (int pointSize, int family, int style, int weight, int underlined, char* face, int enc)
 {

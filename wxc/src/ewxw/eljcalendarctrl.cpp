@@ -38,14 +38,16 @@ EWXWEXPORT(void, wxCalendarCtrl_SetHeaderColours)(void* _obj, void* colFg, void*
 	((wxCalendarCtrl*)_obj)->SetHeaderColours(*((wxColour*)colFg), *((wxColour*)colBg));
 }
 	
-EWXWEXPORT(void, wxCalendarCtrl_GetHeaderColourFg)(void* _obj, void* colour)
+EWXWEXPORT(wxColour*, wxCalendarCtrl_GetHeaderColourFg)(void* _obj)
 {
-	*((wxColour*)colour) = ((wxCalendarCtrl*)_obj)->GetHeaderColourFg();
+   wxColour* colour = new wxColour(((wxCalendarCtrl*)_obj)->GetHeaderColourFg());
+   return colour;
 }
 	
-EWXWEXPORT(void, wxCalendarCtrl_GetHeaderColourBg)(void* _obj, void* colour)
+EWXWEXPORT(wxColour*, wxCalendarCtrl_GetHeaderColourBg)(void* _obj)
 {
-	*((wxColour*)colour) = ((wxCalendarCtrl*)_obj)->GetHeaderColourBg();
+   wxColour* colour = new wxColour(((wxCalendarCtrl*)_obj)->GetHeaderColourBg());
+   return colour;
 }
 	
 EWXWEXPORT(void, wxCalendarCtrl_SetHighlightColours)(void* _obj, void* colFg, void* colBg)
@@ -53,14 +55,16 @@ EWXWEXPORT(void, wxCalendarCtrl_SetHighlightColours)(void* _obj, void* colFg, vo
 	((wxCalendarCtrl*)_obj)->SetHighlightColours(*((wxColour*)colFg), *((wxColour*)colBg));
 }
 	
-EWXWEXPORT(void, wxCalendarCtrl_GetHighlightColourFg)(void* _obj, void* colour)
+EWXWEXPORT(wxColour*, wxCalendarCtrl_GetHighlightColourFg)(void* _obj)
 {
-	*((wxColour*)colour) = ((wxCalendarCtrl*)_obj)->GetHighlightColourFg();
+   wxColour* colour = new wxColour(((wxCalendarCtrl*)_obj)->GetHighlightColourFg());
+   return colour;
 }
 	
-EWXWEXPORT(void, wxCalendarCtrl_GetHighlightColourBg)(void* _obj, void* colour)
+EWXWEXPORT(wxColour*, wxCalendarCtrl_GetHighlightColourBg)(void* _obj)
 {
-	*((wxColour*)colour) = ((wxCalendarCtrl*)_obj)->GetHighlightColourBg();
+   wxColour* colour = new wxColour(((wxCalendarCtrl*)_obj)->GetHighlightColourBg());
+   return colour;
 }
 	
 EWXWEXPORT(void, wxCalendarCtrl_SetHolidayColours)(void* _obj, void* colFg, void* colBg)
@@ -68,24 +72,26 @@ EWXWEXPORT(void, wxCalendarCtrl_SetHolidayColours)(void* _obj, void* colFg, void
 	((wxCalendarCtrl*)_obj)->SetHolidayColours(*((wxColour*)colFg), *((wxColour*)colBg));
 }
 	
-EWXWEXPORT(void, wxCalendarCtrl_GetHolidayColourFg)(void* _obj, void* colour)
+EWXWEXPORT(wxColour*, wxCalendarCtrl_GetHolidayColourFg)(void* _obj)
 {
-	*((wxColour*)colour) = ((wxCalendarCtrl*)_obj)->GetHolidayColourFg();
+   wxColour* colour = new wxColour(((wxCalendarCtrl*)_obj)->GetHolidayColourFg());
+   return colour;
 }
 	
-EWXWEXPORT(void, wxCalendarCtrl_GetHolidayColourBg)(void* _obj, void* colour)
+EWXWEXPORT(wxColour*, wxCalendarCtrl_GetHolidayColourBg)(void* _obj)
 {
-	*((wxColour*)colour) = ((wxCalendarCtrl*)_obj)->GetHolidayColourBg();
+   wxColour* colour = new wxColour(((wxCalendarCtrl*)_obj)->GetHolidayColourBg());
+   return colour;
 }
 	
-EWXWEXPORT(void*, wxCalendarCtrl_GetAttr)(void* _obj, int day)
+EWXWEXPORT(wxCalendarDateAttr*, wxCalendarCtrl_GetAttr)(void* _obj, int day)
 {
-	return (void*)((wxCalendarCtrl*)_obj)->GetAttr((size_t)day);
+	return ((wxCalendarCtrl*)_obj)->GetAttr((size_t)day);
 }
 	
-EWXWEXPORT(void, wxCalendarCtrl_SetAttr)(void* _obj, int day, void* attr)
+EWXWEXPORT(void, wxCalendarCtrl_SetAttr)(void* _obj, int day, wxCalendarDateAttr* attr)
 {
-	((wxCalendarCtrl*)_obj)->SetAttr((size_t)day, (wxCalendarDateAttr*)attr);
+	((wxCalendarCtrl*)_obj)->SetAttr((size_t)day, attr);
 }
 	
 EWXWEXPORT(void, wxCalendarCtrl_SetHoliday)(void* _obj, int day)
@@ -179,24 +185,28 @@ EWXWEXPORT(int, wxCalendarDateAttr_IsHoliday)(void* _obj)
 	return (int)((wxCalendarDateAttr*)_obj)->IsHoliday();
 }
 	
-EWXWEXPORT(void, wxCalendarDateAttr_GetTextColour)(void* _obj, void* _ref)
+EWXWEXPORT(wxColour*, wxCalendarDateAttr_GetTextColour)(void* _obj)
 {
-	*((wxColour*)_ref) = ((wxCalendarDateAttr*)_obj)->GetTextColour();
+   wxColour* _ref = new wxColour(((wxCalendarDateAttr*)_obj)->GetTextColour());
+   return _ref;
 }
 	
-EWXWEXPORT(void, wxCalendarDateAttr_GetBackgroundColour)(void* _obj, void* _ref)
+EWXWEXPORT(wxColour*, wxCalendarDateAttr_GetBackgroundColour)(void* _obj)
 {
-	*((wxColour*)_ref) = ((wxCalendarDateAttr*)_obj)->GetBackgroundColour();
+   wxColour* _ref = new wxColour(((wxCalendarDateAttr*)_obj)->GetBackgroundColour());
+   return _ref;
 }
 	
-EWXWEXPORT(void, wxCalendarDateAttr_GetBorderColour)(void* _obj, void* _ref)
+EWXWEXPORT(wxColour*, wxCalendarDateAttr_GetBorderColour)(void* _obj)
 {
-	*((wxColour*)_ref) = ((wxCalendarDateAttr*)_obj)->GetBorderColour();
+   wxColour* _ref = new wxColour(((wxCalendarDateAttr*)_obj)->GetBorderColour());
+   return _ref;
 }
 	
-EWXWEXPORT(void, wxCalendarDateAttr_GetFont)(void* _obj, void* _ref)
+EWXWEXPORT(wxFont*, wxCalendarDateAttr_GetFont)(void* _obj)
 {
-	*((wxFont*)_ref) = ((wxCalendarDateAttr*)_obj)->GetFont();
+   wxFont* _ref = new wxFont(((wxCalendarDateAttr*)_obj)->GetFont());
+   return _ref;
 }
 	
 EWXWEXPORT(int, wxCalendarDateAttr_GetBorder)(void* _obj)

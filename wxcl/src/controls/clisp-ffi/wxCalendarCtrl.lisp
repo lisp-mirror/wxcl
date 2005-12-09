@@ -24,12 +24,6 @@
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
-(defmacro wxcl-create-calendar-control (frame &key (id -1) (date (wxDateTime_Create))
-					      (left -1) (top -1) (width -1) (height -1)
-					 (style wxCAL_SHOW_HOLIDAYS))
-  "Creates a calendar control."
-  `(wxCalendarCtrl_Create ,frame ,id ,date ,left ,top ,width ,height ,style))
-
 (ffi:def-call-out wxCalendarCtrl_SetDate
     (:name "wxCalendarCtrl_SetDate")
   (:arguments (_obj (ffi:c-pointer NIL))
@@ -75,16 +69,14 @@
 
 (ffi:def-call-out wxCalendarCtrl_GetHeaderColourFg
     (:name "wxCalendarCtrl_GetHeaderColourFg")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (colour (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarCtrl_GetHeaderColourBg
     (:name "wxCalendarCtrl_GetHeaderColourBg")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (colour (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarCtrl_SetHighlightColours
@@ -97,16 +89,14 @@
 
 (ffi:def-call-out wxCalendarCtrl_GetHighlightColourFg
     (:name "wxCalendarCtrl_GetHighlightColourFg")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (colour (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarCtrl_GetHighlightColourBg
     (:name "wxCalendarCtrl_GetHighlightColourBg")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (colour (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarCtrl_SetHolidayColours
@@ -119,16 +109,14 @@
 
 (ffi:def-call-out wxCalendarCtrl_GetHolidayColourFg
     (:name "wxCalendarCtrl_GetHolidayColourFg")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (colour (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarCtrl_GetHolidayColourBg
     (:name "wxCalendarCtrl_GetHolidayColourBg")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (colour (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarCtrl_GetAttr
@@ -149,7 +137,7 @@
 (ffi:def-call-out wxCalendarCtrl_SetHoliday
     (:name "wxCalendarCtrl_SetHoliday")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (day ffi:int))
+              (day ffi:int))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -169,14 +157,3 @@
 	      (wd (ffi:c-pointer NIL)))
   (:return-type ffi:int)
   (:library +library-name+))
-
-(ffi:def-call-out wxCalendarDateAttr_Create
-    (:name "wxCalendarDateAttr_Create")
-  (:arguments (_ctxt (ffi:c-pointer NIL))
-	      (_cbck (ffi:c-pointer NIL))
-	      (_cbrd (ffi:c-pointer NIL))
-	      (_fnt (ffi:c-pointer NIL))
-	      (_brd ffi:int))
-  (:return-type (ffi:c-pointer NIL))
-  (:library +library-name+))
-

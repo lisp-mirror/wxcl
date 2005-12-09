@@ -11,6 +11,17 @@
 
 (ffi:default-foreign-language :stdc)
 
+
+(ffi:def-call-out wxCalendarDateAttr_Create
+    (:name "wxCalendarDateAttr_Create")
+  (:arguments (_ctxt (ffi:c-pointer NIL))
+              (_cbck (ffi:c-pointer NIL))
+              (_cbrd (ffi:c-pointer NIL))
+              (_fnt (ffi:c-pointer NIL))
+              (_brd ffi:int))
+  (:return-type (ffi:c-pointer NIL))
+  (:library +library-name+))
+
 (ffi:def-call-out wxCalendarDateAttr_CreateDefault
     (:name "wxCalendarDateAttr_CreateDefault")
   (:return-type (ffi:c-pointer NIL))

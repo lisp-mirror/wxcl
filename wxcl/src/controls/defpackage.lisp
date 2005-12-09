@@ -392,6 +392,11 @@ used as the parent for the controls it contains."))
   (:documentation "A static text control displays one or more lines of \
 read-only text."))
 
+(defclass static-line (control)
+  ()
+  (:documentation "A static line is just a line which may be used in a dialog \
+to separate the groups of controls. The line may be only vertical or horizontal."))
+
 (defclass toggle-button (control)
   ()
   (:documentation "A toggle button is a button that stays pressed when \

@@ -14,9 +14,6 @@
 
 (ffi:default-foreign-language :stdc)
 
-; (defconstant wxLI_HORIZONTAL 4)
-; (defconstant wxLI_VERTICAL 8)
-
 (ffi:def-call-out wxStaticLine_Create
 	(:name "wxStaticLine_Create")
 	(:arguments (_prt (ffi:c-pointer NIL))
