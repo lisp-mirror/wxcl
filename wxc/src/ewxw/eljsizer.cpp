@@ -391,18 +391,6 @@ EWXWEXPORT(void*, wxStaticBoxSizer_Create)(void* box, int orient)
 	return (void*) new wxStaticBoxSizer((wxStaticBox*) box, orient );
 }
 	
-EWXWEXPORT(void, wxStaticBoxSizer_RecalcSizes)(void* _obj)
-{
-	((wxStaticBoxSizer*)_obj)->RecalcSizes();
-}
-	
-EWXWEXPORT(void, wxStaticBoxSizer_CalcMin)(void* _obj, void* _w, void* _h)
-{
-	wxSize res = ((wxStaticBoxSizer*)_obj)->CalcMin();
-	(*(int*)_w) = res.GetWidth();
-	(*(int*)_h) = res.GetHeight();
-}
-	
 EWXWEXPORT(void*, wxStaticBoxSizer_GetStaticBox)(void* _obj)
 {
 	return (void*)((wxStaticBoxSizer*)_obj)->GetStaticBox();
