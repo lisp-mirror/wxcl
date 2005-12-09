@@ -38,7 +38,7 @@
   (= 1 (wxEvent_IsCommandEvent (object-pointer obj))))
 
 (defmethod clone ((obj event))
-  (make-wx-instance 'event (wxEvent_CopyObject (object-pointer obj))))
+  (make-wx-instance 'event (wxEvent_Clone (object-pointer obj))))
 
 ; (defmethod ((obj event)) wxEvent_SetCallbackUserData
 ;     (:name "wxEvent_SetCallbackUserData")

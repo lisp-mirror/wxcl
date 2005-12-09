@@ -43,9 +43,8 @@
 
 (ffi:def-call-out wxColourData_GetColour
 	(:name "wxColourData_GetColour")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_ref (ffi:c-pointer NIL)))
-	(:return-type NIL)
+	(:arguments (_obj (ffi:c-pointer NIL)))
+	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))
 
 (ffi:def-call-out wxColourData_SetCustomColour
@@ -59,7 +58,6 @@
 (ffi:def-call-out wxColourData_GetCustomColour
 	(:name "wxColourData_GetCustomColour")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(i ffi:int)
-		(_ref (ffi:c-pointer NIL)))
-	(:return-type NIL)
+               (i ffi:int))
+	(:return-type (ffi:c-pointer NIL))
 	(:library +library-name+))

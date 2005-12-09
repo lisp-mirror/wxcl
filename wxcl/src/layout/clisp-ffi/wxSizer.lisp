@@ -205,12 +205,12 @@
 	(:return-type NIL)
 	(:library +library-name+))
 
-(ffi:def-call-out wxSizerItem_SetOption
-	(:name "wxSizerItem_SetOption")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(option ffi:int))
-	(:return-type NIL)
-	(:library +library-name+))
+;  (ffi:def-call-out wxSizerItem_SetOption
+;  	(:name "wxSizerItem_SetOption")
+;  	(:arguments (_obj (ffi:c-pointer NIL))
+;  		(option ffi:int))
+;  	(:return-type NIL)
+;  	(:library +library-name+))
 
 (ffi:def-call-out wxSizerItem_SetFlag
 	(:name "wxSizerItem_SetFlag")
@@ -252,11 +252,11 @@
 	(:return-type NIL)
 	(:library +library-name+))
 
-(ffi:def-call-out wxSizerItem_GetOption
-	(:name "wxSizerItem_GetOption")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type ffi:int)
-	(:library +library-name+))
+; (ffi:def-call-out wxSizerItem_GetOption
+; 	(:name "wxSizerItem_GetOption")
+; 	(:arguments (_obj (ffi:c-pointer NIL)))
+; 	(:return-type ffi:int)
+; 	(:library +library-name+))
 
 (ffi:def-call-out wxSizerItem_GetFlag
 	(:name "wxSizerItem_GetFlag")
@@ -664,20 +664,6 @@
 	(:arguments (box (ffi:c-pointer NIL))
 		(orient ffi:int))
 	(:return-type (ffi:c-pointer NIL))
-	(:library +library-name+))
-
-(ffi:def-call-out wxStaticBoxSizer_RecalcSizes
-	(:name "wxStaticBoxSizer_RecalcSizes")
-	(:arguments (_obj (ffi:c-pointer NIL)))
-	(:return-type NIL)
-	(:library +library-name+))
-
-(ffi:def-call-out wxStaticBoxSizer_CalcMin
-	(:name "wxStaticBoxSizer_CalcMin")
-	(:arguments (_obj (ffi:c-pointer NIL))
-		(_w (ffi:c-pointer NIL))
-		(_h (ffi:c-pointer NIL)))
-	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxStaticBoxSizer_GetStaticBox
