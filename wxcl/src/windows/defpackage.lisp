@@ -30,6 +30,7 @@
 	   #:create-tool-bar
 	   #:title
 	   #:shape
+      #:sizer
 	   #:show-full-screen
 	   #:full-screen-p
 	   #:centre
