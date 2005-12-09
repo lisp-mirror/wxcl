@@ -9,7 +9,7 @@
 
 (in-package :wxcl-layout)
 
-(defun make-box-size (orientation)
+(defun make-box-sizer (orientation)
   (let ((bs (make-instance 'box-sizer)))
     (setf (slot-value bs 'object)
 	  (wxBoxSizer_Create orientation))

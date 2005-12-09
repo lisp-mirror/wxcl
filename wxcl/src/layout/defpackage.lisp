@@ -49,12 +49,12 @@
  	#:layout
    #:dimension
  	#:fit
+  	#:size-hints
    )
   (:export
    #:make-box-sizer
    #:orientation
    )
-;  	#:SetSizeHints
 ;  	#:GetChildren
 ;  	#:SetDimension
 ;  	#:Create

@@ -20,7 +20,7 @@
 (defconstant +lb-hscroll+    #x40000000) ; #define'd to wxHSCROLL in defs.h
 
 (defun make-list-box (parent choices &key (id -1) (pos +default-position+) (size +default-size+) (style 0))
-  (wx-make-instance 'list-box
+  (make-wx-instance 'list-box
                     (wxListBox_Create (when parent (object-pointer parent))
                                       id (point-x pos) (point-y pos) (size-width size) (size-height size)
                                       (length choices) choices style)))

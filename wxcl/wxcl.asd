@@ -69,6 +69,7 @@
                                                         (:file "wxStaticLine")
                                                         (:file "wxStaticText")
                                                         (:file "wxSlider")
+                                                        (:file "wxGauge")
                                                         (:file "wxButton") 
                                                         (:file "wxRadioButton")
                                                         (:file "wxToggleButton")
@@ -83,6 +84,7 @@
                                   (:file "check-box" :depends-on ("clisp-ffi"))
                                   (:file "list-box" :depends-on ("clisp-ffi"))
                                   (:file "list-ctrl" :depends-on ("clisp-ffi"))
+                                  (:file "gauge" :depends-on ("clisp-ffi"))
                                   (:file "radio-box" :depends-on ("clisp-ffi"))
                                   (:file "radio-button" :depends-on ("clisp-ffi"))
                                   (:file "slider" :depends-on ("clisp-ffi"))
@@ -162,7 +164,8 @@
                      :components ((:module "clisp-ffi"
                                            :components ((:file "wxSizer")))
                                   (:file "sizer" :depends-on ("clisp-ffi"))
-                                  (:file "box-sizer" :depends-on ("sizer"))))
+                                  (:file "box-sizer" :depends-on ("sizer"))
+                                  (:file "static-box-sizer" :depends-on ("sizer"))))
      (:module "menus"
               :depends-on ("wxcl" "defpackage")
               :components ((:module "clisp-ffi"
