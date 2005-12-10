@@ -211,7 +211,7 @@
   (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
-(ffi:def-call-out wxGetTextFromUser
+(ffi:def-call-out wxcGetTextFromUser
     (:name "wxcGetTextFromUser")
   (:arguments (message ffi:c-string)
 	      (caption ffi:c-string)
@@ -223,7 +223,7 @@
   (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
-(ffi:def-call-out wxGetNumberFromUser
+(ffi:def-call-out wxcGetNumberFromUser
     (:name "wxcGetNumberFromUser")
   (:arguments (message ffi:c-string)
 	      (prompt ffi:c-string)
@@ -237,3 +237,38 @@
   (:return-type ffi:long)
   (:library +library-name+))
 
+(ffi:def-call-out wxcFileSelector
+    (:name "wxcFileSelector")
+  (:arguments (message ffi:c-string)
+              (path ffi:c-string)
+              (filename ffi:c-string)
+              (extension ffi:c-string)
+              (wildcard ffi:c-string)
+              (flags ffi:int)
+              (parent (ffi:c-pointer NIL))
+              (x ffi:int)
+              (y ffi:int))
+  (:return-type ffi:c-string :malloc-free)
+  (:library +library-name+))
+
+(ffi:def-call-out wxcDirSelector
+    (:name "wxcDirSelector")
+  (:arguments (message ffi:c-string)
+              (path ffi:c-string)
+              (style ffi:long)
+              (x ffi:int)
+              (y ffi:int)
+              (parent (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
+  (:library +library-name+))
+
+(ffi:def-call-out wxcMessageBox
+    (:name "wxcMessageBox")
+  (:arguments (message ffi:c-string)
+              (caption ffi:c-string)
+              (style ffi:long)
+              (parent (ffi:c-pointer NIL))
+              (x ffi:int)
+              (y ffi:int))
+  (:return-type ffi:int)
+  (:library +library-name+))

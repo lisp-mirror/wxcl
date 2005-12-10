@@ -13,7 +13,20 @@
       #:object
       #:size
       #:point
-      #:rect)
+      #:rect
+      #:define-frame)
+  ;;commonly used functions
+  (:export #:get-colour-from-user
+           #:get-font-from-user
+           #:get-password-from-user
+           #:get-text-from-user
+           #:get-number-from-user
+           #:get-filepath-from-user
+           #:get-directory-from-user
+           #:file-selector
+           #:dir-selector
+           #:message-box
+           )
   (:export 
       #:make-rect
       #:make-point
@@ -33,6 +46,13 @@
       )
   ;;some constants
   (:export
+      #:+open+
+      #:+save+
+      #:+hide-readonly+
+      #:+multiple+
+      #:+change-dir+
+      #:+overwrite-prompt+
+      #:+file-must-exist+
       #:+st-sizegrip+
       #:+size-auto-width+
       #:+size-auto-height+
@@ -1495,3 +1515,12 @@
 (defconstant +sql-fetch-absolute+ 5)
 (defconstant +sql-fetch-relative+ 6)
 (defconstant +sql-fetch-bookmark+ 8)
+
+
+(defconstant +open+ 1)
+(defconstant +save+ 2)
+(defconstant +hide-readonly+ 8)
+(defconstant +multiple+ 32)
+(defconstant +change-dir+ 64)
+(defconstant +overwrite-prompt+ 4)
+(defconstant +file-must-exist+ 16)

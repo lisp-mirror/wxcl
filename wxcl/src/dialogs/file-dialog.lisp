@@ -1,19 +1,8 @@
 (in-package :wxcl-dialogs)
 
-(defconstant +open+ 1)
-(defconstant +save+ 2)
-(defconstant +hide-readonly+ 8)
-(defconstant +multiple+ 32)
-(defconstant +change-dir+ 64)
-(defconstant +overwrite-prompt+ 4)
-(defconstant +file-must-exist+ 16)
-(defconstant +id-ok+ 5100)
-(defconstant +id-cancel+ 5101)
-
-
-(defun make-file-dialog (parent &key (message "") (dir "") (file "")
+(defun make-file-dialog (parent &key (message "") (dir "") (filename "")
 				(wildcard "*.*") (position +default-position+) (style 0))
-  (make-wx-instance 'file-dialog (wxFileDialog_Create (object-pointer parent) message dir file wildcard
+  (make-wx-instance 'file-dialog (wxFileDialog_Create (object-pointer parent) message dir filename wildcard
 						      (point-x position) (point-y position) style)))
 
 (defmethod (setf message) (str (obj file-dialog))

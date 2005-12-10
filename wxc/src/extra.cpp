@@ -1830,18 +1830,35 @@ EWXWEXPORT(void, wxProgressDialog_Resume)(wxProgressDialog* obj )
 /*------------------------------------------------------------------------------
   standard dialogs
 ------------------------------------------------------------------------------*/
+EWXWEXPORT(char*, wxcDirSelector)(char* message, char* path, long style, int x, int y, wxWindow* parent)
+{
+  wxString result = wxDirSelector(message, path, style, wxPoint(x,y), parent);
+  char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+  if (buf) strcpy (buf, result.c_str());
+  return buf;
+}
+
+EWXWEXPORT(char*, wxcFileSelector)(char* message, char* path, char *filename, char *extension,
+                                   char *wildcard, int flags,  wxWindow* parent, int x, int y)
+{
+  wxString result = wxFileSelector( message, path, filename, extension, wildcard, flags, parent, x, y);
+  char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+  if (buf) strcpy (buf, result.c_str());
+  return buf;
+}
+
 EWXWEXPORT(wxColor*, wxcGetColourFromUser)(wxWindow *parent, wxColour* colInit)
 {
   if(colInit)
-    return &wxGetColourFromUser(parent, *colInit);
-  return &wxGetColourFromUser(parent);
+    return new wxColour(wxGetColourFromUser(parent, *colInit));
+  return  new wxColour(wxGetColourFromUser(parent));
 }
 
 EWXWEXPORT(wxFont*, wxcGetFontFromUser)(wxWindow *parent, wxFont* fontInit)
 {
   if(fontInit)
-    return &wxGetFontFromUser(parent, *fontInit);
-  return &wxGetFontFromUser(parent);
+    return new wxFont(wxGetFontFromUser(parent,*fontInit));
+  return new wxFont(wxGetFontFromUser(parent));
 }
 
 EWXWEXPORT(char*, wxcGetPasswordFromUser)(char* message, char* caption, char* defaultText, wxWindow* parent, int x, int y, int center)
@@ -1849,7 +1866,6 @@ EWXWEXPORT(char*, wxcGetPasswordFromUser)(char* message, char* caption, char* de
   wxString result = wxGetPasswordFromUser( message, caption, defaultText, parent, x, y, center );
   char *buf = (char*)malloc((1+result.Length())*sizeof(char));
   if (buf) strcpy (buf, result.c_str());
-  delete result;
   return buf;
 }
 
@@ -1858,7 +1874,6 @@ EWXWEXPORT(char*, wxcGetTextFromUser)(char* message, char* caption, char* defaul
   wxString result = wxGetTextFromUser( message, caption, defaultText, parent, x, y, center );
   char *buf = (char*)malloc((1+result.Length())*sizeof(char));
   if (buf) strcpy (buf, result.c_str());
-  delete result;
   return buf;
 }
 
@@ -1867,6 +1882,12 @@ EWXWEXPORT(long,wxcGetNumberFromUser)( char* message, char* prompt, char* captio
   return wxGetNumberFromUser(message, prompt, caption, value, min , max, parent, wxPoint(x,y) );
 }
 
+ 
+ EWXWEXPORT(int, wxcMessageBox)(char* message, char* caption, int style, wxWindow* parent, int x, int y)
+{
+  return wxMessageBox( message, caption, style, parent, x, y);
+}
+ 
 EWXWEXPORT(void, wxcBell)(void)
 {
   wxBell();

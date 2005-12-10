@@ -15,14 +15,7 @@
            #:colour-dialog)
   (:shadow #:directory)
   ;;file-dialog class
-  (:export #:+open+
-           #:+save+
-           #:+hide-readonly+
-           #:+multiple+
-           #:+change-dir+
-           #:+overwrite-prompt+
-           #:+file-must-exist+
-           #:make-file-dialog
+  (:export #:make-file-dialog
            #:message
            #:path
            #:directory

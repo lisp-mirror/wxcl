@@ -15,19 +15,22 @@
 
 (setq +button-id+ 5000)			; some assigned id
 
-(defvar *frame* nil)
-
 (defun btn-responder-function (evt)
   (when evt
     (print "btn-responder")
-    (wxcl-dialogs:show-message-dialog *frame* "You clicked me" "Response")))
+    (message-box "You clicked me" :caption "Response")))
 
+
+(define-frame frame (nil "Button Demo." -1)
+  (panel () (:panel))
+  (btn-responder (panel) (:label "Click" :id +button-id+)))
 
 (defun init-func (evt)
-  (setf *frame* (make-frame nil -1 "Button Demo."))
-  (let* ((panel (make-panel *frame*))
-         (btn-responder (wxcl-controls:make-button panel :label "Click" :id +button-id+))
+  (let* (;(frame (make-frame nil -1 "Button Demo."))
+         ;(panel (make-panel frame))
+         ;(btn-responder (wxcl-controls:make-button panel :label "Click" :id +button-id+))
          (sizer (wxcl-layout:make-box-sizer +vertical+)))
+    (#:|create-FRAME| 3)
     (setf (sizer panel) sizer)
     (wxcl-layout:fit sizer panel)
     (wxcl-layout:add sizer btn-responder)
@@ -35,7 +38,7 @@
 					; register events
     (wxcl-events:connect btn-responder +button-id+ wxcl-events:+event-command-button-clicked+
                          #'btn-responder-function)
-    (show *frame*)
+    (show frame)
     ))
 
 (wxcl:start-app #'init-func)

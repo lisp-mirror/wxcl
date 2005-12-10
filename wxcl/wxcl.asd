@@ -37,7 +37,9 @@
                                     :components ((:file "wx_main")
                                                  (:file "wx_wrapper")
                                                  (:file "wxCL")))
-                           (:file "app" :depends-on ("object" "clisp-ffi"))))
+                           (:file "app" :depends-on ("object" "clisp-ffi"))
+                           ))
+
      (:module "defpackage"
               :depends-on ("wxcl")
               :pathname ""
@@ -56,6 +58,11 @@
                                   :depends-on ("windows-defpackage")
                                   :pathname "dialogs/defpackage"
                                   )))
+     (:module "utils"
+               :depends-on ("wxcl" "defpackage")
+               :pathname ""
+               :components ((:file "functions")
+                            (:file "macros")))
      (:module "clipboard"
                       :depends-on ("wxcl" "defpackage"))
      (:module "controls"

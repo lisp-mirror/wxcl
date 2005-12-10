@@ -1,55 +1,56 @@
+(in-package :wxCL)
 
-(defun wx-version-number()
-  (wxVersionNumber))
+; (defun wx-version-number()
+;   (wxVersionNumber))
 
-(defun bell()
-  (wxcBell))
+; (defun bell()
+;   (wxcBell))
 
-(defun defined-p(str)
-  (= 1 (wxIsDefined str)))
+; (defun defined-p(str)
+;   (= 1 (wxIsDefined str)))
 
-;don't use these, use the one provided by implementation
-; (defun wxcMalloc
-;     (:name "wxcMalloc")
-;   (:arguments (size ffi:int))
-;   (:return-type (ffi:c-pointer NIL))
-;   (:library +library-name+))
+; ;don't use these, use the one provided by implementation
+; ; (defun wxcMalloc
+; ;     (:name "wxcMalloc")
+; ;   (:arguments (size ffi:int))
+; ;   (:return-type (ffi:c-pointer NIL))
+; ;   (:library +library-name+))
 
-; (defun wxcFree
-;     (:name "wxcFree")
-;   (:arguments (p (ffi:c-pointer NIL)))
-;   (:library +library-name+))
+; ; (defun wxcFree
+; ;     (:name "wxcFree")
+; ;   (:arguments (p (ffi:c-pointer NIL)))
+; ;   (:library +library-name+))
 
-(defun log-error(message)
-  (LogError message))
+; (defun log-error(message)
+;   (LogError message))
 
-(defun log-fatal-error(message)
-  (LogFatalError message))
+; (defun log-fatal-error(message)
+;   (LogFatalError message))
 
-(defun log-warning()
-    (LogWarning message))
+; (defun log-warning()
+;     (LogWarning message))
 
-(defun log-message()
-    (LogMessage message))
+; (defun log-message()
+;     (LogMessage message))
 
-(defun log-verbose()
-    (LogVerbose message))
+; (defun log-verbose()
+;     (LogVerbose message))
 
-(defun log-status()
-    (LogStatus message))
+; (defun log-status()
+;     (LogStatus message))
 
-(defun log-sys-error()
-  (LogSysError message))
+; (defun log-sys-error()
+;   (LogSysError message))
 
-(defun log-debug()
-  (LogDebug message))
+; (defun log-debug()
+;   (LogDebug message))
 
-(defun log-trace(mask message)
-  "Works only in debug wxWidget builds."
-  (LogTrace mask message))
+; (defun log-trace(mask message)
+;   "Works only in debug wxWidget builds."
+;   (LogTrace mask message))
 
-(defun wxcWakeUpIdle()
-  (wxcWakeUpIdle))
+; (defun wxcWakeUpIdle()
+;   (wxcWakeUpIdle))
 
 
 ; (defun wxObject_IsKindOf
@@ -148,34 +149,40 @@
 ;   (:library +library-name+))
 
 
-(defun get-colour-from-user (parent init-col)
-  (let ((cl (wxGetColourFromUser (object-pointer parent) (when init-col (object-pointer init-col)))))
-    (when cl
-      (let ((obj (make-instance 'colour)))
-	(setf (slot-value obj 'object) cl)
-	cl))))
+(defun get-colour-from-user (parent &optional (init-col nil))
+  (make-wx-instance 'wxcl-gdi:colour
+                    (wxcGetColourFromUser (object-pointer parent) (when init-col (object-pointer init-col)))))
 
-(defun get-font-from-user (parent init-col)
-  (let ((fnt (wxGetFontFromUser (object-pointer parent) (when init-col (object-pointer init-col)))))
-    (when fnt
-      (let ((obj (make-instance 'font)))
-	(setf (slot-value obj 'object) fnt)
-	fnt))))
+(defun get-font-from-user (parent &optional (init-font nil))
+  (make-wx-instance 'wxcl-gdi:font
+                    (wxcGetFontFromUser (object-pointer parent) (when init-font (object-pointer init-font)))))
 
-(defun get-password-from-user (message :key (caption "Input Text")
-				  (default-value "") (parent nil) (size +default-size+)
-				  (centre t))
-  (wxGetPasswordFromUser message caption default-value (when parent (object-pointer parent))
-		       (point-x size) (point-y size) (if centre 1 0)))
+(defun get-password-from-user (message &key (caption "Input Password")(default-value "")
+                                       (parent nil) (position +default-position+)(centre t))
+  (wxcGetPasswordFromUser message caption default-value (when parent (object-pointer parent))
+		       (point-x position) (point-y position) (if centre 1 0)))
 
-(defun get-text-from-user (message :key (caption "Input Text")
-				  (default-value "") (parent nil) (size +default-size+)
-				  (centre t))
-    (wxGetTextFromUser message caption default-value (when parent (object-pointer parent))
-		       (point-x size) (point-y size) (if centre 1 0)))
+(defun get-text-from-user (message &key (caption "Input Text") (default-value "")
+                                   (parent nil) (position +default-position+)(centre t))
+    (wxcGetTextFromUser message caption default-value (when parent (object-pointer parent))
+		       (point-x position) (point-y position) (if centre 1 0)))
 
 
-(defun get-number-from-user (message prompt caption value :key (min 0) (max 100) (parent nil) (size +default-size+))
-  (wxGetNumberFromUser message prompt caption value min max (when parent (object-pointer parent))
-		       (point-x size) (point-y size)))
+(defun get-number-from-user (message prompt caption value &key (min 0) (max 100) (parent nil)
+                                     (position +default-position+))
+  (wxcGetNumberFromUser message prompt caption value min max (when parent (object-pointer parent))
+		       (point-x position) (point-y position)))
 
+(defun file-selector (message &key (dir "")(filename "")(extension "")(wildcard "*.*")
+                              (style 0)(parent nil)(x -1)(y -1))
+  (wxcFileSelector  message dir filename extension wildcard style (when parent (object-pointer parent)) x y))
+
+(defun dir-selector (message &key (dir "")(style 0)(position +default-position+)(parent nil))
+  (wxcDirSelector message dir style (point-x position) (point-y position)
+                 (when parent (object-pointer parent))))
+
+(defun message-box (message &key (caption "Message") (style +ok+)
+                                   (parent nil)(x -1)(y -1))
+    (wxcMessageBox message caption style (when parent (object-pointer parent)) x y))
+
+(print "loaded function file")

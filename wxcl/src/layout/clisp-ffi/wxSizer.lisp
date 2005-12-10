@@ -448,24 +448,24 @@
 (ffi:def-call-out wxSizer_GetSize
 	(:name "wxSizer_GetSize")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(_w (ffi:c-pointer NIL))
-		(_h (ffi:c-pointer NIL)))
+		(_w (ffi:c-ptr int) :out)
+		(_h (ffi:c-ptr int) :out))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxSizer_GetPosition
 	(:name "wxSizer_GetPosition")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(_x (ffi:c-pointer NIL))
-		(_y (ffi:c-pointer NIL)))
+		(_x (ffi:c-ptr int) :out)
+		(_y (ffi:c-ptr int) :out))
 	(:return-type NIL)
 	(:library +library-name+))
 
 (ffi:def-call-out wxSizer_GetMinSize
 	(:name "wxSizer_GetMinSize")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(_w (ffi:c-pointer NIL))
-		(_h (ffi:c-pointer NIL)))
+		(_w (ffi:c-ptr int) :out)
+		(_h (ffi:c-ptr int) :out))
 	(:return-type NIL)
 	(:library +library-name+))
 
@@ -478,8 +478,8 @@
 (ffi:def-call-out wxSizer_CalcMin
 	(:name "wxSizer_CalcMin")
 	(:arguments (_obj (ffi:c-pointer NIL))
-		(_w (ffi:c-pointer NIL))
-		(_h (ffi:c-pointer NIL)))
+		(_w (ffi:c-ptr int) :out)
+		(_h (ffi:c-ptr int) :out))
 	(:return-type NIL)
 	(:library +library-name+))
 

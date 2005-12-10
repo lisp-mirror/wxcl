@@ -58,16 +58,11 @@
 
 (defun open-image (frame evt)
   (when evt
-    (let ((filename
-           (wxcl-dialogs:with-file-dialog
-               (dialog frame
-                       :message "open file"
-                       :style (boole boole-ior wxcl-dialogs:+open+ wxcl-dialogs:+file-must-exist+)
-                       :wildcard
-                       "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")
-             (wxcl-dialogs:show-modal dialog)
-             (wxcl-dialogs:path dialog))))
-      (when filename
+    (let ((filename (file-selector "open file"
+                                   :style (boole boole-ior +open+ +file-must-exist+)
+                                   :wildcard
+                                   "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")))
+      (unless (string= "" filename)
         (let* ((bmp (wxcl-gdi:make-bitmap-from-file filename wxcl-gdi:+bitmap-type-any+))
                (fr (make-frame frame -1 filename))
                (sw (make-scrolled-window fr))
@@ -82,13 +77,11 @@
     (print data)
     (print "close image")))
 
-(defun about-box (frame evt)
+(defun about-box (evt)
   (when evt
-    (wxcl-dialogs:show-message-dialog frame
-                "Image viewer demonstrates some of the features of wxCL.\
- This program is in public domain."
-			 "Image Viewer - wxCL"
-			 +ok+)))
+    (message-box "Image viewer demonstrates some of the features of wxCL.\
+This program is in public domain."
+                 :caption "Image Viewer - wxCL")))
 
 (defun quit-viewer (frame evt)
   (when evt
@@ -101,7 +94,7 @@
 (defun register-events (frame)
   (connect frame +id-open+ +event-command-menu-selected+  (lambda (evt) (open-image frame evt)))
   (connect frame +id-close+ +event-command-menu-selected+ (lambda (evt) (close-image frame evt)))
-  (connect frame +id-about+ +event-command-menu-selected+ (lambda (evt) (about-box frame evt)))
+  (connect frame +id-about+ +event-command-menu-selected+ #'about-box)
   (connect frame +id-exit+ +event-command-menu-selected+ (lambda (evt) (quit-viewer frame evt))))
 ; ;  (wxevthandler_connect frame -1 (expEVT_CLOSE_WINDOW) (wxClosure_Create #'do-nothing frame))
 ;   )

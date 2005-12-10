@@ -61,7 +61,7 @@
     "Sets the slider's page size."
     (wxSlider_SetPageSize (object-pointer obj) size))
 
-(defmethod (setf range) (min max (obj slider))
+(defmethod set-range ((obj slider) min max)
     "Sets the minimum and maximum values for the slider."
     (wxSlider_SetRange (object-pointer obj) min max))
 
