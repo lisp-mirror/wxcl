@@ -293,6 +293,29 @@
 	   #:+cal-hittest-nowhere+
 	   #:+cal-hittest-header+
 	   #:+cal-hittest-day+
+;;notebook related constants, functions, etc.
+     #:+nb-fixedwidth+
+     #:+nb-left+
+     #:+nb-right+
+     #:+nb-bottom+
+     #:+nb-multiline+
+     #:+nb-top+
+     #:page-count
+     #:advance-selection
+     #:selection
+     #:page-text
+     #:image-list
+     #:page-image
+     #:row-count
+     #:page-size
+     #:padding
+     #:delete-page
+     #:remove-page
+     #:delete-all-pages
+     #:add-page
+     #:insert-page
+     #:get-page
+     #:assign-image-list
 	   ))
 
 (in-package :wxcl-controls)

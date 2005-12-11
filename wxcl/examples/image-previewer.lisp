@@ -18,15 +18,14 @@
 (defvar CLOSE-TOOLBAR-ID 60001)
 
 (defun create-menu () 
-  (let((file-menu (wxcl-menus:make-menu))
-       (help-menu (wxcl-menus:make-menu)))
-    (wxcl-menus:append-string file-menu +id-open+ "&Open      Ctrl+O" :help-String "Open an image")
-    (wxcl-menus:append-string file-menu +id-close+ "&Close      Ctrl+C" :help-string "Close an image")
- 	 (wxcl-menus:append-separator file-menu)
-    (wxcl-menus:append-string file-menu +id-exit+ "&Quit        Alt+F4" :help-string "Quit the image viewer.")
-    (wxcl-menus:append-string help-menu +id-about+ "&About     Ctrl+A" :help-string "About Image Viewer")
+  (let((file-menu (wxcl-menus:make-menu-with-items
+                   (string +id-open+ "&Open      Ctrl+O" :help-String "Open an image")
+                   (string +id-close+ "&Close      Ctrl+C" :help-string "Close an image")
+                   (separator)
+                   (string +id-exit+ "&Quit        Alt+F4" :help-string "Quit the image viewer.")))
+       (help-menu (wxcl-menus:make-menu-with-items
+                   (string +id-about+ "&About     Ctrl+A" :help-string "About Image Viewer"))))
     (wxcl-menus:make-menu-bar (list file-menu help-menu) (list "&File" "&Help"))))
-
 ; (define-accelrator-table acc-table
 ;     (wxcl-structures:+accel-ctrl+ (char-int #\o) wxcl:+id-open+)
 ;     (wxcl-structures:+accel-ctrl+ (char-int #\c) wxcl:+id-close+)

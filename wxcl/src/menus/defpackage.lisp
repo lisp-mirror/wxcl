@@ -5,6 +5,7 @@
    ;;menu class, methods and functions
    #:menu
    #:make-menu
+   #:make-menu-with-items ;;macro
    #:delete-menu
    #:append-separator
    #:append-string

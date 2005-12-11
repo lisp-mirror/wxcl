@@ -7,23 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxTextAttr
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxTextAttr_CreateDefault
-	   :wxTextAttr_Create
-	   :wxTextAttr_Delete
-	   :wxTextAttr_GetBackgroundColour
-	   :wxTextAttr_GetFont
-	   :wxTextAttr_GetTextColour
-	   :wxTextAttr_HasBackgroundColour
-	   :wxTextAttr_HasFont
-	   :wxTextAttr_HasTextColour
-	   :wxTextAttr_IsDefault
-	   :wxTextAttr_SetTextColour
-	   :wxTextAttr_SetBackgroundColour
-	   :wxTextAttr_SetFont))
-
-(in-package :wxTextAttr)
+(in-package :wxcl-structures)
 
 (ffi:default-foreign-language :stdc)
 

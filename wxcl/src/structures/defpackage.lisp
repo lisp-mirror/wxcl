@@ -80,6 +80,20 @@
      #:chosen-font
      #:set-range
      #:encoding
+;;text-attr data symbols and functions
+     #:make-text-attr-empty
+     #:make-text-attr
+     #:delete-object
+     #:background-colour
+     #:font
+     #:text-colour
+     #:has-background-colour
+     #:has-font-p
+     #:has-text-colour-p
+     #:default-p
+     #:text-colour
+     #:background-colour
+     #:font
      ))
 
 
@@ -88,6 +102,13 @@
 (defclass calendar-date-attr (object)
   ()
   (:documentation "This class represents attributes of a calendar control."))
+
+(defclass text-attr (object)
+  ()
+  (:documentation "This class represents the character and paragraph attributes, or style,\
+ for a range of text in a text-control."))
+
+This class represents attributes of a calendar control."))
 
 (defclass list-item (object)
   ()

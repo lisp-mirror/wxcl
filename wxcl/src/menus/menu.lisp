@@ -3,6 +3,19 @@
 (defun make-menu (&key (title "") (style 0))
   (make-wx-instance 'menu (wxMenu_Create title style)))
 
+(defmacro make-menu-with-items (&rest items)
+  (let ((menu (gensym)))
+  `(let  ((,menu (make-menu)))
+    ,@(loop for (type . params) in items collect
+            (case type
+              (string `(append-string ,menu ,@params))
+              (separator `(append-separator ,menu))
+              (check-item `(append-check-item ,menu ,@params))
+              (radio-item `(append-radio-item ,menu ,@params))
+              (sub-menu `(append-sub-menu ,menu ,@params))
+              (menu-items `(append-sub-menu ,menu ,@params))))
+    ,menu)))
+  
 (defmethod delete-menu ((obj menu))
   (wxMenu_DeletePointer (object-pointer obj))
   (setf (slot-value obj 'object) nil))
