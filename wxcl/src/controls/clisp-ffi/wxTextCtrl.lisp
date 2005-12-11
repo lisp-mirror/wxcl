@@ -7,65 +7,7 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxTextCtrl
-    (:use :common-lisp :ffi :wxCL)
-  (:export :wxTextCtrl_Create
-	   :wxTextCtrl_GetValue
-	   :wxTextCtrl_SetValue
-	   :wxTextCtrl_GetLineLength
-	   :wxTextCtrl_GetLineText
-	   :wxTextCtrl_GetNumberOfLines
-	   :wxTextCtrl_IsModified
-	   :wxTextCtrl_IsEditable
-	   :wxTextCtrl_GetSelection
-	   :wxTextCtrl_Clear
-	   :wxTextCtrl_Replace
-	   :wxTextCtrl_Remove
-	   :wxTextCtrl_LoadFile
-	   :wxTextCtrl_SaveFile
-	   :wxTextCtrl_DiscardEdits
-	   :wxTextCtrl_WriteText
-	   :wxTextCtrl_AppendText
-	   :wxTextCtrl_XYToPosition
-	   :wxTextCtrl_PositionToXY
-	   :wxTextCtrl_ShowPosition
-	   :wxTextCtrl_Copy
-	   :wxTextCtrl_Cut
-	   :wxTextCtrl_Paste
-	   :wxTextCtrl_CanCopy
-	   :wxTextCtrl_CanCut
-	   :wxTextCtrl_CanPaste
-	   :wxTextCtrl_Undo
-	   :wxTextCtrl_Redo
-	   :wxTextCtrl_CanUndo
-	   :wxTextCtrl_CanRedo
-	   :wxTextCtrl_SetInsertionPoint
-	   :wxTextCtrl_SetInsertionPointEnd
-	   :wxTextCtrl_GetInsertionPoint
-	   :wxTextCtrl_GetLastPosition
-	   :wxTextCtrl_SetSelection
-	   :wxTextCtrl_SetEditable
-	   :wxTextCtrl_EmulateKeyPress
-	   :wxTextCtrl_GetDefaultStyle
-	   :wxTextCtrl_GetStyle
-	   :wxTextCtrl_GetRange
-	   :wxTextCtrl_GetStringSelection
-	   :wxTextCtrl_IsMultiLine
-	   :wxTextCtrl_IsSingleLine
-	   :wxTextCtrl_SetDefaultStyle
-	   :wxTextCtrl_SetMaxLength
-	   :wxTextCtrl_SetStyle
-	   :wxcl-create-text-control
-	   :wxTE_READONLY
-	   :wxTE_MULTILINE
-	   :wxTE_PROCESS_TAB
-	   :wxTE_RICH
-	   :wxTE_RICH2
-	   :wxTE_NO_VSCROLL
-	   :wxTE_AUTO_SCROLL
-	   :wxTE_WORDWRAP))
-
-(in-package :wxTextctrl)
+(in-package :wxcl-controls)
 
 (ffi:default-foreign-language :stdc)
 
@@ -91,16 +33,10 @@
   (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
-(defmacro wxcl-create-text-control (frame &key (id -1) (text "") (left -1) (top -1) (width -1)(height -1)
-					  (style 0))
-  `(wxTextCtrl_Create ,frame ,id ,text ,left ,top ,width ,height ,style))
-
-
 (ffi:def-call-out wxTextCtrl_GetValue
     (:name "wxTextCtrl_GetValue")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxTextCtrl_SetValue
@@ -120,9 +56,8 @@
 (ffi:def-call-out wxTextCtrl_GetLineText
     (:name "wxTextCtrl_GetLineText")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (lineNo ffi:long)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+              (lineNo ffi:long))
+  (:return-type ffi:c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxTextCtrl_GetNumberOfLines
@@ -146,8 +81,8 @@
 (ffi:def-call-out wxTextCtrl_GetSelection
     (:name "wxTextCtrl_GetSelection")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (from (ffi:c-pointer NIL))
-	      (to (ffi:c-pointer NIL)))
+              (from (ffi:c-ptr long) :out)
+              (to (ffi:c-ptr long) :out))
   (:return-type NIL)
   (:library +library-name+))
 
@@ -219,9 +154,9 @@
 (ffi:def-call-out wxTextCtrl_PositionToXY
     (:name "wxTextCtrl_PositionToXY")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (pos ffi:long)
-	      (x (ffi:c-ptr ffi:long))
-	      (y (ffi:c-ptr ffi:long)))
+              (pos ffi:long)
+              (x (ffi:c-ptr ffi:long) :out)
+              (y (ffi:c-ptr ffi:long) :out))
   (:return-type ffi:int)
   (:library +library-name+))
 
@@ -349,25 +284,23 @@
 (ffi:def-call-out wxTextCtrl_GetStyle
     (:name "wxTextCtrl_GetStyle")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (_pos ffi:long)
-	      (_style (ffi:c-pointer NIL)))
+              (_pos ffi:long)
+              (style (ffi:c-pointer NIL)))
   (:return-type ffi:int)
   (:library +library-name+))
 
 (ffi:def-call-out wxTextCtrl_GetRange
     (:name "wxTextCtrl_GetRange")
   (:arguments (_obj (ffi:c-pointer NIL))
-	      (from ffi:long)
-	      (to ffi:long)
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+              (from ffi:long)
+              (to ffi:long))
+  (:return-type c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxTextCtrl_GetStringSelection
     (:name "wxTextCtrl_GetStringSelection")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_buf (ffi:c-pointer NIL)))
-  (:return-type ffi:int)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type c-string :malloc-free)
   (:library +library-name+))
 
 (ffi:def-call-out wxTextCtrl_IsMultiLine

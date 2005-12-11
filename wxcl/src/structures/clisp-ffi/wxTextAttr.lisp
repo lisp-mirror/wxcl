@@ -33,20 +33,20 @@
 
 (ffi:def-call-out wxTextAttr_GetBackgroundColour
     (:name "wxTextAttr_GetBackgroundColour")
-  (:arguments (_obj (ffi:c-pointer wxTextAttr))
-	      (colour (ffi:c-pointer NIL)))
+  (:arguments (_obj (ffi:c-pointer wxTextAttr)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxTextAttr_GetFont
     (:name "wxTextAttr_GetFont")
-  (:arguments (_obj (ffi:c-pointer wxTextAttr))
-	      (font (ffi:c-pointer NIL)))
+  (:arguments (_obj (ffi:c-pointer wxTextAttr)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxTextAttr_GetTextColour
     (:name "wxTextAttr_GetTextColour")
-  (:arguments (_obj (ffi:c-pointer wxTextAttr))
-	      (colour (ffi:c-pointer NIL)))
+  (:arguments (_obj (ffi:c-pointer wxTextAttr)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxTextAttr_HasBackgroundColour

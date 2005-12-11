@@ -81,6 +81,7 @@
      #:set-range
      #:encoding
 ;;text-attr data symbols and functions
+     #:text-attr
      #:make-text-attr-empty
      #:make-text-attr
      #:delete-object
@@ -107,8 +108,6 @@
   ()
   (:documentation "This class represents the character and paragraph attributes, or style,\
  for a range of text in a text-control."))
-
-This class represents attributes of a calendar control."))
 
 (defclass list-item (object)
   ()

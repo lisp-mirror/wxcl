@@ -1691,9 +1691,10 @@ EWXWEXPORT(int, wxTextCtrl_GetStyle)(void * _obj,long pos,void *style)
   return (int) ((wxTextCtrl*)_obj)->GetStyle(pos,* (wxTextAttr *) style);
 }
 
-EWXWEXPORT( void *, wxTextCtrl_GetDefaultStyle)(void * _obj)
+EWXWEXPORT(wxTextAttr*, wxTextCtrl_GetDefaultStyle)(void * _obj)
 {
-    return (void *) & ((wxTextCtrl*)_obj)->GetDefaultStyle();
+  wxTextAttr* res = new wxTextAttr(((wxTextCtrl*)_obj)->GetDefaultStyle());
+  return res;
 }
 
 EWXWEXPORT(char*, wxTextCtrl_GetRange)(void * _obj, long from, long to)
@@ -1701,7 +1702,6 @@ EWXWEXPORT(char*, wxTextCtrl_GetRange)(void * _obj, long from, long to)
     wxString result = ((wxTextCtrl*)_obj)->GetRange(from, to);
     char *buf = (char*)malloc((1+result.Length())*sizeof(char));
     if (buf) strcpy (buf, result.c_str());
-    delete result;
     return buf;
 }
 
@@ -1710,7 +1710,6 @@ EWXWEXPORT(char*, wxTextCtrl_GetStringSelection)(void * _obj)
     wxString result = ((wxTextCtrl*)_obj)->GetStringSelection();
     char *buf = (char*)malloc((1+result.Length())*sizeof(char));
     if (buf) strcpy (buf, result.c_str());
-    delete result;
     return buf;
 }
 
@@ -1758,19 +1757,22 @@ EWXWEXPORT( void, wxTextAttr_Delete)(void * _obj)
     delete ((wxTextAttr*)_obj);
 }
 
-EWXWEXPORT(void, wxTextAttr_GetBackgroundColour)(wxTextAttr* _obj, wxColour* colour )
+EWXWEXPORT(wxColour*, wxTextAttr_GetBackgroundColour)(wxTextAttr* _obj)
 {
-    *colour = _obj->GetBackgroundColour();
+   wxColour* colour = new wxColour(_obj->GetBackgroundColour());
+   return colour;
 }
 
-EWXWEXPORT(void, wxTextAttr_GetFont)(wxTextAttr* _obj, wxFont* font )
+EWXWEXPORT(wxFont*, wxTextAttr_GetFont)(wxTextAttr* _obj)
 {
-    *font = _obj->GetFont();
+    wxFont* font = new wxFont(_obj->GetFont());
+    return font;
 }
 
-EWXWEXPORT(void, wxTextAttr_GetTextColour)(wxTextAttr* _obj, wxColour* colour )
+EWXWEXPORT(wxColour*, wxTextAttr_GetTextColour)(wxTextAttr* _obj)
 {
-    *colour = _obj->GetTextColour();
+   wxColour* colour = new wxColour(_obj->GetTextColour());
+   return colour;    
 }
 
 EWXWEXPORT(int, wxTextAttr_HasBackgroundColour)(void * _obj)

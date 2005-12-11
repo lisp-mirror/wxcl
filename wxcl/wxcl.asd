@@ -16,8 +16,6 @@
 (print "Copyright (c) Surendra Singhi 2005")
 (print "wxCL = wxWidgets + Common Lisp")
 
-
-
 (defsystem wxCL
     :description "wxCL - Common Lisp bindings to wxWidgets Library."
     :version "1.1.2"
@@ -39,7 +37,6 @@
                                                  (:file "wxCL")))
                            (:file "app" :depends-on ("object" "clisp-ffi"))
                            ))
-
      (:module "defpackage"
               :depends-on ("wxcl")
               :pathname ""
@@ -61,8 +58,7 @@
      (:module "utils"
                :depends-on ("wxcl" "defpackage")
                :pathname ""
-               :components ((:file "functions")
-                            (:file "macros")))
+               :components ((:file "functions")))
      (:module "clipboard"
                       :depends-on ("wxcl" "defpackage"))
      (:module "controls"
@@ -71,6 +67,7 @@
                                            :components ((:file "wxControl")
                                                         (:file "wxControlWithItems")
                                                         (:file "wxListCtrl")
+                                                        (:file "wxTextCtrl") 
                                                         (:file "wxRadioBox")
                                                         (:file "wxStaticBox")
                                                         (:file "wxStaticLine")
@@ -88,6 +85,7 @@
                                   (:file "button" :depends-on ("clisp-ffi"))
                                   (:file "bitmap-button" :depends-on ("clisp-ffi"))
                                   (:file "toggle-button" :depends-on ("clisp-ffi"))
+                                  (:file "text-control" :depends-on ("clisp-ffi"))
                                   (:file "check-box" :depends-on ("clisp-ffi"))
                                   (:file "list-box" :depends-on ("clisp-ffi"))
                                   (:file "list-ctrl" :depends-on ("clisp-ffi"))
@@ -134,15 +132,15 @@
                                                  (:file "wxListItem")
                                                  (:file "wxColourData")
                                                  (:file "wxFontData")
-                                                 (:file "wxCalendarDateAttr.lisp")
-                                                 (:file "wxTextAttr.lisp"))
+                                                 (:file "wxCalendarDateAttr")
+                                                 (:file "wxTextAttr")))
                            (:file "accelerator-table" :depends-on ("accelerator-entry" "clisp-ffi"))
                            (:file "accelerator-entry" :depends-on ("clisp-ffi"))
                            (:file "font-data" :depends-on ("clisp-ffi"))
                            (:file "list-item" :depends-on ("clisp-ffi"))
                            (:file "colour-data" :depends-on ("clisp-ffi"))
                            (:file "text-attr" :depends-on ("clisp-ffi"))
-                           (:file "calendar-date-attr" :depends-on ("clisp-ffi")))))
+                           (:file "calendar-date-attr" :depends-on ("clisp-ffi"))))
      (:module "events"
                      :depends-on ("wxcl" "defpackage")
                      :components ((:module "clisp-ffi"
@@ -216,4 +214,4 @@
                            (:file "splitter-window" :depends-on ("window")))
               )))
 
-;(push :wxcl *features*)
+(push :wxcl *features*)

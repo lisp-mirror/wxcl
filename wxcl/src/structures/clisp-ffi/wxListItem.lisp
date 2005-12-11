@@ -120,8 +120,9 @@
 
 (ffi:def-call-out wxListItem_SetBackgroundColour
     (:name "wxListItem_SetBackgroundColour")
-  (:arguments (_obj (ffi:c-pointer NIL)))
-  (:return-type (ffi:c-pointer NIL))
+  (:arguments (_obj (ffi:c-pointer NIL))
+              (col (ffi:c-pointer NIL)))
+  (:return-type NIL)
   (:library +library-name+))
 
 (ffi:def-call-out wxListItem_SetFont

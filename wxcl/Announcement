@@ -3,16 +3,12 @@ Announcement: wxCL 1.1.1  (September 23, 2005) ***
 
  <http://www.wxcl-project.org>
 
-We are pleased to announce the release wxCL-1.1.1 (Alpha), the latest
-installment in wxCL development effort. This release now includes 
-wxWidgets 2.6.2 dll. There are also a number of bug fixes, and some
-api enhancements. This version is more stable with native clisp on Windows XP. 
-Please see the Change Log for complete list of changes. 
-Please read the quick start guide before using this version as using the 2.6.2 
-dll requires you to close the library every time you finish the program. Also, 
-don't forget to take a look at the cvs version of wxGlade, 
-(http://wxglade.sourceforge.net/) which provides a cool way of creating 
-wxCL GUI's.
+We are pleased to announce the release wxCL-1.2.0 (Alpha), the latest
+installment in wxCL development effort. In this release wxCL now
+provides a CLOS based interface to the underlying wxWidgets
+library. The programmer no longer needs to know the detail of the
+underlying foreign function interface to use the wxCL library. This
+release is not backward compatible. 
 
 What is wxCL?
 -------------
@@ -21,28 +17,48 @@ wxCL aims to provide an industrial strength GUI library to application
 programmers which is portable across Common Lisp implementations and
 operating system platforms. It builds upon wxWidgets, a comprehensive
 C++ library that provides uniform application interface to all major
-GUI platforms; including  GTK, Windows, X11, and MacOS X. 
+GUI platforms: including  GTK, Windows, X11, and MacOS X. 
 
 Availability:
 -------------
 
-The current release of wxCL 1.1.1 runs on CLISP, and is tested on
+The current release of wxCL 1.2.0 runs on CLISP, and is tested on
 Windows XP but it should work on Linux and Mac OS X as well (not
 tested due to lack of resources). 
 
 It can be downloaded from:
 
-http://www.wxcl-project.org/en--releases--maindl.html
+[English]http://www.wxcl-project.org/en/downloads--downloads-1.html
+[Deutsch]http://www.wxcl-project.org/de/downloads--downloads-1.html
+
+We need your help.
+------------------
+If you are a Common Lisp, C++, or C hacker, we will appreciate if you
+join our development team and help us in improving the library. 
+Contributors (including newbies) with all levels of expertise are
+welcome. Even if you cannot contribute with code, helping us in making
+design choices, reporting bugs, or telling us why you favor the blend
+of wxWidgets with Common Lisp over other windowing systems and what
+aspects are important for you in this decision, etc., will also help
+us in making this product better. 
 
 
-Questions/Feedbacks/Reporting Bugs
+Contacting Us or Questions/Feedbacks
 ----------------------------------
 
-The best place to ask questions, report bugs and/or give feedback
-on the library is wxCL-devel mailing list.
+The best place to ask questions, and/or give feedback on the library
+is wxCL-devel mailing list. 
 
-http://www.wxcl-project.org/en--contact--main2.html
+[English]http://www.wxcl-project.org/en/contact--contact-1.html
+[Deutsch]http://www.wxcl-project.org/de/contact--contact-1.html
 
+For Reporting Bugs
+------------------
+http://sourceforge.net/tracker/?group_id=143661&atid=756151
+
+For Patches
+-----------
+http://sourceforge.net/tracker/?group_id=143661&atid=756153
 
 
 All the best,

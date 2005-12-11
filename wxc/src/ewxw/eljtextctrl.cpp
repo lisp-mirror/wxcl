@@ -8,11 +8,12 @@ EWXWEXPORT(void*, wxTextCtrl_Create) (void* _prt, int _id, char* _txt, int _lft,
 	return (void*) new wxTextCtrl ((wxWindow*)_prt, _id, _txt, wxPoint(_lft, _top), wxSize(_wdt, _hgt), _stl, wxDefaultValidator);
 }
 
-EWXWEXPORT(int, wxTextCtrl_GetValue)(void* _obj, void* _buf)
+EWXWEXPORT(char*, wxTextCtrl_GetValue)(void* _obj)
 {
-	wxString result = ((wxTextCtrl*)_obj)->GetValue();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	wxString result =((wxDirDialog*)_obj)->GetPath();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	return buf;
 }
 	
 EWXWEXPORT(void, wxTextCtrl_SetValue)(void* _obj, char* value)
@@ -25,11 +26,12 @@ EWXWEXPORT(int, wxTextCtrl_GetLineLength)(void* _obj, long lineNo)
 	return ((wxTextCtrl*)_obj)->GetLineLength(lineNo);
 }
 	
-EWXWEXPORT(int, wxTextCtrl_GetLineText)(void* _obj, long lineNo, void* _buf)
+EWXWEXPORT(char*, wxTextCtrl_GetLineText)(void* _obj, long lineNo)
 {
-	wxString result = ((wxTextCtrl*)_obj)->GetLineText(lineNo);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+	wxString result =((wxDirDialog*)_obj)->GetPath();
+	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
+	if (buf) strcpy (buf, result.c_str());
+	return buf;
 }
 	
 EWXWEXPORT(int, wxTextCtrl_GetNumberOfLines)(void* _obj)

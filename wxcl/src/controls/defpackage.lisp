@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxcl-controls
-    (:use #:common-lisp #:ffi #:wxcl #:wxcl-structures #:wxcl-windows)
+    (:use #:common-lisp #:ffi #:wxcl #:wxcl-windows)
     (:shadow #:directory)
     (:export
 
@@ -293,6 +293,7 @@
 	   #:+cal-hittest-nowhere+
 	   #:+cal-hittest-header+
 	   #:+cal-hittest-day+
+      
 ;;notebook related constants, functions, etc.
      #:+nb-fixedwidth+
      #:+nb-left+
@@ -300,6 +301,7 @@
      #:+nb-bottom+
      #:+nb-multiline+
      #:+nb-top+
+     #:make-notebook
      #:page-count
      #:advance-selection
      #:selection
@@ -316,7 +318,61 @@
      #:insert-page
      #:get-page
      #:assign-image-list
-	   ))
+     
+;;text-control related constants, functions, etc.
+     #:text-control
+     #:make-text-control
+	  #:value
+	  #:line-length
+	  #:line-text
+	  #:number-of-lines
+	  #:modified-p
+	  #:editable-p
+	  #:selection
+	  #:clear
+	  #:replace-text
+	  #:remove-text
+	  #:load-file
+	  #:save-file
+	  #:discard-edits
+	  #:write-text
+	  #:append-text
+	  #:xy-to-position
+	  #:position-to-xy
+	  #:show-position
+	  #:copy
+	  #:cut
+	  #:paste
+	  #:can-copy-p
+	  #:can-cut-p
+	  #:can-paste-p
+	  #:undo
+	  #:redo
+	  #:can-undo-p
+	  #:can-redo-p
+	  #:insertion-point
+	  #:set-insertion-point-end
+	  #:last-position
+	  #:set-selection
+	  #:editable
+;	  #:emulatekeypress
+	  #:default-style
+	  #:style
+	  #:range
+	  #:string-selection
+	  #:multiline-p
+	  #:singleline-p
+	  #:default-style
+	  #:max-length
+	  #:+te-readonly+
+	  #:+te-multiline+
+	  #:+te-process-tab+
+	  #:+te-rich+
+	  #:+te-rich2+
+	  #:+te-no-vscroll+
+	  #:+te-auto-scroll+
+	  #:+te-wordwrap+
+     ))
 
 (in-package :wxcl-controls)
 
@@ -425,6 +481,11 @@ to separate the groups of controls. The line may be only vertical or horizontal.
   (:documentation "A toggle button is a button that stays pressed when \
 clicked by the user. In other words, it is similar to check-box in \
 functionality but looks like a button."))
+
+(defclass text-control (control)
+  ()
+  (:documentation " text control allows text to be displayed and edited.\
+ It may be single line or multi-line."))
 
 (defconstant +cal-sunday-first+ 0)
 (defconstant +cal-monday-first+ 1)

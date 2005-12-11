@@ -115,6 +115,7 @@
       #:+fullscreen-all+
 ;;window related methods, functions, etc
       #:close-window
+      #:accelerator-table
 ;;status-bar related constants, methods, functions, etc
 	   #:make-status-bar
       #:+sb-normal+

@@ -7,7 +7,7 @@
  of keyboard shortcuts for menus or other commands. On Windows, menu or button\
  commands are supported; on GTK, only menu commands are supported."))
 
-(defun make-accelerator-table (&optional (entries nil))
+(defun make-accelerator-table (&rest entries)
   (let* ((ent (make-array (length entries) :initial-contents
                          (loop for entry in entries
                                collect (wxAcceleratorEntry_Create (flags entry)(key-code entry)(command entry)))))
@@ -17,15 +17,15 @@
     obj))
   
 
-(defmethod delete-pointer ((obj accelerator-table))
+(defmethod delete-object ((obj accelerator-table))
   (wxAcceleratorTable_Delete (object-pointer obj))
   (setf (slot-value obj 'accelerator-entries) nil)
   (invalidate-wx-instance obj))
 
-(defmacro define-accelerator-table (name &body body)
-  (let ((size (length body)))
-    `(defparameter name (make-wx-instance 'accelerator-table
-                   (wxAcceleratorTable_Create size
-                    (make-array ,size :initial-contents
-                                (list ,@(mapcar (lambda (x) `(wxAcceleratorEntry_Create ,@x)) body))))))))
+; (defmacro define-accelerator-table (name &body body)
+;   (let ((size (length body)))
+;     `(defparameter name (make-wx-instance 'accelerator-table
+;                          (wxAcceleratorTable_Create size
+;                           (make-array ,size :initial-contents
+;                                       (list ,@(mapcar (lambda (x) `(wxAcceleratorEntry_Create ,@x)) body))))))))
 

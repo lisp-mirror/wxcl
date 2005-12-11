@@ -13,8 +13,8 @@
 (defconstant +cal-border-square+ 1)
 (defconstant +cal-border-round+  2)
 
-(defun make-calendar-date-attr (colour-text &key (colour-bg wxcl-gdi:+null-colour)
-                                            (colour-border wxcl-gdi:+null-colour)
+(defun make-calendar-date-attr (colour-text &key (colour-bg wxcl-gdi:+null-colour+)
+                                            (colour-border wxcl-gdi:+null-colour+)
                                             font (border +cal-border-none+))
     "Create an object representing attributes of a calendar control."
     (make-wx-instance 'calendar-date-attr

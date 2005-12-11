@@ -7,6 +7,11 @@
 (defconstant +nb-multiline+ 6)
 (defconstant +nb-top+ 0)
 
+(defun make-notebook (parent &key (id -1) (pos +default-position+) (size +default-size+) (style 0))
+  (make-wx-instance 'notebook (wxNotebook_Create (when parent (object-pointer parent))
+                                                 id (point-x pos) (point-y pos) (size-width size)
+                                                 (size-height size) style)))
+
 (defmethod page-count ((obj notebook)) 
   (wxNotebook_GetPageCount (object-pointer obj)))
 

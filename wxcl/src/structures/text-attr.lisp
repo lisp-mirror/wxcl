@@ -43,7 +43,7 @@
   (= 1 (wxTextAttr_IsDefault (object-pointer obj))))
 
 (defmethod (setf text-colour) (col (obj text-attr))
-  (wxTextAttr_SetTextColour (object-pointer obj) (object-pointer col))
+  (wxTextAttr_SetTextColour (object-pointer obj) (object-pointer col)))
 
 (defmethod (setf background-colour) (col (obj text-attr))
   (wxTextAttr_SetBackgroundColour (object-pointer obj) (object-pointer col)))

@@ -1,4 +1,4 @@
-;;;window.lisp
+;;;static-box-sizer.lisp
 ;;;License  : wxWindows License 3.1
 ;;;Author(s) : Surendra Singhi (surendra@asu.edu) 
 ;;;Copyright (C) 2005 Surendra Singhi 
