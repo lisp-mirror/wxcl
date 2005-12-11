@@ -26,12 +26,8 @@
        (help-menu (wxcl-menus:make-menu-with-items
                    (string +id-about+ "&About     Ctrl+A" :help-string "About Image Viewer"))))
     (wxcl-menus:make-menu-bar (list file-menu help-menu) (list "&File" "&Help"))))
-; (define-accelrator-table acc-table
-;     (wxcl-structures:+accel-ctrl+ (char-int #\o) wxcl:+id-open+)
-;     (wxcl-structures:+accel-ctrl+ (char-int #\c) wxcl:+id-close+)
-;     (wxcl-structures:+accel-ctrl+ (char-int #\a) wxcl:+id-about+))
-  
-(defun accelerator-table ()
+
+(defun create-accelerator-table ()
   (wxcl-structures:make-accelerator-table (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
                                                                                   (char-int #\o) +id-open+)
                                           (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
@@ -86,23 +82,18 @@ This program is in public domain."
   (when evt
     (wxcl-windows:close-window frame t)))
 
-; (defun exit-viewer (fun frame evt)
-;   (when evt
-;     (wxEvent_Skip evt))) ;skip the event for default handler
 
 (defun register-events (frame)
   (connect frame +id-open+ +event-command-menu-selected+  (lambda (evt) (open-image frame evt)))
   (connect frame +id-close+ +event-command-menu-selected+ (lambda (evt) (close-image frame evt)))
   (connect frame +id-about+ +event-command-menu-selected+ #'about-box)
   (connect frame +id-exit+ +event-command-menu-selected+ (lambda (evt) (quit-viewer frame evt))))
-; ;  (wxevthandler_connect frame -1 (expEVT_CLOSE_WINDOW) (wxClosure_Create #'do-nothing frame))
-;   )
 
 (defun init-func (evt)
   (let* ((fr (make-frame nil -1 "wxCL - Image previewer"))
          (panel (make-panel fr)))
     (setf (menu-bar fr) (create-menu))
-;   (add-accelerator-keys frame)
+    (setf (accelerator-table fr) (create-accelerator-table))
     (add-status-bar fr)
     (add-tool-bar fr)
     (setf (wxcl-windows:icon fr) (wxcl-gdi:make-icon-from-file "wxcl-logo.ico" wxcl-gdi:+bitmap-type-ico+))

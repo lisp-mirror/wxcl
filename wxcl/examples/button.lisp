@@ -20,17 +20,11 @@
     (print "btn-responder")
     (message-box "You clicked me" :caption "Response")))
 
-
-(define-frame frame (nil "Button Demo." -1)
-  (panel () (:panel))
-  (btn-responder (panel) (:label "Click" :id +button-id+)))
-
 (defun init-func (evt)
-  (let* (;(frame (make-frame nil -1 "Button Demo."))
-         ;(panel (make-panel frame))
-         ;(btn-responder (wxcl-controls:make-button panel :label "Click" :id +button-id+))
+  (let* ((frame (make-frame nil -1 "Button Demo."))
+         (panel (make-panel frame))
+         (btn-responder (wxcl-controls:make-button panel :label "Click" :id +button-id+))
          (sizer (wxcl-layout:make-box-sizer +vertical+)))
-    (#:|create-FRAME| 3)
     (setf (sizer panel) sizer)
     (wxcl-layout:fit sizer panel)
     (wxcl-layout:add sizer btn-responder)
