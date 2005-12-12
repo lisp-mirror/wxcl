@@ -7,12 +7,18 @@ rm -rf sharpquote-wx
 rm -rf CVSROOT
 rm -rf *~
 rm -rf */*~
+rm -rf */*/*~
+rm -rf */*/*/*~
+rm -rf */*/*/*/*~
 rm -rf CVS
 rm -rf */CVS
 rm -rf */*/CVS
-rm -rf */*/*CVS
+rm -rf */*/CVS
+rm -rf */*/*/CVS
+rm -rf */*/*/*/CVS
 rm -rf .\#*
 rm Changes.Current
 rm .cvsignore
 rm */.cvsignore
 rm */*/.cvsignore
+rm */*/*/.cvsignore

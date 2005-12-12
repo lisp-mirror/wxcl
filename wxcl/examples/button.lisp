@@ -18,7 +18,7 @@
 (defun btn-responder-function (evt)
   (when evt
     (print "btn-responder")
-    (message-box "You clicked me" :caption "Response" 1)))
+    (message-box "You clicked me" :caption "Response")))
 
 (defun init-func (evt)
   (let* ((frame (make-frame nil -1 "Button Demo."))
