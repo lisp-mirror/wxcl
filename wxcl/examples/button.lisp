@@ -18,14 +18,14 @@
 (defun btn-responder-function (evt)
   (when evt
     (print "btn-responder")
-    (message-box "You clicked me" :caption "Response")))
+    (message-box "You clicked me" :caption "Response" 1)))
 
 (defun init-func (evt)
   (let* ((frame (make-frame nil -1 "Button Demo."))
          (panel (make-panel frame))
          (btn-responder (wxcl-controls:make-button panel :label "Click" :id +button-id+))
          (sizer (wxcl-layout:make-box-sizer +vertical+)))
-    (setf (sizer panel) sizer)
+    (setf (wxcl-windows:sizer panel) sizer)
     (wxcl-layout:fit sizer panel)
     (wxcl-layout:add sizer btn-responder)
     (setf (wxcl-layout:size-hints sizer) panel)

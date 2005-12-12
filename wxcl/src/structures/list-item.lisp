@@ -38,7 +38,7 @@
 
 (defmethod background-colour ((obj list-item))
     "Returns the background colour for this item."
-    (make-wx-instance 'wxcl-gdi:colour (wxListItem_GetBackgroundColour (object-pointer obj) (object-pointer colour))))
+    (make-wx-instance 'wxcl-gdi:colour (wxListItem_GetBackgroundColour (object-pointer obj))))
 
 (defmethod (setf background-colour) (colour (obj list-item))
     "Sets the background colour for this item."

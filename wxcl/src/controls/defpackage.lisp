@@ -25,7 +25,7 @@
      #:+align-top+
      #:find-string
      #:range
-     #:selection
+     #:set-selection
      #:string-selection
      #:value
 

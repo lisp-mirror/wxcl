@@ -11,8 +11,18 @@
 ;   (:return-type NIL)
 ;   (:library +library-name+))
 
+;;code courtesy Pascal Bourguignon
+
+(defmacro debugging-errors (&body body)
+  `(restart-CASE (progn ,@body)
+     (abort-eval ()
+       :report "Back to the program."
+       nil)))
+
 (defmethod connect ((obj evt-handler) id type func &key last-id)
-  (wxEvtHandler_Connect (object-pointer obj) id (if last-id last-id id) type (wxcl::wxClosure_Create func)))
+  (wxEvtHandler_Connect (object-pointer obj) id (if last-id last-id id) type (wxcl::wxClosure_Create
+                                                                              (lambda (x) (debugging-errors
+                                                                                           (funcall func x))))))
 
 (defmethod disconnect ((obj evt-handler) id type data &key last-id)
   (= 1 (wxEvtHandler_Disconnect (object-pointer obj) id (if last-id last-id id) type data)))

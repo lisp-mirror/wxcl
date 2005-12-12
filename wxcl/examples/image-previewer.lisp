@@ -14,9 +14,6 @@
 (use-package :wxcl-windows)
 (use-package :wxcl-menus)
 
-(defvar OPEN-TOOLBAR-ID 50001)
-(defvar CLOSE-TOOLBAR-ID 60001)
-
 (defun create-menu () 
   (let((file-menu (wxcl-menus:make-menu-with-items
                    (string +id-open+ "&Open      Ctrl+O" :help-String "Open an image")
@@ -29,11 +26,11 @@
 
 (defun create-accelerator-table ()
   (wxcl-structures:make-accelerator-table (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
-                                                                                  (char-int #\o) +id-open+)
+                                                                                  (char-int #\O) +id-open+)
                                           (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
-                                                                                  (char-int #\c) +id-close+)
+                                                                                  (char-int #\C) +id-close+)
                                           (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
-                                                                                  (char-int #\a) +id-about+)))
+                                                                                  (char-int #\A) +id-about+)))
 
 (defun add-status-bar(frame)
   (let ((st (wxcl-windows:create-status-bar frame 2 0)))
@@ -68,9 +65,7 @@
 
 (defun close-image (data evt)
   (when evt
-    (print evt)
-    (print data)
-    (print "close image")))
+    (print "close image, but which one?")))
 
 (defun about-box (evt)
   (when evt

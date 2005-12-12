@@ -17,7 +17,7 @@
             id (point-x pos) (point-y pos) (size-width size) (size-height size)
             (length choices) choices style)))
 
-(defmethod check ((obj check-list-box) item (check 1))
+(defmethod check ((obj check-list-box) item &optional (check 1))
     "Checks the given item. Calling this method does not result in \
 wxEVT_COMMAND_CHECKLISTBOX_TOGGLE being emitted."
     (wxCheckListBox_Check (object-pointer obj) item check))

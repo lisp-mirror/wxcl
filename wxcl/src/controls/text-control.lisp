@@ -139,7 +139,7 @@
   (make-wx-instance 'wxcl-structures:text-attr (wxTextCtrl_GetDefaultStyle (object-pointer obj))))
 
 (defmethod get-style ((obj text-control) pos style)
-  (= 1 (wxTextCtrl_GetStyle (object-pointer obj) (object-pointer style))))
+  (= 1 (wxTextCtrl_GetStyle (object-pointer obj) pos (object-pointer style))))
 
 (defmethod text-in-range ((obj text-control) from to)
   (wxTextCtrl_GetRange (object-pointer obj) from to))

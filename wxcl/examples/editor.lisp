@@ -24,7 +24,7 @@
                     (string +id-open+ "&Open ... Ctrl+O" :help-string "Open an existing file")
                     (string +id-save+ "&Save     Ctrl+S" :help-string "Save file")
                     (string +id-saveas+ "Save &As ..." :help-string "Save file with a different name")
-                    (string +id-close+ "&Close    Ctrl+C" :help-string "Open an existing file")
+                    (string +id-close+ "&Close    Ctrl+X" :help-string "Open an existing file")
                     (separator)
                     (string +id-exit+ "&Quit" :help-string "Quit the text editor")))
         (help-menu (wxcl-menus:make-menu-with-items
@@ -100,9 +100,9 @@
                                           (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
                                                                                   (char-int #\O) +id-open+)
                                           (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
-                                                                                  (char-int #\x) +id-close+)
+                                                                                  (char-int #\X) +id-close+)
                                           (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
-                                                                                  (char-int #\X) +id-save+)
+                                                                                  (char-int #\S) +id-save+)
                                           (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
                                                                                   (char-int #\A) +id-about+)))
 
@@ -132,7 +132,7 @@
 
 (defun quit-program (frame evt)
   (when evt
-    (close frame t)))
+    (close-window frame t)))
 
 (defun about-box (evt)
   (when evt

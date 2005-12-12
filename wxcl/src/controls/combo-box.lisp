@@ -50,17 +50,17 @@
     "Pastes text from the clipboard to the text field."
     (wxComboBox_Paste (object-pointer obj)))
 
-(defmethod remove ((obj combo-box) from to)
+(defmethod remove-text ((obj combo-box) from to)
     "Removes the text between the two positions in the combobox \
 text field."
     (wxComboBox_Remove (object-pointer obj) from to))
 
-(defmethod replace ((obj combo-box) from to text)
+(defmethod replace-text ((obj combo-box) from to text)
     "Replaces the text between two positions with the given text in \
 the combobox text field."
     (wxComboBox_Replace (object-pointer obj) from to text))
 
-(defmethod (setf selection) (to from (obj combo-box))
+(defmethod set-selection (to from (obj combo-box))
     "Selects the text between the two positions in the combobox text field."
     (wxComboBox_SetSelection (object-pointer obj) from to))
 

@@ -97,7 +97,6 @@
      #:font
      ))
 
-
 (in-package :wxcl-structures)
 
 (defclass calendar-date-attr (object)

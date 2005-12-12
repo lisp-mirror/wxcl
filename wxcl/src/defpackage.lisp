@@ -786,7 +786,7 @@
 
 (in-package :wxCL)
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (defconstant +library-name+ "../miscellaneous/wxc-msw2.6.2.dll"))
+  (defconstant +library-name+ "../lib/wxc-msw2.6.2.dll"))
 
 (defconstant +id-open+ 5000)
 (defconstant +id-close+ 5001)

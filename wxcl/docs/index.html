@@ -31,7 +31,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>wxCL.</title>
-      <LINK  TYPE="text/css" REL="stylesheet" HREF="/lisppaste.css">
+<!--       <LINK  TYPE="text/css" REL="stylesheet" HREF="/lisppaste.css"> -->
 	<link rev="made" href="mailto:wxcl-devel/at/lists.sourceforge.net" />
 	  <meta name="generator" content="DocBook XSL Stylesheets V2005-07-12_04:47_snapshot" />
 	    <meta name="description" content="These notes describe how to use the wxCL library.
@@ -62,7 +62,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	    <p>This document describes 
 	      <a href="http://www.wxcl-project.org/" target="_top">
 		<span><strong class="command">wxCL</strong></span>
-	      </a>= wxWidgets + Common Lisp; common lisp binding to wxWidgets library.
+	      </a>= wxWidgets + Common Lisp; a common lisp GUI library with binding to <a href="http://www.wxwidgets.org/">wxWidgets</a>.
 
 	    </p>
 	    <p>Bugs both in this document and in 
@@ -84,7 +84,7 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
       <p>
 	<b>Window Users: </b> Download and unzip the
 	library. The wxCL project provides a "*.dll" file in 
-	the miscellaneous folder. The file wxcl.lisp in the folder
+	the lib folder. The file `defpackage.lisp' in the folder
 	"wxcl/src" defines the constant variable <i>+library-name+</i>
 	which contains the relative path to the aforementioned dll file. 
       </p>
@@ -93,15 +93,17 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	compile and make a dynamically linked library for your
 	platform. The instructions for building and linking the
 	library can be found at wxHaskell project:
-	<a href="http://wxhaskell.sourceforge.net/building.html">http://wxhaskell.sourceforge.net/building.html</a> 
+	<a
+href="http://wxhaskell.sourceforge.net/building.html">http://wxhaskell.sourceforge.net/building.html</a>.
+Use the `wxC' code from the wxCL cvs repository to build the library.
       </p>
 
       <p>Before compiling and loading the wxCL library, edit the
-	clisp-wrappers/wxCL.lisp, and make sure that the variable
+	`wxcl/src/defpackage.lisp', and make sure that the variable
 	+library-name+ is pointing to the correct location.
 
-      To load the library you can use <i>asdf</i> or
-      <i>asdf-install</i>. The <i>wxcl.asd</i> file makes sure that
+      To load the library you need to have <i>asdf</i>. The
+<i>wxcl.asd</i> file makes sure that 
       all the files are loaded in the correct order. If you want you
       can also create a memory image and save it for faster
       loading.<br/>
@@ -123,25 +125,19 @@ span.paren6:hover { color : inherit; background-color : #FFBAFF; }
 	  <p>      
 	    This release of wxCL is not backward compatible with the
 earlier releases. The src folder contains all the CLOS source code and
-the ffi wrapper code.
-	      <strong>Note:</strong>When the program ends, the
-	      destructor for the wrappers calls the callback functions
-	      with a null event, so that they can do any cleaning up
-	      (if necessary). So, its always a wise thing to make
-	      sure that in your call back functions, there is an `if`
-	      condition checking whether the event is null or not.
-         </p>
+the ffi wrapper code. Have a look at the examples, and it should not
+be too hard to get started with wxCL.
 
 
-<p>Hope this helps, more information can be found by looking at the
-		examples, if you still have doubts then ask on the
-		mailing list.
-</p>
+<p>Hope this helps, and that you have fun time using the library.
+If you have any doubts, suggestions, if you want to help us, etc then
+send an email to the mailing list.
+</p> 
 	    <hr/>
 	      <address><a href="http://www.public.asu.edu/~sksinghi/index.html">Surendra Singhi</a></address>
 	      <!-- Created: Sat Aug 13 23:58:01 US Mountain Standard Time 2005 -->
 	      <!-- hhmts start -->
-Last modified: Sun Dec 11 04:35:39 US Mountain Standard Time 2005
+Last modified: Sun Dec 11 23:31:04 US Mountain Standard Time 2005
 <!-- hhmts end -->
   </body>
 </html>

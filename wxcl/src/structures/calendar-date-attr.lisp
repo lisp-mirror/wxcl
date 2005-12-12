@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl-structures)
 
 (defconstant +cal-border-none+   0)
 (defconstant +cal-border-square+ 1)
@@ -57,7 +57,7 @@
 
 (defmethod font ((obj calendar-date-attr))
     "Returns the font to be used."
-  (make-wx-instance 'wxcl-gdi:font (wxCalendarDateAttr_GetFont (object-pointer obj) (object-pointer font))))
+  (make-wx-instance 'wxcl-gdi:font (wxCalendarDateAttr_GetFont (object-pointer obj))))
 
 (defmethod (setf font) (f (obj calendar-date-attr))
     "Sets the font to be used."
@@ -75,7 +75,7 @@
     "Returns T if this item has a non-default text background colour."
     (= (wxCalendarDateAttr_HasBackgroundColour (object-pointer obj)) 1))
 
-(defmethod background-colour-p ((obj calendar-date-attr))
+(defmethod border-colour-p ((obj calendar-date-attr))
     "Returns T if this item has a non-default border colour."
     (= (wxCalendarDateAttr_HasBorderColour (object-pointer obj)) 1))
 

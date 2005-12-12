@@ -113,30 +113,26 @@
 
 (ffi:def-call-out wxCalendarDateAttr_GetTextColour
     (:name "wxCalendarDateAttr_GetTextColour")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarDateAttr_GetBackgroundColour
     (:name "wxCalendarDateAttr_GetBackgroundColour")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarDateAttr_GetBorderColour
     (:name "wxCalendarDateAttr_GetBorderColour")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarDateAttr_GetFont
     (:name "wxCalendarDateAttr_GetFont")
-  (:arguments (_obj (ffi:c-pointer NIL))
-	      (_ref (ffi:c-pointer NIL)))
-  (:return-type NIL)
+  (:arguments (_obj (ffi:c-pointer NIL)))
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxCalendarDateAttr_GetBorder

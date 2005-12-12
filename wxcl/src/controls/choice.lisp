@@ -22,7 +22,7 @@
 returns 1 for the other platforms."
     (wxChoice_GetColumns (object-pointer obj)))
 
-(defmethod (setf columns) ((n 1) (obj choice))
+(defmethod (setf columns) (n (obj choice))
     "Sets the number of columns. Note: implemented for Motif only; this \
 method is a no-op for the other platforms."
     (wxChoice_SetColumns (object-pointer obj) n))
