@@ -2,16 +2,16 @@
 
 extern "C"
 {
-__declspec( dllexport ) wxPen** wxBlack_Pen=&wxBLACK_PEN;
-__declspec( dllexport ) wxPen** wxBlack_Dashed_Pen=&wxBLACK_DASHED_PEN;
-__declspec( dllexport ) wxPen** wxWhite_Pen=&wxWHITE_PEN;  
-__declspec( dllexport ) wxPen** wxRed_Pen=&wxRED_PEN;
-__declspec( dllexport ) wxPen** wxGreen_Pen=&wxGREEN_PEN;
-__declspec( dllexport ) wxPen** wxCyan_Pen=&wxCYAN_PEN;
-__declspec( dllexport ) wxPen** wxLight_Grey_Pen=&wxLIGHT_GREY_PEN;
-__declspec( dllexport ) wxPen** wxMedium_Grey_Pen=&wxMEDIUM_GREY_PEN;
-__declspec( dllexport ) wxPen** wxTransparent_Pen=&wxTRANSPARENT_PEN;    
-__declspec( dllexport ) wxPen** wxGrey_Pen=&wxGREY_PEN;
+EWXWEXPORT_VAR wxPen** wxBlack_Pen=&wxBLACK_PEN;
+EWXWEXPORT_VAR wxPen** wxBlack_Dashed_Pen=&wxBLACK_DASHED_PEN;
+EWXWEXPORT_VAR wxPen** wxWhite_Pen=&wxWHITE_PEN;  
+EWXWEXPORT_VAR wxPen** wxRed_Pen=&wxRED_PEN;
+EWXWEXPORT_VAR wxPen** wxGreen_Pen=&wxGREEN_PEN;
+EWXWEXPORT_VAR wxPen** wxCyan_Pen=&wxCYAN_PEN;
+EWXWEXPORT_VAR wxPen** wxLight_Grey_Pen=&wxLIGHT_GREY_PEN;
+EWXWEXPORT_VAR wxPen** wxMedium_Grey_Pen=&wxMEDIUM_GREY_PEN;
+EWXWEXPORT_VAR wxPen** wxTransparent_Pen=&wxTRANSPARENT_PEN;    
+EWXWEXPORT_VAR wxPen** wxGrey_Pen=&wxGREY_PEN;
 
 EWXWEXPORT(void*, wxPen_CreateDefault) ()
 {
