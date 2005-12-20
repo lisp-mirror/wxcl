@@ -1,5 +1,5 @@
 (defpackage :wxcl-events
-    (:use :common-lisp :ffi :wxcl)
+    (:use :common-lisp :wxcl #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
   (:export 
 ;;event class functions, methods, etc.
        #:event

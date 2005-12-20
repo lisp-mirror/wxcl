@@ -28,7 +28,8 @@
 
 (defun start-app (init-func &key (arguments nil))
   (unwind-protect
-       (ELJApp_InitializeC (wxClosure_Create init-func) (length arguments) arguments)
+       (ELJApp_InitializeC (wxClosure_Create init-func)
+                           (length arguments) arguments)
     (ffi:close-foreign-library +library-name+)))
 
 (defun app-pending-p()

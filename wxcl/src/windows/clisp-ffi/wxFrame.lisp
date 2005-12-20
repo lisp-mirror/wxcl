@@ -23,7 +23,7 @@
 	      (_wdt ffi:int)
 	      (_hgt ffi:int)
 	      (_stl ffi:int))
-  (:return-type (ffi:c-pointer NIL) :NONE)
+  (:return-type (ffi:c-pointer NIL))
   (:library +library-name+))
 
 (ffi:def-call-out wxFrame_CreateStatusBar

@@ -1,6 +1,6 @@
 
 (defpackage :wxcl-menus
-    (:use :common-lisp :ffi :wxcl :wxcl-windows)
+    (:use :common-lisp :wxcl :wxcl-windows #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
   (:export
    ;;menu class, methods and functions
    #:menu

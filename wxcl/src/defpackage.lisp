@@ -8,13 +8,14 @@
 ;;;
 
 (defpackage :wxCL
-    (:use :common-lisp :ffi)
+    (:use :common-lisp #+(and (not cffi) clisp) :ffi #+cffi :cffi)
   (:export #:+library-name+
       #:object
       #:size
       #:point
       #:rect
-      #:define-frame)
+      #:define-frame
+      #:lisp-string)
   ;;commonly used functions
   (:export #:get-colour-from-user
            #:get-font-from-user
@@ -787,6 +788,8 @@
 (in-package :wxCL)
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defconstant +library-name+ "../lib/wxc-msw2.6.2.dll"))
+
+#+cffi (cffi:load-foreign-library +library-name+)
 
 (defconstant +id-open+ 5000)
 (defconstant +id-close+ 5001)

@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxcl-dialogs
-    (:use #:cl #:ffi #:wxcl #:clos)
+    (:use #:cl #:wxcl #:clos #+(and (not cffi) clisp) :ffi #+cffi :cffi)
   ;;classes 
   (:export #:dialog
            #:file-dialog
