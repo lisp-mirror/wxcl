@@ -87,13 +87,9 @@ EWXWEXPORT(int, wxFont_GetUnderlined)(void* _obj)
 	return (int)((wxFont*)_obj)->GetUnderlined();
 }
 	
-EWXWEXPORT(char*, wxFont_GetFaceName)(void* _obj)
+EWXWEXPORT(wxString*, wxFont_GetFaceName)(wxFont* _obj)
 {
-	wxString result = ((wxFont*)_obj)->GetFaceName();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetFaceName());
 }
 	
 EWXWEXPORT(int, wxFont_GetEncoding)(void* _obj)
@@ -136,31 +132,19 @@ EWXWEXPORT(void, wxFont_SetEncoding)(void* _obj, int encoding)
 	((wxFont*)_obj)->SetEncoding((wxFontEncoding)encoding);
 }
 	
-EWXWEXPORT(char*, wxFont_GetFamilyString)(void* _obj)
+EWXWEXPORT(wxString*, wxFont_GetFamilyString)(wxFont* _obj)
 {
-	wxString result = ((wxFont*)_obj)->GetFamilyString();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetFamilyString());
 }
 	
-EWXWEXPORT(char*, wxFont_GetStyleString)(void* _obj)
+EWXWEXPORT(wxString*, wxFont_GetStyleString)(wxFont* _obj)
 {
-	wxString result = ((wxFont*)_obj)->GetStyleString();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetStyleString());
 }
 	
-EWXWEXPORT(char*, wxFont_GetWeightString)(void* _obj)
+EWXWEXPORT(wxString*, wxFont_GetWeightString)(wxFont* _obj)
 {
-	wxString result = ((wxFont*)_obj)->GetWeightString();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetWeightString());
 }
 	
 EWXWEXPORT(int, wxFont_GetDefaultEncoding)(void* _obj)

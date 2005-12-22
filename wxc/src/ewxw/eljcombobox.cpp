@@ -77,11 +77,9 @@ EWXWEXPORT(void, wxComboBox_SetEditable)(void* _obj, int editable)
 	((wxComboBox*)_obj)->SetEditable(editable != 0);
 }
 	
-EWXWEXPORT(int, wxComboBox_GetValue)(void* _obj, void* _buf)
+EWXWEXPORT(wxString*, wxComboBox_GetValue)(wxComboBox* _obj)
 {
-	wxString result = ((wxComboBox*)_obj)->GetValue();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->GetValue());
 }
 
 EWXWEXPORT(void, wxComboBox_SetValue)(void* _obj, char* _buf)

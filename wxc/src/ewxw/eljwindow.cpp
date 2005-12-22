@@ -48,13 +48,9 @@ EWXWEXPORT(void, wxWindow_SetLabel)(void* _obj, char* _title)
 	((wxWindow*)_obj)->SetLabel(_title);
 }
 	
-EWXWEXPORT(char*, wxWindow_GetLabel)(void* _obj)
+EWXWEXPORT(wxString*, wxWindow_GetLabel)(wxWindow* _obj)
 {
-	wxString result = ((wxWindow*)_obj)->GetLabel().c_str();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetLabel().c_str());
 }
 	
 EWXWEXPORT(void, wxWindow_SetName)(void* _obj, char* _name)
@@ -62,13 +58,9 @@ EWXWEXPORT(void, wxWindow_SetName)(void* _obj, char* _name)
 	((wxWindow*)_obj)->SetName(_name);
 }
 	
-EWXWEXPORT(char*, wxWindow_GetName)(void* _obj)
+EWXWEXPORT(wxString*, wxWindow_GetName)(wxWindow* _obj)
 {
-	wxString result =((wxWindow*)_obj)->GetName();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetName());
 }
 	
 EWXWEXPORT(void, wxWindow_SetId)(void* _obj, int _id)
@@ -510,19 +502,13 @@ EWXWEXPORT(void, wxWindow_SetToolTip)(void* _obj, char* tip )
 	((wxWindow*)_obj)->SetToolTip( tip );
 }
 	
-EWXWEXPORT(char*, wxWindow_GetToolTip)(void* _obj)
+EWXWEXPORT(wxString*, wxWindow_GetToolTip)(wxWindow* _obj)
 {
-	wxToolTip* tip = ((wxWindow*)_obj)->GetToolTip();
+	wxToolTip* tip = _obj->GetToolTip();
 
 	if (tip)
-	{
-      wxString result = tip->GetTip();
-      char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-      if (buf) strcpy (buf, result.c_str());
-      delete result;
-      return buf;
-	}
-	return 0;
+     return new wxString(tip->GetTip());
+   return new wxString("");
 }
 	
 EWXWEXPORT(void, wxWindow_SetDropTarget)(void* _obj, void* dropTarget )

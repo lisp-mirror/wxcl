@@ -18,51 +18,45 @@ EWXWEXPORT(void, wxConfigBase_SetPath)(void* _obj, void* strPath)
 	((wxConfigBase*)_obj)->SetPath((char*) strPath);
 }
 	
-EWXWEXPORT(int, wxConfigBase_GetPath)(void* _obj, void* _buf)
+EWXWEXPORT(wxString*, wxConfigBase_GetPath)(wxConfigBase* _obj)
 {
-	wxString result = ((wxConfigBase*)_obj)->GetPath();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->GetPath());
 }
 	
 EWXWEXPORT(wxString*, wxConfigBase_GetFirstGroup)(wxConfigBase* _obj, long* lIndex)
 {
-	wxString* tmp;
-        tmp = new wxString("");
-        if (_obj->GetFirstGroup(*tmp, *lIndex)) {
-          *lIndex = -1;
-        }         
+	wxString* tmp = new wxString("");
+   if (_obj->GetFirstGroup(*tmp, *lIndex)) {
+     *lIndex = -1;
+   }         
 	return tmp;
 }
 	
 EWXWEXPORT(wxString*, wxConfigBase_GetNextGroup) (wxConfigBase* _obj, long* lIndex )
 {
-	wxString* tmp;
-        tmp = new wxString("");
-        if (_obj->GetNextGroup(*tmp, *lIndex)) {
-          *lIndex = -1;
-        }         
+	wxString* tmp = new wxString("");
+   if (_obj->GetNextGroup(*tmp, *lIndex)) {
+     *lIndex = -1;
+   }         
 	return tmp;
 }
 
 	
 EWXWEXPORT(wxString*, wxConfigBase_GetFirstEntry)(wxConfigBase* _obj, long* lIndex)
 {
-	wxString* tmp;
-        tmp = new wxString("");
-        if (_obj->GetFirstEntry(*tmp, *lIndex)) {
-          *lIndex = -1;
-        }         
+	wxString* tmp = new wxString("");
+   if (_obj->GetFirstEntry(*tmp, *lIndex)) {
+     *lIndex = -1;
+   }         
 	return tmp;
 }
 	
 EWXWEXPORT(wxString*, wxConfigBase_GetNextEntry) (wxConfigBase* _obj, long* lIndex)
 {
-	wxString* tmp;
-        tmp = new wxString("");
-        if (_obj->GetNextEntry(*tmp, *lIndex)) {
-          *lIndex = -1;
-        }         
+	wxString* tmp = new wxString("");
+   if (_obj->GetNextEntry(*tmp, *lIndex)) {
+     *lIndex = -1;
+   }         
 	return tmp;
 }
 	
@@ -98,9 +92,7 @@ EWXWEXPORT(int, wxConfigBase_GetEntryType)(void* _obj, void* name)
 	
 EWXWEXPORT(wxString*, wxConfigBase_ReadString)(wxConfigBase* _obj, void* key, void* defVal)
 {
-	wxString tmp;
-        tmp = ((wxConfigBase*)_obj)->Read((char*)key, (char*)defVal);
-	return new wxString(tmp);
+   return new wxString(_obj->Read((char*)key, (char*)defVal));
 }
 	
 EWXWEXPORT(int, wxConfigBase_ReadInteger)(void* _obj, void* key, int defVal)
@@ -194,25 +186,19 @@ EWXWEXPORT(int, wxConfigBase_IsRecordingDefaults)(void* _obj)
 	return (int)((wxConfigBase*)_obj)->IsRecordingDefaults();
 }
 	
-EWXWEXPORT(int, wxConfigBase_ExpandEnvVars)(void* _obj, void* str, void* _buf)
+EWXWEXPORT(wxString*, wxConfigBase_ExpandEnvVars)(wxConfigBase* _obj, void* str)
 {
-	wxString result = ((wxConfigBase*)_obj)->ExpandEnvVars((char*)str);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->ExpandEnvVars((char*)str));
 }
 	
-EWXWEXPORT(int, wxConfigBase_GetAppName)(void* _obj, void* _buf)
+EWXWEXPORT(wxString*, wxConfigBase_GetAppName)(wxConfigBase* _obj)
 {
-	wxString result = ((wxConfigBase*)_obj)->GetAppName();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->GetAppName());
 }
 	
-EWXWEXPORT(int, wxConfigBase_GetVendorName)(void* _obj, void* _buf)
+EWXWEXPORT(wxString*, wxConfigBase_GetVendorName)(wxConfigBase* _obj)
 {
-	wxString result = ((wxConfigBase*)_obj)->GetVendorName();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->GetVendorName());
 }
 	
 EWXWEXPORT(void, wxConfigBase_SetAppName)(void* _obj, void* appName)
