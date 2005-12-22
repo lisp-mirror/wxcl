@@ -103,11 +103,39 @@ EWXWEXPORT(void, wxFrame_SetToolBar)(void* _obj, void* _toolbar)
 	((wxFrame*)_obj)->SetToolBar((wxToolBar*) _toolbar);
 }
 
-#if wxVERSION_NUMBER >= 2400
 EWXWEXPORT(void, wxFrame_SetIcons)(void* _obj, void* _icons)
 {
 	((wxFrame*)_obj)->SetIcons(*((wxIconBundle*)_icons));
 }
-#endif
+
+EWXWEXPORT(wxString *, wxFrame_GetTitle) (wxFrame* _obj) //,const char* _buf)
+{
+  return new wxString(_obj->GetTitle());
+}
+
+EWXWEXPORT(void, wxFrame_SetTitle) (void* _obj, char* _txt)
+{
+  ((wxFrame*)_obj)->SetTitle(_txt);
+}
+
+EWXWEXPORT(bool, wxFrame_SetShape)( wxFrame* self, wxRegion* region)
+{
+  return self->SetShape( *region );
+}
+
+EWXWEXPORT(bool, wxFrame_ShowFullScreen)( wxFrame* self, bool show, int style)
+{
+  return self->ShowFullScreen( show, style );
+}
+
+EWXWEXPORT(bool, wxFrame_IsFullScreen)( wxFrame* self )
+{
+  return self->IsFullScreen();
+}
+
+EWXWEXPORT(void, wxFrame_Centre)( wxFrame* self, int orientation )
+{
+  self->Centre();
+}
 
 }

@@ -93,4 +93,9 @@ EWXWEXPORT(void, wxScrolledWindow_OnDraw)(void* _obj, void* dc)
 	((wxScrolledWindow*)_obj)->OnDraw(*((wxDC*)dc));
 }
 	
+EWXWEXPORT(void, wxScrolledWindow_SetScrollRate)( wxScrolledWindow* _obj, int xstep, int ystep )
+{
+  _obj->SetScrollRate(xstep,ystep);
+}
+
 }

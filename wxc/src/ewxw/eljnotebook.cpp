@@ -33,13 +33,9 @@ EWXWEXPORT(int, wxNotebook_SetPageText)(void* _obj, int nPage, void* strText)
 	return (int)((wxNotebook*)_obj)->SetPageText(nPage, (char*) strText);
 }
 	
-EWXWEXPORT(char*, wxNotebook_GetPageText)(void* _obj, int nPage)
+EWXWEXPORT(wxString*, wxNotebook_GetPageText)(wxNotebook* _obj, int nPage)
 {
-	wxString result = ((wxNotebook*)_obj)->GetPageText(nPage);
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetPageText(nPage));
 }
 	
 EWXWEXPORT(void, wxNotebook_SetImageList)(void* _obj, void* imageList)
@@ -105,6 +101,11 @@ EWXWEXPORT(int, wxNotebook_InsertPage)(void* _obj, int nPage, void* pPage, void*
 EWXWEXPORT(void*, wxNotebook_GetPage)(void* _obj, int nPage)
 {
 	return (void*)((wxNotebook*)_obj)->GetPage(nPage);
+}
+
+EWXWEXPORT(void, wxNotebook_AssignImageList)( wxNotebook* _obj, wxImageList* imageList )
+{
+  _obj->AssignImageList(imageList);
 }
 	
 }

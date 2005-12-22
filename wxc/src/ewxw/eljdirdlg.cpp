@@ -24,20 +24,14 @@ EWXWEXPORT(void, wxDirDialog_SetStyle)(void* _obj, int style)
 	((wxDirDialog*)_obj)->SetStyle((long)style);
 }
 	
-EWXWEXPORT(char *, wxDirDialog_GetMessage)(void* _obj)
+EWXWEXPORT(wxString *, wxDirDialog_GetMessage)(wxDirDialog* _obj)
 {
-	wxString result =((wxDirDialog*)_obj)->GetMessage();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	return buf;
+   return new wxString(_obj->GetMessage());
 }
 	
-EWXWEXPORT(char*, wxDirDialog_GetPath)(void* _obj)
+EWXWEXPORT(wxString*, wxDirDialog_GetPath)(wxDirDialog* _obj)
 {
-	wxString result =((wxDirDialog*)_obj)->GetPath();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	return buf;
+  return new wxString(_obj->GetPath());
 }
 	
 EWXWEXPORT(int, wxDirDialog_GetStyle)(void* _obj)

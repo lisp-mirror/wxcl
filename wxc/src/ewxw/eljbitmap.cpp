@@ -209,4 +209,9 @@ EWXWEXPORT(void, wxStaticBitmap_Delete)(void* _obj)
 	delete (wxStaticBitmap*)_obj;
 }
 
+EWXWEXPORT(wxBitmap*, wxBitmap_CreateFromImage)( wxImage* image, int depth )
+{
+  return new wxBitmap(*image,depth);	
+}
+
 }

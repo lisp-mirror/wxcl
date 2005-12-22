@@ -43,6 +43,11 @@ EWXWEXPORT(void, wxMenu_AppendRadioItem)(wxMenu* self, int id, char* text, char*
 #endif
 }
 
+EWXWEXPORT(wxMenuBar*,wxMenu_GetMenuBar)(wxMenu* _obj)
+{
+  return _obj->GetMenuBar();
+}
+
 EWXWEXPORT(void, wxMenu_AppendSub)(void* _obj, int id, char* text, void* submenu, char* help)
 {
 	((wxMenu*)_obj)->Append(id, text, (wxMenu*) submenu, help);
@@ -197,13 +202,9 @@ EWXWEXPORT(void, wxMenu_SetLabel)(void* _obj, int id, char* label)
 	((wxMenu*)_obj)->SetLabel(id, label);
 }
 	
-EWXWEXPORT(char*, wxMenu_GetLabel)(void* _obj, int id)
+EWXWEXPORT(wxString*, wxMenu_GetLabel)(wxMenu* _obj, int id)
 {
-	wxString result = ((wxMenu*)_obj)->GetLabel(id);
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetLabel(id));
 }
 	
 EWXWEXPORT(void, wxMenu_SetHelpString)(void* _obj, int id, char* helpString)
@@ -211,13 +212,9 @@ EWXWEXPORT(void, wxMenu_SetHelpString)(void* _obj, int id, char* helpString)
 	((wxMenu*)_obj)->SetHelpString(id, helpString);
 }
 	
-EWXWEXPORT(char*, wxMenu_GetHelpString)(void* _obj, int id)
+EWXWEXPORT(wxString*, wxMenu_GetHelpString)(wxMenu* _obj, int id)
 {
-	wxString result = ((wxMenu*)_obj)->GetHelpString(id);
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetHelpString(id));
 }
 	
 EWXWEXPORT(void, wxMenu_SetTitle)(void* _obj, char* title)
@@ -225,13 +222,9 @@ EWXWEXPORT(void, wxMenu_SetTitle)(void* _obj, char* title)
 	((wxMenu*)_obj)->SetTitle(title);
 }
 	
-EWXWEXPORT(char*, wxMenu_GetTitle)(void* _obj)
+EWXWEXPORT(wxString*, wxMenu_GetTitle)(wxMenu* _obj)
 {
-	wxString result = ((wxMenu*)_obj)->GetTitle();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetTitle());
 }
 
 //not needed added to wxEvtHandler now	
@@ -325,31 +318,19 @@ EWXWEXPORT(void, wxMenuItem_SetText)(void* _obj, void* str)
 	((wxMenuItem*)_obj)->SetText((char*) str);
 }
 	
-EWXWEXPORT(char*, wxMenuItem_GetLabel)(void* _obj)
+EWXWEXPORT(wxString*, wxMenuItem_GetLabel)(wxMenuItem* _obj)
 {
-	wxString result = ((wxMenuItem*)_obj)->GetLabel();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetLabel());
 }
 	
-EWXWEXPORT(char*, wxMenuItem_GetText)(void* _obj)
+EWXWEXPORT(wxString*, wxMenuItem_GetText)(wxMenuItem* _obj)
 {
-	wxString result = ((wxMenuItem*)_obj)->GetText();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetText());
 }
 
-EWXWEXPORT(char*, wxMenuItem_GetLabelFromText)(char* text)
+EWXWEXPORT(wxString*, wxMenuItem_GetLabelFromText)(char* text)
 {
-	wxString result = wxMenuItem::GetLabelFromText((char*) text);
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(wxMenuItem::GetLabelFromText((char*) text));
 }
 
 EWXWEXPORT(void, wxMenuItem_SetCheckable)(void* _obj, int checkable)
@@ -402,13 +383,9 @@ EWXWEXPORT(void, wxMenuItem_SetHelp)(void* _obj, void* str)
 	((wxMenuItem*)_obj)->SetHelp((char*)str);
 }
 	
-EWXWEXPORT(char*, wxMenuItem_GetHelp)(void* _obj)
+EWXWEXPORT(wxString*, wxMenuItem_GetHelp)(wxMenuItem* _obj)
 {
-	wxString result = ((wxMenuItem*)_obj)->GetHelp();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+  return new wxString(_obj->GetHelp());
 }
 
 }

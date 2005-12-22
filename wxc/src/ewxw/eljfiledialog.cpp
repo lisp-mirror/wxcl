@@ -43,20 +43,14 @@ EWXWEXPORT(void, wxFileDialog_SetFilterIndex)(void* _obj, int filterIndex)
 	((wxFileDialog*)_obj)->SetFilterIndex(filterIndex);
 }
 	
-EWXWEXPORT(char*, wxFileDialog_GetMessage)(void* _obj)
+EWXWEXPORT(wxString*, wxFileDialog_GetMessage)(wxFileDialog* _obj)
 {
-	wxString result = ((wxFileDialog*)_obj)->GetMessage();
-	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	return buf;
+   return new wxString(_obj->GetMessage());
 }
 	
-EWXWEXPORT(char*, wxFileDialog_GetPath)(void* _obj)
+EWXWEXPORT(wxString*, wxFileDialog_GetPath)(wxFileDialog* _obj)
 {
-	wxString result = ((wxFileDialog*)_obj)->GetPath();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	return buf;
+   return new wxString(_obj->GetPath());
 }
 	
 // EWXWEXPORT(int, wxFileDialog_GetPaths)(void* _obj, void* paths)
@@ -83,22 +77,14 @@ EWXWEXPORT(char**, wxFileDialog_GetPaths)(void* _obj)
 	return buf;
 }
 
-EWXWEXPORT(char*, wxFileDialog_GetDirectory)(void* _obj)
+EWXWEXPORT(wxString*, wxFileDialog_GetDirectory)(wxFileDialog* _obj)
 {
-	wxString result =((wxFileDialog*)_obj)->GetDirectory();
-	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetDirectory());
 }
 	
-EWXWEXPORT(char*, wxFileDialog_GetFilename)(void* _obj)
+EWXWEXPORT(wxString*, wxFileDialog_GetFilename)(wxFileDialog* _obj)
 {
-	wxString result =((wxFileDialog*)_obj)->GetFilename();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetFilename());
 }
 	
 // EWXWEXPORT(int, wxFileDialog_GetFilenames)(void* _obj, void* paths)
@@ -125,13 +111,9 @@ EWXWEXPORT(char**, wxFileDialog_GetFilenames)(void* _obj)
 	return buf;
 }
 
-EWXWEXPORT(char*, wxFileDialog_GetWildcard)(void* _obj)
+EWXWEXPORT(wxString*, wxFileDialog_GetWildcard)(wxFileDialog* _obj)
 {
-	wxString result =((wxFileDialog*)_obj)->GetWildcard();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetWildcard());
 }
 	
 EWXWEXPORT(int, wxFileDialog_GetStyle)(void* _obj)

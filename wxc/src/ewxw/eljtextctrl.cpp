@@ -8,12 +8,9 @@ EWXWEXPORT(void*, wxTextCtrl_Create) (void* _prt, int _id, char* _txt, int _lft,
 	return (void*) new wxTextCtrl ((wxWindow*)_prt, _id, _txt, wxPoint(_lft, _top), wxSize(_wdt, _hgt), _stl, wxDefaultValidator);
 }
 
-EWXWEXPORT(char*, wxTextCtrl_GetValue)(void* _obj)
+EWXWEXPORT(wxString *, wxTextCtrl_GetValue)(wxTextCtrl* _obj)
 {
-	wxString result =((wxDirDialog*)_obj)->GetPath();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	return buf;
+   return new wxString(_obj->GetValue());
 }
 	
 EWXWEXPORT(void, wxTextCtrl_SetValue)(void* _obj, char* value)
@@ -26,12 +23,9 @@ EWXWEXPORT(int, wxTextCtrl_GetLineLength)(void* _obj, long lineNo)
 	return ((wxTextCtrl*)_obj)->GetLineLength(lineNo);
 }
 	
-EWXWEXPORT(char*, wxTextCtrl_GetLineText)(void* _obj, long lineNo)
+EWXWEXPORT(wxString *, wxTextCtrl_GetLineText)(wxTextCtrl* _obj, long lineNo)
 {
-	wxString result =((wxDirDialog*)_obj)->GetPath();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	return buf;
+   return new wxString(_obj->GetLineText(lineNo));
 }
 	
 EWXWEXPORT(int, wxTextCtrl_GetNumberOfLines)(void* _obj)
@@ -189,4 +183,54 @@ EWXWEXPORT(void, wxTextCtrl_SetEditable)(void* _obj, int editable)
 	((wxTextCtrl*)_obj)->SetEditable(editable != 0);
 }
 	
+EWXWEXPORT(int, wxTextCtrl_EmulateKeyPress)(void * _obj, void *keyevent)
+{
+    return ((wxTextCtrl*)_obj)->EmulateKeyPress( * ((wxKeyEvent *) keyevent));
+}
+
+EWXWEXPORT(int, wxTextCtrl_GetStyle)(void * _obj,long pos,void *style)
+{
+  return (int) ((wxTextCtrl*)_obj)->GetStyle(pos,* (wxTextAttr *) style);
+}
+
+EWXWEXPORT(wxTextAttr*, wxTextCtrl_GetDefaultStyle)(void * _obj)
+{
+  return new wxTextAttr(((wxTextCtrl*)_obj)->GetDefaultStyle());
+}
+
+EWXWEXPORT(wxString *, wxTextCtrl_GetRange)(wxTextCtrl* _obj, long from, long to)
+{
+   return new wxString(_obj->GetRange(from, to));
+}
+
+EWXWEXPORT(wxString *, wxTextCtrl_GetStringSelection)(wxTextCtrl* _obj)
+{
+   return new wxString(_obj->GetStringSelection());
+}
+
+EWXWEXPORT( int, wxTextCtrl_IsMultiLine)(void * _obj)
+{
+    return (int) ((wxTextCtrl*)_obj)->IsMultiLine();
+}
+
+EWXWEXPORT( int, wxTextCtrl_IsSingleLine)(void * _obj)
+{
+    return (int) ((wxTextCtrl*)_obj)->IsSingleLine(   );
+}
+
+
+EWXWEXPORT(int, wxTextCtrl_SetDefaultStyle)(void * _obj, void *style)
+{
+    return (int) ((wxTextCtrl*)_obj)->SetDefaultStyle( * (wxTextAttr *) style  );
+}
+
+EWXWEXPORT(void, wxTextCtrl_SetMaxLength)(void * _obj, long len)
+{
+    ((wxTextCtrl*)_obj)->SetMaxLength( len  );
+}
+
+EWXWEXPORT(int, wxTextCtrl_SetStyle)(void * _obj, long start, long end, void * style)
+{
+    return (int) ((wxTextCtrl*)_obj)->SetStyle(start, end, * (wxTextAttr *) style);
+}
 }

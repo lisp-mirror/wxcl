@@ -66,6 +66,35 @@ EWXWEXPORT(int, wxProcessEvent_GetExitCode)(void* _obj)
 	return ((wxProcessEvent*)_obj)->GetExitCode();
 }
 
+EWXWEXPORT(int, wxProcess_IsErrorAvailable)(void* _obj)
+{
+    return ((wxProcess*)_obj)->IsErrorAvailable();
+}
+
+EWXWEXPORT(int, wxProcess_IsInputAvailable)(void* _obj)
+{
+    return ((wxProcess*)_obj)->IsInputAvailable();
+}
+
+EWXWEXPORT(int, wxProcess_IsInputOpened)(void* _obj)
+{
+    return ((wxProcess*)_obj)->IsInputOpened();
+}
+
+EWXWEXPORT(wxProcess*, wxProcess_Open)( char* cmd, int flags )
+{
+    return wxProcess::Open( cmd, ((flags | wxEXEC_ASYNC) & ~wxEXEC_SYNC) );
+}
+
+EWXWEXPORT(wxKillError, wxKill)( int pid, wxSignal signal )
+{
+  return wxProcess::Kill(pid,signal);
+}
+
+EWXWEXPORT(void,wxStreamBase_Delete)(wxStreamBase* stream)
+{
+  if (stream) delete stream;
+}
 
 EWXWEXPORT(int, wxStreamBase_GetLastError)(void* _obj)
 {

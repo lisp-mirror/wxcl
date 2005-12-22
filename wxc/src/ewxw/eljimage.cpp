@@ -188,5 +188,17 @@ EWXWEXPORT(int, wxImage_CountColours)(void* _obj, int stopafter)
 {
 	return ((wxImage*)_obj)->CountColours((long)stopafter);
 }
-	
+
+
+EWXWEXPORT(wxImage*, wxImage_CreateFromDataEx)(int width, int height, void* data, int isStaticData)
+{
+  return new wxImage(width, height, (unsigned char*)data, isStaticData != 0);
+}
+
+
+EWXWEXPORT(void, wxImage_Delete)( wxImage* image )
+{
+  delete image;
+}
+
 }

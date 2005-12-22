@@ -6,39 +6,6 @@
 extern "C" 
 {
 
-/* bitmap/image helpers */
-EWXWEXPORT(wxBitmap*, wxBitmap_CreateFromImage)( wxImage* image, int depth )
-{
-  return new wxBitmap(*image,depth);	
-}
-
-
-EWXWEXPORT(wxImage*, wxImage_CreateFromDataEx)(int width, int height, void* data, int isStaticData)
-{
-  return new wxImage(width, height, (unsigned char*)data, isStaticData != 0);
-}
-
-
-EWXWEXPORT(void, wxImage_Delete)( wxImage* image )
-{
-  delete image;
-}
-
-
-/* colours */
-EWXWEXPORT(void*, wxColour_CreateFromInt) (int rgb)
-{
-  return (void*) new wxColour((rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF);
-}
-
-EWXWEXPORT(int, wxColour_GetInt) (wxColour* colour)
-{
-  int r = colour->Red();
-  int g = colour->Green();
-  int b = colour->Blue();
-  return ((r << 16) | (g << 8) | b);
-}
-
 /* basic pixel manipulation */
 EWXWEXPORT(void, wxcSetPixelRGB)( unsigned char* buffer, int width, int x, int y, int rgb )
 {

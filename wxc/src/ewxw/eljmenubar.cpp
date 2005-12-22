@@ -134,4 +134,10 @@ EWXWEXPORT(void, wxMenuBar_Refresh)(void* _obj)
         ((wxMenuBar*)_obj)->Refresh();
 }
 
+
+EWXWEXPORT(wxFrame*,wxMenuBar_GetFrame)(wxMenuBar* _obj)
+{
+  return _obj->GetFrame();
+}
+
 }

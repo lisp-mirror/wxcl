@@ -308,13 +308,9 @@ EWXWEXPORT(void, ELJApp_Dispatch)()
         wxGetApp().Dispatch();
 }
 
-EWXWEXPORT(char*, ELJApp_GetAppName)()
+EWXWEXPORT(wxString*, ELJApp_GetAppName)()
 {
-        wxString result = wxGetApp().GetAppName();
-	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) memcpy (buf, result.c_str(), result.Length());
-	delete result;
-	return buf;
+   return new wxString( wxGetApp().GetAppName());
 }
 
 EWXWEXPORT(void, ELJApp_SetAppName)(char* name)
@@ -322,13 +318,9 @@ EWXWEXPORT(void, ELJApp_SetAppName)(char* name)
         wxGetApp().SetAppName(name);
 }
 
-EWXWEXPORT(char*, ELJApp_GetClassName)()
+EWXWEXPORT(wxString*, ELJApp_GetClassName)()
 {
-        wxString result = wxGetApp().GetClassName();
-        char *buf = (char*)malloc(result.Length()*sizeof(char));
-        if (buf) memcpy (buf, result.c_str(), result.Length());
-        delete result;
-        return buf;
+   return new wxString(wxGetApp().GetClassName());
 }
 
 EWXWEXPORT(void, ELJApp_SetClassName)(char* name)
@@ -336,12 +328,9 @@ EWXWEXPORT(void, ELJApp_SetClassName)(char* name)
         wxGetApp().SetClassName(name);
 }
 
-EWXWEXPORT(char*, ELJApp_GetVendorName)()
+EWXWEXPORT(wxString*, ELJApp_GetVendorName)()
 {
-        wxString result = wxGetApp().GetVendorName();
-        char *buf = (char*)malloc(result.Length()*sizeof(char));
-        if (buf) memcpy (buf, result.c_str(), result.Length());
-        return buf;
+   return new wxString(wxGetApp().GetVendorName());
 }
 
 EWXWEXPORT(void, ELJApp_SetVendorName)(char* name)
@@ -467,25 +456,19 @@ EWXWEXPORT(void*, ELJApp_GetApp)()
         return (void*)wxTheApp;
 }
 
-EWXWEXPORT(int, ELJApp_GetUserId)(void* _buf)
+EWXWEXPORT(wxString*, ELJApp_GetUserId)()
 {
-        wxString result = wxGetUserId();
-        if (_buf) memcpy (_buf, result.c_str(), result.Length());
-        return result.Length();
+   return new wxString(wxGetUserId());
 }
 
-EWXWEXPORT(int, ELJApp_GetUserName)(void* _buf)
+EWXWEXPORT(wxString*, ELJApp_GetUserName)()
 {
-        wxString result = wxGetUserName();
-        if (_buf) memcpy (_buf, result.c_str(), result.Length());
-        return result.Length();
+   return new wxString(wxGetUserName());
 }
 
-EWXWEXPORT(int, ELJApp_GetUserHome)(char* _usr, void* _buf)
+EWXWEXPORT(wxString*, ELJApp_GetUserHome)(char* _usr)
 {
-        wxString result = wxGetUserHome((const char*)_usr);
-        if (_buf) memcpy (_buf, result.c_str(), result.Length());
-        return result.Length();
+   return new wxString(wxGetUserHome((const char*)_usr));
 }
 
 EWXWEXPORT(int, ELJApp_ExecuteProcess)(char* _cmd, int _snc, void* _prc)
@@ -500,19 +483,17 @@ EWXWEXPORT(int, ELJApp_Yield)()
 
 EWXWEXPORT(int, ELJApp_SafeYield)(void* _win)
 {
-        return (int)wxSafeYield((wxWindow*)_win);
+  return (int)wxSafeYield((wxWindow*)_win);
 }
 
 EWXWEXPORT(int, ELJApp_GetOsVersion)(void* _maj, void* _min)
 {
-        return wxGetOsVersion((int*)_maj, (int*)_min);
+  return wxGetOsVersion((int*)_maj, (int*)_min);
 }
 
-EWXWEXPORT(int, ELJApp_GetOsDescription)(void* _buf)
+EWXWEXPORT(wxString*, ELJApp_GetOsDescription)()
 {
-        wxString result = wxGetOsDescription();
-        if (_buf) memcpy (_buf, result.c_str(), result.Length());
-        return result.Length();
+   return new wxString(wxGetOsDescription());
 }
 
 EWXWEXPORT(void, ELJApp_Sleep)(int _scs)
@@ -702,4 +683,41 @@ EWXWEXPORT(int,wxEvent_NewEventType)()
 {
         return (int)wxNewEventType();
 }
+
+/*-----------------------------------------------------------------------------
+  String
+-----------------------------------------------------------------------------*/
+EWXWEXPORT(wxString*, wxString_Create)( char* buffer )
+{
+  return new wxString(buffer);
 }
+
+EWXWEXPORT(wxString*, wxString_CreateLen)( char* buffer, int len )
+{
+  return new wxString(buffer,len);
+}
+
+EWXWEXPORT(void,wxString_Delete)( wxString* s )
+{
+  delete s;
+}
+
+EWXWEXPORT(int,wxString_GetString)( wxString* s, char* buffer )
+{
+  if (buffer) memcpy (buffer, s->c_str(), s->Length());
+  return s->Length();
+}  
+
+EWXWEXPORT(int,wxString_GetLength)(wxString* s)
+{
+  return s->Length();
+}  
+EWXWEXPORT(const char *,wxStringc_str)(wxString* s)
+{
+  return s->c_str();
+}  
+
+
+}
+
+

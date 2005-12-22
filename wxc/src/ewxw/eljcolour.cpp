@@ -77,4 +77,17 @@ EWXWEXPORT(int, wxColour_ValidName)(char* _name)
 	return (int) wxTheColourDatabase->FindColour (_name);
 }
 
+EWXWEXPORT(void*, wxColour_CreateFromInt) (int rgb)
+{
+  return (void*) new wxColour((rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF);
+}
+
+EWXWEXPORT(int, wxColour_GetInt) (wxColour* colour)
+{
+  int r = colour->Red();
+  int g = colour->Green();
+  int b = colour->Blue();
+  return ((r << 16) | (g << 8) | b);
+}
+
 }

@@ -1276,64 +1276,8 @@ EWXWEXPORT(void, wxDateTime_Delete) (void* _obj)
 /*-----------------------------------------------------------------------------
   frame
 -----------------------------------------------------------------------------*/
-EWXWEXPORT(char *, wxFrame_GetTitle) (void* _obj) //,const char* _buf)
-{
-  wxString result = ((wxFrame*)_obj)->GetTitle();
-  char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-  if (buf) strcpy (buf, result.c_str());
-  delete result;
-  return buf;
-}
-
-EWXWEXPORT(void, wxFrame_SetTitle) (void* _obj, char* _txt)
-{
-  ((wxFrame*)_obj)->SetTitle(_txt);
-}
-
-EWXWEXPORT(bool, wxFrame_SetShape)( wxFrame* self, wxRegion* region)
-{
-  return self->SetShape( *region );
-}
-
-EWXWEXPORT(bool, wxFrame_ShowFullScreen)( wxFrame* self, bool show, int style)
-{
-  return self->ShowFullScreen( show, style );
-}
-
-EWXWEXPORT(bool, wxFrame_IsFullScreen)( wxFrame* self )
-{
-  return self->IsFullScreen();
-}
-
-EWXWEXPORT(void, wxFrame_Centre)( wxFrame* self, int orientation )
-{
-  self->Centre();
-}
 
 
-EWXWEXPORT(void, wxNotebook_AssignImageList)( wxNotebook* _obj, wxImageList* imageList )
-{
-  _obj->AssignImageList(imageList);
-}
-
-/*-----------------------------------------------------------------------------
-  menu & toolbar
------------------------------------------------------------------------------*/
-EWXWEXPORT(wxMenuBar*,wxMenu_GetMenuBar)(wxMenu* _obj)
-{
-  return _obj->GetMenuBar();
-}
-
-
-EWXWEXPORT(wxFrame*,wxMenuBar_GetFrame)(wxMenuBar* _obj)
-{
-  return _obj->GetFrame();
-}
-
-EWXWEXPORT(void,wxToolBar_AddTool2)( wxToolBar* _obj, int toolId, char* label, wxBitmap* bmp, wxBitmap* bmpDisabled, int itemKind, char* shortHelp, char* longHelp )
-{
-  _obj->AddTool(toolId,label,*bmp,*bmpDisabled,(wxItemKind)itemKind,shortHelp,longHelp,NULL);
-}
 
 /*-----------------------------------------------------------------------------
   listctrl
@@ -1347,41 +1291,6 @@ EWXWEXPORT(int, wxListEvent_GetCacheTo)(wxListEvent* _obj)
 {
   return _obj->GetCacheTo();
 }
-
-
-EWXWEXPORT(void, wxListCtrl_AssignImageList)(wxListCtrl* _obj, wxImageList* images, int which )
-{
-  _obj->AssignImageList(images,which);
-}
-
-
-
-EWXWEXPORT(void, wxListCtrl_GetColumn2)(wxListCtrl* _obj, int col, wxListItem* item)
-{
-  bool success = _obj->GetColumn(col, *item);
-  if (!success) item->SetId(-1);
-}
-
-EWXWEXPORT(void, wxListCtrl_GetItem2)(wxListCtrl* _obj, wxListItem* info)
-{
-  bool success = _obj->GetItem(*info);
-  if (!success) info->SetId(-1);
-}
-
-EWXWEXPORT(void, wxListCtrl_GetItemPosition2)(wxListCtrl* _obj, int item, int* x, int* y)
-{
-  wxPoint pos;
-  bool success = _obj->GetItemPosition((long)item, pos);
-  if (success) {
-    *x = pos.x;
-    *y = pos.y;
-  }
-  else {
-    *x = -1;
-    *y = -1;
-  }
-}
-
 
 struct SortData {
   long id;
@@ -1442,29 +1351,6 @@ EWXWEXPORT(void,wxObject_Delete)(wxObject* _obj)
   delete _obj;
 }
 
-/*-----------------------------------------------------------------------------
-  String
------------------------------------------------------------------------------*/
-EWXWEXPORT(wxString*, wxString_Create)( char* buffer )
-{
-  return new wxString(buffer);
-}
-
-EWXWEXPORT(wxString*, wxString_CreateLen)( char* buffer, int len )
-{
-  return new wxString(buffer,len);
-}
-
-EWXWEXPORT(void,wxString_Delete)( wxString* s )
-{
-  delete s;
-}
-
-EWXWEXPORT(int,wxString_GetString)( wxString* s, char* buffer )
-{
-  if (buffer) memcpy (buffer, s->c_str(), s->Length());
-  return s->Length();
-}  
 
 /*-----------------------------------------------------------------------------
   classinfo
@@ -1514,56 +1400,6 @@ EWXWEXPORT(int,wxClassInfo_GetSize)(void* _obj)
 /*-----------------------------------------------------------------------------
   window
 -----------------------------------------------------------------------------*/
-EWXWEXPORT(void, wxWindow_ConvertPixelsToDialogEx)(void* _obj, int x, int y, int* _x, int* _y)
-{
-    wxPoint pt = ((wxWindow*)_obj)->ConvertPixelsToDialog(wxPoint(x, y));
-    *_x = pt.x;
-    *_y = pt.y;
-}
-
-EWXWEXPORT(void, wxWindow_ConvertDialogToPixelsEx)(void* _obj, int x, int y, int* _x, int* _y)
-{
-    wxPoint pt = ((wxWindow*)_obj)->ConvertDialogToPixels(wxPoint(x, y));
-    *_x = pt.x;
-    *_y = pt.y;
-}
-
-
-EWXWEXPORT(void, wxWindow_SetClientObject)(void* _obj, void * obj )
-{
-    ((wxWindow*)_obj)->SetClientObject( (wxClientData*)obj );
-}
-
-
-EWXWEXPORT(void, wxWindow_SetVirtualSize)(void* _obj, int w, int h )
-{
-    ((wxWindow*)_obj)->SetVirtualSize( w, h );
-}
-
-EWXWEXPORT(void, wxWindow_GetVirtualSize)(void* _obj, int* w, int* h )
-{
-    ((wxWindow*)_obj)->GetVirtualSize( w, h );
-}
-
-EWXWEXPORT(void, wxWindow_FitInside)(void* _obj)
-{
-    ((wxWindow*)_obj)->FitInside();
-}
-
-
-EWXWEXPORT(void, wxWindow_ClientToScreen)(wxWindow* self, int x, int y, int* sx, int* sy)
-{
-  wxPoint pt = self->ClientToScreen( wxPoint(x,y) );
-  if (sx) *sx = pt.x;
-  if (sy) *sy = pt.y;
-}
-
-EWXWEXPORT(void, wxWindow_ScreenToClient2)(wxWindow* self, int x, int y, int *cx, int *cy)
-{
-  wxPoint pt = self->ScreenToClient( wxPoint(x, y) );
-  if (cx) *cx = pt.x;
-  if (cy) *cy = pt.y; 
-}
 
 
 
@@ -1572,14 +1408,6 @@ EWXWEXPORT(void, wxcGetMousePosition)( int* x, int* y )
   wxPoint pt = wxGetMousePosition();
   if (x) *x = pt.x;
   if (y) *y = pt.y;
-}
-
-/*-----------------------------------------------------------------------------
-  scrolledwindow
------------------------------------------------------------------------------*/
-EWXWEXPORT(void, wxScrolledWindow_SetScrollRate)( wxScrolledWindow* _obj, int xstep, int ystep )
-{
-  _obj->SetScrollRate(xstep,ystep);
 }
 
 /*-----------------------------------------------------------------------------
@@ -1643,100 +1471,6 @@ EWXWEXPORT(void, wxTimerEx_Connect)(void* _obj, void* _closure )
 EWXWEXPORT(void*, wxTimerEx_GetClosure)(void* _obj)
 {
   return (void*)(((wxTimerEx*)_obj)->GetClosure());
-}
-
-/*------------------------------------------------------------------------------
-  process
-------------------------------------------------------------------------------*/
-EWXWEXPORT(int, wxProcess_IsErrorAvailable)(void* _obj)
-{
-    return ((wxProcess*)_obj)->IsErrorAvailable();
-}
-
-EWXWEXPORT(int, wxProcess_IsInputAvailable)(void* _obj)
-{
-    return ((wxProcess*)_obj)->IsInputAvailable();
-}
-
-EWXWEXPORT(int, wxProcess_IsInputOpened)(void* _obj)
-{
-    return ((wxProcess*)_obj)->IsInputOpened();
-}
-
-EWXWEXPORT(wxProcess*, wxProcess_Open)( char* cmd, int flags )
-{
-    return wxProcess::Open( cmd, ((flags | wxEXEC_ASYNC) & ~wxEXEC_SYNC) );
-}
-
-EWXWEXPORT(wxKillError, wxKill)( int pid, wxSignal signal )
-{
-  return wxProcess::Kill(pid,signal);
-}
-
-EWXWEXPORT(void,wxStreamBase_Delete)(wxStreamBase* stream)
-{
-  if (stream) delete stream;
-}
-
-/*------------------------------------------------------------------------------
-  TextCtrl
-------------------------------------------------------------------------------*/
-EWXWEXPORT(int, wxTextCtrl_EmulateKeyPress)(void * _obj, void *keyevent)
-{
-    return ((wxTextCtrl*)_obj)->EmulateKeyPress( * ((wxKeyEvent *) keyevent));
-}
-
-EWXWEXPORT(int, wxTextCtrl_GetStyle)(void * _obj,long pos,void *style)
-{
-  return (int) ((wxTextCtrl*)_obj)->GetStyle(pos,* (wxTextAttr *) style);
-}
-
-EWXWEXPORT(wxTextAttr*, wxTextCtrl_GetDefaultStyle)(void * _obj)
-{
-  wxTextAttr* res = new wxTextAttr(((wxTextCtrl*)_obj)->GetDefaultStyle());
-  return res;
-}
-
-EWXWEXPORT(char*, wxTextCtrl_GetRange)(void * _obj, long from, long to)
-{
-    wxString result = ((wxTextCtrl*)_obj)->GetRange(from, to);
-    char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-    if (buf) strcpy (buf, result.c_str());
-    return buf;
-}
-
-EWXWEXPORT(char*, wxTextCtrl_GetStringSelection)(void * _obj)
-{
-    wxString result = ((wxTextCtrl*)_obj)->GetStringSelection();
-    char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-    if (buf) strcpy (buf, result.c_str());
-    return buf;
-}
-
-EWXWEXPORT( int, wxTextCtrl_IsMultiLine)(void * _obj)
-{
-    return (int) ((wxTextCtrl*)_obj)->IsMultiLine();
-}
-
-EWXWEXPORT( int, wxTextCtrl_IsSingleLine)(void * _obj)
-{
-    return (int) ((wxTextCtrl*)_obj)->IsSingleLine(   );
-}
-
-
-EWXWEXPORT(int, wxTextCtrl_SetDefaultStyle)(void * _obj, void *style)
-{
-    return (int) ((wxTextCtrl*)_obj)->SetDefaultStyle( * (wxTextAttr *) style  );
-}
-
-EWXWEXPORT(void, wxTextCtrl_SetMaxLength)(void * _obj, long len)
-{
-    ((wxTextCtrl*)_obj)->SetMaxLength( len  );
-}
-
-EWXWEXPORT(int, wxTextCtrl_SetStyle)(void * _obj, long start, long end, void * style)
-{
-    return (int) ((wxTextCtrl*)_obj)->SetStyle(start, end, * (wxTextAttr *) style);
 }
 
 /*------------------------------------------------------------------------------

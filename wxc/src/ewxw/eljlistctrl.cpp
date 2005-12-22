@@ -493,5 +493,38 @@ EWXWEXPORT(void, wxListCtrl_UpdateStyle)(void* _obj)
 	((wxListCtrl*)_obj)->UpdateStyle();
 #endif
 }
-	
+
+EWXWEXPORT(void, wxListCtrl_AssignImageList)(wxListCtrl* _obj, wxImageList* images, int which )
+{
+  _obj->AssignImageList(images,which);
+}
+
+
+
+EWXWEXPORT(void, wxListCtrl_GetColumn2)(wxListCtrl* _obj, int col, wxListItem* item)
+{
+  bool success = _obj->GetColumn(col, *item);
+  if (!success) item->SetId(-1);
+}
+
+EWXWEXPORT(void, wxListCtrl_GetItem2)(wxListCtrl* _obj, wxListItem* info)
+{
+  bool success = _obj->GetItem(*info);
+  if (!success) info->SetId(-1);
+}
+
+EWXWEXPORT(void, wxListCtrl_GetItemPosition2)(wxListCtrl* _obj, int item, int* x, int* y)
+{
+  wxPoint pos;
+  bool success = _obj->GetItemPosition((long)item, pos);
+  if (success) {
+    *x = pos.x;
+    *y = pos.y;
+  }
+  else {
+    *x = -1;
+    *y = -1;
+  }
+}
+
 }

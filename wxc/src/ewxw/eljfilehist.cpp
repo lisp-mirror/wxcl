@@ -57,11 +57,9 @@ EWXWEXPORT(void,wxFileHistory_AddFilesToMenu)(void* _obj, void* menu)
 		((wxFileHistory*)_obj)->AddFilesToMenu();
 }
 	
-EWXWEXPORT(int,wxFileHistory_GetHistoryFile)(void* _obj, int i, void* _buf)
+EWXWEXPORT(wxString*,wxFileHistory_GetHistoryFile)(void* _obj, int i)
 {
-	wxString tmp = ((wxFileHistory*)_obj)->GetHistoryFile(i);
-	if (_buf) memcpy (_buf, tmp.c_str(), tmp.Length());
-	return tmp.Length();
+  return new wxString(((wxFileHistory*)_obj)->GetHistoryFile(i));
 }
 	
 EWXWEXPORT(int,wxFileHistory_GetCount)(void* _obj)

@@ -173,4 +173,9 @@ EWXWEXPORT(void, wxToolBar_ToggleTool) (void* _obj, int id, int val)
 	((wxToolBar*)_obj)->ToggleTool (id, val != 0);
 }
 
+EWXWEXPORT(void,wxToolBar_AddTool2)( wxToolBar* _obj, int toolId, char* label, wxBitmap* bmp, wxBitmap* bmpDisabled, int itemKind, char* shortHelp, char* longHelp )
+{
+  _obj->AddTool(toolId,label,*bmp,*bmpDisabled,(wxItemKind)itemKind,shortHelp,longHelp,NULL);
+}
+
 }

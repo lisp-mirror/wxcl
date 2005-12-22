@@ -677,5 +677,55 @@ EWXWEXPORT(void, wxWindow_Thaw)(void* _obj)
 	((wxWindow*)_obj)->Thaw();
 }
 
+EWXWEXPORT(void, wxWindow_ConvertPixelsToDialogEx)(void* _obj, int x, int y, int* _x, int* _y)
+{
+    wxPoint pt = ((wxWindow*)_obj)->ConvertPixelsToDialog(wxPoint(x, y));
+    *_x = pt.x;
+    *_y = pt.y;
+}
+
+EWXWEXPORT(void, wxWindow_ConvertDialogToPixelsEx)(void* _obj, int x, int y, int* _x, int* _y)
+{
+    wxPoint pt = ((wxWindow*)_obj)->ConvertDialogToPixels(wxPoint(x, y));
+    *_x = pt.x;
+    *_y = pt.y;
+}
+
+
+EWXWEXPORT(void, wxWindow_SetClientObject)(void* _obj, void * obj )
+{
+    ((wxWindow*)_obj)->SetClientObject( (wxClientData*)obj );
+}
+
+
+EWXWEXPORT(void, wxWindow_SetVirtualSize)(void* _obj, int w, int h )
+{
+    ((wxWindow*)_obj)->SetVirtualSize( w, h );
+}
+
+EWXWEXPORT(void, wxWindow_GetVirtualSize)(void* _obj, int* w, int* h )
+{
+    ((wxWindow*)_obj)->GetVirtualSize( w, h );
+}
+
+EWXWEXPORT(void, wxWindow_FitInside)(void* _obj)
+{
+    ((wxWindow*)_obj)->FitInside();
+}
+
+
+EWXWEXPORT(void, wxWindow_ClientToScreen)(wxWindow* self, int x, int y, int* sx, int* sy)
+{
+  wxPoint pt = self->ClientToScreen( wxPoint(x,y) );
+  if (sx) *sx = pt.x;
+  if (sy) *sy = pt.y;
+}
+
+EWXWEXPORT(void, wxWindow_ScreenToClient2)(wxWindow* self, int x, int y, int *cx, int *cy)
+{
+  wxPoint pt = self->ScreenToClient( wxPoint(x, y) );
+  if (cx) *cx = pt.x;
+  if (cy) *cy = pt.y; 
+}
 	
 }
