@@ -4,7 +4,7 @@
 (defcvar ("APPTerminating" APPTerminating)
  :int)
 
-(cffi:load-foreign-library "C:/cvs-synched/commit-access/wxcl/wxcl/lib/wxc-msw2.6.2.dll")
+;(cffi:load-foreign-library +library-name+)
 
 (defctype :lisp-string :pointer)
 
@@ -16,10 +16,11 @@
            ,@body)))))
 
 (define-type-translator :lisp-string :from-c (value)
-  "Converts a foreign string to lisp, and frees it."
+  "Converts a foreign wxString pointer to lisp, and frees it."
   (once-only (value)
-    `(unwind-protect (foreign-string-to-lisp ,value)
-       (foreign-funcall "free" :pointer ,value))))
+    `(unwind-protect
+      (foreign-string-to-lisp (wxStringc_str ,value) (wxString_GetLength ,value) nil)
+      (wxString_Delete ,value))))
 
 (defcfun ("ELJApp_InitializeC" ELJApp_initializeC) :void
   (_obj :pointer)

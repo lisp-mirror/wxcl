@@ -261,3 +261,23 @@
   (_name :pointer))
 
 (defcfun ("wxEvent_NewEventType" wxEvent_NewEventType) :int)
+
+(defcfun ("wxString_Create" wxString_Create) :pointer
+  (buffer :string))
+
+(defcfun ("wxString_CreateLen" wxString_CreateLen) :pointer
+  (buffer :string)
+  (len :int))
+
+(defcfun ("wxString_Delete" wxString_Delete) :void
+  (s :pointer))
+
+(defcfun ("wxString_GetString" wxString_GetString) :int
+  (s :pointer)
+  (buffer :string))
+
+(defcfun ("wxString_GetLength" wxString_GetLength) :int
+  (s :pointer))
+
+(defcfun ("wxStringc_str" wxStringc_str) :pointer
+  (s :pointer))

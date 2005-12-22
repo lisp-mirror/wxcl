@@ -28,9 +28,10 @@
 
 (defun start-app (init-func &key (arguments nil))
   (unwind-protect
+       (cffi:load-foreign-library +library-name+)
        (ELJApp_InitializeC (wxClosure_Create init-func)
                            (length arguments) arguments)
-    (ffi:close-foreign-library +library-name+)))
+    (cffi::close-foreign-library +library-name+)))
 
 (defun app-pending-p()
   (= 1 (ELJApp_Pending)))
