@@ -47,7 +47,7 @@
 	 ((:a :href* :sf-donate)
 	  ((:img height "32" alt "Support This Project" 
 		  ;src "../img/project-support.jpg"    ; Ping SKS: remove this line entirely and ... - commented
-		 :src* :sf-dontate-img           ;  ... uncomment this line - uncommented
+		 :src* :sf-donate-img           ;  ... uncomment this line - uncommented
 		 width "88" border "0"))))
 	
 	((:td class "shoes-logo")		  

@@ -42,14 +42,6 @@
     " bem&uuml;ht sich um die Vereinheitlichung dieser leicht unterschiedlichen Bibliotheken."
     )
    
-   ((:li class "topics")
-    "Die englischsprachige Seite " (:b ((:a :href* :on-wxcl) "On wxCL")) " stammt aus dem Jahr 2003, "
-    "ist aber immer noch ein guter Einstiegspunkt, um einige der Probleme "
-    "beim Design von " ((:a :href* :hp-wxcl) "wxCL") " kennenzulernen. "
-    "Der Autor ist Mitglied der "
-    ((:a :href* :sf-ml-devel) "wxCL-devel")
-    "-Mailing-Liste."
-    )
    )
   ))
 

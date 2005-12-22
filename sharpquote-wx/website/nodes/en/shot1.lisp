@@ -17,7 +17,7 @@
    ". "
    
    "The image was cropped on the bottom and right. Provided by " 
-   ((:a :href* :hp-surendra) "Surendra&nbsp;K.&nbsp;Singhi") ", August 2005."
+   "Surendra&nbsp;K.&nbsp;Singhi" ", August 2005."
    ) 
   
   

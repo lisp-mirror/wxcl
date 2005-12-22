@@ -65,6 +65,12 @@
 :en ((t . "Englisch"))
 :de ((t . "Deutsch"))
 
+;; nation names
+:nation-us ((:abbr . "USA") (:full . "Vereinigte Staaten von Amerika"))
+:nation-de ((:full . "Deutschland"))
+:nation-br ((:full . "Brasilien"))
+
+
 ;; shoes
 :page-rendered ((t . "Seite erzeugt"))
 :page-served ((t . "Seite serviert"))

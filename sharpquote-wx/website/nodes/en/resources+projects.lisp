@@ -39,15 +39,6 @@
     "A project named " (:b ((:a :href* :hp-wxc) "wxC")) " aims to unify these slightly differing libraries."
     )
    
-   
-   ((:li class "topics")
-    "The english-language page " (:b ((:a :href* :on-wxcl) "On wxCL")) " dates from the year 2003, "
-    "but is still a good starting point to know about some of the design issues of "
-    ((:a :href* :hp-wxcl) "wxCL") ". "
-    "Its author ist a member of the "
-    ((:a :href* :sf-ml-devel) "wxCL-devel")
-    " mailing list."
-    )
    )
   ))
  

@@ -51,6 +51,12 @@
 :en
 :de
 
+;; nation names
+:nation-us
+:nation-de
+:nation-br
+
+
 ;; topics
 :home
 :contact

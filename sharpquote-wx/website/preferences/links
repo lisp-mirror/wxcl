@@ -5,8 +5,8 @@
 
 ;;;;
 ;;;; The Keyword--URI relations defined in this file can be retrieved 
-;;;; with the special attribute :href* in LHTML tags inside the ubiquitous
-;;;; 'with-syntax' macro:
+;;;; with the special attributes :href* or :src* in LHTML tags inside the 
+;;;; ubiquitous 'with-syntax' macro:
 ;;;;
 ;;;;    (with-syntax 
 ;;;;     (:html)
@@ -25,7 +25,7 @@
 ;;;;    <a href="http://www.wxcl-project.org">The wxCL project group</a>
 ;;;;
 ;;;; The 'with-syntax' macro also arranges for the right target (sink) for
-;;;; the resulting HTML, so there's usually no need to worry about this
+;;;; the resulting XHTML, so there's usually no need to worry about this
 ;;;; when writing or editing nodes of the wxCL website.
 ;;;;
 ;;;; Additional URIs not defined by means of the file at hand
@@ -44,7 +44,7 @@
 ;;;; 'mailing-list' as 'ml'
 ;;;; 'microsoft' as 'ms'
 ;;;; 'sourceforge' as 'sf'
-;;;; 'freashmeat' as 'fm'
+;;;; 'freshmeat' as 'fm'
 ;;;; 'image' as 'img'
 ;;;; 'announcement' as 'ann'
 ;;;; 
@@ -144,20 +144,11 @@
 :show-cl-source-img "../img/source.gif"
 
 
+
 ;;; ------ Project People ------
 
-;; This section will be moved to an extra file
-;;  containing additional semantic classification about people
-;;  (Surname, Lastname, Pseudonyms, Location, ...)
-
-:hp-surendra "http://www.public.asu.edu/~sksinghi/"
-:hp-joerg "http://www.olivfabric.de"
-:hp-jack "http://home.earthlink.net/~jdunrue/"
-
-:hp-andre "http://www.geocities.com/andreabsbr/"
-:hp-kaz "http://users.footprints.net/~kaz/"
-;; hp-sanjay "http://www.sanjaypande.com" ;; ---- ?
-:hp-sanjay "http://lisp.tech.coop/Sanjay%20Pande"
+;; 2005-10-11 ( Joerg ):
+;;  This section's data was moved to the preference file project-people
 
 
 

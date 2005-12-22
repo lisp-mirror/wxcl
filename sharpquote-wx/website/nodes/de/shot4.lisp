@@ -22,7 +22,7 @@
    
    "Das Bild wurde leicht bearbeitet, um auf die Seite zu passen, und rechts beschnitten. "
    "Zur Verf&uuml;gung gestellt von "
-   ((:a :href* :hp-surendra) "Surendra&nbsp;K.&nbsp;Singhi") ", August 2005.")
+   "Surendra&nbsp;K.&nbsp;Singhi"  ", August 2005.")
   
   
   ((:p align "center" :css* (:ta "center" :m "2em 0em"))
