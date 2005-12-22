@@ -26,29 +26,3 @@
 # spread out over the entire source repository.
 
 
-
-
-# renamed full rather than wxcl because it is used to export the whole
-#  CVS repository anyway. This could be done without this module definition
-#  but is kept here for reasons of documentation.
-#  The CVS snapshot cronjob of SF user joerg_pr uses this module alias to
-#  generate all three types of snapshots: the FULL snapshot (used to
-#  generate the webpage, because the document definitions for the
-#  website generator may collect files from outside of sharpquote-wx),
-#  the WXCL snapshot which contains everything but CVSROOT and 
-#  sharpquote-wx, and the SQWX snapshot which contains sharpquote-wx only.
-
-full	-a	.
-
-
-
-# Although no longer used to produce the sqwx CVS snapshot by cronjob 
-#  of SF user joerg_pr, this module definition is kept here for reasons
-#  of documentation and as a convenient hook to make manual cvs exports
-#  of this module alone.
-#
-#  (sharpquote-wx is the name of a CVS module, not a development branch.)
-
-sqwx	-a	sharpquote-wx
-
-
