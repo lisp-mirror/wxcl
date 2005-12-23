@@ -44,16 +44,9 @@ EWXWEXPORT(void, wxRadioBox_SetItemBitmap)(void* _obj, int item, void* bitmap)
 #endif
 }
 	
-EWXWEXPORT(char*, wxRadioBox_GetItemLabel)(void* _obj, int item)
+EWXWEXPORT(wxString*, wxRadioBox_GetItemLabel)(wxRadioBox* _obj, int item)
 {
-#if wxVERSION_NUMBER >= 2400
-	wxString result = ((wxRadioBox*)_obj)->GetString(item);
-#else
-	wxString result = ((wxRadioBox*)_obj)->GetLabel(item);
-#endif
-	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	return buf;
+   return new wxString(_obj->GetString(item));
 }
 	
 EWXWEXPORT(void, wxRadioBox_EnableItem)(void* _obj, int item, int enable)
@@ -66,12 +59,9 @@ EWXWEXPORT(void, wxRadioBox_ShowItem)(void* _obj, int item, int show)
 	((wxRadioBox*)_obj)->Show(item, show != 0);
 }
 	
-EWXWEXPORT(char*, wxRadioBox_GetStringSelection)(void* _obj)
+EWXWEXPORT(wxString*, wxRadioBox_GetStringSelection)(wxRadioBox* _obj)
 {
-	wxString result = ((wxRadioBox*)_obj)->GetStringSelection();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	return buf;
+  return new wxString(_obj->GetStringSelection());
 }
 	
 EWXWEXPORT(void, wxRadioBox_SetStringSelection)(void* _obj, void* s)

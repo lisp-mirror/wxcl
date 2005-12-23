@@ -9,7 +9,7 @@
   #define EWXWEXPORT_VAR __export
 #else
   #ifdef _WIN32
-    #define EWXWEXPORT(TYPE,FUNC_NAME) __declspec(dllexport) TYPE __cdecl FUNC_NAME
+    #define EWXWEXPORT(TYPE,FUNC_NAME) __declspec(dllexport) TYPE  __cdecl FUNC_NAME  
     #define EWXWEXPORT_VAR __declspec(dllexport) 
     #undef EXPORT
     #define EXPORT extern "C" __declspec(dllexport) 

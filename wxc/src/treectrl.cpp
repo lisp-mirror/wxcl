@@ -178,11 +178,9 @@ EWXWEXPORT(void, wxTreeCtrl_SetStateImageList)(void* _obj, void* imageList)
 	((wxTreeCtrl*)_obj)->SetStateImageList((wxImageList*) imageList);
 }
 	
-EWXWEXPORT(int, wxTreeCtrl_GetItemText)(void* _obj, void* item, void* _buf)
+EWXWEXPORT(wxString *, wxTreeCtrl_GetItemText)(wxTreeCtrl* _obj, void* item)
 {
-	wxString result = ((wxTreeCtrl*)_obj)->GetItemText(*(wxTreeItemId*)item);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->GetItemText(*(wxTreeItemId*)item));
 }
 	
 EWXWEXPORT(int, wxTreeCtrl_GetItemImage)(void* _obj, void* item, int which)

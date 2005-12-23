@@ -23,13 +23,9 @@ EWXWEXPORT(void, wxStatusBar_SetStatusText)(void* _obj, void* text, int number)
 	((wxStatusBar*)_obj)->SetStatusText((char*)text, number);
 }
 	
-EWXWEXPORT(char *, wxStatusBar_GetStatusText)(void* _obj, int number)
+EWXWEXPORT(wxString *, wxStatusBar_GetStatusText)(wxStatusBar* _obj, int number)
 {
-	wxString result = ((wxStatusBar*)_obj)->GetStatusText(number);
-	char *buf = (char*)malloc(result.Length()*sizeof(char));
-	if (buf) memcpy (buf, result.c_str(), result.Length());
-	delete result;
-	return buf;
+  return new wxString(_obj->GetStatusText(number));
 }
 	
 EWXWEXPORT(void, wxStatusBar_SetStatusWidths)(void* _obj, int n, int* widths)

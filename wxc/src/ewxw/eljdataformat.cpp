@@ -23,11 +23,9 @@ EWXWEXPORT(int, wxDataFormat_IsEqual) (void* _obj, void* other)
 	return (int) (*(wxDataFormat*)_obj == *(wxDataFormat*)other);
 }
 
-EWXWEXPORT(int, wxDataFormat_GetId) (void* _obj, void* _buf)
+EWXWEXPORT(wxString*, wxDataFormat_GetId) (wxDataFormat* _obj, void* _buf)
 {
-	wxString result =((wxDataFormat*)_obj)->GetId();
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->GetId());
 }
 
 EWXWEXPORT(int, wxDataFormat_GetType) (void* _obj)

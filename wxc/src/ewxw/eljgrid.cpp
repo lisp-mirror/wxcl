@@ -731,18 +731,14 @@ EWXWEXPORT(void, wxGrid_GetColLabelAlignment)(void* _obj, void* horiz, void* ver
 	((wxGrid*)_obj)->GetColLabelAlignment((int*)horiz, (int*)vert);
 }
 	
-EWXWEXPORT(int, wxGrid_GetRowLabelValue)(void* _obj, int row, void* _buf)
+EWXWEXPORT(wxString*, wxGrid_GetRowLabelValue)(wxGrid* _obj, int row)
 {
-	wxString result =((wxGrid*)_obj)->GetRowLabelValue(row);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->GetRowLabelValue(row));
 }
 	
-EWXWEXPORT(int, wxGrid_GetColLabelValue)(void* _obj, int col, void* _buf)
+EWXWEXPORT(wxString*, wxGrid_GetColLabelValue)(wxGrid* _obj, int col)
 {
-	wxString result =((wxGrid*)_obj)->GetColLabelValue(col);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->GetColLabelValue(col));
 }
 	
 EWXWEXPORT(void, wxGrid_GetGridLineColour)(void* _obj, void* colour)
@@ -1090,11 +1086,9 @@ EWXWEXPORT(void*, wxGrid_GetCellEditor)(void* _obj, int row, int col)
 	return (void*)((wxGrid*)_obj)->GetCellEditor(row, col);
 }
 	
-EWXWEXPORT(int, wxGrid_GetCellValue)(void* _obj, int row, int col, void* _buf)
+EWXWEXPORT(wxString*, wxGrid_GetCellValue)(wxGrid* _obj, int row, int col)
 {
-	wxString result =((wxGrid*)_obj)->GetCellValue(row, col);
-	if (_buf) memcpy (_buf, result.c_str(), result.Length());
-	return result.Length();
+   return new wxString(_obj->GetCellValue(row, col));
 }
 	
 EWXWEXPORT(void, wxGrid_SetCellValue)(void* _obj,  int row, int col, void* s)

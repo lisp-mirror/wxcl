@@ -53,13 +53,9 @@ EWXWEXPORT(void, wxMenuBar_SetLabelTop)(void* _obj, int pos, char* label)
 	((wxMenuBar*)_obj)->SetLabelTop((size_t) pos, label);
 }
 	
-EWXWEXPORT(char*, wxMenuBar_GetLabelTop)(void* _obj, int pos)
+EWXWEXPORT(wxString*, wxMenuBar_GetLabelTop)(wxMenuBar* _obj, int pos)
 {
-	wxString result = ((wxMenuBar*)_obj)->GetLabelTop((size_t) pos);
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+   return new wxString(_obj->GetLabelTop((size_t) pos));
 }
 	
 EWXWEXPORT(int, wxMenuBar_FindMenuItem)(void* _obj, char* menuString, char* itemString)
@@ -102,26 +98,18 @@ EWXWEXPORT(void, wxMenuBar_SetLabel)(void* _obj, int id, char* label)
 	((wxMenuBar*)_obj)->SetLabel(id, label);
 }
 	
-EWXWEXPORT(char*, wxMenuBar_GetLabel)(void* _obj, int id)
+EWXWEXPORT(wxString*, wxMenuBar_GetLabel)(wxMenuBar* _obj, int id)
 {
-	wxString result = ((wxMenuBar*)_obj)->GetLabel(id);
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+  return new wxString(_obj->GetLabel(id));
 }	
 EWXWEXPORT(void, wxMenuBar_SetHelpString)(void* _obj, int id, char* helpString)
 {
 	((wxMenuBar*)_obj)->SetHelpString(id, helpString);
 }
 	
-EWXWEXPORT(char*, wxMenuBar_GetHelpString)(void* _obj, int id)
+EWXWEXPORT(wxString*, wxMenuBar_GetHelpString)(wxMenuBar* _obj, int id)
 {
-	wxString result = ((wxMenuBar*)_obj)->GetHelpString(id);
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+  return new wxString(_obj->GetHelpString(id));
 }
 	
 EWXWEXPORT(void, wxMenuBar_Enable)(void* _obj, int enable)
