@@ -1,0 +1,128 @@
+# include the configuration 
+include config/config.mk
+
+# c options
+CC-OPTIONS  = $(CXXFLAGS) -DBUILD_WXC=1
+CC-DOPTIONS = $(CC-OPTIONS) 
+CC-ROPTIONS = $(CC-OPTIONS) -O2
+
+# link options
+LINK-LIBS   = $(LIBS)			
+
+# the link options without libraries
+LINK-FLAGS  = $(filter-out %.a,$(LINK-LIBS))
+
+
+# wxc include directories
+INCLUDES   = -I./src -I./include 
+
+# the main target, the source directories and sources
+MAIN	= wxc
+DIRS	= src
+
+CORE	= apppath db eljevent eljmime ewxw_main extra glcanvas image managed previewframe printout textstream treectrl wave wrapper
+
+EWXW	= eljaccelerator eljartprov eljbitmap eljbrush eljbusyinfo eljbutton eljcalendarctrl eljcaret eljcheckbox eljchecklistbox eljchoice eljclipboard eljcoldata eljcolour eljcolourdlg eljcombobox eljcommand eljconfigbase eljcontrol eljctxhelp eljcursor eljdataformat eljdatetime eljdc eljdialog eljdirdlg eljdnd eljdrawing eljfiledialog eljfilehist eljfindrepldlg eljfont eljfontdata eljfontdlg eljframe eljgauge eljgrid eljhelpcontroller eljicnbndl eljdialup eljicon eljimage eljimagelist eljipc eljjoystick eljlayoutconstraints eljlistbox eljlistctrl eljlocale eljlog eljmask eljmdi eljmenu eljmenubar eljmessagedialog eljminiframe eljnotebook eljpalette eljpanel eljpen eljprintdlg eljprinting eljprocess eljradiobox eljradiobutton eljregion eljregioniter eljsash  eljscrollbar eljscrolledwindow eljsingleinst eljsizer eljspinctrl eljsplitterwindow eljstaticbox eljstaticline eljstatictext eljstatusbar eljsystemsettings eljtextctrl eljtglbtn eljthread eljtimer eljtipwnd eljtoolbar eljvalidator eljwindow eljwizard eljscintilla
+
+
+BSOURCES= configure config.search Makefile wxc.dsp wxc.dsw
+
+HCORE	= include/wxc.h eiffel/wxc_defs.e \
+	  src/ewxw/ewxw_def.h include/wrapper.h src/wxc.rc
+
+HEWXW	= include/ewxw/wxc_glue.h include/ewxw/wxc_types.h \
+	  eiffel/ewxw/wx_defs.e
+
+
+DISTSRCS=$(shell echo ewxw/c/*.cpp) $(shell echo ewxw/eiffel/*.h) eiffel/ewxw/wx_defs.e
+DISTSRCS+=$(shell echo include/*.h) $(shell echo src/*.cpp) $(shell echo src/*.h) src/wxc.rc include/wxc_defs.e
+DISTSRCS+=$(BSOURCES)
+
+
+
+# these components are not supported on GTK & MAC:
+#	rc dcsvg scintilla 
+# not on GTK
+#	thread 
+# not on MAC
+#	dialup tglbtn 
+# not on cygwin? or wxMSW2.4.1
+#       ipc 
+
+# search for sources in VPATH. SRCS prepends the proper directory to the source names.
+VPATH	= $(DIRS)
+
+CPPCORE = $(patsubst %,%.cpp,$(CORE))
+CPPEWXW = $(patsubst %,src/ewxw/%.cpp,$(EWXW))
+
+SRCSRAW	= $(CPPCORE) $(CPPEWXW)
+
+#SRCCORE = $(patsubst %,src/%,$(CPPCORE))
+#SRCEWXW = $(patsubst %,ewxw/c/%,$(CPPEWXW))
+
+#SRCS	= $(SRCCORE) $(SRCEWXW)
+
+# we have two versions of MAIN: a debug (D) and release (R) version
+# the debug and release directories contain all object (.o) and dependency (.d) files.
+BUILDDIR= build
+RDIR	= $(BUILDDIR)/release
+ROBJS	= $(patsubst %.cpp,$(RDIR)/%.o, $(SRCSRAW))
+#RDEPS   = $(patsubst %.cpp,$(RDIR)/%.d, $(SRCSRAW)) 
+#DEPS	= $(RDEPS)
+
+RMAIN	= $(MAIN)
+RMAINDLL= $(LIB)$(RMAIN)$(DLL)
+
+
+MAINTAR = $(DISTDIR)/$(MAIN)-src.tar
+
+# we can make a debug or release version in the respective directories.
+.PHONY: debug release install installd install-headers install-lib install-libd all dist
+release: $(BUILDDIR)/$(RMAINDLL)
+
+
+install:  install-lib install-headers 
+#installd: install-libd install-headers 
+
+
+all: install
+
+# copy headers to the installation directory
+install-headers:
+	$(MKDIR) $(INCDIR)/wxc/include $(INCDIR)/wxc/ewxw/eiffel/spec/r_2_4
+	$(CP) include/wxc.h		$(INCDIR)/wxc/include
+	$(CP) include/wxc_defs.e	$(INCDIR)/wxc/include
+	$(CP) ewxw/eiffel/wxc_glue.h	$(INCDIR)/wxc/ewxw/eiffel
+	$(CP) ewxw/eiffel/wxc_types.h	$(INCDIR)/wxc/ewxw/eiffel
+	$(CP) ewxw/eiffel/spec/r_2_4/wx_defs.e $(INCDIR)/wxc/ewxw/eiffel/spec/r_2_4
+
+install-lib: $(BUILDDIR)/$(RMAINDLL)
+	@-if test -f $(BUILDDIR)/lib$(RMAIN).a; then $(CP) $(BUILDDIR)/lib$(RMAIN).a $(LIBDIR); fi
+	$(CP) $(BUILDDIR)/$(RMAINDLL) $(LIBDIR)
+
+
+# create a dynamic link library on unix:
+$(BUILDDIR)/lib$(RMAIN).so: $(ROBJS)
+	$(CXX) -shared -o $@ $^ $(LINK-LIBS) -Wl --soname=$@ 
+	$(STRIP) $@
+
+$(BUILDDIR)/lib$(DMAIN).so: $(DOBJS)
+	$(CXX) -shared -o $@ $^ $(LINK-LIBS) -Wl --soname=$@ 
+	$(STRIP) $@
+
+
+# create a dynamic link library on macOSX:
+$(BUILDDIR)/lib$(RMAIN).dylib: $(ROBJS)
+	$(CXX) -r -keep_private_externs -nostdlib -o $(BUILDDIR)/master.o $^ 
+	$(CXX) -dynamiclib -undefined suppress -flat_namespace -o $@ $(BUILDDIR)/master.o $(LINK-FLAGS)
+	$(RM) -f $(BUILDDIR)/master.o
+	$(STRIP) $@
+
+.SUFFIXES: .cpp .o
+$(ROBJS): $(RDIR)/%.o: %.cpp
+	$(CXX) -o $@ -c $< $(CC-ROPTIONS) $(INCLUDES) 	
+
+clean:
+	@# clean up RDIR
+	@$(RM) -f $(RDIR)/[a-z]/*
+	@$(RM) -f $(BUILDDIR)/*.*
