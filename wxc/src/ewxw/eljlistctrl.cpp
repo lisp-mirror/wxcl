@@ -95,12 +95,9 @@ EWXWEXPORT(int, wxListCtrl_SetItemImage)(void* _obj, int item, int image, int se
 	return (int)((wxListCtrl*)_obj)->SetItemImage((long)item, image, selImage);
 }
 	
-EWXWEXPORT(char*, wxListCtrl_GetItemText)(void* _obj, int item)
+EWXWEXPORT(wxString*, wxListCtrl_GetItemText)(void* _obj, int item)
 {
-	wxString res = ((wxListCtrl*)_obj)->GetItemText((long)item);
-	char *buf = (char*)malloc(res.Length()*sizeof(char));
-	if (buf) strcpy (buf, res.c_str());
-	return buf;
+   return new wxString(((wxListCtrl*)_obj)->GetItemText((long)item));
 }
 	
 EWXWEXPORT(void, wxListCtrl_SetItemText)(void* _obj, int item, void* str)
