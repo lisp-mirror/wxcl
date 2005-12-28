@@ -59,7 +59,7 @@ EWXWEXPORT(char, wxColour_Blue)(void* _obj)
 	
 EWXWEXPORT(int, wxColour_GetPixel)(void* _obj)
 {
-	return ((wxColour*)_obj)->GetPixel();
+  return (int)((wxColour*)_obj)->GetPixel();
 }
 
 EWXWEXPORT(void*, wxColour_Copy)(void* _obj)

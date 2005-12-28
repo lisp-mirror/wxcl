@@ -1,6 +1,7 @@
 #ifndef __ELJSCINTILLA_H
 #define __ELJSCINTILLA_H
 
+#ifndef __WXMAC__
 #ifdef __WIN32__
 #include "wx/msw/private.h"
 #include <commctrl.h>
@@ -76,4 +77,5 @@ private:
 	bool EnsureDll();
 };
 
+#endif
 #endif

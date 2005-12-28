@@ -1,0 +1,243 @@
+#!/bin/sh
+
+#------------------------------------------------------------------------
+#  wxc: The C wrapper around the wxWindows interface.
+#
+#  Daan Leijen.
+#
+#  Copyright 2001, Daan Leijen. 
+#------------------------------------------------------------------------
+
+# $Id$
+
+configure_options=$*
+enablestrip="no"
+strip="strip"
+toolkit=""
+wxconfig="wx-config"
+
+# dll extension and lib prefix
+dll=".so"
+lib="lib"
+
+# c++ compiler, flags and libraries
+cxx="c++"
+cxxflags=""
+libs=""
+
+# guess prefix
+if test -d "/usr/local"; then
+  prefix="/usr/local"
+else
+  prefix="/usr"
+fi
+
+execprefix=""
+libdir=""
+incdir=""
+
+# improve the guess if wx-config is present.
+if sh ./config.search "$wxconfig"; then
+  # improve prefix guess
+  prefix="`$wxconfig --prefix`"
+
+  # flaky way to guess library extensions
+  toolkit="`$wxconfig --cxxflags | sed -e 's|.*-D__WX\([A-Z]*\)__.*|\1|'`"
+
+  if test "$toolkit" = "MSW"; then
+    dll=".dll"
+    lib=""
+  else if test "$toolkit" = "MAC"; then
+    dll=".dylib"
+    lib="lib"
+  fi 
+  fi
+fi
+
+# Parse command-line arguments
+arg=""
+while : ; do
+  # put optional argument in the $arg variable
+  case "$1" in
+   -*=*) arg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'` ;;
+   *)	 arg="";;
+  esac
+
+  # match on the arguments
+  case "$1" in
+    "") break;;
+    -?|--help)
+	echo "usage:"
+	echo "   ./configure [options]"
+	echo ""
+	echo "options: [defaults in brackets]"
+	echo " --help                show this information"
+	echo " --prefix=<dir>        platform independent install directory [$prefix]"
+	echo " --includedir=<dir>    include files install directory [<prefix>/include]"
+	echo " --exec-prefix=<dir>   platform dependent install directory [<prefix>]"
+	echo " --libdir=<dir>        library files install directory [<exec-prefix>/lib]"
+	echo ""
+	echo "wxwindows options:"
+	echo " --wx-config=<program> the wxWindows configure utility [$wxconfig]"
+	echo " --toolkit=<name>      the wxWindows gui toolkit [$toolkit]"
+	echo ""
+	echo "miscelaneous options:"
+	echo " --dllext=<extension>  dynamic link library extension [$dll]"
+	echo " --libprefix=<prefix>  library prefix [$lib]"
+	echo " --enable-strip        strip the library"
+	echo ""
+	exit 1;;
+    -prefix=*|--prefix=*)
+	prefix="$arg";;
+    -exec-prefix=*|--exec-prefix=*)
+	execprefix="$arg";;
+    -libdir=*|--libdir=*)
+	libdir="$arg";;
+    -includedir=*|--includedir=*)
+	incdir="$arg";;
+    -dllext=*|--dllext=*)
+	dll="$arg";;
+    -libprefix=*|--libprefix=*)
+	lib="$arg";;
+    --enable-strip)
+	enablestrip="yes";;
+    --disable-strip)
+	enablestrip="no";;
+    -toolkit=*|--toolkit=*)
+        toolkit="$arg";;
+    *) echo "error: Unknown option \"$1\". Use \"--help\" to show valid options." 1>&2
+       echo "" 1>&2
+       exit 2;;
+  esac
+
+  # process next argument
+  shift
+done
+
+# complete arguments
+if test -z "$execprefix"; then
+  execprefix="$prefix"
+fi
+
+if test -z "$libdir"; then
+  libdir="$execprefix/lib"
+fi
+
+if test -z "$bindir"; then
+  bindir="$execprefix/bin"
+fi
+
+if test -z "$incdir"; then
+  incdir="$prefix/include"
+fi
+
+echo "install libraries at: $libdir"
+echo "install includes  at: $incdir"
+
+# does 'cygpath' exist?
+if sh ./config.search "cygpath"; then
+  cygpathfound="yes"
+else
+  cygpathfound="no"
+fi
+
+# find wx-config directory
+if sh ./config.search "$wxconfig"; then
+  echo "wx-config found"
+else
+  echo "error:"
+  echo " Unable to find the 'wx-config' program: $wxconfig"
+  echo " This utility is installed by wxWindows on 'make install'."
+  echo " Either add the '/usr/local/bin' directory to your path or"
+  echo " build wxWindows with 'make install'."
+  echo ""
+  exit 2
+fi
+
+# initialize options
+cxx="`$wxconfig --cxx`"
+cxxflags="`$wxconfig --cxxflags`"
+libs="`$wxconfig --libs`"
+wxprefix="`$wxconfig --prefix`"
+wxexecprefix="`$wxconfig --exec-prefix`"
+
+
+# extract the wxWindows toolkit: MSW, MAC, GTK etc.
+if test -z "$toolkit"; then
+  toolkit="`$wxconfig --cxxflags | sed -e 's|.*-D__WX\([A-Z]*\)__.*|\1|'`"
+fi
+
+# windows: we append $prefix/include to the include directories
+if test "$toolkit" = "MSW"; then
+  cxxflags="-I$prefix/include $cxxflags"
+fi
+
+# windows: we normalize $prefix and $exec-prefix include directories and libraries
+if test "$cygpathfound" = "yes"; then
+  wwxprefix="`cygpath -w $wxprefix | sed -e 's|\\\\|/|g'`"	
+  wwxexecprefix="`cygpath -w $wxexecprefix | sed -e 's|\\\\|/|g'`"	
+
+  cxxflags="`echo $cxxflags | sed -e \"s|$wxprefix|$wwxprefix|g\"`"
+  libs="`echo $libs | sed -e \"s|$wxexecprefix|$wwxexecprefix|g\"`"
+fi
+
+# Do we have (enabled) strip?
+if test "$enablestrip" = "yes"; then
+  if sh ./config.search $strip; then
+    echo "strip found."
+  else
+    echo "strip not available."
+    strip="echo"
+  fi
+else
+  strip="echo"
+fi
+
+# Create directories
+echo "creating build directories:"
+echo " - config"
+mkdir -p config
+echo " - dist"
+mkdir -p dist
+echo " - build/debug build/release"
+mkdir -p build build/release build/debug
+
+# Finish generated files
+if sh ./config.search "date"; then
+  date="`date`"
+else
+  date="<unknown>"
+fi
+
+echo "creating makefile configuration"
+echo " - config/config.mk"
+cat > config/config.mk << EOF
+# Generated by configure on $date
+
+# C compiler
+CXX=$cxx
+CXXFLAGS=$cxxflags
+LIBS=$libs
+
+# Installation
+INCDIR=$incdir
+LIBDIR=$libdir
+DISTDIR=dist
+
+# Platform
+DLL=$dll
+LIB=$lib
+
+# Standard programs
+STRIP=$strip
+RM=rm -f
+CP=cp -f
+MKDIR=mkdir -p
+TAR=tar
+GZIP=gzip
+EOF
+
+echo "done:"
+echo " - type 'make' to build the library."
+echo " - type 'make install' to install the 'wxc' library."
+echo ""

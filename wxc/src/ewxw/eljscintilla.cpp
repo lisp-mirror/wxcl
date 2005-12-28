@@ -1,6 +1,7 @@
 #include "wrapper.h"
 #include "eljscintilla.h"
 
+#ifndef __WXMAC__
 
 IMPLEMENT_DYNAMIC_CLASS(wxScintilla, wxControl)
 
@@ -234,3 +235,4 @@ EWXWEXPORT(void, wxScintilla_SetEiffelCB) (void* obj, void* eif, void* fnc)
 }
 
 }
+#endif
