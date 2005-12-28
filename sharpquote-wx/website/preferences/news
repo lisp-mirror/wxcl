@@ -50,6 +50,200 @@
 ;;;;
 ;;;;
 
+:item
+:date (2005 12 12)
+:classification (:release #4(1 2 0 0))
+:en (:teaser
+     (((:a :href* :en/app-downloads) "wxCL 1.2.0 Alpha") " available.")
+     
+     :headline
+     ("Now available for " 
+      ((:a :href* :en/app-downloads) "download") ": "
+      :br ((:a :href* :hp-wxcl) "wxCL") " 1.2.- Alpha")
+         
+     :lead-in
+     ((:p
+       "We are pleased to announce "
+       ((:a :href* :en/app-downloads) "Release 1.2.0 Alpha")
+       " of "
+       ((:a :href* :hp-wxcl) "wxCL")
+       ", the latest installment in "
+       ((:a :href* :hp-wxcl) "wxCL")
+       " development effort. "
+       "This release now provides a CLOS based interface to the underlying " 
+       ((:a :href* :hp-wxwidgets) "wxWidgets")
+       "Library. "
+       "The programmer no longer needs to know the detail of the underlying"
+       "foreign function interface to use the wxCL library. This release is"
+       "not backward compatible. "
+       ) )
+     
+     :copy-text
+     ((:p
+       "Please see the " 
+       ((:a :href* :en///documents)  "Change Log" )
+       " for a complete list of changes, and read the "
+       ((:a :href* :en///documents) "Quick Start Guide")
+       " before using this version.")
+            
+      (:p
+       ((:a :href* :hp-wxwidgets) "wxCL")
+       " aims to provide an "
+       (:b "industrial strength GUI library") 
+       " to application programmers which is "
+       (:b "portable across Common Lisp implementations") 
+       " and "
+       (:b "operating system platforms")
+       ". It builds upon "
+       ((:a :href* :hp-wxwidgets) "wxWidgets")
+       ", a comprehensive C++ library that provides uniform "
+       "application interface to "
+       (:b "all major GUI platforms; including "
+	   ((:a :href* :hp-gtk+) "GTK+") ", "
+	   ((:a :href* :hp-ms-windows-family-en) "MS&nbsp;Windows") ", "
+	   ((:a :href* :hp-x11) "X&nbsp;Windows") ", and "
+	   ((:a :href* :hp-apple-macosx-en) "Apple MacOS&nbsp;X"))
+       ". ")
+      
+      ((:ul class "topics")
+       ((:li class "topics")
+	
+	"The current "
+	((:a :href* :en/app-downloads) "Release 1.2.0")
+	" of "
+	((:a :href* :hp-wxcl) "wxCL")
+	" runs on "
+	((:a :href* :hp-clisp) "CLISP")
+	", and is tested on "
+	((:a :href* :hp-ms-windows-xp-en) "MS Windows XP")
+	" but should work on "
+	(:b ((:a :href* :hp-linux-kernel) "Linux") " and "
+	    ((:a :href* :hp-apple-macosx-en) "Apple MacOS X"))
+	" as well, although not tested due to lack of resources. "
+
+	((:a :href* :hp-wxcl) "wxCL")
+	" can be downloaded from "
+	:br
+	((:a :href* :en/app-downloads)  ;; (:princ (lookup-uri :en/app-downloads)))
+	 "http://www.wxcl-project.org/" :br "en/downloads--downloads-1.html") )
+       
+       ((:li class "topics")
+	"The best place to ask questions, report bugs and&nbsp;/&nbsp;or give feedback "
+	"on the library is the "
+	((:a :href* :sf-ml-devel) "wxCL-devel mailing list")
+	"; see details at "
+	:br
+	((:a :href* :en/contact)
+	 "http://www.wxcl-project.org/" :br "en/contact--contact-1.html")
+	)
+       
+       ((:li class "topics")
+	(:b "We need your help: ") 
+	"If you are a " (:b "Common Lisp, CPP, or C hacker")
+	", please send us an " (:b ((:a :href* :en/contact) "eMail")) "."
+	))))
+
+
+:de (:teaser
+     (((:a :href* :de/app-downloads) "wxCL 1.1.1 Alpha") " verf&uuml;gbar.")
+     
+     :headline
+     ("Jetzt " 
+      ((:a :href* :de/app-downloads) "herunterladen") ": "
+      :br ((:a :href* :hp-wxcl) "wxCL") " 1.1.1 Alpha")
+     
+     :lead-in
+     ((:p
+       "We are pleased to announce "
+       ((:a :href* :de/app-downloads) "Release 1.1.1 Alpha")
+       " of "
+       ((:a :href* :hp-wxcl) "wxCL")
+       ", the latest installment in "
+       ((:a :href* :hp-wxcl) "wxCL")
+       " development effort. "
+       "This release now includes the " 
+       ((:a :href* :hp-wxwidgets) "wxWidgets")
+       " 2.6.2 Dynamic Link Library. "
+       "It introduces a number of bug fixes and some API enhancements. "
+       "This version is more stable with native "
+       ((:a :href* :hp-clisp) "CLISP")
+       " on "
+       ((:a :href* :hp-ms-windows-xp-de) "MS Windows XP")
+       ". ") )
+     
+     :copy-text
+     ((:p
+       "Please see the " 
+       ((:a :href* :de///documents)  "Change Log" )
+       " for a complete list of changes, and read the "
+       ((:a :href* :de///documents) "Quick Start Guide")
+       " before using this version as using the "
+       "wxWidgets"
+       " 2.6.2 DLL requires you to close the library every time"
+       " you finish the program. Also, don't forget to take a look"
+       " at the CVS version of "
+       ((:a :href* :hp-wxglade) "wxGlade")
+       ", which provides a cool way of creating "
+       ((:a :href* :hp-wxcl) "wxCL")
+       " GUIs.")
+           
+      (:p
+       ((:a :href* :hp-wxwidgets) "wxCL")
+       " aims to provide an "
+       (:b "industrial strength GUI library") 
+       " to application programmers which is "
+       (:b "portable across Common Lisp implementations") 
+       " and "
+       (:b "operating system platforms")
+       ". It builds upon "
+       ((:a :href* :hp-wxwidgets) "wxWidgets")
+       ", a comprehensive C++ library that provides uniform "
+       "application interface to "
+       (:b "all major GUI platforms; including "
+	   ((:a :href* :hp-gtk+) "GTK+") ", "
+	   ((:a :href* :hp-ms-windows-family-de) "MS&nbsp;Windows") ", "
+	   ((:a :href* :hp-x11) "X&nbsp;Windows") ", and "
+	   ((:a :href* :hp-apple-macosx-de) "Apple MacOS&nbsp;X"))
+       ". ")
+      
+      ((:ul class "topics")
+       ((:li class "topics")
+	
+	"The current "
+	((:a :href* :de/app-downloads) "Release 1.1.1")
+	" of "
+	((:a :href* :hp-wxcl) "wxCL")
+	" runs on "
+	((:a :href* :hp-clisp) "CLISP")
+	", and is tested on "
+	((:a :href* :hp-ms-windows-xp-de) "MS Windows XP")
+	" but should work on "
+	(:b ((:a :href* :hp-linux-kernel) "Linux") " and "
+	    ((:a :href* :hp-apple-macosx-de) "Apple MacOS X"))
+	" as well, although not tested due to lack of resources. "
+
+	((:a :href* :hp-wxcl) "wxCL")
+	" can be downloaded from "
+	:br
+	((:a :href* :de/app-downloads)
+	 "http://www.wxcl-project.org/" :br "de/downloads--downloads-1.html") )
+       
+       ((:li class "topics")
+	"The best place to ask questions, report bugs and&nbsp;/&nbsp;or give feedback "
+	"on the library is the "
+	((:a :href* :sf-ml-devel) "wxCL-devel mailing list")
+	"; see details at "
+	:br
+	((:a :href* :de/contact)
+	 "http://www.wxcl-project.org/" :br "de/contact--contact-1.html")
+	)
+       
+       ((:li class "topics")
+	(:b "We need your help: ") 
+	"If you are a " (:b "Common Lisp, CPP, or C hacker")
+	", please send us an " (:b ((:a :href* :de/contact) "eMail")) "."
+	))))
+
 
 
 :item
