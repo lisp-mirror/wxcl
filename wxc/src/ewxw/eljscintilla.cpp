@@ -180,7 +180,7 @@ bool wxScintilla::Create(wxWindow *parent,
 	  
     	m_parent->DoAddChild( this );
   
-    	PostCreation();
+    	PostCreation(size);
 
 	    SetSize(pos.x, pos.y, size.x, size.y);
 		
