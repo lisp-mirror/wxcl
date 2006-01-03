@@ -77,7 +77,7 @@ wxString GetApplicationPath()
 
 wxString GetApplicationDir()
 {
-  wxString path;
+  wxString path; 
   
   /* check APPDIR on unix's */
 #ifndef __WXMSW__
@@ -98,17 +98,13 @@ wxString GetApplicationDir()
 
 extern "C" 
 {
-EWXWEXPORT(int, wxGetApplicationDir)(char* buffer)
+EWXWEXPORT(wxString*, wxGetApplicationDir)()
 {
-  wxString result = GetApplicationDir();
-  if (buffer) memcpy(buffer, result.c_str(), result.Length());
-  return result.Length(); 
+  return new wxString (GetApplicationDir());
 }
 
-EWXWEXPORT(int, wxGetApplicationPath)(char* buffer)
+EWXWEXPORT(wxString*, wxGetApplicationPath)()
 {
-  wxString result = GetApplicationPath();
-  if (buffer) memcpy(buffer, result.c_str(), result.Length());
-  return result.Length(); 
+  return new wxString (GetApplicationPath());
 }
 }
