@@ -122,13 +122,9 @@ EWXWEXPORT(void, wxCommandEvent_SetString)(void* _obj, char* s)
         ((wxCommandEvent*)_obj)->SetString(s);
 }
 
-EWXWEXPORT(char*, wxCommandEvent_GetString)(void* _obj)
+EWXWEXPORT(wxString*, wxCommandEvent_GetString)(void* _obj)
 {
-        wxString result = ((wxCommandEvent*)_obj)->GetString();
-	char *buf = (char*)malloc((1+result.Length())*sizeof(char));
-	if (buf) strcpy (buf, result.c_str());
-	delete result;
-	return buf;
+  return new wxString(((wxCommandEvent*)_obj)->GetString());
 }
 
 EWXWEXPORT(int, wxCommandEvent_IsChecked)(void* _obj)
