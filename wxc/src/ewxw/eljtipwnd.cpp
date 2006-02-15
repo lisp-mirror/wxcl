@@ -1,5 +1,4 @@
 #include "wrapper.h"
-#if wxVERSION_NUMBER >= 2400
 #include "wx/tipwin.h"
 
 extern "C"
@@ -26,4 +25,3 @@ EWXWEXPORT(void,wxTipWindow_Close)(void* _obj)
 }
 
 }
-#endif

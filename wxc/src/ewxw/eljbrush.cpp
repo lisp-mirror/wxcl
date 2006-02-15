@@ -45,7 +45,7 @@ EWXWEXPORT(void, wxBrush_SetColourName)(void* _obj, char* col)
 	((wxBrush*)_obj)->SetColour(col);
 }
 	
-EWXWEXPORT(void, wxBrush_SetColourSingle)(void* _obj, char r, char g, char b)
+EWXWEXPORT(void, wxBrush_SetColourRGB)(void* _obj, char r, char g, char b)
 {
 	((wxBrush*)_obj)->SetColour((unsigned char)r, (unsigned char)g, (unsigned char)b);
 }

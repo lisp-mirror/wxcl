@@ -27,17 +27,17 @@ EWXWEXPORT(void*, wxIcon_FromXPM)(void* data)
 	return (void*) new wxIcon((char**) data);
 }
 
-EWXWEXPORT(void*, wxIcon_CreateLoad) (void* name, long type, int width, int height)
+EWXWEXPORT(void*, wxIcon_CreateLoad) (char* name, long type, int width, int height)
 {
-	return (void*) new wxIcon((char*)name, (wxBitmapType)type, width, height);
+	return (void*) new wxIcon(name, (wxBitmapType)type, width, height);
 }
 
-EWXWEXPORT(int, wxIcon_Load)(void* _obj, void* name, long type, int width, int height)
+EWXWEXPORT(int, wxIcon_Load)(void* _obj, char* name, long type, int width, int height)
 {
 #ifdef __WIN32__
-	return (int)((wxIcon*)_obj)->LoadFile((char*)name, (wxBitmapType)type, width, height);
+	return (int)((wxIcon*)_obj)->LoadFile(name, (wxBitmapType)type, width, height);
 #else
-	return (int)((wxIcon*)_obj)->LoadFile((char*)name, (wxBitmapType)type);
+	return (int)((wxIcon*)_obj)->LoadFile(name, (wxBitmapType)type);
 #endif
 }
 

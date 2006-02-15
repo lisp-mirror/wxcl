@@ -62,7 +62,7 @@ EWXWEXPORT(void, wxPen_SetColourName)(wxPen* _obj, char* col)
 	_obj->SetColour(col);
 }
 	
-EWXWEXPORT(void, wxPen_SetColourSingle)(void* _obj, char r, char g, char b)
+EWXWEXPORT(void, wxPen_SetColourRGB)(void* _obj, char r, char g, char b)
 {
 	((wxPen*)_obj)->SetColour((unsigned char)r, (unsigned char)g, (unsigned char)b);
 }

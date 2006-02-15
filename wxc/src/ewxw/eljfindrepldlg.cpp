@@ -1,5 +1,4 @@
 #include "wrapper.h"
-#if wxVERSION_NUMBER >= 2400
 #include "wx/fdrepdlg.h"
 
 extern "C"
@@ -109,4 +108,4 @@ EWXWEXPORT(int,expEVT_COMMAND_FIND_CLOSE)()
 }
 
 }
-#endif
+

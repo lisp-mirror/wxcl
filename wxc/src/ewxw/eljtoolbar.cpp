@@ -23,14 +23,15 @@ EWXWEXPORT(void, wxToolBar_AddSeparator) (void* _obj)
 	((wxToolBar*)_obj)->AddSeparator ();
 }
 
-EWXWEXPORT(void, wxToolBar_AddTool) (void* _obj, int id, void* bmp, void* shelp, void* lhelp)
+EWXWEXPORT(void, wxToolBar_AddTool) (void* _obj, int id, void* bmp, char* shelp, char* lhelp)
 {
-	((wxToolBar*)_obj)->AddTool (id, *(wxBitmap*)bmp, (char*)shelp, (char*)lhelp);
+	((wxToolBar*)_obj)->AddTool (id, *(wxBitmap*)bmp, shelp, lhelp);
 }
 
-EWXWEXPORT(void, wxToolBar_AddToolEx) (void* _obj, int id, void* bmp1, void* bmp2, int tgl, int x, int y, void* dat, void* shelp, void* lhelp)
+EWXWEXPORT(void, wxToolBar_AddToolEx) (void* _obj, int id, void* bmp1, void* bmp2, int tgl, int x, int y,
+                                       void* dat, char* shelp, char* lhelp)
 {
-	((wxToolBar*)_obj)->AddTool (id, *(wxBitmap*)bmp1, *(wxBitmap*)bmp2, tgl != 0, x, y, (wxObject*)dat, (char*)shelp, (char*)lhelp);
+	((wxToolBar*)_obj)->AddTool (id, *(wxBitmap*)bmp1, *(wxBitmap*)bmp2, tgl != 0, x, y, (wxObject*)dat, shelp, lhelp);
 }
 
 EWXWEXPORT(int, wxToolBar_DeleteTool) (void* _obj, int id)
@@ -106,9 +107,10 @@ EWXWEXPORT(void, wxToolBar_InsertSeparator) (void* _obj, int pos)
 	((wxToolBar*)_obj)->InsertSeparator ((size_t)pos);
 }
 
-EWXWEXPORT(void, wxToolBar_InsertTool) (void* _obj, int pos, int id, void* bmp1, void* bmp2, int tgl, void* dat, void* shelp, void* lhelp)
+EWXWEXPORT(void, wxToolBar_InsertTool) (wxToolBar* _obj, int pos, int id, void* bmp1, void* bmp2, int tgl,
+                                        void* dat, char* shelp, char* lhelp)
 {
-	((wxToolBar*)_obj)->InsertTool ((size_t)pos, id, *(wxBitmap*)bmp1, *(wxBitmap*)bmp2, tgl != 0, (wxObject*)dat, (char*)shelp, (char*)lhelp);
+	_obj->InsertTool(pos, id, *(wxBitmap*)bmp1, *(wxBitmap*)bmp2, tgl != 0, (wxObject*)dat, shelp, lhelp);
 }
 
 EWXWEXPORT(int, wxToolBar_Realize) (void* _obj)
@@ -140,9 +142,9 @@ EWXWEXPORT(void, wxToolBar_SetToolClientData) (void* _obj, int id, void* dat)
 	((wxToolBar*)_obj)->SetToolClientData (id, (wxObject*)dat);
 }
 
-EWXWEXPORT(void, wxToolBar_SetToolLongHelp) (void* _obj, int id, void* str)
+EWXWEXPORT(void, wxToolBar_SetToolLongHelp) (void* _obj, int id, char* str)
 {
-	((wxToolBar*)_obj)->SetToolLongHelp (id, (char*)str);
+	((wxToolBar*)_obj)->SetToolLongHelp (id, str);
 }
 
 EWXWEXPORT(void, wxToolBar_SetToolPacking) (void* _obj, int val)
@@ -150,9 +152,9 @@ EWXWEXPORT(void, wxToolBar_SetToolPacking) (void* _obj, int val)
 	((wxToolBar*)_obj)->SetToolPacking (val);
 }
 
-EWXWEXPORT(void, wxToolBar_SetToolShortHelp) (void* _obj, int id, void* str)
+EWXWEXPORT(void, wxToolBar_SetToolShortHelp) (void* _obj, int id, char* str)
 {
-	((wxToolBar*)_obj)->SetToolShortHelp (id, (char*)str);
+	((wxToolBar*)_obj)->SetToolShortHelp (id, str);
 }
 
 EWXWEXPORT(void, wxToolBar_SetToolSeparation) (void* _obj, int val)
