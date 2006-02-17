@@ -34,7 +34,7 @@
 
 extern "C"
 {
-typedef void _cdecl (*ClosureFun)(void* _evt );
+typedef void _cdecl (*ClosureFun)(void* _evt,unsigned int _data );
 
 typedef bool _cdecl (*AppInitFunc)(void);
 
@@ -85,8 +85,9 @@ class wxClosure : public wxClientData
   protected:
     int         m_refcount;     /* callbacks reference count the closures */
     ClosureFun  m_fun;          /* the foreign function to call */
+    unsigned int m_wxcl_id;
   public:
-    wxClosure( ClosureFun fun);
+    wxClosure( ClosureFun fun, unsigned int wxcl_id);
     ~wxClosure();
 
     virtual void IncRef();
@@ -544,5 +545,30 @@ class ELJTreeControl : public wxTreeCtrl
 };
 
 DECLARE_APP(ELJApp);
+
+/*-----------------------------------------------------------------------------
+    The global idle timer
+-----------------------------------------------------------------------------*/
+class wxIdleTimer : public wxTimer
+{
+public:
+  void Notify() {
+    wxWakeUpIdle();   /* send idle events */
+  }
+};
+
+/*-----------------------------------------------------------------------------
+    wrapper for objectRefData
+-----------------------------------------------------------------------------*/
+class wxcClosureRefData : public wxObjectRefData
+{
+  private:
+    wxClosure*  m_closure;
+  public:
+    wxcClosureRefData( wxClosure* closure );
+    ~wxcClosureRefData();
+
+    wxClosure* GetClosure();
+};
 
 #endif /* #ifndef __WRAPPER_H */
