@@ -7,97 +7,97 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxcl-structures
-    (:use :common-lisp #:wxcl #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
-    (:export
-;; symbols common to multiple classes
-     #:background-colour
-     #:delete-object
-     #:font
-     #:colour
-     #:text-colour
-     #:delete-object
-;; calendar-date-attr class and constants
-     #:calendar-date-attr
-     #:+cal-border-none+
-     #:+cal-border-square+
-     #:+cal-border-round+
-;; calendar-date-attr methods and functions
-     #:border
-     #:border-colour
-     #:make-calendar-date-attr
-;; list-item class and constants
-     #:list-item
-	   #:+list-state-dontcare+
-	   #:+list-state-drophilited+
-	   #:+list-state-focused+ 
-	   #:+list-state-selected+
-	   #:+list-state-cut+ 
-	   #:+list-mask-state+
-	   #:+list-mask-text+ 
-	   #:+list-mask-image+
-	   #:+list-mask-data+
-	   #:+list-mask-width+
-	   #:+list-mask-format+
-;; list-item methods, functions, and macros
-     #:align
-     #:clear
-     #:clear-attributes
-     #:column
-     #:data
-     #:data-pointer
-     #:id
-     #:image
-     #:mask
-     #:state
-     #:state-mask
-     #:text
-     #:width
-     #:make-list-item
-;;accelerator symbols, constants
-     #:+accel-alt+
-     #:+accel-ctrl+
-     #:+accel-shift+
-     #:+accel-normal+
-     #:accelerator-entry
-     #:make-accelerator-entry
-     #:accelerator-table
-     #:make-accelerator-table
-     #:define-accelerator-table
-     #:delete-pointer
-;;colour data symbols and functions
-     #:colour-data
-     #:make-colour-data
-     #:choose-full
-     #:custom-colour
-;;font data symbols and functions
-     #:font-data
-     #:make-font-data
-     #:allow-symbols
-     #:show-help
-     #:enable-effects
-     #:initial-font
-     #:chosen-font
-     #:set-range
-     #:encoding
-;;text-attr data symbols and functions
-     #:text-attr
-     #:make-text-attr-empty
-     #:make-text-attr
-     #:delete-object
-     #:background-colour
-     #:font
-     #:text-colour
-     #:has-background-colour
-     #:has-font-p
-     #:has-text-colour-p
-     #:default-p
-     #:text-colour
-     #:background-colour
-     #:font
-     ))
+; (defpackage :wxcl-structures
+;     (:use :common-lisp #:wxcl #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
+;     (:export
+; ;; symbols common to multiple classes
+;      #:background-colour
+;      #:delete-object
+;      #:font
+;      #:colour
+;      #:text-colour
+;      #:delete-object
+; ;; calendar-date-attr class and constants
+;      #:calendar-date-attr
+;      #:+cal-border-none+
+;      #:+cal-border-square+
+;      #:+cal-border-round+
+; ;; calendar-date-attr methods and functions
+;      #:border
+;      #:border-colour
+;      #:make-calendar-date-attr
+; ;; list-item class and constants
+;      #:list-item
+; 	   #:+list-state-dontcare+
+; 	   #:+list-state-drophilited+
+; 	   #:+list-state-focused+ 
+; 	   #:+list-state-selected+
+; 	   #:+list-state-cut+ 
+; 	   #:+list-mask-state+
+; 	   #:+list-mask-text+ 
+; 	   #:+list-mask-image+
+; 	   #:+list-mask-data+
+; 	   #:+list-mask-width+
+; 	   #:+list-mask-format+
+; ;; list-item methods, functions, and macros
+;      #:align
+;      #:clear
+;      #:clear-attributes
+;      #:column
+;      #:data
+;      #:data-pointer
+;      #:id
+;      #:image
+;      #:mask
+;      #:state
+;      #:state-mask
+;      #:text
+;      #:width
+;      #:make-list-item
+; ;;accelerator symbols, constants
+;      #:+accel-alt+
+;      #:+accel-ctrl+
+;      #:+accel-shift+
+;      #:+accel-normal+
+;      #:accelerator-entry
+;      #:make-accelerator-entry
+;      #:accelerator-table
+;      #:make-accelerator-table
+;      #:define-accelerator-table
+;      #:delete-pointer
+; ;;colour data symbols and functions
+;      #:colour-data
+;      #:make-colour-data
+;      #:choose-full
+;      #:custom-colour
+; ;;font data symbols and functions
+;      #:font-data
+;      #:make-font-data
+;      #:allow-symbols
+;      #:show-help
+;      #:enable-effects
+;      #:initial-font
+;      #:chosen-font
+;      #:set-range
+;      #:encoding
+; ;;text-attr data symbols and functions
+;      #:text-attr
+;      #:make-text-attr-empty
+;      #:make-text-attr
+;      #:delete-object
+;      #:background-colour
+;      #:font
+;      #:text-colour
+;      #:has-background-colour
+;      #:has-font-p
+;      #:has-text-colour-p
+;      #:default-p
+;      #:text-colour
+;      #:background-colour
+;      #:font
+;      ))
 
-(in-package :wxcl-structures)
+(in-package :wxcl)
 
 (defclass calendar-date-attr (object)
   ()

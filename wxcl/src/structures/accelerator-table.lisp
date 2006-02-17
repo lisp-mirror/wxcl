@@ -1,5 +1,5 @@
 
-(in-package :wxcl-structures)
+(in-package :wxcl)
 
 (defclass accelerator-table (object)
   ((accelerator-entries :reader accelerator-entries))
@@ -9,8 +9,8 @@
 
 (defun make-accelerator-table (&rest entries)
   (let* ((ent (make-array (length entries) :initial-contents
-                         (loop for entry in entries
-                               collect (wxAcceleratorEntry_Create (flags entry)(key-code entry)(command entry)))))
+                          (loop for entry in entries
+                                collect (wxAcceleratorEntry_Create (flags entry)(key-code entry)(command entry)))))
          (obj (make-wx-instance 'accelerator-table
                                 (wxAcceleratorTable_Create (length ent) ent))))
     (setf (slot-value obj 'accelerator-entries) entries)

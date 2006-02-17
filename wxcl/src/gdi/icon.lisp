@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-gdi)
+(in-package :wxcl)
 
 (defun make-icon ()
   (make-wx-instance 'icon (wxIcon_CreateDefault)))
@@ -25,7 +25,7 @@
 (defun make-icon-from-file (name type &key (size +default-size+))
   (make-wx-instance 'icon (wxIcon_CreateLoad name type (size-width size) (size-height size))))
 
-(defmethod load--from-file ((obj icon) name type &key (size +default-size+))
+(defmethod load-from-file ((obj icon) name type &key (size +default-size+))
   (= 1 (wxIcon_Load (object-pointer obj) name type (size-width size) (size-height size))))
 
 (defmethod copy-from-bitmap ((obj icon) (bmp bitmap))

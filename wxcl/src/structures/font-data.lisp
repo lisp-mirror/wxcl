@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-structures)
+(in-package :wxcl)
 
 (ffi:default-foreign-language :stdc)
 
@@ -29,7 +29,7 @@
   (wxFontData_SetColour (object-pointer obj) (object-pointer col)))
 
 (defmethod colour ((obj font-data))
-  (make-wx-instance 'wxcl-gdi:colour (wxFontData_GetColour (object-pointer obj))))
+  (make-wx-instance 'colour (wxFontData_GetColour (object-pointer obj))))
 
 (defmethod (setf show-help) (flag (obj font-data))
   (wxFontData_SetShowHelp (object-pointer obj) (if flag 1 0)))
@@ -47,13 +47,13 @@
   (wxFontData_SetInitialFont (object-pointer obj) (object-pointer font)))
 
 (defmethod initial-font ((obj font-data))
-  (make-wx-instance 'wxcl-gdi:font (wxFontData_GetInitialFont (object-pointer obj))))
+  (make-wx-instance 'font (wxFontData_GetInitialFont (object-pointer obj))))
 
 (defmethod (setf chosen-font) (font (obj font-data))
   (wxFontData_SetChosenFont (object-pointer obj) (object-pointer font)))
 
 (defmethod chosen-font ((obj font-data))
-  (make-wx-instance 'wxcl-gdi:font (wxFontData_GetChosenFont (object-pointer obj))))
+  (make-wx-instance 'font (wxFontData_GetChosenFont (object-pointer obj))))
 
 (defmethod set-range ((obj font-data) min max)
   (wxFontData_SetRange (object-pointer obj) min max))

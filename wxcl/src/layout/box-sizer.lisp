@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-layout)
+(in-package :wxcl)
 
 (defun make-box-sizer (orientation)
   (let ((bs (make-instance 'box-sizer)))

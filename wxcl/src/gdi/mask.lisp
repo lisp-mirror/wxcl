@@ -1,4 +1,4 @@
-(in-package :wxcl-gdi)
+(in-package :wxcl)
 
 (defun make-mask (bmp)
   (make-wx-instance 'mask (wxMask_Create (when bmp (object-pointer bmp)))))

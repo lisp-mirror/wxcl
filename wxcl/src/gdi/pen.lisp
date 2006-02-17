@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-gdi)
+(in-package :wxcl)
 
 (define-symbol-macro +black-dashed-pen+ (make-wx-instance 'pen wxBlack_Dashed_Pen))
 

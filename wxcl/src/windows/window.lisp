@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
 
 (defmethod show ((obj Window))
@@ -67,7 +67,7 @@
 (defmethod clear ((obj window))
   (wxWindow_Clear (object-pointer obj)))
 
-(defmethod fit ((obj window))
+(defmethod fit-window ((obj window))
   (wxWindow_Fit (object-pointer obj)))
 
 (defmethod destroy-children ((obj window))
@@ -162,7 +162,7 @@
 (defmethod max-height ((obj window))
   (wxWindow_GetMaxHeight (object-pointer obj)))
 
-(defmethod enable ((obj window))
+(defmethod enable-window ((obj window))
   (= 1 (wxWindow_Enable (object-pointer obj))))
 
 (defmethod disable ((obj window))
@@ -283,7 +283,7 @@
 (defmethod release-mouse ((obj window))
   (wxWindow_ReleaseMouse (object-pointer obj)))
 
-(defmethod refresh ((obj window) &optional (erase-background t))
+(defmethod refresh-window ((obj window) &optional (erase-background t))
   (wxWindow_Refresh (object-pointer obj) (if erase-background 1 0)))
 
 ; (defmethod ((obj window)) wxWindow_RefreshRect

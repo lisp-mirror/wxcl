@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-structures)
+(in-package :wxcl)
 
 (defconstant +list-mask-state+        #x0001)
 (defconstant +list-mask-text+         #x0002)
@@ -38,7 +38,7 @@
 
 (defmethod background-colour ((obj list-item))
     "Returns the background colour for this item."
-    (make-wx-instance 'wxcl-gdi:colour (wxListItem_GetBackgroundColour (object-pointer obj))))
+    (make-wx-instance 'colour (wxListItem_GetBackgroundColour (object-pointer obj))))
 
 (defmethod (setf background-colour) (colour (obj list-item))
     "Sets the background colour for this item."
@@ -96,7 +96,7 @@
 
 (defmethod font ((obj list-item))
     "Returns the font for the item."
-    (make-wx-instance 'wxcl-gdi:font (wxListItem_GetFont (object-pointer obj))))
+    (make-wx-instance 'font (wxListItem_GetFont (object-pointer obj))))
 
 (defmethod (setf font) (font (obj list-item))
     "Sets the font for the item."
@@ -154,7 +154,7 @@ flags are to be set."
 
 (defmethod text-colour ((obj list-item))
     "Returns the text colour for this item."
-    (make-wx-instance 'wxcl-gdi:colour (wxListItem_GetTextColour (object-pointer obj))))
+    (make-wx-instance 'colour (wxListItem_GetTextColour (object-pointer obj))))
 
 (defmethod (setf text-colour) (colour (obj list-item))
     "Sets the text colour for the item."

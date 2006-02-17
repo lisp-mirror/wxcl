@@ -7,14 +7,14 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-structures)
+(in-package :wxcl)
 
 (defconstant +cal-border-none+   0)
 (defconstant +cal-border-square+ 1)
 (defconstant +cal-border-round+  2)
 
-(defun make-calendar-date-attr (colour-text &key (colour-bg wxcl-gdi:+null-colour+)
-                                            (colour-border wxcl-gdi:+null-colour+)
+(defun make-calendar-date-attr (colour-text &key (colour-bg +null-colour+)
+                                            (colour-border +null-colour+)
                                             font (border +cal-border-none+))
     "Create an object representing attributes of a calendar control."
     (make-wx-instance 'calendar-date-attr
@@ -36,7 +36,7 @@
 
 (defmethod border-colour ((obj calendar-date-attr))
     "Returns the border colour."
-    (make-wx-instance 'wxcl-gdi:colour (wxCalendarDateAttr_GetBorderColour (object-pointer obj))))
+    (make-wx-instance 'colour (wxCalendarDateAttr_GetBorderColour (object-pointer obj))))
 
 (defmethod (setf border-colour) (colour (obj calendar-date-attr))
     "Sets the border colour."
@@ -44,7 +44,7 @@
 
 (defmethod background-colour ((obj calendar-date-attr))
     "Returns the text background colour."
-    (make-wx-instance 'wxcl-gdi:colour (wxCalendarDateAttr_GetBackgroundColour (object-pointer obj))))
+    (make-wx-instance 'colour (wxCalendarDateAttr_GetBackgroundColour (object-pointer obj))))
 
 (defmethod (setf background-colour) (colour (obj calendar-date-attr))
     "Sets the text background colour."
@@ -57,7 +57,7 @@
 
 (defmethod font ((obj calendar-date-attr))
     "Returns the font to be used."
-  (make-wx-instance 'wxcl-gdi:font (wxCalendarDateAttr_GetFont (object-pointer obj))))
+  (make-wx-instance 'font (wxCalendarDateAttr_GetFont (object-pointer obj))))
 
 (defmethod (setf font) (f (obj calendar-date-attr))
     "Sets the font to be used."
@@ -65,7 +65,7 @@
 
 (defmethod text-colour ((obj calendar-date-attr))
     "Returns the text foreground colour."
-    (make-wx-instance 'wxcl-gdi:colour (wxCalendarDateAttr_GetTextColour (object-pointer obj))))
+    (make-wx-instance 'colour (wxCalendarDateAttr_GetTextColour (object-pointer obj))))
 
 (defmethod (setf text-colour) (colour (obj calendar-date-attr))
     "Sets the text foreground colour."

@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
 (defconstant +tb-3d-buttons+ 16)
 (defconstant +tb-flat+ 32)
@@ -24,16 +24,16 @@
   (wxToolBar_Delete (object-pointer obj))
   (invalidate-wx-instance obj))
 
-(defmethod add-control ((obj tool-bar) (ctrl wxcl-controls:control))
+(defmethod add-control ((obj tool-bar) (ctrl control))
     (= 1 (wxToolBar_AddControl (object-pointer obj) (object-pointer ctrl))))
 
 (defmethod add-separator ((obj tool-bar))
   (wxToolBar_AddSeparator (object-pointer obj)))
 
-(defmethod add-tool ((obj tool-bar) id (bmp wxcl-gdi:bitmap) &key (short-help "") (long-help ""))
+(defmethod add-tool ((obj tool-bar) id (bmp bitmap) &key (short-help "") (long-help ""))
   (wxToolBar_AddTool (object-pointer obj) id (object-pointer bmp) short-help long-help))
 
-(defmethod add-tool-ex ((obj tool-bar) id (bmp wxcl-gdi:bitmap) &key (bmp2 wxcl-gdi:+null-bitmap+)
+(defmethod add-tool-ex ((obj tool-bar) id (bmp bitmap) &key (bmp2 +null-bitmap+)
                         (toggle 0) (x -1)(y -1)(data nil) (short-help "") (long-help ""))
   (wxToolBar_AddToolEx (object-pointer obj) id (object-pointer bmp) (object-pointer bmp2) toggle
                        x y data short-help long-help))
@@ -84,7 +84,7 @@
 (defmethod tool-state ((obj tool-bar) id)
   (= 1 (wxToolBar_GetToolState (object-pointer obj) id)))
 
-(defmethod insert-control ((obj tool-bar) pos (ctrl wxcl-controls:control))
+(defmethod insert-control ((obj tool-bar) pos (ctrl control))
   (wxToolBar_InsertControl (object-pointer obj) pos (object-pointer ctrl)))
 
 (defmethod insert-separator ((obj tool-bar) pos)

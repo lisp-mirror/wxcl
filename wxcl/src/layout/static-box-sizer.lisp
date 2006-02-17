@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-layout)
+(in-package :wxcl)
 
 (defun make-static-box-sizer (static-box orient)
   "Create a static box sizer."
@@ -16,5 +16,5 @@
 
 
 (defmethod GetStaticBox ((obj static-box-sizer))
-  (make-wx-instance 'wxcl-controls:static-box 
+  (make-wx-instance 'static-box 
                     (wxStaticBoxSizer_GetStaticBox (object-pointer obj))))

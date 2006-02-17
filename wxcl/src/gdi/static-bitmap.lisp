@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-gdi)
+(in-package :wxcl)
 
 (defun make-static-bitmap (parent id label &key (position +default-position+)(size +default-size+)(style 0))
   (make-wx-instance 'static-bitmap                            

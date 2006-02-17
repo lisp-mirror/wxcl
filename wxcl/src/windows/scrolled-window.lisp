@@ -1,4 +1,4 @@
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
 
 (defconstant +vscroll+ -2147483648)

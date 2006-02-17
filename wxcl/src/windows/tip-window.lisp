@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
 (defun make-tip-window (parent text	max-length)
   (make-wx-instance 'tip-window

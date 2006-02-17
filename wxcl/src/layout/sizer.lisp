@@ -7,9 +7,9 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-layout)
+(in-package :wxcl)
 
-(defmethod add ((obj sizer)(win wxcl-windows:window) &key (option 0) (flag 0) (border 0) (userdata nil))
+(defmethod add ((obj sizer)(win window) &key (option 0) (flag 0) (border 0) (userdata nil))
   (wxSizer_AddWindow (object-pointer obj) (object-pointer win)
 		     option flag border (when userData (object-pointer userData))))
 
@@ -21,7 +21,7 @@
   (wxSizer_Add (object-pointer obj) width height
 	       option flag border (when userData (object-pointer userData))))
 
-(defmethod insert ((obj sizer) before (win wxcl-windows:window) &key (option 0) (flag 0) (border 0) (userdata nil))
+(defmethod insert ((obj sizer) before (win window) &key (option 0) (flag 0) (border 0) (userdata nil))
   (wxSizer_InsertWindow (object-pointer obj) before (object-pointer win)
 			option flag border (when userData (object-pointer userData))))
 
@@ -33,7 +33,7 @@
   (wxSizer_Insert (object-pointer obj) before width height
 		  option flag border (when userData (object-pointer userData))))
 
-(defmethod prepend ((obj sizer) (win wxcl-windows:window) &key (option 0) (flag 0) (border 0) (userdata nil))
+(defmethod prepend ((obj sizer) (win window) &key (option 0) (flag 0) (border 0) (userdata nil))
   (wxSizer_PrependWindow (object-pointer obj) (object-pointer win)
 			 option flag border (when userData (object-pointer userData))))
 
@@ -45,7 +45,7 @@
   (wxSizer_Prepend (object-pointer obj) width height
 		   option flag border (when userData (object-pointer userData))))
 
-(defmethod detach ((obj sizer) (win wxcl-windows:window))
+(defmethod detach ((obj sizer) (win window))
   (= 1 (wxSizer_DetachWindow (object-pointer obj) (object-pointer win))))
 
 (defmethod detach ((obj sizer) (sz sizer))
@@ -57,7 +57,7 @@
 (defmethod (setf min-size) (size (obj sizer))
   (wxSizer_SetMinSize (object-pointer obj) (size-width size) (size-height size)))
 
-(defmethod (setf item-min-size) (size (obj sizer) (win wxcl-windows:window))
+(defmethod (setf item-min-size) (size (obj sizer) (win window))
   (wxSizer_SetItemMinSizeWindow (object-pointer obj) (object-pointer win) (size-width size) (size-height size)))
 
 (defmethod (setf item-min-size) (size (obj sizer) (sz sizer))
@@ -92,10 +92,10 @@
 (defmethod layout ((obj sizer))
   (wxSizer_Layout (object-pointer obj)))
 
-(defmethod fit ((obj sizer) (win wxcl-windows:window))
+(defmethod fit ((obj sizer) (win window))
   (wxSizer_Fit (object-pointer obj) (object-pointer win)))
 
-(defmethod (setf size-hints) ((win wxcl-windows:window) (obj sizer))
+(defmethod (setf size-hints) ((win window) (obj sizer))
   (wxSizer_SetSizeHints (object-pointer obj) (object-pointer win)))
 
 ; (defmethod children ((obj sizer)) wxSizer_GetChildren

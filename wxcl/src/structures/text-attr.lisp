@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-structures)
+(in-package :wxcl)
 
 (defun make-text-attr-empty ()
   (make-wx-instance 'text-attr (wxTextAttr_CreateDefault)))
@@ -22,13 +22,13 @@
   (invalidate-wx-instance obj))
 
 (defmethod background-colour ((obj text-attr))
-  (make-wx-instance 'wxcl-gdi:colour (wxTextAttr_GetBackgroundColour (object-pointer obj))))
+  (make-wx-instance 'colour (wxTextAttr_GetBackgroundColour (object-pointer obj))))
 
 (defmethod font ((obj text-attr))
-  (make-wx-instance 'wxcl-gdi:font (wxTextAttr_GetFont (object-pointer obj))))
+  (make-wx-instance 'font (wxTextAttr_GetFont (object-pointer obj))))
 
 (defmethod text-colour ((obj text-attr))
-  (make-wx-instance 'wxcl-gdi:colour (wxTextAttr_GetTextColour (object-pointer obj))))
+  (make-wx-instance 'colour (wxTextAttr_GetTextColour (object-pointer obj))))
 
 (defmethod has-background-colour-p ((obj text-attr))
   (= 1 (wxTextAttr_HasBackgroundColour (object-pointer obj))))

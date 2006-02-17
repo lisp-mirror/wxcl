@@ -1,4 +1,4 @@
-(in-package :wxcl-gdi)
+(in-package :wxcl)
 
 (define-symbol-macro +null-colour+ (make-wx-instance 'colour wxNull_Colour))
 

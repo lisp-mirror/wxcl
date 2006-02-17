@@ -1,4 +1,4 @@
-(in-package :wxcl-menus)
+(in-package :wxcl)
 
 (defconstant wxITEM_SEPARATOR -1)
 (defconstant wxITEM_NORMAL 0)

@@ -1,4 +1,4 @@
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
 (defun make-mini-frame (parent id title &key (position +default-position+) (size +default-size+)
                                (style +default-frame-style+))

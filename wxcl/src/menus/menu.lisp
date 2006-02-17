@@ -1,4 +1,4 @@
-(in-package :wxcl-menus)
+(in-package :wxcl)
 
 (defun make-menu (&key (title "") (style 0))
   (make-wx-instance 'menu (wxMenu_Create title style)))
@@ -15,6 +15,9 @@
               (sub-menu `(append-sub-menu ,menu ,@params))
               (menu-items `(append-sub-menu ,menu ,@params))))
     ,menu)))
+
+
+
   
 (defmethod delete-menu ((obj menu))
   (wxMenu_DeletePointer (object-pointer obj))
@@ -112,7 +115,7 @@
 (defmethod item-enabled-p ((obj menu) id)
   (= 1 (wxMenu_IsEnabled (object-pointer obj) id)))
 
-(defmethod check-item ((obj menu) id check)
+(defmethod check-menu-item ((obj menu) id check)
   (wxMenu_Check (object-pointer obj) id (if check 1 0)))
 
 (defmethod item-checked-p ((obj menu) id)
@@ -154,11 +157,8 @@
 ;   (:return-type (ffi:c-pointer NIL))
 ;   (:library +library-name+))
 
-; (defmethod ((obj menu)) wxMenu_GetStyle
-;     (:name "wxMenu_GetStyle")
-;   (:arguments (_obj (ffi:c-pointer NIL)))
-;   (:return-type ffi:int)
-;   (:library +library-name+))
+(defmethod style ((obj menu))
+  (wxMenu_GetStyle (object-pointer obj)))
 
 (defmethod update-ui ((obj menu) &optional (source nil))
   (wxMenu_UpdateUI (object-pointer obj) (when source (object-pointer source))))

@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-structures)
+(in-package :wxcl)
 
 (ffi:default-foreign-language :stdc)
 
@@ -29,10 +29,10 @@
   (wxColourData_SetColour (object-pointer obj) (object-pointer col)))
 
 (defmethod colour ((obj colour-data))
-  (make-wx-instance 'wxcl-gdi:colour (wxColourData_GetColour (object-pointer obj))))
+  (make-wx-instance 'colour (wxColourData_GetColour (object-pointer obj))))
 
 (defmethod (setf custom-colour) (col (obj colour-data) i)
 	(wxColourData_SetCustomColour (object-pointer obj) i (object-pointer col)))
 
 (defmethod custom-colour ((obj colour-data) i)
-  (make-wx-instance 'wxcl-gdi:colour (wxColourData_GetCustomColour (object-pointer obj) i)))
+  (make-wx-instance 'colour (wxColourData_GetCustomColour (object-pointer obj) i)))

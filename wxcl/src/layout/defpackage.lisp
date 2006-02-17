@@ -1,93 +1,93 @@
 
-(defpackage :wxcl-layout
-    (:use :common-lisp #:wxcl #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
-  (:export
-    #:box-sizer
-    #:sizer
-    #:box-sizer
-   )
-;;;functions, constant, symbols etc.  
-  (:export
-;  	#:CreateInWindow
-;  	#:CreateInSizer
-;  	#:GetSize
-;  	#:CalcMin
-;  	#:SetDimension
-;  	#:GetMinSize
-;  	#:SetRatio
-;  	#:SetFloatRatio
-;  	#:GetRatio
-;  	#:IsWindow
-;  	#:IsSizer
-;  	#:IsSpacer
-;  	#:SetInitSize
-;  	#:SetOption
-;  	#:SetFlag
-;  	#:SetBorder
-;  	#:GetWindow
-;  	#:SetWindow
-;  	#:GetSizer
-;  	#:SetSizer
-;  	#:GetOption
-;  	#:GetFlag
-;  	#:GetBorder
-;  	#:GetUserData
-;  	#:GetPosition
- 	#:add
- 	#:add-spacer
- 	#:insert
- 	#:insert-spacer
- 	#:prepend
- 	#:detach
- 	#:min-size
- 	#:item-min-size
- 	#:size
- 	#:position
- 	#:min-size
- 	#:recalc-sizes
- 	#:calc-min
- 	#:layout
-   #:dimension
- 	#:fit
-  	#:size-hints
-   )
-  (:export
-   #:make-box-sizer
-   #:orientation
-   )
-;  	#:GetChildren
-;  	#:SetDimension
-;  	#:Create
-;  	#:RecalcSizes
-;  	#:CalcMin
-;  	#:SetCols
-;  	#:SetRows
-;  	#:SetVGap
-;  	#:SetHGap
-;  	#:GetCols
-;  	#:GetRows
-;  	#:GetVGap
-;  	#:GetHGap
-;  	#:Create
-;  	#:RecalcSizes
-;  	#:CalcMin
-;  	#:AddGrowableRow
-;  	#:RemoveGrowableRow
-;  	#:AddGrowableCol
-;  	#:RemoveGrowableCol
-;  	#:Create
-;  	#:RecalcSizes
-;  	#:CalcMin
-;  	#:GetOrientation
-;  	#:Create
-;  	#:RecalcSizes
-;  	#:CalcMin
-  (:export
-   #:make-static-box-sizer
-   #:static-box
-  ))
+; (defpackage :wxcl-layout
+;     (:use :common-lisp #:wxcl #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
+;   (:export
+;     #:box-sizer
+;     #:sizer
+;     #:box-sizer
+;    )
+; ;;;functions, constant, symbols etc.  
+;   (:export
+; ;  	#:CreateInWindow
+; ;  	#:CreateInSizer
+; ;  	#:GetSize
+; ;  	#:CalcMin
+; ;  	#:SetDimension
+; ;  	#:GetMinSize
+; ;  	#:SetRatio
+; ;  	#:SetFloatRatio
+; ;  	#:GetRatio
+; ;  	#:IsWindow
+; ;  	#:IsSizer
+; ;  	#:IsSpacer
+; ;  	#:SetInitSize
+; ;  	#:SetOption
+; ;  	#:SetFlag
+; ;  	#:SetBorder
+; ;  	#:GetWindow
+; ;  	#:SetWindow
+; ;  	#:GetSizer
+; ;  	#:SetSizer
+; ;  	#:GetOption
+; ;  	#:GetFlag
+; ;  	#:GetBorder
+; ;  	#:GetUserData
+; ;  	#:GetPosition
+;  	#:add
+;  	#:add-spacer
+;  	#:insert
+;  	#:insert-spacer
+;  	#:prepend
+;  	#:detach
+;  	#:min-size
+;  	#:item-min-size
+;  	#:size
+;  	#:position
+;  	#:min-size
+;  	#:recalc-sizes
+;  	#:calc-min
+;  	#:layout
+;    #:dimension
+;  	#:fit
+;   	#:size-hints
+;    )
+;   (:export
+;    #:make-box-sizer
+;    #:orientation
+;    )
+; ;  	#:GetChildren
+; ;  	#:SetDimension
+; ;  	#:Create
+; ;  	#:RecalcSizes
+; ;  	#:CalcMin
+; ;  	#:SetCols
+; ;  	#:SetRows
+; ;  	#:SetVGap
+; ;  	#:SetHGap
+; ;  	#:GetCols
+; ;  	#:GetRows
+; ;  	#:GetVGap
+; ;  	#:GetHGap
+; ;  	#:Create
+; ;  	#:RecalcSizes
+; ;  	#:CalcMin
+; ;  	#:AddGrowableRow
+; ;  	#:RemoveGrowableRow
+; ;  	#:AddGrowableCol
+; ;  	#:RemoveGrowableCol
+; ;  	#:Create
+; ;  	#:RecalcSizes
+; ;  	#:CalcMin
+; ;  	#:GetOrientation
+; ;  	#:Create
+; ;  	#:RecalcSizes
+; ;  	#:CalcMin
+;   (:export
+;    #:make-static-box-sizer
+;    #:static-box
+;   ))
 
-(in-package :wxcl-layout)
+(in-package :wxcl)
 
 (defclass box-sizer (sizer)
   ()

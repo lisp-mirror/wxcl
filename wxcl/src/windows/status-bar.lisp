@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
 (defconstant +sb-normal+ #x0000)
 (defconstant +sb-flat+ #x0001)

@@ -1,4 +1,4 @@
-(in-package :wxcl-menus)
+(in-package :wxcl)
 
 (defun make-menu-bar (&optional (menus nil) (title nil) (style 0))
   (let ((mb (make-wx-instance 'menu-bar (wxMenuBar_Create style))))
@@ -52,7 +52,7 @@
 (defmethod enable-item ((obj menu-bar) id flag)
   (wxMenuBar_EnableItem (object-pointer obj) id (if flag 1 0)))
 
-(defmethod check-item ((obj menu-bar) id flag)
+(defmethod check-item ((obj menu-bar) id &optional (flag t))
   (wxMenuBar_Check (object-pointer obj) id (if flag 1 0)))
 
 (defmethod item-checked-p ((obj menu-bar) id)

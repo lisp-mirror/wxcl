@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-gdi)
+(in-package :wxcl)
 
 (defconstant +font-encoding-default+      0)
 (defconstant +font-encoding-iso8859_1+    1)

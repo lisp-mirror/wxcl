@@ -7,126 +7,126 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxcl-windows
-    (:use #:common-lisp #:wxcl #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
-  ;;classes 
-  (:export #:window
-           #:frame)
-  (:export #:window-size
-           #:window-rect
-           #:window-position
-	   #:make-frame
-	   #:maximize
-	   #:restore
-	   #:iconize
-	   #:maximized-p
-	   #:iconized-p
-	   #:icon
-	   #:menu-bar
-	   #:status-bar
-	   #:tool-bar
-	   #:set-status-widths
-	   #:create-status-bar
-	   #:create-tool-bar
-	   #:title
-	   #:shape
-      #:sizer
-	   #:show-full-screen
-	   #:full-screen-p
-	   #:centre
-	   #:fields-count
-	   #:status-text
-	   #:min-height
-	   #:border-x
-	   #:border-y
-	   #:delete
-	   #:add-control
-	   #:add-separator
-	   #:delete-tool
-	   #:delete-tool-by-pos
-	   #:enable-tool
-	   #:tool-size
-	   #:tool-bitmap-size
-	   #:margins
-	   #:tool-client-data
-	   #:tool-enabled-p
-	   #:tool-long-help
-	   #:tool-packing
-	   #:tool-state
-      #:add-tool
-      #:add-tool-ex
-	   #:insert-control
-	   #:insert-separator
-	   #:realize
-	   #:margins
-	   #:tool-bitmap-size
-	   #:tool-long-help
-	   #:tool-packing
-	   #:tool-short-help
-	   #:tool-separation
-	   #:toggle-tool
-	   #:show
-	   #:+tb-horizontal+
-	   #:+tb-3d-buttons+
-	   #:+tb-dockable+
-	   #:+tb-vertical+
-	   #:+tb-horizontal+
-	   #:+default-frame-style+
-	   #:+nb-fixedwidth+
-	   #:+nb-left+
-	   #:+nb-right+
-	   #:+nb-bottom+
-	   #:+nb-multiline+
-	   #:+nb-top+
-	   #:panel
- 	   #:make-panel
- 	   #:default-item
-	   #:+tab-traversal+
-;;scroll-bar related constants, methods, functions
-      #:make-scrolled-window
-	   #:scrolled-window
-	   #:+vscroll+
-	   #:+hscroll+
-	   #:target-window
-	   #:scroll
-      #:set-scroll-bars
-	   #:scroll-page-size
-	   #:set-scroll-page-size
-	   #:scroll-pixel-per-unit
-	   #:enable-scrolling
-	   #:view-start
-	   #:virtual-size
-	   #:calc-scrolled-position
-	   #:calc-unscrolled-position
-	   #:adjust-scrollbars
-	   #:set-scroll-rate
-      #:destroy
-;;frame related constants
-      #:+default-frame-style+
-      #:+frame-ex-contexthelp+
-      #:+frame-shaped+
-      #:+frame-float-on-parent+
-      #:+frame-tool-window+
-      #:+fullscreen-nomenubar+
-      #:+fullscreen-notoolbar+
-      #:+fullscreen-nostatusbar+
-      #:+fullscreen-noborder+
-      #:+fullscreen-nocaption+
-      #:+fullscreen-all+
-;;window related methods, functions, etc
-      #:close-window
-      #:accelerator-table
-;;status-bar related constants, methods, functions, etc
-	   #:make-status-bar
-      #:+sb-normal+
-      #:+sb-flat+
-      #:+sb-raised+
-      #:+st-sizegrip+
-	   ))
+; (defpackage :wxcl-windows
+;     (:use #:common-lisp #:wxcl #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
+;   ;;classes 
+;   (:export #:window
+;            #:frame)
+;   (:export #:window-size
+;            #:window-rect
+;            #:window-position
+; 	   #:make-frame
+; 	   #:maximize
+; 	   #:restore
+; 	   #:iconize
+; 	   #:maximized-p
+; 	   #:iconized-p
+; 	   #:icon
+; 	   #:menu-bar
+; 	   #:status-bar
+; 	   #:tool-bar
+; 	   #:set-status-widths
+; 	   #:create-status-bar
+; 	   #:create-tool-bar
+; 	   #:title
+; 	   #:shape
+;       #:sizer
+; 	   #:show-full-screen
+; 	   #:full-screen-p
+; 	   #:centre
+; 	   #:fields-count
+; 	   #:status-text
+; 	   #:min-height
+; 	   #:border-x
+; 	   #:border-y
+; 	   #:delete
+; 	   #:add-control
+; 	   #:add-separator
+; 	   #:delete-tool
+; 	   #:delete-tool-by-pos
+; 	   #:enable-tool
+; 	   #:tool-size
+; 	   #:tool-bitmap-size
+; 	   #:margins
+; 	   #:tool-client-data
+; 	   #:tool-enabled-p
+; 	   #:tool-long-help
+; 	   #:tool-packing
+; 	   #:tool-state
+;       #:add-tool
+;       #:add-tool-ex
+; 	   #:insert-control
+; 	   #:insert-separator
+; 	   #:realize
+; 	   #:margins
+; 	   #:tool-bitmap-size
+; 	   #:tool-long-help
+; 	   #:tool-packing
+; 	   #:tool-short-help
+; 	   #:tool-separation
+; 	   #:toggle-tool
+; 	   #:show
+; 	   #:+tb-horizontal+
+; 	   #:+tb-3d-buttons+
+; 	   #:+tb-dockable+
+; 	   #:+tb-vertical+
+; 	   #:+tb-horizontal+
+; 	   #:+default-frame-style+
+; 	   #:+nb-fixedwidth+
+; 	   #:+nb-left+
+; 	   #:+nb-right+
+; 	   #:+nb-bottom+
+; 	   #:+nb-multiline+
+; 	   #:+nb-top+
+; 	   #:panel
+;  	   #:make-panel
+;  	   #:default-item
+; 	   #:+tab-traversal+
+; ;;scroll-bar related constants, methods, functions
+;       #:make-scrolled-window
+; 	   #:scrolled-window
+; 	   #:+vscroll+
+; 	   #:+hscroll+
+; 	   #:target-window
+; 	   #:scroll
+;       #:set-scroll-bars
+; 	   #:scroll-page-size
+; 	   #:set-scroll-page-size
+; 	   #:scroll-pixel-per-unit
+; 	   #:enable-scrolling
+; 	   #:view-start
+; 	   #:virtual-size
+; 	   #:calc-scrolled-position
+; 	   #:calc-unscrolled-position
+; 	   #:adjust-scrollbars
+; 	   #:set-scroll-rate
+;       #:destroy
+; ;;frame related constants
+;       #:+default-frame-style+
+;       #:+frame-ex-contexthelp+
+;       #:+frame-shaped+
+;       #:+frame-float-on-parent+
+;       #:+frame-tool-window+
+;       #:+fullscreen-nomenubar+
+;       #:+fullscreen-notoolbar+
+;       #:+fullscreen-nostatusbar+
+;       #:+fullscreen-noborder+
+;       #:+fullscreen-nocaption+
+;       #:+fullscreen-all+
+; ;;window related methods, functions, etc
+;       #:close-window
+;       #:accelerator-table
+; ;;status-bar related constants, methods, functions, etc
+; 	   #:make-status-bar
+;       #:+sb-normal+
+;       #:+sb-flat+
+;       #:+sb-raised+
+;       #:+st-sizegrip+
+; 	   ))
 
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
-(defclass window (wxcl-events:evt-handler)
+(defclass window (evt-handler)
   ()
   (:documentation "The base class for all wxCL widgets."))
 

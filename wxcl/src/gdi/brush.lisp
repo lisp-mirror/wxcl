@@ -1,4 +1,4 @@
-(in-package :wxcl-gdi)
+(in-package :wxcl)
 
 (define-symbol-macro +null-brush+ (make-wx-instance 'brush wxNull_Brush))
 

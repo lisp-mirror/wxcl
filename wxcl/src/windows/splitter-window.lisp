@@ -1,5 +1,5 @@
 
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
 (defconstant +sp-noborder+ 0)
 (defconstant +sp-nosash+ 16)

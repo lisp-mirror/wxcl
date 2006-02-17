@@ -1,4 +1,4 @@
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
 (defconstant +tab-traversal+ 524288)
 

@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-windows)
+(in-package :wxcl)
 
 (defconstant +default-frame-style+ 536878656)
 (defconstant +frame-ex-contexthelp+ 4)

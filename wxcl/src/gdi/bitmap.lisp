@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-gdi)
+(in-package :wxcl)
 
 (defconstant +bitmap-type-invalid+ 0)
 (defconstant +bitmap-type-bmp+ 1)
@@ -67,10 +67,10 @@
                                                    (point-x (rect-position reg))(point-y (rect-position reg))
                                                    (size-height (rect-size reg))(size-width (rect-size reg)))))
 
-(defmethod load-file ((obj bitmap) file-name type)
+(defmethod load-bitmap-from-file ((obj bitmap) file-name type)
   (= 1 (wxBitmap_LoadFile (object-pointer obj) file-name type)))
 
-(defmethod save-file ((obj bitmap) file-name type &optional (cmap nil))
+(defmethod save-bitmap-to-file ((obj bitmap) file-name type &optional (cmap nil))
   (= 1 (wxBitmap_SaveFile (object-pointer obj) file-name type cmap)))
 
 (defmethod mask ((obj bitmap))
