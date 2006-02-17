@@ -1,4 +1,4 @@
-(in-package :wxcl-events)
+(in-package :wxcl)
 
 (defun make-event-object (pointer)
   (make-wx-instance 'event pointer))
@@ -52,3 +52,9 @@
 ;   (:arguments (_obj (ffi:c-pointer NIL)))
 ;   (:return-type (ffi:c-pointer NIL))
 ;   (:library +library-name+))
+
+(define-symbol-macro +event-command-button-clicked+
+    (cffi:mem-ref wxcl::wxEVENT_COMMAND_BUTTON_CLICKED :int))
+
+(define-symbol-macro +event-command-menu-selected+
+    (cffi:mem-ref wxcl::wxEVENT_COMMAND_MENU_SELECTED :int))

@@ -7,374 +7,374 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxcl-controls
-    (:use #:common-lisp #:wxcl #:wxcl-windows #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
-    (:shadow #:directory)
-    (:export
+; (defpackage :wxcl-controls
+;     (:use #:common-lisp #:wxcl #:wxcl-windows #+(and (not cffi) clisp) #:ffi #+cffi :cffi)
+;     (:shadow #:directory)
+;     (:export
 
-;; symbols common to multiple classes
-;;
-     #:+align-bottom+
-     #:+align-center-horizontal+
-     #:+align-center-vertical+
-     #:+align-centre-horizontal+
-     #:+align-centre-vertical+
-     #:+align-left+
-     #:+align-not+
-     #:+align-right+
-     #:+align-top+
-     #:find-string
-     #:range
-     #:set-selection
-     #:string-selection
-     #:value
+; ;; symbols common to multiple classes
+; ;;
+;      #:+align-bottom+
+;      #:+align-center-horizontal+
+;      #:+align-center-vertical+
+;      #:+align-centre-horizontal+
+;      #:+align-centre-vertical+
+;      #:+align-left+
+;      #:+align-not+
+;      #:+align-right+
+;      #:+align-top+
+;      #:find-string
+;      #:range
+;      #:set-selection
+;      #:string-selection
+;      #:value
 
-;; bitmap-button class
-;;
-     #:bitmap-button
-     #:+bu-autodraw+
+; ;; bitmap-button class
+; ;;
+;      #:bitmap-button
+;      #:+bu-autodraw+
 
-;; bitmap-button methods, functions, and macros
-;;
-     #:bitmap-disabled
-     #:bitmap-focus
-     #:bitmap-label
-     #:bitmap-selected
-     #:make-bitmap-button
-     #:margin-x
-     #:margin-y
-     #:set-margins
+; ;; bitmap-button methods, functions, and macros
+; ;;
+;      #:bitmap-disabled
+;      #:bitmap-focus
+;      #:bitmap-label
+;      #:bitmap-selected
+;      #:make-bitmap-button
+;      #:margin-x
+;      #:margin-y
+;      #:set-margins
 
-;; button class and constants
-;;
-     #:button
-     #:+bu-exactfit+
-	   #:+bu-left+
-	   #:+bu-top+
-	   #:+bu-right+
-	   #:+bu-bottom+
+; ;; button class and constants
+; ;;
+;      #:button
+;      #:+bu-exactfit+
+; 	   #:+bu-left+
+; 	   #:+bu-top+
+; 	   #:+bu-right+
+; 	   #:+bu-bottom+
 
-;; button methods, functions, and macros
-;;
-     #:background-colour
-     #:default-size
-     #:make-button
-     #:set-default
+; ;; button methods, functions, and macros
+; ;;
+;      #:background-colour
+;      #:default-size
+;      #:make-button
+;      #:set-default
 
-;; check-box class and constants
-;;
-     #:check-box
-     #:+chk-2state+
-     #:+chk-3state+
-     #:+chk-allow-3rd-state-for-user+
+; ;; check-box class and constants
+; ;;
+;      #:check-box
+;      #:+chk-2state+
+;      #:+chk-3state+
+;      #:+chk-allow-3rd-state-for-user+
 
-;; check-box methods, functions, and macros
-;;
-     ; #:3-state-value
-     ; #:3rd-state-allowed
-     ; #:is-3-state
-     #:make-check-box
+; ;; check-box methods, functions, and macros
+; ;;
+;      ; #:3-state-value
+;      ; #:3rd-state-allowed
+;      ; #:is-3-state
+;      #:make-check-box
 
-;; check-list-box class and constants
-;;
-     #:check-list-box
+; ;; check-list-box class and constants
+; ;;
+;      #:check-list-box
 
-;; check-list-box methods, functions, and macros
-;;
-     #:check
-     #:checked
-     #:make-check-list-box
+; ;; check-list-box methods, functions, and macros
+; ;;
+;      #:check
+;      #:checked
+;      #:make-check-list-box
 
-;; choice class and constants
-;;
-     #:choice
+; ;; choice class and constants
+; ;;
+;      #:choice
 
-;; choice methods, functions, and macros
-;;
-     #:columns
-     #:current-selection
-     #:make-choice
+; ;; choice methods, functions, and macros
+; ;;
+;      #:columns
+;      #:current-selection
+;      #:make-choice
 
-;; combo-box class and constants
-;;
-     #:combo-box
-     #:+cb-simple+
-     #:+cb-sort+
-     #:+cb-readonly+
-     #:+cb-dropdown+
+; ;; combo-box class and constants
+; ;;
+;      #:combo-box
+;      #:+cb-simple+
+;      #:+cb-sort+
+;      #:+cb-readonly+
+;      #:+cb-dropdown+
 
-;; combo-box methods, functions, and macros
-;;
-     #:copy
-     #:cut
-     #:insertion-point
-     #:last-position
-     #:make-combo-box
-     #:paste
-     #:remove
-     #:replace
-     #:set-insertion-point-end
-     #:text-selection
-     #:undo
+; ;; combo-box methods, functions, and macros
+; ;;
+;      #:copy
+;      #:cut
+;      #:insertion-point
+;      #:last-position
+;      #:make-combo-box
+;      #:paste
+;      #:remove
+;      #:replace
+;      #:set-insertion-point-end
+;      #:text-selection
+;      #:undo
 
-;; control class and constants
-;;
-     #:control
+; ;; control class and constants
+; ;;
+;      #:control
 
-;; control methods, functions, and macros
-;;
-     #:label
+; ;; control methods, functions, and macros
+; ;;
+;      #:label
 
-;; control-with-item class and constants
-;;
-     #:control-with-items
+; ;; control-with-item class and constants
+; ;;
+;      #:control-with-items
 
-;; control-with-items methods, functions, and macros
-;;
-     #:append
-     #:append-data
-     #:clear
-     #:client-data
-     #:count
-     #:delete
-     #:insert
-     #:insert-data
-     #:string
+; ;; control-with-items methods, functions, and macros
+; ;;
+;      #:append
+;      #:append-data
+;      #:clear
+;      #:client-data
+;      #:count
+;      #:delete
+;      #:insert
+;      #:insert-data
+;      #:string
 
-;; gauge class and constants
-;;
-     #:gauge
-     #:+ga-horizontal+
-     #:+ga-progressbar+
-     #:+ga-smooth+
-     #:+ga-vertical+
+; ;; gauge class and constants
+; ;;
+;      #:gauge
+;      #:+ga-horizontal+
+;      #:+ga-progressbar+
+;      #:+ga-smooth+
+;      #:+ga-vertical+
 
-;; gauge methods, functions, and macros
-;;
-     #:bezel-face
-     #:make-gauge
-     #:shadow-width
+; ;; gauge methods, functions, and macros
+; ;;
+;      #:bezel-face
+;      #:make-gauge
+;      #:shadow-width
 
-;; list-box class and constants
-;;
-     #:list-box
-	   #:+lb-always-sb+
-	   #:+lb-extended+
-	   #:+lb-multiple+
-	   #:+lb-needed-sb+
-	   #:+lb-ownerdraw+
-	   #:+lb-single+
-     #:+lb-sort+
+; ;; list-box class and constants
+; ;;
+;      #:list-box
+; 	   #:+lb-always-sb+
+; 	   #:+lb-extended+
+; 	   #:+lb-multiple+
+; 	   #:+lb-needed-sb+
+; 	   #:+lb-ownerdraw+
+; 	   #:+lb-single+
+;      #:+lb-sort+
 
-;; list-box methods, functions, and macros
-;;
-     #:deselect
-     #:first-item
-     #:insert-items
-     #:make-list-box
-     #:selected-p
-     #:selections
-     #:set
+; ;; list-box methods, functions, and macros
+; ;;
+;      #:deselect
+;      #:first-item
+;      #:insert-items
+;      #:make-list-box
+;      #:selected-p
+;      #:selections
+;      #:set
 
-;; list-ctrl class and constants
-;;
-     #:list-ctrl
-	   #:+lc-icon+
-	   #:+lc-small-icon+
-	   #:+lc-vrules+
-	   #:+lc-hrules+
-	   #:+lc-list+
-	   #:+lc-report+
-	   #:+lc-align-top+
-	   #:+lc-align-left+
-	   #:+lc-autoarrange+
-	   #:+lc-user-text+ 
-	   #:+lc-edit-labels+
-	   #:+lc-no-header+ 
-	   #:+lc-no-sort-header+
-	   #:+lc-single-sel+
-	   #:+lc-sort-ascending+
-	   #:+lc-sort-descending+
+; ;; list-ctrl class and constants
+; ;;
+;      #:list-ctrl
+; 	   #:+lc-icon+
+; 	   #:+lc-small-icon+
+; 	   #:+lc-vrules+
+; 	   #:+lc-hrules+
+; 	   #:+lc-list+
+; 	   #:+lc-report+
+; 	   #:+lc-align-top+
+; 	   #:+lc-align-left+
+; 	   #:+lc-autoarrange+
+; 	   #:+lc-user-text+ 
+; 	   #:+lc-edit-labels+
+; 	   #:+lc-no-header+ 
+; 	   #:+lc-no-sort-header+
+; 	   #:+lc-single-sel+
+; 	   #:+lc-sort-ascending+
+; 	   #:+lc-sort-descending+
 
-;; radio-box class and constants
-;;
-     #:radio-box
-     #:+ra-specify-cols+
-     #:+ra-specify-rows+
-     #:+ra-use-checkbox+
+; ;; radio-box class and constants
+; ;;
+;      #:radio-box
+;      #:+ra-specify-cols+
+;      #:+ra-specify-rows+
+;      #:+ra-use-checkbox+
 
-;; radio-box methods, functions, and macros
-;;
-     #:count
-     #:enable-item
-     #:item-bitmap
-     #:item-label
-     #:make-radio-box
-     #:number-of-rows-or-cols
-     #:show-item
+; ;; radio-box methods, functions, and macros
+; ;;
+;      #:count
+;      #:enable-item
+;      #:item-bitmap
+;      #:item-label
+;      #:make-radio-box
+;      #:number-of-rows-or-cols
+;      #:show-item
 
-;; radio-button class and constants
-;;
-     #:radio-button
-     #:+rb-group+
-     #:+rb-single+
-     #:+rb-use-checkbox+
+; ;; radio-button class and constants
+; ;;
+;      #:radio-button
+;      #:+rb-group+
+;      #:+rb-single+
+;      #:+rb-use-checkbox+
 
-;; radio-button methods, functions, and macros
-;;
-     #:make-radio-button
+; ;; radio-button methods, functions, and macros
+; ;;
+;      #:make-radio-button
 
-;; slider class and constants
-;;
-     #:slider
-     #:+sl-horizontal+
-     #:+sl-vertical+
-     #:+sl-ticks+
-     #:+sl-autoticks+
-     #:+sl-labels+
-     #:+sl-left+
-     #:+sl-top+
-     #:+sl-right+
-     #:+sl-bottom+
-     #:+sl-both+
-     #:+sl-selrange+
-     #:+sl-inverse+
+; ;; slider class and constants
+; ;;
+;      #:slider
+;      #:+sl-horizontal+
+;      #:+sl-vertical+
+;      #:+sl-ticks+
+;      #:+sl-autoticks+
+;      #:+sl-labels+
+;      #:+sl-left+
+;      #:+sl-top+
+;      #:+sl-right+
+;      #:+sl-bottom+
+;      #:+sl-both+
+;      #:+sl-selrange+
+;      #:+sl-inverse+
 
-;; slider methods, functions, and macros
-;;
-     #:clear-sel
-     #:line-size
-     #:make-slider
-     #:max
-     #:min
-     #:page-size
+; ;; slider methods, functions, and macros
+; ;;
+;      #:clear-sel
+;      #:line-size
+;      #:make-slider
+;      #:max
+;      #:min
+;      #:page-size
 
-;; static-box class and constants
-;;
-     #:static-box
+; ;; static-box class and constants
+; ;;
+;      #:static-box
 
-;; static-box methods, functions, and macros
-;;
-     #:make-static-box
+; ;; static-box methods, functions, and macros
+; ;;
+;      #:make-static-box
 
-;; static-text class and constants
-;;
-     #:static-text
-     #:+st-no-autoresize+
+; ;; static-text class and constants
+; ;;
+;      #:static-text
+;      #:+st-no-autoresize+
 
-;; static-text methods, functions, and macros
-;;
-     #:make-static-text
+; ;; static-text methods, functions, and macros
+; ;;
+;      #:make-static-text
 
-;; toggle-button class and constants
-;;
-     #:toggle-button
+; ;; toggle-button class and constants
+; ;;
+;      #:toggle-button
 
-;; toggle-button methods, functions, and macros
-;;
-     #:enable
-     #:make-toggle-button
+; ;; toggle-button methods, functions, and macros
+; ;;
+;      #:enable
+;      #:make-toggle-button
 
 
-	   #:+list-format-left+ 
-	   #:+list-format-right+
-	   #:+list-format-centre+
-	   #:+list-format-center+
-	   #:+list-next-above+
-	   #:+list-next-all+
-	   #:+list-next-below+
-	   #:+list-next-left+
-	   #:+list-next-right+
-	   #:+cal-sunday-first+
-	   #:+cal-monday-first+
-	   #:+cal-show-holidays+
-	   #:+cal-no-year-change+
-	   #:+cal-no-month-change+
-	   #:+cal-hittest-nowhere+
-	   #:+cal-hittest-header+
-	   #:+cal-hittest-day+
+; 	   #:+list-format-left+ 
+; 	   #:+list-format-right+
+; 	   #:+list-format-centre+
+; 	   #:+list-format-center+
+; 	   #:+list-next-above+
+; 	   #:+list-next-all+
+; 	   #:+list-next-below+
+; 	   #:+list-next-left+
+; 	   #:+list-next-right+
+; 	   #:+cal-sunday-first+
+; 	   #:+cal-monday-first+
+; 	   #:+cal-show-holidays+
+; 	   #:+cal-no-year-change+
+; 	   #:+cal-no-month-change+
+; 	   #:+cal-hittest-nowhere+
+; 	   #:+cal-hittest-header+
+; 	   #:+cal-hittest-day+
       
-;;notebook related constants, functions, etc.
-     #:+nb-fixedwidth+
-     #:+nb-left+
-     #:+nb-right+
-     #:+nb-bottom+
-     #:+nb-multiline+
-     #:+nb-top+
-     #:make-notebook
-     #:page-count
-     #:advance-selection
-     #:selection
-     #:page-text
-     #:image-list
-     #:page-image
-     #:row-count
-     #:page-size
-     #:padding
-     #:delete-page
-     #:remove-page
-     #:delete-all-pages
-     #:add-page
-     #:insert-page
-     #:get-page
-     #:assign-image-list
+; ;;notebook related constants, functions, etc.
+;      #:+nb-fixedwidth+
+;      #:+nb-left+
+;      #:+nb-right+
+;      #:+nb-bottom+
+;      #:+nb-multiline+
+;      #:+nb-top+
+;      #:make-notebook
+;      #:page-count
+;      #:advance-selection
+;      #:selection
+;      #:page-text
+;      #:image-list
+;      #:page-image
+;      #:row-count
+;      #:page-size
+;      #:padding
+;      #:delete-page
+;      #:remove-page
+;      #:delete-all-pages
+;      #:add-page
+;      #:insert-page
+;      #:get-page
+;      #:assign-image-list
      
-;;text-control related constants, functions, etc.
-     #:text-control
-     #:make-text-control
-	  #:value
-	  #:line-length
-	  #:line-text
-	  #:number-of-lines
-	  #:modified-p
-	  #:editable-p
-	  #:selection
-	  #:clear
-	  #:replace-text
-	  #:remove-text
-	  #:load-file
-	  #:save-file
-	  #:discard-edits
-	  #:write-text
-	  #:append-text
-	  #:xy-to-position
-	  #:position-to-xy
-	  #:show-position
-	  #:copy
-	  #:cut
-	  #:paste
-	  #:can-copy-p
-	  #:can-cut-p
-	  #:can-paste-p
-	  #:undo
-	  #:redo
-	  #:can-undo-p
-	  #:can-redo-p
-	  #:insertion-point
-	  #:set-insertion-point-end
-	  #:last-position
-	  #:set-selection
-	  #:editable
-;	  #:emulatekeypress
-	  #:default-style
-	  #:style
-	  #:range
-	  #:string-selection
-	  #:multiline-p
-	  #:singleline-p
-	  #:default-style
-	  #:max-length
-	  #:+te-readonly+
-	  #:+te-multiline+
-	  #:+te-process-tab+
-	  #:+te-rich+
-	  #:+te-rich2+
-	  #:+te-no-vscroll+
-	  #:+te-auto-scroll+
-	  #:+te-wordwrap+
-     ))
+; ;;text-control related constants, functions, etc.
+;      #:text-control
+;      #:make-text-control
+; 	  #:value
+; 	  #:line-length
+; 	  #:line-text
+; 	  #:number-of-lines
+; 	  #:modified-p
+; 	  #:editable-p
+; 	  #:selection
+; 	  #:clear
+; 	  #:replace-text
+; 	  #:remove-text
+; 	  #:load-file
+; 	  #:save-file
+; 	  #:discard-edits
+; 	  #:write-text
+; 	  #:append-text
+; 	  #:xy-to-position
+; 	  #:position-to-xy
+; 	  #:show-position
+; 	  #:copy
+; 	  #:cut
+; 	  #:paste
+; 	  #:can-copy-p
+; 	  #:can-cut-p
+; 	  #:can-paste-p
+; 	  #:undo
+; 	  #:redo
+; 	  #:can-undo-p
+; 	  #:can-redo-p
+; 	  #:insertion-point
+; 	  #:set-insertion-point-end
+; 	  #:last-position
+; 	  #:set-selection
+; 	  #:editable
+; ;	  #:emulatekeypress
+; 	  #:default-style
+; 	  #:style
+; 	  #:range
+; 	  #:string-selection
+; 	  #:multiline-p
+; 	  #:singleline-p
+; 	  #:default-style
+; 	  #:max-length
+; 	  #:+te-readonly+
+; 	  #:+te-multiline+
+; 	  #:+te-process-tab+
+; 	  #:+te-rich+
+; 	  #:+te-rich2+
+; 	  #:+te-no-vscroll+
+; 	  #:+te-auto-scroll+
+; 	  #:+te-wordwrap+
+;      ))
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defclass control (window)
   ()

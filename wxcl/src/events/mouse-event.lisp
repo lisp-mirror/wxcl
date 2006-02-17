@@ -1,4 +1,4 @@
-(in-package :wxcl-events)
+(in-package :wxcl)
 
 (defmethod button-p ((obj mouse-event))
   (= 1 (wxMouseEvent_IsButton (object-pointer obj))))

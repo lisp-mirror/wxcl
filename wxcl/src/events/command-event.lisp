@@ -1,4 +1,4 @@
-(in-package :wxcl-events)
+(in-package :wxcl)
 
 (defclass command-event (event)
   ()

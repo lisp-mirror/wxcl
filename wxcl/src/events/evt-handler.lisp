@@ -1,4 +1,4 @@
-(in-package :wxcl-events)
+(in-package :wxcl)
 
 ; (defmethod ((obj evt-handler)) wxEvtHandler_Create
 ;     (:name "wxEvtHandler_Create")
@@ -19,10 +19,21 @@
        :report "Back to the program."
        nil)))
 
+; (defmethod connect ((obj evt-handler) id type func &key last-id)
+;   (wxEvtHandler_Connect (object-pointer obj) id (if last-id last-id id) type (wxcl::wxClosure_Create
+;                                                                               (lambda (x) (debugging-errors
+;                                                                                            (funcall func x))))))
+(cffi:defcallback handle-events :void ((evt :pointer) (wxcl-event-id :unsigned-int))
+                  (let ((func (getf *events-table* wxcl-event-id)))
+                    (when func
+                      (funcall func evt))))
+                  
 (defmethod connect ((obj evt-handler) id type func &key last-id)
-  (wxEvtHandler_Connect (object-pointer obj) id (if last-id last-id id) type (wxcl::wxClosure_Create
-                                                                              (lambda (x) (debugging-errors
-                                                                                           (funcall func x))))))
+  (incf *events-counter*)
+  (setf (getf *events-table* *events-counter*) func) 
+  (wxEvtHandler_Connect (object-pointer obj) id (if last-id last-id id) type
+                        (wxClosure_Create (cffi:callback handle-events) gensym))))
+
 
 (defmethod disconnect ((obj evt-handler) id type data &key last-id)
   (= 1 (wxEvtHandler_Disconnect (object-pointer obj) id (if last-id last-id id) type data)))
