@@ -26,12 +26,30 @@
 ;   (:return-type ffi:int)
 ;   (:library +library-name+))
 
-(defun start-app (init-func &key (arguments nil))
+(defvar *app-start-func* nil)
+(defvar *events-table* nil)
+(defvar *events-counter* 0)
+
+(defun start-app (init-func)
   (unwind-protect
-       (cffi:load-foreign-library +library-name+)
-       (ELJApp_InitializeC (wxClosure_Create init-func)
-                           (length arguments) arguments)
+       (progn 
+         (cffi:load-foreign-library +library-name+)
+         (setf *app-start-func* init-func
+               *events-table* nil
+               *events-counter* 0)
+         (ELJApp_InitializeC (wxClosure_Create (cffi:callback initialize-wxcl) (cffi:null-pointer))
+                             0 (cffi:null-pointer)))
     (cffi::close-foreign-library +library-name+)))
+
+(cffi:defcallback initialize-wxcl :void ((evt :pointer) (data :pointer))
+;                  (initialize-objects *function-list*)
+                  (when *app-start-func*
+                    (funcall *app-start-func* evt)))
+                  
+(defun initialize-objects (lst)
+  (when lst 
+    (funcall (cadr lst))
+    (initialize-objects (cddr lst))))
 
 (defun app-pending-p()
   (= 1 (ELJApp_Pending)))

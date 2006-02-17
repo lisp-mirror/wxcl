@@ -8,7 +8,7 @@
 ;;;
 
 (defpackage :wxCL
-    (:use :common-lisp #+(and (not cffi) clisp) :ffi #+cffi :cffi)
+    (:use :common-lisp :cffi)
   (:export #:+library-name+
       #:object
       #:size
@@ -83,7 +83,7 @@
       #:+yes+
       #:+no+
       #:+cancel+
-
+      #:save-file
       #:+null-flag+
       #:+evt-null+
       #:+evt-first+
@@ -783,13 +783,1225 @@
       #:+sql-fetch-absolute+
       #:+sql-fetch-relative+
       #:+sql-fetch-bookmark+
-      ))
+      )
+;;;wxcl-windows
+  ;;classes 
+  (:export #:window
+           #:frame)
+  (:export #:window-size
+           #:window-rect
+           #:window-position
+	   #:make-frame
+	   #:maximize
+	   #:restore
+	   #:iconize
+	   #:maximized-p
+	   #:iconized-p
+	   #:icon
+	   #:menu-bar
+	   #:status-bar
+	   #:tool-bar
+	   #:set-status-widths
+	   #:create-status-bar
+	   #:create-tool-bar
+	   #:title
+	   #:shape
+      #:sizer
+	   #:show-full-screen
+	   #:full-screen-p
+	   #:centre
+	   #:fields-count
+	   #:status-text
+	   #:min-height
+	   #:border-x
+	   #:border-y
+	   #:delete
+	   #:add-control
+	   #:add-separator
+	   #:delete-tool
+	   #:delete-tool-by-pos
+	   #:enable-tool
+	   #:tool-size
+	   #:tool-bitmap-size
+	   #:margins
+	   #:tool-client-data
+	   #:tool-enabled-p
+	   #:tool-long-help
+	   #:tool-packing
+	   #:tool-state
+      #:add-tool
+      #:add-tool-ex
+	   #:insert-control
+	   #:insert-separator
+	   #:realize
+	   #:margins
+	   #:tool-bitmap-size
+	   #:tool-long-help
+	   #:tool-packing
+	   #:tool-short-help
+	   #:tool-separation
+	   #:toggle-tool
+	   #:show
+	   #:+tb-horizontal+
+	   #:+tb-3d-buttons+
+	   #:+tb-dockable+
+	   #:+tb-vertical+
+	   #:+tb-horizontal+
+	   #:+default-frame-style+
+	   #:+nb-fixedwidth+
+	   #:+nb-left+
+	   #:+nb-right+
+	   #:+nb-bottom+
+	   #:+nb-multiline+
+	   #:+nb-top+
+	   #:panel
+ 	   #:make-panel
+ 	   #:default-item
+	   #:+tab-traversal+
+;;scroll-bar related constants, methods, functions
+      #:make-scrolled-window
+	   #:scrolled-window
+	   #:+vscroll+
+	   #:+hscroll+
+	   #:target-window
+	   #:scroll
+      #:set-scroll-bars
+	   #:scroll-page-size
+	   #:set-scroll-page-size
+	   #:scroll-pixel-per-unit
+	   #:enable-scrolling
+	   #:view-start
+	   #:virtual-size
+	   #:calc-scrolled-position
+	   #:calc-unscrolled-position
+	   #:adjust-scrollbars
+	   #:set-scroll-rate
+      #:destroy
+;;frame related constants
+      #:+default-frame-style+
+      #:+frame-ex-contexthelp+
+      #:+frame-shaped+
+      #:+frame-float-on-parent+
+      #:+frame-tool-window+
+      #:+fullscreen-nomenubar+
+      #:+fullscreen-notoolbar+
+      #:+fullscreen-nostatusbar+
+      #:+fullscreen-noborder+
+      #:+fullscreen-nocaption+
+      #:+fullscreen-all+
+;;window related methods, functions, etc
+      #:close-window
+      #:accelerator-table
+;;status-bar related constants, methods, functions, etc
+	   #:make-status-bar
+      #:+sb-normal+
+      #:+sb-flat+
+      #:+sb-raised+
+      #:+st-sizegrip+
+	   )
+;;;wxcl-structures
+      (:export
+;; symbols common to multiple classes
+     #:background-colour
+     #:delete-object
+     #:font
+     #:colour
+     #:text-colour
+     #:delete-object
+;; calendar-date-attr class and constants
+     #:calendar-date-attr
+     #:+cal-border-none+
+     #:+cal-border-square+
+     #:+cal-border-round+
+;; calendar-date-attr methods and functions
+     #:border
+     #:border-colour
+     #:make-calendar-date-attr
+;; list-item class and constants
+     #:list-item
+	   #:+list-state-dontcare+
+	   #:+list-state-drophilited+
+	   #:+list-state-focused+ 
+	   #:+list-state-selected+
+	   #:+list-state-cut+ 
+	   #:+list-mask-state+
+	   #:+list-mask-text+ 
+	   #:+list-mask-image+
+	   #:+list-mask-data+
+	   #:+list-mask-width+
+	   #:+list-mask-format+
+;; list-item methods, functions, and macros
+     #:align
+     #:clear
+     #:clear-attributes
+     #:column
+     #:data
+     #:data-pointer
+     #:id
+     #:image
+     #:mask
+     #:state
+     #:state-mask
+     #:text
+     #:width
+     #:make-list-item
+;;accelerator symbols, constants
+     #:+accel-alt+
+     #:+accel-ctrl+
+     #:+accel-shift+
+     #:+accel-normal+
+     #:accelerator-entry
+     #:make-accelerator-entry
+     #:accelerator-table
+     #:make-accelerator-table
+     #:define-accelerator-table
+     #:delete-pointer
+;;colour data symbols and functions
+     #:colour-data
+     #:make-colour-data
+     #:choose-full
+     #:custom-colour
+;;font data symbols and functions
+     #:font-data
+     #:make-font-data
+     #:allow-symbols
+     #:show-help
+     #:enable-effects
+     #:initial-font
+     #:chosen-font
+     #:set-range
+     #:encoding
+;;text-attr data symbols and functions
+     #:text-attr
+     #:make-text-attr-empty
+     #:make-text-attr
+     #:delete-object
+     #:background-colour
+     #:font
+     #:text-colour
+     #:has-background-colour
+     #:has-font-p
+     #:has-text-colour-p
+     #:default-p
+     #:text-colour
+     #:background-colour
+     #:font
+     )
+;;wxcl-menus
+      (:export
+   ;;menu class, methods and functions
+   #:define-menu-bar
+   #:define-menu
+   #:menu
+   #:make-menu
+   #:make-menu-with-items ;;macro
+   #:delete-menu
+   #:append-separator
+   #:append-string
+   #:append-check-item
+   #:append-radio-item
+   #:append-sub-menu
+   #:append-menu-item
+   #:break
+   #:insert-string
+   #:insert-check-item
+   #:insert-radio-item
+   #:insert-sub-menu
+   #:insert-menu-item
+   #:prepend-string
+   #:prepend-check-item
+   #:prepend-radio-item
+   #:prepend-sub-menu
+   #:prepend-menu-item
+   #:remove
+   #:delete
+   #:destroy-item
+   #:menu-item-count
+   #:find-items-by-label
+   #:find-item
+   #:enable-menu
+   #:menu-enabled-p
+   #:label
+   #:help-string
+   #:title
+   #:update-ui
+   #:separator
+   #:radio-item
+   #:sub-menu
+   #:menu-item
+	   #:+menu-tearoff
+	   #:+item-separator
+	   #:+item-normal
+	   #:+item-check
+	   #:+item-radio
+	   #:+item-submenu
+      #:make-menu-bar
+)
+;;;wxcl-layout
+  (:export
+    #:box-sizer
+    #:sizer
+    #:box-sizer
+   )
+;;;functions, constant, symbols etc.  
+  (:export
+;  	#:CreateInWindow
+;  	#:CreateInSizer
+;  	#:GetSize
+;  	#:CalcMin
+;  	#:SetDimension
+;  	#:GetMinSize
+;  	#:SetRatio
+;  	#:SetFloatRatio
+;  	#:GetRatio
+;  	#:IsWindow
+;  	#:IsSizer
+;  	#:IsSpacer
+;  	#:SetInitSize
+;  	#:SetOption
+;  	#:SetFlag
+;  	#:SetBorder
+;  	#:GetWindow
+;  	#:SetWindow
+;  	#:GetSizer
+;  	#:SetSizer
+;  	#:GetOption
+;  	#:GetFlag
+;  	#:GetBorder
+;  	#:GetUserData
+;  	#:GetPosition
+ 	#:add
+ 	#:add-spacer
+ 	#:insert
+ 	#:insert-spacer
+ 	#:prepend
+ 	#:detach
+ 	#:min-size
+ 	#:item-min-size
+ 	#:size
+ 	#:position
+ 	#:min-size
+ 	#:recalc-sizes
+ 	#:calc-min
+ 	#:layout
+   #:dimension
+ 	#:fit
+  	#:size-hints
+   )
+  (:export
+   #:make-box-sizer
+   #:orientation
+   )
+;  	#:GetChildren
+;  	#:SetDimension
+;  	#:Create
+;  	#:RecalcSizes
+;  	#:CalcMin
+;  	#:SetCols
+;  	#:SetRows
+;  	#:SetVGap
+;  	#:SetHGap
+;  	#:GetCols
+;  	#:GetRows
+;  	#:GetVGap
+;  	#:GetHGap
+;  	#:Create
+;  	#:RecalcSizes
+;  	#:CalcMin
+;  	#:AddGrowableRow
+;  	#:RemoveGrowableRow
+;  	#:AddGrowableCol
+;  	#:RemoveGrowableCol
+;  	#:Create
+;  	#:RecalcSizes
+;  	#:CalcMin
+;  	#:GetOrientation
+;  	#:Create
+;  	#:RecalcSizes
+;  	#:CalcMin
+  (:export
+   #:make-static-box-sizer
+   #:static-box
+  )
+;;;wxcl-gdi
+    (:export
+   ;;common methods, functions
+   #:delete-object
+   #:ok-p
+   #:width
+   #:height
+   #:depth
+   #:assign
+   #:equal-p
+   #:colour
+   ;; colour
+;;colour methods, functions                
+   #:make-colour
+   #:delete-object
+   #:set-colour
+   #:ok-p
+   #:red
+   #:green
+   #:blue
+   #:pixel
+   #:copy
+   #:set-by-name
+   #:valid-name-p
+;;colour constants and symbols      
+   #:+null-colour+
+   #:+red+
+   #:+green+
+   #:+blue+
+   #:+white+
+   #:+black+
+   #:+cyan+
+   #:+light-grey+
+;;brush constants and symbols
+   #:brush
+   #:+null-brush+
+   #:+red-brush+
+   #:+green-brush+
+   #:+blue-brush+
+   #:+white-brush+
+   #:+black-brush+
+   #:+cyan-brush+
+   #:+light-grey-brush+
+   #:+medium-grey-brush+
+   #:+transparent-brush+
+;;brush methods, functions
+   #:make-brush
+   #:make-brush-from-bitmap
+   #:make-brush-from-colour
+   #:delete-object
+   #:set-colour-rgb
+   #:style
+   #:stipple
+   ;; font class and constants
+   ;;
+   #:font
+   #:+font-encoding-default+
+   #:+font-encoding-iso8859_1+
+   #:+font-encoding-iso8859_2+
+   #:+font-encoding-iso8859_3+
+   #:+font-encoding-iso8859_4+
+   #:+font-encoding-iso8859_5+
+   #:+font-encoding-iso8859_6+
+   #:+font-encoding-iso8859_7+
+   #:+font-encoding-iso8859_8+
+   #:+font-encoding-iso8859_9+
+   #:+font-encoding-iso8859_10+
+   #:+font-encoding-iso8859_11+
+   #:+font-encoding-iso8859_12+
+   #:+font-encoding-iso8859_13+
+   #:+font-encoding-iso8859_14+
+   #:+font-encoding-iso8859_15+
+   #:+font-encoding-iso8859_max+
+   #:+font-encoding-koi8+
+   #:+font-encoding-alternative+
+   #:+font-encoding-bulgarian+
+   #:+font-encoding-cp437+
+   #:+font-encoding-cp850+
+   #:+font-encoding-cp852+
+   #:+font-encoding-cp855+
+   #:+font-encoding-cp866+
+   #:+font-encoding-cp874+
+   #:+font-encoding-cp1250+
+   #:+font-encoding-cp1251+
+   #:+font-encoding-cp1252+
+   #:+font-encoding-cp1253+
+   #:+font-encoding-cp1254+
+   #:+font-encoding-cp1255+
+   #:+font-encoding-cp1256+
+   #:+font-encoding-cp1257+
+   #:+font-encoding-cp12_max+
+   #:+font-encoding-unicode+
+   #:+font-encoding-max+
+   #:+font-family-default+
+   #:+font-family-decorative+
+   #:+font-family-roman+
+   #:+font-family-script+
+   #:+font-family-swiss+
+   #:+font-family-modern+
+   #:+font-family-teletype+
+   #:+font-family-max+
+   #:+font-style-normal+
+   #:+font-style-slant+
+   #:+font-style-italic+
+   #:+font-style-max+
+   #:+font-weight-normal+
+   #:+font-weight-light+
+   #:+font-weight-bold+
+   ;; font methods, functions, and macros
+   ;;
+   #:default-encoding
+   #:encoding
+   #:face-name
+   #:font-family
+   #:make-default-font
+   #:make-font
+   #:point-size
+   #:set-range-style
+   #:underlined
+   #:weight
+   ;; bitmap constants
+   ;;
+   #:+null-bitmap+
+   #:+bitmap-type-invalid+
+   #:+bitmap-type-bmp+
+   #:+bitmap-type-bmp-resource+
+   #:+bitmap-type-resource+
+   #:+bitmap-type-ico+
+   #:+bitmap-type-ico-resource+
+   #:+bitmap-type-cur+
+   #:+bitmap-type-cur-resource+
+   #:+bitmap-type-xbm+
+   #:+bitmap-type-xbm-data+
+   #:+bitmap-type-xpm+
+   #:+bitmap-type-xpm-data+
+   #:+bitmap-type-tif+
+   #:+bitmap-type-tif-resource+
+   #:+bitmap-type-gif+
+   #:+bitmap-type-gif-resource+
+   #:+bitmap-type-png+
+   #:+bitmap-type-png-resource+
+   #:+bitmap-type-jpeg+
+   #:+bitmap-type-jpeg-resource+
+   #:+bitmap-type-pnm+
+   #:+bitmap-type-pnm-resource+
+   #:+bitmap-type-pcx+
+   #:+bitmap-type-pcx-resource+
+   #:+bitmap-type-pict+
+   #:+bitmap-type-pict-resource+
+   #:+bitmap-type-icon+
+   #:+bitmap-type-icon-resource+
+   #:+bitmap-type-maccursor+
+   #:+bitmap-type-maccursor-resource+
+   #:+bitmap-type-any+
+   ;; bitmap class
+   ;;
+   #:bitmap
+   #:static-bitmap
+   ;; bitmap methods, functions, and macros
+   ;;
+   #:make-bitmap
+   #:make-bitmap-from-xpm
+   #:make-bitmap-empty
+   #:make-bitmap-from-file
+   #:make-bitmap-default
+   #:sub-bitmap
+   #:load-from-file
+   #:wxBitmap_SaveFile
+   #:mask
+   #:add-handler
+   #:insert-handler
+   #:remove-handler
+   #:find-handler-by-name
+   #:find-handler-by-extension
+   #:find-handler-by-type
+   #:init-standard-handlers
+   #:clean-up-handlers
+   #:make-static-bitmap
+   ;;mask functions
+   #:make-mask
+   #:make-mask-coloured
+   ;;pen class, functions, constants, methods
+   #:pen
+   #:make-pen
+   #:make-pen-from-colour
+   #:make-pen-from-bitmap
+   #:set-colour-rgb
+   #:dashes
+   #:cap
+   #:join
+   #:getdashes
+   #:+red-pen+
+   #:+black-pen+
+   #:+black-dashed-pen+
+   #:+white-pen+
+   #:+red-pen+
+   #:+green-pen+
+   #:+cyan-pen+
+   #:+light-grey-pen+
+   #:+medium-grey-pen+
+   #:+transparent-pen+
+   #:+grey-pen+
+   ;;icon class, functions, constants, methods
+   #:make-icon
+   #:make-icon-raw
+   #:make-icon-from-xpm
+   #:make-icon-from-file
+   #:load-file-into-text-control
+   #:copy-from-bitmap
+    )
+;;;wxcl-events
+    (:export 
+;;event class functions, methods, etc.
+       #:event
+       #:make-event-create
+       #:skip
+       #:event-type
+       #:event-object
+       #:time-stamp
+       #:id
+       #:skipped-p
+       #:command-event-p
+       #:clone
+;     #:setcallbackuserdata
+;     #:getcallbackuserdata
+
+;;evt-handler class functions, methods, etc.
+       #:evt-handler
+       #:connect
+       #:disconnect
+       #:next-handler
+       #:previous-handler
+       #:next-handler
+       #:previous-handler
+       #:evt-handler-enabled
+       #:evt-handler-enabled-p
+       #:process-event
+       #:add-pending-event
+       #:process-pending-events
+;;different event constants           
+       #:mouse-event
+       #:+event-command-left-click+
+       #:+event-command-left-dclick+
+       #:+event-command-right-click+
+       #:+event-command-right-dclick+
+       #:+event-command-set-focus+
+       #:+event-command-kill-focus+
+       #:+event-command-enter+
+       #:+event-command-tree-begin-drag+
+       #:+event-command-tree-begin-rdrag+
+       #:+event-command-tree-begin-label-edit+
+       #:+event-command-tree-end-label-edit+
+       #:+event-command-tree-delete-item+
+       #:+event-command-tree-get-info+
+       #:+event-command-tree-set-info+
+       #:+event-command-tree-item-expanded+
+       #:+event-command-tree-item-expanding+
+       #:+event-command-tree-item-collapsed+
+       #:+event-command-tree-item-collapsing+
+       #:+event-command-tree-sel-changed+
+       #:+event-command-tree-sel-changing+
+       #:+event-command-tree-key-down+
+       #:+event-command-tree-item-activated+
+       #:+event-command-tree-item-right-click+
+       #:+event-command-tree-item-middle-click+
+       #:+event-command-tree-end-drag+
+       #:+event-command-list-begin-drag+
+       #:+event-command-list-begin-rdrag+
+       #:+event-command-list-begin-label-edit+
+       #:+event-command-list-end-label-edit+
+       #:+event-command-list-delete-item+
+       #:+event-command-list-delete-all-items+
+       #:+event-command-list-get-info+
+       #:+event-command-list-set-info+
+       #:+event-command-list-item-selected+
+       #:+event-command-list-item-deselected+
+       #:+event-command-list-key-down+
+       #:+event-command-list-insert-item+
+       #:+event-command-list-col-click+
+       #:+event-command-list-item-right-click+
+       #:+event-command-list-item-middle-click+
+       #:+event-command-list-item-activated+
+       #:+event-command-list-item-focused+
+       #:+event-command-tab-sel-changed+
+       #:+event-command-tab-sel-changing+
+       #:+event-command-notebook-page-changed+
+       #:+event-command-notebook-page-changing+
+       #:+event-command-splitter-sash-pos-changed+
+       #:+event-command-splitter-sash-pos-changing+
+       #:+event-command-splitter-doubleclicked+
+       #:+event-command-splitter-unsplit+
+       #:+event-wizard-page-changed+
+       #:+event-wizard-page-changing+
+       #:+event-wizard-cancel+
+       #:+event-calendar-sel-changed+
+       #:+event-calendar-day-changed+
+       #:+event-calendar-month-changed+
+       #:+event-calendar-year-changed+
+       #:+event-calendar-doubleclicked+
+       #:+event-calendar-weekday-clicked+
+       #:+event-user-first+
+       #:+event-help+
+       #:+event-detailed-help+
+       #:+event-grid-cell-left-click+
+       #:+event-grid-cell-right-click+
+       #:+event-grid-cell-left-dclick+
+       #:+event-grid-cell-right-dclick+
+       #:+event-grid-label-left-click+
+       #:+event-grid-label-right-click+
+       #:+event-grid-label-left-dclick+
+       #:+event-grid-label-right-dclick+
+       #:+event-grid-row-size+
+       #:+event-grid-col-size+
+       #:+event-grid-range-select+
+       #:+event-grid-cell-change+
+       #:+event-grid-select-cell+
+       #:+event-grid-editor-shown+
+       #:+event-grid-editor-hidden+
+       #:+event-grid-editor-created+
+       #:+event-command-button-clicked+
+       #:+event-command-checkbox-clicked+
+       #:+event-command-choice-selected+
+       #:+event-command-listbox-selected+
+       #:+event-command-listbox-doubleclicked+
+       #:+event-command-checklistbox-toggled+
+       #:+event-command-text-updated+
+       #:+event-command-text-enter+
+       #:+event-command-menu-selected+
+       #:+event-command-tool-clicked+
+       #:+event-command-slider-updated+
+       #:+event-command-radiobox-selected+
+       #:+event-command-radiobutton-selected+
+       #:+event-command-scrollbar-updated+
+       #:+event-command-vlbox-selected+
+       #:+event-command-combobox-selected+
+       #:+event-command-tool-rclicked+
+       #:+event-command-tool-enter+
+       #:+event-command-spinctrl-updated+
+       #:+event-socket+
+       #:+event-left-down+
+       #:+event-left-up+
+       #:+event-middle-down+
+       #:+event-middle-up+
+       #:+event-right-down+
+       #:+event-right-up+
+       #:+event-motion+
+       #:+event-enter-window+
+       #:+event-leave-window+
+       #:+event-left-dclick+
+       #:+event-middle-dclick+
+       #:+event-right-dclick+
+       #:+event-set-focus+
+       #:+event-kill-focus+
+       #:+event-nc-left-down+
+       #:+event-nc-left-up+
+       #:+event-nc-middle-down+
+       #:+event-nc-middle-up+
+       #:+event-nc-right-down+
+       #:+event-nc-right-up+
+       #:+event-nc-motion+
+       #:+event-nc-enter-window+
+       #:+event-nc-leave-window+
+       #:+event-nc-left-dclick+
+       #:+event-nc-middle-dclick+
+       #:+event-nc-right-dclick+
+       #:+event-char+
+       #:+event-char-hook+
+       #:+event-navigation-key+
+       #:+event-key-down+
+       #:+event-key-up+
+       #:+event-set-cursor+
+       #:+event-scroll-top+
+       #:+event-scroll-bottom+
+       #:+event-scroll-lineup+
+       #:+event-scroll-linedown+
+       #:+event-scroll-pageup+
+       #:+event-scroll-pagedown+
+       #:+event-scroll-thumbtrack+
+       #:+event-scroll-thumbrelease+
+       #:+event-scrollwin-top+
+       #:+event-scrollwin-bottom+
+       #:+event-scrollwin-lineup+
+       #:+event-scrollwin-linedown+
+       #:+event-scrollwin-pageup+
+       #:+event-scrollwin-pagedown+
+       #:+event-scrollwin-thumbtrack+
+       #:+event-scrollwin-thumbrelease+
+       #:+event-size+
+       #:+event-move+
+       #:+event-close-window+
+       #:+event-end-session+
+       #:+event-query-end-session+
+       #:+event-activate-app+
+       #:+event-power+
+       #:+event-activate+
+       #:+event-create+
+       #:+event-destroy+
+       #:+event-show+
+       #:+event-iconize+
+       #:+event-maximize+
+       #:+event-mouse-capture-changed+
+       #:+event-paint+
+       #:+event-erase-background+
+       #:+event-nc-paint+
+       #:+event-paint-icon+
+       #:+event-menu-highlight+
+       #:+event-context-menu+
+       #:+event-sys-colour-changed+
+       #:+event-setting-changed+
+       #:+event-query-new-palette+
+       #:+event-palette-changed+
+       #:+event-joy-button-down+
+       #:+event-joy-button-up+
+       #:+event-joy-move+
+       #:+event-joy-zmove+
+       #:+event-drop-files+
+       #:+event-draw-item+
+       #:+event-measure-item+
+       #:+event-compare-item+
+       #:+event-init-dialog+
+       #:+event-idle+
+       #:+event-update-ui+
+       #:+event-end-process+
+       #:+event-dialup-connected+
+       #:+event-dialup-disconnected+
+;    #:+event-dynamic-sash-split+
+; #:+event-dynamic-sash-unify+
+; #:+event-plot-sel-changing+
+; #:+event-plot-sel-changed+
+; #:+event-plot-clicked+
+; #:+event-plot-doubleclicked+
+; #:+event-plot-zoom-in+
+; #:+event-plot-zoom-out+
+; #:+event-plot-value-sel-creating+
+; #:+event-plot-value-sel-created+
+; #:+event-plot-value-sel-changing+
+; #:+event-plot-value-sel-changed+
+; #:+event-plot-area-sel-creating+
+; #:+event-plot-area-sel-created+
+; #:+event-plot-area-sel-changing+
+; #:+event-plot-area-sel-changed+
+; #:+event-plot-begin-x-label-edit+
+; #:+event-plot-end-x-label-edit+
+; #:+event-plot-begin-y-label-edit+
+; #:+event-plot-end-y-label-edit+
+; #:+event-plot-begin-title-edit+
+; #:+event-plot-end-title-edit+
+; #:+event-plot-area-create+
+       )
+;;;wxcl-dialogs
+      (:export #:dialog
+           #:file-dialog
+           #:colour-dialog)
+  ;;file-dialog class
+  (:export #:make-file-dialog
+           #:message
+           #:path
+           #:file-directory
+           #:filename
+           #:wildcard
+           #:style
+           #:filter-index
+           #:message
+           #:path
+           #:wildcard
+           #:style
+           #:filter-index
+           #:with-file-dialog
+           #:filename
+;;dialog class           
+           #:+dialog-modal+
+           #:+dialog-modeless+
+           #:+caption+
+           #:+resize-border+
+           #:+thick-frame+
+           #:+stay-on-top+
+           #:+default-dialog-style+
+           #:make-dialog
+           #:modal-p
+           #:show-modal
+           #:end-modal
+           #:return-code
+           #:return-code
+           #:with-dialog
+;;colour-dialog class           
+           #:make-colour-dialog
+           #:with-colour-dialog
+;;message-dialog
+           #:show-message-dialog
+           #:message-dialog
+           #:+yes-no+
+           #:+no-default+
+           #:+yes-default+
+           #:+icon-exclamation+
+           #:+icon-hand+
+           #:+icon-question+
+           #:+icon-information+
+;;find-replace-dialog
+           #:find-replace-dialog
+           #:make-find-replace-dialog
+           #:data
+;;progress-dialog
+           #:progress-dialog
+           #:update
+           #:resume
+           #:make-progress-dialog
+           )
+;;;wxcl-controls
+  (:export
+
+;; symbols common to multiple classes
+;;
+     #:+align-bottom+
+     #:+align-center-horizontal+
+     #:+align-center-vertical+
+     #:+align-centre-horizontal+
+     #:+align-centre-vertical+
+     #:+align-left+
+     #:+align-not+
+     #:+align-right+
+     #:+align-top+
+     #:find-string
+     #:range
+     #:set-selection
+     #:string-selection
+     #:value
+
+;; bitmap-button class
+;;
+     #:bitmap-button
+     #:+bu-autodraw+
+
+;; bitmap-button methods, functions, and macros
+;;
+     #:bitmap-disabled
+     #:bitmap-focus
+     #:bitmap-label
+     #:bitmap-selected
+     #:make-bitmap-button
+     #:margin-x
+     #:margin-y
+     #:set-margins
+
+;; button class and constants
+;;
+     #:button
+     #:+bu-exactfit+
+	   #:+bu-left+
+	   #:+bu-top+
+	   #:+bu-right+
+	   #:+bu-bottom+
+
+;; button methods, functions, and macros
+;;
+     #:background-colour
+     #:default-size
+     #:make-button
+     #:set-default
+
+;; check-box class and constants
+;;
+     #:check-box
+     #:+chk-2state+
+     #:+chk-3state+
+     #:+chk-allow-3rd-state-for-user+
+
+;; check-box methods, functions, and macros
+;;
+     ; #:3-state-value
+     ; #:3rd-state-allowed
+     ; #:is-3-state
+     #:make-check-box
+
+;; check-list-box class and constants
+;;
+     #:check-list-box
+
+;; check-list-box methods, functions, and macros
+;;
+     #:check-item
+     #:checked
+     #:make-check-list-box
+
+;; choice class and constants
+;;
+     #:choice
+
+;; choice methods, functions, and macros
+;;
+     #:columns
+     #:current-selection
+     #:make-choice
+
+;; combo-box class and constants
+;;
+     #:combo-box
+     #:+cb-simple+
+     #:+cb-sort+
+     #:+cb-readonly+
+     #:+cb-dropdown+
+
+;; combo-box methods, functions, and macros
+;;
+     #:copy
+     #:cut
+     #:insertion-point
+     #:last-position
+     #:make-combo-box
+     #:paste
+     #:remove
+     #:replace
+     #:set-insertion-point-end
+     #:text-selection
+     #:undo
+
+;; control class and constants
+;;
+     #:control
+
+;; control methods, functions, and macros
+;;
+     #:label
+
+;; control-with-item class and constants
+;;
+     #:control-with-items
+
+;; control-with-items methods, functions, and macros
+;;
+     #:append
+     #:append-data
+     #:clear
+     #:client-data
+     #:count
+     #:delete
+     #:insert
+     #:insert-data
+     #:string
+
+;; gauge class and constants
+;;
+     #:gauge
+     #:+ga-horizontal+
+     #:+ga-progressbar+
+     #:+ga-smooth+
+     #:+ga-vertical+
+
+;; gauge methods, functions, and macros
+;;
+     #:bezel-face
+     #:make-gauge
+     #:shadow-width
+
+;; list-box class and constants
+;;
+     #:list-box
+	   #:+lb-always-sb+
+	   #:+lb-extended+
+	   #:+lb-multiple+
+	   #:+lb-needed-sb+
+	   #:+lb-ownerdraw+
+	   #:+lb-single+
+     #:+lb-sort+
+
+;; list-box methods, functions, and macros
+;;
+     #:deselect
+     #:first-item
+     #:insert-items
+     #:make-list-box
+     #:selected-p
+     #:selections
+     #:set
+
+;; list-ctrl class and constants
+;;
+     #:list-ctrl
+	   #:+lc-icon+
+	   #:+lc-small-icon+
+	   #:+lc-vrules+
+	   #:+lc-hrules+
+	   #:+lc-list+
+	   #:+lc-report+
+	   #:+lc-align-top+
+	   #:+lc-align-left+
+	   #:+lc-autoarrange+
+	   #:+lc-user-text+ 
+	   #:+lc-edit-labels+
+	   #:+lc-no-header+ 
+	   #:+lc-no-sort-header+
+	   #:+lc-single-sel+
+	   #:+lc-sort-ascending+
+	   #:+lc-sort-descending+
+
+;; radio-box class and constants
+;;
+     #:radio-box
+     #:+ra-specify-cols+
+     #:+ra-specify-rows+
+     #:+ra-use-checkbox+
+
+;; radio-box methods, functions, and macros
+;;
+     #:count
+     #:enable-item
+     #:item-bitmap
+     #:item-label
+     #:make-radio-box
+     #:number-of-rows-or-cols
+     #:show-item
+
+;; radio-button class and constants
+;;
+     #:radio-button
+     #:+rb-group+
+     #:+rb-single+
+     #:+rb-use-checkbox+
+
+;; radio-button methods, functions, and macros
+;;
+     #:make-radio-button
+
+;; slider class and constants
+;;
+     #:slider
+     #:+sl-horizontal+
+     #:+sl-vertical+
+     #:+sl-ticks+
+     #:+sl-autoticks+
+     #:+sl-labels+
+     #:+sl-left+
+     #:+sl-top+
+     #:+sl-right+
+     #:+sl-bottom+
+     #:+sl-both+
+     #:+sl-selrange+
+     #:+sl-inverse+
+
+;; slider methods, functions, and macros
+;;
+     #:clear-sel
+     #:line-size
+     #:make-slider
+     #:max
+     #:min
+     #:page-size
+
+;; static-box class and constants
+;;
+     #:static-box
+
+;; static-box methods, functions, and macros
+;;
+     #:make-static-box
+
+;; static-text class and constants
+;;
+     #:static-text
+     #:+st-no-autoresize+
+
+;; static-text methods, functions, and macros
+;;
+     #:make-static-text
+
+;; toggle-button class and constants
+;;
+     #:toggle-button
+
+;; toggle-button methods, functions, and macros
+;;
+     #:enable
+     #:enable-window
+     #:make-toggle-button
+
+
+	   #:+list-format-left+ 
+	   #:+list-format-right+
+	   #:+list-format-centre+
+	   #:+list-format-center+
+	   #:+list-next-above+
+	   #:+list-next-all+
+	   #:+list-next-below+
+	   #:+list-next-left+
+	   #:+list-next-right+
+	   #:+cal-sunday-first+
+	   #:+cal-monday-first+
+	   #:+cal-show-holidays+
+	   #:+cal-no-year-change+
+	   #:+cal-no-month-change+
+	   #:+cal-hittest-nowhere+
+	   #:+cal-hittest-header+
+	   #:+cal-hittest-day+
+      
+;;notebook related constants, functions, etc.
+     #:+nb-fixedwidth+
+     #:+nb-left+
+     #:+nb-right+
+     #:+nb-bottom+
+     #:+nb-multiline+
+     #:+nb-top+
+     #:make-notebook
+     #:page-count
+     #:advance-selection
+     #:selection
+     #:page-text
+     #:image-list
+     #:page-image
+     #:row-count
+     #:page-size
+     #:padding
+     #:delete-page
+     #:remove-page
+     #:delete-all-pages
+     #:add-page
+     #:insert-page
+     #:get-page
+     #:assign-image-list
+     
+;;text-control related constants, functions, etc.
+     #:text-control
+     #:make-text-control
+	  #:value
+	  #:line-length
+	  #:line-text
+	  #:number-of-lines
+	  #:modified-p
+	  #:editable-p
+	  #:selection
+	  #:clear
+	  #:replace-text
+	  #:remove-text
+	  #:load-bitmap-from-file
+	  #:save-bitmap-to-file
+	  #:discard-edits
+	  #:write-text
+	  #:append-text
+	  #:xy-to-position
+	  #:position-to-xy
+	  #:show-position
+	  #:copy
+	  #:cut
+	  #:paste
+	  #:can-copy-p
+	  #:can-cut-p
+	  #:can-paste-p
+	  #:undo
+	  #:redo
+	  #:can-undo-p
+	  #:can-redo-p
+	  #:insertion-point
+	  #:set-insertion-point-end
+	  #:last-position
+	  #:set-selection
+	  #:editable
+;	  #:emulatekeypress
+	  #:default-style
+	  #:style
+	  #:range
+	  #:string-selection
+	  #:multiline-p
+	  #:singleline-p
+	  #:default-style
+	  #:max-length
+	  #:+te-readonly+
+	  #:+te-multiline+
+	  #:+te-process-tab+
+	  #:+te-rich+
+	  #:+te-rich2+
+	  #:+te-no-vscroll+
+	  #:+te-auto-scroll+
+	  #:+te-wordwrap+
+     )
+  )
 
 (in-package :wxCL)
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (defconstant +library-name+ "../lib/wxc-msw2.6.2.dll"))
 
-#+cffi (cffi:load-foreign-library +library-name+)
+(cffi:load-foreign-library +library-name+)
 
 (defconstant +id-open+ 5000)
 (defconstant +id-close+ 5001)

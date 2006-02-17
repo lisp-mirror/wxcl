@@ -150,11 +150,11 @@
 
 
 (defun get-colour-from-user (parent &optional (init-col nil))
-  (make-wx-instance 'wxcl-gdi:colour
+  (make-wx-instance 'colour
                     (wxcGetColourFromUser (object-pointer parent) (when init-col (object-pointer init-col)))))
 
 (defun get-font-from-user (parent &optional (init-font nil))
-  (make-wx-instance 'wxcl-gdi:font
+  (make-wx-instance 'font
                     (wxcGetFontFromUser (object-pointer parent) (when init-font (object-pointer init-font)))))
 
 (defun get-password-from-user (message &key (caption "Input Password")(default-value "")
