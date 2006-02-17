@@ -7,17 +7,9 @@
 #if !defined(__WXGTK__) || (wxVERSION_NUMBER > 2400)
 #  include "wx/quantize.h"
 #endif
-
 /*-----------------------------------------------------------------------------
     The global idle timer
 -----------------------------------------------------------------------------*/
-class wxIdleTimer : public wxTimer
-{
-public:
-  void Notify() {
-    wxWakeUpIdle();   /* send idle events */
-  }
-};
 
 wxIdleTimer* idleTimer = NULL;
 
@@ -35,11 +27,10 @@ void doneIdleTimer()
   }
 }
 
-
-
 /*-----------------------------------------------------------------------------
     The main application
 -----------------------------------------------------------------------------*/
+
 wxClosure* initClosure = NULL;
 int APPTerminating = 0;
 
@@ -104,16 +95,17 @@ void ELJApp::HandleEvent(wxEvent& _evt)
 /*-----------------------------------------------------------------------------
     Closures
 -----------------------------------------------------------------------------*/
-wxClosure::wxClosure( ClosureFun fun )
+wxClosure::wxClosure( ClosureFun fun, unsigned int wxcl_id)
 {
   m_refcount = 0;
   m_fun  = fun;
+  m_wxcl_id = wxcl_id;
 }
 
 wxClosure::~wxClosure()
 {
   /* call for the last time with a NULL event. Give opportunity to clean up resources */
-  if (m_fun) { m_fun(NULL); }
+  if (m_fun) { m_fun(NULL,m_wxcl_id); }
 }
 
 void wxClosure::IncRef()
@@ -131,7 +123,7 @@ void wxClosure::DecRef()
 
 void wxClosure::Invoke( wxEvent* event )
 {
-  if (event && m_fun) { m_fun(event); }
+  if (event && m_fun) { m_fun(event,m_wxcl_id); }
 };
 
 /*-----------------------------------------------------------------------------
@@ -158,22 +150,9 @@ wxClosure* wxCallback::GetClosure()
   return m_closure;
 }
 
-
-
 /*-----------------------------------------------------------------------------
     wrapper for objectRefData
 -----------------------------------------------------------------------------*/
-class wxcClosureRefData : public wxObjectRefData
-{
-  private:
-    wxClosure*  m_closure;
-  public:
-    wxcClosureRefData( wxClosure* closure );
-    ~wxcClosureRefData();
-
-    wxClosure* GetClosure();
-};
-
 wxcClosureRefData::wxcClosureRefData( wxClosure* closure )
 {
   m_closure = closure;
@@ -189,7 +168,6 @@ wxClosure* wxcClosureRefData::GetClosure()
 {
   return m_closure;
 }
-
 
 /*-----------------------------------------------------------------------------
     C interface to event handling and closures.
@@ -223,9 +201,9 @@ EWXWEXPORT(wxClosure*, wxEvtHandler_GetClosure)(wxEvtHandler* evtHandler, int id
 }
 
 /* closures */
-EWXWEXPORT(wxClosure*, wxClosure_Create)(ClosureFun fun)
+EWXWEXPORT(wxClosure*, wxClosure_Create)(ClosureFun fun, unsigned int wxcl_id)
 {
-  return new wxClosure(fun);
+  return new wxClosure(fun,wxcl_id);
 }
 
 /* client data */
@@ -663,20 +641,14 @@ EWXWEXPORT(void*, wxClassInfo_CreateClassByName) (void* _inf)
         return NULL;
 }
 
-EWXWEXPORT(void*, wxClassInfo_GetClassName) (void* _obj)
+EWXWEXPORT(wxString*, wxClassInfo_GetClassName) (wxClassInfo* _obj)
 {
-        wxClassInfo* inf = ((wxObject*)_obj)->GetClassInfo();
-        if (inf)
-                return (void*)inf->GetClassName();
-        return NULL;
+  return new wxString(_obj->GetClassName());
 }
 
-EWXWEXPORT(int, wxClassInfo_IsKindOf) (void* _obj, void* _name)
+EWXWEXPORT(int, wxClassInfo_IsKindOf) (wxClassInfo* _obj, wxClassInfo* inf)
 {
-        wxClassInfo* inf = wxClassInfo::FindClass ((char*)_name);
-        if (inf)
-                return (int)((wxObject*)_obj)->IsKindOf(inf);
-        return 0;
+  return (int)_obj->IsKindOf(inf);
 }
 
 EWXWEXPORT(int,wxEvent_NewEventType)()
