@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-dialogs)
+(in-package :wxcl)
 
 (defun make-find-replace-dialog (parent data &key (title "") (style 0))
   (make-wx-instance 'find-replace-dialog 

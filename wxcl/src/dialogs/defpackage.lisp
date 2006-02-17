@@ -7,72 +7,72 @@
 ;;; $Header$
 ;;;
 
-(defpackage :wxcl-dialogs
-    (:use #:cl #:wxcl #:clos #+(and (not cffi) clisp) :ffi #+cffi :cffi)
-  ;;classes 
-  (:export #:dialog
-           #:file-dialog
-           #:colour-dialog)
-  (:shadow #:directory)
-  ;;file-dialog class
-  (:export #:make-file-dialog
-           #:message
-           #:path
-           #:directory
-           #:filename
-           #:wildcard
-           #:style
-           #:filter-index
-           #:message
-           #:path
-           #:wildcard
-           #:style
-           #:filter-index
-           #:with-file-dialog
-           #:directory
-           #:filename
-;;dialog class           
-           #:+dialog-modal+
-           #:+dialog-modeless+
-           #:+caption+
-           #:+resize-border+
-           #:+thick-frame+
-           #:+stay-on-top+
-           #:+default-dialog-style+
-           #:make-dialog
-           #:modal-p
-           #:show-modal
-           #:end-modal
-           #:return-code
-           #:return-code
-           #:with-dialog
-;;colour-dialog class           
-           #:make-colour-dialog
-           #:with-colour-dialog
-;;message-dialog
-           #:show-message-dialog
-           #:message-dialog
-           #:+yes-no+
-           #:+no-default+
-           #:+yes-default+
-           #:+icon-exclamation+
-           #:+icon-hand+
-           #:+icon-question+
-           #:+icon-information+
-;;find-replace-dialog
-           #:find-replace-dialog
-           #:make-find-replace-dialog
-           #:data
-;;progress-dialog
-           #:progress-dialog
-           #:update
-           #:resume
-           #:make-progress-dialog
-           ))
+; (defpackage :wxcl-dialogs
+;     (:use #:cl #:wxcl #:clos #+(and (not cffi) clisp) :ffi #+cffi :cffi)
+;   ;;classes 
+;   (:export #:dialog
+;            #:file-dialog
+;            #:colour-dialog)
+;   (:shadow #:directory)
+;   ;;file-dialog class
+;   (:export #:make-file-dialog
+;            #:message
+;            #:path
+;            #:directory
+;            #:filename
+;            #:wildcard
+;            #:style
+;            #:filter-index
+;            #:message
+;            #:path
+;            #:wildcard
+;            #:style
+;            #:filter-index
+;            #:with-file-dialog
+;            #:directory
+;            #:filename
+; ;;dialog class           
+;            #:+dialog-modal+
+;            #:+dialog-modeless+
+;            #:+caption+
+;            #:+resize-border+
+;            #:+thick-frame+
+;            #:+stay-on-top+
+;            #:+default-dialog-style+
+;            #:make-dialog
+;            #:modal-p
+;            #:show-modal
+;            #:end-modal
+;            #:return-code
+;            #:return-code
+;            #:with-dialog
+; ;;colour-dialog class           
+;            #:make-colour-dialog
+;            #:with-colour-dialog
+; ;;message-dialog
+;            #:show-message-dialog
+;            #:message-dialog
+;            #:+yes-no+
+;            #:+no-default+
+;            #:+yes-default+
+;            #:+icon-exclamation+
+;            #:+icon-hand+
+;            #:+icon-question+
+;            #:+icon-information+
+; ;;find-replace-dialog
+;            #:find-replace-dialog
+;            #:make-find-replace-dialog
+;            #:data
+; ;;progress-dialog
+;            #:progress-dialog
+;            #:update
+;            #:resume
+;            #:make-progress-dialog
+;            ))
 
-(in-package :wxcl-dialogs)
+(in-package :wxcl)
 
-(defclass dialog (wxcl-windows:window)
+(defclass dialog (window)
   ()
   (:documentation "A dialog box is a window with a title bar and sometimes a system menu,\
  which can be moved around the screen. It can contain controls and other windows and is\

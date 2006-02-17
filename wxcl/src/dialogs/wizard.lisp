@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-dialogs)
+(in-package :wxcl)
 
 (defun make-wizard (parent &key (id -1) (title "") (bmp nil) (position +default-position+) (size +default-size+))
   (make-wx-instance 'wizard (wxWizard_Create (object-pointer parent) id title
@@ -44,7 +44,7 @@
                     (wxWizardPageSimple_GetNext (object-pointer obj))))
 
 (defmethod bitmap ((obj wizard-page-simple))
-  (make-wx-instance 'wxcl-gdi:bitmap
+  (make-wx-instance 'bitmap
                     (wxWizardPageSimple_GetBitmap (object-pointer obj))))
 
 (defmethod (setf prev) ((page wizard-page-simple) (obj wizard-page-simple))

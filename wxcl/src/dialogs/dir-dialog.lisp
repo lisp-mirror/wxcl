@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-dialogs)
+(in-package :wxcl)
 
 (defun make-dir-dialog (parent &key (message "") (dir "") (position +default-position+) (style 0))
   (make-wx-instance 'dir-dialog
@@ -39,7 +39,7 @@
 	 (progn
 	   (setf ,dialog (wxDirDialog_Create ,parent ,message ,dir (point-x ,pos) (point-y ,pos) ,style))
 	   ,@body)
-      (wxcl-windows::wxWindow_destroy ,dialog))))
+      (wxWindow_destroy ,dialog))))
 
 (defun wxcl-get-dir (parent &key (message "Choose a directory") (dir "") (pos +default-position+) (style 0))
   (with-dir-dialog (dialog parent :message message :dir dir :pos pos :style style)

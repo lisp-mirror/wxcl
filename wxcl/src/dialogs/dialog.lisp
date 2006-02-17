@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-dialogs)
+(in-package :wxcl)
 
 (defconstant +dialog-modal+ 32)
 (defconstant +dialog-modeless+ 0)

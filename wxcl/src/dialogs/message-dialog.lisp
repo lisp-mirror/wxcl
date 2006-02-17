@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-dialogs)
+(in-package :wxcl)
 
 (defconstant +yes-no+ 10)
 (defconstant +no-default+ 128)

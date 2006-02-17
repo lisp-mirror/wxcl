@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-dialogs)
+(in-package :wxcl)
 
 (defun make-file-dialog (parent &key (message "") (dir "") (filename "")
 				(wildcard "*.*") (position +default-position+) (style 0))
@@ -20,7 +20,7 @@
 (defmethod (setf path) (str (obj file-dialog))
   (wxFileDialog_SetPath (object-pointer obj) str))
 
-(defmethod (setf directory) (str (obj file-dialog))
+(defmethod (setf file-directory) (str (obj file-dialog))
   (wxFileDialog_SetDirectory (object-pointer obj) str))
 
 (defmethod (setf filename) (str (obj file-dialog))
@@ -61,7 +61,7 @@
       
 ;;      (OFFSET path 0 `(c-array character ,max_length)))))
 
-(defmethod directory ((obj file-dialog))
+(defmethod file-directory ((obj file-dialog))
   (wxFileDialog_GetDirectory (object-pointer obj)))
 
 (defmethod filename ((obj file-dialog))
@@ -105,7 +105,7 @@
            (setf ,dialog (make-file-dialog ,parent :message ,message :dir ,dir :file ,file
                                            :wildcard ,wildcard :position ,position :style ,style))
            ,@body)
-      (wxcl-windows:destroy ,dialog))))
+      (destroy ,dialog))))
 
 
 

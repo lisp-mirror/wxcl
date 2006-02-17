@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-dialogs)
+(in-package :wxcl)
 
 (defun make-progress-dialog (title message &key (max 100) (parent nil) (style 0))
   (make-wx-instance 'progress-dialog
