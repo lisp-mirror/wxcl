@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +rb-group+        #x0004)
 (defconstant +rb-single+       #x0008)

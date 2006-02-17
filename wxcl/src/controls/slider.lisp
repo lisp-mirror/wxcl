@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 ;;fix me don't know if it is stll supported by wxWidgets
 (defconstant wxSL_NOTIFY_DRAG 0) ;;added by SKS from wxC not exported yet

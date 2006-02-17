@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defun make-static-box (parent text &key (id -1) (pos +default-position+) (size +default-size+) (style 0))
     "Create a static box control."

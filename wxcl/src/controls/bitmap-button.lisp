@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +bu-autodraw+ #x0004)
 
@@ -21,7 +21,7 @@
 
 (defmethod bitmap-disabled ((obj bitmap-button))
     "Returns the bitmap for the disabled state."
-    (make-wx-instance 'wxcl-gdi:bitmap (wxBitmapButton_GetBitmapDisabled (object-pointer obj))))
+    (make-wx-instance 'bitmap (wxBitmapButton_GetBitmapDisabled (object-pointer obj))))
 
 (defmethod (setf bitmap-disabled) (bmp (obj bitmap-button))
     "Sets the bitmap for the disabled button appearance."
@@ -29,7 +29,7 @@
 
 (defmethod bitmap-focus ((obj bitmap-button))
     "Returns the bitmap for the focused state."
-     (make-wx-instance 'wxcl-gdi:bitmap (wxBitmapButton_GetBitmapFocus (object-pointer obj))))
+     (make-wx-instance 'bitmap (wxBitmapButton_GetBitmapFocus (object-pointer obj))))
 
 (defmethod (setf bitmap-focus) (bmp (obj bitmap-button))
     "Sets the bitmap for the button when it has the keyboard focus."
@@ -37,7 +37,7 @@
 
 (defmethod bitmap-label ((obj bitmap-button))
     "Returns the label bitmap (the one passed to the constructor)."
-    (make-wx-instance 'wxcl-gdi:bitmap (wxBitmapButton_GetBitmapLabel (object-pointer obj))))
+    (make-wx-instance 'bitmap (wxBitmapButton_GetBitmapLabel (object-pointer obj))))
 
 (defmethod (setf bitmap-label) (bmp (obj bitmap-button))
     "Sets the bitmap used for the unselected state and for all other states \
@@ -46,7 +46,7 @@ if no other bitmaps are provided."
 
 (defmethod bitmap-selected ((obj bitmap-button))
     "Returns the bitmap for the selected state."
-    (make-wx-instance 'wxcl-gdi:bitmap (wxBitmapButton_GetBitmapSelected (object-pointer obj))))
+    (make-wx-instance 'bitmap (wxBitmapButton_GetBitmapSelected (object-pointer obj))))
 
 (defmethod (setf bitmap-selected) (bmp (obj bitmap-button))
     "Sets the bitmap for the selected button appearance."

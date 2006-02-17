@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +ga-progressbar+ #x0000)
 (defconstant +ga-horizontal+  #x0004)

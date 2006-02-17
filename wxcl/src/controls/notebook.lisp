@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +nb-fixedwidth+ 16)
 (defconstant +nb-left+ 32)

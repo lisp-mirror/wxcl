@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +bu-exactfit+ #x0001)
 (defconstant +bu-left+     #x0040)
@@ -22,7 +22,7 @@
 				       id label (point-x pos) (point-y pos) (size-width size)
 				       (size-height size) style)))
 
-(defmethod (setf background-colour) ((c wxcl-gdi:colour) (obj button))
+(defmethod (setf background-colour) ((c colour) (obj button))
     "FIXME: undocumented method"
     (wxButton_SetBackgroundColour (object-pointer obj) (object-pointer c)))
 

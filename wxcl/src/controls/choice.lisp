@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defun make-choice (parent choices &key (id -1) (pos +default-position+)
                     (size +default-size+) (style 0))

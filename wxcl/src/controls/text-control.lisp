@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +te-readonly+ 16)
 (defconstant +te-multiline+ 32)
@@ -56,7 +56,7 @@
 (defmethod remove-text ((obj text-control) from to)
   (wxTextCtrl_Remove (object-pointer obj) from to))
 
-(defmethod load-file ((obj text-control) filename)
+(defmethod load-file-into-text-control ((obj text-control) filename)
   (= 1 (wxTextCtrl_LoadFile (object-pointer obj) filename)))
 
 (defmethod save-file ((obj text-control) filename)
@@ -136,7 +136,7 @@
 ;   (:library +library-name+))
 
 (defmethod default-style ((obj text-control))
-  (make-wx-instance 'wxcl-structures:text-attr (wxTextCtrl_GetDefaultStyle (object-pointer obj))))
+  (make-wx-instance 'text-attr (wxTextCtrl_GetDefaultStyle (object-pointer obj))))
 
 (defmethod get-style ((obj text-control) pos style)
   (= 1 (wxTextCtrl_GetStyle (object-pointer obj) pos (object-pointer style))))
@@ -159,5 +159,5 @@
 (defmethod (setf max-length) (len (obj text-control))
   (wxTextCtrl_SetMaxLength (object-pointer obj) len))
 
-(defmethod (setf style) (style (obj text-control) start end)
+(defmethod set-range-style ((obj text-control) start end style)
   (= 1 (wxTextCtrl_SetStyle (object-pointer obj) start end (object-pointer style))))

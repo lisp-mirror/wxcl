@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +lb-sort+       #x0010)
 (defconstant +lb-single+     #x0020)

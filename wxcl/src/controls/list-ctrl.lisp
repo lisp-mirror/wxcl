@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +lc-vrules+          #x0001)
 (defconstant +lc-hrules+          #x0002)

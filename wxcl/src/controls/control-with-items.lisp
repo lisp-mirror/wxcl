@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defmethod clear ((obj control-with-items))
     (wxControlWithItems_Clear (object-pointer obj)))

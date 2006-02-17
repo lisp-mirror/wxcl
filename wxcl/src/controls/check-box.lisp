@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +chk-2state                    #x0000)
 (defconstant +chk-3state                    #x1000)

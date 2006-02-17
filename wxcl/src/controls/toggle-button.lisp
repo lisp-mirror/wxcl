@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defun make-toggle-button (parent &key (id -1) (label "") (pos +default-position+) (size +default-size+) (style 0))
     "Create a toggle button control."

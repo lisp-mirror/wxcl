@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defconstant +ra-specify-rows+ #x0004) ; #define'd to wxHORIZONTAL in defs.h
 (defconstant +ra-specify-cols+ #x0008) ; #define'd to wxVERTICAL in defs.h
@@ -42,7 +42,7 @@
     (wxRadioBox_Show (object-pointer obj) (if show 1 0)))
 |#
 
-(defmethod enable-item ((obj radio-box) index &key (enable t))
+(defmethod enable-item ((obj radio-box) index (enable t))
     "Enables or disables the button at the specified index."
     (wxRadioBox_EnableItem (object-pointer obj) index (if enable 1 0)))
 

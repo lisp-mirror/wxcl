@@ -7,7 +7,7 @@
 ;;; $Header$
 ;;;
 
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defmethod (setf label) (str (obj control))
   (wxControl_SetLabel (object-pointer obj) str))

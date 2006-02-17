@@ -6,7 +6,7 @@
 ;;;
 ;;; $Header$
 ;;;
-(in-package :wxcl-controls)
+(in-package :wxcl)
 
 (defun make-calendar-control (parent &key (id -1) (size +default-size+) date
                                      (position +default-position+) (style -1))
