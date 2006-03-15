@@ -22,8 +22,7 @@ DIRS	= src
 
 CORE	= apppath db eljevent eljmime ewxw_main extra glcanvas image managed previewframe printout textstream treectrl wave wrapper
 
-EWXW	= eljaccelerator eljartprov eljbitmap eljbrush eljbusyinfo eljbutton eljcalendarctrl eljcaret eljcheckbox eljchecklistbox eljchoice eljclipboard eljcoldata eljcolour eljcolourdlg eljcombobox eljcommand eljconfigbase eljcontrol eljctxhelp eljcursor eljdataformat eljdatetime eljdc eljdialog eljdirdlg eljdnd eljdrawing eljfiledialog eljfilehist eljfindrepldlg eljfont eljfontdata eljfontdlg eljframe eljgauge eljgrid eljhelpcontroller eljicnbndl eljdialup eljicon eljimage eljimagelist eljipc eljjoystick eljlayoutconstraints eljlistbox eljlistctrl eljlocale eljlog eljmask eljmdi eljmenu eljmenubar eljmessagedialog eljminiframe eljnotebook eljpalette eljpanel eljpen eljprintdlg eljprinting eljprocess eljradiobox eljradiobutton eljregion eljregioniter eljsash  eljscrollbar eljscrolledwindow eljsingleinst eljsizer eljspinctrl eljsplitterwindow eljstaticbox eljstaticline eljstatictext eljstatusbar eljsystemsettings eljtextctrl eljtglbtn eljthread eljtimer eljtipwnd eljtoolbar eljvalidator eljwindow eljwizard eljscintilla
-
+EWXW	= eljaccelerator eljartprov eljbitmap eljbrush eljbusyinfo eljbutton eljcalendarctrl eljcaret eljcheckbox eljchecklistbox eljchoice eljclipboard eljcoldata eljcolour eljcolourdlg eljcombobox eljcommand eljconfigbase eljcontrol eljctxhelp eljcursor eljdataformat eljdatetime eljdc eljdialog eljdirdlg eljdnd eljdrawing eljfiledialog eljfilehist eljfindrepldlg eljfont eljfontdata eljfontdlg eljframe eljgauge eljgrid eljhelpcontroller eljicnbndl eljdialup eljicon eljimage eljimagelist eljipc eljjoystick eljlayoutconstraints eljlistbox eljlistctrl eljlocale eljlog eljmask eljmdi eljmenu eljmenubar eljmessagedialog eljminiframe eljnotebook eljpalette eljpanel eljpen eljprintdlg eljprinting eljprocess eljradiobox eljradiobutton eljregion eljregioniter eljsash  eljscrollbar eljscrolledwindow eljsingleinst eljsizer eljspinctrl eljsplitterwindow eljstaticbox eljstaticline eljstatictext eljstatusbar eljsystemsettings eljtextctrl eljtglbtn eljthread eljtimer eljtipwnd eljtoolbar eljvalidator eljwindow eljwizard eljscintilla eljlistitem eljslider eljmenuitem
 
 BSOURCES= configure config.search Makefile wxc.dsp wxc.dsw
 
@@ -54,6 +53,7 @@ VPATH	= $(DIRS)
 
 CPPCORE = $(patsubst %,%.cpp,$(CORE))
 CPPEWXW = $(patsubst %,src/ewxw/%.cpp,$(EWXW))
+
 
 SRCSRAW	= $(CPPCORE) $(CPPEWXW)
 
@@ -124,5 +124,4 @@ $(ROBJS): $(RDIR)/%.o: %.cpp
 
 clean:
 	@# clean up RDIR
-	@$(RM) -f $(RDIR)/[a-z]/*
-	@$(RM) -f $(BUILDDIR)/*.*
+   $(RM) $(RDIR)/$(ROBJS)
