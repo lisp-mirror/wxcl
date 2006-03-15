@@ -14,7 +14,8 @@ configure_options=$*
 enablestrip="no"
 strip="strip"
 toolkit=""
-wxconfig="wx-config"
+wxconfig=""
+gtkconfig="pkg-config gtk+-2.0"
 
 # dll extension and lib prefix
 dll=".so"
@@ -35,24 +36,6 @@ fi
 execprefix=""
 libdir=""
 incdir=""
-
-# improve the guess if wx-config is present.
-if sh ./config.search "$wxconfig"; then
-  # improve prefix guess
-  prefix="`$wxconfig --prefix`"
-
-  # flaky way to guess library extensions
-  toolkit="`$wxconfig --cxxflags | sed -e 's|.*-D__WX\([A-Z]*\)__.*|\1|'`"
-
-  if test "$toolkit" = "MSW"; then
-    dll=".dll"
-    lib=""
-  else if test "$toolkit" = "MAC"; then
-    dll=".dylib"
-    lib="lib"
-  fi 
-  fi
-fi
 
 # Parse command-line arguments
 arg=""
@@ -103,6 +86,8 @@ while : ; do
 	enablestrip="yes";;
     --disable-strip)
 	enablestrip="no";;
+     --wx-config=*)
+   wxconfig="$arg";;
     -toolkit=*|--toolkit=*)
         toolkit="$arg";;
     *) echo "error: Unknown option \"$1\". Use \"--help\" to show valid options." 1>&2
@@ -113,6 +98,41 @@ while : ; do
   # process next argument
   shift
 done
+
+if test -z "$wxconfig"; then
+  wxconfig="wx-config"
+fi
+
+# find wx-config directory
+if sh ./config.search "$wxconfig"; then
+  echo "wx-config found"
+else
+  echo "error:"
+  echo " Unable to find the 'wx-config' program: $wxconfig"
+  echo " This utility is installed by wxWindows on 'make install'."
+  echo " Either add the '/usr/local/bin' directory to your path or"
+  echo " build wxWindows with 'make install'."
+  echo ""
+  exit 2
+fi
+
+if test -z "$prefix"; then
+  prefix="`$wxconfig --prefix`"
+fi
+
+# flaky way to guess library extensions
+if test -z "$toolkit"; then
+  toolkit="`$wxconfig --cxxflags | sed -e 's|.*-D__WX\([A-Z]*\)__.*|\1|'`"
+fi
+
+if test "$toolkit" = "MSW"; then
+  dll=".dll"
+  lib=""
+else if test "$toolkit" = "MAC"; then
+  dll=".dylib"
+  lib="lib"
+fi 
+fi
 
 # complete arguments
 if test -z "$execprefix"; then
@@ -141,26 +161,22 @@ else
   cygpathfound="no"
 fi
 
-# find wx-config directory
-if sh ./config.search "$wxconfig"; then
-  echo "wx-config found"
-else
-  echo "error:"
-  echo " Unable to find the 'wx-config' program: $wxconfig"
-  echo " This utility is installed by wxWindows on 'make install'."
-  echo " Either add the '/usr/local/bin' directory to your path or"
-  echo " build wxWindows with 'make install'."
-  echo ""
-  exit 2
-fi
-
 # initialize options
 cxx="`$wxconfig --cxx`"
 cxxflags="`$wxconfig --cxxflags`"
-libs="`$wxconfig --libs`"
+libs="`$wxconfig --libs std,gl`"
 wxprefix="`$wxconfig --prefix`"
 wxexecprefix="`$wxconfig --exec-prefix`"
+wxversion="`$wxconfig --version`"
+wxmajor="`$wxconfig --release | cut -f1 -d.`"
+wxminor="`$wxconfig --release | cut -f2 -d.`"
 
+if test $wxmajor -lt 2 -o \( $wxmajor -eq 2 -a $wxminor -lt 6 \); then
+    echo "error:"
+    echo " found wxWindows release `$wxconfig --release`"
+    echo " At least 2.6.2 needed."
+    exit 2
+fi
 
 # extract the wxWindows toolkit: MSW, MAC, GTK etc.
 if test -z "$toolkit"; then
@@ -170,6 +186,11 @@ fi
 # windows: we append $prefix/include to the include directories
 if test "$toolkit" = "MSW"; then
   cxxflags="-I$prefix/include $cxxflags"
+# gtk: add GTK includes for scintilla support.
+else if test "$toolkit" = "GTK"; then
+  cxxflags="`pkg-config gtk+-2.0 --cflags` $cxxflags"
+  libs="$libs `pkg-config GtkScintilla-2.0 --libs`"
+fi
 fi
 
 # windows: we normalize $prefix and $exec-prefix include directories and libraries
@@ -201,6 +222,10 @@ echo " - dist"
 mkdir -p dist
 echo " - build/debug build/release"
 mkdir -p build build/release build/debug
+echo " - build/release/src"
+mkdir -p build/release/src
+echo " - build/release/src/ewxw"
+mkdir -p build/release/src/ewxw
 
 # Finish generated files
 if sh ./config.search "date"; then
@@ -238,6 +263,6 @@ GZIP=gzip
 EOF
 
 echo "done:"
-echo " - type 'make' to build the library."
+echo " - type 'make' to build the library, or 'make -f Makefile.g++' under linux"
 echo " - type 'make install' to install the 'wxc' library."
 echo ""
