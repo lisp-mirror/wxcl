@@ -1,5 +1,6 @@
 #include "wrapper.h"
 #include "wx/cmdproc.h"
+#include "eljcommand.h"
 
 extern "C"
 {
