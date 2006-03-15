@@ -124,4 +124,4 @@ $(ROBJS): $(RDIR)/%.o: %.cpp
 
 clean:
 	@# clean up RDIR
-   $(RM) $(RDIR)/$(ROBJS)
+	$(RM) $(RDIR)/$(ROBJS)
