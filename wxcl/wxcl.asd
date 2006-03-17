@@ -188,8 +188,7 @@
               :depends-on ("wxcl" "defpackage" "cffi")
               :components ((:file "menu" :depends-on ("menu-item"))
                            (:file "menu-item")   
-                           (:file "menu-bar")
-                           (:file "menu-macros"))) 
+                           (:file "menu-bar"))) 
      (:module "misc"
               :depends-on ("wxcl" "defpackage" "cffi")
               :components ())
