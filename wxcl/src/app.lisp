@@ -37,11 +37,11 @@
          (setf *app-start-func* init-func
                *events-table* nil
                *events-counter* 0)
-         (ELJApp_InitializeC (wxClosure_Create (cffi:callback initialize-wxcl) (cffi:null-pointer))
+         (ELJApp_InitializeC (wxClosure_Create (cffi:callback initialize-wxcl) *events-counter*)
                              0 (cffi:null-pointer)))
     (cffi::close-foreign-library +library-name+)))
 
-(cffi:defcallback initialize-wxcl :void ((evt :pointer) (data :pointer))
+(cffi:defcallback initialize-wxcl :void ((evt :pointer) (wxcl-event-id :unsigned-int))
 ;                  (initialize-objects *function-list*)
                   (when *app-start-func*
                     (funcall *app-start-func* evt)))
