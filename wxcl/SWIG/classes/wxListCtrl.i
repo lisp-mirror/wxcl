@@ -26,7 +26,7 @@
 
 %}
 
-//%ignore ListCmp (long, long, long); 
+%ignore ListCmp (long, long, long); 
 
 %include "src/ewxw/eljlistctrl.cpp"
 
