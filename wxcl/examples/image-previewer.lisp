@@ -4,95 +4,91 @@
 ;;;Copyright (C) 2005 Surendra Singhi 
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
-;;; $Header$
+;;; $Header: /cvsroot/wxcl/wxcl/examples/image-previewer.lisp,v 1.7 2005/12/12 07:22:00 efuzzyone Exp $
 ;;;
 
 (asdf:operate 'asdf:load-op 'wxcl)
 
-(use-package :wxcl)
-(use-package :wxcl-events)
-(use-package :wxcl-windows)
-(use-package :wxcl-menus)
+(defpackage #:image-viewer
+    (:use #:wxcl #:cl))
+
+(in-package #:image-viewer)
+
+
+(defvar *frame* nil)
 
 (defun create-menu () 
-  (let((file-menu (wxcl-menus:make-menu-with-items
-                   (string +id-open+ "&Open      Ctrl+O" :help-String "Open an image")
-                   (string +id-close+ "&Close      Ctrl+C" :help-string "Close an image")
-                   (separator)
-                   (string +id-exit+ "&Quit        Alt+F4" :help-string "Quit the image viewer.")))
-       (help-menu (wxcl-menus:make-menu-with-items
-                   (string +id-about+ "&About     Ctrl+A" :help-string "About Image Viewer"))))
-    (wxcl-menus:make-menu-bar (list file-menu help-menu) (list "&File" "&Help"))))
+  (let((file-menu (make-menu-with-items (string +id-open+ "&Open      Ctrl+O" :help-String "Open an image")
+                                        (string +id-close+ "&Close      Ctrl+C" :help-string "Close an image")
+                                        (separator)
+                                        (string +id-exit+ "&Quit        Alt+F4" :help-string "Quit the image viewer.")))
+       (help-menu (make-menu-with-items (string +id-about+ "&About     Ctrl+A" :help-string "About Image Viewer"))))
+    (make-menu-bar (list file-menu help-menu) (list "&File" "&Help"))))
 
 (defun create-accelerator-table ()
-  (wxcl-structures:make-accelerator-table (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
-                                                                                  (char-int #\O) +id-open+)
-                                          (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
-                                                                                  (char-int #\C) +id-close+)
-                                          (wxcl-structures:make-accelerator-entry wxcl-structures:+accel-ctrl+
-                                                                                  (char-int #\A) +id-about+)))
+  (make-accelerator-table (make-accelerator-entry +accel-ctrl+ (char-int #\O) +id-open+)
+                          (make-accelerator-entry +accel-ctrl+ (char-int #\C) +id-close+)
+                          (make-accelerator-entry +accel-ctrl+ (char-int #\A) +id-about+)))
 
-(defun add-status-bar(frame)
-  (let ((st (wxcl-windows:create-status-bar frame 2 0)))
-    (setf (wxcl-windows:fields-count st) 3)))
+(defun add-status-bar()
+  (let ((st (create-status-bar *frame* 2 0)))
+    (setf (fields-count st) 3)))
 
-(defun add-tool-bar(frame)
-  (let ((tb (wxcl-windows:create-tool-bar frame
-                                          (boole boole-ior wxcl-windows:+tb-3d-buttons+
-                                                 wxcl-windows:+tb-horizontal+)))
-        (open-ico (wxcl-gdi:make-bitmap-from-file "f_open.ico" wxcl-gdi:+bitmap-type-ico+))
-        (close-ico (wxcl-gdi:make-bitmap-from-file "f_closed.ico" wxcl-gdi:+bitmap-type-ico+)))
-    (wxcl-windows:add-tool tb +id-open+ open-ico :short-help "Open file" :long-help "Opens Image files.")
-    (wxcl-windows:add-tool tb +id-close+ close-ico :short-help "Close file" :long-help "Closes Image files.")
-    (wxcl-windows:realize tb)))
+(defun add-tool-bar()
+  (let ((tb (create-tool-bar *frame* (boole boole-ior +tb-3d-buttons+ +tb-horizontal+)))
+        (open-ico (make-bitmap-from-file "f_open.ico" +bitmap-type-ico+))
+        (close-ico (make-bitmap-from-file "f_closed.ico" +bitmap-type-ico+)))
+    (add-tool tb +id-open+ open-ico :short-help "Open file" :long-help "Opens Image files.")
+    (add-tool tb +id-close+ close-ico :short-help "Close file" :long-help "Closes Image files.")
+    (realize tb)))
 
-;(defvar frame nil)
 
-(defun open-image (frame evt)
+
+(cffi:defcallback open-image :void ((evt :pointer))
   (when evt
     (let ((filename (file-selector "open file"
                                    :style (boole boole-ior +open+ +file-must-exist+)
                                    :wildcard
                                    "Image files(*.bmp;*.gif;*.png;*.jpeg;*.jpg)|*.bmp;*.gif;*.png;*.jpeg;*.jpg")))
       (unless (string= "" filename)
-        (let* ((bmp (wxcl-gdi:make-bitmap-from-file filename wxcl-gdi:+bitmap-type-any+))
-               (fr (make-frame frame -1 filename))
+        (let* ((bmp (make-bitmap-from-file filename +bitmap-type-any+))
+               (fr (make-frame *frame* -1 filename))
                (sw (make-scrolled-window fr))
-               (bmp-static (wxcl-gdi:make-static-bitmap sw -1 bmp)))
-          (setf (icon fr) (wxcl-gdi:make-icon-from-file "wxcl-logo.ico" wxcl-gdi:+bitmap-type-ico+))
+               (bmp-static (make-static-bitmap sw -1 bmp)))
+          (setf (icon fr) (make-icon-from-file "wxcl-logo.ico" +bitmap-type-ico+))
           (set-scroll-bars sw 20 20 50 50)
           (show fr))))))
 
-(defun close-image (data evt)
+(cffi:defcallback close-image :void ((evt :pointer))
   (when evt
     (print "close image, but which one?")))
 
-(defun about-box (evt)
+(cffi:defcallback about-box :void ((evt :pointer))
   (when evt
     (message-box "Image viewer demonstrates some of the features of wxCL.\
 This program is in public domain."
                  :caption "Image Viewer - wxCL")))
 
-(defun quit-viewer (frame evt)
+(cffi:defcallback quit-viewer :void ((evt :pointer))
   (when evt
-    (wxcl-windows:close-window frame t)))
+    (close-window *frame* t)))
 
 
-(defun register-events (frame)
-  (connect frame +id-open+ +event-command-menu-selected+  (lambda (evt) (open-image frame evt)))
-  (connect frame +id-close+ +event-command-menu-selected+ (lambda (evt) (close-image frame evt)))
-  (connect frame +id-about+ +event-command-menu-selected+ #'about-box)
-  (connect frame +id-exit+ +event-command-menu-selected+ (lambda (evt) (quit-viewer frame evt))))
+(defun register-events ()
+  (connect *frame* +id-open+ +event-command-menu-selected+ (cffi:callback open-image))
+  (connect *frame* +id-close+ +event-command-menu-selected+ (cffi:callback close-image))
+  (connect *frame* +id-about+ +event-command-menu-selected+ (cffi:callback about-box))
+  (connect *frame* +id-exit+ +event-command-menu-selected+ (cffi:callback quit-viewer)))
 
-(defun init-func (evt)
-  (let* ((fr (make-frame nil -1 "wxCL - Image previewer"))
-         (panel (make-panel fr)))
-    (setf (menu-bar fr) (create-menu))
-    (setf (accelerator-table fr) (create-accelerator-table))
-    (add-status-bar fr)
-    (add-tool-bar fr)
-    (setf (wxcl-windows:icon fr) (wxcl-gdi:make-icon-from-file "wxcl-logo.ico" wxcl-gdi:+bitmap-type-ico+))
-    (register-events fr)
-    (show fr)))
+(cffi:defcallback init-func :void ((evt :pointer))
+  (setf *frame* (make-frame nil -1 "wxCL - Image previewer"))
+  (let* ((panel (make-panel *frame*)))
+    (setf (menu-bar *frame*) (create-menu))
+;    (setf (accelerator-table *frame*) (create-accelerator-table))
+    (add-status-bar)
+    (add-tool-bar)
+    (setf (icon *frame*) (make-icon-from-file "wxcl-logo.ico" +bitmap-type-ico+))
+    (register-events)
+    (show *frame*)))
 
-(wxcl:start-app #'init-func)
+(wxcl:start-app (cffi:callback init-func))

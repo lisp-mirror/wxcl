@@ -3,36 +3,38 @@
 ;;;Author(s) : Mark Carter (mcturra2000@yahoo.co.uk), Surendra Singhi (surendra@asu.edu) 
 ;;;See the file LICENSE for information on usage and redistribution.
 ;;;
-;;; $Header$
+;;; $Header: /cvsroot/wxcl/wxcl/examples/button.lisp,v 1.5 2005/12/12 09:15:48 efuzzyone Exp $
 ;;;
 
 ;;;This program demonstrates wxButton.
 
 (asdf:operate 'asdf:load-op 'wxcl)
 
-(use-package :wxcl)
-(use-package :wxcl-windows)
-
 (setq +button-id+ 5000)			; some assigned id
 
 (defun btn-responder-function (evt)
   (when evt
     (print "btn-responder")
-    (message-box "You clicked me" :caption "Response")))
+    (wxcl:message-box "You clicked me" :caption "Response")))
+
+; (cffi:defcallback btn-responder-function  :void ((evt :pointer))
+;   (when evt
+;     (print "btn-responder")
+;     (wxcl:message-box "You clicked me" :caption "Response")))
 
 (defun init-func (evt)
-  (let* ((frame (make-frame nil -1 "Button Demo."))
-         (panel (make-panel frame))
-         (btn-responder (wxcl-controls:make-button panel :label "Click" :id +button-id+))
-         (sizer (wxcl-layout:make-box-sizer +vertical+)))
-    (setf (wxcl-windows:sizer panel) sizer)
-    (wxcl-layout:fit sizer panel)
-    (wxcl-layout:add sizer btn-responder)
-    (setf (wxcl-layout:size-hints sizer) panel)
-					; register events
-    (wxcl-events:connect btn-responder +button-id+ wxcl-events:+event-command-button-clicked+
-                         #'btn-responder-function)
-    (show frame)
+  (let* ((frame (wxcl:make-frame nil -1 "Button Demo."))
+         (panel (wxcl:make-panel frame))
+         (btn-responder (wxcl:make-button panel :label "Click" :id +button-id+))
+         (sizer (wxcl:make-box-sizer wxcl:+vertical+)))
+    (setf (wxcl:sizer panel) sizer)
+    (wxcl:fit sizer panel)
+    (wxcl:add sizer btn-responder)
+    (setf (wxcl:size-hints sizer) panel)
+      ; register events
+    (wxcl:connect btn-responder +button-id+ wxcl:+event-command-button-clicked+
+                  #'btn-responder-function)
+    (wxcl:show frame)
     ))
 
-(wxcl:start-app #'init-func)
+(wxcl:start-app #' init-func))
