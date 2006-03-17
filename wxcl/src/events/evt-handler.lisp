@@ -32,7 +32,7 @@
   (incf *events-counter*)
   (setf (getf *events-table* *events-counter*) func) 
   (wxEvtHandler_Connect (object-pointer obj) id (if last-id last-id id) type
-                        (wxClosure_Create (cffi:callback handle-events) gensym))))
+                        (wxClosure_Create (cffi:callback handle-events) *events-counter*)))
 
 
 (defmethod disconnect ((obj evt-handler) id type data &key last-id)
