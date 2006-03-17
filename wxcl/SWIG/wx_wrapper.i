@@ -10,7 +10,7 @@
 
 %module wx_wrapper
 
-%include "../common.i"
+%include "common.i"
 
 %insert("lisphead") %{
 ;;;wx_wrapper.lisp
@@ -24,7 +24,14 @@
 
 (in-package :wxcl)
 
+(defcfun ("wxStringc_str" wxStringc_str) :pointer
+  (s :wxstring))
+
 %}
 
+%ignore initIdleTimer;
+%ignore doneIdleTimer;
+%ignore wxStringc_str(wxString*);
+ 
 %include "src/ewxw/../wrapper.cpp"
 

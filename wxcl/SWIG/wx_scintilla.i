@@ -10,7 +10,7 @@
 
 %module wx_scintilla
 
-%include "../common.i"
+%include "common.i"
 
 %insert("lisphead") %{
 ;;;wx_scintilla.lisp

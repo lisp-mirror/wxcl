@@ -10,7 +10,7 @@
 
 %module wx_main
 
-%include "../common.i"
+%include "common.i"
 
 %insert("lisphead") %{
 ;;;wx_main.lisp
@@ -24,7 +24,18 @@
 
 (in-package :wxcl)
 
+(defctype :wxstring :pointer)
+
+(defmethod cffi:translate-from-foreign (val (name (eql ':wxstring)))
+  "Converts a foreign wxString pointer to lisp, and frees it."
+  (unwind-protect
+       (wxStringc_str val)
+       ;(foreign-string-to-lisp (wxStringc_str val) (wxString_GetLength val) nil)
+    (wxString_Delete val)))
+
 %}
 
-%include "src/ewxw/ewxw_main.cpp"
+%ignore ELJApp_initialize;
+
+%include "src/ewxw/../ewxw_main.cpp"
 
