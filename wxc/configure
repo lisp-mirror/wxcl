@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh 
 
 #------------------------------------------------------------------------
 #  wxc: The C wrapper around the wxWindows interface.
