@@ -14,13 +14,7 @@
 
 (defun btn-responder-function (evt)
   (when evt
-    (print "btn-responder")
     (wxcl:message-box "You clicked me" :caption "Response")))
-
-; (cffi:defcallback btn-responder-function  :void ((evt :pointer))
-;   (when evt
-;     (print "btn-responder")
-;     (wxcl:message-box "You clicked me" :caption "Response")))
 
 (defun init-func (evt)
   (let* ((frame (wxcl:make-frame nil -1 "Button Demo."))
@@ -37,4 +31,4 @@
     (wxcl:show frame)
     ))
 
-(wxcl:start-app #' init-func))
+(wxcl:start-app #'init-func)
