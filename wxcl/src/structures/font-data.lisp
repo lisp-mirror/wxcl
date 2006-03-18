@@ -9,8 +9,6 @@
 
 (in-package :wxcl)
 
-(ffi:default-foreign-language :stdc)
-
 (defun make-font-data ()
   (make-wx-instance 'font-data
 		    (wxFontData_Create)))

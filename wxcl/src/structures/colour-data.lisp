@@ -9,8 +9,6 @@
 
 (in-package :wxcl)
 
-(ffi:default-foreign-language :stdc)
-
 (defun make-colour-data ()
   (make-wx-instance 'colour-data
 		    (wxColourData_Create)))
