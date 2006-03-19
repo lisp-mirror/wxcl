@@ -38,11 +38,8 @@
 (defun make-point (x y)
   (make-instance 'point :x x :y y))
    
-(eval-when (:compile-toplevel :load-toplevel :execute)
-  (defconstant +default-position+
-    (make-instance 'point)))
-
-
+(defvar +default-position+
+  (make-instance 'point))
 
 (defclass size ()
   ((height :initarg :height :initform -1 :type integer :accessor size-height)
@@ -59,10 +56,8 @@
 (defun make-size (width height)
   (make-instance 'size :width width :height height))
 
-(eval-when (:compile-toplevel :load-toplevel :execute)
-  (defconstant +default-size+
-    (make-instance 'size)))
-
+(defvar +default-size+
+  (make-instance 'size))
 
 (defconstant +size-auto-width+ 1)
 (defconstant +size-auto-height+ 2)
