@@ -1,8 +1,18 @@
-WXWIN="c:/wxWidgets-2.6.2"
-WXCL="c:/cvs-synched/commit-access/wxcl"
-WXDIR="$WXWIN"
-WXCLDIR="$WXCL"
-WXC="$WXCL/../wxc"
+#!/bin/sh
+ 
+if [ -z $WXCL ]; then
+    WXCL=`dirname $0`
+fi
+
+if [ -z $WXDIR -o -z $WXC ]; then
+    echo Please run this like WXDIR=/path/to/your/wxwidgets WXC=/path/to/your/wxc ./wx-swig.sh
+    exit 1
+fi
+
+if [ -z $WXCLDIR ]; then
+    WXCLDIR="$WXCL"
+fi
+
 
 WXVERSION="2.6.2"
 if test $DEBUG 
