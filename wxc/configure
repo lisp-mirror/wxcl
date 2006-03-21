@@ -64,7 +64,7 @@ while : ; do
 	echo " --wx-config=<program> the wxWindows configure utility [$wxconfig]"
 	echo " --toolkit=<name>      the wxWindows gui toolkit [$toolkit]"
 	echo ""
-	echo "miscelaneous options:"
+	echo "miscellaneous options:"
 	echo " --dllext=<extension>  dynamic link library extension [$dll]"
 	echo " --libprefix=<prefix>  library prefix [$lib]"
 	echo " --enable-strip        strip the library"
@@ -202,6 +202,10 @@ if test "$cygpathfound" = "yes"; then
   libs="`echo $libs | sed -e \"s|$wxexecprefix|$wwxexecprefix|g\"`"
 fi
 
+if [ "$OSTYPE" == "linux-gnu" ]; then
+  cxxflags="$cxxflags -fPIC"
+fi
+
 # Do we have (enabled) strip?
 if test "$enablestrip" = "yes"; then
   if sh ./config.search $strip; then
@@ -263,6 +267,8 @@ GZIP=gzip
 EOF
 
 echo "done:"
-echo " - type 'make' to build the library, or 'make -f Makefile.g++' under linux"
-echo " - type 'make install' to install the 'wxc' library."
-echo ""
+if [ "$OSTYPE" == "linux-gnu" ]; then
+  echo " - type 'make -f Makefile.g++' to build the library"
+else
+  echo " - type 'make' to build the library"
+fi
