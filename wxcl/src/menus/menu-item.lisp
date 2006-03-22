@@ -7,12 +7,12 @@
 
 (defun make-menu-item (&key (parent nil) (id wxITEM_SEPARATOR) (text "") (help-string "") (kind wxITEM_SEPARATOR)
 		       (sub nil))
-  (make-wx-instance 'menu-item (wxMenuItem_Create (when parent (object-pointer parent))
+  (make-wx-instance 'menu-item (wxMenuItem_Create (cffi-object-pointer parent)
 						  id
 						  text
 						  help-string
 						  kind
-						  (when sub (object-pointer parent)))))
+						  (cffi-object-pointer sub))))
 
 (defmethod menu-item-delete ((obj menu-item))
   (wxMenuItem_Delete (object-pointer obj))

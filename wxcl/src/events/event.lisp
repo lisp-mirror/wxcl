@@ -54,7 +54,7 @@
 ;   (:library +library-name+))
 
 (define-symbol-macro +event-command-button-clicked+
-    (cffi:mem-ref wxcl::wxEVENT_COMMAND_BUTTON_CLICKED :int))
+    (mem-ref wxEVENT_COMMAND_BUTTON_CLICKED :int))
 
 (define-symbol-macro +event-command-menu-selected+
-    (cffi:mem-ref wxcl::wxEVENT_COMMAND_MENU_SELECTED :int))
+    (mem-ref wxEVENT_COMMAND_MENU_SELECTED :int))

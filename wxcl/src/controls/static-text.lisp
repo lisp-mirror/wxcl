@@ -20,6 +20,6 @@
 (defun make-static-text (parent text &key (id -1) (pos +default-position+) (size +default-size+) (style 0))
     "Create a static text control."
     (make-wx-instance 'static-text
-		      (wxStaticText_Create (when parent (object-pointer parent))
+		      (wxStaticText_Create (cffi-object-pointer parent)
 				       id text (point-x pos) (point-y pos) (size-width size)
 				       (size-height size) style)))

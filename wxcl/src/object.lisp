@@ -21,7 +21,9 @@
 
 (defun invalidate-wx-instance (obj)
   (setf (slot-value obj 'object) nil))
-  
+
+(defmacro cffi-object-pointer (obj)
+  `(if ,obj (object-pointer ,obj) (cffi:null-pointer)))
 
 (defclass point ()
   ((x :initarg :x :initform -1 :type integer :accessor point-x)

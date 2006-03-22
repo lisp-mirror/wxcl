@@ -12,7 +12,7 @@
 (defconstant +sp-fullsash+ 1024)
 
 (defun make-splitter-window (parent &key (id -1) (position +default-position+) (size +default-size+) (style +sp-3d+))
-  (make-wx-instance 'splitter-window (wxSplitterWindow_Create (when parent (object-pointer parent))
+  (make-wx-instance 'splitter-window (wxSplitterWindow_Create (cffi-object-pointer parent)
                                                               id (point-x position) (point-y position)
                                                               (size-width size) (size-height size) style)))
 
@@ -40,7 +40,7 @@
                                            (object-pointer win2) sash-position)))
 
 (defmethod unsplit ((obj splitter-window) &optional (win nil))
-  (= 1 (wxSplitterWindow_Unsplit (object-pointer obj) (when win (object-pointer win)))))
+  (= 1 (wxSplitterWindow_Unsplit (object-pointer obj) (cffi-object-pointer win))))
 
 (defmethod replace-window ((obj splitter-window) (win-old window) (win-new window))
   (= 1 (wxSplitterWindow_ReplaceWindow (object-pointer obj) (object-pointer win-old) (object-pointer win-new))))

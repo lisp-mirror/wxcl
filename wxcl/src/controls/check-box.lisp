@@ -17,7 +17,7 @@
                               (size +default-size+) (style 0))
     "Create a checkbox control."
     (make-wx-instance 'check-box
-		      (wxCheckBox_Create (when parent (object-pointer parent))
+		      (wxCheckBox_Create (cffi-object-pointer parent)
 					 id label (point-x pos) (point-y pos) (size-width size)
 					 (size-height size) style)))
 

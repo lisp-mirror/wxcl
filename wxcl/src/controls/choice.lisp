@@ -13,7 +13,7 @@
                     (size +default-size+) (style 0))
     "Create a choice control."
     (make-wx-instance 'choice
-        (wxChoice_Create (when parent (object-pointer parent))
+        (wxChoice_Create (cffi-object-pointer parent)
             id (point-x pos) (point-y pos) (size-width size) (size-height size)
             (length choices) choices style)))
 

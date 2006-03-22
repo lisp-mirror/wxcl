@@ -12,7 +12,7 @@
 (defun make-toggle-button (parent &key (id -1) (label "") (pos +default-position+) (size +default-size+) (style 0))
     "Create a toggle button control."
     (make-wx-instance 'toggle-button 
-		      (wxToggleButton_Create (when parent (object-pointer parent))
+		      (wxToggleButton_Create (cffi-object-pointer parent)
 					     id label (point-x pos) (point-y pos) (size-width size)
 					     (size-height size) style)))
 

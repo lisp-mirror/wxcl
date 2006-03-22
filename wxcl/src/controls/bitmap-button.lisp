@@ -15,7 +15,7 @@
                            (size +default-size+) (style +bu-autodraw+))
     "Create a bitmap button control."
     (make-wx-instance 'bitmap-button
-		      (wxBitmapButton_Create (when parent (object-pointer parent))
+		      (wxBitmapButton_Create (cffi-object-pointer parent)
 					     id bmp (point-x pos) (point-y pos) (size-width size)
 					     (size-height size) style)))
 

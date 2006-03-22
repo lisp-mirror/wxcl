@@ -17,7 +17,7 @@
                               (size +default-size+) (style 0))
     "Create a radio box control."
     (make-wx-instance 'radio-box
-		      (wxRadioBox_Create (when parent (object-pointer parent))
+		      (wxRadioBox_Create (cffi-object-pointer parent)
 				       id label (point-x pos) (point-y pos) (size-width size)
 				       (size-height size) (length choices) choices dimensions style)))
 

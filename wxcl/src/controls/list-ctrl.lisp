@@ -29,6 +29,6 @@
 (defun make-list-ctrl (parent &key (id -1) (pos +default-position+) (size +default-size+) (style +lc-icon+))
     "Create a list control."
     (make-wx-instance 'list-ctrl
-		      (wxListCtrl_Create (when parent (object-pointer parent))
+		      (wxListCtrl_Create (cffi-object-pointer parent)
 				       id (point-x pos) (point-y pos) (size-width size)
 				       (size-height size) style)))

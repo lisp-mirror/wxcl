@@ -11,7 +11,7 @@
 
 (defun make-static-bitmap (parent id label &key (position +default-position+)(size +default-size+)(style 0))
   (make-wx-instance 'static-bitmap                            
-                    (wxStaticBitmap_Create (when parent (object-pointer parent))
+                    (wxStaticBitmap_Create (cffi-object-pointer parent)
                                            id (object-pointer label) (point-x position)(point-y position)
                                            (size-width size) (size-height size) style)))
 

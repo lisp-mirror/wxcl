@@ -27,7 +27,7 @@
 (defconstant +fullscreen-all+ 1)
 
 (defun make-frame (parent id title &key (position +default-position+) (size +default-size+) (style +default-frame-style+))
-  (make-wx-instance 'frame (wxFrame_Create (if parent (object-pointer parent) (null-pointer))
+  (make-wx-instance 'frame (wxFrame_Create (cffi-object-pointer parent)
                                            id title (point-x position) (point-y position)
                                            (size-width size) (size-height size) style)))
 

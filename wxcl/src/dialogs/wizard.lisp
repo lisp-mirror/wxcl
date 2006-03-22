@@ -11,7 +11,7 @@
 
 (defun make-wizard (parent &key (id -1) (title "") (bmp nil) (position +default-position+) (size +default-size+))
   (make-wx-instance 'wizard (wxWizard_Create (object-pointer parent) id title
-                                             (when bmp (object-pointer bmp))
+                                             (cffi-object-pointer bmp)
                                              (point-x position)
                                              (point-y position)
                                              (size-width size)
@@ -33,7 +33,7 @@
 
 (defun make-wizard-page-simple (parent)
   (make-wx-instance 'wizard-page-simple
-                    (wxWizardPageSimple_Create (when parent (object-pointer parent)))))
+                    (wxWizardPageSimple_Create (cffi-object-pointer parent))))
 
 (defmethod prev ((obj wizard-page-simple))
   (make-wx-instance 'wizard-page-simple

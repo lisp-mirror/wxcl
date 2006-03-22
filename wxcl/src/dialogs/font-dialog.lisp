@@ -12,7 +12,7 @@
 (defun make-font-dialog (parent &optional (font nil))
   (make-font-dialog 'font-dialog
                     (wxFontDialog_Create (object-pointer parent)
-                                         (when font (object-pointer font)))))
+                                         (cffi-object-pointer font))))
 
 (defmethod font-data ((obj font-dialog) &optional (data (make-font-data)))
   (wxFontDialog_GetFontData (object-pointer obj) (object-pointer data)))

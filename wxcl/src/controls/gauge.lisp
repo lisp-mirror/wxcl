@@ -17,7 +17,7 @@
 (defun make-gauge (parent range &key (id -1) (pos +default-position+) (size +default-size+) (style 0))
     "Create a gauge control."
     (make-wx-instance 'gauge
-		      (wxGauge_Create (when parent (object-pointer parent))
+		      (wxGauge_Create (cffi-object-pointer parent)
 				       id range (point-x pos) (point-y pos) (size-width size) (size-height size) style)))
 
 (defmethod bezel-face ((obj gauge))

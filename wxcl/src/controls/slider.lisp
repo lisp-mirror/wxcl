@@ -29,7 +29,7 @@
 (defun make-slider (parent init-value min-value max-value &key (id -1) (pos +default-position+) (size +default-size+) (style +sl-horizontal+))
     "Create a slider control."
     (make-wx-instance 'slider
-		      (wxSlider_Create (when parent (object-pointer parent))
+		      (wxSlider_Create (cffi-object-pointer parent)
 				       id init-value min-value max-value (point-x pos) (point-y pos) (size-width size)
 				       (size-height size) style)))
 

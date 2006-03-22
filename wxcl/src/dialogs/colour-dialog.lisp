@@ -12,7 +12,7 @@
 (defun make-colour-dialog (parent &optional (colour nil))
   (make-wx-instance 'colour-dialog
                     (wxColourDialog_Create (object-pointer parent)
-                                           (when colour (object-pointer colour)))))
+                                           (cffi-object-pointer colour))))
 
 (defmethod colour-data ((obj colour-dialog) &optional (data (make-colour-data)))
   (wxColourDialog_GetColourData (object-pointer obj) (object-pointer data)))

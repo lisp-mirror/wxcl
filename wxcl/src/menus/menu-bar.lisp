@@ -44,7 +44,7 @@
 ;fix me
 ;;menu should be a pointer to pointer
 (defmethod find-item ((obj menu-bar) id &optional (menu nil))
-  (make-wx-instance 'menu-item (wxMenuBar_FindItem (object-pointer obj) id (when menu (object-pointer menu)))))
+  (make-wx-instance 'menu-item (wxMenuBar_FindItem (object-pointer obj) id (cffi-object-pointer menu))))
 
 (defmethod find-menu ((obj menu-bar) title) 
   (wxMenuBar_FindMenu (object-pointer obj) title))

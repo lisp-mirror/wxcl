@@ -12,7 +12,7 @@
                                      (position +default-position+) (style -1))
   "Fix me, add the styles."
     (make-wx-instance 'calendar-control
-                      (wxCalendarCtrl_Create (object-pointer parent) id (when date (object-pointer date))
+                      (wxCalendarCtrl_Create (object-pointer parent) id (cffi-object-pointer date)
                                              (point-x +default-position+)(point-y +default-position+)
                                              (size-width +default-position+)(size-length +default-position+) style))
 

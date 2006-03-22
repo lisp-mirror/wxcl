@@ -151,38 +151,38 @@
 
 (defun get-colour-from-user (parent &optional (init-col nil))
   (make-wx-instance 'colour
-                    (wxcGetColourFromUser (object-pointer parent) (when init-col (object-pointer init-col)))))
+                    (wxcGetColourFromUser (object-pointer parent) (cffi-object-pointer init-col))))
 
 (defun get-font-from-user (parent &optional (init-font nil))
   (make-wx-instance 'font
-                    (wxcGetFontFromUser (object-pointer parent) (when init-font (object-pointer init-font)))))
+                    (wxcGetFontFromUser (object-pointer parent) (cffi-object-pointer init-font))))
 
 (defun get-password-from-user (message &key (caption "Input Password")(default-value "")
                                        (parent nil) (position +default-position+)(centre t))
-  (wxcGetPasswordFromUser message caption default-value (when parent (object-pointer parent))
+  (wxcGetPasswordFromUser message caption default-value (cffi-object-pointer parent)
 		       (point-x position) (point-y position) (if centre 1 0)))
 
 (defun get-text-from-user (message &key (caption "Input Text") (default-value "")
                                    (parent nil) (position +default-position+)(centre t))
-    (wxcGetTextFromUser message caption default-value (when parent (object-pointer parent))
+    (wxcGetTextFromUser message caption default-value (cffi-object-pointer parent)
 		       (point-x position) (point-y position) (if centre 1 0)))
 
 
 (defun get-number-from-user (message prompt caption value &key (min 0) (max 100) (parent nil)
                                      (position +default-position+))
-  (wxcGetNumberFromUser message prompt caption value min max (when parent (object-pointer parent))
+  (wxcGetNumberFromUser message prompt caption value min max (cffi-object-pointer parent)
 		       (point-x position) (point-y position)))
 
 (defun file-selector (message &key (dir "")(filename "")(extension "")(wildcard "*.*")
                               (style 0)(parent nil)(x -1)(y -1))
-  (wxcFileSelector  message dir filename extension wildcard style (when parent (object-pointer parent)) x y))
+  (wxcFileSelector  message dir filename extension wildcard style (cffi-object-pointer parent) x y))
 
 (defun dir-selector (message &key (dir "")(style 0)(position +default-position+)(parent nil))
   (wxcDirSelector message dir style (point-x position) (point-y position)
-                 (when parent (object-pointer parent))))
+                 (cffi-object-pointer parent)))
 
 (defun message-box (message &key (caption "Message") (style +ok+)
                                    (parent nil)(x -1)(y -1))
-    (wxcMessageBox message caption style (when parent (object-pointer parent)) x y))
+    (wxcMessageBox message caption style (cffi-object-pointer parent) x y))
 
 (print "loaded function file")

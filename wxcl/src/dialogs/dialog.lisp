@@ -23,7 +23,7 @@
 (defmethod make-dialog (parent id title &key (position +default-position+) (size +default-size+)
 			        (style +default-dialog-style+))
   (make-wx-instance 'dialog
-		    (wxDialog_Create (when parent (object-pointer parent))
+		    (wxDialog_Create (cffi-object-pointer parent)
 				     id title (point-x position) (point-y position)
 				     (size-width size) (size-height size) style)))
 

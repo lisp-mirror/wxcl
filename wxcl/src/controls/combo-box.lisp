@@ -18,7 +18,7 @@
                               (size +default-size+) (style 0))
     "Create a combobox control."
     (make-wx-instance 'combo-box
-        (wxComboBox_Create (when parent (object-pointer parent))
+        (wxComboBox_Create (cffi-object-pointer parent)
             id text (point-x pos) (point-y pos) (size-width size) (size-height size)
             (length choices) choices style)))
 

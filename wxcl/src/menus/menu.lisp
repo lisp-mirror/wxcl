@@ -107,7 +107,7 @@
   (wxMenu_FindItemByLabel (object-pointer obj) label))
 
 (defmethod find-item ((obj menu) id &optional (menu nil))
-  (make-wx-instance 'menu-item (wxMenu_FindItem (object-pointer obj) id (when menu (object-pointer menu)))))
+  (make-wx-instance 'menu-item (wxMenu_FindItem (object-pointer obj) id (cffi-object-pointer menu))))
 
 (defmethod enable-item ((obj menu) id bool)
     (wxMenu_Enable (object-pointer obj) id (if bool 1 0)))
@@ -161,7 +161,7 @@
   (wxMenu_GetStyle (object-pointer obj)))
 
 (defmethod update-ui ((obj menu) &optional (source nil))
-  (wxMenu_UpdateUI (object-pointer obj) (when source (object-pointer source))))
+  (wxMenu_UpdateUI (object-pointer obj) (cffi-object-pointer source)))
 
 ; (defmethod ((obj menu)) wxMenu_IsAttached
 ;     (:name "wxMenu_IsAttached")
