@@ -1,10 +1,9 @@
 #!/bin/sh
- 
 if [ -z $WXCL ]; then
     WXCL=`dirname $0`
 fi
 
-if [ -z $WXDIR -o -z $WXC ]; then
+if [ -z $WXDIR -a -z $WXC ]; then
     echo Please run this like WXDIR=/path/to/your/wxwidgets WXC=/path/to/your/wxc ./wx-swig.sh
     exit 1
 fi
