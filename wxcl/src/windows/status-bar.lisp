@@ -20,14 +20,13 @@
 	  (wxStatusBar_Create (object-pointer parent) id style))
     st))
 
-(defmethod (setf fields-count) (num (obj status-bar) &optional (width nil))
+(defmethod (setf fields-count) (num (obj status-bar) &optional (width (cffi:null-pointer)))
   "Sets the number of fields, and optionally the field widths which is a vector or array."
   (wxStatusBar_SetFieldsCount (object-pointer obj) num width))
 
 (defmethod fields-count ((obj status-bar))
   "Returns the number of fields in the status bar."
   (wxStatusBar_GetFieldsCount (object-pointer obj)))
-
 
 (defmethod (setf status-text) (text (obj status-bar) &optional (i 0))
   "Sets the text for one field."

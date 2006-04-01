@@ -17,8 +17,8 @@
 ;;;Quitting the program is _not_ broken in this samples, because 
 ;;wxWidget does it automatically
 
-
-(asdf:operate 'asdf:load-op 'wxcl)
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (asdf:operate 'asdf:load-op 'wxcl))
 
 (defpackage #:controls
     (:use #:wxcl #:cl))
@@ -79,12 +79,11 @@
     (add sizer top-sizer)
     (add sizer bottom-sizer)))
 
-(defun add-controls(frame)
+(defun add-controls (frame)
   (let ((main-sizer (make-box-sizer +vertical+))
         (top-sizer (make-box-sizer +vertical+))
         (bottom-sizer (make-box-sizer +vertical+))
-        )
-    (setf panel (make-panel frame))
+	(panel (make-panel frame)))
     (setf (sizer panel) main-sizer)
     (add-top-controls top-sizer panel)
     (add-bottom-controls bottom-sizer panel)
@@ -95,11 +94,12 @@
     (fit main-sizer panel)
     (setf (size-hints main-sizer) panel)))
 
-(cffi:defcallback init-func :void ((evt :pointer))
+(defun init-func (evt)
   (let* ((fr (make-frame nil -1 "wxCL - Controls Demo")))
     (setf (icon fr) (make-icon-from-file "wxcl-logo.ico" +bitmap-type-ico+))
     (add-controls fr)
-    (show fr)))
+    (show fr))
+  )
 
 
-(start-app (cffi:callback init-func))
+(start-app #'init-func)

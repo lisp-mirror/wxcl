@@ -7,7 +7,8 @@
 ;;; $Header: /cvsroot/wxcl/wxcl/examples/image-previewer.lisp,v 1.7 2005/12/12 07:22:00 efuzzyone Exp $
 ;;;
 
-(asdf:operate 'asdf:load-op 'wxcl)
+(eval-when (:compile-toplevel :load-toplevel :execute)
+    (asdf:operate 'asdf:load-op 'wxcl))
 
 (defpackage #:image-viewer
     (:use #:wxcl #:cl))
@@ -80,7 +81,7 @@ This program is in public domain."
   (connect *frame* +id-about+ +event-command-menu-selected+ (cffi:callback about-box))
   (connect *frame* +id-exit+ +event-command-menu-selected+ (cffi:callback quit-viewer)))
 
-(cffi:defcallback init-func :void ((evt :pointer))
+(defun init-func (evt)
   (setf *frame* (make-frame nil -1 "wxCL - Image previewer"))
   (let* ((panel (make-panel *frame*)))
     (setf (menu-bar *frame*) (create-menu))
@@ -91,4 +92,4 @@ This program is in public domain."
     (register-events)
     (show *frame*)))
 
-(wxcl:start-app (cffi:callback init-func))
+(wxcl:start-app #'init-func)

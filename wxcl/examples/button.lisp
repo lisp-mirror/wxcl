@@ -8,9 +8,10 @@
 
 ;;;This program demonstrates wxButton.
 
-(asdf:operate 'asdf:load-op 'wxcl)
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (asdf:operate 'asdf:load-op 'wxcl))
 
-(setq +button-id+ 5000)			; some assigned id
+(defparameter +button-id+ 5000)			; some assigned id
 
 (defun btn-responder-function (evt)
   (when evt
