@@ -8,7 +8,7 @@
 ;;;
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-    (asdf:operate 'asdf:load-op 'wxcl))
+  (asdf:operate 'asdf:load-op 'wxcl))
 
 (defpackage #:image-viewer
     (:use #:wxcl #:cl))
@@ -45,7 +45,7 @@
 
 
 
-(cffi:defcallback open-image :void ((evt :pointer))
+(defun open-image(evt)
   (when evt
     (let ((filename (file-selector "open file"
                                    :style (boole boole-ior +open+ +file-must-exist+)
@@ -60,26 +60,26 @@
           (set-scroll-bars sw 20 20 50 50)
           (show fr))))))
 
-(cffi:defcallback close-image :void ((evt :pointer))
+(defun close-image(evt)
   (when evt
     (print "close image, but which one?")))
 
-(cffi:defcallback about-box :void ((evt :pointer))
+(defun about-box(evt)
   (when evt
     (message-box "Image viewer demonstrates some of the features of wxCL.\
 This program is in public domain."
                  :caption "Image Viewer - wxCL")))
 
-(cffi:defcallback quit-viewer :void ((evt :pointer))
+(defun quit-viewer(evt)
   (when evt
     (close-window *frame* t)))
 
 
 (defun register-events ()
-  (connect *frame* +id-open+ +event-command-menu-selected+ (cffi:callback open-image))
-  (connect *frame* +id-close+ +event-command-menu-selected+ (cffi:callback close-image))
-  (connect *frame* +id-about+ +event-command-menu-selected+ (cffi:callback about-box))
-  (connect *frame* +id-exit+ +event-command-menu-selected+ (cffi:callback quit-viewer)))
+  (connect *frame* +id-open+ +event-command-menu-selected+ #'open-image)
+  (connect *frame* +id-close+ +event-command-menu-selected+ #'close-image)
+  (connect *frame* +id-about+ +event-command-menu-selected+ #'about-box)
+  (connect *frame* +id-exit+ +event-command-menu-selected+ #'quit-viewer))
 
 (defun init-func (evt)
   (setf *frame* (make-frame nil -1 "wxCL - Image previewer"))
