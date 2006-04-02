@@ -29,6 +29,23 @@
   ((x :initarg :x :initform -1 :type integer :accessor point-x)
    (y :initarg :y :initform -1 :type integer :accessor point-y)))
 
+(defmethod make-load-form ((self point) &optional environment)
+  (declare (ignore environment))
+  `(make-instance ',(class-of self)
+    :x ',(x self) :y ',(y self)))
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (set-dispatch-macro-character #\# #\@
+                                #'(lambda (stream p1 p2)
+                                    (declare (ignore p1 p2))
+                                    (let* ((list (read stream t nil t))
+                                           (len (length list)))
+                                      (if (not (= len 2))
+                                          (error "Incorrect number of values for point.")
+                                          (let ((pt (make-instance 'point :x (first list)
+                                                                   :y (second list))))
+                                            pt))))))
+
 (defmethod print-object ((pt point) stream)
   (print-unreadable-object (pt stream :identity t)
     (format stream "~S :x ~A :y ~A"
