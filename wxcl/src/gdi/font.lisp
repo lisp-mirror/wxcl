@@ -70,7 +70,8 @@
     (make-wx-instance 'font
         (wxFont_CreateDefault)))
 
-(defun make-font (ptsize family style weight &key (underlined nil) (facename "") (encoding +font-encoding-default+))
+(defun make-font (ptsize family style weight &key (underlined (cffi:null-pointer))
+                         (facename "") (encoding +font-encoding-default+))
     "Create a font object."
     (make-wx-instance 'font
         (wxFont_Create ptsize family style weight underlined facename encoding)))

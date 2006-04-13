@@ -44,7 +44,7 @@
 
 ; (print wxcl::*function-list*)
 
-(defun add-menu ()
+(defun add-menu()
   (let ((file-menu (make-menu-with-items
                     (string +id-new+ "&New      Ctrl+N" :help-string "Open a new file")
                     (separator)
@@ -61,30 +61,30 @@
                     (string +id-color+ "Change &Color..." :help-string "Opens dialog for selecting new color."))))
     (make-menu-bar (list file-menu edit-menu help-menu) (list "&File" "&Edit" "&Help"))))
 
-(cffi:defcallback open-file :void ((evt :pointer))
-                  (when evt
-                    (print (wxcl::wxObject_GetClassInfo evt))
-                    (print (wxcl::wxClassInfo_GetClassName (wxcl::wxObject_GetClassInfo evt)))
-                    (let ((filename (file-selector "open file"
-                                                   :style (boole boole-ior +open+ +file-must-exist+)
-                                                   :wildcard "text files(*.txt;*.lisp;*.html)|*.txt;*.lisp;*.html")))
-                      (unless (string= "" filename)
-                        (let ((txt-control (make-text-control *nb* :style (logior +te-multiline+
-                                                                                  +te-rich+
-                                                                                  +te-rich2+))))
-                          (load-file-into-text-control txt-control filename)
-                          (add-page *nb* txt-control filename))))))
+(defun open-file(evt)
+  (when evt
+    (print (wxcl::wxObject_GetClassInfo evt))
+    (print (wxcl::wxClassInfo_GetClassName (wxcl::wxObject_GetClassInfo evt)))
+    (let ((filename (file-selector "open file"
+                                   :style (boole boole-ior +open+ +file-must-exist+)
+                                   :wildcard "text files(*.txt;*.lisp;*.html)|*.txt;*.lisp;*.html")))
+      (unless (string= "" filename)
+        (let ((txt-control (make-text-control *nb* :style (logior +te-multiline+
+                                                                  +te-rich+
+                                                                  +te-rich2+))))
+          (load-file-into-text-control txt-control filename)
+          (add-page *nb* txt-control filename))))))
 
-(cffi:defcallback save-file :void ((evt :pointer))
-                  (when evt
-                    (let ((sel (selection *nb*)))
-                      (unless (= sel -1)
-                        (let ((txt-control (change-class (get-page *nb* sel) 'text-control))
-                              (filename (page-text *nb* sel)))
-                          (when (modified-p txt-control)
-                            (if (string= filename "unknown")
-                                (%save-file)
-                                (save-file txt-control filename))))))))
+(defun save-file(evt)
+  (when evt
+    (let ((sel (selection *nb*)))
+      (unless (= sel -1)
+        (let ((txt-control (change-class (get-page *nb* sel) 'text-control))
+              (filename (page-text *nb* sel)))
+          (when (modified-p txt-control)
+            (if (string= filename "unknown")
+                (%save-file)
+                (save-file txt-control filename))))))))
 
 (defun %save-file()
   (let ((sel (selection *nb*)))
@@ -96,35 +96,35 @@
           (setf (page-text *nb* sel) filename)
           (save-file txt-control filename))))))
 
-(cffi:defcallback saveas-file :void ((evt :pointer))
-                  (when evt
-                    (%save-file)))
+(defun saveas-file (evt)
+  (when evt
+    (%save-file)))
 
-(cffi:defcallback change-font :void ((evt :pointer))
-                  (when evt
-                    (let ((sel (selection *nb*)))
-                      (unless (= sel -1)
-                        (let* ((txt-control (change-class (get-page *nb* sel) 'text-control))
-                               (style (default-style txt-control))
-                               (font (font style))
-                               (new-font (get-font-from-user txt-control font)))
-                          (when (ok-p new-font)
-                            (setf (font style) new-font
-                                  (default-style txt-control) style)
-                            (set-range-style txt-control 0 (last-position txt-control) style)))))))
+(defun change-font (evt)
+  (when evt
+    (let ((sel (selection *nb*)))
+      (unless (= sel -1)
+        (let* ((txt-control (change-class (get-page *nb* sel) 'text-control))
+               (style (default-style txt-control))
+               (font (font style))
+               (new-font (get-font-from-user txt-control font)))
+          (when (ok-p new-font)
+            (setf (font style) new-font
+                  (default-style txt-control) style)
+            (set-range-style txt-control 0 (last-position txt-control) style)))))))
 
-(cffi:defcallback change-color :void ((evt :pointer))
-                  (when evt
-                    (let ((sel (selection *nb*)))
-                      (unless (= sel -1)
-                        (let* ((txt-control (change-class (get-page *nb* sel) 'text-control))
-                               (style (default-style txt-control))
-                               (colour (text-colour style))
-                               (new-colour (get-colour-from-user txt-control colour)))
-                          (when (ok-p new-colour)
-                            (setf (text-colour style) new-colour
-                                  (default-style txt-control) style)
-                            (set-range-style txt-control 0 (last-position txt-control) style)))))))
+(defun change-color(evt)
+  (when evt
+    (let ((sel (selection *nb*)))
+      (unless (= sel -1)
+        (let* ((txt-control (change-class (get-page *nb* sel) 'text-control))
+               (style (default-style txt-control))
+               (colour (text-colour style))
+               (new-colour (get-colour-from-user txt-control colour)))
+          (when (ok-p new-colour)
+            (setf (text-colour style) new-colour
+                  (default-style txt-control) style)
+            (set-range-style txt-control 0 (last-position txt-control) style)))))))
 
 (defun create-accelerator-table ()
   (make-accelerator-table (make-accelerator-entry +accel-ctrl+
@@ -147,41 +147,41 @@
     (add-tool tb +id-close+ close-ico :short-help "Close file" :long-help "Closes Image files.")
     (realize tb)))
 
-(cffi:defcallback new-tab :void ((evt :pointer))
-                  (when evt
-                    (let* ((txtcontrol (make-text-control *nb* :style (logior +te-multiline+
-                                                                              +te-rich+
-                                                                              +te-rich2+))))
-                      (add-page *nb* txtcontrol "Unknown"))))
+(defun new-tab(evt)
+  (when evt
+    (let* ((txtcontrol (make-text-control *nb* :style (logior +te-multiline+
+                                                              +te-rich+
+                                                              +te-rich2+))))
+      (add-page *nb* txtcontrol "Unknown"))))
 
-(cffi:defcallback close-tab :void ((evt :pointer))
-                  (when evt
-                    (let ((sel (selection *nb*)))
-                      (unless (= sel -1)
-                        (let* ((txtcontrol (get-page *nb* sel)))
-                          (remove-page *nb* sel)
-                          (destroy txtcontrol))))))
+(defun close-tab(evt)
+  (when evt
+    (let ((sel (selection *nb*)))
+      (unless (= sel -1)
+        (let* ((txtcontrol (get-page *nb* sel)))
+          (remove-page *nb* sel)
+          (destroy txtcontrol))))))
 
-(cffi:defcallback quit-program :void ((evt :pointer))
-                  (when evt
-                    (close-window *frame* t)))
+(defun quit-program(evt)
+  (when evt
+    (close-window *frame* t)))
 
-(cffi:defcallback about-box :void ((evt :pointer))
-                  (when evt
-                    (message-box "Image viewer demonstrates some of the features of wxCL.\
+(defun about-box(evt)
+  (when evt
+    (message-box "Image viewer demonstrates some of the features of wxCL.\
 This program is in public domain."
-                                 :caption "Image Viewer - wxCL")))
+                 :caption "Image Viewer - wxCL")))
 
 (defun register-events (frame)
-  (connect frame +id-about+ +event-command-menu-selected+ (cffi:callback about-box))
-  (connect frame +id-new+ +event-command-menu-selected+ (cffi:callback new-tab))
-  (connect frame +id-open+ +event-command-menu-selected+ (cffi:callback open-file))
-  (connect frame +id-save+ +event-command-menu-selected+ (cffi:callback save-file))
-  (connect frame +id-saveas+ +event-command-menu-selected+ (cffi:callback saveas-file))
-  (connect frame +id-close+ +event-command-menu-selected+ (cffi:callback close-tab))
-  (connect frame +id-exit+ +event-command-menu-selected+ (cffi:callback quit-program))
-  (connect frame +id-font+ +event-command-menu-selected+ (cffi:callback change-font))
-  (connect frame +id-color+ +event-command-menu-selected+ (cffi:callback change-color)))
+  (connect frame +id-about+ +event-command-menu-selected+ #'about-box)
+  (connect frame +id-new+ +event-command-menu-selected+ #'new-tab)
+  (connect frame +id-open+ +event-command-menu-selected+ #'open-file)
+  (connect frame +id-save+ +event-command-menu-selected+ #'save-file)
+  (connect frame +id-saveas+ +event-command-menu-selected+ #'saveas-file)
+  (connect frame +id-close+ +event-command-menu-selected+ #'close-tab)
+  (connect frame +id-exit+ +event-command-menu-selected+ #'quit-program)
+  (connect frame +id-font+ +event-command-menu-selected+ #'change-font)
+  (connect frame +id-color+ +event-command-menu-selected+ #'change-color))
 
 
 (defun init-func (evt)

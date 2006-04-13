@@ -34,7 +34,7 @@
   (wxToolBar_AddTool (object-pointer obj) id (object-pointer bmp) short-help long-help))
 
 (defmethod add-tool-ex ((obj tool-bar) id (bmp bitmap) &key (bmp2 +null-bitmap+)
-                        (toggle 0) (x -1)(y -1)(data nil) (short-help "") (long-help ""))
+                        (toggle 0) (x -1)(y -1)(data (cffi:null-pointer)) (short-help "") (long-help ""))
   (wxToolBar_AddToolEx (object-pointer obj) id (object-pointer bmp) (object-pointer bmp2) toggle
                        x y data short-help long-help))
 

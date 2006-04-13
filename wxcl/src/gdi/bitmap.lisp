@@ -70,7 +70,7 @@
 (defmethod load-bitmap-from-file ((obj bitmap) file-name type)
   (= 1 (wxBitmap_LoadFile (object-pointer obj) file-name type)))
 
-(defmethod save-bitmap-to-file ((obj bitmap) file-name type &optional (cmap nil))
+(defmethod save-bitmap-to-file ((obj bitmap) file-name type &optional (cmap (cffi:null-pointer)))
   (= 1 (wxBitmap_SaveFile (object-pointer obj) file-name type cmap)))
 
 (defmethod mask ((obj bitmap))
