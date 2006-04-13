@@ -75,7 +75,7 @@
           (load-file-into-text-control txt-control filename)
           (add-page *nb* txt-control filename))))))
 
-(defun save-file(evt)
+(defun save-text-file(evt)
   (when evt
     (let ((sel (selection *nb*)))
       (unless (= sel -1)
@@ -176,7 +176,7 @@ This program is in public domain."
   (connect frame +id-about+ +event-command-menu-selected+ #'about-box)
   (connect frame +id-new+ +event-command-menu-selected+ #'new-tab)
   (connect frame +id-open+ +event-command-menu-selected+ #'open-file)
-  (connect frame +id-save+ +event-command-menu-selected+ #'save-file)
+  (connect frame +id-save+ +event-command-menu-selected+ #'save-text-file)
   (connect frame +id-saveas+ +event-command-menu-selected+ #'saveas-file)
   (connect frame +id-close+ +event-command-menu-selected+ #'close-tab)
   (connect frame +id-exit+ +event-command-menu-selected+ #'quit-program)

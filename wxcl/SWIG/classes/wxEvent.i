@@ -24,9 +24,6 @@
 
 (in-package :wxcl)
 
-(defcvar "wxEVENT_COMMAND_BUTTON_CLICKED" :pointer)
-(defcvar "wxEVENT_COMMAND_MENU_SELECTED" :pointer)
-
 %}
 
 %include "src/eljevent.cpp"
