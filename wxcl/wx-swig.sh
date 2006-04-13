@@ -48,12 +48,12 @@ for f in $files   #'wxButton.i'
   do
   
   mod_name=`echo $f | awk -F. '{print $1}'`
-  echo "swig -$SWIGLANG $wx_flags -o \"$cffi_classes_dir/$mod_name.lisp\" $WXCLSWIGCLASSES/$f" 
-  `swig -$SWIGLANG $wx_flags -o "$cffi_classes_dir/$mod_name.lisp" $WXCLSWIGCLASSES/$f`  
+  echo "swig -$SWIGLANG -noswig-lisp $wx_flags -o \"$cffi_classes_dir/$mod_name.lisp\" $WXCLSWIGCLASSES/$f" 
+  `swig -$SWIGLANG -noswig-lisp $wx_flags -o "$cffi_classes_dir/$mod_name.lisp" $WXCLSWIGCLASSES/$f`  
 done
 
 echo "swig -$SWIGLANG $wx_flags -o \"$cffi_dir/wx_main.lisp\" $WXCLSWIG/wx_main.i" 
 `swig -$SWIGLANG $wx_flags -o "$cffi_dir/wxmain.lisp" $WXCLSWIG/wx_main.i`
 
-echo "swig -$SWIGLANG $wx_flags -o \"$cffi_dir/wx_wrapper.lisp\" $WXCLSWIG/wx_wrapper.i" 
+echo "swig -$SWIGLANG -noswig-lisp $wx_flags -o \"$cffi_dir/wx_wrapper.lisp\" $WXCLSWIG/wx_wrapper.i" 
 `swig -$SWIGLANG $wx_flags -o "$cffi_dir/wxwrapper.lisp" $WXCLSWIG/wx_wrapper.i` 
