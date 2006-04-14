@@ -56,4 +56,4 @@ echo "swig -$SWIGLANG $wx_flags -o \"$cffi_dir/wx_main.lisp\" $WXCLSWIG/wx_main.
 `swig -$SWIGLANG $wx_flags -o "$cffi_dir/wxmain.lisp" $WXCLSWIG/wx_main.i`
 
 echo "swig -$SWIGLANG -noswig-lisp $wx_flags -o \"$cffi_dir/wx_wrapper.lisp\" $WXCLSWIG/wx_wrapper.i" 
-`swig -$SWIGLANG $wx_flags -o "$cffi_dir/wxwrapper.lisp" $WXCLSWIG/wx_wrapper.i` 
+`swig -$SWIGLANG $wx_flags -noswig-lisp -o "$cffi_dir/wxwrapper.lisp" $WXCLSWIG/wx_wrapper.i` 
