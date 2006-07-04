@@ -1997,11 +1997,23 @@
      )
   )
 
-(in-package :wxCL)
-(eval-when (:compile-toplevel :load-toplevel :execute)
-  (defconstant +library-name+ "../lib/wxc-msw2.6.2.dll"))
 
-(cffi:load-foreign-library +library-name+)
+
+(in-package :wxCL)
+
+
+
+(define-foreign-library libwxcl
+    (:unix (:or "wxc-2.6.2.so" "wxc-2.6.2.so"))
+  (t (:default "../lib/wxc-msw2.6.2.dll")))
+
+(pushnew #P"../lib/" *foreign-library-directories* :test #'equal)
+
+(cffi:use-foreign-library libwxcl)
+
+
+
+
 
 (defconstant +id-open+ 5000)
 (defconstant +id-close+ 5001)

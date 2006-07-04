@@ -9,13 +9,12 @@
 
 (in-package :wxcl)
 
-(defun make-wizard (parent &key (id -1) (title "") (bmp nil) (position +default-position+) (size +default-size+))
+(defun make-wizard (parent &key (id -1) (title "") (bmp nil) (position +default-position+) (style 0))
   (make-wx-instance 'wizard (wxWizard_Create (object-pointer parent) id title
                                              (cffi-object-pointer bmp)
                                              (point-x position)
                                              (point-y position)
-                                             (size-width size)
-                                             (size-height size))))
+                                             style)))
 
 (defmethod run-wizard ((obj wizard) page)
   (= 1 (wxWizard_RunWizard (object-pointer obj)(object-pointer page))))
@@ -27,9 +26,9 @@
   (wxWizard_SetPageSize (object-pointer obj) (size-width sz) (size-height sz)))
 
 (defmethod page-size ((obj wizard))
+  "fix method"
   (let (x y)
-    (setf (values x y) (wxWizard_GetPageSize (object-pointer obj)))
-    (make-size x y)))
+    (wxWizard_GetPageSize (object-pointer obj))))
 
 (defun make-wizard-page-simple (parent)
   (make-wx-instance 'wizard-page-simple

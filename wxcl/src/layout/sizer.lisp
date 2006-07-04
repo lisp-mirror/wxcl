@@ -67,16 +67,19 @@
   (wxSizer_SetItemMinSize (object-pointer obj) pos (size-width size) (size-height size)))
 
 (defmethod size ((obj sizer))
+  "fix me"
   (let (w h)
     (multiple-value-setq (w h) (wxSizer_GetSize (object-pointer obj)))
     (make-instance 'size :width w :height h)))
 
 (defmethod sizer-position ((obj sizer))
+  "fix me"
   (let (w h)
     (multiple-value-setq (w h) (wxSizer_GetPosition (object-pointer obj)))
     (make-instance 'size :width w :height h)))
 
 (defmethod min-size ((obj sizer))
+  "fix me"
   (let (w h)
     (multiple-value-setq (w h) (wxSizer_GetMinSize (object-pointer obj)))
     (make-instance 'size :width w :height h)))
@@ -85,6 +88,7 @@
   (wxSizer_RecalcSizes (object-pointer obj)))
 
 (defmethod calc-min ((obj sizer))
+  "fix me"
   (let (w h)
     (multiple-value-setq (w h) (wxSizer_CalcMin (object-pointer obj)))
     (make-instance 'size :width w :height h)))
