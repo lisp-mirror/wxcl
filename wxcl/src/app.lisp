@@ -31,15 +31,12 @@
 (defvar *events-counter* 0)
 
 (defun start-app (init-func)
+  (setf *app-start-func* init-func
+	*events-table* nil
+	*events-counter* 0)
   (unwind-protect
-       (progn 
-         (cffi:load-foreign-library +library-name+)
-         (setf *app-start-func* init-func
-               *events-table* nil
-               *events-counter* 0)
-         (ELJApp_InitializeC (wxClosure_Create (cffi:callback initialize-wxcl) *events-counter*)
-                             0 (cffi:null-pointer)))
-    (cffi::close-foreign-library +library-name+)))
+       (ELJApp_InitializeC (wxClosure_Create (cffi:callback initialize-wxcl) *events-counter*)
+                           0 (cffi:null-pointer))))
 
 (cffi:defcallback initialize-wxcl :void ((evt :pointer) (wxcl-event-id :unsigned-int))
 ;                  (initialize-objects *function-list*)
