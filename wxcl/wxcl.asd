@@ -33,7 +33,8 @@
               :pathname ""
               :components ((:file "object")
                            (:file "app")
-                           (:file "functions")))
+                           (:file "functions"
+                                  :depends-on ("object"))))
      (:module "cffi"
               :depends-on ("defpackage")
               :pathname "cffi/classes/"
