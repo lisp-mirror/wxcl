@@ -27,6 +27,14 @@ place. The wxCL examples try to load cffi and wxCL using asdf commands.
 
 Linux Specific Notes
 ----------------------
+Bened - All text-files in the wxcl-directory and its subdirs have DOS-line-breaks 
+this caused problem in Mac OS X 10.2.8. http://bened.calypse.de/wxclmacosx/
+
+Other people have not reported any such problem. May be it is an artifact of svn 
+export which was done on a Windows machine. Just be careful while compiling wxC 
+and if you get errors. The link given by Bened may be helpful.
+
+
 Paul Viney - for compiling wxC, gtkscintilla2 appears to be required on
 (Gentoo) linux. It also needed to be available at link-time - installing it later
 wasn't enough to solve the problem. I had to delete libwxc.so, run configure again,
@@ -36,6 +44,8 @@ Clemens Fruhwirth - wxcl does not work with wxGTK in regular setups. That is: it
 does only work once, namely with a virgin process image. After the main loop of
 wxGTK was entered once, it must be purged from memory and reloaded freshly from 
 disk. 
+
+
 
 General Notes
 --------------
