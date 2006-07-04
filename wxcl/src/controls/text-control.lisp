@@ -45,6 +45,7 @@
   (= 1 (wxTextCtrl_IsEditable (object-pointer obj))))
 
 (defmethod selection ((obj text-control))
+  "method fix me"
   (wxTextCtrl_GetSelection (object-pointer obj)))
 
 (defmethod clear ((obj text-control))
@@ -75,6 +76,7 @@
   (wxTextCtrl_XYToPosition (object-pointer obj) x y))
 
 (defmethod position-to-xy ((obj text-control) pos)
+  "fix me"
   (wxTextCtrl_PositionToXY (object-pointer obj) pos))
 
 (defmethod show-position ((obj text-control) pos)
