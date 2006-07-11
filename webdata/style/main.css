@@ -1,0 +1,89 @@
+body
+{
+	background-color: #9999CC;
+	font-family: Optima, Arial, Helvetica
+}
+.title
+{
+	font-family: Gill Sans, Verdana;
+	font-size: 72pt;
+	color: #CC0000
+}
+img
+{
+	border-width: 0px
+}
+.slogan
+{
+	font-size: 18pt
+}
+.language
+{
+	background-color: #CCCCCC;
+	border: 1px solid black;
+	text-decoration: none
+}
+.currentLanguage
+{
+	background-color: #CCCCCC;
+	border: 1px solid black;
+	text-decoration: none;
+	font-weight: bold
+}
+.cards
+{
+	background-color: white
+}
+.insideCard
+{
+	padding: 20px
+}
+.navout
+{
+	background-color: #999999
+}
+.navover
+{
+	background-color: #CCCCCC
+}
+.navlinkforeground
+{
+	color: black;
+	text-decoration: none;
+	font-weight: bold
+}
+.navlinkbackground
+{
+	color: black;
+	text-decoration: none
+}
+.bigParenthesis
+{
+	font-size: 72pt;
+	font-family: serif
+}
+.mediumTitle
+{
+	font-size: 14pt
+}
+.screenshotpreview
+{
+	margin: 5px;
+	border: 1px solid black;
+}
+.historyBox
+{
+	padding: 5px
+}
+.box
+{
+	background-color: #EEEEEE;
+	border: 1px solid black;
+	padding: 5px
+}
+.linkBox
+{
+	background-color: #FFFFCC;
+	border: 1px solid black;
+	padding: 5px
+}
